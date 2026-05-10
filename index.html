@@ -1,560 +1,632 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-  <meta name="theme-color" content="#030b1a">
-  <title>LPOLVO | Scripts Hub</title>
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Rajdhani:wght@300;400;500;600;700&family=Cairo:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-  <style>
-    :root {
-      --bg: #030b1a;
-      --surface: #0a1628;
-      --surface2: #101d35;
-      --surface3: #162544;
-      --accent: #4169E1;
-      --accent2: #5b8af7;
-      --accent3: #2dd4bf;
-      --accent4: #f472b6;
-      --accent5: #a78bfa;
-      --text: #eef2ff;
-      --text2: #c8d6f5;
-      --muted: #8899bb;
-      --border: rgba(65, 105, 225, 0.25);
-      --glow-blue: 0 0 40px rgba(65, 105, 225, 0.5);
-      --neon-blue: 0 0 8px #4169E1, 0 0 20px rgba(65, 105, 225, 0.5);
-      --neon-teal: 0 0 5px #2dd4bf, 0 0 14px rgba(45, 212, 191, 0.4);
-      --radius: 14px;
-      --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-    body.lite {
-      --bg: #f4f6fb;
-      --surface: #fff;
-      --surface2: #eef2fa;
-      --surface3: #e2e8f5;
-      --accent: #3451b2;
-      --accent2: #5b7ed4;
-      --accent3: #0ea88a;
-      --accent4: #d63384;
-      --text: #1a1d2e;
-      --text2: #3a3f55;
-      --muted: #5f6b82;
-      --border: rgba(52, 81, 178, 0.18);
-      --glow-blue: 0 0 15px rgba(52, 81, 178, 0.15);
-      --neon-blue: 0 0 2px #3451b2;
-      --neon-teal: 0 0 2px #0ea88a;
-    }
-    body.lite .particles-canvas { opacity: 0.12; }
-    body.lite .glow-line { box-shadow: none !important; }
-    body.lite .pulse-dot { animation: none !important; opacity: 0.4; }
-    * { margin:0; padding:0; box-sizing:border-box; }
-    html { scroll-behavior:smooth; font-size:15px; }
-    body {
-      background:var(--bg); color:var(--text); font-family:'Inter','Cairo','Rajdhani',sans-serif;
-      overflow-x:hidden; transition:background 0.5s,color 0.5s; line-height:1.55;
-      -webkit-font-smoothing:antialiased; -webkit-tap-highlight-color:transparent;
-      max-width:100vw; min-height:100vh;
-    }
-    ::-webkit-scrollbar { width:4px; }
-    ::-webkit-scrollbar-track { background:var(--bg); }
-    ::-webkit-scrollbar-thumb { background:var(--accent2); border-radius:8px; }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <meta name="theme-color" content="#030b1a">
+    <title>LPOLVO | Scripts Hub</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Rajdhani:wght@300;400;500;600;700&family=Cairo:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        /* ============ VARIABLES & BASE ============ */
+        :root {
+            --bg: #030b1a;
+            --surface: #0a1628;
+            --surface2: #101d35;
+            --surface3: #162544;
+            --accent: #4169E1;
+            --accent2: #5b8af7;
+            --accent3: #2dd4bf;
+            --accent4: #f472b6;
+            --accent5: #a78bfa;
+            --text: #eef2ff;
+            --text2: #c8d6f5;
+            --muted: #8899bb;
+            --border: rgba(65, 105, 225, 0.25);
+            --glow-blue: 0 0 40px rgba(65, 105, 225, 0.5);
+            --neon-blue: 0 0 8px #4169E1, 0 0 20px rgba(65, 105, 225, 0.5);
+            --neon-teal: 0 0 5px #2dd4bf, 0 0 14px rgba(45, 212, 191, 0.4);
+            --radius: 14px;
+            --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        body.lite {
+            --bg: #f4f6fb;
+            --surface: #fff;
+            --surface2: #eef2fa;
+            --surface3: #e2e8f5;
+            --accent: #3451b2;
+            --accent2: #5b7ed4;
+            --accent3: #0ea88a;
+            --accent4: #d63384;
+            --text: #1a1d2e;
+            --text2: #3a3f55;
+            --muted: #5f6b82;
+            --border: rgba(52, 81, 178, 0.18);
+            --glow-blue: 0 0 15px rgba(52, 81, 178, 0.15);
+            --neon-blue: 0 0 2px #3451b2;
+            --neon-teal: 0 0 2px #0ea88a;
+        }
+        body.lite .particles-canvas { opacity: 0.12; }
+        body.lite .glow-line { box-shadow: none !important; }
+        body.lite .pulse-dot { animation: none !important; opacity: 0.4; }
 
-    .particles-canvas { position:fixed; inset:0; z-index:0; pointer-events:none; opacity:0.45; }
-    body::after {
-      content:''; position:fixed; inset:0;
-      background: radial-gradient(ellipse 50% 35% at 25% 20%, rgba(65,105,225,0.04) 0%, transparent 50%),
-                  radial-gradient(ellipse 45% 30% at 70% 65%, rgba(244,114,182,0.03) 0%, transparent 50%);
-      pointer-events:none; z-index:0;
-    }
+        * { margin:0; padding:0; box-sizing:border-box; }
+        html { scroll-behavior:smooth; font-size:15px; }
+        body {
+            background:var(--bg); color:var(--text); font-family:'Inter','Cairo','Rajdhani',sans-serif;
+            overflow-x:hidden; transition:background 0.5s,color 0.5s; line-height:1.55;
+            -webkit-font-smoothing:antialiased; -webkit-tap-highlight-color:transparent;
+            max-width:100vw; min-height:100vh;
+        }
+        ::-webkit-scrollbar { width:4px; }
+        ::-webkit-scrollbar-track { background:var(--bg); }
+        ::-webkit-scrollbar-thumb { background:var(--accent2); border-radius:8px; }
 
-    nav {
-      position:fixed; top:0; left:0; right:0; z-index:1000; padding:10px 14px;
-      display:flex; align-items:center; justify-content:space-between;
-      background:rgba(3,11,26,0.9); backdrop-filter:blur(20px); -webkit-backdrop-filter:blur(20px);
-      border-bottom:1px solid var(--border); gap:6px;
-    }
-    body.lite nav { background:rgba(255,255,255,0.9); border-bottom:1px solid rgba(0,0,0,0.06); }
-    .logo-area { display:flex; align-items:center; gap:7px; cursor:pointer; }
-    .logo-icon { width:34px; height:34px; border-radius:9px; background:linear-gradient(135deg,var(--accent),var(--accent5)); display:flex; align-items:center; justify-content:center; font-family:'Orbitron',monospace; font-weight:900; font-size:14px; color:#fff; box-shadow:var(--neon-blue); flex-shrink:0; }
-    .logo-text { font-family:'Orbitron',monospace; font-size:15px; font-weight:800; letter-spacing:1.5px; color:#fff; text-shadow:var(--neon-blue); white-space:nowrap; }
-    .logo-text span { background:linear-gradient(135deg,var(--accent2),var(--accent4)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
-    .nav-links { display:none; gap:16px; list-style:none; }
-    .nav-links a { color:var(--muted); text-decoration:none; font-size:11px; font-weight:600; letter-spacing:1.2px; text-transform:uppercase; transition:all var(--transition); position:relative; padding:3px 0; }
-    .nav-links a::after { content:''; position:absolute; bottom:-1px; left:0; width:0; height:2px; background:var(--accent); border-radius:2px; transition:width var(--transition); }
-    .nav-links a:hover { color:var(--accent2); }
-    .nav-links a:hover::after { width:100%; }
-    .nav-actions { display:flex; align-items:center; gap:5px; flex-shrink:0; }
-    .btn-lite { display:flex; align-items:center; gap:4px; background:var(--surface2); border:1px solid var(--border); border-radius:18px; padding:5px 9px; color:var(--text2); cursor:pointer; font-size:9px; font-weight:600; letter-spacing:0.6px; transition:all var(--transition); font-family:inherit; text-transform:uppercase; }
-    .btn-lite:hover { border-color:var(--accent3); color:var(--accent3); box-shadow:var(--neon-teal); }
-    .btn-lite .lite-dot { width:6px; height:6px; border-radius:50%; background:var(--accent3); box-shadow:var(--neon-teal); flex-shrink:0; }
-    body.lite .btn-lite .lite-dot { background:#999; box-shadow:none; }
-    .lang-switcher { position:relative; flex-shrink:0; }
-    .lang-btn { display:flex; align-items:center; gap:4px; background:var(--surface2); border:1px solid var(--border); border-radius:18px; padding:5px 8px; color:var(--text2); cursor:pointer; font-size:9px; font-weight:600; transition:all var(--transition); font-family:inherit; }
-    .lang-btn:hover { border-color:var(--accent); color:var(--accent2); }
-    .lang-flag { font-size:13px; }
-    .arrow-mini { font-size:6px; transition:transform var(--transition); color:var(--muted); }
-    .lang-switcher.open .arrow-mini { transform:rotate(180deg); }
-    .lang-dropdown { position:absolute; top:calc(100% + 6px); right:0; background:var(--surface); border:1px solid var(--border); border-radius:var(--radius); overflow-y:auto; max-height:240px; min-width:150px; box-shadow:0 20px 60px rgba(0,0,0,0.7); opacity:0; transform:translateY(-10px); pointer-events:none; transition:all 0.25s ease; z-index:200; }
-    .lang-switcher.open .lang-dropdown { opacity:1; transform:translateY(0); pointer-events:all; }
-    .lang-option { display:flex; align-items:center; gap:7px; padding:8px 11px; cursor:pointer; font-size:11px; font-weight:500; border-bottom:1px solid rgba(255,255,255,0.03); }
-    .lang-option:hover { background:rgba(65,105,225,0.06); }
-    .lang-option.active { background:rgba(65,105,225,0.12); color:var(--accent2); font-weight:600; }
-    .menu-dots { position:relative; flex-shrink:0; }
-    .dots-btn { width:32px; height:32px; border-radius:50%; background:var(--surface2); border:1px solid var(--border); color:var(--text2); cursor:pointer; font-size:16px; display:flex; align-items:center; justify-content:center; transition:all var(--transition); }
-    .dots-btn:hover { border-color:var(--accent); color:var(--accent2); }
-    .menu-dropdown { position:absolute; top:calc(100% + 6px); right:0; background:var(--surface); border:1px solid var(--border); border-radius:var(--radius); min-width:170px; box-shadow:0 20px 60px rgba(0,0,0,0.7); opacity:0; transform:translateY(-10px); pointer-events:none; transition:all 0.25s ease; z-index:200; padding:6px 0; }
-    .menu-dots.open .menu-dropdown { opacity:1; transform:translateY(0); pointer-events:all; }
-    .menu-item { display:flex; align-items:center; gap:9px; padding:10px 14px; cursor:pointer; font-size:11px; font-weight:500; color:var(--text2); text-decoration:none; transition:all 0.2s; border-bottom:1px solid rgba(255,255,255,0.03); white-space:nowrap; }
-    .menu-item:last-child { border-bottom:none; }
-    .menu-item:hover { background:rgba(65,105,225,0.08); color:var(--accent2); }
+        .particles-canvas { position:fixed; inset:0; z-index:0; pointer-events:none; opacity:0.45; }
+        body::after {
+            content:''; position:fixed; inset:0;
+            background: radial-gradient(ellipse 50% 35% at 25% 20%, rgba(65,105,225,0.04) 0%, transparent 50%),
+                        radial-gradient(ellipse 45% 30% at 70% 65%, rgba(244,114,182,0.03) 0%, transparent 50%);
+            pointer-events:none; z-index:0;
+        }
 
-    .page { display:none; position:relative; z-index:2; padding:100px 16px 40px; min-height:100vh; }
-    .page.active { display:block; }
-    .hero { text-align:center; padding:50px 0; position:relative; }
-    .hero-glow-orb { position:absolute; width:200px; height:200px; border-radius:50%; filter:blur(100px); pointer-events:none; z-index:-1; opacity:0.4; }
-    .hero-glow-orb.orb1 { top:-60px; left:-40px; background:var(--accent); animation:orbFloat 8s ease-in-out infinite; }
-    .hero-glow-orb.orb2 { bottom:-80px; right:-40px; background:var(--accent4); animation:orbFloat 10s ease-in-out infinite reverse; }
-    @keyframes orbFloat { 0%,100%{ transform:translate(0,0) scale(1); } 33%{ transform:translate(15px,-20px) scale(1.06); } 66%{ transform:translate(-10px,15px) scale(0.94); } }
-    .badge { display:inline-flex; align-items:center; gap:7px; background:rgba(65,105,225,0.1); border:1px solid rgba(65,105,225,0.3); border-radius:30px; padding:6px 14px; font-size:9px; font-weight:600; color:var(--accent2); letter-spacing:1.2px; margin-bottom:24px; text-transform:uppercase; animation:fadeDown 0.9s ease; }
-    .badge-dot { width:6px; height:6px; background:var(--accent3); border-radius:50%; animation:pulse 1.4s infinite; box-shadow:var(--neon-teal); }
-    @keyframes pulse { 0%,100%{opacity:1; transform:scale(1);} 50%{opacity:0.2; transform:scale(0.55);} }
-    @keyframes fadeDown { from{opacity:0;transform:translateY(-10px);} to{opacity:1;transform:translateY(0);} }
-    @keyframes fadeUp { from{opacity:0;transform:translateY(20px);} to{opacity:1;transform:translateY(0);} }
-    .hero h1 { font-family:'Orbitron',monospace; font-size:clamp(26px,6vw,50px); font-weight:900; margin-bottom:4px; animation:fadeUp 0.9s ease 0.1s both; }
-    .hero h1 .highlight { background:linear-gradient(135deg,var(--accent) 0%,var(--accent2) 40%,var(--accent4) 100%); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; display:block; font-size:1.2em; filter:drop-shadow(0 0 25px rgba(65,105,225,0.45)); }
-    .hero-subtitle { font-size:clamp(11px,1.8vw,13px); color:var(--muted); max-width:440px; margin:12px auto 24px; animation:fadeUp 0.9s ease 0.2s both; }
-    .hero-btns { display:flex; gap:8px; flex-wrap:wrap; justify-content:center; animation:fadeUp 0.9s ease 0.3s both; }
-    .btn { display:inline-flex; align-items:center; gap:6px; padding:10px 18px; border-radius:22px; text-decoration:none; font-weight:600; font-size:10px; letter-spacing:0.6px; transition:all var(--transition); cursor:pointer; font-family:inherit; text-transform:uppercase; border:none; -webkit-tap-highlight-color:transparent; }
-    .btn-primary { background:linear-gradient(135deg,var(--accent),var(--accent5)); color:#fff; box-shadow:var(--glow-blue); }
-    .btn-primary:hover { transform:translateY(-2px); box-shadow:0 0 45px rgba(65,105,225,0.6); }
-    .btn-primary:active { transform:scale(0.95); }
-    .btn-secondary { background:transparent; color:var(--text); border:2px solid var(--border); }
-    .btn-secondary:hover { border-color:var(--accent); background:rgba(65,105,225,0.04); }
-    .btn-outline { background:var(--surface2); border:1px solid var(--border); color:var(--text2); }
-    .btn-outline:hover { border-color:var(--accent); color:var(--accent2); }
-    .btn-accent { background:rgba(45,212,191,0.15); border:1px solid rgba(45,212,191,0.4); color:var(--accent3); font-weight:700; }
-    .btn-accent:hover { background:rgba(45,212,191,0.25); box-shadow:0 0 25px rgba(45,212,191,0.3); }
-    .social-row { display:flex; gap:12px; margin-top:32px; justify-content:center; animation:fadeUp 0.9s ease 0.4s both; flex-wrap:wrap; }
-    .social-icon { width:44px; height:44px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-weight:800; font-size:18px; text-decoration:none; color:#fff; transition:all var(--transition); flex-shrink:0; box-shadow:0 4px 15px rgba(0,0,0,0.4); }
-    .social-icon.yt { background:#FF0000; }
-    .social-icon.ig { background:linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888); }
-    .social-icon.rb { background:#000; border:2px solid #fff; }
-    .social-icon.dc { background:#5865F2; }
-    .social-icon:hover { transform:translateY(-3px); filter:brightness(1.2); }
+        /* ============ NAVIGATION ============ */
+        nav {
+            position:fixed; top:0; left:0; right:0; z-index:1000; padding:10px 14px;
+            display:flex; align-items:center; justify-content:space-between;
+            background:rgba(3,11,26,0.9); backdrop-filter:blur(20px); -webkit-backdrop-filter:blur(20px);
+            border-bottom:1px solid var(--border); gap:6px;
+        }
+        body.lite nav { background:rgba(255,255,255,0.9); border-bottom:1px solid rgba(0,0,0,0.06); }
+        .logo-area { display:flex; align-items:center; gap:7px; cursor:pointer; }
+        .logo-icon { width:34px; height:34px; border-radius:9px; background:linear-gradient(135deg,var(--accent),var(--accent5)); display:flex; align-items:center; justify-content:center; font-family:'Orbitron',monospace; font-weight:900; font-size:14px; color:#fff; box-shadow:var(--neon-blue); flex-shrink:0; }
+        .logo-text { font-family:'Orbitron',monospace; font-size:15px; font-weight:800; letter-spacing:1.5px; color:#fff; text-shadow:var(--neon-blue); white-space:nowrap; }
+        .logo-text span { background:linear-gradient(135deg,var(--accent2),var(--accent4)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
+        .nav-links { display:none; gap:16px; list-style:none; }
+        .nav-links a { color:var(--muted); text-decoration:none; font-size:11px; font-weight:600; letter-spacing:1.2px; text-transform:uppercase; transition:all var(--transition); position:relative; padding:3px 0; }
+        .nav-links a::after { content:''; position:absolute; bottom:-1px; left:0; width:0; height:2px; background:var(--accent); border-radius:2px; transition:width var(--transition); }
+        .nav-links a:hover { color:var(--accent2); }
+        .nav-links a:hover::after { width:100%; }
+        .nav-actions { display:flex; align-items:center; gap:5px; flex-shrink:0; }
+        .btn-lite { display:flex; align-items:center; gap:4px; background:var(--surface2); border:1px solid var(--border); border-radius:18px; padding:5px 9px; color:var(--text2); cursor:pointer; font-size:9px; font-weight:600; letter-spacing:0.6px; transition:all var(--transition); font-family:inherit; text-transform:uppercase; }
+        .btn-lite:hover { border-color:var(--accent3); color:var(--accent3); box-shadow:var(--neon-teal); }
+        .btn-lite .lite-dot { width:6px; height:6px; border-radius:50%; background:var(--accent3); box-shadow:var(--neon-teal); flex-shrink:0; }
+        body.lite .btn-lite .lite-dot { background:#999; box-shadow:none; }
+        .lang-switcher { position:relative; flex-shrink:0; }
+        .lang-btn { display:flex; align-items:center; gap:4px; background:var(--surface2); border:1px solid var(--border); border-radius:18px; padding:5px 8px; color:var(--text2); cursor:pointer; font-size:9px; font-weight:600; transition:all var(--transition); font-family:inherit; }
+        .lang-btn:hover { border-color:var(--accent); color:var(--accent2); }
+        .lang-flag { font-size:13px; }
+        .arrow-mini { font-size:6px; transition:transform var(--transition); color:var(--muted); }
+        .lang-switcher.open .arrow-mini { transform:rotate(180deg); }
+        .lang-dropdown { position:absolute; top:calc(100% + 6px); right:0; background:var(--surface); border:1px solid var(--border); border-radius:var(--radius); overflow-y:auto; max-height:240px; min-width:150px; box-shadow:0 20px 60px rgba(0,0,0,0.7); opacity:0; transform:translateY(-10px); pointer-events:none; transition:all 0.25s ease; z-index:200; }
+        .lang-switcher.open .lang-dropdown { opacity:1; transform:translateY(0); pointer-events:all; }
+        .lang-option { display:flex; align-items:center; gap:7px; padding:8px 11px; cursor:pointer; font-size:11px; font-weight:500; border-bottom:1px solid rgba(255,255,255,0.03); }
+        .lang-option:hover { background:rgba(65,105,225,0.06); }
+        .lang-option.active { background:rgba(65,105,225,0.12); color:var(--accent2); font-weight:600; }
+        .menu-dots { position:relative; flex-shrink:0; }
+        .dots-btn { width:32px; height:32px; border-radius:50%; background:var(--surface2); border:1px solid var(--border); color:var(--text2); cursor:pointer; font-size:16px; display:flex; align-items:center; justify-content:center; transition:all var(--transition); }
+        .dots-btn:hover { border-color:var(--accent); color:var(--accent2); }
+        .menu-dropdown { position:absolute; top:calc(100% + 6px); right:0; background:var(--surface); border:1px solid var(--border); border-radius:var(--radius); min-width:170px; box-shadow:0 20px 60px rgba(0,0,0,0.7); opacity:0; transform:translateY(-10px); pointer-events:none; transition:all 0.25s ease; z-index:200; padding:6px 0; }
+        .menu-dots.open .menu-dropdown { opacity:1; transform:translateY(0); pointer-events:all; }
+        .menu-item { display:flex; align-items:center; gap:9px; padding:10px 14px; cursor:pointer; font-size:11px; font-weight:500; color:var(--text2); text-decoration:none; transition:all 0.2s; border-bottom:1px solid rgba(255,255,255,0.03); white-space:nowrap; }
+        .menu-item:last-child { border-bottom:none; }
+        .menu-item:hover { background:rgba(65,105,225,0.08); color:var(--accent2); }
 
-    .section-title { font-family:'Orbitron',monospace; font-size:clamp(16px,3.5vw,24px); font-weight:800; text-align:center; margin-bottom:20px; }
-    .section-title .accent { background:linear-gradient(135deg,var(--accent),var(--accent2)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
-    .glow-line { width:40px; height:2px; background:var(--accent); border-radius:6px; margin:8px auto 20px; box-shadow:var(--neon-blue); }
+        /* ============ PAGE LAYOUT ============ */
+        .page { display:none; position:relative; z-index:2; padding:100px 16px 40px; min-height:100vh; }
+        .page.active { display:block; }
+        .hero { text-align:center; padding:50px 0; position:relative; }
+        .hero-glow-orb { position:absolute; width:200px; height:200px; border-radius:50%; filter:blur(100px); pointer-events:none; z-index:-1; opacity:0.4; }
+        .hero-glow-orb.orb1 { top:-60px; left:-40px; background:var(--accent); animation:orbFloat 8s ease-in-out infinite; }
+        .hero-glow-orb.orb2 { bottom:-80px; right:-40px; background:var(--accent4); animation:orbFloat 10s ease-in-out infinite reverse; }
+        @keyframes orbFloat { 0%,100%{ transform:translate(0,0) scale(1); } 33%{ transform:translate(15px,-20px) scale(1.06); } 66%{ transform:translate(-10px,15px) scale(0.94); } }
+        .badge { display:inline-flex; align-items:center; gap:7px; background:rgba(65,105,225,0.1); border:1px solid rgba(65,105,225,0.3); border-radius:30px; padding:6px 14px; font-size:9px; font-weight:600; color:var(--accent2); letter-spacing:1.2px; margin-bottom:24px; text-transform:uppercase; animation:fadeDown 0.9s ease; }
+        .badge-dot { width:6px; height:6px; background:var(--accent3); border-radius:50%; animation:pulse 1.4s infinite; box-shadow:var(--neon-teal); }
+        @keyframes pulse { 0%,100%{opacity:1; transform:scale(1);} 50%{opacity:0.2; transform:scale(0.55);} }
+        @keyframes fadeDown { from{opacity:0;transform:translateY(-10px);} to{opacity:1;transform:translateY(0);} }
+        @keyframes fadeUp { from{opacity:0;transform:translateY(20px);} to{opacity:1;transform:translateY(0);} }
+        .hero h1 { font-family:'Orbitron',monospace; font-size:clamp(26px,6vw,50px); font-weight:900; margin-bottom:4px; animation:fadeUp 0.9s ease 0.1s both; }
+        .hero h1 .highlight { background:linear-gradient(135deg,var(--accent) 0%,var(--accent2) 40%,var(--accent4) 100%); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; display:block; font-size:1.2em; filter:drop-shadow(0 0 25px rgba(65,105,225,0.45)); }
+        .hero-subtitle { font-size:clamp(11px,1.8vw,13px); color:var(--muted); max-width:440px; margin:12px auto 24px; animation:fadeUp 0.9s ease 0.2s both; }
+        .hero-btns { display:flex; gap:8px; flex-wrap:wrap; justify-content:center; animation:fadeUp 0.9s ease 0.3s both; }
+        .btn { display:inline-flex; align-items:center; gap:6px; padding:10px 18px; border-radius:22px; text-decoration:none; font-weight:600; font-size:10px; letter-spacing:0.6px; transition:all var(--transition); cursor:pointer; font-family:inherit; text-transform:uppercase; border:none; -webkit-tap-highlight-color:transparent; }
+        .btn-primary { background:linear-gradient(135deg,var(--accent),var(--accent5)); color:#fff; box-shadow:var(--glow-blue); }
+        .btn-primary:hover { transform:translateY(-2px); box-shadow:0 0 45px rgba(65,105,225,0.6); }
+        .btn-primary:active { transform:scale(0.95); }
+        .btn-secondary { background:transparent; color:var(--text); border:2px solid var(--border); }
+        .btn-secondary:hover { border-color:var(--accent); background:rgba(65,105,225,0.04); }
+        .btn-outline { background:var(--surface2); border:1px solid var(--border); color:var(--text2); }
+        .btn-outline:hover { border-color:var(--accent); color:var(--accent2); }
+        .btn-accent { background:rgba(45,212,191,0.15); border:1px solid rgba(45,212,191,0.4); color:var(--accent3); font-weight:700; }
+        .btn-accent:hover { background:rgba(45,212,191,0.25); box-shadow:0 0 25px rgba(45,212,191,0.3); }
+        .btn-danger { background:rgba(244,114,182,0.15); border:1px solid rgba(244,114,182,0.4); color:var(--accent4); }
+        .social-row { display:flex; gap:12px; margin-top:32px; justify-content:center; animation:fadeUp 0.9s ease 0.4s both; flex-wrap:wrap; }
+        .social-icon { width:44px; height:44px; border-radius:50%; display:flex; align-items:center; justify-content:center; text-decoration:none; transition:all var(--transition); flex-shrink:0; box-shadow:0 4px 15px rgba(0,0,0,0.4); }
+        .social-icon svg { width:22px; height:22px; fill:#fff; }
+        .social-icon.yt { background:#FF0000; }
+        .social-icon.ig { background:linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888); }
+        .social-icon.rb { background:#000; border:2px solid #fff; }
+        .social-icon.dc { background:#5865F2; }
+        .social-icon:hover { transform:translateY(-3px); filter:brightness(1.2); }
 
-    .scripts-grid { display:grid; grid-template-columns:1fr; gap:14px; max-width:600px; margin:0 auto; }
-    .script-card { background:var(--surface); border:1px solid var(--border); border-radius:var(--radius); padding:14px; transition:all var(--transition); cursor:pointer; position:relative; }
-    .script-card:hover { border-color:var(--accent2); transform:translateY(-2px); box-shadow:0 10px 30px rgba(0,0,0,0.3); }
-    .script-card-header { display:flex; align-items:center; gap:10px; margin-bottom:8px; }
-    .script-card-img { width:44px; height:44px; border-radius:10px; object-fit:cover; background:var(--surface3); flex-shrink:0; }
-    .script-card-info h4 { font-size:13px; font-weight:700; margin-bottom:2px; }
-    .script-card-info span { font-size:9px; color:var(--muted); }
-    .script-card-desc { font-size:10px; color:var(--muted); line-height:1.5; margin-bottom:10px; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden; }
-    .script-card-actions { display:flex; gap:10px; font-size:10px; color:var(--muted); align-items:center; }
-    .liked { color:var(--accent4); } .disliked { color:#f87171; }
-    .delete-btn { position:absolute; top:8px; right:8px; width:24px; height:24px; border-radius:50%; background:rgba(244,114,182,0.1); border:1px solid rgba(244,114,182,0.3); color:var(--accent4); cursor:pointer; display:flex; align-items:center; justify-content:center; font-size:10px; z-index:5; }
+        .section-title { font-family:'Orbitron',monospace; font-size:clamp(16px,3.5vw,24px); font-weight:800; text-align:center; margin-bottom:20px; }
+        .section-title .accent { background:linear-gradient(135deg,var(--accent),var(--accent2)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
+        .glow-line { width:40px; height:2px; background:var(--accent); border-radius:6px; margin:8px auto 20px; box-shadow:var(--neon-blue); }
 
-    .form-group { margin-bottom:14px; }
-    .form-group label { display:block; font-size:10px; font-weight:600; color:var(--text2); margin-bottom:5px; text-transform:uppercase; }
-    .form-group input, .form-group textarea { width:100%; padding:10px 12px; border-radius:10px; background:var(--surface2); border:1px solid var(--border); color:var(--text); font-family:inherit; font-size:12px; transition:all var(--transition); resize:vertical; }
-    .form-group textarea { min-height:80px; }
+        .scripts-grid { display:grid; grid-template-columns:1fr; gap:14px; max-width:600px; margin:0 auto; }
+        .script-card { background:var(--surface); border:1px solid var(--border); border-radius:var(--radius); padding:14px; transition:all var(--transition); cursor:pointer; position:relative; }
+        .script-card:hover { border-color:var(--accent2); transform:translateY(-2px); box-shadow:0 10px 30px rgba(0,0,0,0.3); }
+        .script-card-header { display:flex; align-items:center; gap:10px; margin-bottom:8px; }
+        .script-card-img { width:44px; height:44px; border-radius:10px; object-fit:cover; background:var(--surface3); flex-shrink:0; }
+        .script-card-info h4 { font-size:13px; font-weight:700; margin-bottom:2px; }
+        .script-card-info span { font-size:9px; color:var(--muted); }
+        .script-card-desc { font-size:10px; color:var(--muted); line-height:1.5; margin-bottom:10px; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden; }
+        .script-card-actions { display:flex; gap:10px; font-size:10px; color:var(--muted); align-items:center; }
+        .liked { color:var(--accent4); } .disliked { color:#f87171; }
+        .delete-btn { position:absolute; top:8px; right:8px; width:24px; height:24px; border-radius:50%; background:rgba(244,114,182,0.1); border:1px solid rgba(244,114,182,0.3); color:var(--accent4); cursor:pointer; display:flex; align-items:center; justify-content:center; font-size:10px; z-index:5; }
+        .delete-btn:hover { background:rgba(244,114,182,0.25); }
 
-    .modal-overlay { position:fixed; inset:0; background:rgba(0,0,0,0.7); z-index:2000; display:flex; align-items:center; justify-content:center; padding:16px; backdrop-filter:blur(4px); }
-    .modal { background:var(--surface); border:1px solid var(--border); border-radius:var(--radius); padding:20px; width:100%; max-width:400px; max-height:85vh; overflow-y:auto; box-shadow:0 30px 80px rgba(0,0,0,0.6); position:relative; }
-    .modal-close { position:absolute; top:10px; right:10px; cursor:pointer; color:var(--muted); font-size:18px; }
+        .form-group { margin-bottom:14px; }
+        .form-group label { display:block; font-size:10px; font-weight:600; color:var(--text2); margin-bottom:5px; text-transform:uppercase; }
+        .form-group input, .form-group textarea { width:100%; padding:10px 12px; border-radius:10px; background:var(--surface2); border:1px solid var(--border); color:var(--text); font-family:inherit; font-size:12px; transition:all var(--transition); resize:vertical; }
+        .form-group textarea { min-height:80px; }
 
-    .toast { position:fixed; bottom:20px; left:50%; transform:translateX(-50%) translateY(100px); background:var(--surface); border:1px solid var(--accent2); border-radius:20px; padding:8px 16px; color:var(--text); font-size:10px; font-weight:600; z-index:9999; pointer-events:none; transition:transform 0.4s cubic-bezier(0.175,0.885,0.32,1.275); white-space:nowrap; }
-    .toast.show { transform:translateX(-50%) translateY(0); }
-    .comment-item { background:var(--surface2); border-radius:10px; padding:10px; margin-bottom:8px; font-size:10px; }
-    .comment-item strong { color:var(--accent2); }
+        .modal-overlay { position:fixed; inset:0; background:rgba(0,0,0,0.7); z-index:2000; display:flex; align-items:center; justify-content:center; padding:16px; backdrop-filter:blur(4px); }
+        .modal { background:var(--surface); border:1px solid var(--border); border-radius:var(--radius); padding:20px; width:100%; max-width:400px; max-height:85vh; overflow-y:auto; box-shadow:0 30px 80px rgba(0,0,0,0.6); position:relative; }
+        .modal-close { position:absolute; top:10px; right:10px; cursor:pointer; color:var(--muted); font-size:18px; }
 
-    @media(min-width:600px) {
-      .nav-links { display:flex; }
-      .scripts-grid { grid-template-columns:repeat(2,1fr); max-width:800px; }
-      .page { padding:110px 24px 50px; }
-    }
-    @media(min-width:900px) {
-      .scripts-grid { grid-template-columns:repeat(3,1fr); max-width:1000px; }
-    }
-  </style>
+        .toast { position:fixed; bottom:20px; left:50%; transform:translateX(-50%) translateY(100px); background:var(--surface); border:1px solid var(--accent2); border-radius:20px; padding:8px 16px; color:var(--text); font-size:10px; font-weight:600; z-index:9999; pointer-events:none; transition:transform 0.4s cubic-bezier(0.175,0.885,0.32,1.275); white-space:nowrap; }
+        .toast.show { transform:translateX(-50%) translateY(0); }
+        .comment-item { background:var(--surface2); border-radius:10px; padding:10px; margin-bottom:8px; font-size:10px; }
+        .comment-item strong { color:var(--accent2); }
+
+        .profile-header { text-align:center; margin-bottom:20px; }
+        .profile-avatar { width:70px; height:70px; border-radius:50%; background:var(--surface3); border:3px solid var(--accent); margin:0 auto 10px; display:flex; align-items:center; justify-content:center; font-size:30px; }
+
+        @media(min-width:600px) {
+            .nav-links { display:flex; }
+            .scripts-grid { grid-template-columns:repeat(2,1fr); max-width:800px; }
+            .page { padding:110px 24px 50px; }
+        }
+        @media(min-width:900px) {
+            .scripts-grid { grid-template-columns:repeat(3,1fr); max-width:1000px; }
+        }
+    </style>
 </head>
 <body>
-  <canvas class="particles-canvas" id="particlesCanvas"></canvas>
+    <canvas class="particles-canvas" id="particlesCanvas"></canvas>
 
-  <nav>
-    <div class="logo-area" onclick="navigateTo('home')">
-      <div class="logo-icon">L</div>
-      <div class="logo-text">LP<span>O</span>LVO</div>
-    </div>
-    <ul class="nav-links">
-      <li><a onclick="navigateTo('home')">Home</a></li>
-      <li><a onclick="navigateTo('explore')">Explore</a></li>
-      <li><a onclick="navigateTo('upload')">Upload</a></li>
-    </ul>
-    <div class="nav-actions">
-      <button class="btn-lite" id="btnLite" onclick="toggleLiteMode()"><span class="lite-dot"></span> Lite</button>
-      <div class="menu-dots" id="menuDots">
-        <button class="dots-btn" onclick="toggleMenuDots()">⋮</button>
-        <div class="menu-dropdown" id="menuDropdown">
-          <a class="menu-item" onclick="navigateTo('home')">🏠 Main</a>
-          <a class="menu-item" href="https://discord.gg/mA3SUaphr" target="_blank">💬 Discord</a>
-          <a class="menu-item" href="https://youtube.com/@lpolvoxd1" target="_blank">▶️ YouTube</a>
-          <a class="menu-item" href="https://www.instagram.com/4me.h4mz4_" target="_blank">📷 Instagram</a>
-          <a class="menu-item" href="https://www.roblox.com/users/1931773196/profile" target="_blank">🎮 Roblox</a>
+    <nav>
+        <div class="logo-area" onclick="navigateTo('home')">
+            <div class="logo-icon">L</div>
+            <div class="logo-text">LP<span>O</span>LVO</div>
         </div>
-      </div>
-      <button class="btn btn-outline" style="padding:6px 10px;" id="btnProfile" onclick="handleProfileClick()">👤</button>
-    </div>
-  </nav>
-
-  <!-- HOME PAGE -->
-  <div class="page active" id="page-home">
-    <div class="hero">
-      <div class="hero-glow-orb orb1"></div>
-      <div class="hero-glow-orb orb2"></div>
-      <div class="badge"><span class="badge-dot pulse-dot"></span> ADVANCED SCRIPTS & AUTOMATION</div>
-      <h1><span>Welcome to</span><span class="highlight">LPOLVO</span></h1>
-      <p class="hero-subtitle">A centralized hub for premium scripts, intelligent automation tools, and innovative applications. Engineered for performance, stability, and scale.</p>
-      <div class="hero-btns">
-        <button class="btn btn-primary" onclick="navigateTo('explore')">🔍 EXPLORE PROJECTS</button>
-        <a href="https://discord.gg/mA3SUaphr" target="_blank" class="btn btn-secondary">💬 JOIN COMMUNITY</a>
-        <button class="btn btn-accent" onclick="navigateTo('explore')">📂 EXPLORE USERS SCRIPTS</button>
-        <button class="btn btn-accent" onclick="navigateTo('upload')">📤 UPLOAD YOUR SCRIPT</button>
-      </div>
-      <div class="social-row">
-        <a href="https://youtube.com/@lpolvoxd1" target="_blank" class="social-icon yt" title="YouTube">▶</a>
-        <a href="https://www.instagram.com/4me.h4mz4_" target="_blank" class="social-icon ig" title="Instagram">●</a>
-        <a href="https://www.roblox.com/users/1931773196/profile" target="_blank" class="social-icon rb" title="Roblox">R</a>
-        <a href="https://discord.gg/mA3SUaphr" target="_blank" class="social-icon dc" title="Discord">♫</a>
-      </div>
-    </div>
-
-    <div style="display:flex; justify-content:center; gap:12px; margin:20px 0; flex-wrap:wrap;">
-      <div style="background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:16px;text-align:center;">
-        <div style="font-family:'Orbitron',monospace;font-size:20px;font-weight:900;color:var(--accent2);">20+</div>
-        <div style="font-size:8px;color:var(--muted);text-transform:uppercase;">Projects</div>
-      </div>
-      <div style="background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:16px;text-align:center;" id="liveUsersStat">
-        <div class="live-counter" id="liveCounter" style="font-family:'Orbitron',monospace;font-size:20px;font-weight:900;color:var(--accent2);">1,407</div>
-        <div style="font-size:8px;color:var(--muted);text-transform:uppercase;"><span class="live-dot" style="display:inline-block;width:6px;height:6px;background:var(--accent3);border-radius:50%;margin-right:3px;box-shadow:var(--neon-teal);"></span> Active Users</div>
-      </div>
-      <div style="background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:16px;text-align:center;">
-        <div style="font-family:'Orbitron',monospace;font-size:20px;font-weight:900;color:var(--accent2);">100%</div>
-        <div style="font-size:8px;color:var(--muted);text-transform:uppercase;">Free Access</div>
-      </div>
-    </div>
-
-    <h2 class="section-title" style="margin-top:40px;"><span>Featured</span> <span class="accent">Projects</span></h2>
-    <div class="glow-line"></div>
-    <div class="scripts-grid" id="featuredGrid" style="max-width:800px;">
-      <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:14px;text-align:center;cursor:pointer;" onclick="window.open('https://discord.gg/mA3SUaphr','_blank')">
-        <div style="font-size:40px;">🔑</div><h4>Secure Key System 2026</h4><p style="font-size:10px;color:var(--muted);">Advanced authentication with HWID binding.</p><button class="btn btn-accent" style="margin-top:8px;">Buy Monthly Key</button>
-      </div>
-    </div>
-
-    <div style="max-width:800px;margin:40px auto 0;">
-      <h2 class="section-title"><span>About</span> <span class="accent">LPOLVO</span></h2>
-      <div class="glow-line" style="margin-bottom:16px;"></div>
-      <div style="display:flex; flex-direction:column; gap:20px;">
-        <div>
-          <h3 style="font-family:'Orbitron',monospace;">Built for Performance.</h3>
-          <p style="color:var(--muted);font-size:12px;">I specialize in developing advanced script architectures, secure authentication protocols, and seamless automation solutions.</p>
-          <div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:8px;">
-            <span class="skill-tag" style="background:var(--surface2);border:1px solid var(--border);padding:4px 10px;border-radius:16px;font-size:9px;">Python</span>
-            <span class="skill-tag" style="background:var(--surface2);border:1px solid var(--border);padding:4px 10px;border-radius:16px;font-size:9px;">Luau</span>
-            <span class="skill-tag" style="background:var(--surface2);border:1px solid var(--border);padding:4px 10px;border-radius:16px;font-size:9px;">JavaScript</span>
-          </div>
+        <ul class="nav-links">
+            <li><a onclick="navigateTo('home')">Home</a></li>
+            <li><a onclick="navigateTo('explore')">Explore</a></li>
+            <li><a onclick="navigateTo('upload')">Upload</a></li>
+        </ul>
+        <div class="nav-actions">
+            <button class="btn-lite" id="btnLite" onclick="toggleLiteMode()"><span class="lite-dot"></span> Lite</button>
+            <div class="lang-switcher" id="langSwitcher">
+                <button class="lang-btn" onclick="toggleDropdown()"><span class="lang-flag" id="currentFlag">🇺🇸</span><span id="currentLabel">EN</span><span class="arrow-mini">▼</span></button>
+                <div class="lang-dropdown" id="langDropdown">
+                    <div class="lang-option active" data-lang="en" onclick="setLang('en',this)">🇺🇸 English</div>
+                    <div class="lang-option" data-lang="ar" onclick="setLang('ar',this)">🇸🇦 العربية</div>
+                    <div class="lang-option" data-lang="es" onclick="setLang('es',this)">🇪🇸 Español</div>
+                    <div class="lang-option" data-lang="fr" onclick="setLang('fr',this)">🇫🇷 Français</div>
+                    <div class="lang-option" data-lang="de" onclick="setLang('de',this)">🇩🇪 Deutsch</div>
+                    <div class="lang-option" data-lang="pt" onclick="setLang('pt',this)">🇧🇷 Português</div>
+                    <div class="lang-option" data-lang="ru" onclick="setLang('ru',this)">🇷🇺 Русский</div>
+                    <div class="lang-option" data-lang="zh" onclick="setLang('zh',this)">🇨🇳 中文</div>
+                    <div class="lang-option" data-lang="ja" onclick="setLang('ja',this)">🇯🇵 日本語</div>
+                    <div class="lang-option" data-lang="ko" onclick="setLang('ko',this)">🇰🇷 한국어</div>
+                    <div class="lang-option" data-lang="tr" onclick="setLang('tr',this)">🇹🇷 Türkçe</div>
+                    <div class="lang-option" data-lang="hi" onclick="setLang('hi',this)">🇮🇳 हिन्दी</div>
+                </div>
+            </div>
+            <div class="menu-dots" id="menuDots">
+                <button class="dots-btn" onclick="toggleMenuDots()">⋮</button>
+                <div class="menu-dropdown" id="menuDropdown">
+                    <a class="menu-item" onclick="navigateTo('home')">🏠 Main</a>
+                    <a class="menu-item" href="https://discord.gg/mA3SUaphr" target="_blank"><svg viewBox="0 0 24 24" width="16" height="16"><path fill="#5865F2" d="M20.3 4.8c-1.4-.7-3-1.2-4.6-1.4-.2.4-.4.8-.6 1.2-1.7-.3-3.5-.3-5.2 0-.2-.4-.4-.8-.6-1.2-1.6.2-3.2.7-4.6 1.4C2.1 8.4 1.1 12.5 1.5 16.6c1.9 1.4 3.8 2.3 5.7 2.8.5-.7.9-1.4 1.2-2.1-.7-.2-1.3-.5-1.9-.8.2-.1.3-.3.5-.4 3.8 1.8 7.9 1.8 11.7 0 .1.1.3.3.5.4-.6.3-1.2.6-1.9.8.3.7.7 1.4 1.2 2.1 1.9-.5 3.8-1.4 5.7-2.8.4-4.7-.7-8.8-3-12.4zM8.3 14.2c-1 0-1.9-.9-1.9-2s.8-2 1.9-2 1.9.9 1.9 2-.8 2-1.9 2zm7.4 0c-1 0-1.9-.9-1.9-2s.8-2 1.9-2 1.9.9 1.9 2-.8 2-1.9 2z"/></svg> Discord</a>
+                    <a class="menu-item" href="https://youtube.com/@lpolvoxd1" target="_blank"><svg viewBox="0 0 24 24" width="16" height="16"><path fill="#FF0000" d="M23.5 6.2a3 3 0 00-2.1-2.1C19.6 3.5 12 3.5 12 3.5s-7.6 0-9.4.6A3 3 0 00.5 6.2 31.4 31.4 0 000 12a31.4 31.4 0 00.5 5.8 3 3 0 002.1 2.1c1.8.6 9.4.6 9.4.6s7.6 0 9.4-.6a3 3 0 002.1-2.1A31.4 31.4 0 0024 12a31.4 31.4 0 00-.5-5.8zM9.5 15.5V8.5l6.5 3.5-6.5 3.5z"/></svg> YouTube</a>
+                    <a class="menu-item" href="https://www.instagram.com/4me.h4mz4_" target="_blank"><svg viewBox="0 0 24 24" width="16" height="16"><defs><linearGradient id="igGrad" x1="0%" y1="100%" x2="100%" y2="0%"><stop offset="0%" stop-color="#f09433"/><stop offset="25%" stop-color="#e6683c"/><stop offset="50%" stop-color="#dc2743"/><stop offset="75%" stop-color="#cc2366"/><stop offset="100%" stop-color="#bc1888"/></linearGradient></defs><rect width="24" height="24" rx="6" fill="url(#igGrad)"/><circle cx="12" cy="12" r="5" fill="none" stroke="#fff" stroke-width="2"/><circle cx="17.5" cy="6.5" r="1.3" fill="#fff"/></svg> Instagram</a>
+                    <a class="menu-item" href="https://www.roblox.com/users/1931773196/profile" target="_blank"><svg viewBox="0 0 24 24" width="16" height="16"><rect width="24" height="24" rx="4" fill="#000"/><path d="M6 6h12v12H6z" fill="none" stroke="#fff" stroke-width="2"/><rect x="8" y="8" width="8" height="8" rx="2" fill="#fff"/></svg> Roblox</a>
+                </div>
+            </div>
+            <button class="btn btn-outline" style="padding:6px 10px;" id="btnProfile" onclick="handleProfileClick()">👤</button>
         </div>
-        <div style="background:#060e1c;border:1px solid var(--border);border-radius:var(--radius);padding:16px;font-family:monospace;font-size:10px;">
-          <span style="color:#c678dd;">class</span> <span style="color:#e5c07b;">LPOLVOSystem</span>:<br>
-          &nbsp;&nbsp;<span style="color:#c678dd;">def</span> <span style="color:#61afef;">deploy</span>(<span style="color:#c678dd;">self</span>):<br>
-          &nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#61afef;">print</span>(<span style="color:#98c379;">"All systems operational."</span>)
+    </nav>
+
+    <!-- ============ HOME PAGE ============ -->
+    <div class="page active" id="page-home">
+        <div class="hero">
+            <div class="hero-glow-orb orb1"></div>
+            <div class="hero-glow-orb orb2"></div>
+            <div class="badge"><span class="badge-dot pulse-dot"></span> ADVANCED SCRIPTS & AUTOMATION</div>
+            <h1><span>Welcome to</span><span class="highlight">LPOLVO</span></h1>
+            <p class="hero-subtitle">A centralized hub for premium scripts, intelligent automation tools, and innovative applications. Engineered for performance, stability, and scale.</p>
+            <div class="hero-btns">
+                <button class="btn btn-primary" onclick="navigateTo('explore')">🔍 EXPLORE PROJECTS</button>
+                <a href="https://discord.gg/mA3SUaphr" target="_blank" class="btn btn-secondary">💬 JOIN COMMUNITY</a>
+                <button class="btn btn-accent" onclick="navigateTo('explore')">📂 EXPLORE USERS SCRIPTS</button>
+                <button class="btn btn-accent" onclick="navigateTo('upload')">📤 UPLOAD YOUR SCRIPT</button>
+            </div>
+            <div class="social-row">
+                <a href="https://youtube.com/@lpolvoxd1" target="_blank" class="social-icon yt"><svg viewBox="0 0 24 24"><path d="M23.5 6.2a3 3 0 00-2.1-2.1C19.6 3.5 12 3.5 12 3.5s-7.6 0-9.4.6A3 3 0 00.5 6.2 31.4 31.4 0 000 12a31.4 31.4 0 00.5 5.8 3 3 0 002.1 2.1c1.8.6 9.4.6 9.4.6s7.6 0 9.4-.6a3 3 0 002.1-2.1A31.4 31.4 0 0024 12a31.4 31.4 0 00-.5-5.8zM9.5 15.5V8.5l6.5 3.5-6.5 3.5z"/></svg></a>
+                <a href="https://www.instagram.com/4me.h4mz4_" target="_blank" class="social-icon ig"><svg viewBox="0 0 24 24"><defs><linearGradient id="igGrad2" x1="0%" y1="100%" x2="100%" y2="0%"><stop offset="0%" stop-color="#f09433"/><stop offset="25%" stop-color="#e6683c"/><stop offset="50%" stop-color="#dc2743"/><stop offset="75%" stop-color="#cc2366"/><stop offset="100%" stop-color="#bc1888"/></linearGradient></defs><rect width="24" height="24" rx="6" fill="url(#igGrad2)"/><circle cx="12" cy="12" r="5" fill="none" stroke="#fff" stroke-width="2"/><circle cx="17.5" cy="6.5" r="1.3" fill="#fff"/></svg></a>
+                <a href="https://www.roblox.com/users/1931773196/profile" target="_blank" class="social-icon rb"><svg viewBox="0 0 24 24"><rect width="24" height="24" rx="4" fill="#000"/><path d="M6 6h12v12H6z" fill="none" stroke="#fff" stroke-width="2"/><rect x="8" y="8" width="8" height="8" rx="2" fill="#fff"/></svg></a>
+                <a href="https://discord.gg/mA3SUaphr" target="_blank" class="social-icon dc"><svg viewBox="0 0 24 24"><path fill="#fff" d="M20.3 4.8c-1.4-.7-3-1.2-4.6-1.4-.2.4-.4.8-.6 1.2-1.7-.3-3.5-.3-5.2 0-.2-.4-.4-.8-.6-1.2-1.6.2-3.2.7-4.6 1.4C2.1 8.4 1.1 12.5 1.5 16.6c1.9 1.4 3.8 2.3 5.7 2.8.5-.7.9-1.4 1.2-2.1-.7-.2-1.3-.5-1.9-.8.2-.1.3-.3.5-.4 3.8 1.8 7.9 1.8 11.7 0 .1.1.3.3.5.4-.6.3-1.2.6-1.9.8.3.7.7 1.4 1.2 2.1 1.9-.5 3.8-1.4 5.7-2.8.4-4.7-.7-8.8-3-12.4zM8.3 14.2c-1 0-1.9-.9-1.9-2s.8-2 1.9-2 1.9.9 1.9 2-.8 2-1.9 2zm7.4 0c-1 0-1.9-.9-1.9-2s.8-2 1.9-2 1.9.9 1.9 2-.8 2-1.9 2z"/></svg></a>
+            </div>
         </div>
-      </div>
+
+        <div style="display:flex; justify-content:center; gap:12px; margin:20px 0; flex-wrap:wrap;">
+            <div style="background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:16px;text-align:center;">
+                <div style="font-family:'Orbitron',monospace;font-size:20px;font-weight:900;color:var(--accent2);">20+</div>
+                <div style="font-size:8px;color:var(--muted);text-transform:uppercase;">Projects</div>
+            </div>
+            <div style="background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:16px;text-align:center;" id="liveUsersStat">
+                <div class="live-counter" id="liveCounter" style="font-family:'Orbitron',monospace;font-size:20px;font-weight:900;color:var(--accent2);">1,185</div>
+                <div style="font-size:8px;color:var(--muted);text-transform:uppercase;"><span class="live-dot" style="display:inline-block;width:6px;height:6px;background:var(--accent3);border-radius:50%;margin-right:3px;box-shadow:var(--neon-teal);"></span> Active Users</div>
+            </div>
+            <div style="background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:16px;text-align:center;">
+                <div style="font-family:'Orbitron',monospace;font-size:20px;font-weight:900;color:var(--accent2);">100%</div>
+                <div style="font-size:8px;color:var(--muted);text-transform:uppercase;">Free Access</div>
+            </div>
+        </div>
+
+        <h2 class="section-title" style="margin-top:40px;"><span>Featured</span> <span class="accent">Projects</span></h2>
+        <div class="glow-line"></div>
+        <div class="scripts-grid" id="featuredGrid" style="max-width:800px;">
+            <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:14px;text-align:center;cursor:pointer;" onclick="window.open('https://discord.gg/mA3SUaphr','_blank')">
+                <div style="font-size:40px;">🔑</div><h4>Secure Key System 2026</h4><p style="font-size:10px;color:var(--muted);">Advanced authentication with HWID binding.</p><button class="btn btn-accent" style="margin-top:8px;">Buy Monthly Key</button>
+            </div>
+        </div>
+
+        <div style="max-width:800px;margin:40px auto 0;">
+            <h2 class="section-title"><span>About</span> <span class="accent">LPOLVO</span></h2>
+            <div class="glow-line" style="margin-bottom:16px;"></div>
+            <div style="display:flex; flex-direction:column; gap:20px;">
+                <div>
+                    <h3 style="font-family:'Orbitron',monospace;">Built for Performance.</h3>
+                    <p style="color:var(--muted);font-size:12px;">I specialize in developing advanced script architectures, secure authentication protocols, and seamless automation solutions. Every project is crafted with precision.</p>
+                    <div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:8px;">
+                        <span class="skill-tag" style="background:var(--surface2);border:1px solid var(--border);padding:4px 10px;border-radius:16px;font-size:9px;">Python</span>
+                        <span class="skill-tag" style="background:var(--surface2);border:1px solid var(--border);padding:4px 10px;border-radius:16px;font-size:9px;">Luau</span>
+                        <span class="skill-tag" style="background:var(--surface2);border:1px solid var(--border);padding:4px 10px;border-radius:16px;font-size:9px;">JavaScript</span>
+                        <span class="skill-tag" style="background:var(--surface2);border:1px solid var(--border);padding:4px 10px;border-radius:16px;font-size:9px;">HTML/CSS</span>
+                        <span class="skill-tag" style="background:var(--surface2);border:1px solid var(--border);padding:4px 10px;border-radius:16px;font-size:9px;">API Integration</span>
+                        <span class="skill-tag" style="background:var(--surface2);border:1px solid var(--border);padding:4px 10px;border-radius:16px;font-size:9px;">Secure Auth</span>
+                        <span class="skill-tag" style="background:var(--surface2);border:1px solid var(--border);padding:4px 10px;border-radius:16px;font-size:9px;">Automation</span>
+                        <span class="skill-tag" style="background:var(--surface2);border:1px solid var(--border);padding:4px 10px;border-radius:16px;font-size:9px;">Backend</span>
+                    </div>
+                </div>
+                <div style="background:#060e1c;border:1px solid var(--border);border-radius:var(--radius);padding:16px;font-family:monospace;font-size:10px;">
+                    <div style="color:var(--muted);margin-bottom:6px;">lpolvo_engine.py</div>
+                    <span style="color:#c678dd;">class</span> <span style="color:#e5c07b;">LPOLVOSystem</span>:<br>
+                    &nbsp;&nbsp;<span style="color:#c678dd;">def</span> <span style="color:#61afef;">__init__</span>(<span style="color:#c678dd;">self</span>):<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#c678dd;">self</span>.status = <span style="color:#98c379;">"Online"</span><br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#c678dd;">self</span>.version = <span style="color:#98c379;">"2026.1"</span><br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#c678dd;">self</span>.security = <span style="color:#98c379;">"AES-256"</span><br><br>
+                    &nbsp;&nbsp;<span style="color:#c678dd;">def</span> <span style="color:#61afef;">deploy</span>(<span style="color:#c678dd;">self</span>):<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#61afef;">print</span>(<span style="color:#98c379;">f"🚀 Deploying v{self.version}..."</span>)<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#c678dd;">return</span> <span style="color:#98c379;">"All systems operational."</span>
+                </div>
+            </div>
+        </div>
+
+        <footer style="text-align:center;padding:28px 16px;border-top:1px solid var(--border);color:var(--muted);font-size:10px;margin-top:40px;">
+            <div style="display:flex;gap:10px;justify-content:center;margin-bottom:12px;">
+                <a href="https://youtube.com/@lpolvoxd1" class="social-icon yt" style="width:32px;height:32px;"><svg viewBox="0 0 24 24" width="16" height="16"><path d="M23.5 6.2a3 3 0 00-2.1-2.1C19.6 3.5 12 3.5 12 3.5s-7.6 0-9.4.6A3 3 0 00.5 6.2 31.4 31.4 0 000 12a31.4 31.4 0 00.5 5.8 3 3 0 002.1 2.1c1.8.6 9.4.6 9.4.6s7.6 0 9.4-.6a3 3 0 002.1-2.1A31.4 31.4 0 0024 12a31.4 31.4 0 00-.5-5.8zM9.5 15.5V8.5l6.5 3.5-6.5 3.5z"/></svg></a>
+                <a href="https://www.instagram.com/4me.h4mz4_" class="social-icon ig" style="width:32px;height:32px;"><svg viewBox="0 0 24 24" width="16" height="16"><defs><linearGradient id="igGrad3" x1="0%" y1="100%" x2="100%" y2="0%"><stop offset="0%" stop-color="#f09433"/><stop offset="25%" stop-color="#e6683c"/><stop offset="50%" stop-color="#dc2743"/><stop offset="75%" stop-color="#cc2366"/><stop offset="100%" stop-color="#bc1888"/></linearGradient></defs><rect width="24" height="24" rx="6" fill="url(#igGrad3)"/><circle cx="12" cy="12" r="5" fill="none" stroke="#fff" stroke-width="2"/><circle cx="17.5" cy="6.5" r="1.3" fill="#fff"/></svg></a>
+                <a href="https://www.roblox.com/users/1931773196/profile" class="social-icon rb" style="width:32px;height:32px;"><svg viewBox="0 0 24 24" width="16" height="16"><rect width="24" height="24" rx="4" fill="#000"/><path d="M6 6h12v12H6z" fill="none" stroke="#fff" stroke-width="2"/><rect x="8" y="8" width="8" height="8" rx="2" fill="#fff"/></svg></a>
+                <a href="https://discord.gg/mA3SUaphr" class="social-icon dc" style="width:32px;height:32px;"><svg viewBox="0 0 24 24" width="16" height="16"><path fill="#fff" d="M20.3 4.8c-1.4-.7-3-1.2-4.6-1.4-.2.4-.4.8-.6 1.2-1.7-.3-3.5-.3-5.2 0-.2-.4-.4-.8-.6-1.2-1.6.2-3.2.7-4.6 1.4C2.1 8.4 1.1 12.5 1.5 16.6c1.9 1.4 3.8 2.3 5.7 2.8.5-.7.9-1.4 1.2-2.1-.7-.2-1.3-.5-1.9-.8.2-.1.3-.3.5-.4 3.8 1.8 7.9 1.8 11.7 0 .1.1.3.3.5.4-.6.3-1.2.6-1.9.8.3.7.7 1.4 1.2 2.1 1.9-.5 3.8-1.4 5.7-2.8.4-4.7-.7-8.8-3-12.4zM8.3 14.2c-1 0-1.9-.9-1.9-2s.8-2 1.9-2 1.9.9 1.9 2-.8 2-1.9 2zm7.4 0c-1 0-1.9-.9-1.9-2s.8-2 1.9-2 1.9.9 1.9 2-.8 2-1.9 2z"/></svg></a>
+            </div>
+            <span>Made with ❤️ by <span style="color:var(--accent2);font-weight:700;">LPOLVO</span> · All rights reserved © 2026</span>
+        </footer>
     </div>
 
-    <footer style="text-align:center;padding:28px 16px;border-top:1px solid var(--border);color:var(--muted);font-size:10px;margin-top:40px;">
-      <div style="display:flex;gap:10px;justify-content:center;margin-bottom:12px;">
-        <a href="https://youtube.com/@lpolvoxd1" class="social-icon yt" style="width:32px;height:32px;font-size:14px;">▶</a>
-        <a href="https://www.instagram.com/4me.h4mz4_" class="social-icon ig" style="width:32px;height:32px;font-size:14px;">●</a>
-        <a href="https://www.roblox.com/users/1931773196/profile" class="social-icon rb" style="width:32px;height:32px;font-size:14px;">R</a>
-        <a href="https://discord.gg/mA3SUaphr" class="social-icon dc" style="width:32px;height:32px;font-size:14px;">♫</a>
-      </div>
-      <span>Made with ❤️ by <span style="color:var(--accent2);font-weight:700;">LPOLVO</span> · All rights reserved © 2026</span>
-    </footer>
-  </div>
-
-  <!-- EXPLORE PAGE -->
-  <div class="page" id="page-explore">
-    <h2 class="section-title"><span>Explore</span> <span class="accent">Users Scripts</span></h2>
-    <div class="glow-line"></div>
-    <div class="scripts-grid" id="scriptsGrid"></div>
-    <div id="scriptDetail" style="display:none;max-width:600px;margin:0 auto;"></div>
-  </div>
-
-  <!-- UPLOAD PAGE -->
-  <div class="page" id="page-upload">
-    <h2 class="section-title"><span>Upload</span> <span class="accent">Your Script</span></h2>
-    <div class="glow-line"></div>
-    <div style="max-width:500px;margin:0 auto;">
-      <div class="form-group"><label>Title</label><input type="text" id="uploadTitle"></div>
-      <div class="form-group"><label>Description</label><textarea id="uploadDesc"></textarea></div>
-      <div class="form-group"><label>Code</label><textarea id="uploadCode"></textarea></div>
-      <div class="form-group"><label>Image</label><input type="file" id="uploadImageFile" accept="image/*"></div>
-      <button class="btn btn-primary" onclick="uploadScript()" style="width:100%;">📤 Upload Script</button>
+    <!-- EXPLORE PAGE -->
+    <div class="page" id="page-explore">
+        <h2 class="section-title"><span>Explore</span> <span class="accent">Users Scripts</span></h2>
+        <div class="glow-line"></div>
+        <div class="scripts-grid" id="scriptsGrid"></div>
+        <div id="scriptDetail" style="display:none;max-width:600px;margin:0 auto;"></div>
     </div>
-  </div>
 
-  <!-- PROFILE PAGE -->
-  <div class="page" id="page-profile">
-    <h2 class="section-title"><span>My</span> <span class="accent">Profile</span></h2>
-    <div class="glow-line"></div>
-    <div style="max-width:400px;margin:0 auto;">
-      <div id="profileInfo" style="text-align:center;margin-bottom:20px;">
-        <div style="font-size:40px;">👤</div>
-        <h3 id="profileDisplayName">User</h3>
-        <p id="profileUsername" style="color:var(--muted);"></p>
-      </div>
-      <button class="btn btn-danger" onclick="logout()" style="width:100%;">🚪 Logout</button>
+    <!-- UPLOAD PAGE -->
+    <div class="page" id="page-upload">
+        <h2 class="section-title"><span>Upload</span> <span class="accent">Your Script</span></h2>
+        <div class="glow-line"></div>
+        <div style="max-width:500px;margin:0 auto;">
+            <div class="form-group"><label>Title</label><input type="text" id="uploadTitle"></div>
+            <div class="form-group"><label>Description</label><textarea id="uploadDesc"></textarea></div>
+            <div class="form-group"><label>Code</label><textarea id="uploadCode"></textarea></div>
+            <div class="form-group"><label>Image</label><input type="file" id="uploadImageFile" accept="image/*"></div>
+            <button class="btn btn-primary" onclick="uploadScript()" style="width:100%;">📤 Upload Script</button>
+        </div>
     </div>
-  </div>
 
-  <div class="modal-overlay" id="modalOverlay" style="display:none;">
-    <div class="modal" id="modalContent"></div>
-  </div>
-  <div class="toast" id="toast"></div>
+    <!-- PROFILE PAGE -->
+    <div class="page" id="page-profile">
+        <h2 class="section-title"><span>My</span> <span class="accent">Profile</span></h2>
+        <div class="glow-line"></div>
+        <div style="max-width:400px;margin:0 auto;">
+            <div style="text-align:center;margin-bottom:20px;">
+                <div style="font-size:40px;">👤</div>
+                <h3 id="profileDisplayName">User</h3>
+                <p id="profileUsername" style="color:var(--muted);"></p>
+            </div>
+            <button class="btn btn-danger" onclick="logout()" style="width:100%;">🚪 Logout</button>
+        </div>
+    </div>
 
-  <script>
-    // Particles & Lite mode
-    const canvas = document.getElementById('particlesCanvas'), ctx = canvas.getContext('2d');
-    let particles = [], isLite = false;
-    function resizeCanvas() { canvas.width = window.innerWidth; canvas.height = window.innerHeight; }
-    resizeCanvas(); window.addEventListener('resize', () => { resizeCanvas(); initParticles(); });
-    function initParticles() {
-      particles = [];
-      for (let i = 0; i < Math.min(Math.floor((canvas.width * canvas.height) / 10000), 80); i++) {
-        particles.push({ x: Math.random() * canvas.width, y: Math.random() * canvas.height, vx: (Math.random() - 0.5) * 0.35, vy: (Math.random() - 0.5) * 0.35, r: Math.random() * 1.2 + 0.3, alpha: Math.random() * 0.4 + 0.12, ps: Math.random() * 0.012 + 0.006 });
-      }
-    }
-    initParticles();
-    function animateParticles() {
-      if (isLite) { ctx.clearRect(0, 0, canvas.width, canvas.height); requestAnimationFrame(animateParticles); return; }
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-      particles.forEach(p => {
-        p.x += p.vx; p.y += p.vy;
-        if (p.x < 0) p.x = canvas.width; if (p.x > canvas.width) p.x = 0;
-        if (p.y < 0) p.y = canvas.height; if (p.y > canvas.height) p.y = 0;
-        p.alpha += p.ps * (Math.random() > 0.5 ? 1 : -1); p.alpha = Math.max(0.06, Math.min(0.5, p.alpha));
-        ctx.beginPath(); ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(91,138,247,${p.alpha})`; ctx.fill();
-      });
-      requestAnimationFrame(animateParticles);
-    }
-    animateParticles();
-    function toggleLiteMode() {
-      isLite = !isLite; document.body.classList.toggle('lite', isLite);
-      document.querySelector('#btnLite span:last-child').textContent = isLite ? 'Neon' : 'Lite';
-      try { localStorage.setItem('lpolvo_lite', isLite ? '1' : '0'); } catch (e) {}
-    }
+    <div class="modal-overlay" id="modalOverlay" style="display:none;">
+        <div class="modal" id="modalContent"></div>
+    </div>
+    <div class="toast" id="toast"></div>
 
-    // Live counter
-    let currentCount = 1407;
-    function getRandomCount() { return Math.floor(Math.random() * 400) + 1100; }
-    function animateCount(target) {
-      const start = currentCount, diff = target - start, duration = 1800, startTime = performance.now();
-      function step(now) {
-        const elapsed = now - startTime, progress = Math.min(elapsed / duration, 1);
-        const eased = 1 - Math.pow(1 - progress, 3), val = Math.round(start + diff * eased);
-        document.getElementById('liveCounter').textContent = val.toLocaleString();
-        if (progress < 1) requestAnimationFrame(step); else currentCount = target;
-      }
-      requestAnimationFrame(step);
-    }
-    setInterval(() => animateCount(getRandomCount()), 4000 + Math.random() * 2000);
+    <script>
+        // ============ PARTICLES & LITE ============
+        const canvas = document.getElementById('particlesCanvas'), ctx = canvas.getContext('2d');
+        let particles = [], isLite = false;
+        function resizeCanvas() { canvas.width = window.innerWidth; canvas.height = window.innerHeight; }
+        resizeCanvas(); window.addEventListener('resize', () => { resizeCanvas(); initParticles(); });
+        function initParticles() {
+            particles = [];
+            for (let i = 0; i < Math.min(Math.floor((canvas.width * canvas.height) / 10000), 80); i++) {
+                particles.push({ x: Math.random() * canvas.width, y: Math.random() * canvas.height, vx: (Math.random() - 0.5) * 0.35, vy: (Math.random() - 0.5) * 0.35, r: Math.random() * 1.2 + 0.3, alpha: Math.random() * 0.4 + 0.12, ps: Math.random() * 0.012 + 0.006 });
+            }
+        }
+        initParticles();
+        function animateParticles() {
+            if (isLite) { ctx.clearRect(0, 0, canvas.width, canvas.height); requestAnimationFrame(animateParticles); return; }
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            particles.forEach(p => {
+                p.x += p.vx; p.y += p.vy;
+                if (p.x < 0) p.x = canvas.width; if (p.x > canvas.width) p.x = 0;
+                if (p.y < 0) p.y = canvas.height; if (p.y > canvas.height) p.y = 0;
+                p.alpha += p.ps * (Math.random() > 0.5 ? 1 : -1); p.alpha = Math.max(0.06, Math.min(0.5, p.alpha));
+                ctx.beginPath(); ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+                ctx.fillStyle = `rgba(91,138,247,${p.alpha})`; ctx.fill();
+            });
+            requestAnimationFrame(animateParticles);
+        }
+        animateParticles();
+        function toggleLiteMode() {
+            isLite = !isLite; document.body.classList.toggle('lite', isLite);
+            document.querySelector('#btnLite span:last-child').textContent = isLite ? 'Neon' : 'Lite';
+            try { localStorage.setItem('lpolvo_lite', isLite ? '1' : '0'); } catch (e) {}
+        }
 
-    // Toast
-    let toastTimeout;
-    function showToast(msg) {
-      const t = document.getElementById('toast'); t.textContent = msg; t.classList.add('show');
-      clearTimeout(toastTimeout); toastTimeout = setTimeout(() => t.classList.remove('show'), 2200);
-    }
+        // ============ LIVE COUNTER ============
+        let currentCount = 1138;
+        function getRandomCount() { return Math.floor(Math.random() * 400) + 1100; }
+        function animateCount(target) {
+            const start = currentCount, diff = target - start, duration = 1800, startTime = performance.now();
+            function step(now) {
+                const elapsed = now - startTime, progress = Math.min(elapsed / duration, 1);
+                const eased = 1 - Math.pow(1 - progress, 3), val = Math.round(start + diff * eased);
+                document.getElementById('liveCounter').textContent = val.toLocaleString();
+                if (progress < 1) requestAnimationFrame(step); else currentCount = target;
+            }
+            requestAnimationFrame(step);
+        }
+        setInterval(() => animateCount(getRandomCount()), 4000 + Math.random() * 2000);
 
-    // Navigation
-    function navigateTo(page) {
-      document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-      document.getElementById('page-' + page).classList.add('active');
-      document.getElementById('menuDots').classList.remove('open');
-      if (page === 'explore') renderExplore();
-      if (page === 'profile') loadProfile();
-      document.getElementById('scriptDetail').style.display = 'none';
-      document.getElementById('scriptsGrid').style.display = '';
-      window.scrollTo(0, 0);
-    }
-    function toggleMenuDots() { document.getElementById('menuDots').classList.toggle('open'); }
-    document.addEventListener('click', e => {
-      if (!document.getElementById('menuDots').contains(e.target)) document.getElementById('menuDots').classList.remove('open');
-    });
+        // ============ TOAST ============
+        let toastTimeout;
+        function showToast(msg) {
+            const t = document.getElementById('toast'); t.textContent = msg; t.classList.add('show');
+            clearTimeout(toastTimeout); toastTimeout = setTimeout(() => t.classList.remove('show'), 2200);
+        }
 
-    // Storage
-    const getStore = (k, d) => { try { return JSON.parse(localStorage.getItem(k)) || d; } catch (e) { return d; } };
-    const setStore = (k, v) => { try { localStorage.setItem(k, JSON.stringify(v)); } catch (e) {} };
-    const getScripts = () => getStore('lpolvo_scripts', []);
-    const getUsers = () => getStore('lpolvo_users', []);
-    const getCurrentUser = () => getStore('lpolvo_currentUser', null);
+        // ============ NAVIGATION ============
+        function navigateTo(page) {
+            document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+            document.getElementById('page-' + page).classList.add('active');
+            document.getElementById('menuDots').classList.remove('open');
+            if (page === 'explore') renderExplore();
+            if (page === 'profile') loadProfile();
+            document.getElementById('scriptDetail').style.display = 'none';
+            document.getElementById('scriptsGrid').style.display = '';
+            window.scrollTo(0, 0);
+        }
+        function toggleMenuDots() { document.getElementById('menuDots').classList.toggle('open'); }
+        document.addEventListener('click', e => {
+            if (!document.getElementById('menuDots').contains(e.target)) document.getElementById('menuDots').classList.remove('open');
+            if (!document.getElementById('langSwitcher').contains(e.target)) document.getElementById('langSwitcher').classList.remove('open');
+        });
 
-    // Auth
-    function showAuthModal(mode) {
-      const overlay = document.getElementById('modalOverlay'), content = document.getElementById('modalContent');
-      overlay.style.display = 'flex';
-      content.innerHTML = `<div class="modal-close" onclick="closeModal()">✕</div><h3>${mode === 'signup' ? 'Create Account' : 'Log In'}</h3>
-        <div class="form-group"><label>Username</label><input type="text" id="authUsername"></div>
-        <div class="form-group"><label>Password</label><input type="password" id="authPass"></div>
-        ${mode === 'signup' ? '<div class="form-group"><label>Confirm Password</label><input type="password" id="authPass2"></div>' : ''}
-        <button class="btn btn-primary" onclick="${mode === 'signup' ? 'handleSignup()' : 'handleLogin()'}" style="width:100%;">${mode === 'signup' ? '📝 Sign Up' : '🔑 Log In'}</button>
-        <p style="text-align:center;margin-top:8px;font-size:9px;color:var(--muted);cursor:pointer;" onclick="showAuthModal('${mode === 'signup' ? 'login' : 'signup'}')">${mode === 'signup' ? 'Already have account? Log In' : 'New? Create Account'}</p>`;
-    }
-    function closeModal() { document.getElementById('modalOverlay').style.display = 'none'; }
-    function handleSignup() {
-      const username = document.getElementById('authUsername').value.trim();
-      const pass = document.getElementById('authPass').value, pass2 = document.getElementById('authPass2').value;
-      if (!username || !pass) return showToast('❌ Fill all fields');
-      if (pass.length < 4) return showToast('❌ Password min 4 chars');
-      if (pass !== pass2) return showToast('❌ Passwords do not match');
-      const users = getUsers();
-      if (users.find(u => u.username === username)) return showToast('❌ Username taken');
-      const newUser = { username, password: pass, displayName: username, bio: '', avatar: '👤', scripts: [] };
-      users.push(newUser); setStore('lpolvo_users', users);
-      setStore('lpolvo_currentUser', { username, displayName: username });
-      updateProfileBtn(); closeModal(); showToast('✅ Account created!');
-    }
-    function handleLogin() {
-      const username = document.getElementById('authUsername').value.trim();
-      const pass = document.getElementById('authPass').value;
-      const user = getUsers().find(u => u.username === username && u.password === pass);
-      if (!user) return showToast('❌ Invalid credentials');
-      setStore('lpolvo_currentUser', { username: user.username, displayName: user.displayName });
-      updateProfileBtn(); closeModal(); showToast('✅ Logged in');
-    }
-    function logout() { setStore('lpolvo_currentUser', null); updateProfileBtn(); showToast('👋 Logged out'); navigateTo('home'); }
-    function handleProfileClick() { getCurrentUser() ? navigateTo('profile') : showAuthModal('login'); }
-    function updateProfileBtn() {
-      const user = getCurrentUser();
-      document.getElementById('btnProfile').textContent = user ? '👤✓' : '👤';
-      document.getElementById('btnProfile').style.color = user ? 'var(--accent3)' : '';
-    }
-    function loadProfile() {
-      const user = getCurrentUser();
-      if (!user) { showAuthModal('login'); return; }
-      document.getElementById('profileDisplayName').textContent = user.displayName;
-      document.getElementById('profileUsername').textContent = '@' + user.username;
-    }
+        // ============ STORAGE ============
+        const getStore = (k, d) => { try { return JSON.parse(localStorage.getItem(k)) || d; } catch (e) { return d; } };
+        const setStore = (k, v) => { try { localStorage.setItem(k, JSON.stringify(v)); } catch (e) {} };
+        const getScripts = () => getStore('lpolvo_scripts', []);
+        const getUsers = () => getStore('lpolvo_users', []);
+        const getCurrentUser = () => getStore('lpolvo_currentUser', null);
 
-    // Scripts
-    function uploadScript() {
-      const user = getCurrentUser();
-      if (!user) { showAuthModal('signup'); showToast('⚠️ Please log in first'); return; }
-      const title = document.getElementById('uploadTitle').value.trim();
-      const desc = document.getElementById('uploadDesc').value.trim();
-      const code = document.getElementById('uploadCode').value.trim();
-      if (!title || !code) return showToast('❌ Title and code required');
-      const file = document.getElementById('uploadImageFile').files[0];
-      const store = (img) => {
-        const scripts = getScripts();
-        scripts.unshift({ id: Date.now().toString(), title, desc, code, image: img || '', author: user.username, displayName: user.displayName, date: new Date().toISOString(), likes: [], dislikes: [], comments: [], views: 0 });
-        setStore('lpolvo_scripts', scripts);
-        document.getElementById('uploadTitle').value = ''; document.getElementById('uploadDesc').value = ''; document.getElementById('uploadCode').value = ''; document.getElementById('uploadImageFile').value = '';
-        showToast('✅ Script uploaded!'); navigateTo('explore');
-      };
-      if (file) { const r = new FileReader(); r.onload = () => store(r.result); r.readAsDataURL(file); } else store('');
-    }
+        // ============ AUTH (LOCAL) ============
+        function showAuthModal(mode) {
+            const overlay = document.getElementById('modalOverlay'), content = document.getElementById('modalContent');
+            overlay.style.display = 'flex';
+            content.innerHTML = `<div class="modal-close" onclick="closeModal()">✕</div><h3>${mode === 'signup' ? 'Create Account' : 'Log In'}</h3>
+                <div class="form-group"><label>Username</label><input type="text" id="authUsername"></div>
+                <div class="form-group"><label>Password</label><input type="password" id="authPass"></div>
+                ${mode === 'signup' ? '<div class="form-group"><label>Confirm Password</label><input type="password" id="authPass2"></div>' : ''}
+                <button class="btn btn-primary" onclick="${mode === 'signup' ? 'handleSignup()' : 'handleLogin()'}" style="width:100%;">${mode === 'signup' ? '📝 Sign Up' : '🔑 Log In'}</button>
+                <p style="text-align:center;margin-top:8px;font-size:9px;color:var(--muted);cursor:pointer;" onclick="showAuthModal('${mode === 'signup' ? 'login' : 'signup'}')">${mode === 'signup' ? 'Already have account? Log In' : 'New? Create Account'}</p>`;
+        }
+        function closeModal() { document.getElementById('modalOverlay').style.display = 'none'; }
+        function handleSignup() {
+            const username = document.getElementById('authUsername').value.trim();
+            const pass = document.getElementById('authPass').value, pass2 = document.getElementById('authPass2').value;
+            if (!username || !pass) return showToast('❌ Fill all fields');
+            if (pass.length < 4) return showToast('❌ Password min 4 chars');
+            if (pass !== pass2) return showToast('❌ Passwords do not match');
+            const users = getUsers();
+            if (users.find(u => u.username === username)) return showToast('❌ Username taken');
+            const newUser = { username, password: pass, displayName: username, bio: '', avatar: '👤', scripts: [] };
+            users.push(newUser); setStore('lpolvo_users', users);
+            setStore('lpolvo_currentUser', { username, displayName: username });
+            updateProfileBtn(); closeModal(); showToast('✅ Account created!');
+        }
+        function handleLogin() {
+            const username = document.getElementById('authUsername').value.trim();
+            const pass = document.getElementById('authPass').value;
+            const user = getUsers().find(u => u.username === username && u.password === pass);
+            if (!user) return showToast('❌ Invalid credentials');
+            setStore('lpolvo_currentUser', { username: user.username, displayName: user.displayName });
+            updateProfileBtn(); closeModal(); showToast('✅ Logged in');
+        }
+        function logout() { setStore('lpolvo_currentUser', null); updateProfileBtn(); showToast('👋 Logged out'); navigateTo('home'); }
+        function handleProfileClick() { getCurrentUser() ? navigateTo('profile') : showAuthModal('login'); }
+        function updateProfileBtn() {
+            const user = getCurrentUser();
+            document.getElementById('btnProfile').textContent = user ? '👤✓' : '👤';
+            document.getElementById('btnProfile').style.color = user ? 'var(--accent3)' : '';
+        }
+        function loadProfile() {
+            const user = getCurrentUser();
+            if (!user) { showAuthModal('login'); return; }
+            document.getElementById('profileDisplayName').textContent = user.displayName;
+            document.getElementById('profileUsername').textContent = '@' + user.username;
+        }
 
-    function deleteScript(id) {
-      const scripts = getScripts().filter(s => s.id !== id);
-      setStore('lpolvo_scripts', scripts); renderExplore(); showToast('🗑️ Deleted');
-    }
+        // ============ SCRIPTS CRUD ============
+        function uploadScript() {
+            const user = getCurrentUser();
+            if (!user) { showAuthModal('signup'); showToast('⚠️ Please log in first'); return; }
+            const title = document.getElementById('uploadTitle').value.trim();
+            const desc = document.getElementById('uploadDesc').value.trim();
+            const code = document.getElementById('uploadCode').value.trim();
+            if (!title || !code) return showToast('❌ Title and code required');
+            const file = document.getElementById('uploadImageFile').files[0];
+            const store = (img) => {
+                const scripts = getScripts();
+                scripts.unshift({ id: Date.now().toString(), title, desc, code, image: img || '', author: user.username, displayName: user.displayName, date: new Date().toISOString(), likes: [], dislikes: [], comments: [], views: 0 });
+                setStore('lpolvo_scripts', scripts);
+                document.getElementById('uploadTitle').value = ''; document.getElementById('uploadDesc').value = ''; document.getElementById('uploadCode').value = ''; document.getElementById('uploadImageFile').value = '';
+                showToast('✅ Script uploaded!'); navigateTo('explore');
+            };
+            if (file) { const r = new FileReader(); r.onload = () => store(r.result); r.readAsDataURL(file); } else store('');
+        }
 
-    function renderExplore() {
-      const grid = document.getElementById('scriptsGrid'), detail = document.getElementById('scriptDetail');
-      detail.style.display = 'none'; grid.style.display = '';
-      const scripts = getScripts();
-      if (!scripts.length) { grid.innerHTML = '<p style="text-align:center;color:var(--muted);grid-column:1/-1;">No scripts yet. Be the first! 🚀</p>'; return; }
-      grid.innerHTML = scripts.map(s => {
-        const isOwner = getCurrentUser()?.username === s.author;
-        return `<div class="script-card" onclick="viewScript('${s.id}')">
-          ${isOwner ? `<button class="delete-btn" onclick="event.stopPropagation();deleteScript('${s.id}')">🗑</button>` : ''}
-          <div class="script-card-header"><img class="script-card-img" src="${escapeHtml(s.image) || 'https://via.placeholder.com/100/1a1a3e/5b8af7?text=S'}" onerror="this.src='https://via.placeholder.com/100/1a1a3e/5b8af7?text=S'">
-          <div class="script-card-info"><h4>${escapeHtml(s.title)}</h4><span>by ${escapeHtml(s.displayName)} · ${new Date(s.date).toLocaleDateString()}</span></div></div>
-          <div class="script-card-desc">${escapeHtml(s.desc || '')}</div>
-          <div class="script-card-actions"><span>👁 ${s.views}</span><span>👍 ${s.likes.length}</span><span>👎 ${s.dislikes.length}</span><span>💬 ${s.comments.length}</span></div>
-        </div>`;
-      }).join('');
-    }
+        function deleteScript(id) {
+            const scripts = getScripts().filter(s => s.id !== id);
+            setStore('lpolvo_scripts', scripts); renderExplore(); showToast('🗑️ Deleted');
+        }
 
-    function viewScript(id) {
-      const scripts = getScripts(), s = scripts.find(sc => sc.id === id);
-      if (!s) return;
-      s.views = (s.views || 0) + 1; setStore('lpolvo_scripts', scripts);
-      const grid = document.getElementById('scriptsGrid'), detail = document.getElementById('scriptDetail');
-      grid.style.display = 'none'; detail.style.display = '';
-      const user = getCurrentUser(), liked = user && s.likes.includes(user.username), disliked = user && s.dislikes.includes(user.username);
-      let html = `<button class="btn btn-outline" onclick="renderExplore()">← Back</button>
-        <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:16px;">
-        ${s.image ? `<img src="${escapeHtml(s.image)}" style="width:100%;max-height:200px;object-fit:contain;border-radius:10px;margin-bottom:10px;">` : ''}
-        <h3>${escapeHtml(s.title)}</h3><p style="font-size:10px;color:var(--muted);">by ${escapeHtml(s.displayName)} · 👁 ${s.views}</p>
-        <p style="font-size:11px;">${escapeHtml(s.desc||'')}</p>
-        <pre style="background:var(--surface3);padding:12px;border-radius:8px;font-size:10px;overflow-x:auto;max-height:200px;">${escapeHtml(s.code)}</pre>
-        <button class="btn btn-outline" onclick="copyCode('${escapeHtml(s.code)}')">📋 Copy Script</button>
-        <div style="margin:8px 0;"><span class="${liked?'liked':''}" onclick="toggleLike('${s.id}');viewScript('${s.id}');">👍 ${s.likes.length}</span> <span class="${disliked?'disliked':''}" onclick="toggleDislike('${s.id}');viewScript('${s.id}');">👎 ${s.dislikes.length}</span></div>
-        <div><strong>Comments:</strong>${s.comments.map(c => `<div class="comment-item"><strong>${escapeHtml(c.author)}</strong> ${escapeHtml(c.text)}</div>`).join('')}</div>
-        <div style="display:flex;gap:6px;margin-top:8px;"><input type="text" id="commentInput" placeholder="Add comment..." style="flex:1;padding:8px;border-radius:8px;background:var(--surface2);border:1px solid var(--border);color:var(--text);"><button class="btn btn-primary" onclick="addComment('${s.id}')">💬 Post</button></div>
-        </div>`;
-      detail.innerHTML = html;
-    }
+        function renderExplore() {
+            const grid = document.getElementById('scriptsGrid'), detail = document.getElementById('scriptDetail');
+            detail.style.display = 'none'; grid.style.display = '';
+            const scripts = getScripts();
+            if (!scripts.length) { grid.innerHTML = '<p style="text-align:center;color:var(--muted);grid-column:1/-1;">No scripts yet. Be the first! 🚀</p>'; return; }
+            grid.innerHTML = scripts.map(s => {
+                const isOwner = getCurrentUser()?.username === s.author;
+                return `<div class="script-card" onclick="viewScript('${s.id}')">
+                    ${isOwner ? `<button class="delete-btn" onclick="event.stopPropagation();deleteScript('${s.id}')">🗑</button>` : ''}
+                    <div class="script-card-header"><img class="script-card-img" src="${escapeHtml(s.image) || 'https://via.placeholder.com/100/1a1a3e/5b8af7?text=S'}" onerror="this.src='https://via.placeholder.com/100/1a1a3e/5b8af7?text=S'">
+                    <div class="script-card-info"><h4>${escapeHtml(s.title)}</h4><span>by ${escapeHtml(s.displayName)} · ${new Date(s.date).toLocaleDateString()}</span></div></div>
+                    <div class="script-card-desc">${escapeHtml(s.desc || '')}</div>
+                    <div class="script-card-actions"><span>👁 ${s.views}</span><span>👍 ${s.likes.length}</span><span>👎 ${s.dislikes.length}</span><span>💬 ${s.comments.length}</span></div>
+                </div>`;
+            }).join('');
+        }
 
-    function copyCode(code) { navigator.clipboard.writeText(code).then(() => showToast('📋 Copied!')).catch(() => showToast('❌ Failed')); }
-    function toggleLike(id) {
-      const user = getCurrentUser(); if (!user) { showAuthModal('login'); return; }
-      const scripts = getScripts(), s = scripts.find(sc => sc.id === id);
-      if (!s) return;
-      const idx = s.likes.indexOf(user.username);
-      if (idx > -1) s.likes.splice(idx, 1); else { s.likes.push(user.username); s.dislikes = s.dislikes.filter(u => u !== user.username); }
-      setStore('lpolvo_scripts', scripts);
-    }
-    function toggleDislike(id) {
-      const user = getCurrentUser(); if (!user) { showAuthModal('login'); return; }
-      const scripts = getScripts(), s = scripts.find(sc => sc.id === id);
-      if (!s) return;
-      const idx = s.dislikes.indexOf(user.username);
-      if (idx > -1) s.dislikes.splice(idx, 1); else { s.dislikes.push(user.username); s.likes = s.likes.filter(u => u !== user.username); }
-      setStore('lpolvo_scripts', scripts);
-    }
-    function addComment(id) {
-      const user = getCurrentUser(); if (!user) { showAuthModal('login'); return; }
-      const text = document.getElementById('commentInput').value.trim();
-      if (!text) return;
-      const scripts = getScripts(), s = scripts.find(sc => sc.id === id);
-      if (!s) return;
-      s.comments.push({ author: user.username, text, date: new Date().toISOString() });
-      setStore('lpolvo_scripts', scripts); viewScript(id);
-    }
-    function escapeHtml(str) { const d = document.createElement('div'); d.textContent = str || ''; return d.innerHTML; }
+        function viewScript(id) {
+            const scripts = getScripts(), s = scripts.find(sc => sc.id === id);
+            if (!s) return;
+            s.views = (s.views || 0) + 1; setStore('lpolvo_scripts', scripts);
+            const grid = document.getElementById('scriptsGrid'), detail = document.getElementById('scriptDetail');
+            grid.style.display = 'none'; detail.style.display = '';
+            const user = getCurrentUser(), liked = user && s.likes.includes(user.username), disliked = user && s.dislikes.includes(user.username);
+            let html = `<button class="btn btn-outline" onclick="renderExplore()">← Back</button>
+                <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:16px;">
+                ${s.image ? `<img src="${escapeHtml(s.image)}" style="width:100%;max-height:200px;object-fit:contain;border-radius:10px;margin-bottom:10px;">` : ''}
+                <h3>${escapeHtml(s.title)}</h3><p style="font-size:10px;color:var(--muted);">by ${escapeHtml(s.displayName)} · 👁 ${s.views}</p>
+                <p style="font-size:11px;">${escapeHtml(s.desc||'')}</p>
+                <pre style="background:var(--surface3);padding:12px;border-radius:8px;font-size:10px;overflow-x:auto;max-height:200px;">${escapeHtml(s.code)}</pre>
+                <button class="btn btn-outline" onclick="copyCode('${escapeHtml(s.code)}')">📋 Copy Script</button>
+                <div style="margin:8px 0;"><span class="${liked?'liked':''}" onclick="toggleLike('${s.id}');viewScript('${s.id}');">👍 ${s.likes.length}</span> <span class="${disliked?'disliked':''}" onclick="toggleDislike('${s.id}');viewScript('${s.id}');">👎 ${s.dislikes.length}</span></div>
+                <div><strong>Comments:</strong>${s.comments.map(c => `<div class="comment-item"><strong>${escapeHtml(c.author)}</strong> ${escapeHtml(c.text)}</div>`).join('')}</div>
+                <div style="display:flex;gap:6px;margin-top:8px;"><input type="text" id="commentInput" placeholder="Add comment..." style="flex:1;padding:8px;border-radius:8px;background:var(--surface2);border:1px solid var(--border);color:var(--text);"><button class="btn btn-primary" onclick="addComment('${s.id}')">💬 Post</button></div>
+                </div>`;
+            detail.innerHTML = html;
+        }
 
-    // Video cards
-    const videos = [{ id: 'CFL4ozSOciY' }, { id: 'tkablaZrw3o' }, { id: 'c0u_d_ikhMs' }, { id: 'zH27zcQaE3A' }, { id: 'xDYC6IzhHpY' }];
-    videos.forEach(v => {
-      const card = document.createElement('div');
-      card.style = 'background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:14px;text-align:center;cursor:pointer;';
-      card.innerHTML = `<img src="https://img.youtube.com/vi/${v.id}/hqdefault.jpg" style="width:100%;border-radius:10px;" onclick="window.open('https://youtu.be/${v.id}','_blank')"><div style="font-weight:600;margin-top:4px;">Loading...</div>`;
-      document.getElementById('featuredGrid').appendChild(card);
-      fetch(`https://www.youtube.com/oembed?url=https://www.youtube.com/watch?v=${v.id}&format=json`).then(r => r.json()).then(d => card.querySelector('div').textContent = d.title).catch(() => card.querySelector('div').textContent = 'Tutorial');
-    });
+        function copyCode(code) { navigator.clipboard.writeText(code).then(() => showToast('📋 Copied!')).catch(() => showToast('❌ Failed')); }
+        function toggleLike(id) {
+            const user = getCurrentUser(); if (!user) { showAuthModal('login'); return; }
+            const scripts = getScripts(), s = scripts.find(sc => sc.id === id);
+            if (!s) return;
+            const idx = s.likes.indexOf(user.username);
+            if (idx > -1) s.likes.splice(idx, 1); else { s.likes.push(user.username); s.dislikes = s.dislikes.filter(u => u !== user.username); }
+            setStore('lpolvo_scripts', scripts);
+        }
+        function toggleDislike(id) {
+            const user = getCurrentUser(); if (!user) { showAuthModal('login'); return; }
+            const scripts = getScripts(), s = scripts.find(sc => sc.id === id);
+            if (!s) return;
+            const idx = s.dislikes.indexOf(user.username);
+            if (idx > -1) s.dislikes.splice(idx, 1); else { s.dislikes.push(user.username); s.likes = s.likes.filter(u => u !== user.username); }
+            setStore('lpolvo_scripts', scripts);
+        }
+        function addComment(id) {
+            const user = getCurrentUser(); if (!user) { showAuthModal('login'); return; }
+            const text = document.getElementById('commentInput').value.trim();
+            if (!text) return;
+            const scripts = getScripts(), s = scripts.find(sc => sc.id === id);
+            if (!s) return;
+            s.comments.push({ author: user.username, text, date: new Date().toISOString() });
+            setStore('lpolvo_scripts', scripts); viewScript(id);
+        }
+        function escapeHtml(str) { const d = document.createElement('div'); d.textContent = str || ''; return d.innerHTML; }
 
-    updateProfileBtn();
-    try { if (localStorage.getItem('lpolvo_lite') === '1') toggleLiteMode(); } catch(e) {}
-  </script>
+        // ============ LANGUAGE ============
+        function toggleDropdown() { document.getElementById('langSwitcher').classList.toggle('open'); }
+        const translations = {
+            en: { flag:'🇺🇸',label:'EN',dir:'ltr' },
+            ar: { flag:'🇸🇦',label:'AR',dir:'rtl' },
+            es: { flag:'🇪🇸',label:'ES',dir:'ltr' },
+            fr: { flag:'🇫🇷',label:'FR',dir:'ltr' },
+            de: { flag:'🇩🇪',label:'DE',dir:'ltr' },
+            pt: { flag:'🇧🇷',label:'PT',dir:'ltr' },
+            ru: { flag:'🇷🇺',label:'RU',dir:'ltr' },
+            zh: { flag:'🇨🇳',label:'ZH',dir:'ltr' },
+            ja: { flag:'🇯🇵',label:'JA',dir:'ltr' },
+            ko: { flag:'🇰🇷',label:'KO',dir:'ltr' },
+            tr: { flag:'🇹🇷',label:'TR',dir:'ltr' },
+            hi: { flag:'🇮🇳',label:'HI',dir:'ltr' }
+        };
+        function setLang(lang, el) {
+            const t = translations[lang]; if (!t) return;
+            document.documentElement.setAttribute('lang', lang);
+            document.documentElement.setAttribute('dir', t.dir);
+            document.getElementById('currentFlag').textContent = t.flag;
+            document.getElementById('currentLabel').textContent = t.label;
+            document.querySelectorAll('.lang-option').forEach(o => o.classList.remove('active'));
+            el.classList.add('active');
+            document.getElementById('langSwitcher').classList.remove('open');
+            try { localStorage.setItem('lpolvo_lang', lang); } catch (e) {}
+        }
+
+        // ============ FEATURED VIDEOS ============
+        const videos = [{ id: 'CFL4ozSOciY' }, { id: 'tkablaZrw3o' }, { id: 'c0u_d_ikhMs' }, { id: 'zH27zcQaE3A' }, { id: 'xDYC6IzhHpY' }];
+        videos.forEach(v => {
+            const card = document.createElement('div');
+            card.style = 'background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:14px;text-align:center;cursor:pointer;';
+            card.innerHTML = `<img src="https://img.youtube.com/vi/${v.id}/hqdefault.jpg" style="width:100%;border-radius:10px;" onclick="window.open('https://youtu.be/${v.id}','_blank')"><div style="font-weight:600;margin-top:4px;">Loading...</div>`;
+            document.getElementById('featuredGrid').appendChild(card);
+            fetch(`https://www.youtube.com/oembed?url=https://www.youtube.com/watch?v=${v.id}&format=json`).then(r => r.json()).then(d => card.querySelector('div').textContent = d.title).catch(() => card.querySelector('div').textContent = 'Tutorial');
+        });
+
+        // ============ INIT ============
+        updateProfileBtn();
+        try { if (localStorage.getItem('lpolvo_lite') === '1') toggleLiteMode(); } catch(e) {}
+        const savedLang = localStorage.getItem('lpolvo_lang');
+        if (savedLang && translations[savedLang]) {
+            setLang(savedLang, document.querySelector(`.lang-option[data-lang="${savedLang}"]`));
+        }
+    </script>
 </body>
 </html>
