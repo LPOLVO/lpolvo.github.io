@@ -3,20 +3,74 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LPOLVO | Developer Hub</title>
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;600;700&family=Cairo:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <title>LPOLVO | Scripts Hub</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Rajdhani:wght@300;400;500;600;700&family=Cairo:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg: #050810;
-            --surface: #0d1117;
-            --surface2: #161b22;
-            --accent: #00d4ff;
-            --accent2: #7c3aed;
+            --bg: #020510;
+            --surface: #080d1a;
+            --surface2: #0f1525;
+            --surface3: #151d30;
+            --accent: #00e0ff;
+            --accent2: #8b5cf6;
             --accent3: #06ffa5;
-            --text: #e6edf3;
-            --muted: #8b949e;
-            --border: rgba(0, 212, 255, 0.15);
-            --glow: 0 0 30px rgba(0, 212, 255, 0.3);
+            --accent4: #ff2d95;
+            --text: #e8edf5;
+            --text2: #c4cde0;
+            --muted: #7a8499;
+            --border: rgba(0, 224, 255, 0.2);
+            --border2: rgba(139, 92, 246, 0.25);
+            --glow-cyan: 0 0 40px rgba(0, 224, 255, 0.5);
+            --glow-purple: 0 0 40px rgba(139, 92, 246, 0.45);
+            --glow-green: 0 0 30px rgba(6, 255, 165, 0.4);
+            --neon-cyan: 0 0 8px #00e0ff, 0 0 20px rgba(0, 224, 255, 0.6), 0 0 40px rgba(0, 224, 255, 0.3);
+            --neon-purple: 0 0 8px #8b5cf6, 0 0 20px rgba(139, 92, 246, 0.5), 0 0 40px rgba(139, 92, 246, 0.25);
+            --neon-green: 0 0 6px #06ffa5, 0 0 16px rgba(6, 255, 165, 0.5);
+            --radius: 14px;
+            --radius-sm: 10px;
+            --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        /* Lite Mode */
+        body.lite {
+            --bg: #f5f6fa;
+            --surface: #ffffff;
+            --surface2: #f0f2f8;
+            --surface3: #e8ecf4;
+            --accent: #0099cc;
+            --accent2: #6d28d9;
+            --accent3: #00b87a;
+            --accent4: #cc2266;
+            --text: #1a1d28;
+            --text2: #333845;
+            --muted: #5e667a;
+            --border: rgba(0, 153, 204, 0.25);
+            --border2: rgba(109, 40, 217, 0.25);
+            --glow-cyan: 0 0 20px rgba(0, 153, 204, 0.2);
+            --glow-purple: 0 0 20px rgba(109, 40, 217, 0.2);
+            --glow-green: 0 0 15px rgba(0, 184, 122, 0.2);
+            --neon-cyan: 0 0 3px #0099cc, 0 0 8px rgba(0, 153, 204, 0.3);
+            --neon-purple: 0 0 3px #6d28d9, 0 0 8px rgba(109, 40, 217, 0.3);
+            --neon-green: 0 0 2px #00b87a, 0 0 6px rgba(0, 184, 122, 0.3);
+        }
+        body.lite .particles-canvas {
+            opacity: 0.2;
+        }
+        body.lite .neon-text {
+            text-shadow: none !important;
+        }
+        body.lite .glow-line {
+            box-shadow: none !important;
+        }
+        body.lite .card-glow {
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08) !important;
+        }
+        body.lite .logo-glow {
+            filter: none !important;
+        }
+        body.lite .pulse-dot {
+            animation: none !important;
+            opacity: 0.6;
         }
 
         * {
@@ -24,218 +78,375 @@
             padding: 0;
             box-sizing: border-box;
         }
-
         html {
             scroll-behavior: smooth;
+            scrollbar-width: thin;
+            scrollbar-color: var(--accent2) var(--bg);
         }
-
         body {
             background: var(--bg);
             color: var(--text);
-            font-family: 'Cairo', 'Rajdhani', sans-serif;
+            font-family: 'Inter', 'Cairo', 'Rajdhani', sans-serif;
             overflow-x: hidden;
+            transition: background 0.5s, color 0.5s;
+            line-height: 1.5;
+            -webkit-font-smoothing: antialiased;
+        }
+        ::-webkit-scrollbar {
+            width: 5px;
+        }
+        ::-webkit-scrollbar-track {
+            background: var(--bg);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: var(--accent2);
+            border-radius: 10px;
         }
 
+        /* Particles */
+        .particles-canvas {
+            position: fixed;
+            inset: 0;
+            z-index: 0;
+            pointer-events: none;
+            opacity: 0.55;
+            transition: opacity 0.6s;
+        }
+
+        /* Background grid */
         body::before {
             content: '';
             position: fixed;
             inset: 0;
-            background: radial-gradient(ellipse 80% 50% at 20% 20%, rgba(0, 212, 255, 0.07) 0%, transparent 60%),
-                radial-gradient(ellipse 60% 40% at 80% 80%, rgba(124, 58, 237, 0.07) 0%, transparent 60%);
+            background-image:
+                linear-gradient(rgba(0, 224, 255, 0.025) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 224, 255, 0.025) 1px, transparent 1px);
+            background-size: 45px 45px;
             pointer-events: none;
             z-index: 0;
+            mask-image: radial-gradient(ellipse 70% 60% at 50% 40%, black 30%, transparent 70%);
+            -webkit-mask-image: radial-gradient(ellipse 70% 60% at 50% 40%, black 30%, transparent 70%);
         }
-
         body::after {
             content: '';
             position: fixed;
             inset: 0;
-            background-image: linear-gradient(rgba(0, 212, 255, 0.03) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(0, 212, 255, 0.03) 1px, transparent 1px);
-            background-size: 50px 50px;
+            background: radial-gradient(ellipse 60% 45% at 25% 25%, rgba(0, 224, 255, 0.06) 0%, transparent 55%),
+                radial-gradient(ellipse 55% 40% at 75% 70%, rgba(139, 92, 246, 0.07) 0%, transparent 55%),
+                radial-gradient(ellipse 40% 35% at 50% 80%, rgba(6, 255, 165, 0.04) 0%, transparent 55%);
             pointer-events: none;
             z-index: 0;
         }
 
+        /* Navigation */
         nav {
             position: fixed;
             top: 0;
             left: 0;
             right: 0;
-            z-index: 100;
-            padding: 14px 24px;
+            z-index: 1000;
+            padding: 12px 28px;
             display: flex;
             align-items: center;
             justify-content: space-between;
-            background: rgba(5, 8, 16, 0.9);
-            backdrop-filter: blur(20px);
+            background: rgba(2, 5, 16, 0.85);
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
             border-bottom: 1px solid var(--border);
-            gap: 12px;
+            gap: 16px;
+            transition: all 0.4s;
         }
-
-        .logo {
-            font-family: 'Orbitron', monospace;
-            font-size: 20px;
-            font-weight: 900;
-            color: var(--accent);
-            text-shadow: var(--glow);
-            letter-spacing: 2px;
+        body.lite nav {
+            background: rgba(255, 255, 255, 0.85);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+        }
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 12px;
             flex-shrink: 0;
+        }
+        .logo-icon {
+            width: 42px;
+            height: 42px;
+            border-radius: 12px;
+            background: linear-gradient(135deg, var(--accent), var(--accent2));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Orbitron', monospace;
+            font-weight: 900;
+            font-size: 18px;
+            color: #fff;
+            box-shadow: var(--neon-cyan);
+            transition: all var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+        .logo-icon::after {
+            content: '';
+            position: absolute;
+            inset: -2px;
+            border-radius: 14px;
+            background: linear-gradient(135deg, var(--accent), var(--accent2), var(--accent3));
+            z-index: -1;
+            opacity: 0;
+            transition: opacity 0.4s;
+        }
+        .logo-icon:hover::after {
+            opacity: 0.6;
+        }
+        .logo-text {
+            font-family: 'Orbitron', monospace;
+            font-size: 19px;
+            font-weight: 800;
+            letter-spacing: 3px;
+            color: #fff;
+            text-shadow: var(--neon-cyan);
+            transition: all var(--transition);
             white-space: nowrap;
         }
-
-        .logo span {
-            color: var(--accent2);
+        .logo-text span {
+            background: linear-gradient(135deg, var(--accent2), var(--accent4));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
-
         .nav-links {
             display: flex;
-            gap: 24px;
+            gap: 28px;
             list-style: none;
+            align-items: center;
         }
-
         .nav-links a {
             color: var(--muted);
             text-decoration: none;
-            font-size: 14px;
+            font-size: 13px;
             font-weight: 600;
-            transition: color 0.3s;
-            letter-spacing: 1px;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            transition: all var(--transition);
+            position: relative;
+            padding: 4px 0;
         }
-
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent);
+            border-radius: 2px;
+            transition: width var(--transition);
+        }
         .nav-links a:hover {
             color: var(--accent);
         }
-
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            flex-shrink: 0;
+        }
+        .btn-lite {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            background: var(--surface2);
+            border: 1px solid var(--border);
+            border-radius: 25px;
+            padding: 7px 14px;
+            color: var(--text2);
+            cursor: pointer;
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            transition: all var(--transition);
+            white-space: nowrap;
+            font-family: inherit;
+            text-transform: uppercase;
+        }
+        .btn-lite:hover {
+            border-color: var(--accent3);
+            color: var(--accent3);
+            box-shadow: var(--neon-green);
+        }
+        .btn-lite .lite-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--accent3);
+            box-shadow: var(--neon-green);
+            transition: all var(--transition);
+        }
+        body.lite .btn-lite .lite-dot {
+            background: #999;
+            box-shadow: none;
+        }
         .lang-switcher {
             position: relative;
             flex-shrink: 0;
         }
-
         .lang-btn {
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 7px;
             background: var(--surface2);
             border: 1px solid var(--border);
-            border-radius: 8px;
-            padding: 8px 14px;
-            color: var(--text);
+            border-radius: 25px;
+            padding: 7px 13px;
+            color: var(--text2);
             cursor: pointer;
-            font-size: 13px;
+            font-size: 12px;
             font-weight: 600;
-            transition: all 0.3s;
+            transition: all var(--transition);
             white-space: nowrap;
             font-family: inherit;
+            letter-spacing: 0.5px;
         }
-
         .lang-btn:hover {
             border-color: var(--accent);
             color: var(--accent);
         }
-
         .lang-flag {
-            font-size: 18px;
+            font-size: 16px;
             line-height: 1;
         }
-        .arrow {
-            font-size: 10px;
-            transition: transform 0.3s;
+        .arrow-mini {
+            font-size: 8px;
+            transition: transform var(--transition);
             color: var(--muted);
         }
-
-        .lang-switcher.open .arrow {
+        .lang-switcher.open .arrow-mini {
             transform: rotate(180deg);
         }
-
         .lang-dropdown {
             position: absolute;
-            top: calc(100% + 8px);
+            top: calc(100% + 10px);
             right: 0;
             background: var(--surface);
             border: 1px solid var(--border);
-            border-radius: 12px;
+            border-radius: var(--radius);
             overflow: hidden;
             overflow-y: auto;
-            max-height: 320px;
-            min-width: 190px;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6);
+            max-height: 300px;
+            min-width: 185px;
+            box-shadow: 0 25px 70px rgba(0, 0, 0, 0.7);
             opacity: 0;
-            transform: translateY(-10px);
+            transform: translateY(-12px);
             pointer-events: none;
             transition: all 0.25s ease;
             z-index: 200;
         }
-
         .lang-switcher.open .lang-dropdown {
             opacity: 1;
             transform: translateY(0);
             pointer-events: all;
         }
-
         .lang-option {
             display: flex;
             align-items: center;
-            gap: 12px;
-            padding: 11px 16px;
+            gap: 10px;
+            padding: 10px 15px;
             cursor: pointer;
             transition: background 0.2s;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.04);
-            font-size: 14px;
-            font-weight: 600;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+            font-size: 13px;
+            font-weight: 500;
         }
-
         .lang-option:last-child {
             border-bottom: none;
         }
         .lang-option:hover {
-            background: rgba(0, 212, 255, 0.08);
+            background: rgba(0, 224, 255, 0.06);
         }
         .lang-option.active {
-            background: rgba(0, 212, 255, 0.12);
+            background: rgba(0, 224, 255, 0.1);
             color: var(--accent);
+            font-weight: 600;
         }
         .lang-native {
             color: var(--muted);
-            font-size: 11px;
+            font-size: 10px;
             margin-left: auto;
+            opacity: 0.7;
         }
 
+        /* Hero */
         .hero {
             position: relative;
-            z-index: 1;
+            z-index: 2;
             min-height: 100vh;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
             text-align: center;
-            padding: 100px 24px 60px;
+            padding: 120px 24px 70px;
         }
-
+        .hero-glow-orb {
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            border-radius: 50%;
+            filter: blur(180px);
+            pointer-events: none;
+            z-index: -1;
+            opacity: 0.5;
+        }
+        .hero-glow-orb.orb1 {
+            top: -150px;
+            left: -100px;
+            background: var(--accent);
+            animation: orbFloat 8s ease-in-out infinite;
+        }
+        .hero-glow-orb.orb2 {
+            bottom: -200px;
+            right: -120px;
+            background: var(--accent2);
+            animation: orbFloat 10s ease-in-out infinite reverse;
+        }
+        @keyframes orbFloat {
+            0%,
+            100% {
+                transform: translate(0, 0) scale(1);
+            }
+            33% {
+                transform: translate(30px, -40px) scale(1.1);
+            }
+            66% {
+                transform: translate(-20px, 30px) scale(0.9);
+            }
+        }
         .badge {
             display: inline-flex;
             align-items: center;
-            gap: 8px;
-            background: rgba(0, 212, 255, 0.1);
-            border: 1px solid rgba(0, 212, 255, 0.3);
+            gap: 10px;
+            background: rgba(0, 224, 255, 0.08);
+            border: 1px solid rgba(0, 224, 255, 0.3);
             border-radius: 50px;
-            padding: 8px 20px;
-            font-size: 13px;
+            padding: 9px 22px;
+            font-size: 12px;
+            font-weight: 600;
             color: var(--accent);
-            margin-bottom: 32px;
-            animation: fadeDown 0.8s ease;
+            letter-spacing: 2px;
+            margin-bottom: 36px;
+            animation: fadeDown 0.9s ease;
+            text-transform: uppercase;
         }
-
         .badge-dot {
-            width: 8px;
-            height: 8px;
+            width: 9px;
+            height: 9px;
             background: var(--accent3);
             border-radius: 50%;
-            animation: pulse 2s infinite;
+            animation: pulse 1.8s infinite;
+            box-shadow: var(--neon-green);
             flex-shrink: 0;
         }
-
         @keyframes pulse {
             0%,
             100% {
@@ -243,281 +454,374 @@
                 transform: scale(1);
             }
             50% {
-                opacity: 0.5;
-                transform: scale(0.8);
+                opacity: 0.3;
+                transform: scale(0.65);
             }
         }
-
         .hero h1 {
             font-family: 'Orbitron', monospace;
-            font-size: clamp(32px, 8vw, 68px);
+            font-size: clamp(36px, 8vw, 76px);
             font-weight: 900;
-            line-height: 1.1;
-            margin-bottom: 8px;
-            animation: fadeUp 0.8s ease 0.1s both;
+            line-height: 1.05;
+            margin-bottom: 6px;
+            animation: fadeUp 0.9s ease 0.1s both;
+            letter-spacing: -1px;
         }
-
         .hero h1 .highlight {
-            background: linear-gradient(135deg, var(--accent), var(--accent2));
+            background: linear-gradient(135deg, var(--accent) 0%, var(--accent2) 50%, var(--accent4) 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
             display: block;
+            font-size: 1.15em;
+            text-shadow: none;
+            filter: drop-shadow(0 0 35px rgba(0, 224, 255, 0.5));
         }
-
-        .hero p {
-            font-size: clamp(14px, 3vw, 17px);
+        .hero-subtitle {
+            font-size: clamp(13px, 2.5vw, 16px);
             color: var(--muted);
-            max-width: 520px;
-            line-height: 1.8;
-            margin: 20px auto 40px;
-            animation: fadeUp 0.8s ease 0.2s both;
+            max-width: 540px;
+            line-height: 1.7;
+            margin: 18px auto 38px;
+            animation: fadeUp 0.9s ease 0.2s both;
+            font-weight: 400;
         }
-
         .hero-btns {
             display: flex;
-            gap: 16px;
+            gap: 14px;
             flex-wrap: wrap;
             justify-content: center;
-            animation: fadeUp 0.8s ease 0.3s both;
+            animation: fadeUp 0.9s ease 0.3s both;
         }
-
         .btn-primary {
             display: inline-flex;
             align-items: center;
-            gap: 10px;
+            gap: 9px;
             background: linear-gradient(135deg, var(--accent), var(--accent2));
             color: #fff;
-            padding: 14px 32px;
-            border-radius: 10px;
+            padding: 14px 30px;
+            border-radius: 30px;
             text-decoration: none;
             font-weight: 700;
-            font-size: 15px;
-            transition: transform 0.2s, box-shadow 0.2s;
-            box-shadow: 0 0 30px rgba(0, 212, 255, 0.3);
+            font-size: 14px;
+            letter-spacing: 1px;
+            transition: all var(--transition);
+            box-shadow: var(--glow-cyan);
+            position: relative;
+            overflow: hidden;
+            text-transform: uppercase;
         }
-
         .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 0 50px rgba(0, 212, 255, 0.5);
+            transform: translateY(-3px);
+            box-shadow: 0 0 60px rgba(0, 224, 255, 0.6);
         }
-
+        .btn-primary::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, transparent 40%, rgba(255, 255, 255, 0.15) 50%, transparent 60%);
+            transform: translateX(-100%);
+            transition: transform 0.6s;
+        }
+        .btn-primary:hover::before {
+            transform: translateX(100%);
+        }
         .btn-secondary {
             display: inline-flex;
             align-items: center;
-            gap: 10px;
-            background: rgba(255, 255, 255, 0.05);
+            gap: 9px;
+            background: transparent;
             color: var(--text);
-            padding: 14px 32px;
-            border-radius: 10px;
+            padding: 14px 30px;
+            border-radius: 30px;
             text-decoration: none;
-            font-weight: 700;
-            font-size: 15px;
-            border: 1px solid var(--border);
-            transition: transform 0.2s, background 0.2s;
+            font-weight: 600;
+            font-size: 14px;
+            letter-spacing: 1px;
+            border: 2px solid var(--border);
+            transition: all var(--transition);
+            text-transform: uppercase;
         }
-
         .btn-secondary:hover {
-            transform: translateY(-2px);
-            background: rgba(255, 255, 255, 0.1);
+            border-color: var(--accent);
+            box-shadow: 0 0 30px rgba(0, 224, 255, 0.2);
+            transform: translateY(-3px);
+            background: rgba(0, 224, 255, 0.05);
         }
-
-        .social-links {
+        .social-row {
             display: flex;
-            gap: 16px;
-            margin-top: 48px;
-            animation: fadeUp 0.8s ease 0.4s both;
+            gap: 14px;
+            margin-top: 50px;
+            animation: fadeUp 0.9s ease 0.4s both;
         }
-
-        .social-links a {
-            width: 44px;
-            height: 44px;
+        .social-icon {
+            width: 46px;
+            height: 46px;
+            border-radius: 50%;
+            background: var(--surface2);
+            border: 1px solid var(--border);
             display: flex;
             align-items: center;
             justify-content: center;
-            background: var(--surface2);
-            border: 1px solid var(--border);
-            border-radius: 10px;
             color: var(--muted);
             text-decoration: none;
-            font-size: 16px;
+            transition: all var(--transition);
+            position: relative;
+            font-size: 18px;
             font-weight: 700;
-            transition: all 0.3s;
-            flex-shrink: 0;
         }
-
-        .social-links a:hover {
-            color: var(--accent);
+        .social-icon:hover {
+            color: #fff;
             border-color: var(--accent);
-            box-shadow: 0 0 20px rgba(0, 212, 255, 0.2);
-            transform: translateY(-2px);
+            box-shadow: var(--neon-cyan);
+            transform: translateY(-4px);
+            background: rgba(0, 224, 255, 0.1);
+        }
+        .social-icon.yt:hover {
+            border-color: #ff0000;
+            box-shadow: 0 0 25px rgba(255, 0, 0, 0.5);
+            color: #ff3333;
+        }
+        .social-icon.ig:hover {
+            border-color: #e1306c;
+            box-shadow: 0 0 25px rgba(225, 48, 108, 0.5);
+            color: #e1306c;
+        }
+        .social-icon.rb:hover {
+            border-color: #ff4444;
+            box-shadow: 0 0 25px rgba(255, 68, 68, 0.5);
+            color: #ff5555;
         }
 
-        .social-links a.roblox-icon {
-            font-size: 13px;
-            font-weight: 900;
-            letter-spacing: -0.5px;
-        }
-
+        /* Sections */
         section {
             position: relative;
-            z-index: 1;
-            padding: 80px 24px;
-            max-width: 1100px;
+            z-index: 2;
+            padding: 90px 28px;
+            max-width: 1150px;
             margin: 0 auto;
         }
-
+        .section-header {
+            text-align: center;
+            margin-bottom: 56px;
+        }
+        .section-tag {
+            display: inline-block;
+            font-family: 'Orbitron', monospace;
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 3px;
+            color: var(--accent);
+            text-transform: uppercase;
+            margin-bottom: 12px;
+        }
         .section-title {
             font-family: 'Orbitron', monospace;
-            font-size: clamp(20px, 4vw, 30px);
-            font-weight: 700;
-            margin-bottom: 48px;
-            text-align: center;
+            font-size: clamp(22px, 4.5vw, 34px);
+            font-weight: 800;
+            letter-spacing: 1px;
+            line-height: 1.2;
         }
-
         .section-title .accent {
-            color: var(--accent);
+            background: linear-gradient(135deg, var(--accent), var(--accent2));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .glow-line {
+            width: 70px;
+            height: 3px;
+            background: var(--accent);
+            border-radius: 10px;
+            margin: 16px auto 0;
+            box-shadow: var(--neon-cyan);
         }
 
+        /* Stats */
         .stats {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 16px;
-            margin: 0 0 80px;
+            gap: 18px;
+            margin-bottom: 60px;
         }
-
         .stat {
             background: var(--surface);
             border: 1px solid var(--border);
-            border-radius: 12px;
-            padding: 24px 16px;
+            border-radius: var(--radius);
+            padding: 28px 18px;
             text-align: center;
+            transition: all var(--transition);
+            position: relative;
+            overflow: hidden;
         }
-
+        .stat::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(0, 224, 255, 0.04) 0%, transparent 70%);
+            opacity: 0;
+            transition: opacity 0.5s;
+        }
+        .stat:hover::before {
+            opacity: 1;
+        }
+        .stat:hover {
+            border-color: rgba(0, 224, 255, 0.5);
+            transform: translateY(-4px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+        }
         .stat-num {
             font-family: 'Orbitron', monospace;
-            font-size: 28px;
+            font-size: 32px;
             font-weight: 900;
             color: var(--accent);
-            text-shadow: var(--glow);
+            text-shadow: var(--neon-cyan);
+            position: relative;
+            z-index: 1;
         }
-
         .stat-label {
-            font-size: 12px;
+            font-size: 11px;
             color: var(--muted);
             margin-top: 6px;
             font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            position: relative;
+            z-index: 1;
         }
 
+        /* Cards Grid */
         .cards-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+            gap: 22px;
         }
-
         .card {
             background: var(--surface);
             border: 1px solid var(--border);
-            border-radius: 16px;
+            border-radius: var(--radius);
             overflow: hidden;
-            transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
+            transition: all var(--transition);
             display: flex;
             flex-direction: column;
+            position: relative;
         }
-
         .card:hover {
-            transform: translateY(-6px);
-            box-shadow: 0 20px 60px rgba(0, 212, 255, 0.15);
-            border-color: rgba(0, 212, 255, 0.4);
+            transform: translateY(-8px);
+            box-shadow: 0 25px 70px rgba(0, 0, 0, 0.4);
+            border-color: rgba(0, 224, 255, 0.45);
         }
-
+        .card-glow {
+            position: absolute;
+            inset: 0;
+            border-radius: var(--radius);
+            pointer-events: none;
+            z-index: 0;
+            opacity: 0;
+            transition: opacity 0.5s;
+            box-shadow: inset 0 0 40px rgba(0, 224, 255, 0.06);
+        }
+        .card:hover .card-glow {
+            opacity: 1;
+        }
         .card-img {
             width: 100%;
-            height: 170px;
-            background: linear-gradient(135deg, var(--surface2), #1a1f2e);
+            height: 175px;
+            background: linear-gradient(135deg, var(--surface2), var(--surface3));
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 44px;
+            font-size: 50px;
             border-bottom: 1px solid var(--border);
             position: relative;
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
             flex-shrink: 0;
+            overflow: hidden;
         }
-
         .card-img::before {
             content: '';
             position: absolute;
             inset: 0;
-            background: linear-gradient(135deg, rgba(0, 212, 255, 0.08), rgba(124, 58, 237, 0.08));
+            background: linear-gradient(180deg, transparent 50%, rgba(0, 0, 0, 0.5) 100%);
             pointer-events: none;
+            z-index: 1;
         }
-
-        .card-img.video-thumb::before {
-            background: rgba(0, 0, 0, 0.25);
-        }
-
         .card-img.video-thumb::after {
             content: '▶';
             position: absolute;
-            font-size: 36px;
+            font-size: 40px;
             color: #fff;
-            text-shadow: 0 0 30px rgba(0, 0, 0, 0.7);
-            z-index: 2;
+            text-shadow: 0 0 40px rgba(0, 0, 0, 0.8);
+            z-index: 3;
             pointer-events: none;
-            opacity: 0.85;
-            transition: opacity 0.3s, transform 0.3s;
+            opacity: 0.8;
+            transition: all var(--transition);
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
         }
-
         .card:hover .card-img.video-thumb::after {
             opacity: 1;
-            transform: scale(1.15);
+            transform: translate(-50%, -50%) scale(1.2);
         }
-
         .card-tag {
             position: absolute;
-            top: 12px;
-            left: 12px;
-            background: rgba(0, 212, 255, 0.15);
-            border: 1px solid rgba(0, 212, 255, 0.3);
-            color: var(--accent);
+            top: 14px;
+            left: 14px;
+            background: rgba(0, 0, 0, 0.7);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: #fff;
             font-size: 10px;
             font-weight: 700;
-            padding: 4px 10px;
+            padding: 5px 12px;
             border-radius: 20px;
-            letter-spacing: 1px;
-            z-index: 3;
+            letter-spacing: 1.5px;
+            z-index: 4;
+            text-transform: uppercase;
+            backdrop-filter: blur(8px);
         }
-
+        .card-tag.featured {
+            background: rgba(0, 224, 255, 0.2);
+            border-color: rgba(0, 224, 255, 0.5);
+            color: var(--accent);
+        }
+        .card-tag.new {
+            background: rgba(6, 255, 165, 0.2);
+            border-color: rgba(6, 255, 165, 0.5);
+            color: var(--accent3);
+        }
         .card-body {
             padding: 20px;
             display: flex;
             flex-direction: column;
             flex: 1;
+            position: relative;
+            z-index: 1;
         }
-
         .card-title {
-            font-family: 'Rajdhani', sans-serif;
-            font-size: 18px;
+            font-family: 'Rajdhani', 'Inter', sans-serif;
+            font-size: 17px;
             font-weight: 700;
-            margin-bottom: 8px;
+            margin-bottom: 7px;
             line-height: 1.3;
             display: -webkit-box;
             -webkit-line-clamp: 2;
             -webkit-box-orient: vertical;
             overflow: hidden;
+            letter-spacing: 0.3px;
         }
-
         .card-desc {
-            font-size: 13px;
+            font-size: 12.5px;
             color: var(--muted);
             line-height: 1.6;
-            margin-bottom: 16px;
+            margin-bottom: 14px;
             flex: 1;
         }
-
         .card-btn {
             display: flex;
             align-items: center;
@@ -525,69 +829,176 @@
             gap: 8px;
             background: var(--surface2);
             border: 1px solid var(--border);
-            color: var(--text);
-            padding: 10px 16px;
-            border-radius: 8px;
-            font-size: 13px;
+            color: var(--text2);
+            padding: 11px;
+            border-radius: 25px;
+            font-size: 12px;
             font-weight: 600;
-            transition: all 0.3s;
+            transition: all var(--transition);
             cursor: pointer;
             width: 100%;
             font-family: inherit;
             text-decoration: none;
             text-align: center;
-            white-space: nowrap;
+            letter-spacing: 0.8px;
+            text-transform: uppercase;
         }
-
         .card-btn:hover {
-            background: rgba(0, 212, 255, 0.1);
+            background: rgba(0, 224, 255, 0.08);
             border-color: var(--accent);
             color: var(--accent);
+            box-shadow: 0 0 20px rgba(0, 224, 255, 0.15);
         }
-
         .card-btn.buy-key {
-            background: linear-gradient(135deg, rgba(0, 212, 255, 0.2), rgba(124, 58, 237, 0.2));
-            border-color: rgba(0, 212, 255, 0.4);
+            background: linear-gradient(135deg, rgba(0, 224, 255, 0.2), rgba(139, 92, 246, 0.2));
+            border-color: rgba(0, 224, 255, 0.4);
             color: #fff;
             font-weight: 700;
         }
-
         .card-btn.buy-key:hover {
-            background: linear-gradient(135deg, rgba(0, 212, 255, 0.35), rgba(124, 58, 237, 0.35));
+            background: linear-gradient(135deg, rgba(0, 224, 255, 0.35), rgba(139, 92, 246, 0.35));
             border-color: var(--accent);
-            box-shadow: 0 0 25px rgba(0, 212, 255, 0.3);
+            box-shadow: 0 0 35px rgba(0, 224, 255, 0.4);
             color: #fff;
         }
 
-        footer {
-            position: relative;
-            z-index: 1;
-            text-align: center;
-            padding: 40px 24px;
-            border-top: 1px solid var(--border);
+        /* About / Code Section */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            align-items: start;
+        }
+        .about-info h3 {
+            font-family: 'Orbitron', monospace;
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 16px;
+            letter-spacing: 1px;
+        }
+        .about-info p {
             color: var(--muted);
+            font-size: 14px;
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 16px;
+        }
+        .skill-tag {
+            background: var(--surface2);
+            border: 1px solid var(--border);
+            padding: 7px 15px;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 0.8px;
+            color: var(--text2);
+            transition: all var(--transition);
+            text-transform: uppercase;
+        }
+        .skill-tag:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+            box-shadow: 0 0 12px rgba(0, 224, 255, 0.2);
+        }
+        .code-block {
+            background: #0a0e18;
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 22px;
+            font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
             font-size: 13px;
+            line-height: 1.7;
+            overflow-x: auto;
+            position: relative;
+            box-shadow: inset 0 0 30px rgba(0, 0, 0, 0.5);
+        }
+        .code-block .keyword {
+            color: #c678dd;
+        }
+        .code-block .class-name {
+            color: #e5c07b;
+        }
+        .code-block .function {
+            color: #61afef;
+        }
+        .code-block .string {
+            color: #98c379;
+        }
+        .code-block .comment {
+            color: #5c6370;
+            font-style: italic;
+        }
+        .code-block .number {
+            color: #d19a66;
+        }
+        .code-title {
+            font-family: 'Orbitron', monospace;
+            font-size: 10px;
+            letter-spacing: 2px;
+            color: var(--muted);
+            margin-bottom: 10px;
+            text-transform: uppercase;
         }
 
+        /* Footer */
+        footer {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            padding: 36px 24px;
+            border-top: 1px solid var(--border);
+            color: var(--muted);
+            font-size: 12px;
+            letter-spacing: 0.8px;
+        }
         footer .accent {
             color: var(--accent);
+            font-weight: 700;
+        }
+        .footer-social {
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+            margin-bottom: 16px;
+        }
+        .footer-social a {
+            width: 34px;
+            height: 34px;
+            border-radius: 50%;
+            background: var(--surface2);
+            border: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--muted);
+            text-decoration: none;
+            font-size: 14px;
+            transition: all var(--transition);
+        }
+        .footer-social a:hover {
+            color: var(--accent);
+            border-color: var(--accent);
         }
 
         @keyframes fadeUp {
             from {
                 opacity: 0;
-                transform: translateY(20px);
+                transform: translateY(30px);
             }
             to {
                 opacity: 1;
                 transform: translateY(0);
             }
         }
-
         @keyframes fadeDown {
             from {
                 opacity: 0;
-                transform: translateY(-10px);
+                transform: translateY(-15px);
             }
             to {
                 opacity: 1;
@@ -595,119 +1006,323 @@
             }
         }
 
-        ::-webkit-scrollbar {
-            width: 6px;
-        }
-        ::-webkit-scrollbar-track {
-            background: var(--bg);
-        }
-        ::-webkit-scrollbar-thumb {
-            background: var(--accent2);
-            border-radius: 3px;
-        }
-
-        @media(max-width:600px) {
+        @media(max-width:768px) {
             .nav-links {
                 display: none;
             }
+            .about-grid {
+                grid-template-columns: 1fr;
+            }
             .stats {
+                grid-template-columns: repeat(3, 1fr);
                 gap: 10px;
             }
             .stat-num {
-                font-size: 22px;
+                font-size: 24px;
+            }
+            .cards-grid {
+                grid-template-columns: 1fr;
+                max-width: 420px;
+                margin: 0 auto;
+            }
+            .hero h1 {
+                font-size: 32px;
+            }
+            .hero-glow-orb {
+                width: 280px;
+                height: 280px;
+            }
+        }
+        @media(max-width:480px) {
+            .stats {
+                grid-template-columns: 1fr 1fr 1fr;
+                gap: 6px;
+            }
+            .stat {
+                padding: 16px 8px;
+            }
+            .stat-num {
+                font-size: 20px;
+            }
+            .stat-label {
+                font-size: 9px;
+                letter-spacing: 1px;
             }
             .hero-btns {
                 flex-direction: column;
                 align-items: center;
             }
-            .cards-grid {
-                grid-template-columns: 1fr;
+            .btn-primary,
+            .btn-secondary {
+                width: 100%;
+                justify-content: center;
+                padding: 13px 20px;
+                font-size: 12px;
             }
-            .card-img {
-                height: 200px;
+            nav {
+                padding: 10px 14px;
             }
-        }
-
-        @media(min-width:601px) and (max-width:900px) {
-            .cards-grid {
-                grid-template-columns: repeat(2, 1fr);
+            .logo-text {
+                font-size: 15px;
+                letter-spacing: 2px;
+            }
+            .logo-icon {
+                width: 34px;
+                height: 34px;
+                font-size: 15px;
+                border-radius: 10px;
             }
         }
     </style>
 </head>
 <body>
+    <!-- Particles Canvas -->
+    <canvas class="particles-canvas" id="particlesCanvas"></canvas>
 
+    <!-- Navigation -->
     <nav>
-        <div class="logo">LP<span>O</span>LVO</div>
+        <div class="logo-area">
+            <div class="logo-icon logo-glow">L</div>
+            <div class="logo-text">LP<span>O</span>LVO</div>
+        </div>
         <ul class="nav-links">
+            <li><a href="#home" data-i18n="nav_home">Home</a></li>
             <li><a href="#projects" data-i18n="nav_projects">Projects</a></li>
             <li><a href="#about" data-i18n="nav_about">About</a></li>
         </ul>
-        <div class="lang-switcher" id="langSwitcher">
-            <button class="lang-btn" onclick="toggleDropdown()" id="langBtn">
-                <span class="lang-flag" id="currentFlag">🇺🇸</span>
-                <span id="currentLabel">English</span>
-                <span class="arrow">▼</span>
+        <div class="nav-actions">
+            <button class="btn-lite" id="btnLite" onclick="toggleLiteMode()" title="Toggle Lite Mode">
+                <span class="lite-dot"></span> <span data-i18n="lite_mode">Lite</span>
             </button>
-            <div class="lang-dropdown" id="langDropdown">
-                <div class="lang-option active" data-lang="en" onclick="setLang('en',this)"><span class="lang-flag">🇺🇸</span><span>English</span><span class="lang-native">English</span></div>
-                <div class="lang-option" data-lang="ar" onclick="setLang('ar',this)"><span class="lang-flag">🇸🇦</span><span>Arabic</span><span class="lang-native">العربية</span></div>
-                <div class="lang-option" data-lang="es" onclick="setLang('es',this)"><span class="lang-flag">🇪🇸</span><span>Spanish</span><span class="lang-native">Español</span></div>
-                <div class="lang-option" data-lang="fr" onclick="setLang('fr',this)"><span class="lang-flag">🇫🇷</span><span>French</span><span class="lang-native">Français</span></div>
-                <div class="lang-option" data-lang="de" onclick="setLang('de',this)"><span class="lang-flag">🇩🇪</span><span>German</span><span class="lang-native">Deutsch</span></div>
-                <div class="lang-option" data-lang="pt" onclick="setLang('pt',this)"><span class="lang-flag">🇧🇷</span><span>Portuguese</span><span class="lang-native">Português</span></div>
-                <div class="lang-option" data-lang="ru" onclick="setLang('ru',this)"><span class="lang-flag">🇷🇺</span><span>Russian</span><span class="lang-native">Русский</span></div>
-                <div class="lang-option" data-lang="zh" onclick="setLang('zh',this)"><span class="lang-flag">🇨🇳</span><span>Chinese</span><span class="lang-native">中文</span></div>
-                <div class="lang-option" data-lang="ja" onclick="setLang('ja',this)"><span class="lang-flag">🇯🇵</span><span>Japanese</span><span class="lang-native">日本語</span></div>
-                <div class="lang-option" data-lang="ko" onclick="setLang('ko',this)"><span class="lang-flag">🇰🇷</span><span>Korean</span><span class="lang-native">한국어</span></div>
-                <div class="lang-option" data-lang="tr" onclick="setLang('tr',this)"><span class="lang-flag">🇹🇷</span><span>Turkish</span><span class="lang-native">Türkçe</span></div>
-                <div class="lang-option" data-lang="hi" onclick="setLang('hi',this)"><span class="lang-flag">🇮🇳</span><span>Hindi</span><span class="lang-native">हिन्दी</span></div>
+            <div class="lang-switcher" id="langSwitcher">
+                <button class="lang-btn" onclick="toggleDropdown()" id="langBtn">
+                    <span class="lang-flag" id="currentFlag">🇺🇸</span>
+                    <span id="currentLabel">EN</span>
+                    <span class="arrow-mini">▼</span>
+                </button>
+                <div class="lang-dropdown" id="langDropdown">
+                    <div class="lang-option active" data-lang="en" onclick="setLang('en',this)"><span class="lang-flag">🇺🇸</span><span>English</span><span class="lang-native">English</span></div>
+                    <div class="lang-option" data-lang="ar" onclick="setLang('ar',this)"><span class="lang-flag">🇸🇦</span><span>Arabic</span><span class="lang-native">العربية</span></div>
+                    <div class="lang-option" data-lang="es" onclick="setLang('es',this)"><span class="lang-flag">🇪🇸</span><span>Spanish</span><span class="lang-native">Español</span></div>
+                    <div class="lang-option" data-lang="fr" onclick="setLang('fr',this)"><span class="lang-flag">🇫🇷</span><span>French</span><span class="lang-native">Français</span></div>
+                    <div class="lang-option" data-lang="de" onclick="setLang('de',this)"><span class="lang-flag">🇩🇪</span><span>German</span><span class="lang-native">Deutsch</span></div>
+                    <div class="lang-option" data-lang="pt" onclick="setLang('pt',this)"><span class="lang-flag">🇧🇷</span><span>Portuguese</span><span class="lang-native">Português</span></div>
+                    <div class="lang-option" data-lang="ru" onclick="setLang('ru',this)"><span class="lang-flag">🇷🇺</span><span>Russian</span><span class="lang-native">Русский</span></div>
+                    <div class="lang-option" data-lang="zh" onclick="setLang('zh',this)"><span class="lang-flag">🇨🇳</span><span>Chinese</span><span class="lang-native">中文</span></div>
+                    <div class="lang-option" data-lang="ja" onclick="setLang('ja',this)"><span class="lang-flag">🇯🇵</span><span>Japanese</span><span class="lang-native">日本語</span></div>
+                    <div class="lang-option" data-lang="ko" onclick="setLang('ko',this)"><span class="lang-flag">🇰🇷</span><span>Korean</span><span class="lang-native">한국어</span></div>
+                    <div class="lang-option" data-lang="tr" onclick="setLang('tr',this)"><span class="lang-flag">🇹🇷</span><span>Turkish</span><span class="lang-native">Türkçe</span></div>
+                    <div class="lang-option" data-lang="hi" onclick="setLang('hi',this)"><span class="lang-flag">🇮🇳</span><span>Hindi</span><span class="lang-native">हिन्दी</span></div>
+                </div>
             </div>
         </div>
     </nav>
 
-    <div class="hero">
-        <div class="badge"><span class="badge-dot"></span><span data-i18n="badge">Software Developer | Scripts & Applications Hub</span></div>
+    <!-- Hero -->
+    <div class="hero" id="home">
+        <div class="hero-glow-orb orb1"></div>
+        <div class="hero-glow-orb orb2"></div>
+        <div class="badge"><span class="badge-dot pulse-dot"></span><span data-i18n="badge">Advanced Scripts & Automation</span></div>
         <h1><span data-i18n="hero_welcome">Welcome to</span><span class="highlight">LPOLVO</span></h1>
-        <p data-i18n="hero_desc">A centralized hub for advanced scripts, automation tools, and innovative applications. Optimized for performance and stability.</p>
+        <p class="hero-subtitle" data-i18n="hero_desc">A centralized hub for premium scripts, intelligent automation tools, and innovative applications. Engineered for performance, stability, and scale.</p>
         <div class="hero-btns">
             <a href="#projects" class="btn-primary">🚀 <span data-i18n="btn_explore">Explore Projects</span></a>
             <a href="https://discord.gg/mA3SUaphr" target="_blank" class="btn-secondary">💬 <span data-i18n="btn_community">Join Community</span></a>
         </div>
-        <div class="social-links">
-            <a href="https://youtube.com/@lpolvoxd1" target="_blank" title="YouTube">▶</a>
-            <a href="https://www.instagram.com/4me.h4mz4_" target="_blank" title="Instagram">◉</a>
-            <a href="https://www.roblox.com/users/1931773196/profile" target="_blank" title="Roblox" class="roblox-icon">R</a>
+        <div class="social-row">
+            <a href="https://youtube.com/@lpolvoxd1" target="_blank" class="social-icon yt" title="YouTube">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M23.5 6.2a3 3 0 00-2.1-2.1C19.6 3.5 12 3.5 12 3.5s-7.6 0-9.4.6A3 3 0 00.5 6.2 31.4 31.4 0 000 12a31.4 31.4 0 00.5 5.8 3 3 0 002.1 2.1c1.8.6 9.4.6 9.4.6s7.6 0 9.4-.6a3 3 0 002.1-2.1A31.4 31.4 0 0024 12a31.4 31.4 0 00-.5-5.8zM9.5 15.5V8.5l6.5 3.5-6.5 3.5z"/></svg>
+            </a>
+            <a href="https://www.instagram.com/4me.h4mz4_" target="_blank" class="social-icon ig" title="Instagram">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.2c3.2 0 3.6 0 4.9.1a6.8 6.8 0 012.2.4 3.9 3.9 0 011.4.9 3.9 3.9 0 01.9 1.4 6.8 6.8 0 01.4 2.2c0 1.3.1 1.7.1 4.9s0 3.6-.1 4.9a6.8 6.8 0 01-.4 2.2 3.9 3.9 0 01-.9 1.4 3.9 3.9 0 01-1.4.9 6.8 6.8 0 01-2.2.4c-1.3 0-1.7.1-4.9.1s-3.6 0-4.9-.1a6.8 6.8 0 01-2.2-.4 3.9 3.9 0 01-1.4-.9 3.9 3.9 0 01-.9-1.4 6.8 6.8 0 01-.4-2.2c0-1.3-.1-1.7-.1-4.9s0-3.6.1-4.9a6.8 6.8 0 01.4-2.2 3.9 3.9 0 01.9-1.4 3.9 3.9 0 011.4-.9 6.8 6.8 0 012.2-.4c1.3 0 1.7-.1 4.9-.1zM12 0C8.7 0 8.3 0 7.1.1A9.1 9.1 0 004.2.7a5.9 5.9 0 00-2.1 1.4A5.9 5.9 0 00.7 4.2 9.1 9.1 0 00.1 7.1C0 8.3 0 8.7 0 12s0 3.7.1 4.9a9.1 9.1 0 00.6 2.9 5.9 5.9 0 001.4 2.1 5.9 5.9 0 002.1 1.4 9.1 9.1 0 002.9.6C8.3 24 8.7 24 12 24s3.7 0 4.9-.1a9.1 9.1 0 002.9-.6 5.9 5.9 0 002.1-1.4 5.9 5.9 0 001.4-2.1 9.1 9.1 0 00.6-2.9c0-1.2.1-1.6.1-4.9s0-3.7-.1-4.9a9.1 9.1 0 00-.6-2.9 5.9 5.9 0 00-1.4-2.1A5.9 5.9 0 0019.8.7 9.1 9.1 0 0016.9.1C15.7 0 15.3 0 12 0zm0 5.8a6.2 6.2 0 100 12.4 6.2 6.2 0 000-12.4zm0 10.2a4 4 0 110-8 4 4 0 010 8zm6.4-11.8a1.4 1.4 0 100 2.8 1.4 1.4 0 000-2.8z"/></svg>
+            </a>
+            <a href="https://www.roblox.com/users/1931773196/profile" target="_blank" class="social-icon rb" title="Roblox">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><rect x="2" y="2" width="20" height="20" rx="4" fill="none" stroke="currentColor" stroke-width="2"/><text x="12" y="17" text-anchor="middle" font-size="12" font-weight="900" fill="currentColor" stroke="none">R</text></svg>
+            </a>
         </div>
     </div>
 
+    <!-- Stats -->
     <section>
         <div class="stats">
             <div class="stat"><div class="stat-num">100+</div><div class="stat-label" data-i18n="stat_projects">Projects</div></div>
-            <div class="stat"><div class="stat-num">500+</div><div class="stat-label" data-i18n="stat_users">Users</div></div>
-            <div class="stat"><div class="stat-num">100%</div><div class="stat-label" data-i18n="stat_free">Free</div></div>
+            <div class="stat"><div class="stat-num">2K+</div><div class="stat-label" data-i18n="stat_users">Active Users</div></div>
+            <div class="stat"><div class="stat-num">100%</div><div class="stat-label" data-i18n="stat_free">Free Access</div></div>
         </div>
     </section>
 
+    <!-- Projects -->
     <section id="projects">
-        <h2 class="section-title"><span data-i18n="projects_title">Featured</span> <span class="accent" data-i18n="projects_title2">Projects</span></h2>
+        <div class="section-header">
+            <div class="section-tag" data-i18n="projects_tag">Portfolio</div>
+            <h2 class="section-title"><span data-i18n="projects_title">Featured</span> <span class="accent" data-i18n="projects_title2">Projects</span></h2>
+            <div class="glow-line"></div>
+        </div>
         <div class="cards-grid" id="cardsGrid">
-            <!-- Key System Card (static) -->
+            <!-- Key System Card -->
             <div class="card" id="keySystemCard">
-                <div class="card-img" style="background-image:none;">🔑<span class="card-tag">FEATURED</span></div>
+                <div class="card-glow"></div>
+                <div class="card-img" style="background-image:none; background: linear-gradient(135deg,#0f1525,#1a1040);">🔑<span class="card-tag featured">FEATURED</span></div>
                 <div class="card-body">
-                    <div class="card-title" data-i18n="card1_title">Key System</div>
-                    <div class="card-desc" data-i18n="card1_desc">A secure and advanced key system. Click to view script files.</div>
+                    <div class="card-title" data-i18n="card1_title">Secure Key System 2026</div>
+                    <div class="card-desc" data-i18n="card1_desc">Advanced authentication protocol with HWID binding and encrypted key validation. Enterprise-grade security.</div>
                     <a href="https://discord.gg/mA3SUaphr" target="_blank" class="card-btn buy-key">🛒 <span data-i18n="card_buy_key">Buy Monthly Key</span></a>
                 </div>
             </div>
-            <!-- Video cards will be injected here by JS -->
+            <!-- Video cards injected by JS -->
         </div>
     </section>
 
-    <footer><span data-i18n="footer">Made with ❤️ by </span><span class="accent">LPOLVO</span><span data-i18n="footer2"> · All rights reserved © 2026</span></footer>
+    <!-- About -->
+    <section id="about">
+        <div class="section-header">
+            <div class="section-tag" data-i18n="about_tag">Developer</div>
+            <h2 class="section-title"><span data-i18n="about_title">About</span> <span class="accent">LPOLVO</span></h2>
+            <div class="glow-line"></div>
+        </div>
+        <div class="about-grid">
+            <div class="about-info">
+                <h3 data-i18n="about_heading">Built for Performance.</h3>
+                <p data-i18n="about_desc">I specialize in developing advanced script architectures, secure authentication protocols, and seamless automation solutions. Every project is crafted with precision, optimized for speed, and built to scale.</p>
+                <div class="skill-tags">
+                    <span class="skill-tag">Python</span>
+                    <span class="skill-tag">Luau</span>
+                    <span class="skill-tag">JavaScript</span>
+                    <span class="skill-tag">HTML/CSS</span>
+                    <span class="skill-tag">API Integration</span>
+                    <span class="skill-tag">Secure Auth</span>
+                    <span class="skill-tag">Automation</span>
+                    <span class="skill-tag">Backend</span>
+                </div>
+            </div>
+            <div class="code-block">
+                <div class="code-title">lpolvo_engine.py</div>
+                <span class="keyword">class</span> <span class="class-name">LPOLVOSystem</span>:<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">def</span> <span class="function">__init__</span>(<span class="keyword">self</span>):<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">self</span>.status = <span class="string">"Online"</span><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">self</span>.version = <span class="string">"2026.1"</span><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">self</span>.security = <span class="string">"AES-256"</span><br><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">def</span> <span class="function">deploy</span>(<span class="keyword">self</span>):<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="function">print</span>(<span class="string">f"🚀 Deploying v</span><span class="keyword">{</span><span class="keyword">self</span>.version<span class="keyword">}</span><span class="string">..."</span>)<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">return</span> <span class="string">"All systems operational."</span><br><br>
+                <span class="keyword">if</span> <span class="variable">__name__</span> == <span class="string">"__main__"</span>:<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;LPOLVOSystem().deploy()<br>
+                <span class="comment"># © 2026 LPOLVO Developer</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-social">
+            <a href="https://youtube.com/@lpolvoxd1" target="_blank" title="YouTube">▶</a>
+            <a href="https://www.instagram.com/4me.h4mz4_" target="_blank" title="Instagram">◉</a>
+            <a href="https://www.roblox.com/users/1931773196/profile" target="_blank" title="Roblox">R</a>
+            <a href="https://discord.gg/mA3SUaphr" target="_blank" title="Discord">💬</a>
+        </div>
+        <span data-i18n="footer">Made with ❤️ by </span><span class="accent">LPOLVO</span><span data-i18n="footer2"> · All rights reserved © 2026</span>
+        <br><small style="opacity:0.5;font-size:10px;" data-i18n="footer_privacy">Basic non-identifiable visitor data collected for security & analytics.</small>
+    </footer>
 
     <script>
+        // ============ PARTICLES ============
+        const canvas = document.getElementById('particlesCanvas');
+        const ctx = canvas.getContext('2d');
+        let particles = [];
+        let animFrame;
+        let isLite = false;
+
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+        resizeCanvas();
+        window.addEventListener('resize', () => {
+            resizeCanvas();
+            initParticles();
+        });
+
+        function initParticles() {
+            particles = [];
+            const count = Math.min(Math.floor((canvas.width * canvas.height) / 8000), 120);
+            for (let i = 0; i < count; i++) {
+                particles.push({
+                    x: Math.random() * canvas.width,
+                    y: Math.random() * canvas.height,
+                    vx: (Math.random() - 0.5) * 0.5,
+                    vy: (Math.random() - 0.5) * 0.5,
+                    r: Math.random() * 1.6 + 0.4,
+                    alpha: Math.random() * 0.5 + 0.2,
+                    pulseSpeed: Math.random() * 0.02 + 0.01,
+                });
+            }
+        }
+        initParticles();
+
+        function animateParticles() {
+            if (isLite) {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                animFrame = requestAnimationFrame(animateParticles);
+                return;
+            }
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            particles.forEach(p => {
+                p.x += p.vx;
+                p.y += p.vy;
+                if (p.x < 0) p.x = canvas.width;
+                if (p.x > canvas.width) p.x = 0;
+                if (p.y < 0) p.y = canvas.height;
+                if (p.y > canvas.height) p.y = 0;
+                p.alpha += p.pulseSpeed * (Math.random() > 0.5 ? 1 : -1);
+                if (p.alpha > 0.7) p.alpha = 0.7;
+                if (p.alpha < 0.1) p.alpha = 0.1;
+                ctx.beginPath();
+                ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+                ctx.fillStyle = `rgba(0,224,255,${p.alpha})`;
+                ctx.fill();
+                // Draw connections
+                particles.forEach(p2 => {
+                    const dx = p.x - p2.x;
+                    const dy = p.y - p2.y;
+                    const dist = Math.sqrt(dx * dx + dy * dy);
+                    if (dist < 100) {
+                        ctx.beginPath();
+                        ctx.moveTo(p.x, p.y);
+                        ctx.lineTo(p2.x, p2.y);
+                        ctx.strokeStyle = `rgba(0,224,255,${0.04 * (1 - dist / 100)})`;
+                        ctx.lineWidth = 0.5;
+                        ctx.stroke();
+                    }
+                });
+            });
+            animFrame = requestAnimationFrame(animateParticles);
+        }
+        animateParticles();
+
+        // ============ LITE MODE ============
+        function toggleLiteMode() {
+            isLite = !isLite;
+            document.body.classList.toggle('lite', isLite);
+            const btn = document.getElementById('btnLite');
+            const liteText = btn.querySelector('[data-i18n]');
+            if (isLite) {
+                liteText.textContent = 'Neon';
+                btn.querySelector('.lite-dot').style.background = '#999';
+                btn.querySelector('.lite-dot').style.boxShadow = 'none';
+            } else {
+                liteText.textContent = 'Lite';
+                btn.querySelector('.lite-dot').style.background = '';
+                btn.querySelector('.lite-dot').style.boxShadow = '';
+            }
+            try { localStorage.setItem('lpolvo_lite', isLite ? '1' : '0'); } catch (e) {}
+            // Update i18n for lite button
+            const lang = document.documentElement.getAttribute('lang') || 'en';
+            if (T[lang] && T[lang].lite_mode) {
+                const txt = isLite ? (T[lang].neon_mode || 'Neon') : T[lang].lite_mode;
+                liteText.textContent = txt;
+            }
+        }
+
         // ============ VIDEO DATA ============
         const videoData = [
             { id: 'CFL4ozSOciY', url: 'https://youtu.be/CFL4ozSOciY' },
@@ -725,36 +1340,26 @@
             return `https://www.youtube.com/watch?v=${videoId}`;
         }
 
-        // ============ BUILD VIDEO CARDS ============
         function buildVideoCards() {
             const grid = document.getElementById('cardsGrid');
-            const keyCard = document.getElementById('keySystemCard');
-
             videoData.forEach((video, index) => {
                 const card = document.createElement('div');
                 card.className = 'card video-card';
-                card.setAttribute('data-video-id', video.id);
-                card.setAttribute('data-video-url', video.url);
-
-                const thumbUrl = getThumbnailUrl(video.id);
-                const watchUrl = getYoutubeWatchUrl(video.id);
-
                 card.innerHTML = `
-                    <div class="card-img video-thumb" style="background-image: url('${thumbUrl}');">
-                        <span class="card-tag">VIDEO</span>
+                    <div class="card-glow"></div>
+                    <div class="card-img video-thumb" style="background-image: url('${getThumbnailUrl(video.id)}');">
+                        <span class="card-tag new">VIDEO</span>
                     </div>
                     <div class="card-body">
-                        <div class="card-title video-title-${index}" data-fallback="Video ${index + 1}">Loading title...</div>
-                        <div class="card-desc" data-i18n="card_video_desc">Watch the full tutorial on YouTube.</div>
-                        <a href="${watchUrl}" target="_blank" class="card-btn">👁 <span data-i18n="card_view">View Script</span></a>
+                        <div class="card-title video-title-${index}" data-fallback="Tutorial ${index + 1}">Loading title...</div>
+                        <div class="card-desc" data-i18n="card_video_desc">Full tutorial with source code walkthrough on YouTube.</div>
+                        <a href="${getYoutubeWatchUrl(video.id)}" target="_blank" class="card-btn">👁 <span data-i18n="card_view">View Script</span></a>
                     </div>
                 `;
-
                 grid.appendChild(card);
             });
         }
 
-        // ============ FETCH YOUTUBE TITLES ============
         async function fetchVideoTitle(videoId, index) {
             try {
                 const response = await fetch(
@@ -765,314 +1370,417 @@
                 const titleEl = document.querySelector(`.video-title-${index}`);
                 if (titleEl && data.title) {
                     titleEl.textContent = data.title;
-                    titleEl.setAttribute('data-fetched', 'true');
                 }
             } catch (err) {
                 const titleEl = document.querySelector(`.video-title-${index}`);
                 if (titleEl) {
-                    const fallback = titleEl.getAttribute('data-fallback') || `Video ${index + 1}`;
-                    titleEl.textContent = fallback;
+                    titleEl.textContent = titleEl.getAttribute('data-fallback') || `Tutorial ${index + 1}`;
                 }
-                console.warn(`Could not fetch title for video ${videoId}:`, err.message);
             }
         }
 
         function fetchAllTitles() {
-            videoData.forEach((video, index) => {
-                fetchVideoTitle(video.id, index);
-            });
+            videoData.forEach((video, index) => fetchVideoTitle(video.id, index));
         }
 
         // ============ TRANSLATIONS ============
         const T = {
             en: {
                 flag: '🇺🇸',
-                label: 'English',
+                label: 'EN',
                 dir: 'ltr',
-                badge: 'Software Developer | Scripts & Applications Hub',
+                lite_mode: 'Lite',
+                neon_mode: 'Neon',
+                nav_home: 'Home',
+                nav_projects: 'Projects',
+                nav_about: 'About',
+                badge: 'Advanced Scripts & Automation',
                 hero_welcome: 'Welcome to',
-                hero_desc: 'A centralized hub for advanced scripts, automation tools, and innovative applications. Optimized for performance and stability.',
+                hero_desc: 'A centralized hub for premium scripts, intelligent automation tools, and innovative applications. Engineered for performance, stability, and scale.',
                 btn_explore: 'Explore Projects',
                 btn_community: 'Join Community',
                 stat_projects: 'Projects',
-                stat_users: 'Users',
-                stat_free: 'Free',
+                stat_users: 'Active Users',
+                stat_free: 'Free Access',
+                projects_tag: 'Portfolio',
                 projects_title: 'Featured',
                 projects_title2: 'Projects',
-                card1_title: 'Key System',
-                card1_desc: 'A secure and advanced key system. Get your monthly key now.',
+                card1_title: 'Secure Key System 2026',
+                card1_desc: 'Advanced authentication protocol with HWID binding and encrypted key validation. Enterprise-grade security.',
                 card_buy_key: 'Buy Monthly Key',
                 card_view: 'View Script',
-                card_video_desc: 'Watch the full tutorial on YouTube.',
-                nav_projects: 'Projects',
-                nav_about: 'About',
+                card_video_desc: 'Full tutorial with source code walkthrough on YouTube.',
+                about_tag: 'Developer',
+                about_title: 'About',
+                about_heading: 'Built for Performance.',
+                about_desc: 'I specialize in developing advanced script architectures, secure authentication protocols, and seamless automation solutions. Every project is crafted with precision, optimized for speed, and built to scale.',
                 footer: 'Made with ❤️ by ',
-                footer2: ' · All rights reserved © 2026'
+                footer2: ' · All rights reserved © 2026',
+                footer_privacy: 'Basic non-identifiable visitor data collected for security & analytics.',
             },
             ar: {
                 flag: '🇸🇦',
-                label: 'العربية',
+                label: 'AR',
                 dir: 'rtl',
-                badge: 'مطور برمجيات | مركز السكريبتات والتطبيقات',
-                hero_welcome: 'مرحباً بك في',
-                hero_desc: 'مركز متكامل للسكريبتات المتقدمة، أدوات الأتمتة، والتطبيقات المبتكرة. مُحسّن للأداء والاستقرار.',
-                btn_explore: 'استعرض المشاريع',
-                btn_community: 'انضم للمجتمع',
-                stat_projects: 'مشاريع',
-                stat_users: 'مستخدم',
-                stat_free: 'مجاناً',
-                projects_title: 'أبرز',
-                projects_title2: 'المشاريع',
-                card1_title: 'نظام المفاتيح',
-                card1_desc: 'نظام مفاتيح آمن ومتطور. احصل على مفتاحك الشهري الآن.',
-                card_buy_key: 'شراء مفتاح شهري',
-                card_view: 'عرض السكريبت',
-                card_video_desc: 'شاهد الشرح الكامل على يوتيوب.',
+                lite_mode: 'مبسط',
+                neon_mode: 'نيون',
+                nav_home: 'الرئيسية',
                 nav_projects: 'المشاريع',
                 nav_about: 'عني',
+                badge: 'سكريبتات وأتمتة متقدمة',
+                hero_welcome: 'مرحباً بك في',
+                hero_desc: 'مركز متكامل للسكريبتات المتميزة، أدوات الأتمتة الذكية، والتطبيقات المبتكرة. مصمم للأداء والاستقرار.',
+                btn_explore: 'استعرض المشاريع',
+                btn_community: 'انضم للمجتمع',
+                stat_projects: 'مشروع',
+                stat_users: 'مستخدم نشط',
+                stat_free: 'مجاناً',
+                projects_tag: 'المعرض',
+                projects_title: 'أبرز',
+                projects_title2: 'المشاريع',
+                card1_title: 'نظام المفاتيح الآمن 2026',
+                card1_desc: 'بروتوكول مصادقة متقدم مع ربط HWID وتشفير المفاتيح. أمان على مستوى المؤسسات.',
+                card_buy_key: 'شراء مفتاح شهري',
+                card_view: 'عرض السكريبت',
+                card_video_desc: 'شرح كامل مع الكود المصدري على يوتيوب.',
+                about_tag: 'المطور',
+                about_title: 'نبذة',
+                about_heading: 'مبني للأداء.',
+                about_desc: 'أنا متخصص في تطوير بنى السكريبتات المتقدمة، بروتوكولات المصادقة الآمنة، وحلول الأتمتة المتكاملة. كل مشروع يُصمم بدقة ويُحسّن للسرعة.',
                 footer: 'صُنع بـ ❤️ بواسطة ',
-                footer2: ' · جميع الحقوق محفوظة © 2026'
+                footer2: ' · جميع الحقوق محفوظة © 2026',
+                footer_privacy: 'يتم جمع بيانات زوار أساسية غير محددة للهوية لأغراض الأمان والتحليلات.',
             },
             es: {
                 flag: '🇪🇸',
-                label: 'Español',
+                label: 'ES',
                 dir: 'ltr',
-                badge: 'Desarrollador de Software | Hub de Scripts y Apps',
+                lite_mode: 'Lite',
+                neon_mode: 'Neón',
+                nav_home: 'Inicio',
+                nav_projects: 'Proyectos',
+                nav_about: 'Acerca de',
+                badge: 'Scripts Avanzados y Automatización',
                 hero_welcome: 'Bienvenido a',
-                hero_desc: 'Un hub centralizado para scripts avanzados, herramientas de automatización y aplicaciones innovadoras.',
+                hero_desc: 'Un hub centralizado para scripts premium, herramientas de automatización inteligentes y aplicaciones innovadoras.',
                 btn_explore: 'Explorar Proyectos',
                 btn_community: 'Unirse a la Comunidad',
                 stat_projects: 'Proyectos',
-                stat_users: 'Usuarios',
-                stat_free: 'Gratis',
-                projects_title: 'Proyectos',
-                projects_title2: 'Destacados',
-                card1_title: 'Sistema de Claves',
-                card1_desc: 'Un sistema de claves seguro y avanzado. Obtén tu clave mensual ahora.',
+                stat_users: 'Usuarios Activos',
+                stat_free: 'Acceso Gratuito',
+                projects_tag: 'Portafolio',
+                projects_title: 'Destacados',
+                projects_title2: 'Proyectos',
+                card1_title: 'Sistema de Claves Seguro 2026',
+                card1_desc: 'Protocolo de autenticación avanzado con vinculación HWID y validación de claves encriptadas.',
                 card_buy_key: 'Comprar Clave Mensual',
                 card_view: 'Ver Script',
-                card_video_desc: 'Mira el tutorial completo en YouTube.',
-                nav_projects: 'Proyectos',
-                nav_about: 'Acerca de',
+                card_video_desc: 'Tutorial completo con código fuente en YouTube.',
+                about_tag: 'Desarrollador',
+                about_title: 'Acerca de',
+                about_heading: 'Construido para el Rendimiento.',
+                about_desc: 'Me especializo en desarrollar arquitecturas de scripts avanzadas, protocolos de autenticación seguros y soluciones de automatización.',
                 footer: 'Hecho con ❤️ por ',
-                footer2: ' · Todos los derechos reservados © 2026'
+                footer2: ' · Todos los derechos reservados © 2026',
+                footer_privacy: 'Datos básicos no identificables recopilados para seguridad y análisis.',
             },
             fr: {
                 flag: '🇫🇷',
-                label: 'Français',
+                label: 'FR',
                 dir: 'ltr',
-                badge: 'Développeur Logiciel | Hub de Scripts et Applications',
+                lite_mode: 'Lite',
+                neon_mode: 'Néon',
+                nav_home: 'Accueil',
+                nav_projects: 'Projets',
+                nav_about: 'À propos',
+                badge: 'Scripts Avancés & Automatisation',
                 hero_welcome: 'Bienvenue sur',
-                hero_desc: 'Un hub centralisé pour scripts avancés, outils d\'automatisation et applications innovantes.',
+                hero_desc: 'Un hub centralisé pour scripts premium, outils d\'automatisation intelligents et applications innovantes.',
                 btn_explore: 'Explorer les Projets',
                 btn_community: 'Rejoindre la Communauté',
                 stat_projects: 'Projets',
-                stat_users: 'Utilisateurs',
-                stat_free: 'Gratuit',
-                projects_title: 'Projets',
-                projects_title2: 'En Vedette',
-                card1_title: 'Système de Clés',
-                card1_desc: 'Un système de clés sécurisé et avancé. Obtenez votre clé mensuelle.',
+                stat_users: 'Utilisateurs Actifs',
+                stat_free: 'Accès Gratuit',
+                projects_tag: 'Portfolio',
+                projects_title: 'En Vedette',
+                projects_title2: 'Projets',
+                card1_title: 'Système de Clés Sécurisé 2026',
+                card1_desc: 'Protocole d\'authentification avancé avec liaison HWID et validation de clés cryptées.',
                 card_buy_key: 'Acheter une Clé Mensuelle',
                 card_view: 'Voir le Script',
-                card_video_desc: 'Regardez le tutoriel complet sur YouTube.',
-                nav_projects: 'Projets',
-                nav_about: 'À propos',
+                card_video_desc: 'Tutoriel complet avec code source sur YouTube.',
+                about_tag: 'Développeur',
+                about_title: 'À propos',
+                about_heading: 'Conçu pour la Performance.',
+                about_desc: 'Je me spécialise dans le développement d\'architectures de scripts avancées et de solutions d\'automatisation sécurisées.',
                 footer: 'Fait avec ❤️ par ',
-                footer2: ' · Tous droits réservés © 2026'
+                footer2: ' · Tous droits réservés © 2026',
+                footer_privacy: 'Données de visiteurs non identifiables collectées pour la sécurité.',
             },
             de: {
                 flag: '🇩🇪',
-                label: 'Deutsch',
+                label: 'DE',
                 dir: 'ltr',
-                badge: 'Software-Entwickler | Scripts & Apps Hub',
+                lite_mode: 'Lite',
+                neon_mode: 'Neon',
+                nav_home: 'Start',
+                nav_projects: 'Projekte',
+                nav_about: 'Über mich',
+                badge: 'Fortgeschrittene Skripte & Automatisierung',
                 hero_welcome: 'Willkommen bei',
-                hero_desc: 'Ein zentraler Hub für fortgeschrittene Skripte, Automatisierungstools und innovative Anwendungen.',
+                hero_desc: 'Ein zentraler Hub für Premium-Skripte, intelligente Automatisierungstools und innovative Anwendungen.',
                 btn_explore: 'Projekte erkunden',
                 btn_community: 'Community beitreten',
                 stat_projects: 'Projekte',
-                stat_users: 'Nutzer',
+                stat_users: 'Aktive Nutzer',
                 stat_free: 'Kostenlos',
+                projects_tag: 'Portfolio',
                 projects_title: 'Ausgewählte',
                 projects_title2: 'Projekte',
-                card1_title: 'Schlüsselsystem',
-                card1_desc: 'Ein sicheres und fortschrittliches Schlüsselsystem. Holen Sie sich jetzt Ihren monatlichen Schlüssel.',
+                card1_title: 'Sicheres Schlüsselsystem 2026',
+                card1_desc: 'Fortschrittliches Authentifizierungsprotokoll mit HWID-Bindung und verschlüsselter Schlüsselvalidierung.',
                 card_buy_key: 'Monatlichen Schlüssel kaufen',
                 card_view: 'Script anzeigen',
-                card_video_desc: 'Sehen Sie sich das vollständige Tutorial auf YouTube an.',
-                nav_projects: 'Projekte',
-                nav_about: 'Über mich',
+                card_video_desc: 'Vollständiges Tutorial mit Quellcode auf YouTube.',
+                about_tag: 'Entwickler',
+                about_title: 'Über',
+                about_heading: 'Für Leistung gebaut.',
+                about_desc: 'Ich spezialisiere mich auf die Entwicklung fortschrittlicher Skriptarchitekturen und sicherer Automatisierungslösungen.',
                 footer: 'Gemacht mit ❤️ von ',
-                footer2: ' · Alle Rechte vorbehalten © 2026'
+                footer2: ' · Alle Rechte vorbehalten © 2026',
+                footer_privacy: 'Grundlegende nicht identifizierbare Besucherdaten für Sicherheit gesammelt.',
             },
             pt: {
                 flag: '🇧🇷',
-                label: 'Português',
+                label: 'PT',
                 dir: 'ltr',
-                badge: 'Desenvolvedor de Software | Hub de Scripts e Apps',
+                lite_mode: 'Lite',
+                neon_mode: 'Neon',
+                nav_home: 'Início',
+                nav_projects: 'Projetos',
+                nav_about: 'Sobre',
+                badge: 'Scripts Avançados & Automação',
                 hero_welcome: 'Bem-vindo ao',
-                hero_desc: 'Um hub centralizado para scripts avançados, ferramentas de automação e aplicações inovadoras.',
+                hero_desc: 'Um hub centralizado para scripts premium, ferramentas de automação inteligentes e aplicações inovadoras.',
                 btn_explore: 'Explorar Projetos',
                 btn_community: 'Entrar na Comunidade',
                 stat_projects: 'Projetos',
-                stat_users: 'Usuários',
-                stat_free: 'Grátis',
-                projects_title: 'Projetos',
-                projects_title2: 'em Destaque',
-                card1_title: 'Sistema de Chaves',
-                card1_desc: 'Um sistema de chaves seguro e avançado. Adquira sua chave mensal agora.',
+                stat_users: 'Usuários Ativos',
+                stat_free: 'Acesso Grátis',
+                projects_tag: 'Portfólio',
+                projects_title: 'Em Destaque',
+                projects_title2: 'Projetos',
+                card1_title: 'Sistema de Chaves Seguro 2026',
+                card1_desc: 'Protocolo de autenticação avançado com vinculação HWID e validação de chaves criptografadas.',
                 card_buy_key: 'Comprar Chave Mensal',
                 card_view: 'Ver Script',
-                card_video_desc: 'Assista ao tutorial completo no YouTube.',
-                nav_projects: 'Projetos',
-                nav_about: 'Sobre',
+                card_video_desc: 'Tutorial completo com código fonte no YouTube.',
+                about_tag: 'Desenvolvedor',
+                about_title: 'Sobre',
+                about_heading: 'Construído para Performance.',
+                about_desc: 'Me especializo em desenvolver arquiteturas de scripts avançadas e soluções de automação seguras.',
                 footer: 'Feito com ❤️ por ',
-                footer2: ' · Todos os direitos reservados © 2026'
+                footer2: ' · Todos os direitos reservados © 2026',
+                footer_privacy: 'Dados básicos não identificáveis coletados para segurança.',
             },
             ru: {
                 flag: '🇷🇺',
-                label: 'Русский',
+                label: 'RU',
                 dir: 'ltr',
-                badge: 'Разработчик ПО | Хаб Скриптов и Приложений',
+                lite_mode: 'Лайт',
+                neon_mode: 'Неон',
+                nav_home: 'Главная',
+                nav_projects: 'Проекты',
+                nav_about: 'О себе',
+                badge: 'Продвинутые Скрипты и Автоматизация',
                 hero_welcome: 'Добро пожаловать в',
-                hero_desc: 'Централизованный хаб для продвинутых скриптов, инструментов автоматизации и инновационных приложений.',
+                hero_desc: 'Централизованный хаб для премиум-скриптов, интеллектуальных инструментов автоматизации и инновационных приложений.',
                 btn_explore: 'Смотреть Проекты',
                 btn_community: 'Вступить в Сообщество',
                 stat_projects: 'Проекты',
-                stat_users: 'Пользователи',
+                stat_users: 'Активных Пользователей',
                 stat_free: 'Бесплатно',
+                projects_tag: 'Портфолио',
                 projects_title: 'Избранные',
                 projects_title2: 'Проекты',
-                card1_title: 'Система Ключей',
-                card1_desc: 'Безопасная и продвинутая система ключей. Получите месячный ключ сейчас.',
-                card_buy_key: 'Купить месячный ключ',
+                card1_title: 'Безопасная Система Ключей 2026',
+                card1_desc: 'Продвинутый протокол аутентификации с привязкой HWID и шифрованной проверкой ключей.',
+                card_buy_key: 'Купить Месячный Ключ',
                 card_view: 'Смотреть Скрипт',
-                card_video_desc: 'Смотрите полное руководство на YouTube.',
-                nav_projects: 'Проекты',
-                nav_about: 'О себе',
+                card_video_desc: 'Полное руководство с исходным кодом на YouTube.',
+                about_tag: 'Разработчик',
+                about_title: 'О себе',
+                about_heading: 'Создано для Производительности.',
+                about_desc: 'Я специализируюсь на разработке продвинутых скриптовых архитектур и безопасных решений автоматизации.',
                 footer: 'Сделано с ❤️ автором ',
-                footer2: ' · Все права защищены © 2026'
+                footer2: ' · Все права защищены © 2026',
+                footer_privacy: 'Основные неидентифицируемые данные собираются для безопасности.',
             },
             zh: {
                 flag: '🇨🇳',
-                label: '中文',
+                label: 'ZH',
                 dir: 'ltr',
-                badge: '软件开发者 | 脚本与应用中心',
+                lite_mode: '简洁',
+                neon_mode: '霓虹',
+                nav_home: '首页',
+                nav_projects: '项目',
+                nav_about: '关于',
+                badge: '高级脚本与自动化',
                 hero_welcome: '欢迎来到',
-                hero_desc: '一个集中的脚本、自动化工具和创新应用程序中心，针对性能和稳定性进行了优化。',
+                hero_desc: '一个集中的高级脚本、智能自动化工具和创新应用中心。专为性能、稳定性和规模化而设计。',
                 btn_explore: '探索项目',
                 btn_community: '加入社区',
                 stat_projects: '项目',
-                stat_users: '用户',
-                stat_free: '免费',
+                stat_users: '活跃用户',
+                stat_free: '免费访问',
+                projects_tag: '作品集',
                 projects_title: '精选',
                 projects_title2: '项目',
-                card1_title: '密钥系统',
-                card1_desc: '安全且先进的密钥系统。立即获取您的月度密钥。',
-                card_buy_key: '购买月密钥',
+                card1_title: '安全密钥系统 2026',
+                card1_desc: '具有HWID绑定和加密密钥验证的高级身份验证协议。企业级安全。',
+                card_buy_key: '购买月度密钥',
                 card_view: '查看脚本',
-                card_video_desc: '在YouTube上观看完整教程。',
-                nav_projects: '项目',
-                nav_about: '关于',
+                card_video_desc: 'YouTube上的完整教程与源代码讲解。',
+                about_tag: '开发者',
+                about_title: '关于',
+                about_heading: '为性能而生。',
+                about_desc: '我专注于开发高级脚本架构、安全身份验证协议和无缝自动化解决方案。',
                 footer: '由 ',
-                footer2: ' 用 ❤️ 制作 · 版权所有 © 2026'
+                footer2: ' 用 ❤️ 制作 · 版权所有 © 2026',
+                footer_privacy: '收集基本的非识别性访客数据用于安全与分析。',
             },
             ja: {
                 flag: '🇯🇵',
-                label: '日本語',
+                label: 'JA',
                 dir: 'ltr',
-                badge: 'ソフトウェア開発者 | スクリプト＆アプリハブ',
+                lite_mode: 'ライト',
+                neon_mode: 'ネオン',
+                nav_home: 'ホーム',
+                nav_projects: 'プロジェクト',
+                nav_about: '概要',
+                badge: '高度なスクリプトと自動化',
                 hero_welcome: 'ようこそ',
-                hero_desc: '高度なスクリプト、自動化ツール、革新的なアプリケーションの集中ハブ。',
+                hero_desc: 'プレミアムスクリプト、インテリジェントな自動化ツール、革新的なアプリケーションの集中ハブ。',
                 btn_explore: 'プロジェクトを見る',
                 btn_community: 'コミュニティに参加',
                 stat_projects: 'プロジェクト',
-                stat_users: 'ユーザー',
-                stat_free: '無料',
+                stat_users: 'アクティブユーザー',
+                stat_free: '無料アクセス',
+                projects_tag: 'ポートフォリオ',
                 projects_title: '注目の',
                 projects_title2: 'プロジェクト',
-                card1_title: 'キーシステム',
-                card1_desc: '安全で高度なキーシステム。今すぐ月額キーを取得。',
+                card1_title: 'セキュアキーシステム 2026',
+                card1_desc: 'HWIDバインディングと暗号化キー検証を備えた高度な認証プロトコル。',
                 card_buy_key: '月額キーを購入',
                 card_view: 'スクリプトを見る',
-                card_video_desc: 'YouTubeで完全なチュートリアルを見る。',
-                nav_projects: 'プロジェクト',
-                nav_about: 'について',
+                card_video_desc: 'YouTubeでの完全なチュートリアル。',
+                about_tag: '開発者',
+                about_title: '概要',
+                about_heading: 'パフォーマンスのために構築。',
+                about_desc: '高度なスクリプトアーキテクチャと安全な自動化ソリューションの開発を専門としています。',
                 footer: '',
-                footer2: ' が ❤️ を込めて制作 · 全著作権所有 © 2026'
+                footer2: ' が ❤️ を込めて制作 · 全著作権所有 © 2026',
+                footer_privacy: 'セキュリティのため基本的な非識別訪問者データを収集。',
             },
             ko: {
                 flag: '🇰🇷',
-                label: '한국어',
+                label: 'KO',
                 dir: 'ltr',
-                badge: '소프트웨어 개발자 | 스크립트 & 앱 허브',
+                lite_mode: '라이트',
+                neon_mode: '네온',
+                nav_home: '홈',
+                nav_projects: '프로젝트',
+                nav_about: '소개',
+                badge: '고급 스크립트 및 자동화',
                 hero_welcome: '환영합니다',
-                hero_desc: '고급 스크립트, 자동화 도구, 혁신적인 애플리케이션을 위한 중앙 허브.',
+                hero_desc: '프리미엄 스크립트, 지능형 자동화 도구 및 혁신적인 애플리케이션을 위한 중앙 허브.',
                 btn_explore: '프로젝트 탐색',
                 btn_community: '커뮤니티 참여',
                 stat_projects: '프로젝트',
-                stat_users: '사용자',
-                stat_free: '무료',
+                stat_users: '활성 사용자',
+                stat_free: '무료 접근',
+                projects_tag: '포트폴리오',
                 projects_title: '주요',
                 projects_title2: '프로젝트',
-                card1_title: '키 시스템',
-                card1_desc: '안전하고 고급스러운 키 시스템. 지금 월간 키를 받으세요.',
+                card1_title: '보안 키 시스템 2026',
+                card1_desc: 'HWID 바인딩 및 암호화된 키 검증을 갖춘 고급 인증 프로토콜.',
                 card_buy_key: '월간 키 구매',
                 card_view: '스크립트 보기',
-                card_video_desc: 'YouTube에서 전체 튜토리얼을 시청하세요.',
-                nav_projects: '프로젝트',
-                nav_about: '소개',
+                card_video_desc: 'YouTube에서 전체 튜토리얼 시청.',
+                about_tag: '개발자',
+                about_title: '소개',
+                about_heading: '성능을 위해 구축.',
+                about_desc: '고급 스크립트 아키텍처와 안전한 자동화 솔루션 개발을 전문으로 합니다.',
                 footer: '',
-                footer2: ' 가 ❤️ 로 제작 · 모든 권리 보유 © 2026'
+                footer2: ' 가 ❤️ 로 제작 · 모든 권리 보유 © 2026',
+                footer_privacy: '보안을 위해 기본 비식별 방문자 데이터 수집.',
             },
             tr: {
                 flag: '🇹🇷',
-                label: 'Türkçe',
+                label: 'TR',
                 dir: 'ltr',
-                badge: 'Yazılım Geliştirici | Betik & Uygulama Merkezi',
+                lite_mode: 'Sade',
+                neon_mode: 'Neon',
+                nav_home: 'Ana Sayfa',
+                nav_projects: 'Projeler',
+                nav_about: 'Hakkında',
+                badge: 'Gelişmiş Betikler ve Otomasyon',
                 hero_welcome: 'Hoş geldiniz',
-                hero_desc: 'Gelişmiş betikler, otomasyon araçları ve yenilikçi uygulamalar için merkezi bir hub.',
+                hero_desc: 'Premium betikler, akıllı otomasyon araçları ve yenilikçi uygulamalar için merkezi bir hub.',
                 btn_explore: 'Projeleri Keşfet',
                 btn_community: 'Topluluğa Katıl',
                 stat_projects: 'Proje',
-                stat_users: 'Kullanıcı',
+                stat_users: 'Aktif Kullanıcı',
                 stat_free: 'Ücretsiz',
+                projects_tag: 'Portföy',
                 projects_title: 'Öne Çıkan',
                 projects_title2: 'Projeler',
-                card1_title: 'Anahtar Sistemi',
-                card1_desc: 'Güvenli ve gelişmiş bir anahtar sistemi. Aylık anahtarınızı hemen alın.',
+                card1_title: 'Güvenli Anahtar Sistemi 2026',
+                card1_desc: 'HWID bağlama ve şifreli anahtar doğrulama ile gelişmiş kimlik doğrulama protokolü.',
                 card_buy_key: 'Aylık Anahtar Satın Al',
                 card_view: 'Betiği Gör',
-                card_video_desc: 'YouTube\'daki tam eğitimi izleyin.',
-                nav_projects: 'Projeler',
-                nav_about: 'Hakkında',
+                card_video_desc: 'YouTube\'da tam eğitim.',
+                about_tag: 'Geliştirici',
+                about_title: 'Hakkında',
+                about_heading: 'Performans İçin İnşa Edildi.',
+                about_desc: 'Gelişmiş betik mimarileri ve güvenli otomasyon çözümleri geliştirmede uzmanım.',
                 footer: '',
-                footer2: ' tarafından ❤️ ile yapıldı · Tüm hakları saklıdır © 2026'
+                footer2: ' tarafından ❤️ ile yapıldı · Tüm hakları saklıdır © 2026',
+                footer_privacy: 'Güvenlik için temel tanımlanamaz ziyaretçi verileri toplanır.',
             },
             hi: {
                 flag: '🇮🇳',
-                label: 'हिन्दी',
+                label: 'HI',
                 dir: 'ltr',
-                badge: 'सॉफ्टवेयर डेवलपर | स्क्रिप्ट्स और ऐप्स हब',
+                lite_mode: 'लाइट',
+                neon_mode: 'नियॉन',
+                nav_home: 'होम',
+                nav_projects: 'प्रोजेक्ट्स',
+                nav_about: 'के बारे में',
+                badge: 'उन्नत स्क्रिप्ट्स और ऑटोमेशन',
                 hero_welcome: 'स्वागत है',
-                hero_desc: 'उन्नत स्क्रिप्ट, ऑटोमेशन टूल्स और नवीन एप्लिकेशन के लिए एक केंद्रीकृत हब।',
+                hero_desc: 'प्रीमियम स्क्रिप्ट्स, इंटेलिजेंट ऑटोमेशन टूल्स और नवीन एप्लिकेशन के लिए एक केंद्रीकृत हब।',
                 btn_explore: 'प्रोजेक्ट देखें',
                 btn_community: 'समुदाय में शामिल हों',
-                stat_projects: 'प्रोजेक्ट',
-                stat_users: 'उपयोगकर्ता',
+                stat_projects: 'प्रोजेक्ट्स',
+                stat_users: 'सक्रिय उपयोगकर्ता',
                 stat_free: 'मुफ़्त',
+                projects_tag: 'पोर्टफोलियो',
                 projects_title: 'विशेष',
-                projects_title2: 'प्रोजेक्ट',
-                card1_title: 'की सिस्टम',
-                card1_desc: 'एक सुरक्षित और उन्नत की सिस्टम। अभी अपनी मासिक कुंजी प्राप्त करें।',
+                projects_title2: 'प्रोजेक्ट्स',
+                card1_title: 'सुरक्षित की सिस्टम 2026',
+                card1_desc: 'HWID बाइंडिंग और एन्क्रिप्टेड की वैलिडेशन के साथ उन्नत प्रमाणीकरण प्रोटोकॉल।',
                 card_buy_key: 'मासिक कुंजी खरीदें',
                 card_view: 'स्क्रिप्ट देखें',
-                card_video_desc: 'YouTube पर पूरा ट्यूटोरियल देखें।',
-                nav_projects: 'प्रोजेक्ट',
-                nav_about: 'के बारे में',
+                card_video_desc: 'YouTube पर पूर्ण ट्यूटोरियल।',
+                about_tag: 'डेवलपर',
+                about_title: 'के बारे में',
+                about_heading: 'प्रदर्शन के लिए निर्मित।',
+                about_desc: 'मैं उन्नत स्क्रिप्ट आर्किटेक्चर और सुरक्षित ऑटोमेशन समाधान विकसित करने में विशेषज्ञ हूं।',
                 footer: '',
-                footer2: ' द्वारा ❤️ के साथ बनाया गया · सर्वाधिकार सुरक्षित © 2026'
-            }
+                footer2: ' द्वारा ❤️ के साथ बनाया गया · सर्वाधिकार सुरक्षित © 2026',
+                footer_privacy: 'सुरक्षा के लिए बुनियादी गैर-पहचान योग्य आगंतुक डेटा एकत्र किया जाता है।',
+            },
         };
 
         // ============ LANGUAGE FUNCTIONS ============
@@ -1093,45 +1801,27 @@
                 const k = el.getAttribute('data-i18n');
                 if (t[k] !== undefined) el.textContent = t[k];
             });
-            // Update footer specially for languages where footer is empty
+            // Update lite button text
+            const liteBtn = document.getElementById('btnLite');
+            const liteSpan = liteBtn ? liteBtn.querySelector('[data-i18n]') : null;
+            if (liteSpan && t.lite_mode) {
+                liteSpan.textContent = isLite ? (t.neon_mode || 'Neon') : t.lite_mode;
+            }
+            // Update footer
             const footerEl = document.querySelector('footer');
             if (footerEl) {
-                const footerSpan = footerEl.querySelector('[data-i18n="footer"]');
-                const footerSpan2 = footerEl.querySelector('[data-i18n="footer2"]');
-                const accentSpan = footerEl.querySelector('.accent');
-                if (footerSpan && footerSpan2 && accentSpan) {
-                    if (t.footer === '') {
-                        footerSpan.textContent = '';
-                        footerSpan2.textContent = t.footer2;
-                        footerEl.innerHTML = '';
-                        footerEl.appendChild(document.createTextNode(''));
-                        const newAccent = document.createElement('span');
-                        newAccent.className = 'accent';
-                        newAccent.textContent = 'LPOLVO';
-                        footerEl.appendChild(newAccent);
-                        const newSpan2 = document.createElement('span');
-                        newSpan2.setAttribute('data-i18n', 'footer2');
-                        newSpan2.textContent = t.footer2;
-                        footerEl.appendChild(newSpan2);
-                    } else {
-                        footerEl.innerHTML = '';
-                        const newSpan = document.createElement('span');
-                        newSpan.setAttribute('data-i18n', 'footer');
-                        newSpan.textContent = t.footer;
-                        footerEl.appendChild(newSpan);
-                        const newAccent = document.createElement('span');
-                        newAccent.className = 'accent';
-                        newAccent.textContent = 'LPOLVO';
-                        footerEl.appendChild(newAccent);
-                        const newSpan2 = document.createElement('span');
-                        newSpan2.setAttribute('data-i18n', 'footer2');
-                        newSpan2.textContent = t.footer2;
-                        footerEl.appendChild(newSpan2);
-                    }
-                }
+                const footerSocial = footerEl.querySelector('.footer-social');
+                const footerSpans = footerEl.querySelectorAll('[data-i18n]');
+                let footerHTML = '';
+                if (footerSocial) footerHTML += footerSocial.outerHTML;
+                const fText = t.footer || '';
+                const f2Text = t.footer2 || '';
+                footerHTML += `<span data-i18n="footer">${fText}</span><span class="accent">LPOLVO</span><span data-i18n="footer2">${f2Text}</span>`;
+                footerHTML +=
+                    `<br><small style="opacity:0.5;font-size:10px;" data-i18n="footer_privacy">${t.footer_privacy || ''}</small>`;
+                footerEl.innerHTML = footerHTML;
             }
             document.getElementById('langSwitcher').classList.remove('open');
-            // Save preference
             try { localStorage.setItem('lpolvo_lang', lang); } catch (e) {}
         }
 
@@ -1144,7 +1834,13 @@
         function init() {
             buildVideoCards();
             fetchAllTitles();
-
+            // Load saved lite mode
+            try {
+                const savedLite = localStorage.getItem('lpolvo_lite');
+                if (savedLite === '1' && !isLite) {
+                    toggleLiteMode();
+                }
+            } catch (e) {}
             // Load saved language
             const savedLang = localStorage.getItem('lpolvo_lang');
             if (savedLang && T[savedLang]) {
