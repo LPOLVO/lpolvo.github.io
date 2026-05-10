@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-    <meta name="theme-color" content="#1a1a3e">
+    <meta name="theme-color" content="#030b1a">
     <title>LPOLVO | Scripts Hub</title>
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Rajdhani:wght@300;400;500;600;700&family=Cairo:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
@@ -157,6 +157,7 @@
             align-items: center;
             gap: 8px;
             flex-shrink: 0;
+            cursor: pointer;
         }
         .logo-icon {
             width: 36px;
@@ -205,6 +206,7 @@
             transition: all var(--transition);
             position: relative;
             padding: 3px 0;
+            cursor: pointer;
         }
         .nav-links a::after {
             content: '';
@@ -352,18 +354,96 @@
             opacity: 0.7;
         }
 
+        /* Menu dots styling */
+        .menu-dots {
+            position: relative;
+            flex-shrink: 0;
+        }
+        .dots-btn {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background: var(--surface2);
+            border: 1px solid var(--border);
+            color: var(--text2);
+            cursor: pointer;
+            font-size: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all var(--transition);
+            letter-spacing: 1px;
+            font-weight: 700;
+        }
+        .dots-btn:hover {
+            border-color: var(--accent);
+            color: var(--accent2);
+        }
+        .menu-dropdown {
+            position: absolute;
+            top: calc(100% + 6px);
+            right: 0;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            min-width: 180px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.7);
+            opacity: 0;
+            transform: translateY(-10px);
+            pointer-events: none;
+            transition: all 0.25s ease;
+            z-index: 200;
+            padding: 6px 0;
+        }
+        .menu-dots.open .menu-dropdown {
+            opacity: 1;
+            transform: translateY(0);
+            pointer-events: all;
+        }
+        .menu-item {
+            display: flex;
+            align-items: center;
+            gap: 9px;
+            padding: 10px 14px;
+            cursor: pointer;
+            font-size: 11px;
+            font-weight: 500;
+            color: var(--text2);
+            text-decoration: none;
+            transition: all 0.2s;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+            white-space: nowrap;
+        }
+        .menu-item:last-child {
+            border-bottom: none;
+        }
+        .menu-item:hover {
+            background: rgba(65, 105, 225, 0.08);
+            color: var(--accent2);
+        }
+
+        /* Page system */
+        .page {
+            display: none;
+            position: relative;
+            z-index: 2;
+            padding: 100px 16px 40px;
+            min-height: 100vh;
+        }
+        .page.active {
+            display: block;
+        }
+
         /* Hero */
         .hero {
             position: relative;
             z-index: 2;
-            min-height: 100vh;
-            min-height: 100dvh;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
             text-align: center;
-            padding: 130px 18px 60px;
+            padding: 50px 0;
         }
         .hero-glow-orb {
             position: absolute;
@@ -484,6 +564,8 @@
             position: relative;
             overflow: hidden;
             text-transform: uppercase;
+            cursor: pointer;
+            border: none;
         }
         .btn-primary:hover {
             transform: translateY(-2px);
@@ -507,12 +589,74 @@
             border: 2px solid var(--border);
             transition: all var(--transition);
             text-transform: uppercase;
+            cursor: pointer;
         }
         .btn-secondary:hover {
             border-color: var(--accent);
             box-shadow: 0 0 25px rgba(65, 105, 225, 0.2);
             transform: translateY(-2px);
             background: rgba(65, 105, 225, 0.04);
+        }
+        .btn-accent {
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+            background: rgba(45, 212, 191, 0.15);
+            border: 1px solid rgba(45, 212, 191, 0.4);
+            color: var(--accent3);
+            font-weight: 700;
+            padding: 12px 24px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-size: 12px;
+            letter-spacing: 0.8px;
+            transition: all var(--transition);
+            cursor: pointer;
+            text-transform: uppercase;
+        }
+        .btn-accent:hover {
+            background: rgba(45, 212, 191, 0.25);
+            box-shadow: 0 0 25px rgba(45, 212, 191, 0.3);
+        }
+        .btn-outline {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: var(--surface2);
+            border: 1px solid var(--border);
+            color: var(--text2);
+            padding: 8px 14px;
+            border-radius: 20px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 10px;
+            letter-spacing: 0.6px;
+            transition: all var(--transition);
+            cursor: pointer;
+            text-transform: uppercase;
+            font-family: inherit;
+        }
+        .btn-outline:hover {
+            border-color: var(--accent);
+            color: var(--accent2);
+        }
+        .btn-danger {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: rgba(244, 114, 182, 0.15);
+            border: 1px solid rgba(244, 114, 182, 0.4);
+            color: var(--accent4);
+            padding: 8px 14px;
+            border-radius: 20px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 10px;
+            letter-spacing: 0.6px;
+            transition: all var(--transition);
+            cursor: pointer;
+            text-transform: uppercase;
+            font-family: inherit;
         }
         .social-row {
             display: flex;
@@ -594,6 +738,8 @@
             font-weight: 800;
             letter-spacing: 0.5px;
             line-height: 1.2;
+            text-align: center;
+            margin-bottom: 20px;
         }
         .section-title .accent {
             background: linear-gradient(135deg, var(--accent), var(--accent2));
@@ -606,7 +752,7 @@
             height: 3px;
             background: var(--accent);
             border-radius: 8px;
-            margin: 12px auto 0;
+            margin: 12px auto 20px;
             box-shadow: var(--neon-blue);
         }
 
@@ -826,6 +972,201 @@
             box-shadow: 0 0 30px rgba(65, 105, 225, 0.4);
         }
 
+        /* Script cards for explore */
+        .script-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 14px;
+            transition: all var(--transition);
+            cursor: pointer;
+            position: relative;
+        }
+        .script-card:hover {
+            border-color: var(--accent2);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+        .script-card-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 8px;
+        }
+        .script-card-img {
+            width: 44px;
+            height: 44px;
+            border-radius: 10px;
+            object-fit: cover;
+            background: var(--surface3);
+            flex-shrink: 0;
+        }
+        .script-card-info h4 {
+            font-size: 13px;
+            font-weight: 700;
+            margin-bottom: 2px;
+        }
+        .script-card-info span {
+            font-size: 9px;
+            color: var(--muted);
+        }
+        .script-card-desc {
+            font-size: 10px;
+            color: var(--muted);
+            line-height: 1.5;
+            margin-bottom: 10px;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+        .script-card-actions {
+            display: flex;
+            gap: 10px;
+            font-size: 10px;
+            color: var(--muted);
+            align-items: center;
+        }
+        .script-card-actions span {
+            display: flex;
+            align-items: center;
+            gap: 3px;
+            cursor: pointer;
+            transition: color 0.2s;
+        }
+        .script-card-actions span:hover {
+            color: var(--accent2);
+        }
+        .liked {
+            color: var(--accent4);
+        }
+        .disliked {
+            color: #f87171;
+        }
+        .delete-btn {
+            position: absolute;
+            top: 8px;
+            right: 8px;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background: rgba(244, 114, 182, 0.1);
+            border: 1px solid rgba(244, 114, 182, 0.3);
+            color: var(--accent4);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 10px;
+            z-index: 5;
+            transition: all 0.2s;
+        }
+        .delete-btn:hover {
+            background: rgba(244, 114, 182, 0.25);
+        }
+
+        /* Forms */
+        .form-group {
+            margin-bottom: 14px;
+        }
+        .form-group label {
+            display: block;
+            font-size: 10px;
+            font-weight: 600;
+            color: var(--text2);
+            margin-bottom: 5px;
+            letter-spacing: 0.8px;
+            text-transform: uppercase;
+        }
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 10px 12px;
+            border-radius: 10px;
+            background: var(--surface2);
+            border: 1px solid var(--border);
+            color: var(--text);
+            font-family: inherit;
+            font-size: 12px;
+            transition: all var(--transition);
+            resize: vertical;
+        }
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--accent);
+            box-shadow: 0 0 15px rgba(65, 105, 225, 0.15);
+        }
+        .form-group textarea {
+            min-height: 80px;
+        }
+
+        /* Modal */
+        .modal-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 2000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 16px;
+            backdrop-filter: blur(4px);
+        }
+        .modal {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 20px;
+            width: 100%;
+            max-width: 400px;
+            max-height: 85vh;
+            overflow-y: auto;
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.6);
+            position: relative;
+        }
+        .modal h3 {
+            font-family: 'Orbitron', monospace;
+            font-size: 16px;
+            margin-bottom: 14px;
+            text-align: center;
+        }
+        .modal-close {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            background: var(--surface2);
+            border: 1px solid var(--border);
+            color: var(--muted);
+            cursor: pointer;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s;
+        }
+        .modal-close:hover {
+            color: var(--accent4);
+            border-color: var(--accent4);
+        }
+        .comment-item {
+            background: var(--surface2);
+            border-radius: 10px;
+            padding: 10px;
+            margin-bottom: 8px;
+            font-size: 10px;
+        }
+        .comment-item strong {
+            color: var(--accent2);
+        }
+        .comment-item small {
+            color: var(--muted);
+            font-size: 8px;
+        }
+
         /* About */
         .about-grid {
             display: flex;
@@ -1005,6 +1346,25 @@
             transform: translateX(-50%) translateY(0);
         }
 
+        /* Profile */
+        .profile-header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .profile-avatar {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            background: var(--surface3);
+            border: 3px solid var(--accent);
+            margin: 0 auto 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 30px;
+            box-shadow: var(--glow-blue);
+        }
+
         @media(min-width: 600px) {
             .nav-links {
                 display: flex;
@@ -1066,14 +1426,15 @@
     <canvas class="particles-canvas" id="particlesCanvas"></canvas>
 
     <nav>
-        <div class="logo-area">
+        <div class="logo-area" onclick="navigateTo('home')">
             <div class="logo-icon">L</div>
             <div class="logo-text">LP<span>O</span>LVO</div>
         </div>
         <ul class="nav-links">
-            <li><a href="#home" data-i18n="nav_home">Home</a></li>
-            <li><a href="#projects" data-i18n="nav_projects">Projects</a></li>
-            <li><a href="#about" data-i18n="nav_about">About</a></li>
+            <li><a onclick="navigateTo('home')" data-i18n="nav_home">Home</a></li>
+            <li><a onclick="navigateTo('explore')" data-i18n="nav_explore">Explore</a></li>
+            <li><a onclick="navigateTo('upload')" data-i18n="nav_upload">Upload</a></li>
+            <li><a onclick="navigateTo('about')" data-i18n="nav_about">About</a></li>
         </ul>
         <div class="nav-actions">
             <button class="btn-lite" id="btnLite" onclick="toggleLiteMode()" title="Toggle Lite Mode">
@@ -1100,123 +1461,186 @@
                     <div class="lang-option" data-lang="hi" onclick="setLang('hi',this)"><span class="lang-flag">🇮🇳</span><span>Hindi</span><span class="lang-native">हिन्दी</span></div>
                 </div>
             </div>
+            <div class="menu-dots" id="menuDots">
+                <button class="dots-btn" onclick="toggleMenuDots()">⋮</button>
+                <div class="menu-dropdown" id="menuDropdown">
+                    <span class="menu-item" onclick="navigateTo('home');toggleMenuDots();">🏠 Main</span>
+                    <a class="menu-item" href="https://discord.gg/mA3SUaphr" target="_blank"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="#5865F2" d="M20.3 4.8c-1.4-.7-3-1.2-4.6-1.4-.2.4-.4.8-.6 1.2-1.7-.3-3.5-.3-5.2 0-.2-.4-.4-.8-.6-1.2-1.6.2-3.2.7-4.6 1.4C2.1 8.4 1.1 12.5 1.5 16.6c1.9 1.4 3.8 2.3 5.7 2.8.5-.7.9-1.4 1.2-2.1-.7-.2-1.3-.5-1.9-.8.2-.1.3-.3.5-.4 3.8 1.8 7.9 1.8 11.7 0 .1.1.3.3.5.4-.6.3-1.2.6-1.9.8.3.7.7 1.4 1.2 2.1 1.9-.5 3.8-1.4 5.7-2.8.4-4.7-.7-8.8-3-12.4zM8.3 14.2c-1 0-1.9-.9-1.9-2s.8-2 1.9-2 1.9.9 1.9 2-.8 2-1.9 2zm7.4 0c-1 0-1.9-.9-1.9-2s.8-2 1.9-2 1.9.9 1.9 2-.8 2-1.9 2z"/></svg> Discord</a>
+                    <a class="menu-item" href="https://youtube.com/@lpolvoxd1" target="_blank"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="#FF0000" d="M23.5 6.2a3 3 0 00-2.1-2.1C19.6 3.5 12 3.5 12 3.5s-7.6 0-9.4.6A3 3 0 00.5 6.2 31.4 31.4 0 000 12a31.4 31.4 0 00.5 5.8 3 3 0 002.1 2.1c1.8.6 9.4.6 9.4.6s7.6 0 9.4-.6a3 3 0 002.1-2.1A31.4 31.4 0 0024 12a31.4 31.4 0 00-.5-5.8zM9.5 15.5V8.5l6.5 3.5-6.5 3.5z"/></svg> YouTube</a>
+                    <a class="menu-item" href="https://www.instagram.com/4me.h4mz4_" target="_blank"><svg width="16" height="16" viewBox="0 0 24 24"><defs><linearGradient id="igGrad" x1="0%" y1="100%" x2="100%" y2="0%"><stop offset="0%" stop-color="#f09433"/><stop offset="25%" stop-color="#e6683c"/><stop offset="50%" stop-color="#dc2743"/><stop offset="75%" stop-color="#cc2366"/><stop offset="100%" stop-color="#bc1888"/></linearGradient></defs><rect width="24" height="24" rx="6" fill="url(#igGrad)"/><circle cx="12" cy="12" r="5" fill="none" stroke="#fff" stroke-width="2"/><circle cx="17.5" cy="6.5" r="1.3" fill="#fff"/></svg> Instagram</a>
+                    <a class="menu-item" href="https://www.roblox.com/users/1931773196/profile" target="_blank"><svg width="16" height="16" viewBox="0 0 24 24"><rect width="24" height="24" rx="4" fill="#000"/><path d="M6 6h12v12H6z" fill="none" stroke="#fff" stroke-width="2"/><rect x="8" y="8" width="8" height="8" rx="2" fill="#fff"/></svg> Roblox</a>
+                    <span class="menu-item" onclick="resetData();toggleMenuDots();" style="color:var(--accent4);">🔄 Reset Data</span>
+                </div>
+            </div>
+            <button class="btn-outline" style="padding:6px 10px;font-size:8px;" id="btnProfile" onclick="handleProfileClick()">👤</button>
         </div>
     </nav>
 
-    <div class="hero" id="home">
-        <div class="hero-glow-orb orb1"></div>
-        <div class="hero-glow-orb orb2"></div>
-        <div class="badge"><span class="badge-dot pulse-dot"></span><span data-i18n="badge">Advanced Scripts & Automation</span></div>
-        <h1><span data-i18n="hero_welcome">Welcome to</span><span class="highlight">LPOLVO</span></h1>
-        <p class="hero-subtitle" data-i18n="hero_desc">A centralized hub for premium scripts, intelligent automation tools, and innovative applications. Engineered for performance, stability, and scale.</p>
-        <div class="hero-btns">
-            <a href="#projects" class="btn-primary">🔍 <span data-i18n="btn_explore">Explore Projects</span></a>
-            <a href="https://discord.gg/mA3SUaphr" target="_blank" class="btn-secondary">💬 <span data-i18n="btn_community">Join Community</span></a>
+    <!-- ============ HOME PAGE ============ -->
+    <div class="page active" id="page-home">
+        <div class="hero">
+            <div class="hero-glow-orb orb1"></div>
+            <div class="hero-glow-orb orb2"></div>
+            <div class="badge"><span class="badge-dot pulse-dot"></span><span data-i18n="badge">Advanced Scripts & Automation</span></div>
+            <h1><span data-i18n="hero_welcome">Welcome to</span><span class="highlight">LPOLVO</span></h1>
+            <p class="hero-subtitle" data-i18n="hero_desc">A centralized hub for premium scripts, intelligent automation tools, and innovative applications. Engineered for performance, stability, and scale.</p>
+            <div class="hero-btns">
+                <button class="btn-primary" onclick="navigateTo('explore')">🔍 <span data-i18n="btn_explore">Explore Projects</span></button>
+                <a href="https://discord.gg/mA3SUaphr" target="_blank" class="btn-secondary">💬 <span data-i18n="btn_community">Join Community</span></a>
+                <button class="btn-accent" onclick="navigateTo('explore')">📂 <span>Explore Users Scripts</span></button>
+                <button class="btn-accent" onclick="navigateTo('upload')">📤 <span>Upload Your Script</span></button>
+            </div>
+            <div class="social-row">
+                <a href="https://youtube.com/@lpolvoxd1" target="_blank" class="social-icon yt" title="YouTube">
+                    <svg viewBox="0 0 24 24"><path d="M23.5 6.2a3 3 0 00-2.1-2.1C19.6 3.5 12 3.5 12 3.5s-7.6 0-9.4.6A3 3 0 00.5 6.2 31.4 31.4 0 000 12a31.4 31.4 0 00.5 5.8 3 3 0 002.1 2.1c1.8.6 9.4.6 9.4.6s7.6 0 9.4-.6a3 3 0 002.1-2.1A31.4 31.4 0 0024 12a31.4 31.4 0 00-.5-5.8zM9.5 15.5V8.5l6.5 3.5-6.5 3.5z"/></svg>
+                </a>
+                <a href="https://www.instagram.com/4me.h4mz4_" target="_blank" class="social-icon ig" title="Instagram">
+                    <svg viewBox="0 0 24 24"><path d="M12 2.2c3.2 0 3.6 0 4.9.1a6.8 6.8 0 012.2.4 3.9 3.9 0 011.4.9 3.9 3.9 0 01.9 1.4 6.8 6.8 0 01.4 2.2c0 1.3.1 1.7.1 4.9s0 3.6-.1 4.9a6.8 6.8 0 01-.4 2.2 3.9 3.9 0 01-.9 1.4 3.9 3.9 0 01-1.4.9 6.8 6.8 0 01-2.2.4c-1.3 0-1.7.1-4.9.1s-3.6 0-4.9-.1a6.8 6.8 0 01-2.2-.4 3.9 3.9 0 01-1.4-.9 3.9 3.9 0 01-.9-1.4 6.8 6.8 0 01-.4-2.2c0-1.3-.1-1.7-.1-4.9s0-3.6.1-4.9a6.8 6.8 0 01.4-2.2 3.9 3.9 0 01.9-1.4 3.9 3.9 0 011.4-.9 6.8 6.8 0 012.2-.4c1.3 0 1.7-.1 4.9-.1zM12 0C8.7 0 8.3 0 7.1.1A9.1 9.1 0 004.2.7a5.9 5.9 0 00-2.1 1.4A5.9 5.9 0 00.7 4.2 9.1 9.1 0 00.1 7.1C0 8.3 0 8.7 0 12s0 3.7.1 4.9a9.1 9.1 0 00.6 2.9 5.9 5.9 0 001.4 2.1 5.9 5.9 0 002.1 1.4 9.1 9.1 0 002.9.6C8.3 24 8.7 24 12 24s3.7 0 4.9-.1a9.1 9.1 0 002.9-.6 5.9 5.9 0 002.1-1.4 5.9 5.9 0 001.4-2.1 9.1 9.1 0 00.6-2.9c0-1.2.1-1.6.1-4.9s0-3.7-.1-4.9a9.1 9.1 0 00-.6-2.9 5.9 5.9 0 00-1.4-2.1A5.9 5.9 0 0019.8.7 9.1 9.1 0 0016.9.1C15.7 0 15.3 0 12 0zm0 5.8a6.2 6.2 0 100 12.4 6.2 6.2 0 000-12.4zm0 10.2a4 4 0 110-8 4 4 0 010 8zm6.4-11.8a1.4 1.4 0 100 2.8 1.4 1.4 0 000-2.8z"/></svg>
+                </a>
+                <a href="https://www.roblox.com/users/1931773196/profile" target="_blank" class="social-icon rb" title="Roblox">
+                    <svg viewBox="0 0 24 24"><path d="M3 3h18v18H3V3zm2 2v14h14V5H5zm4 2h2v2H9V7zm4 0h2v2h-2V7zm-4 4h2v2H9v-2zm4 0h2v2h-2v-2zm-4 4h2v2H9v-2zm4 0h2v2h-2v-2z" fill-rule="evenodd" clip-rule="evenodd"/><rect x="7" y="7" width="10" height="10" rx="2" fill="currentColor" opacity="0.9"/></svg>
+                </a>
+            </div>
         </div>
-        <div class="social-row">
-            <a href="https://youtube.com/@lpolvoxd1" target="_blank" class="social-icon yt" title="YouTube">
-                <svg viewBox="0 0 24 24"><path d="M23.5 6.2a3 3 0 00-2.1-2.1C19.6 3.5 12 3.5 12 3.5s-7.6 0-9.4.6A3 3 0 00.5 6.2 31.4 31.4 0 000 12a31.4 31.4 0 00.5 5.8 3 3 0 002.1 2.1c1.8.6 9.4.6 9.4.6s7.6 0 9.4-.6a3 3 0 002.1-2.1A31.4 31.4 0 0024 12a31.4 31.4 0 00-.5-5.8zM9.5 15.5V8.5l6.5 3.5-6.5 3.5z"/></svg>
-            </a>
-            <a href="https://www.instagram.com/4me.h4mz4_" target="_blank" class="social-icon ig" title="Instagram">
-                <svg viewBox="0 0 24 24"><path d="M12 2.2c3.2 0 3.6 0 4.9.1a6.8 6.8 0 012.2.4 3.9 3.9 0 011.4.9 3.9 3.9 0 01.9 1.4 6.8 6.8 0 01.4 2.2c0 1.3.1 1.7.1 4.9s0 3.6-.1 4.9a6.8 6.8 0 01-.4 2.2 3.9 3.9 0 01-.9 1.4 3.9 3.9 0 01-1.4.9 6.8 6.8 0 01-2.2.4c-1.3 0-1.7.1-4.9.1s-3.6 0-4.9-.1a6.8 6.8 0 01-2.2-.4 3.9 3.9 0 01-1.4-.9 3.9 3.9 0 01-.9-1.4 6.8 6.8 0 01-.4-2.2c0-1.3-.1-1.7-.1-4.9s0-3.6.1-4.9a6.8 6.8 0 01.4-2.2 3.9 3.9 0 01.9-1.4 3.9 3.9 0 011.4-.9 6.8 6.8 0 012.2-.4c1.3 0 1.7-.1 4.9-.1zM12 0C8.7 0 8.3 0 7.1.1A9.1 9.1 0 004.2.7a5.9 5.9 0 00-2.1 1.4A5.9 5.9 0 00.7 4.2 9.1 9.1 0 00.1 7.1C0 8.3 0 8.7 0 12s0 3.7.1 4.9a9.1 9.1 0 00.6 2.9 5.9 5.9 0 001.4 2.1 5.9 5.9 0 002.1 1.4 9.1 9.1 0 002.9.6C8.3 24 8.7 24 12 24s3.7 0 4.9-.1a9.1 9.1 0 002.9-.6 5.9 5.9 0 002.1-1.4 5.9 5.9 0 001.4-2.1 9.1 9.1 0 00.6-2.9c0-1.2.1-1.6.1-4.9s0-3.7-.1-4.9a9.1 9.1 0 00-.6-2.9 5.9 5.9 0 00-1.4-2.1A5.9 5.9 0 0019.8.7 9.1 9.1 0 0016.9.1C15.7 0 15.3 0 12 0zm0 5.8a6.2 6.2 0 100 12.4 6.2 6.2 0 000-12.4zm0 10.2a4 4 0 110-8 4 4 0 010 8zm6.4-11.8a1.4 1.4 0 100 2.8 1.4 1.4 0 000-2.8z"/></svg>
-            </a>
-            <a href="https://www.roblox.com/users/1931773196/profile" target="_blank" class="social-icon rb" title="Roblox">
-                <svg viewBox="0 0 24 24"><path d="M3 3h18v18H3V3zm2 2v14h14V5H5zm4 2h2v2H9V7zm4 0h2v2h-2V7zm-4 4h2v2H9v-2zm4 0h2v2h-2v-2zm-4 4h2v2H9v-2zm4 0h2v2h-2v-2z" fill-rule="evenodd" clip-rule="evenodd"/><rect x="7" y="7" width="10" height="10" rx="2" fill="currentColor" opacity="0.9"/></svg>
-            </a>
+
+        <section>
+            <div class="stats">
+                <div class="stat">
+                    <div class="stat-num">20<span style="font-size:16px;">+</span></div>
+                    <div class="stat-label" data-i18n="stat_projects">Projects</div>
+                </div>
+                <div class="stat" id="liveUsersStat">
+                    <div class="stat-num live-counter" id="liveCounter">1,185</div>
+                    <div class="stat-label"><span class="live-dot"></span> <span data-i18n="stat_users">Active Users</span></div>
+                </div>
+                <div class="stat">
+                    <div class="stat-num">100<span style="font-size:16px;">%</span></div>
+                    <div class="stat-label" data-i18n="stat_free">Free Access</div>
+                </div>
+            </div>
+        </section>
+
+        <section id="projects">
+            <div class="section-header">
+                <div class="section-tag" data-i18n="projects_tag">Portfolio</div>
+                <h2 class="section-title"><span data-i18n="projects_title">Featured</span> <span class="accent" data-i18n="projects_title2">Projects</span></h2>
+                <div class="glow-line"></div>
+            </div>
+            <div class="cards-grid" id="cardsGrid">
+                <div class="card" id="keySystemCard">
+                    <div class="card-glow"></div>
+                    <div class="card-img" style="background: linear-gradient(135deg,#101d35,#1a1040);">🔑<span class="card-tag featured">FEATURED</span></div>
+                    <div class="card-body">
+                        <div class="card-title" data-i18n="card1_title">Secure Key System 2026</div>
+                        <div class="card-desc" data-i18n="card1_desc">Advanced authentication protocol with HWID binding and encrypted key validation.</div>
+                        <a href="https://discord.gg/mA3SUaphr" target="_blank" class="card-btn buy-key">🛒 <span data-i18n="card_buy_key">Buy Monthly Key</span></a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="about">
+            <div class="section-header">
+                <div class="section-tag" data-i18n="about_tag">Developer</div>
+                <h2 class="section-title"><span data-i18n="about_title">About</span> <span class="accent">LPOLVO</span></h2>
+                <div class="glow-line"></div>
+            </div>
+            <div class="about-grid">
+                <div class="about-info">
+                    <h3 data-i18n="about_heading">Built for Performance.</h3>
+                    <p data-i18n="about_desc">I specialize in developing advanced script architectures, secure authentication protocols, and seamless automation solutions. Every project is crafted with precision.</p>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Python</span><span class="skill-tag">Luau</span><span class="skill-tag">JavaScript</span><span class="skill-tag">HTML/CSS</span>
+                        <span class="skill-tag">API Integration</span><span class="skill-tag">Secure Auth</span><span class="skill-tag">Automation</span><span class="skill-tag">Backend</span>
+                    </div>
+                </div>
+                <div class="code-block">
+                    <div class="code-title">lpolvo_engine.py</div>
+                    <span class="keyword">class</span> <span class="class-name">LPOLVOSystem</span>:<br>
+                    &nbsp;&nbsp;<span class="keyword">def</span> <span class="function">__init__</span>(<span class="keyword">self</span>):<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">self</span>.status = <span class="string">"Online"</span><br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">self</span>.version = <span class="string">"2026.1"</span><br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">self</span>.security = <span class="string">"AES-256"</span><br><br>
+                    &nbsp;&nbsp;<span class="keyword">def</span> <span class="function">deploy</span>(<span class="keyword">self</span>):<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="function">print</span>(<span class="string">f"🚀 Deploying v<span class="keyword">{</span><span class="keyword">self</span>.version<span class="keyword">}</span>..."</span>)<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">return</span> <span class="string">"All systems operational."</span><br><br>
+                    <span class="keyword">if</span> <span class="variable">__name__</span> == <span class="string">"__main__"</span>:<br>
+                    &nbsp;&nbsp;LPOLVOSystem().deploy()<br>
+                    <span class="comment"># © 2026 LPOLVO Developer</span>
+                </div>
+            </div>
+        </section>
+
+        <footer>
+            <div class="footer-social">
+                <a href="https://youtube.com/@lpolvoxd1" target="_blank" title="YouTube">
+                    <svg viewBox="0 0 24 24"><path d="M23.5 6.2a3 3 0 00-2.1-2.1C19.6 3.5 12 3.5 12 3.5s-7.6 0-9.4.6A3 3 0 00.5 6.2 31.4 31.4 0 000 12a31.4 31.4 0 00.5 5.8 3 3 0 002.1 2.1c1.8.6 9.4.6 9.4.6s7.6 0 9.4-.6a3 3 0 002.1-2.1A31.4 31.4 0 0024 12a31.4 31.4 0 00-.5-5.8zM9.5 15.5V8.5l6.5 3.5-6.5 3.5z"/></svg>
+                </a>
+                <a href="https://www.instagram.com/4me.h4mz4_" target="_blank" title="Instagram">
+                    <svg viewBox="0 0 24 24"><path d="M12 2.2c3.2 0 3.6 0 4.9.1a6.8 6.8 0 012.2.4 3.9 3.9 0 011.4.9 3.9 3.9 0 01.9 1.4 6.8 6.8 0 01.4 2.2c0 1.3.1 1.7.1 4.9s0 3.6-.1 4.9a6.8 6.8 0 01-.4 2.2 3.9 3.9 0 01-.9 1.4 3.9 3.9 0 01-1.4.9 6.8 6.8 0 01-2.2.4c-1.3 0-1.7.1-4.9.1s-3.6 0-4.9-.1a6.8 6.8 0 01-2.2-.4 3.9 3.9 0 01-1.4-.9 3.9 3.9 0 01-.9-1.4 6.8 6.8 0 01-.4-2.2c0-1.3-.1-1.7-.1-4.9s0-3.6.1-4.9a6.8 6.8 0 01.4-2.2 3.9 3.9 0 01.9-1.4 3.9 3.9 0 011.4-.9 6.8 6.8 0 012.2-.4c1.3 0 1.7-.1 4.9-.1zM12 0C8.7 0 8.3 0 7.1.1A9.1 9.1 0 004.2.7a5.9 5.9 0 00-2.1 1.4A5.9 5.9 0 00.7 4.2 9.1 9.1 0 00.1 7.1C0 8.3 0 8.7 0 12s0 3.7.1 4.9a9.1 9.1 0 00.6 2.9 5.9 5.9 0 001.4 2.1 5.9 5.9 0 002.1 1.4 9.1 9.1 0 002.9.6C8.3 24 8.7 24 12 24s3.7 0 4.9-.1a9.1 9.1 0 002.9-.6 5.9 5.9 0 002.1-1.4 5.9 5.9 0 001.4-2.1 9.1 9.1 0 00.6-2.9c0-1.2.1-1.6.1-4.9s0-3.7-.1-4.9a9.1 9.1 0 00-.6-2.9 5.9 5.9 0 00-1.4-2.1A5.9 5.9 0 0019.8.7 9.1 9.1 0 0016.9.1C15.7 0 15.3 0 12 0zm0 5.8a6.2 6.2 0 100 12.4 6.2 6.2 0 000-12.4zm0 10.2a4 4 0 110-8 4 4 0 010 8zm6.4-11.8a1.4 1.4 0 100 2.8 1.4 1.4 0 000-2.8z"/></svg>
+                </a>
+                <a href="https://www.roblox.com/users/1931773196/profile" target="_blank" title="Roblox">
+                    <svg viewBox="0 0 24 24"><rect x="7" y="7" width="10" height="10" rx="2" fill="currentColor" opacity="0.9"/><path d="M3 3h18v18H3V3zm2 2v14h14V5H5z" fill="currentColor" opacity="0.6"/></svg>
+                </a>
+                <a href="https://discord.gg/mA3SUaphr" target="_blank" title="Discord">
+                    <svg viewBox="0 0 24 24"><path d="M20.3 4.8c-1.4-.7-3-1.2-4.6-1.4-.2.4-.4.8-.6 1.2-1.7-.3-3.5-.3-5.2 0-.2-.4-.4-.8-.6-1.2-1.6.2-3.2.7-4.6 1.4C2.1 8.4 1.1 12.5 1.5 16.6c1.9 1.4 3.8 2.3 5.7 2.8.5-.7.9-1.4 1.2-2.1-.7-.2-1.3-.5-1.9-.8.2-.1.3-.3.5-.4 3.8 1.8 7.9 1.8 11.7 0 .1.1.3.3.5.4-.6.3-1.2.6-1.9.8.3.7.7 1.4 1.2 2.1 1.9-.5 3.8-1.4 5.7-2.8.4-4.7-.7-8.8-3-12.4zM8.3 14.2c-1 0-1.9-.9-1.9-2s.8-2 1.9-2 1.9.9 1.9 2-.8 2-1.9 2zm7.4 0c-1 0-1.9-.9-1.9-2s.8-2 1.9-2 1.9.9 1.9 2-.8 2-1.9 2z"/></svg>
+                </a>
+            </div>
+            <span data-i18n="footer">Made with ❤️ by </span><span class="accent">LPOLVO</span><span data-i18n="footer2"> · All rights reserved © 2026</span>
+            <br><small style="opacity:0.45;font-size:9px;" data-i18n="footer_privacy">Basic non-identifiable visitor data collected for security & analytics.</small>
+        </footer>
+    </div>
+
+    <!-- ============ EXPLORE PAGE ============ -->
+    <div class="page" id="page-explore">
+        <h2 class="section-title"><span>Explore</span> <span class="accent">Users Scripts</span></h2>
+        <div class="glow-line"></div>
+        <div class="cards-grid" id="scriptsGrid" style="max-width:1000px;margin:0 auto;"></div>
+        <div id="scriptDetail" style="display:none;max-width:650px;margin:0 auto;"></div>
+    </div>
+
+    <!-- ============ UPLOAD PAGE ============ -->
+    <div class="page" id="page-upload">
+        <h2 class="section-title"><span>Upload</span> <span class="accent">Your Script</span></h2>
+        <div class="glow-line"></div>
+        <div style="max-width:500px;margin:0 auto;">
+            <div class="form-group"><label>Script Title</label><input type="text" id="uploadTitle" placeholder="Enter script title..."></div>
+            <div class="form-group"><label>Description</label><textarea id="uploadDesc" placeholder="Describe your script..."></textarea></div>
+            <div class="form-group"><label>Script Code (Luau/Python/JS)</label><textarea id="uploadCode" placeholder="Paste your script code here..." style="min-height:120px;"></textarea></div>
+            <div class="form-group"><label>Image (optional)</label><input type="file" id="uploadImageFile" accept="image/*" style="padding:8px;"></div>
+            <button class="btn-primary" onclick="uploadScript()" style="width:100%;justify-content:center;">📤 Upload Script</button>
+            <p style="text-align:center;color:var(--muted);font-size:9px;margin-top:8px;">By uploading, you agree to share your script publicly.</p>
         </div>
     </div>
 
-    <section>
-        <div class="stats">
-            <div class="stat">
-                <div class="stat-num">20<span style="font-size:16px;">+</span></div>
-                <div class="stat-label" data-i18n="stat_projects">Projects</div>
+    <!-- ============ PROFILE PAGE ============ -->
+    <div class="page" id="page-profile">
+        <h2 class="section-title"><span>My</span> <span class="accent">Profile</span></h2>
+        <div class="glow-line"></div>
+        <div style="max-width:400px;margin:0 auto;">
+            <div class="profile-header">
+                <div class="profile-avatar" id="profileAvatar">👤</div>
+                <h3 id="profileName">User</h3>
+                <p id="profileEmail" style="color:var(--muted);font-size:10px;"></p>
             </div>
-            <div class="stat" id="liveUsersStat">
-                <div class="stat-num live-counter" id="liveCounter">1,185</div>
-                <div class="stat-label"><span class="live-dot"></span> <span data-i18n="stat_users">Active Users</span></div>
-            </div>
-            <div class="stat">
-                <div class="stat-num">100<span style="font-size:16px;">%</span></div>
-                <div class="stat-label" data-i18n="stat_free">Free Access</div>
-            </div>
+            <div class="form-group"><label>Display Name</label><input type="text" id="editName"></div>
+            <div class="form-group"><label>Bio</label><textarea id="editBio" placeholder="Write something about yourself..."></textarea></div>
+            <button class="btn-primary" onclick="saveProfile()" style="width:100%;">💾 Save Profile</button>
+            <button class="btn-danger" onclick="logout()" style="width:100%;margin-top:8px;">🚪 Logout</button>
         </div>
-    </section>
+    </div>
 
-    <section id="projects">
-        <div class="section-header">
-            <div class="section-tag" data-i18n="projects_tag">Portfolio</div>
-            <h2 class="section-title"><span data-i18n="projects_title">Featured</span> <span class="accent" data-i18n="projects_title2">Projects</span></h2>
-            <div class="glow-line"></div>
-        </div>
-        <div class="cards-grid" id="cardsGrid">
-            <div class="card" id="keySystemCard">
-                <div class="card-glow"></div>
-                <div class="card-img" style="background: linear-gradient(135deg,#101d35,#1a1040);">🔑<span class="card-tag featured">FEATURED</span></div>
-                <div class="card-body">
-                    <div class="card-title" data-i18n="card1_title">Secure Key System 2026</div>
-                    <div class="card-desc" data-i18n="card1_desc">Advanced authentication protocol with HWID binding and encrypted key validation.</div>
-                    <a href="https://discord.gg/mA3SUaphr" target="_blank" class="card-btn buy-key">🛒 <span data-i18n="card_buy_key">Buy Monthly Key</span></a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="about">
-        <div class="section-header">
-            <div class="section-tag" data-i18n="about_tag">Developer</div>
-            <h2 class="section-title"><span data-i18n="about_title">About</span> <span class="accent">LPOLVO</span></h2>
-            <div class="glow-line"></div>
-        </div>
-        <div class="about-grid">
-            <div class="about-info">
-                <h3 data-i18n="about_heading">Built for Performance.</h3>
-                <p data-i18n="about_desc">I specialize in developing advanced script architectures, secure authentication protocols, and seamless automation solutions. Every project is crafted with precision.</p>
-                <div class="skill-tags">
-                    <span class="skill-tag">Python</span><span class="skill-tag">Luau</span><span class="skill-tag">JavaScript</span><span class="skill-tag">HTML/CSS</span>
-                    <span class="skill-tag">API Integration</span><span class="skill-tag">Secure Auth</span><span class="skill-tag">Automation</span><span class="skill-tag">Backend</span>
-                </div>
-            </div>
-            <div class="code-block">
-                <div class="code-title">lpolvo_engine.py</div>
-                <span class="keyword">class</span> <span class="class-name">LPOLVOSystem</span>:<br>
-                &nbsp;&nbsp;<span class="keyword">def</span> <span class="function">__init__</span>(<span class="keyword">self</span>):<br>
-                &nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">self</span>.status = <span class="string">"Online"</span><br>
-                &nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">self</span>.version = <span class="string">"2026.1"</span><br>
-                &nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">self</span>.security = <span class="string">"AES-256"</span><br><br>
-                &nbsp;&nbsp;<span class="keyword">def</span> <span class="function">deploy</span>(<span class="keyword">self</span>):<br>
-                &nbsp;&nbsp;&nbsp;&nbsp;<span class="function">print</span>(<span class="string">f"🚀 Deploying v<span class="keyword">{</span><span class="keyword">self</span>.version<span class="keyword">}</span>..."</span>)<br>
-                &nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">return</span> <span class="string">"All systems operational."</span><br><br>
-                <span class="keyword">if</span> <span class="variable">__name__</span> == <span class="string">"__main__"</span>:<br>
-                &nbsp;&nbsp;LPOLVOSystem().deploy()<br>
-                <span class="comment"># © 2026 LPOLVO Developer</span>
-            </div>
-        </div>
-    </section>
-
-    <footer>
-        <div class="footer-social">
-            <a href="https://youtube.com/@lpolvoxd1" target="_blank" title="YouTube">
-                <svg viewBox="0 0 24 24"><path d="M23.5 6.2a3 3 0 00-2.1-2.1C19.6 3.5 12 3.5 12 3.5s-7.6 0-9.4.6A3 3 0 00.5 6.2 31.4 31.4 0 000 12a31.4 31.4 0 00.5 5.8 3 3 0 002.1 2.1c1.8.6 9.4.6 9.4.6s7.6 0 9.4-.6a3 3 0 002.1-2.1A31.4 31.4 0 0024 12a31.4 31.4 0 00-.5-5.8zM9.5 15.5V8.5l6.5 3.5-6.5 3.5z"/></svg>
-            </a>
-            <a href="https://www.instagram.com/4me.h4mz4_" target="_blank" title="Instagram">
-                <svg viewBox="0 0 24 24"><path d="M12 2.2c3.2 0 3.6 0 4.9.1a6.8 6.8 0 012.2.4 3.9 3.9 0 011.4.9 3.9 3.9 0 01.9 1.4 6.8 6.8 0 01.4 2.2c0 1.3.1 1.7.1 4.9s0 3.6-.1 4.9a6.8 6.8 0 01-.4 2.2 3.9 3.9 0 01-.9 1.4 3.9 3.9 0 01-1.4.9 6.8 6.8 0 01-2.2.4c-1.3 0-1.7.1-4.9.1s-3.6 0-4.9-.1a6.8 6.8 0 01-2.2-.4 3.9 3.9 0 01-1.4-.9 3.9 3.9 0 01-.9-1.4 6.8 6.8 0 01-.4-2.2c0-1.3-.1-1.7-.1-4.9s0-3.6.1-4.9a6.8 6.8 0 01.4-2.2 3.9 3.9 0 01.9-1.4 3.9 3.9 0 011.4-.9 6.8 6.8 0 012.2-.4c1.3 0 1.7-.1 4.9-.1zM12 0C8.7 0 8.3 0 7.1.1A9.1 9.1 0 004.2.7a5.9 5.9 0 00-2.1 1.4A5.9 5.9 0 00.7 4.2 9.1 9.1 0 00.1 7.1C0 8.3 0 8.7 0 12s0 3.7.1 4.9a9.1 9.1 0 00.6 2.9 5.9 5.9 0 001.4 2.1 5.9 5.9 0 002.1 1.4 9.1 9.1 0 002.9.6C8.3 24 8.7 24 12 24s3.7 0 4.9-.1a9.1 9.1 0 002.9-.6 5.9 5.9 0 002.1-1.4 5.9 5.9 0 001.4-2.1 9.1 9.1 0 00.6-2.9c0-1.2.1-1.6.1-4.9s0-3.7-.1-4.9a9.1 9.1 0 00-.6-2.9 5.9 5.9 0 00-1.4-2.1A5.9 5.9 0 0019.8.7 9.1 9.1 0 0016.9.1C15.7 0 15.3 0 12 0zm0 5.8a6.2 6.2 0 100 12.4 6.2 6.2 0 000-12.4zm0 10.2a4 4 0 110-8 4 4 0 010 8zm6.4-11.8a1.4 1.4 0 100 2.8 1.4 1.4 0 000-2.8z"/></svg>
-            </a>
-            <a href="https://www.roblox.com/users/1931773196/profile" target="_blank" title="Roblox">
-                <svg viewBox="0 0 24 24"><rect x="7" y="7" width="10" height="10" rx="2" fill="currentColor" opacity="0.9"/><path d="M3 3h18v18H3V3zm2 2v14h14V5H5z" fill="currentColor" opacity="0.6"/></svg>
-            </a>
-            <a href="https://discord.gg/mA3SUaphr" target="_blank" title="Discord">
-                <svg viewBox="0 0 24 24"><path d="M20.3 4.8c-1.4-.7-3-1.2-4.6-1.4-.2.4-.4.8-.6 1.2-1.7-.3-3.5-.3-5.2 0-.2-.4-.4-.8-.6-1.2-1.6.2-3.2.7-4.6 1.4C2.1 8.4 1.1 12.5 1.5 16.6c1.9 1.4 3.8 2.3 5.7 2.8.5-.7.9-1.4 1.2-2.1-.7-.2-1.3-.5-1.9-.8.2-.1.3-.3.5-.4 3.8 1.8 7.9 1.8 11.7 0 .1.1.3.3.5.4-.6.3-1.2.6-1.9.8.3.7.7 1.4 1.2 2.1 1.9-.5 3.8-1.4 5.7-2.8.4-4.7-.7-8.8-3-12.4zM8.3 14.2c-1 0-1.9-.9-1.9-2s.8-2 1.9-2 1.9.9 1.9 2-.8 2-1.9 2zm7.4 0c-1 0-1.9-.9-1.9-2s.8-2 1.9-2 1.9.9 1.9 2-.8 2-1.9 2z"/></svg>
-            </a>
-        </div>
-        <span data-i18n="footer">Made with ❤️ by </span><span class="accent">LPOLVO</span><span data-i18n="footer2"> · All rights reserved © 2026</span>
-        <br><small style="opacity:0.45;font-size:9px;" data-i18n="footer_privacy">Basic non-identifiable visitor data collected for security & analytics.</small>
-    </footer>
+    <!-- ============ MODAL OVERLAY ============ -->
+    <div class="modal-overlay" id="modalOverlay" style="display:none;">
+        <div class="modal" id="modalContent"></div>
+    </div>
 
     <div class="toast" id="toast"></div>
 
     <script>
-        // ============ PARTICLES ============
+        // ============================================================
+        //  PARTICLES CANVAS
+        // ============================================================
         const canvas = document.getElementById('particlesCanvas');
         const ctx = canvas.getContext('2d');
         let particles = [];
@@ -1288,7 +1712,9 @@
         }
         animateParticles();
 
-        // ============ LIVE USER COUNTER ============
+        // ============================================================
+        //  LIVE USER COUNTER
+        // ============================================================
         let currentCount = 1138;
         const counterEl = document.getElementById('liveCounter');
         const liveStatEl = document.getElementById('liveUsersStat');
@@ -1331,7 +1757,9 @@
         setInterval(updateLiveCount, 4000 + Math.random() * 2000);
         setTimeout(updateLiveCount, 1500);
 
-        // ============ LITE MODE ============
+        // ============================================================
+        //  LITE MODE
+        // ============================================================
         function toggleLiteMode() {
             isLite = !isLite;
             document.body.classList.toggle('lite', isLite);
@@ -1354,7 +1782,9 @@
             showToast(isLite ? '☀️ Lite Mode Activated' : '🌙 Neon Mode Activated');
         }
 
-        // ============ TOAST ============
+        // ============================================================
+        //  TOAST NOTIFICATIONS
+        // ============================================================
         let toastTimeout;
 
         function showToast(msg) {
@@ -1366,7 +1796,433 @@
             toastTimeout = setTimeout(() => { t.classList.remove('show'); }, 2000);
         }
 
-        // ============ VIDEO DATA ============
+        // ============================================================
+        //  NAVIGATION SYSTEM
+        // ============================================================
+        function navigateTo(page) {
+            document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+            const target = document.getElementById('page-' + page);
+            if (target) target.classList.add('active');
+            document.getElementById('menuDots').classList.remove('open');
+            document.getElementById('langSwitcher').classList.remove('open');
+            if (page === 'explore') renderExplore();
+            if (page === 'profile') loadProfile();
+            document.getElementById('scriptDetail').style.display = 'none';
+            if (document.getElementById('scriptsGrid')) document.getElementById('scriptsGrid').style.display = '';
+            window.scrollTo(0, 0);
+        }
+
+        function toggleMenuDots() {
+            document.getElementById('menuDots').classList.toggle('open');
+            document.getElementById('langSwitcher').classList.remove('open');
+        }
+
+        document.addEventListener('click', function(e) {
+            const md = document.getElementById('menuDots');
+            if (md && !md.contains(e.target)) md.classList.remove('open');
+            const ls = document.getElementById('langSwitcher');
+            if (ls && !ls.contains(e.target)) ls.classList.remove('open');
+        });
+
+        function toggleDropdown() {
+            document.getElementById('langSwitcher').classList.toggle('open');
+            document.getElementById('menuDots').classList.remove('open');
+        }
+
+        // ============================================================
+        //  LOCAL STORAGE HELPERS
+        // ============================================================
+        function getStore(key, def) {
+            try { const d = localStorage.getItem(key); return d ? JSON.parse(d) : def; } catch (e) { return def; }
+        }
+        function setStore(key, val) {
+            try { localStorage.setItem(key, JSON.stringify(val)); } catch (e) {}
+        }
+
+        function getScripts() { return getStore('lpolvo_scripts', []); }
+        function getUsers() { return getStore('lpolvo_users', []); }
+        function getCurrentUser() { return getStore('lpolvo_currentUser', null); }
+        function setCurrentUser(u) { setStore('lpolvo_currentUser', u); }
+
+        // ============================================================
+        //  RESET DATA
+        // ============================================================
+        function resetData() {
+            localStorage.removeItem('lpolvo_scripts');
+            localStorage.removeItem('lpolvo_users');
+            localStorage.removeItem('lpolvo_currentUser');
+            updateProfileBtn();
+            showToast('🔄 All data has been reset!');
+            navigateTo('home');
+        }
+
+        // ============================================================
+        //  AUTHENTICATION SYSTEM
+        // ============================================================
+        function showAuthModal(mode) {
+            const overlay = document.getElementById('modalOverlay');
+            const content = document.getElementById('modalContent');
+            overlay.style.display = 'flex';
+            let html = `<div class="modal-close" onclick="closeModal()">✕</div>`;
+            html += `<h3>${mode === 'signup' ? 'Create Account' : 'Log In'}</h3>`;
+            html += `<div class="form-group"><label>Username</label><input type="text" id="authUsername" placeholder="Choose a username"></div>`;
+            html += `<div class="form-group"><label>Password</label><input type="password" id="authPass" placeholder="Min 4 characters"></div>`;
+            if (mode === 'signup') {
+                html += `<div class="form-group"><label>Confirm Password</label><input type="password" id="authPass2" placeholder="Repeat password"></div>`;
+                html += `<button class="btn-primary" onclick="handleSignup()" style="width:100%;">📝 Sign Up</button>`;
+            } else {
+                html += `<button class="btn-primary" onclick="handleLogin()" style="width:100%;">🔑 Log In</button>`;
+            }
+            html += `<p style="text-align:center;margin-top:8px;font-size:9px;color:var(--muted);cursor:pointer;" onclick="showAuthModal('${mode === 'signup' ? 'login' : 'signup'}')">${mode === 'signup' ? 'Already have an account? Log In' : 'New? Create Account'}</p>`;
+            content.innerHTML = html;
+        }
+
+        function closeModal() {
+            document.getElementById('modalOverlay').style.display = 'none';
+        }
+
+        // Close modal when clicking overlay background
+        document.addEventListener('click', function(e) {
+            if (e.target.id === 'modalOverlay') closeModal();
+        });
+
+        function handleSignup() {
+            const username = document.getElementById('authUsername').value.trim();
+            const pass = document.getElementById('authPass').value;
+            const pass2 = document.getElementById('authPass2').value;
+            if (!username || !pass) return showToast('❌ Please fill all fields');
+            if (pass.length < 4) return showToast('❌ Password must be at least 4 characters');
+            if (pass !== pass2) return showToast('❌ Passwords do not match');
+            const users = getUsers();
+            if (users.find(u => u.username === username)) return showToast('❌ Username already taken');
+            const newUser = {
+                id: Date.now().toString(),
+                username: username,
+                password: pass,
+                displayName: username,
+                bio: '',
+                avatar: '👤',
+                scripts: []
+            };
+            users.push(newUser);
+            setStore('lpolvo_users', users);
+            setCurrentUser({ id: newUser.id, username: newUser.username, displayName: newUser.displayName });
+            updateProfileBtn();
+            closeModal();
+            showToast('✅ Account created successfully! Welcome, ' + username + '!');
+            navigateTo('home');
+        }
+
+        function handleLogin() {
+            const username = document.getElementById('authUsername').value.trim();
+            const pass = document.getElementById('authPass').value;
+            if (!username || !pass) return showToast('❌ Please fill all fields');
+            const users = getUsers();
+            const user = users.find(u => u.username === username && u.password === pass);
+            if (!user) return showToast('❌ Invalid username or password');
+            setCurrentUser({ id: user.id, username: user.username, displayName: user.displayName });
+            updateProfileBtn();
+            closeModal();
+            showToast('✅ Welcome back, ' + user.displayName + '!');
+            navigateTo('home');
+        }
+
+        function logout() {
+            setCurrentUser(null);
+            updateProfileBtn();
+            showToast('👋 You have been logged out');
+            navigateTo('home');
+        }
+
+        function handleProfileClick() {
+            const user = getCurrentUser();
+            if (user) {
+                navigateTo('profile');
+            } else {
+                showAuthModal('login');
+            }
+        }
+
+        function updateProfileBtn() {
+            const btn = document.getElementById('btnProfile');
+            const user = getCurrentUser();
+            if (user) {
+                btn.textContent = '👤✓';
+                btn.style.color = 'var(--accent3)';
+            } else {
+                btn.textContent = '👤';
+                btn.style.color = '';
+            }
+        }
+
+        function loadProfile() {
+            const user = getCurrentUser();
+            if (!user) {
+                showAuthModal('login');
+                return;
+            }
+            const users = getUsers();
+            const fullUser = users.find(u => u.id === user.id);
+            if (!fullUser) return;
+            document.getElementById('profileAvatar').textContent = fullUser.avatar || '👤';
+            document.getElementById('profileName').textContent = fullUser.displayName || fullUser.username;
+            document.getElementById('profileEmail').textContent = '@' + fullUser.username;
+            document.getElementById('editName').value = fullUser.displayName || '';
+            document.getElementById('editBio').value = fullUser.bio || '';
+        }
+
+        function saveProfile() {
+            const user = getCurrentUser();
+            if (!user) return;
+            const users = getUsers();
+            const idx = users.findIndex(u => u.id === user.id);
+            if (idx === -1) return;
+            users[idx].displayName = document.getElementById('editName').value.trim() || users[idx].displayName;
+            users[idx].bio = document.getElementById('editBio').value.trim();
+            setStore('lpolvo_users', users);
+            setCurrentUser({ id: users[idx].id, username: users[idx].username, displayName: users[idx].displayName });
+            loadProfile();
+            showToast('✅ Profile saved!');
+        }
+
+        // ============================================================
+        //  SCRIPTS MANAGEMENT
+        // ============================================================
+        function uploadScript() {
+            const user = getCurrentUser();
+            if (!user) {
+                showAuthModal('signup');
+                showToast('⚠️ Please sign up or log in first');
+                return;
+            }
+            const title = document.getElementById('uploadTitle').value.trim();
+            const desc = document.getElementById('uploadDesc').value.trim();
+            const code = document.getElementById('uploadCode').value.trim();
+            const imageFile = document.getElementById('uploadImageFile').files[0];
+
+            if (!title || !code) return showToast('❌ Title and code are required');
+
+            const saveScript = (imageDataUrl) => {
+                const scripts = getScripts();
+                const newScript = {
+                    id: Date.now().toString(),
+                    title: title,
+                    desc: desc,
+                    code: code,
+                    image: imageDataUrl || '',
+                    authorId: user.id,
+                    authorName: user.displayName || user.username,
+                    authorUsername: user.username,
+                    date: new Date().toISOString(),
+                    likes: [],
+                    dislikes: [],
+                    comments: [],
+                    views: 0
+                };
+                scripts.unshift(newScript);
+                setStore('lpolvo_scripts', scripts);
+                document.getElementById('uploadTitle').value = '';
+                document.getElementById('uploadDesc').value = '';
+                document.getElementById('uploadCode').value = '';
+                document.getElementById('uploadImageFile').value = '';
+                showToast('✅ Script uploaded successfully!');
+                navigateTo('explore');
+            };
+
+            if (imageFile) {
+                const reader = new FileReader();
+                reader.onload = function() {
+                    saveScript(reader.result);
+                };
+                reader.readAsDataURL(imageFile);
+            } else {
+                saveScript('');
+            }
+        }
+
+        function deleteScript(id) {
+            const user = getCurrentUser();
+            if (!user) return;
+            let scripts = getScripts();
+            const script = scripts.find(s => s.id === id);
+            if (!script || script.authorId !== user.id) return;
+            scripts = scripts.filter(s => s.id !== id);
+            setStore('lpolvo_scripts', scripts);
+            renderExplore();
+            showToast('🗑️ Script deleted');
+        }
+
+        function renderExplore() {
+            const grid = document.getElementById('scriptsGrid');
+            const detail = document.getElementById('scriptDetail');
+            if (detail) detail.style.display = 'none';
+            if (grid) grid.style.display = '';
+            const scripts = getScripts();
+            if (!scripts.length) {
+                if (grid) grid.innerHTML = '<p style="text-align:center;color:var(--muted);grid-column:1/-1;padding:60px 0;">🚀 No scripts uploaded yet. Be the first to share your script!</p>';
+                return;
+            }
+            if (grid) {
+                grid.innerHTML = scripts.map(s => {
+                    const user = getCurrentUser();
+                    const isOwner = user && s.authorId === user.id;
+                    const liked = user && s.likes.includes(user.id);
+                    const disliked = user && s.dislikes.includes(user.id);
+                    return `
+                    <div class="script-card" onclick="viewScript('${s.id}')">
+                        ${isOwner ? `<button class="delete-btn" onclick="event.stopPropagation();deleteScript('${s.id}')">🗑</button>` : ''}
+                        <div class="script-card-header">
+                            <img class="script-card-img" src="${escapeHtml(s.image) || 'https://via.placeholder.com/100x100/1a1a3e/5b8af7?text=S'}" onerror="this.src='https://via.placeholder.com/100x100/1a1a3e/5b8af7?text=S'" alt="">
+                            <div class="script-card-info">
+                                <h4>${escapeHtml(s.title)}</h4>
+                                <span>by ${escapeHtml(s.authorName)} · ${new Date(s.date).toLocaleDateString()}</span>
+                            </div>
+                        </div>
+                        <div class="script-card-desc">${escapeHtml(s.desc || 'No description provided')}</div>
+                        <div class="script-card-actions">
+                            <span>👁 ${s.views || 0}</span>
+                            <span class="${liked ? 'liked' : ''}" onclick="event.stopPropagation();toggleLike('${s.id}')">👍 ${s.likes.length}</span>
+                            <span class="${disliked ? 'disliked' : ''}" onclick="event.stopPropagation();toggleDislike('${s.id}')">👎 ${s.dislikes.length}</span>
+                            <span>💬 ${s.comments.length}</span>
+                        </div>
+                    </div>`;
+                }).join('');
+            }
+        }
+
+        function viewScript(id) {
+            const scripts = getScripts();
+            const s = scripts.find(sc => sc.id === id);
+            if (!s) return;
+
+            // Increment view count
+            s.views = (s.views || 0) + 1;
+            setStore('lpolvo_scripts', scripts);
+
+            const grid = document.getElementById('scriptsGrid');
+            const detail = document.getElementById('scriptDetail');
+            if (grid) grid.style.display = 'none';
+            if (detail) detail.style.display = '';
+
+            const user = getCurrentUser();
+            const liked = user && s.likes.includes(user.id);
+            const disliked = user && s.dislikes.includes(user.id);
+
+            let html = `<button class="btn-outline" onclick="renderExplore()" style="margin-bottom:12px;">← Back to Scripts</button>`;
+            html += `<div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:16px;">`;
+            if (s.image) {
+                html += `<img src="${escapeHtml(s.image)}" style="width:100%;max-height:220px;object-fit:contain;border-radius:10px;margin-bottom:12px;" alt="">`;
+            }
+            html += `<h3 style="font-family:'Rajdhani',sans-serif;font-size:20px;">${escapeHtml(s.title)}</h3>`;
+            html += `<p style="font-size:10px;color:var(--muted);">by ${escapeHtml(s.authorName)} · ${new Date(s.date).toLocaleDateString()} · 👁 ${s.views} views</p>`;
+            html += `<p style="font-size:12px;margin:10px 0;line-height:1.6;">${escapeHtml(s.desc || 'No description provided')}</p>`;
+            html += `<pre style="background:var(--surface3);padding:14px;border-radius:10px;font-size:10px;overflow-x:auto;max-height:250px;line-height:1.5;border:1px solid var(--border);">${escapeHtml(s.code)}</pre>`;
+            html += `<div style="display:flex;gap:8px;margin:10px 0;flex-wrap:wrap;">`;
+            html += `<button class="btn-outline" onclick="copyCode('${escapeHtml(s.code).replace(/'/g, "\\'")}')">📋 Copy Script Code</button>`;
+            html += `<span class="btn-outline ${liked ? 'liked' : ''}" onclick="toggleLike('${s.id}');viewScript('${s.id}');" style="cursor:pointer;">👍 ${s.likes.length} Like</span>`;
+            html += `<span class="btn-outline ${disliked ? 'disliked' : ''}" onclick="toggleDislike('${s.id}');viewScript('${s.id}');" style="cursor:pointer;">👎 ${s.dislikes.length} Dislike</span>`;
+            html += `</div>`;
+
+            // Comments section
+            html += `<div style="margin-top:14px;"><strong style="font-size:11px;">💬 Comments (${s.comments.length})</strong></div>`;
+            if (s.comments.length > 0) {
+                s.comments.forEach(c => {
+                    html += `<div class="comment-item"><strong>${escapeHtml(c.authorName)}</strong> <small>${new Date(c.date).toLocaleDateString()}</small><br>${escapeHtml(c.text)}</div>`;
+                });
+            } else {
+                html += `<p style="font-size:9px;color:var(--muted);margin:8px 0;">No comments yet. Be the first!</p>`;
+            }
+            html += `<div style="display:flex;gap:6px;margin-top:10px;">`;
+            html += `<input type="text" id="commentInput" placeholder="Write a comment..." style="flex:1;padding:8px 12px;border-radius:10px;background:var(--surface2);border:1px solid var(--border);color:var(--text);font-size:10px;font-family:inherit;">`;
+            html += `<button class="btn-primary" onclick="addComment('${s.id}')" style="font-size:9px;padding:8px 14px;">💬 Post</button>`;
+            html += `</div>`;
+            html += `</div>`;
+
+            if (detail) detail.innerHTML = html;
+            window.scrollTo({ top: 100, behavior: 'smooth' });
+        }
+
+        function copyCode(code) {
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+                navigator.clipboard.writeText(code).then(() => showToast('📋 Code copied to clipboard!')).catch(() => showToast('❌ Failed to copy'));
+            } else {
+                // Fallback
+                const textarea = document.createElement('textarea');
+                textarea.value = code;
+                textarea.style.position = 'fixed';
+                textarea.style.opacity = '0';
+                document.body.appendChild(textarea);
+                textarea.select();
+                try { document.execCommand('copy'); showToast('📋 Code copied to clipboard!'); } catch (e) { showToast('❌ Failed to copy'); }
+                document.body.removeChild(textarea);
+            }
+        }
+
+        function toggleLike(scriptId) {
+            const user = getCurrentUser();
+            if (!user) { showAuthModal('login'); showToast('⚠️ Please log in first'); return; }
+            const scripts = getScripts();
+            const s = scripts.find(sc => sc.id === scriptId);
+            if (!s) return;
+            const idx = s.likes.indexOf(user.id);
+            if (idx > -1) {
+                s.likes.splice(idx, 1);
+            } else {
+                s.likes.push(user.id);
+                s.dislikes = s.dislikes.filter(uid => uid !== user.id);
+            }
+            setStore('lpolvo_scripts', scripts);
+            renderExplore();
+        }
+
+        function toggleDislike(scriptId) {
+            const user = getCurrentUser();
+            if (!user) { showAuthModal('login'); showToast('⚠️ Please log in first'); return; }
+            const scripts = getScripts();
+            const s = scripts.find(sc => sc.id === scriptId);
+            if (!s) return;
+            const idx = s.dislikes.indexOf(user.id);
+            if (idx > -1) {
+                s.dislikes.splice(idx, 1);
+            } else {
+                s.dislikes.push(user.id);
+                s.likes = s.likes.filter(uid => uid !== user.id);
+            }
+            setStore('lpolvo_scripts', scripts);
+            renderExplore();
+        }
+
+        function addComment(scriptId) {
+            const user = getCurrentUser();
+            if (!user) { showAuthModal('login'); showToast('⚠️ Please log in to comment'); return; }
+            const input = document.getElementById('commentInput');
+            if (!input) return;
+            const text = input.value.trim();
+            if (!text) return showToast('❌ Comment cannot be empty');
+            const scripts = getScripts();
+            const s = scripts.find(sc => sc.id === scriptId);
+            if (!s) return;
+            s.comments.push({
+                authorName: user.displayName || user.username,
+                authorId: user.id,
+                text: text,
+                date: new Date().toISOString()
+            });
+            setStore('lpolvo_scripts', scripts);
+            viewScript(scriptId);
+            showToast('✅ Comment posted!');
+        }
+
+        function escapeHtml(str) {
+            if (!str) return '';
+            const d = document.createElement('div');
+            d.textContent = str;
+            return d.innerHTML;
+        }
+
+        // ============================================================
+        //  VIDEO DATA & CARDS
+        // ============================================================
         const videoData = [
             { id: 'CFL4ozSOciY', url: 'https://youtu.be/CFL4ozSOciY' },
             { id: 'tkablaZrw3o', url: 'https://youtu.be/tkablaZrw3o' },
@@ -1385,6 +2241,7 @@
 
         function buildVideoCards() {
             const grid = document.getElementById('cardsGrid');
+            if (!grid) return;
             videoData.forEach((video, index) => {
                 const card = document.createElement('div');
                 card.className = 'card video-card';
@@ -1422,411 +2279,207 @@
             videoData.forEach((video, index) => fetchVideoTitle(video.id, index));
         }
 
-        // ============ TRANSLATIONS ============
+        // ============================================================
+        //  TRANSLATIONS
+        // ============================================================
         const T = {
-            en: {
-                flag: '🇺🇸',
-                label: 'EN',
-                dir: 'ltr',
-                lite_mode: 'Lite',
-                neon_mode: 'Neon',
-                nav_home: 'Home',
-                nav_projects: 'Projects',
-                nav_about: 'About',
+            en: { flag: '🇺🇸', label: 'EN', dir: 'ltr', lite_mode: 'Lite', neon_mode: 'Neon',
+                nav_home: 'Home', nav_explore: 'Explore', nav_upload: 'Upload', nav_about: 'About',
                 badge: 'Advanced Scripts & Automation',
                 hero_welcome: 'Welcome to',
                 hero_desc: 'A centralized hub for premium scripts, intelligent automation tools, and innovative applications. Engineered for performance, stability, and scale.',
-                btn_explore: 'Explore Projects',
-                btn_community: 'Join Community',
-                stat_projects: 'Projects',
-                stat_users: 'Active Users',
-                stat_free: 'Free Access',
-                projects_tag: 'Portfolio',
-                projects_title: 'Featured',
-                projects_title2: 'Projects',
-                card1_title: 'Secure Key System 2026',
-                card1_desc: 'Advanced authentication protocol with HWID binding and encrypted key validation.',
-                card_buy_key: 'Buy Monthly Key',
-                card_view: 'View Script',
+                btn_explore: 'Explore Projects', btn_community: 'Join Community',
+                stat_projects: 'Projects', stat_users: 'Active Users', stat_free: 'Free Access',
+                projects_tag: 'Portfolio', projects_title: 'Featured', projects_title2: 'Projects',
+                card1_title: 'Secure Key System 2026', card1_desc: 'Advanced authentication protocol with HWID binding and encrypted key validation.',
+                card_buy_key: 'Buy Monthly Key', card_view: 'View Script',
                 card_video_desc: 'Full tutorial with source code walkthrough on YouTube.',
-                about_tag: 'Developer',
-                about_title: 'About',
-                about_heading: 'Built for Performance.',
+                about_tag: 'Developer', about_title: 'About', about_heading: 'Built for Performance.',
                 about_desc: 'I specialize in developing advanced script architectures, secure authentication protocols, and seamless automation solutions. Every project is crafted with precision.',
-                footer: 'Made with ❤️ by ',
-                footer2: ' · All rights reserved © 2026',
+                footer: 'Made with ❤️ by ', footer2: ' · All rights reserved © 2026',
                 footer_privacy: 'Basic non-identifiable visitor data collected for security & analytics.',
             },
-            ar: {
-                flag: '🇸🇦',
-                label: 'AR',
-                dir: 'rtl',
-                lite_mode: 'مبسط',
-                neon_mode: 'نيون',
-                nav_home: 'الرئيسية',
-                nav_projects: 'المشاريع',
-                nav_about: 'عني',
+            ar: { flag: '🇸🇦', label: 'AR', dir: 'rtl', lite_mode: 'مبسط', neon_mode: 'نيون',
+                nav_home: 'الرئيسية', nav_explore: 'استكشف', nav_upload: 'رفع', nav_about: 'عني',
                 badge: 'سكريبتات وأتمتة متقدمة',
                 hero_welcome: 'مرحباً بك في',
                 hero_desc: 'مركز متكامل للسكريبتات المتميزة، أدوات الأتمتة الذكية، والتطبيقات المبتكرة. مصمم للأداء والاستقرار.',
-                btn_explore: 'استعرض المشاريع',
-                btn_community: 'انضم للمجتمع',
-                stat_projects: 'مشروع',
-                stat_users: 'مستخدم نشط',
-                stat_free: 'مجاناً',
-                projects_tag: 'المعرض',
-                projects_title: 'أبرز',
-                projects_title2: 'المشاريع',
-                card1_title: 'نظام المفاتيح الآمن 2026',
-                card1_desc: 'بروتوكول مصادقة متقدم مع ربط HWID وتشفير المفاتيح.',
-                card_buy_key: 'شراء مفتاح شهري',
-                card_view: 'عرض السكريبت',
+                btn_explore: 'استعرض المشاريع', btn_community: 'انضم للمجتمع',
+                stat_projects: 'مشروع', stat_users: 'مستخدم نشط', stat_free: 'مجاناً',
+                projects_tag: 'المعرض', projects_title: 'أبرز', projects_title2: 'المشاريع',
+                card1_title: 'نظام المفاتيح الآمن 2026', card1_desc: 'بروتوكول مصادقة متقدم مع ربط HWID وتشفير المفاتيح.',
+                card_buy_key: 'شراء مفتاح شهري', card_view: 'عرض السكريبت',
                 card_video_desc: 'شرح كامل مع الكود المصدري على يوتيوب.',
-                about_tag: 'المطور',
-                about_title: 'نبذة',
-                about_heading: 'مبني للأداء.',
+                about_tag: 'المطور', about_title: 'نبذة', about_heading: 'مبني للأداء.',
                 about_desc: 'أنا متخصص في تطوير بنى السكريبتات المتقدمة، بروتوكولات المصادقة الآمنة، وحلول الأتمتة المتكاملة.',
-                footer: 'صُنع بـ ❤️ بواسطة ',
-                footer2: ' · جميع الحقوق محفوظة © 2026',
+                footer: 'صُنع بـ ❤️ بواسطة ', footer2: ' · جميع الحقوق محفوظة © 2026',
                 footer_privacy: 'يتم جمع بيانات زوار أساسية غير محددة للهوية لأغراض الأمان.',
             },
-            es: {
-                flag: '🇪🇸',
-                label: 'ES',
-                dir: 'ltr',
-                lite_mode: 'Lite',
-                neon_mode: 'Neón',
-                nav_home: 'Inicio',
-                nav_projects: 'Proyectos',
-                nav_about: 'Acerca de',
+            es: { flag: '🇪🇸', label: 'ES', dir: 'ltr', lite_mode: 'Lite', neon_mode: 'Neón',
+                nav_home: 'Inicio', nav_explore: 'Explorar', nav_upload: 'Subir', nav_about: 'Acerca de',
                 badge: 'Scripts Avanzados y Automatización',
                 hero_welcome: 'Bienvenido a',
                 hero_desc: 'Un hub centralizado para scripts premium y herramientas de automatización inteligentes.',
-                btn_explore: 'Explorar Proyectos',
-                btn_community: 'Unirse a la Comunidad',
-                stat_projects: 'Proyectos',
-                stat_users: 'Usuarios Activos',
-                stat_free: 'Acceso Gratuito',
-                projects_tag: 'Portafolio',
-                projects_title: 'Destacados',
-                projects_title2: 'Proyectos',
-                card1_title: 'Sistema de Claves Seguro 2026',
-                card1_desc: 'Protocolo de autenticación avanzado con vinculación HWID y validación de claves encriptadas.',
-                card_buy_key: 'Comprar Clave Mensual',
-                card_view: 'Ver Script',
+                btn_explore: 'Explorar Proyectos', btn_community: 'Unirse a la Comunidad',
+                stat_projects: 'Proyectos', stat_users: 'Usuarios Activos', stat_free: 'Acceso Gratuito',
+                projects_tag: 'Portafolio', projects_title: 'Destacados', projects_title2: 'Proyectos',
+                card1_title: 'Sistema de Claves Seguro 2026', card1_desc: 'Protocolo de autenticación avanzado con vinculación HWID.',
+                card_buy_key: 'Comprar Clave Mensual', card_view: 'Ver Script',
                 card_video_desc: 'Tutorial completo con código fuente en YouTube.',
-                about_tag: 'Desarrollador',
-                about_title: 'Acerca de',
-                about_heading: 'Construido para el Rendimiento.',
+                about_tag: 'Desarrollador', about_title: 'Acerca de', about_heading: 'Construido para el Rendimiento.',
                 about_desc: 'Me especializo en desarrollar arquitecturas de scripts avanzadas y soluciones de automatización.',
-                footer: 'Hecho con ❤️ por ',
-                footer2: ' · Todos los derechos reservados © 2026',
+                footer: 'Hecho con ❤️ por ', footer2: ' · Todos los derechos reservados © 2026',
                 footer_privacy: 'Datos básicos no identificables recopilados para seguridad.',
             },
-            fr: {
-                flag: '🇫🇷',
-                label: 'FR',
-                dir: 'ltr',
-                lite_mode: 'Lite',
-                neon_mode: 'Néon',
-                nav_home: 'Accueil',
-                nav_projects: 'Projets',
-                nav_about: 'À propos',
+            fr: { flag: '🇫🇷', label: 'FR', dir: 'ltr', lite_mode: 'Lite', neon_mode: 'Néon',
+                nav_home: 'Accueil', nav_explore: 'Explorer', nav_upload: 'Télécharger', nav_about: 'À propos',
                 badge: 'Scripts Avancés & Automatisation',
                 hero_welcome: 'Bienvenue sur',
                 hero_desc: 'Un hub centralisé pour scripts premium et outils d\'automatisation intelligents.',
-                btn_explore: 'Explorer les Projets',
-                btn_community: 'Rejoindre la Communauté',
-                stat_projects: 'Projets',
-                stat_users: 'Utilisateurs Actifs',
-                stat_free: 'Accès Gratuit',
-                projects_tag: 'Portfolio',
-                projects_title: 'En Vedette',
-                projects_title2: 'Projets',
-                card1_title: 'Système de Clés Sécurisé 2026',
-                card1_desc: 'Protocole d\'authentification avancé avec liaison HWID et validation de clés cryptées.',
-                card_buy_key: 'Acheter une Clé Mensuelle',
-                card_view: 'Voir le Script',
+                btn_explore: 'Explorer les Projets', btn_community: 'Rejoindre la Communauté',
+                stat_projects: 'Projets', stat_users: 'Utilisateurs Actifs', stat_free: 'Accès Gratuit',
+                projects_tag: 'Portfolio', projects_title: 'En Vedette', projects_title2: 'Projets',
+                card1_title: 'Système de Clés Sécurisé 2026', card1_desc: 'Protocole d\'authentification avancé avec liaison HWID.',
+                card_buy_key: 'Acheter une Clé Mensuelle', card_view: 'Voir le Script',
                 card_video_desc: 'Tutoriel complet avec code source sur YouTube.',
-                about_tag: 'Développeur',
-                about_title: 'À propos',
-                about_heading: 'Conçu pour la Performance.',
+                about_tag: 'Développeur', about_title: 'À propos', about_heading: 'Conçu pour la Performance.',
                 about_desc: 'Je me spécialise dans le développement d\'architectures de scripts avancées.',
-                footer: 'Fait avec ❤️ par ',
-                footer2: ' · Tous droits réservés © 2026',
+                footer: 'Fait avec ❤️ par ', footer2: ' · Tous droits réservés © 2026',
                 footer_privacy: 'Données de visiteurs non identifiables collectées pour la sécurité.',
             },
-            de: {
-                flag: '🇩🇪',
-                label: 'DE',
-                dir: 'ltr',
-                lite_mode: 'Lite',
-                neon_mode: 'Neon',
-                nav_home: 'Start',
-                nav_projects: 'Projekte',
-                nav_about: 'Über mich',
+            de: { flag: '🇩🇪', label: 'DE', dir: 'ltr', lite_mode: 'Lite', neon_mode: 'Neon',
+                nav_home: 'Start', nav_explore: 'Entdecken', nav_upload: 'Hochladen', nav_about: 'Über mich',
                 badge: 'Fortgeschrittene Skripte & Automatisierung',
                 hero_welcome: 'Willkommen bei',
                 hero_desc: 'Ein zentraler Hub für Premium-Skripte und intelligente Automatisierungstools.',
-                btn_explore: 'Projekte erkunden',
-                btn_community: 'Community beitreten',
-                stat_projects: 'Projekte',
-                stat_users: 'Aktive Nutzer',
-                stat_free: 'Kostenlos',
-                projects_tag: 'Portfolio',
-                projects_title: 'Ausgewählte',
-                projects_title2: 'Projekte',
-                card1_title: 'Sicheres Schlüsselsystem 2026',
-                card1_desc: 'Fortschrittliches Authentifizierungsprotokoll mit HWID-Bindung.',
-                card_buy_key: 'Monatlichen Schlüssel kaufen',
-                card_view: 'Script anzeigen',
+                btn_explore: 'Projekte erkunden', btn_community: 'Community beitreten',
+                stat_projects: 'Projekte', stat_users: 'Aktive Nutzer', stat_free: 'Kostenlos',
+                projects_tag: 'Portfolio', projects_title: 'Ausgewählte', projects_title2: 'Projekte',
+                card1_title: 'Sicheres Schlüsselsystem 2026', card1_desc: 'Fortschrittliches Authentifizierungsprotokoll mit HWID-Bindung.',
+                card_buy_key: 'Monatlichen Schlüssel kaufen', card_view: 'Script anzeigen',
                 card_video_desc: 'Vollständiges Tutorial auf YouTube.',
-                about_tag: 'Entwickler',
-                about_title: 'Über',
-                about_heading: 'Für Leistung gebaut.',
+                about_tag: 'Entwickler', about_title: 'Über', about_heading: 'Für Leistung gebaut.',
                 about_desc: 'Ich spezialisiere mich auf die Entwicklung fortschrittlicher Skriptarchitekturen.',
-                footer: 'Gemacht mit ❤️ von ',
-                footer2: ' · Alle Rechte vorbehalten © 2026',
+                footer: 'Gemacht mit ❤️ von ', footer2: ' · Alle Rechte vorbehalten © 2026',
                 footer_privacy: 'Grundlegende nicht identifizierbare Besucherdaten gesammelt.',
             },
-            pt: {
-                flag: '🇧🇷',
-                label: 'PT',
-                dir: 'ltr',
-                lite_mode: 'Lite',
-                neon_mode: 'Neon',
-                nav_home: 'Início',
-                nav_projects: 'Projetos',
-                nav_about: 'Sobre',
+            pt: { flag: '🇧🇷', label: 'PT', dir: 'ltr', lite_mode: 'Lite', neon_mode: 'Neon',
+                nav_home: 'Início', nav_explore: 'Explorar', nav_upload: 'Enviar', nav_about: 'Sobre',
                 badge: 'Scripts Avançados & Automação',
                 hero_welcome: 'Bem-vindo ao',
                 hero_desc: 'Um hub centralizado para scripts premium e ferramentas de automação inteligentes.',
-                btn_explore: 'Explorar Projetos',
-                btn_community: 'Entrar na Comunidade',
-                stat_projects: 'Projetos',
-                stat_users: 'Usuários Ativos',
-                stat_free: 'Acesso Grátis',
-                projects_tag: 'Portfólio',
-                projects_title: 'Em Destaque',
-                projects_title2: 'Projetos',
-                card1_title: 'Sistema de Chaves Seguro 2026',
-                card1_desc: 'Protocolo de autenticação avançado com vinculação HWID.',
-                card_buy_key: 'Comprar Chave Mensal',
-                card_view: 'Ver Script',
+                btn_explore: 'Explorar Projetos', btn_community: 'Entrar na Comunidade',
+                stat_projects: 'Projetos', stat_users: 'Usuários Ativos', stat_free: 'Acesso Grátis',
+                projects_tag: 'Portfólio', projects_title: 'Em Destaque', projects_title2: 'Projetos',
+                card1_title: 'Sistema de Chaves Seguro 2026', card1_desc: 'Protocolo de autenticação avançado com vinculação HWID.',
+                card_buy_key: 'Comprar Chave Mensal', card_view: 'Ver Script',
                 card_video_desc: 'Tutorial completo no YouTube.',
-                about_tag: 'Desenvolvedor',
-                about_title: 'Sobre',
-                about_heading: 'Construído para Performance.',
+                about_tag: 'Desenvolvedor', about_title: 'Sobre', about_heading: 'Construído para Performance.',
                 about_desc: 'Me especializo em desenvolver arquiteturas de scripts avançadas.',
-                footer: 'Feito com ❤️ por ',
-                footer2: ' · Todos os direitos reservados © 2026',
+                footer: 'Feito com ❤️ por ', footer2: ' · Todos os direitos reservados © 2026',
                 footer_privacy: 'Dados básicos não identificáveis coletados.',
             },
-            ru: {
-                flag: '🇷🇺',
-                label: 'RU',
-                dir: 'ltr',
-                lite_mode: 'Лайт',
-                neon_mode: 'Неон',
-                nav_home: 'Главная',
-                nav_projects: 'Проекты',
-                nav_about: 'О себе',
+            ru: { flag: '🇷🇺', label: 'RU', dir: 'ltr', lite_mode: 'Лайт', neon_mode: 'Неон',
+                nav_home: 'Главная', nav_explore: 'Обзор', nav_upload: 'Загрузить', nav_about: 'О себе',
                 badge: 'Продвинутые Скрипты и Автоматизация',
                 hero_welcome: 'Добро пожаловать в',
                 hero_desc: 'Централизованный хаб для премиум-скриптов и инструментов автоматизации.',
-                btn_explore: 'Смотреть Проекты',
-                btn_community: 'Вступить в Сообщество',
-                stat_projects: 'Проекты',
-                stat_users: 'Активных Пользователей',
-                stat_free: 'Бесплатно',
-                projects_tag: 'Портфолио',
-                projects_title: 'Избранные',
-                projects_title2: 'Проекты',
-                card1_title: 'Безопасная Система Ключей 2026',
-                card1_desc: 'Продвинутый протокол аутентификации с привязкой HWID.',
-                card_buy_key: 'Купить Месячный Ключ',
-                card_view: 'Смотреть Скрипт',
+                btn_explore: 'Смотреть Проекты', btn_community: 'Вступить в Сообщество',
+                stat_projects: 'Проекты', stat_users: 'Активных Пользователей', stat_free: 'Бесплатно',
+                projects_tag: 'Портфолио', projects_title: 'Избранные', projects_title2: 'Проекты',
+                card1_title: 'Безопасная Система Ключей 2026', card1_desc: 'Продвинутый протокол аутентификации с привязкой HWID.',
+                card_buy_key: 'Купить Месячный Ключ', card_view: 'Смотреть Скрипт',
                 card_video_desc: 'Полное руководство на YouTube.',
-                about_tag: 'Разработчик',
-                about_title: 'О себе',
-                about_heading: 'Создано для Производительности.',
+                about_tag: 'Разработчик', about_title: 'О себе', about_heading: 'Создано для Производительности.',
                 about_desc: 'Я специализируюсь на разработке продвинутых скриптовых архитектур.',
-                footer: 'Сделано с ❤️ автором ',
-                footer2: ' · Все права защищены © 2026',
+                footer: 'Сделано с ❤️ автором ', footer2: ' · Все права защищены © 2026',
                 footer_privacy: 'Основные неидентифицируемые данные собираются.',
             },
-            zh: {
-                flag: '🇨🇳',
-                label: 'ZH',
-                dir: 'ltr',
-                lite_mode: '简洁',
-                neon_mode: '霓虹',
-                nav_home: '首页',
-                nav_projects: '项目',
-                nav_about: '关于',
+            zh: { flag: '🇨🇳', label: 'ZH', dir: 'ltr', lite_mode: '简洁', neon_mode: '霓虹',
+                nav_home: '首页', nav_explore: '探索', nav_upload: '上传', nav_about: '关于',
                 badge: '高级脚本与自动化',
                 hero_welcome: '欢迎来到',
                 hero_desc: '高级脚本、智能自动化工具和创新应用的集中中心。',
-                btn_explore: '探索项目',
-                btn_community: '加入社区',
-                stat_projects: '项目',
-                stat_users: '活跃用户',
-                stat_free: '免费访问',
-                projects_tag: '作品集',
-                projects_title: '精选',
-                projects_title2: '项目',
-                card1_title: '安全密钥系统 2026',
-                card1_desc: '具有HWID绑定和加密密钥验证的高级身份验证协议。',
-                card_buy_key: '购买月度密钥',
-                card_view: '查看脚本',
+                btn_explore: '探索项目', btn_community: '加入社区',
+                stat_projects: '项目', stat_users: '活跃用户', stat_free: '免费访问',
+                projects_tag: '作品集', projects_title: '精选', projects_title2: '项目',
+                card1_title: '安全密钥系统 2026', card1_desc: '具有HWID绑定和加密密钥验证的高级身份验证协议。',
+                card_buy_key: '购买月度密钥', card_view: '查看脚本',
                 card_video_desc: 'YouTube上的完整教程。',
-                about_tag: '开发者',
-                about_title: '关于',
-                about_heading: '为性能而生。',
+                about_tag: '开发者', about_title: '关于', about_heading: '为性能而生。',
                 about_desc: '我专注于开发高级脚本架构和安全自动化解决方案。',
-                footer: '由 ',
-                footer2: ' 用 ❤️ 制作 · 版权所有 © 2026',
+                footer: '由 ', footer2: ' 用 ❤️ 制作 · 版权所有 © 2026',
                 footer_privacy: '收集基本的非识别性访客数据。',
             },
-            ja: {
-                flag: '🇯🇵',
-                label: 'JA',
-                dir: 'ltr',
-                lite_mode: 'ライト',
-                neon_mode: 'ネオン',
-                nav_home: 'ホーム',
-                nav_projects: 'プロジェクト',
-                nav_about: '概要',
+            ja: { flag: '🇯🇵', label: 'JA', dir: 'ltr', lite_mode: 'ライト', neon_mode: 'ネオン',
+                nav_home: 'ホーム', nav_explore: '探索', nav_upload: 'アップロード', nav_about: '概要',
                 badge: '高度なスクリプトと自動化',
                 hero_welcome: 'ようこそ',
                 hero_desc: 'プレミアムスクリプトとインテリジェントな自動化ツールの集中ハブ。',
-                btn_explore: 'プロジェクトを見る',
-                btn_community: 'コミュニティに参加',
-                stat_projects: 'プロジェクト',
-                stat_users: 'アクティブユーザー',
-                stat_free: '無料アクセス',
-                projects_tag: 'ポートフォリオ',
-                projects_title: '注目の',
-                projects_title2: 'プロジェクト',
-                card1_title: 'セキュアキーシステム 2026',
-                card1_desc: 'HWIDバインディングを備えた高度な認証プロトコル。',
-                card_buy_key: '月額キーを購入',
-                card_view: 'スクリプトを見る',
+                btn_explore: 'プロジェクトを見る', btn_community: 'コミュニティに参加',
+                stat_projects: 'プロジェクト', stat_users: 'アクティブユーザー', stat_free: '無料アクセス',
+                projects_tag: 'ポートフォリオ', projects_title: '注目の', projects_title2: 'プロジェクト',
+                card1_title: 'セキュアキーシステム 2026', card1_desc: 'HWIDバインディングを備えた高度な認証プロトコル。',
+                card_buy_key: '月額キーを購入', card_view: 'スクリプトを見る',
                 card_video_desc: 'YouTubeでの完全なチュートリアル。',
-                about_tag: '開発者',
-                about_title: '概要',
-                about_heading: 'パフォーマンスのために構築。',
+                about_tag: '開発者', about_title: '概要', about_heading: 'パフォーマンスのために構築。',
                 about_desc: '高度なスクリプトアーキテクチャの開発を専門としています。',
-                footer: '',
-                footer2: ' が ❤️ を込めて制作 · 全著作権所有 © 2026',
+                footer: '', footer2: ' が ❤️ を込めて制作 · 全著作権所有 © 2026',
                 footer_privacy: '基本的な非識別訪問者データを収集。',
             },
-            ko: {
-                flag: '🇰🇷',
-                label: 'KO',
-                dir: 'ltr',
-                lite_mode: '라이트',
-                neon_mode: '네온',
-                nav_home: '홈',
-                nav_projects: '프로젝트',
-                nav_about: '소개',
+            ko: { flag: '🇰🇷', label: 'KO', dir: 'ltr', lite_mode: '라이트', neon_mode: '네온',
+                nav_home: '홈', nav_explore: '탐색', nav_upload: '업로드', nav_about: '소개',
                 badge: '고급 스크립트 및 자동화',
                 hero_welcome: '환영합니다',
                 hero_desc: '프리미엄 스크립트와 지능형 자동화 도구를 위한 중앙 허브.',
-                btn_explore: '프로젝트 탐색',
-                btn_community: '커뮤니티 참여',
-                stat_projects: '프로젝트',
-                stat_users: '활성 사용자',
-                stat_free: '무료 접근',
-                projects_tag: '포트폴리오',
-                projects_title: '주요',
-                projects_title2: '프로젝트',
-                card1_title: '보안 키 시스템 2026',
-                card1_desc: 'HWID 바인딩이 포함된 고급 인증 프로토콜.',
-                card_buy_key: '월간 키 구매',
-                card_view: '스크립트 보기',
+                btn_explore: '프로젝트 탐색', btn_community: '커뮤니티 참여',
+                stat_projects: '프로젝트', stat_users: '활성 사용자', stat_free: '무료 접근',
+                projects_tag: '포트폴리오', projects_title: '주요', projects_title2: '프로젝트',
+                card1_title: '보안 키 시스템 2026', card1_desc: 'HWID 바인딩이 포함된 고급 인증 프로토콜.',
+                card_buy_key: '월간 키 구매', card_view: '스크립트 보기',
                 card_video_desc: 'YouTube에서 전체 튜토리얼 시청.',
-                about_tag: '개발자',
-                about_title: '소개',
-                about_heading: '성능을 위해 구축.',
+                about_tag: '개발자', about_title: '소개', about_heading: '성능을 위해 구축.',
                 about_desc: '고급 스크립트 아키텍처 개발을 전문으로 합니다.',
-                footer: '',
-                footer2: ' 가 ❤️ 로 제작 · 모든 권리 보유 © 2026',
+                footer: '', footer2: ' 가 ❤️ 로 제작 · 모든 권리 보유 © 2026',
                 footer_privacy: '보안을 위해 기본 비식별 데이터 수집.',
             },
-            tr: {
-                flag: '🇹🇷',
-                label: 'TR',
-                dir: 'ltr',
-                lite_mode: 'Sade',
-                neon_mode: 'Neon',
-                nav_home: 'Ana Sayfa',
-                nav_projects: 'Projeler',
-                nav_about: 'Hakkında',
+            tr: { flag: '🇹🇷', label: 'TR', dir: 'ltr', lite_mode: 'Sade', neon_mode: 'Neon',
+                nav_home: 'Ana Sayfa', nav_explore: 'Keşfet', nav_upload: 'Yükle', nav_about: 'Hakkında',
                 badge: 'Gelişmiş Betikler ve Otomasyon',
                 hero_welcome: 'Hoş geldiniz',
                 hero_desc: 'Premium betikler ve akıllı otomasyon araçları için merkezi bir hub.',
-                btn_explore: 'Projeleri Keşfet',
-                btn_community: 'Topluluğa Katıl',
-                stat_projects: 'Proje',
-                stat_users: 'Aktif Kullanıcı',
-                stat_free: 'Ücretsiz',
-                projects_tag: 'Portföy',
-                projects_title: 'Öne Çıkan',
-                projects_title2: 'Projeler',
-                card1_title: 'Güvenli Anahtar Sistemi 2026',
-                card1_desc: 'HWID bağlama ile gelişmiş kimlik doğrulama protokolü.',
-                card_buy_key: 'Aylık Anahtar Satın Al',
-                card_view: 'Betiği Gör',
+                btn_explore: 'Projeleri Keşfet', btn_community: 'Topluluğa Katıl',
+                stat_projects: 'Proje', stat_users: 'Aktif Kullanıcı', stat_free: 'Ücretsiz',
+                projects_tag: 'Portföy', projects_title: 'Öne Çıkan', projects_title2: 'Projeler',
+                card1_title: 'Güvenli Anahtar Sistemi 2026', card1_desc: 'HWID bağlama ile gelişmiş kimlik doğrulama protokolü.',
+                card_buy_key: 'Aylık Anahtar Satın Al', card_view: 'Betiği Gör',
                 card_video_desc: 'YouTube\'da tam eğitim.',
-                about_tag: 'Geliştirici',
-                about_title: 'Hakkında',
-                about_heading: 'Performans İçin İnşa Edildi.',
+                about_tag: 'Geliştirici', about_title: 'Hakkında', about_heading: 'Performans İçin İnşa Edildi.',
                 about_desc: 'Gelişmiş betik mimarileri geliştirmede uzmanım.',
-                footer: '',
-                footer2: ' tarafından ❤️ ile yapıldı · Tüm hakları saklıdır © 2026',
+                footer: '', footer2: ' tarafından ❤️ ile yapıldı · Tüm hakları saklıdır © 2026',
                 footer_privacy: 'Güvenlik için temel tanımlanamaz veriler toplanır.',
             },
-            hi: {
-                flag: '🇮🇳',
-                label: 'HI',
-                dir: 'ltr',
-                lite_mode: 'लाइट',
-                neon_mode: 'नियॉन',
-                nav_home: 'होम',
-                nav_projects: 'प्रोजेक्ट्स',
-                nav_about: 'के बारे में',
+            hi: { flag: '🇮🇳', label: 'HI', dir: 'ltr', lite_mode: 'लाइट', neon_mode: 'नियॉन',
+                nav_home: 'होम', nav_explore: 'खोजें', nav_upload: 'अपलोड', nav_about: 'के बारे में',
                 badge: 'उन्नत स्क्रिप्ट्स और ऑटोमेशन',
                 hero_welcome: 'स्वागत है',
                 hero_desc: 'प्रीमियम स्क्रिप्ट्स और इंटेलिजेंट ऑटोमेशन टूल्स के लिए एक केंद्रीकृत हब।',
-                btn_explore: 'प्रोजेक्ट देखें',
-                btn_community: 'समुदाय में शामिल हों',
-                stat_projects: 'प्रोजेक्ट्स',
-                stat_users: 'सक्रिय उपयोगकर्ता',
-                stat_free: 'मुफ़्त',
-                projects_tag: 'पोर्टफोलियो',
-                projects_title: 'विशेष',
-                projects_title2: 'प्रोजेक्ट्स',
-                card1_title: 'सुरक्षित की सिस्टम 2026',
-                card1_desc: 'HWID बाइंडिंग के साथ उन्नत प्रमाणीकरण प्रोटोकॉल।',
-                card_buy_key: 'मासिक कुंजी खरीदें',
-                card_view: 'स्क्रिप्ट देखें',
+                btn_explore: 'प्रोजेक्ट देखें', btn_community: 'समुदाय में शामिल हों',
+                stat_projects: 'प्रोजेक्ट्स', stat_users: 'सक्रिय उपयोगकर्ता', stat_free: 'मुफ़्त',
+                projects_tag: 'पोर्टफोलियो', projects_title: 'विशेष', projects_title2: 'प्रोजेक्ट्स',
+                card1_title: 'सुरक्षित की सिस्टम 2026', card1_desc: 'HWID बाइंडिंग के साथ उन्नत प्रमाणीकरण प्रोटोकॉल।',
+                card_buy_key: 'मासिक कुंजी खरीदें', card_view: 'स्क्रिप्ट देखें',
                 card_video_desc: 'YouTube पर पूर्ण ट्यूटोरियल।',
-                about_tag: 'डेवलपर',
-                about_title: 'के बारे में',
-                about_heading: 'प्रदर्शन के लिए निर्मित।',
+                about_tag: 'डेवलपर', about_title: 'के बारे में', about_heading: 'प्रदर्शन के लिए निर्मित।',
                 about_desc: 'मैं उन्नत स्क्रिप्ट आर्किटेक्चर विकसित करने में विशेषज्ञ हूं।',
-                footer: '',
-                footer2: ' द्वारा ❤️ के साथ बनाया गया · सर्वाधिकार सुरक्षित © 2026',
+                footer: '', footer2: ' द्वारा ❤️ के साथ बनाया गया · सर्वाधिकार सुरक्षित © 2026',
                 footer_privacy: 'सुरक्षा के लिए बुनियादी गैर-पहचान योग्य डेटा एकत्र किया जाता है।',
             },
         };
 
-        // ============ LANGUAGE FUNCTIONS ============
-        function toggleDropdown() {
-            document.getElementById('langSwitcher').classList.toggle('open');
-        }
-
+        // ============================================================
+        //  LANGUAGE FUNCTIONS
+        // ============================================================
         function setLang(lang, el) {
             const t = T[lang];
             if (!t) return;
@@ -1840,11 +2493,13 @@
                 const k = el.getAttribute('data-i18n');
                 if (t[k] !== undefined) el.textContent = t[k];
             });
+            // Update lite button text
             const liteBtn = document.getElementById('btnLite');
             const liteSpan = liteBtn ? liteBtn.querySelector('[data-i18n]') : null;
             if (liteSpan && t.lite_mode) {
                 liteSpan.textContent = isLite ? (t.neon_mode || 'Neon') : t.lite_mode;
             }
+            // Update footer
             const footerEl = document.querySelector('footer');
             if (footerEl) {
                 const footerSocial = footerEl.querySelector('.footer-social');
@@ -1852,10 +2507,8 @@
                 if (footerSocial) footerHTML += footerSocial.outerHTML;
                 const fText = t.footer || '';
                 const f2Text = t.footer2 || '';
-                footerHTML +=
-                    `<span data-i18n="footer">${fText}</span><span class="accent">LPOLVO</span><span data-i18n="footer2">${f2Text}</span>`;
-                footerHTML +=
-                    `<br><small style="opacity:0.45;font-size:9px;" data-i18n="footer_privacy">${t.footer_privacy || ''}</small>`;
+                footerHTML += `<span data-i18n="footer">${fText}</span><span class="accent">LPOLVO</span><span data-i18n="footer2">${f2Text}</span>`;
+                footerHTML += `<br><small style="opacity:0.45;font-size:9px;" data-i18n="footer_privacy">${t.footer_privacy || ''}</small>`;
                 footerEl.innerHTML = footerHTML;
             }
             document.getElementById('langSwitcher').classList.remove('open');
@@ -1863,27 +2516,31 @@
             showToast(`🌐 ${t.label} ${lang === 'ar' ? 'تم التفعيل' : 'Activated'}`);
         }
 
-        document.addEventListener('click', function(e) {
-            const s = document.getElementById('langSwitcher');
-            if (s && !s.contains(e.target)) s.classList.remove('open');
-        });
-
-        // ============ INIT ============
+        // ============================================================
+        //  INITIALIZATION
+        // ============================================================
         function init() {
             buildVideoCards();
             fetchAllTitles();
+
+            // Load saved preferences
             try {
                 const savedLite = localStorage.getItem('lpolvo_lite');
                 if (savedLite === '1' && !isLite) toggleLiteMode();
             } catch (e) {}
+
             const savedLang = localStorage.getItem('lpolvo_lang');
             if (savedLang && T[savedLang]) {
                 const opt = document.querySelector(`.lang-option[data-lang="${savedLang}"]`);
                 setLang(savedLang, opt);
             }
-            // Prevent double-tap zoom on buttons
-            document.querySelectorAll('a, button, .card-btn').forEach(el => {
+
+            updateProfileBtn();
+
+            // Prevent double-tap zoom on interactive elements
+            document.querySelectorAll('a, button, .card-btn, .script-card, .btn-primary, .btn-secondary, .btn-accent, .btn-outline, .btn-danger').forEach(el => {
                 el.addEventListener('touchstart', function(e) {
+                    if (this.tagName === 'A' && this.getAttribute('href') && this.getAttribute('href').startsWith('http')) return;
                     e.preventDefault();
                     this.click();
                 }, { passive: false });
