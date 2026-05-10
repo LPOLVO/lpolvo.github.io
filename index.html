@@ -6,9 +6,6 @@
   <meta name="theme-color" content="#030b1a">
   <title>LPOLVO | Scripts Hub</title>
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Rajdhani:wght@300;400;500;600;700&family=Cairo:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-  <!-- Firebase SDK -->
-  <script src="https://www.gstatic.com/firebasejs/10.11.0/firebase-app-compat.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/10.11.0/firebase-auth-compat.js"></script>
   <style>
     :root {
       --bg: #030b1a;
@@ -32,7 +29,7 @@
     }
     body.lite {
       --bg: #f4f6fb;
-      --surface: #ffffff;
+      --surface: #fff;
       --surface2: #eef2fa;
       --surface3: #e2e8f5;
       --accent: #3451b2;
@@ -102,7 +99,6 @@
     .lang-option { display:flex; align-items:center; gap:7px; padding:8px 11px; cursor:pointer; font-size:11px; font-weight:500; border-bottom:1px solid rgba(255,255,255,0.03); }
     .lang-option:hover { background:rgba(65,105,225,0.06); }
     .lang-option.active { background:rgba(65,105,225,0.12); color:var(--accent2); font-weight:600; }
-
     .menu-dots { position:relative; flex-shrink:0; }
     .dots-btn { width:32px; height:32px; border-radius:50%; background:var(--surface2); border:1px solid var(--border); color:var(--text2); cursor:pointer; font-size:16px; display:flex; align-items:center; justify-content:center; transition:all var(--transition); }
     .dots-btn:hover { border-color:var(--accent); color:var(--accent2); }
@@ -111,7 +107,6 @@
     .menu-item { display:flex; align-items:center; gap:9px; padding:10px 14px; cursor:pointer; font-size:11px; font-weight:500; color:var(--text2); text-decoration:none; transition:all 0.2s; border-bottom:1px solid rgba(255,255,255,0.03); white-space:nowrap; }
     .menu-item:last-child { border-bottom:none; }
     .menu-item:hover { background:rgba(65,105,225,0.08); color:var(--accent2); }
-    .menu-item svg { width:16px; height:16px; fill:currentColor; flex-shrink:0; }
 
     .page { display:none; position:relative; z-index:2; padding:100px 16px 40px; min-height:100vh; }
     .page.active { display:block; }
@@ -139,11 +134,13 @@
     .btn-outline:hover { border-color:var(--accent); color:var(--accent2); }
     .btn-accent { background:rgba(45,212,191,0.15); border:1px solid rgba(45,212,191,0.4); color:var(--accent3); font-weight:700; }
     .btn-accent:hover { background:rgba(45,212,191,0.25); box-shadow:0 0 25px rgba(45,212,191,0.3); }
-    .btn-danger { background:rgba(244,114,182,0.15); border:1px solid rgba(244,114,182,0.4); color:var(--accent4); }
-    .social-row { display:flex; gap:8px; margin-top:32px; justify-content:center; animation:fadeUp 0.9s ease 0.4s both; }
-    .social-icon { width:36px; height:36px; border-radius:50%; background:var(--surface2); border:1px solid var(--border); display:flex; align-items:center; justify-content:center; color:var(--muted); text-decoration:none; transition:all var(--transition); padding:7px; flex-shrink:0; }
-    .social-icon svg { width:16px; height:16px; fill:currentColor; }
-    .social-icon:hover { color:#fff; border-color:var(--accent); transform:translateY(-2px); }
+    .social-row { display:flex; gap:12px; margin-top:32px; justify-content:center; animation:fadeUp 0.9s ease 0.4s both; flex-wrap:wrap; }
+    .social-icon { width:44px; height:44px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-weight:800; font-size:18px; text-decoration:none; color:#fff; transition:all var(--transition); flex-shrink:0; box-shadow:0 4px 15px rgba(0,0,0,0.4); }
+    .social-icon.yt { background:#FF0000; }
+    .social-icon.ig { background:linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888); }
+    .social-icon.rb { background:#000; border:2px solid #fff; }
+    .social-icon.dc { background:#5865F2; }
+    .social-icon:hover { transform:translateY(-3px); filter:brightness(1.2); }
 
     .section-title { font-family:'Orbitron',monospace; font-size:clamp(16px,3.5vw,24px); font-weight:800; text-align:center; margin-bottom:20px; }
     .section-title .accent { background:linear-gradient(135deg,var(--accent),var(--accent2)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
@@ -158,36 +155,22 @@
     .script-card-info span { font-size:9px; color:var(--muted); }
     .script-card-desc { font-size:10px; color:var(--muted); line-height:1.5; margin-bottom:10px; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden; }
     .script-card-actions { display:flex; gap:10px; font-size:10px; color:var(--muted); align-items:center; }
-    .script-card-actions span { display:flex; align-items:center; gap:3px; cursor:pointer; transition:color 0.2s; }
-    .script-card-actions span:hover { color:var(--accent2); }
     .liked { color:var(--accent4); } .disliked { color:#f87171; }
-    .delete-btn { position:absolute; top:8px; right:8px; width:24px; height:24px; border-radius:50%; background:rgba(244,114,182,0.1); border:1px solid rgba(244,114,182,0.3); color:var(--accent4); cursor:pointer; display:flex; align-items:center; justify-content:center; font-size:10px; z-index:5; transition:all 0.2s; }
-    .delete-btn:hover { background:rgba(244,114,182,0.25); }
+    .delete-btn { position:absolute; top:8px; right:8px; width:24px; height:24px; border-radius:50%; background:rgba(244,114,182,0.1); border:1px solid rgba(244,114,182,0.3); color:var(--accent4); cursor:pointer; display:flex; align-items:center; justify-content:center; font-size:10px; z-index:5; }
 
     .form-group { margin-bottom:14px; }
     .form-group label { display:block; font-size:10px; font-weight:600; color:var(--text2); margin-bottom:5px; text-transform:uppercase; }
-    .form-group input, .form-group textarea, .form-group select { width:100%; padding:10px 12px; border-radius:10px; background:var(--surface2); border:1px solid var(--border); color:var(--text); font-family:inherit; font-size:12px; transition:all var(--transition); resize:vertical; }
+    .form-group input, .form-group textarea { width:100%; padding:10px 12px; border-radius:10px; background:var(--surface2); border:1px solid var(--border); color:var(--text); font-family:inherit; font-size:12px; transition:all var(--transition); resize:vertical; }
     .form-group textarea { min-height:80px; }
 
     .modal-overlay { position:fixed; inset:0; background:rgba(0,0,0,0.7); z-index:2000; display:flex; align-items:center; justify-content:center; padding:16px; backdrop-filter:blur(4px); }
     .modal { background:var(--surface); border:1px solid var(--border); border-radius:var(--radius); padding:20px; width:100%; max-width:400px; max-height:85vh; overflow-y:auto; box-shadow:0 30px 80px rgba(0,0,0,0.6); position:relative; }
     .modal-close { position:absolute; top:10px; right:10px; cursor:pointer; color:var(--muted); font-size:18px; }
-    .social-login-btn { display:flex; align-items:center; gap:10px; width:100%; padding:10px; border-radius:10px; border:1px solid var(--border); background:var(--surface2); color:var(--text); cursor:pointer; font-family:inherit; font-size:11px; font-weight:600; transition:all 0.2s; margin-bottom:8px; justify-content:center; }
-    .social-login-btn:hover { border-color:var(--accent); background:rgba(65,105,225,0.06); }
-    .social-login-btn svg { width:18px; height:18px; flex-shrink:0; }
-    .divider { text-align:center; color:var(--muted); font-size:10px; margin:12px 0; position:relative; }
-    .divider::before, .divider::after { content:''; position:absolute; top:50%; width:30%; height:1px; background:var(--border); }
-    .divider::before { left:0; } .divider::after { right:0; }
 
     .toast { position:fixed; bottom:20px; left:50%; transform:translateX(-50%) translateY(100px); background:var(--surface); border:1px solid var(--accent2); border-radius:20px; padding:8px 16px; color:var(--text); font-size:10px; font-weight:600; z-index:9999; pointer-events:none; transition:transform 0.4s cubic-bezier(0.175,0.885,0.32,1.275); white-space:nowrap; }
     .toast.show { transform:translateX(-50%) translateY(0); }
-
     .comment-item { background:var(--surface2); border-radius:10px; padding:10px; margin-bottom:8px; font-size:10px; }
     .comment-item strong { color:var(--accent2); }
-    .comment-item small { color:var(--muted); font-size:8px; }
-
-    .profile-header { text-align:center; margin-bottom:20px; }
-    .profile-avatar { width:70px; height:70px; border-radius:50%; background:var(--surface3); border:3px solid var(--accent); margin:0 auto 10px; display:flex; align-items:center; justify-content:center; font-size:30px; }
 
     @media(min-width:600px) {
       .nav-links { display:flex; }
@@ -208,40 +191,23 @@
       <div class="logo-text">LP<span>O</span>LVO</div>
     </div>
     <ul class="nav-links">
-      <li><a href="#home" onclick="navigateTo('home')">Home</a></li>
-      <li><a href="#projects" onclick="navigateTo('home')">Projects</a></li>
-      <li><a href="#about" onclick="navigateTo('home')">About</a></li>
+      <li><a onclick="navigateTo('home')">Home</a></li>
+      <li><a onclick="navigateTo('explore')">Explore</a></li>
+      <li><a onclick="navigateTo('upload')">Upload</a></li>
     </ul>
     <div class="nav-actions">
-      <button class="btn-lite" id="btnLite" onclick="toggleLiteMode()"><span class="lite-dot"></span> <span data-i18n="lite_mode">Lite</span></button>
-      <div class="lang-switcher" id="langSwitcher">
-        <button class="lang-btn" onclick="toggleDropdown()"><span class="lang-flag" id="currentFlag">🇺🇸</span><span id="currentLabel">EN</span><span class="arrow-mini">▼</span></button>
-        <div class="lang-dropdown" id="langDropdown">
-          <div class="lang-option active" data-lang="en" onclick="setLang('en',this)">🇺🇸 English</div>
-          <div class="lang-option" data-lang="ar" onclick="setLang('ar',this)">🇸🇦 العربية</div>
-          <div class="lang-option" data-lang="es" onclick="setLang('es',this)">🇪🇸 Español</div>
-          <div class="lang-option" data-lang="fr" onclick="setLang('fr',this)">🇫🇷 Français</div>
-        </div>
-      </div>
+      <button class="btn-lite" id="btnLite" onclick="toggleLiteMode()"><span class="lite-dot"></span> Lite</button>
       <div class="menu-dots" id="menuDots">
         <button class="dots-btn" onclick="toggleMenuDots()">⋮</button>
         <div class="menu-dropdown" id="menuDropdown">
           <a class="menu-item" onclick="navigateTo('home')">🏠 Main</a>
-          <a class="menu-item" href="https://discord.gg/mA3SUaphr" target="_blank">
-            <svg viewBox="0 0 24 24"><path d="M20.3 4.8c-1.4-.7-3-1.2-4.6-1.4-.2.4-.4.8-.6 1.2-1.7-.3-3.5-.3-5.2 0-.2-.4-.4-.8-.6-1.2-1.6.2-3.2.7-4.6 1.4C2.1 8.4 1.1 12.5 1.5 16.6c1.9 1.4 3.8 2.3 5.7 2.8.5-.7.9-1.4 1.2-2.1-.7-.2-1.3-.5-1.9-.8.2-.1.3-.3.5-.4 3.8 1.8 7.9 1.8 11.7 0 .1.1.3.3.5.4-.6.3-1.2.6-1.9.8.3.7.7 1.4 1.2 2.1 1.9-.5 3.8-1.4 5.7-2.8.4-4.7-.7-8.8-3-12.4zM8.3 14.2c-1 0-1.9-.9-1.9-2s.8-2 1.9-2 1.9.9 1.9 2-.8 2-1.9 2zm7.4 0c-1 0-1.9-.9-1.9-2s.8-2 1.9-2 1.9.9 1.9 2-.8 2-1.9 2z"/></svg> Discord
-          </a>
-          <a class="menu-item" href="https://youtube.com/@lpolvoxd1" target="_blank">
-            <svg viewBox="0 0 24 24"><path d="M23.5 6.2a3 3 0 00-2.1-2.1C19.6 3.5 12 3.5 12 3.5s-7.6 0-9.4.6A3 3 0 00.5 6.2 31.4 31.4 0 000 12a31.4 31.4 0 00.5 5.8 3 3 0 002.1 2.1c1.8.6 9.4.6 9.4.6s7.6 0 9.4-.6a3 3 0 002.1-2.1A31.4 31.4 0 0024 12a31.4 31.4 0 00-.5-5.8zM9.5 15.5V8.5l6.5 3.5-6.5 3.5z"/></svg> YouTube
-          </a>
-          <a class="menu-item" href="https://www.instagram.com/4me.h4mz4_" target="_blank">
-            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="4.5" fill="none" stroke="currentColor" stroke-width="1.8"/><rect x="2" y="2" width="20" height="20" rx="6" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="18" cy="6" r="1.3" fill="currentColor"/></svg> Instagram
-          </a>
-          <a class="menu-item" href="https://www.roblox.com/users/1931773196/profile" target="_blank">
-            <svg viewBox="0 0 24 24"><rect x="7" y="7" width="10" height="10" rx="2" fill="currentColor" opacity="0.9"/><path d="M3 3h18v18H3V3zm2 2v14h14V5H5z" fill="currentColor" opacity="0.5"/></svg> Roblox
-          </a>
+          <a class="menu-item" href="https://discord.gg/mA3SUaphr" target="_blank">💬 Discord</a>
+          <a class="menu-item" href="https://youtube.com/@lpolvoxd1" target="_blank">▶️ YouTube</a>
+          <a class="menu-item" href="https://www.instagram.com/4me.h4mz4_" target="_blank">📷 Instagram</a>
+          <a class="menu-item" href="https://www.roblox.com/users/1931773196/profile" target="_blank">🎮 Roblox</a>
         </div>
       </div>
-      <button class="btn btn-outline" style="padding:6px 10px;font-size:8px;" id="btnProfile" onclick="handleProfileClick()">👤</button>
+      <button class="btn btn-outline" style="padding:6px 10px;" id="btnProfile" onclick="handleProfileClick()">👤</button>
     </div>
   </nav>
 
@@ -250,33 +216,33 @@
     <div class="hero">
       <div class="hero-glow-orb orb1"></div>
       <div class="hero-glow-orb orb2"></div>
-      <div class="badge"><span class="badge-dot pulse-dot"></span> Advanced Scripts & Automation</div>
+      <div class="badge"><span class="badge-dot pulse-dot"></span> ADVANCED SCRIPTS & AUTOMATION</div>
       <h1><span>Welcome to</span><span class="highlight">LPOLVO</span></h1>
       <p class="hero-subtitle">A centralized hub for premium scripts, intelligent automation tools, and innovative applications. Engineered for performance, stability, and scale.</p>
       <div class="hero-btns">
-        <button class="btn btn-primary" onclick="navigateTo('explore')">🔍 Explore Projects</button>
-        <a href="https://discord.gg/mA3SUaphr" target="_blank" class="btn btn-secondary">💬 Join Community</a>
-        <button class="btn btn-accent" onclick="navigateTo('explore')">📂 Explore Users Scripts</button>
-        <button class="btn btn-accent" onclick="navigateTo('upload')">📤 Upload Your Script</button>
+        <button class="btn btn-primary" onclick="navigateTo('explore')">🔍 EXPLORE PROJECTS</button>
+        <a href="https://discord.gg/mA3SUaphr" target="_blank" class="btn btn-secondary">💬 JOIN COMMUNITY</a>
+        <button class="btn btn-accent" onclick="navigateTo('explore')">📂 EXPLORE USERS SCRIPTS</button>
+        <button class="btn btn-accent" onclick="navigateTo('upload')">📤 UPLOAD YOUR SCRIPT</button>
       </div>
       <div class="social-row">
-        <a href="https://youtube.com/@lpolvoxd1" target="_blank" class="social-icon" title="YouTube"><svg viewBox="0 0 24 24"><path d="M23.5 6.2..."/></svg></a>
-        <a href="https://www.instagram.com/4me.h4mz4_" target="_blank" class="social-icon" title="Instagram"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="5..."/></svg></a>
-        <a href="https://www.roblox.com/users/1931773196/profile" target="_blank" class="social-icon" title="Roblox"><svg viewBox="0 0 24 24"><rect x="7" y="7" width="10" height="10" rx="2" fill="currentColor"/></svg></a>
-        <a href="https://discord.gg/mA3SUaphr" target="_blank" class="social-icon" title="Discord"><svg viewBox="0 0 24 24"><path d="M20.3 4.8..."/></svg></a>
+        <a href="https://youtube.com/@lpolvoxd1" target="_blank" class="social-icon yt" title="YouTube">▶</a>
+        <a href="https://www.instagram.com/4me.h4mz4_" target="_blank" class="social-icon ig" title="Instagram">●</a>
+        <a href="https://www.roblox.com/users/1931773196/profile" target="_blank" class="social-icon rb" title="Roblox">R</a>
+        <a href="https://discord.gg/mA3SUaphr" target="_blank" class="social-icon dc" title="Discord">♫</a>
       </div>
     </div>
 
     <div style="display:flex; justify-content:center; gap:12px; margin:20px 0; flex-wrap:wrap;">
-      <div class="stat" style="background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:16px 20px;text-align:center;">
+      <div style="background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:16px;text-align:center;">
         <div style="font-family:'Orbitron',monospace;font-size:20px;font-weight:900;color:var(--accent2);">20+</div>
         <div style="font-size:8px;color:var(--muted);text-transform:uppercase;">Projects</div>
       </div>
-      <div class="stat" id="liveUsersStat" style="background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:16px 20px;text-align:center;">
-        <div class="live-counter" id="liveCounter" style="font-family:'Orbitron',monospace;font-size:20px;font-weight:900;color:var(--accent2);">1,185</div>
+      <div style="background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:16px;text-align:center;" id="liveUsersStat">
+        <div class="live-counter" id="liveCounter" style="font-family:'Orbitron',monospace;font-size:20px;font-weight:900;color:var(--accent2);">1,407</div>
         <div style="font-size:8px;color:var(--muted);text-transform:uppercase;"><span class="live-dot" style="display:inline-block;width:6px;height:6px;background:var(--accent3);border-radius:50%;margin-right:3px;box-shadow:var(--neon-teal);"></span> Active Users</div>
       </div>
-      <div class="stat" style="background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:16px 20px;text-align:center;">
+      <div style="background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:16px;text-align:center;">
         <div style="font-family:'Orbitron',monospace;font-size:20px;font-weight:900;color:var(--accent2);">100%</div>
         <div style="font-size:8px;color:var(--muted);text-transform:uppercase;">Free Access</div>
       </div>
@@ -285,11 +251,8 @@
     <h2 class="section-title" style="margin-top:40px;"><span>Featured</span> <span class="accent">Projects</span></h2>
     <div class="glow-line"></div>
     <div class="scripts-grid" id="featuredGrid" style="max-width:800px;">
-      <div class="card" style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:14px;text-align:center;cursor:pointer;" onclick="window.open('https://discord.gg/mA3SUaphr','_blank')">
-        <div style="font-size:40px;">🔑</div>
-        <h4 style="margin:8px 0;">Secure Key System 2026</h4>
-        <p style="font-size:10px;color:var(--muted);">Advanced authentication protocol with HWID binding.</p>
-        <button class="btn btn-accent" style="margin-top:8px;">Buy Monthly Key</button>
+      <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:14px;text-align:center;cursor:pointer;" onclick="window.open('https://discord.gg/mA3SUaphr','_blank')">
+        <div style="font-size:40px;">🔑</div><h4>Secure Key System 2026</h4><p style="font-size:10px;color:var(--muted);">Advanced authentication with HWID binding.</p><button class="btn btn-accent" style="margin-top:8px;">Buy Monthly Key</button>
       </div>
     </div>
 
@@ -299,41 +262,29 @@
       <div style="display:flex; flex-direction:column; gap:20px;">
         <div>
           <h3 style="font-family:'Orbitron',monospace;">Built for Performance.</h3>
-          <p style="color:var(--muted);font-size:12px;">I specialize in developing advanced script architectures, secure authentication protocols, and seamless automation solutions. Every project is crafted with precision.</p>
+          <p style="color:var(--muted);font-size:12px;">I specialize in developing advanced script architectures, secure authentication protocols, and seamless automation solutions.</p>
           <div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:8px;">
-            <span class="skill-tag" style="background:var(--surface2);border:1px solid var(--border);padding:4px 10px;border-radius:16px;font-size:9px;font-weight:600;">Python</span>
-            <span class="skill-tag" style="background:var(--surface2);border:1px solid var(--border);padding:4px 10px;border-radius:16px;font-size:9px;font-weight:600;">Luau</span>
-            <span class="skill-tag" style="background:var(--surface2);border:1px solid var(--border);padding:4px 10px;border-radius:16px;font-size:9px;font-weight:600;">JavaScript</span>
-            <span class="skill-tag" style="background:var(--surface2);border:1px solid var(--border);padding:4px 10px;border-radius:16px;font-size:9px;font-weight:600;">HTML/CSS</span>
-            <span class="skill-tag" style="background:var(--surface2);border:1px solid var(--border);padding:4px 10px;border-radius:16px;font-size:9px;font-weight:600;">API Integration</span>
-            <span class="skill-tag" style="background:var(--surface2);border:1px solid var(--border);padding:4px 10px;border-radius:16px;font-size:9px;font-weight:600;">Secure Auth</span>
-            <span class="skill-tag" style="background:var(--surface2);border:1px solid var(--border);padding:4px 10px;border-radius:16px;font-size:9px;font-weight:600;">Automation</span>
-            <span class="skill-tag" style="background:var(--surface2);border:1px solid var(--border);padding:4px 10px;border-radius:16px;font-size:9px;font-weight:600;">Backend</span>
+            <span class="skill-tag" style="background:var(--surface2);border:1px solid var(--border);padding:4px 10px;border-radius:16px;font-size:9px;">Python</span>
+            <span class="skill-tag" style="background:var(--surface2);border:1px solid var(--border);padding:4px 10px;border-radius:16px;font-size:9px;">Luau</span>
+            <span class="skill-tag" style="background:var(--surface2);border:1px solid var(--border);padding:4px 10px;border-radius:16px;font-size:9px;">JavaScript</span>
           </div>
         </div>
         <div style="background:#060e1c;border:1px solid var(--border);border-radius:var(--radius);padding:16px;font-family:monospace;font-size:10px;">
-          <div style="color:var(--muted);margin-bottom:6px;">lpolvo_engine.py</div>
           <span style="color:#c678dd;">class</span> <span style="color:#e5c07b;">LPOLVOSystem</span>:<br>
-          &nbsp;&nbsp;<span style="color:#c678dd;">def</span> <span style="color:#61afef;">__init__</span>(<span style="color:#c678dd;">self</span>):<br>
-          &nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#c678dd;">self</span>.status = <span style="color:#98c379;">"Online"</span><br>
-          &nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#c678dd;">self</span>.version = <span style="color:#98c379;">"2026.1"</span><br>
-          &nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#c678dd;">self</span>.security = <span style="color:#98c379;">"AES-256"</span><br><br>
           &nbsp;&nbsp;<span style="color:#c678dd;">def</span> <span style="color:#61afef;">deploy</span>(<span style="color:#c678dd;">self</span>):<br>
-          &nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#61afef;">print</span>(<span style="color:#98c379;">f"🚀 Deploying v{self.version}..."</span>)<br>
-          &nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#c678dd;">return</span> <span style="color:#98c379;">"All systems operational."</span>
+          &nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#61afef;">print</span>(<span style="color:#98c379;">"All systems operational."</span>)
         </div>
       </div>
     </div>
 
     <footer style="text-align:center;padding:28px 16px;border-top:1px solid var(--border);color:var(--muted);font-size:10px;margin-top:40px;">
-      <div class="footer-social" style="display:flex;gap:10px;justify-content:center;margin-bottom:12px;">
-        <a href="https://youtube.com/@lpolvoxd1" target="_blank" style="width:32px;height:32px;border-radius:50%;background:var(--surface2);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;color:var(--muted);"><svg viewBox="0 0 24 24" width="15" height="15"><path d="M23.5 6.2a3 3 0..." fill="currentColor"/></svg></a>
-        <a href="https://www.instagram.com/4me.h4mz4_" target="_blank" style="width:32px;height:32px;border-radius:50%;background:var(--surface2);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;color:var(--muted);"><svg viewBox="0 0 24 24" width="15" height="15"><circle cx="12" cy="12" r="5" fill="none" stroke="currentColor" stroke-width="2"/></svg></a>
-        <a href="https://www.roblox.com/users/1931773196/profile" target="_blank" style="width:32px;height:32px;border-radius:50%;background:var(--surface2);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;color:var(--muted);"><svg viewBox="0 0 24 24" width="15" height="15"><rect x="6" y="6" width="12" height="12" rx="3" fill="currentColor"/></svg></a>
-        <a href="https://discord.gg/mA3SUaphr" target="_blank" style="width:32px;height:32px;border-radius:50%;background:var(--surface2);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;color:var(--muted);"><svg viewBox="0 0 24 24" width="15" height="15"><path d="M20.3 4.8..." fill="currentColor"/></svg></a>
+      <div style="display:flex;gap:10px;justify-content:center;margin-bottom:12px;">
+        <a href="https://youtube.com/@lpolvoxd1" class="social-icon yt" style="width:32px;height:32px;font-size:14px;">▶</a>
+        <a href="https://www.instagram.com/4me.h4mz4_" class="social-icon ig" style="width:32px;height:32px;font-size:14px;">●</a>
+        <a href="https://www.roblox.com/users/1931773196/profile" class="social-icon rb" style="width:32px;height:32px;font-size:14px;">R</a>
+        <a href="https://discord.gg/mA3SUaphr" class="social-icon dc" style="width:32px;height:32px;font-size:14px;">♫</a>
       </div>
-      <span>Made with ❤️ by <span class="accent" style="color:var(--accent2);font-weight:700;">LPOLVO</span> · All rights reserved © 2026</span>
-      <br><small style="opacity:0.5;font-size:9px;">Basic non-identifiable visitor data collected for security & analytics.</small>
+      <span>Made with ❤️ by <span style="color:var(--accent2);font-weight:700;">LPOLVO</span> · All rights reserved © 2026</span>
     </footer>
   </div>
 
@@ -350,12 +301,11 @@
     <h2 class="section-title"><span>Upload</span> <span class="accent">Your Script</span></h2>
     <div class="glow-line"></div>
     <div style="max-width:500px;margin:0 auto;">
-      <div class="form-group"><label>Script Title</label><input type="text" id="uploadTitle" placeholder="Enter script title..."></div>
-      <div class="form-group"><label>Description</label><textarea id="uploadDesc" placeholder="Describe your script..."></textarea></div>
-      <div class="form-group"><label>Script Code (Luau/Python/JS)</label><textarea id="uploadCode" placeholder="Paste your script code here..."></textarea></div>
-      <div class="form-group"><label>Image</label><input type="file" id="uploadImageFile" accept="image/*" style="padding:8px;"></div>
+      <div class="form-group"><label>Title</label><input type="text" id="uploadTitle"></div>
+      <div class="form-group"><label>Description</label><textarea id="uploadDesc"></textarea></div>
+      <div class="form-group"><label>Code</label><textarea id="uploadCode"></textarea></div>
+      <div class="form-group"><label>Image</label><input type="file" id="uploadImageFile" accept="image/*"></div>
       <button class="btn btn-primary" onclick="uploadScript()" style="width:100%;">📤 Upload Script</button>
-      <p style="text-align:center;color:var(--muted);font-size:9px;margin-top:8px;">By uploading, you agree to share your script publicly.</p>
     </div>
   </div>
 
@@ -363,16 +313,13 @@
   <div class="page" id="page-profile">
     <h2 class="section-title"><span>My</span> <span class="accent">Profile</span></h2>
     <div class="glow-line"></div>
-    <div class="profile-header">
-      <div class="profile-avatar" id="profileAvatar">👤</div>
-      <h3 id="profileName">User</h3>
-      <p id="profileEmail" style="color:var(--muted);font-size:10px;"></p>
-    </div>
     <div style="max-width:400px;margin:0 auto;">
-      <div class="form-group"><label>Display Name</label><input type="text" id="editName"></div>
-      <div class="form-group"><label>Bio</label><textarea id="editBio" placeholder="Write something about yourself..."></textarea></div>
-      <button class="btn btn-primary" onclick="saveProfile()" style="width:100%;">💾 Save Profile</button>
-      <button class="btn btn-danger" onclick="logout()" style="width:100%;margin-top:8px;">🚪 Logout</button>
+      <div id="profileInfo" style="text-align:center;margin-bottom:20px;">
+        <div style="font-size:40px;">👤</div>
+        <h3 id="profileDisplayName">User</h3>
+        <p id="profileUsername" style="color:var(--muted);"></p>
+      </div>
+      <button class="btn btn-danger" onclick="logout()" style="width:100%;">🚪 Logout</button>
     </div>
   </div>
 
@@ -382,25 +329,11 @@
   <div class="toast" id="toast"></div>
 
   <script>
-    // ========== FIREBASE CONFIG (replace with your own) ==========
-    const firebaseConfig = {
-      apiKey: "YOUR_API_KEY",
-      authDomain: "YOUR_AUTH_DOMAIN",
-      projectId: "YOUR_PROJECT_ID",
-      storageBucket: "YOUR_STORAGE_BUCKET",
-      messagingSenderId: "YOUR_SENDER_ID",
-      appId: "YOUR_APP_ID"
-    };
-    firebase.initializeApp(firebaseConfig);
-    const auth = firebase.auth();
-
-    // ========== PARTICLES ==========
-    const canvas = document.getElementById('particlesCanvas');
-    const ctx = canvas.getContext('2d');
+    // Particles & Lite mode
+    const canvas = document.getElementById('particlesCanvas'), ctx = canvas.getContext('2d');
     let particles = [], isLite = false;
     function resizeCanvas() { canvas.width = window.innerWidth; canvas.height = window.innerHeight; }
-    resizeCanvas();
-    window.addEventListener('resize', () => { resizeCanvas(); initParticles(); });
+    resizeCanvas(); window.addEventListener('resize', () => { resizeCanvas(); initParticles(); });
     function initParticles() {
       particles = [];
       for (let i = 0; i < Math.min(Math.floor((canvas.width * canvas.height) / 10000), 80); i++) {
@@ -415,17 +348,21 @@
         p.x += p.vx; p.y += p.vy;
         if (p.x < 0) p.x = canvas.width; if (p.x > canvas.width) p.x = 0;
         if (p.y < 0) p.y = canvas.height; if (p.y > canvas.height) p.y = 0;
-        p.alpha += p.ps * (Math.random() > 0.5 ? 1 : -1);
-        p.alpha = Math.max(0.06, Math.min(0.5, p.alpha));
+        p.alpha += p.ps * (Math.random() > 0.5 ? 1 : -1); p.alpha = Math.max(0.06, Math.min(0.5, p.alpha));
         ctx.beginPath(); ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
         ctx.fillStyle = `rgba(91,138,247,${p.alpha})`; ctx.fill();
       });
       requestAnimationFrame(animateParticles);
     }
     animateParticles();
+    function toggleLiteMode() {
+      isLite = !isLite; document.body.classList.toggle('lite', isLite);
+      document.querySelector('#btnLite span:last-child').textContent = isLite ? 'Neon' : 'Lite';
+      try { localStorage.setItem('lpolvo_lite', isLite ? '1' : '0'); } catch (e) {}
+    }
 
-    // ========== LIVE USERS COUNTER ==========
-    let currentCount = 1185;
+    // Live counter
+    let currentCount = 1407;
     function getRandomCount() { return Math.floor(Math.random() * 400) + 1100; }
     function animateCount(target) {
       const start = currentCount, diff = target - start, duration = 1800, startTime = performance.now();
@@ -437,31 +374,20 @@
       }
       requestAnimationFrame(step);
     }
-    function updateLiveCount() { animateCount(getRandomCount()); }
-    setInterval(updateLiveCount, 4000 + Math.random() * 2000);
-    setTimeout(updateLiveCount, 1500);
+    setInterval(() => animateCount(getRandomCount()), 4000 + Math.random() * 2000);
 
-    // ========== LITE MODE ==========
-    function toggleLiteMode() {
-      isLite = !isLite; document.body.classList.toggle('lite', isLite);
-      const lt = document.querySelector('#btnLite [data-i18n]');
-      lt.textContent = isLite ? 'Neon' : 'Lite';
-      try { localStorage.setItem('lpolvo_lite', isLite ? '1' : '0'); } catch (e) {}
-    }
-
-    // ========== TOAST ==========
+    // Toast
     let toastTimeout;
     function showToast(msg) {
       const t = document.getElementById('toast'); t.textContent = msg; t.classList.add('show');
       clearTimeout(toastTimeout); toastTimeout = setTimeout(() => t.classList.remove('show'), 2200);
     }
 
-    // ========== NAVIGATION ==========
+    // Navigation
     function navigateTo(page) {
       document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
       document.getElementById('page-' + page).classList.add('active');
       document.getElementById('menuDots').classList.remove('open');
-      document.getElementById('langSwitcher').classList.remove('open');
       if (page === 'explore') renderExplore();
       if (page === 'profile') loadProfile();
       document.getElementById('scriptDetail').style.display = 'none';
@@ -470,298 +396,165 @@
     }
     function toggleMenuDots() { document.getElementById('menuDots').classList.toggle('open'); }
     document.addEventListener('click', e => {
-      const md = document.getElementById('menuDots');
-      if (!md.contains(e.target)) md.classList.remove('open');
-      const ls = document.getElementById('langSwitcher');
-      if (!ls.contains(e.target)) ls.classList.remove('open');
+      if (!document.getElementById('menuDots').contains(e.target)) document.getElementById('menuDots').classList.remove('open');
     });
 
-    // ========== STORAGE ==========
-    function getStore(key, def) { try { return JSON.parse(localStorage.getItem(key)) || def; } catch (e) { return def; } }
-    function setStore(key, val) { try { localStorage.setItem(key, JSON.stringify(val)); } catch (e) {} }
-    function getScripts() { return getStore('lpolvo_scripts', []); }
-    function getCurrentUser() {
-      const u = auth.currentUser;
-      if (!u) return null;
-      return { id: u.uid, email: u.email, name: u.displayName || u.email.split('@')[0] };
-    }
+    // Storage
+    const getStore = (k, d) => { try { return JSON.parse(localStorage.getItem(k)) || d; } catch (e) { return d; } };
+    const setStore = (k, v) => { try { localStorage.setItem(k, JSON.stringify(v)); } catch (e) {} };
+    const getScripts = () => getStore('lpolvo_scripts', []);
+    const getUsers = () => getStore('lpolvo_users', []);
+    const getCurrentUser = () => getStore('lpolvo_currentUser', null);
 
-    // ========== AUTH + UI ==========
-    function updateProfileBtn() {
-      const btn = document.getElementById('btnProfile');
-      btn.textContent = auth.currentUser ? '👤✓' : '👤';
-      btn.style.color = auth.currentUser ? 'var(--accent3)' : '';
-    }
-    auth.onAuthStateChanged(user => {
-      updateProfileBtn();
-      if (user) {
-        const users = getStore('lpolvo_users', []);
-        if (!users.find(u => u.email === user.email)) {
-          users.push({ id: user.uid, email: user.email, name: user.displayName || user.email.split('@')[0], bio: '', avatar: '👤', scripts: [] });
-          setStore('lpolvo_users', users);
-        }
-        setStore('lpolvo_currentUser', { id: user.uid, email: user.email, name: user.displayName || user.email.split('@')[0] });
-      } else {
-        setStore('lpolvo_currentUser', null);
-      }
-    });
-
+    // Auth
     function showAuthModal(mode) {
-      const overlay = document.getElementById('modalOverlay');
-      const content = document.getElementById('modalContent');
+      const overlay = document.getElementById('modalOverlay'), content = document.getElementById('modalContent');
       overlay.style.display = 'flex';
-      let html = `<div class="modal-close" onclick="closeModal()">✕</div><h3>${mode === 'signup' ? 'Sign Up' : 'Log In'}</h3>`;
-      html += `<button class="social-login-btn" onclick="googleLogin()"><svg viewBox="0 0 24 24"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 01-2.2 3.32v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.1z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg> Google (Gmail)</button>`;
-      html += `<button class="social-login-btn" onclick="facebookLogin()"><svg viewBox="0 0 24 24"><path fill="#1877F2" d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg> Facebook</button>`;
-      html += `<div class="divider">or</div>`;
-      html += `<input type="email" id="authEmail" placeholder="Email" style="width:100%;padding:10px;border-radius:10px;background:var(--surface2);border:1px solid var(--border);color:var(--text);margin-bottom:8px;">`;
-      if (mode === 'signup') {
-        html += `<input type="password" id="authPass" placeholder="Password (min 6)" style="width:100%;padding:10px;border-radius:10px;...">`;
-        html += `<input type="password" id="authPass2" placeholder="Confirm Password" style="width:100%;padding:10px;border-radius:10px;...">`;
-        html += `<button class="btn btn-primary" onclick="emailSignUp()" style="width:100%;">📧 Sign Up with Email</button>`;
-      } else {
-        html += `<input type="password" id="authPass" placeholder="Your password" style="width:100%;padding:10px;border-radius:10px;...">`;
-        html += `<button class="btn btn-primary" onclick="emailLogin()" style="width:100%;">🔑 Log In</button>`;
-      }
-      html += `<p style="text-align:center;font-size:9px;margin-top:8px;color:var(--muted);cursor:pointer;" onclick="showAuthModal('${mode === 'signup' ? 'login' : 'signup'}')">${mode === 'signup' ? 'Already have an account? Log In' : 'New? Sign Up'}</p>`;
-      content.innerHTML = html;
+      content.innerHTML = `<div class="modal-close" onclick="closeModal()">✕</div><h3>${mode === 'signup' ? 'Create Account' : 'Log In'}</h3>
+        <div class="form-group"><label>Username</label><input type="text" id="authUsername"></div>
+        <div class="form-group"><label>Password</label><input type="password" id="authPass"></div>
+        ${mode === 'signup' ? '<div class="form-group"><label>Confirm Password</label><input type="password" id="authPass2"></div>' : ''}
+        <button class="btn btn-primary" onclick="${mode === 'signup' ? 'handleSignup()' : 'handleLogin()'}" style="width:100%;">${mode === 'signup' ? '📝 Sign Up' : '🔑 Log In'}</button>
+        <p style="text-align:center;margin-top:8px;font-size:9px;color:var(--muted);cursor:pointer;" onclick="showAuthModal('${mode === 'signup' ? 'login' : 'signup'}')">${mode === 'signup' ? 'Already have account? Log In' : 'New? Create Account'}</p>`;
     }
     function closeModal() { document.getElementById('modalOverlay').style.display = 'none'; }
-    function googleLogin() {
-      const provider = new firebase.auth.GoogleAuthProvider();
-      auth.signInWithPopup(provider).then(() => { closeModal(); showToast('✅ Logged in with Google'); }).catch(e => showToast('❌ ' + e.message));
-    }
-    function facebookLogin() {
-      const provider = new firebase.auth.FacebookAuthProvider();
-      auth.signInWithPopup(provider).then(() => { closeModal(); showToast('✅ Logged in with Facebook'); }).catch(e => showToast('❌ ' + e.message));
-    }
-    function emailSignUp() {
-      const email = document.getElementById('authEmail').value.trim();
-      const pass = document.getElementById('authPass').value;
-      const pass2 = document.getElementById('authPass2').value;
-      if (!email || !pass || pass.length < 6) return showToast('❌ Invalid input');
+    function handleSignup() {
+      const username = document.getElementById('authUsername').value.trim();
+      const pass = document.getElementById('authPass').value, pass2 = document.getElementById('authPass2').value;
+      if (!username || !pass) return showToast('❌ Fill all fields');
+      if (pass.length < 4) return showToast('❌ Password min 4 chars');
       if (pass !== pass2) return showToast('❌ Passwords do not match');
-      auth.createUserWithEmailAndPassword(email, pass)
-        .then(userCred => {
-          userCred.user.sendEmailVerification();
-          closeModal();
-          showToast('✅ Account created! Verification email sent.');
-        })
-        .catch(e => showToast('❌ ' + e.message));
+      const users = getUsers();
+      if (users.find(u => u.username === username)) return showToast('❌ Username taken');
+      const newUser = { username, password: pass, displayName: username, bio: '', avatar: '👤', scripts: [] };
+      users.push(newUser); setStore('lpolvo_users', users);
+      setStore('lpolvo_currentUser', { username, displayName: username });
+      updateProfileBtn(); closeModal(); showToast('✅ Account created!');
     }
-    function emailLogin() {
-      const email = document.getElementById('authEmail').value.trim();
+    function handleLogin() {
+      const username = document.getElementById('authUsername').value.trim();
       const pass = document.getElementById('authPass').value;
-      auth.signInWithEmailAndPassword(email, pass)
-        .then(() => { closeModal(); showToast('✅ Logged in'); })
-        .catch(e => showToast('❌ ' + e.message));
+      const user = getUsers().find(u => u.username === username && u.password === pass);
+      if (!user) return showToast('❌ Invalid credentials');
+      setStore('lpolvo_currentUser', { username: user.username, displayName: user.displayName });
+      updateProfileBtn(); closeModal(); showToast('✅ Logged in');
     }
-    function handleProfileClick() {
-      if (auth.currentUser) navigateTo('profile');
-      else showAuthModal('login');
+    function logout() { setStore('lpolvo_currentUser', null); updateProfileBtn(); showToast('👋 Logged out'); navigateTo('home'); }
+    function handleProfileClick() { getCurrentUser() ? navigateTo('profile') : showAuthModal('login'); }
+    function updateProfileBtn() {
+      const user = getCurrentUser();
+      document.getElementById('btnProfile').textContent = user ? '👤✓' : '👤';
+      document.getElementById('btnProfile').style.color = user ? 'var(--accent3)' : '';
     }
-    function logout() { auth.signOut(); showToast('👋 Logged out'); navigateTo('home'); }
-
     function loadProfile() {
-      const user = auth.currentUser;
+      const user = getCurrentUser();
       if (!user) { showAuthModal('login'); return; }
-      document.getElementById('profileAvatar').textContent = '👤';
-      document.getElementById('profileName').textContent = user.displayName || user.email;
-      document.getElementById('profileEmail').textContent = user.email;
-      document.getElementById('editName').value = user.displayName || '';
-      document.getElementById('editBio').value = '';
-    }
-    function saveProfile() {
-      const user = auth.currentUser;
-      if (!user) return;
-      user.updateProfile({ displayName: document.getElementById('editName').value.trim() })
-        .then(() => { showToast('✅ Profile updated'); loadProfile(); })
-        .catch(e => showToast('❌ ' + e.message));
+      document.getElementById('profileDisplayName').textContent = user.displayName;
+      document.getElementById('profileUsername').textContent = '@' + user.username;
     }
 
-    // ========== SCRIPTS ==========
+    // Scripts
     function uploadScript() {
-      const user = auth.currentUser;
-      if (!user) { showAuthModal('signup'); showToast('⚠️ Please sign up first'); return; }
+      const user = getCurrentUser();
+      if (!user) { showAuthModal('signup'); showToast('⚠️ Please log in first'); return; }
       const title = document.getElementById('uploadTitle').value.trim();
       const desc = document.getElementById('uploadDesc').value.trim();
       const code = document.getElementById('uploadCode').value.trim();
-      const file = document.getElementById('uploadImageFile').files[0];
       if (!title || !code) return showToast('❌ Title and code required');
-      const storeScript = (imageDataUrl) => {
+      const file = document.getElementById('uploadImageFile').files[0];
+      const store = (img) => {
         const scripts = getScripts();
-        scripts.unshift({
-          id: Date.now().toString(),
-          title, desc, code,
-          image: imageDataUrl || '',
-          authorId: user.uid,
-          authorName: user.displayName || user.email.split('@')[0],
-          date: new Date().toISOString(),
-          likes: [], dislikes: [], comments: [], views: 0
-        });
+        scripts.unshift({ id: Date.now().toString(), title, desc, code, image: img || '', author: user.username, displayName: user.displayName, date: new Date().toISOString(), likes: [], dislikes: [], comments: [], views: 0 });
         setStore('lpolvo_scripts', scripts);
-        document.getElementById('uploadTitle').value = '';
-        document.getElementById('uploadDesc').value = '';
-        document.getElementById('uploadCode').value = '';
-        document.getElementById('uploadImageFile').value = '';
-        showToast('✅ Script uploaded!');
-        navigateTo('explore');
+        document.getElementById('uploadTitle').value = ''; document.getElementById('uploadDesc').value = ''; document.getElementById('uploadCode').value = ''; document.getElementById('uploadImageFile').value = '';
+        showToast('✅ Script uploaded!'); navigateTo('explore');
       };
-      if (file) {
-        const reader = new FileReader();
-        reader.onload = () => storeScript(reader.result);
-        reader.readAsDataURL(file);
-      } else { storeScript(''); }
+      if (file) { const r = new FileReader(); r.onload = () => store(r.result); r.readAsDataURL(file); } else store('');
     }
 
     function deleteScript(id) {
-      const scripts = getScripts();
-      const newScripts = scripts.filter(s => s.id !== id);
-      setStore('lpolvo_scripts', newScripts);
-      renderExplore();
-      showToast('🗑️ Script deleted');
+      const scripts = getScripts().filter(s => s.id !== id);
+      setStore('lpolvo_scripts', scripts); renderExplore(); showToast('🗑️ Deleted');
     }
 
     function renderExplore() {
-      const grid = document.getElementById('scriptsGrid');
-      const detail = document.getElementById('scriptDetail');
-      detail.style.display = 'none';
-      grid.style.display = '';
+      const grid = document.getElementById('scriptsGrid'), detail = document.getElementById('scriptDetail');
+      detail.style.display = 'none'; grid.style.display = '';
       const scripts = getScripts();
-      if (!scripts.length) { grid.innerHTML = '<p style="text-align:center;color:var(--muted);">No scripts yet. Be the first! 🚀</p>'; return; }
+      if (!scripts.length) { grid.innerHTML = '<p style="text-align:center;color:var(--muted);grid-column:1/-1;">No scripts yet. Be the first! 🚀</p>'; return; }
       grid.innerHTML = scripts.map(s => {
-        const isOwner = auth.currentUser && auth.currentUser.uid === s.authorId;
-        return `
-        <div class="script-card" onclick="viewScript('${s.id}')">
+        const isOwner = getCurrentUser()?.username === s.author;
+        return `<div class="script-card" onclick="viewScript('${s.id}')">
           ${isOwner ? `<button class="delete-btn" onclick="event.stopPropagation();deleteScript('${s.id}')">🗑</button>` : ''}
-          <div class="script-card-header">
-            <img class="script-card-img" src="${escapeHtml(s.image) || 'https://via.placeholder.com/100x100/1a1a3e/5b8af7?text=S'}" onerror="this.src='https://via.placeholder.com/100x100/1a1a3e/5b8af7?text=S'">
-            <div class="script-card-info">
-              <h4>${escapeHtml(s.title)}</h4>
-              <span>by ${escapeHtml(s.authorName)} · ${new Date(s.date).toLocaleDateString()}</span>
-            </div>
-          </div>
-          <div class="script-card-desc">${escapeHtml(s.desc || 'No description')}</div>
-          <div class="script-card-actions">
-            <span>👁 ${s.views || 0}</span>
-            <span>👍 ${s.likes.length}</span>
-            <span>👎 ${s.dislikes.length}</span>
-            <span>💬 ${s.comments.length}</span>
-          </div>
+          <div class="script-card-header"><img class="script-card-img" src="${escapeHtml(s.image) || 'https://via.placeholder.com/100/1a1a3e/5b8af7?text=S'}" onerror="this.src='https://via.placeholder.com/100/1a1a3e/5b8af7?text=S'">
+          <div class="script-card-info"><h4>${escapeHtml(s.title)}</h4><span>by ${escapeHtml(s.displayName)} · ${new Date(s.date).toLocaleDateString()}</span></div></div>
+          <div class="script-card-desc">${escapeHtml(s.desc || '')}</div>
+          <div class="script-card-actions"><span>👁 ${s.views}</span><span>👍 ${s.likes.length}</span><span>👎 ${s.dislikes.length}</span><span>💬 ${s.comments.length}</span></div>
         </div>`;
       }).join('');
     }
 
     function viewScript(id) {
-      const scripts = getScripts();
-      const s = scripts.find(sc => sc.id === id);
+      const scripts = getScripts(), s = scripts.find(sc => sc.id === id);
       if (!s) return;
-      s.views = (s.views || 0) + 1;
-      setStore('lpolvo_scripts', scripts);
-      const grid = document.getElementById('scriptsGrid');
-      const detail = document.getElementById('scriptDetail');
-      grid.style.display = 'none';
-      detail.style.display = '';
-      const user = auth.currentUser;
-      const liked = user && s.likes.includes(user.uid);
-      const disliked = user && s.dislikes.includes(user.uid);
-      let html = `<button class="btn btn-outline" onclick="renderExplore()" style="margin-bottom:12px;">← Back</button>`;
-      html += `<div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:16px;">`;
-      if (s.image) html += `<img src="${escapeHtml(s.image)}" style="width:100%;max-height:200px;object-fit:contain;border-radius:10px;margin-bottom:10px;">`;
-      html += `<h3 style="font-family:'Rajdhani',sans-serif;">${escapeHtml(s.title)}</h3><p style="font-size:10px;color:var(--muted);">by ${escapeHtml(s.authorName)} · 👁 ${s.views}</p>`;
-      html += `<p style="font-size:11px;margin:8px 0;">${escapeHtml(s.desc||'')}</p>`;
-      html += `<pre style="background:var(--surface3);padding:12px;border-radius:8px;font-size:10px;overflow-x:auto;max-height:200px;">${escapeHtml(s.code)}</pre>`;
-      html += `<div style="margin:8px 0;display:flex;gap:10px;align-items:center;">`;
-      html += `<button class="btn btn-outline" onclick="copyCode('${escapeHtml(s.code)}')">📋 Copy Script</button>`;
-      html += `<span class="${liked?'liked':''}" onclick="toggleLike('${s.id}');viewScript('${s.id}')" style="cursor:pointer;">👍 ${s.likes.length}</span>`;
-      html += `<span class="${disliked?'disliked':''}" onclick="toggleDislike('${s.id}');viewScript('${s.id}')" style="cursor:pointer;">👎 ${s.dislikes.length}</span>`;
-      html += `</div>`;
-      html += `<div style="margin-top:10px;"><strong style="font-size:10px;">Comments:</strong>`;
-      s.comments.forEach(c => html += `<div class="comment-item"><strong>${escapeHtml(c.authorName)}</strong> <small>${new Date(c.date).toLocaleDateString()}</small><br>${escapeHtml(c.text)}</div>`);
-      html += `</div>`;
-      html += `<div style="display:flex;gap:6px;margin-top:8px;"><input type="text" id="commentInput" placeholder="Add a comment..." style="flex:1;padding:8px;border-radius:8px;background:var(--surface2);border:1px solid var(--border);color:var(--text);font-size:10px;"><button class="btn btn-primary" onclick="addComment('${s.id}')" style="font-size:9px;padding:8px 12px;">💬 Post</button></div>`;
-      html += `</div>`;
+      s.views = (s.views || 0) + 1; setStore('lpolvo_scripts', scripts);
+      const grid = document.getElementById('scriptsGrid'), detail = document.getElementById('scriptDetail');
+      grid.style.display = 'none'; detail.style.display = '';
+      const user = getCurrentUser(), liked = user && s.likes.includes(user.username), disliked = user && s.dislikes.includes(user.username);
+      let html = `<button class="btn btn-outline" onclick="renderExplore()">← Back</button>
+        <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:16px;">
+        ${s.image ? `<img src="${escapeHtml(s.image)}" style="width:100%;max-height:200px;object-fit:contain;border-radius:10px;margin-bottom:10px;">` : ''}
+        <h3>${escapeHtml(s.title)}</h3><p style="font-size:10px;color:var(--muted);">by ${escapeHtml(s.displayName)} · 👁 ${s.views}</p>
+        <p style="font-size:11px;">${escapeHtml(s.desc||'')}</p>
+        <pre style="background:var(--surface3);padding:12px;border-radius:8px;font-size:10px;overflow-x:auto;max-height:200px;">${escapeHtml(s.code)}</pre>
+        <button class="btn btn-outline" onclick="copyCode('${escapeHtml(s.code)}')">📋 Copy Script</button>
+        <div style="margin:8px 0;"><span class="${liked?'liked':''}" onclick="toggleLike('${s.id}');viewScript('${s.id}');">👍 ${s.likes.length}</span> <span class="${disliked?'disliked':''}" onclick="toggleDislike('${s.id}');viewScript('${s.id}');">👎 ${s.dislikes.length}</span></div>
+        <div><strong>Comments:</strong>${s.comments.map(c => `<div class="comment-item"><strong>${escapeHtml(c.author)}</strong> ${escapeHtml(c.text)}</div>`).join('')}</div>
+        <div style="display:flex;gap:6px;margin-top:8px;"><input type="text" id="commentInput" placeholder="Add comment..." style="flex:1;padding:8px;border-radius:8px;background:var(--surface2);border:1px solid var(--border);color:var(--text);"><button class="btn btn-primary" onclick="addComment('${s.id}')">💬 Post</button></div>
+        </div>`;
       detail.innerHTML = html;
-      window.scrollTo({ top: 100, behavior: 'smooth' });
     }
 
-    function copyCode(code) {
-      navigator.clipboard.writeText(code).then(() => showToast('📋 Copied!')).catch(() => showToast('❌ Failed'));
-    }
+    function copyCode(code) { navigator.clipboard.writeText(code).then(() => showToast('📋 Copied!')).catch(() => showToast('❌ Failed')); }
     function toggleLike(id) {
-      if (!auth.currentUser) { showAuthModal('login'); return; }
-      const scripts = getScripts();
-      const s = scripts.find(sc => sc.id === id);
+      const user = getCurrentUser(); if (!user) { showAuthModal('login'); return; }
+      const scripts = getScripts(), s = scripts.find(sc => sc.id === id);
       if (!s) return;
-      const idx = s.likes.indexOf(auth.currentUser.uid);
-      if (idx > -1) s.likes.splice(idx, 1);
-      else { s.likes.push(auth.currentUser.uid); s.dislikes = s.dislikes.filter(uid => uid !== auth.currentUser.uid); }
+      const idx = s.likes.indexOf(user.username);
+      if (idx > -1) s.likes.splice(idx, 1); else { s.likes.push(user.username); s.dislikes = s.dislikes.filter(u => u !== user.username); }
       setStore('lpolvo_scripts', scripts);
     }
     function toggleDislike(id) {
-      if (!auth.currentUser) { showAuthModal('login'); return; }
-      const scripts = getScripts();
-      const s = scripts.find(sc => sc.id === id);
+      const user = getCurrentUser(); if (!user) { showAuthModal('login'); return; }
+      const scripts = getScripts(), s = scripts.find(sc => sc.id === id);
       if (!s) return;
-      const idx = s.dislikes.indexOf(auth.currentUser.uid);
-      if (idx > -1) s.dislikes.splice(idx, 1);
-      else { s.dislikes.push(auth.currentUser.uid); s.likes = s.likes.filter(uid => uid !== auth.currentUser.uid); }
+      const idx = s.dislikes.indexOf(user.username);
+      if (idx > -1) s.dislikes.splice(idx, 1); else { s.dislikes.push(user.username); s.likes = s.likes.filter(u => u !== user.username); }
       setStore('lpolvo_scripts', scripts);
     }
     function addComment(id) {
-      if (!auth.currentUser) { showAuthModal('login'); return; }
-      const input = document.getElementById('commentInput');
-      const text = input.value.trim();
+      const user = getCurrentUser(); if (!user) { showAuthModal('login'); return; }
+      const text = document.getElementById('commentInput').value.trim();
       if (!text) return;
-      const scripts = getScripts();
-      const s = scripts.find(sc => sc.id === id);
+      const scripts = getScripts(), s = scripts.find(sc => sc.id === id);
       if (!s) return;
-      s.comments.push({ authorName: auth.currentUser.displayName || auth.currentUser.email, authorId: auth.currentUser.uid, text, date: new Date().toISOString() });
-      setStore('lpolvo_scripts', scripts);
-      viewScript(id);
+      s.comments.push({ author: user.username, text, date: new Date().toISOString() });
+      setStore('lpolvo_scripts', scripts); viewScript(id);
     }
-
     function escapeHtml(str) { const d = document.createElement('div'); d.textContent = str || ''; return d.innerHTML; }
 
-    // ========== FEATURED VIDEO CARDS ==========
-    const videoData = [
-      { id: 'CFL4ozSOciY', url: 'https://youtu.be/CFL4ozSOciY' },
-      { id: 'tkablaZrw3o', url: 'https://youtu.be/tkablaZrw3o' },
-      { id: 'c0u_d_ikhMs', url: 'https://youtu.be/c0u_d_ikhMs' },
-      { id: 'zH27zcQaE3A', url: 'https://youtu.be/zH27zcQaE3A' },
-      { id: 'xDYC6IzhHpY', url: 'https://youtu.be/xDYC6IzhHpY' }
-    ];
-    function buildVideoCards() {
-      const grid = document.getElementById('featuredGrid');
-      videoData.forEach(v => {
-        const card = document.createElement('div');
-        card.className = 'card';
-        card.style = 'cursor:pointer; text-align:center; padding:14px; background:var(--surface); border:1px solid var(--border); border-radius:var(--radius); margin-bottom:10px;';
-        card.innerHTML = `<img src="https://img.youtube.com/vi/${v.id}/hqdefault.jpg" style="width:100%;border-radius:10px;margin-bottom:8px;" onclick="window.open('${v.url}','_blank')">
-        <div style="font-size:12px;font-weight:600;">Loading...</div>`;
-        grid.appendChild(card);
-        fetch(`https://www.youtube.com/oembed?url=https://www.youtube.com/watch?v=${v.id}&format=json`)
-          .then(r => r.json())
-          .then(data => card.querySelector('div').textContent = data.title)
-          .catch(() => card.querySelector('div').textContent = 'Tutorial');
-      });
-    }
+    // Video cards
+    const videos = [{ id: 'CFL4ozSOciY' }, { id: 'tkablaZrw3o' }, { id: 'c0u_d_ikhMs' }, { id: 'zH27zcQaE3A' }, { id: 'xDYC6IzhHpY' }];
+    videos.forEach(v => {
+      const card = document.createElement('div');
+      card.style = 'background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:14px;text-align:center;cursor:pointer;';
+      card.innerHTML = `<img src="https://img.youtube.com/vi/${v.id}/hqdefault.jpg" style="width:100%;border-radius:10px;" onclick="window.open('https://youtu.be/${v.id}','_blank')"><div style="font-weight:600;margin-top:4px;">Loading...</div>`;
+      document.getElementById('featuredGrid').appendChild(card);
+      fetch(`https://www.youtube.com/oembed?url=https://www.youtube.com/watch?v=${v.id}&format=json`).then(r => r.json()).then(d => card.querySelector('div').textContent = d.title).catch(() => card.querySelector('div').textContent = 'Tutorial');
+    });
 
-    // ========== INIT ==========
-    function init() {
-      buildVideoCards();
-      try { if (localStorage.getItem('lpolvo_lite') === '1') toggleLiteMode(); } catch(e) {}
-      const savedLang = localStorage.getItem('lpolvo_lang');
-      if (savedLang && langOptions[savedLang]) { setLang(savedLang, document.querySelector(`.lang-option[data-lang="${savedLang}"]`)); }
-      updateProfileBtn();
-      document.querySelectorAll('a, button, .card-btn, .script-card, .social-login-btn').forEach(el => {
-        el.addEventListener('touchstart', function(e) {
-          if (this.tagName === 'A' && this.getAttribute('href') && this.getAttribute('href').startsWith('http')) return;
-          e.preventDefault(); this.click();
-        }, { passive: false });
-      });
-    }
-    window.addEventListener('load', init);
+    updateProfileBtn();
+    try { if (localStorage.getItem('lpolvo_lite') === '1') toggleLiteMode(); } catch(e) {}
   </script>
 </body>
 </html>
