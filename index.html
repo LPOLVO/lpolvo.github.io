@@ -2244,120 +2244,127 @@ nav.scrolled { box-shadow: 0 4px 30px rgba(0,0,0,0.4); }
 .hero-lpolvo .hv { color: var(--logo-v); transition: color 0.55s; }
 .hero-lpolvo .ho2 { color: var(--logo-o2); transition: color 0.55s; display: inline-block; }
 
-/* Sakura: O becomes ♥ heart */
-[data-theme="sakura"] .hero-lpolvo .ho1::before { content: "♥"; }
-[data-theme="sakura"] .hero-lpolvo .ho1 { font-size: 0; }
-[data-theme="sakura"] .hero-lpolvo .ho1::before { font-size: 1em; display: inline-block; animation: heartBeat 1.2s ease infinite; }
-[data-theme="sakura"] .logo-O1::before { content: "♥"; }
+/* ══ THEME O-CHARACTER REPLACEMENTS ══
+   Strategy: color:transparent hides the "O" text while keeping layout space.
+   ::before with position:absolute overlays the symbol — inheriting the correct
+   font-size from the parent (not broken by font-size:0).
+   Nav logo-O1 uses absolute px since it's a fixed small size.
+═══════════════════════════════════════════════════════════════ */
+
+/* Base setup for all themed hero ho1 and nav logo-O1 */
+[data-theme="sakura"] .hero-lpolvo .ho1,
+[data-theme="galaxy"] .hero-lpolvo .ho1,
+[data-theme="toxic"] .hero-lpolvo .ho1,
+[data-theme="storm"] .hero-lpolvo .ho1,
+[data-theme="royal"] .hero-lpolvo .ho1,
+[data-theme="hacker"] .hero-lpolvo .ho1,
+[data-theme="neonpink"] .hero-lpolvo .ho1,
+[data-theme="void"] .hero-lpolvo .ho1,
+[data-theme="candy"] .hero-lpolvo .ho1,
+[data-theme="iceking"] .hero-lpolvo .ho1,
+[data-theme="plasma"] .hero-lpolvo .ho1,
+[data-theme="fire"] .hero-lpolvo .ho1,
+[data-theme="lava"] .hero-lpolvo .ho1,
+[data-theme="bloodmoon"] .hero-lpolvo .ho1 {
+  color: transparent !important;
+  position: relative;
+  display: inline-block;
+}
+[data-theme="sakura"] .hero-lpolvo .ho1::before,
+[data-theme="galaxy"] .hero-lpolvo .ho1::before,
+[data-theme="toxic"] .hero-lpolvo .ho1::before,
+[data-theme="storm"] .hero-lpolvo .ho1::before,
+[data-theme="royal"] .hero-lpolvo .ho1::before,
+[data-theme="hacker"] .hero-lpolvo .ho1::before,
+[data-theme="neonpink"] .hero-lpolvo .ho1::before,
+[data-theme="void"] .hero-lpolvo .ho1::before,
+[data-theme="candy"] .hero-lpolvo .ho1::before,
+[data-theme="iceking"] .hero-lpolvo .ho1::before,
+[data-theme="plasma"] .hero-lpolvo .ho1::before,
+[data-theme="fire"] .hero-lpolvo .ho1::before,
+[data-theme="lava"] .hero-lpolvo .ho1::before,
+[data-theme="bloodmoon"] .hero-lpolvo .ho1::before {
+  position: absolute;
+  left: 0; right: 0; top: 50%;
+  transform: translateY(-50%);
+  text-align: center;
+  color: var(--logo-o);
+  display: block;
+  line-height: 1;
+}
+
+/* Sakura: O becomes ♥ */
+[data-theme="sakura"] .hero-lpolvo .ho1::before { content: "♥"; animation: heartBeat 1.2s ease infinite; }
 [data-theme="sakura"] .logo-O1 { font-size: 0; }
-[data-theme="sakura"] .logo-O1::before { font-size: 15px; display: inline-block; animation: heartBeat 1.2s ease infinite; }
+[data-theme="sakura"] .logo-O1::before { content: "♥"; font-size: 15px; display: inline-block; animation: heartBeat 1.2s ease infinite; color: var(--logo-o); }
 @keyframes heartBeat { 0%,100% { transform: scale(1); } 25% { transform: scale(1.3); } 50% { transform: scale(1.1); } 75% { transform: scale(1.25); } }
 
 /* Galaxy: O becomes ★ */
-[data-theme="galaxy"] .hero-lpolvo .ho1::before { content: "★"; }
-[data-theme="galaxy"] .hero-lpolvo .ho1 { font-size: 0; }
-[data-theme="galaxy"] .hero-lpolvo .ho1::before { font-size: 1em; display: inline-block; animation: starSpin 3s linear infinite; }
-[data-theme="galaxy"] .logo-O1::before { content: "★"; }
+[data-theme="galaxy"] .hero-lpolvo .ho1::before { content: "★"; animation: starSpin 3s linear infinite; }
 [data-theme="galaxy"] .logo-O1 { font-size: 0; }
-[data-theme="galaxy"] .logo-O1::before { font-size: 15px; display: inline-block; }
+[data-theme="galaxy"] .logo-O1::before { content: "★"; font-size: 15px; display: inline-block; color: var(--logo-o); }
 
 /* Toxic: O becomes ☢ */
 [data-theme="toxic"] .hero-lpolvo .ho1::before { content: "☢"; }
-[data-theme="toxic"] .hero-lpolvo .ho1 { font-size: 0; }
-[data-theme="toxic"] .hero-lpolvo .ho1::before { font-size: 0.85em; display: inline-block; }
-[data-theme="toxic"] .logo-O1::before { content: "☢"; }
 [data-theme="toxic"] .logo-O1 { font-size: 0; }
-[data-theme="toxic"] .logo-O1::before { font-size: 14px; display: inline-block; }
+[data-theme="toxic"] .logo-O1::before { content: "☢"; font-size: 14px; display: inline-block; color: var(--logo-o); }
 
 /* Storm: O becomes ⚡ */
 [data-theme="storm"] .hero-lpolvo .ho1::before { content: "⚡"; }
-[data-theme="storm"] .hero-lpolvo .ho1 { font-size: 0; }
-[data-theme="storm"] .hero-lpolvo .ho1::before { font-size: 0.85em; display: inline-block; }
-[data-theme="storm"] .logo-O1::before { content: "⚡"; }
 [data-theme="storm"] .logo-O1 { font-size: 0; }
-[data-theme="storm"] .logo-O1::before { font-size: 14px; display: inline-block; }
+[data-theme="storm"] .logo-O1::before { content: "⚡"; font-size: 14px; display: inline-block; color: var(--logo-o); }
 
 /* Royal: O becomes ♔ */
-[data-theme="royal"] .hero-lpolvo .ho1::before { content: "♔"; }
-[data-theme="royal"] .hero-lpolvo .ho1 { font-size: 0; }
-[data-theme="royal"] .hero-lpolvo .ho1::before { font-size: 0.85em; display: inline-block; animation: royalShine 2.5s ease infinite; }
-[data-theme="royal"] .logo-O1::before { content: "♔"; }
+[data-theme="royal"] .hero-lpolvo .ho1::before { content: "♔"; animation: royalShine 2.5s ease infinite; }
 [data-theme="royal"] .logo-O1 { font-size: 0; }
-[data-theme="royal"] .logo-O1::before { font-size: 14px; display: inline-block; }
+[data-theme="royal"] .logo-O1::before { content: "♔"; font-size: 14px; display: inline-block; color: var(--logo-o); }
 
 /* Hacker: O becomes [] */
-[data-theme="hacker"] .hero-lpolvo .ho1::before { content: "[]"; }
-[data-theme="hacker"] .hero-lpolvo .ho1 { font-size: 0; }
-[data-theme="hacker"] .hero-lpolvo .ho1::before { font-size: 0.75em; display: inline-block; }
-[data-theme="hacker"] .logo-O1::before { content: "[]"; }
+[data-theme="hacker"] .hero-lpolvo .ho1::before { content: "[]"; font-size: 0.75em; }
 [data-theme="hacker"] .logo-O1 { font-size: 0; }
-[data-theme="hacker"] .logo-O1::before { font-size: 13px; display: inline-block; }
+[data-theme="hacker"] .logo-O1::before { content: "[]"; font-size: 13px; display: inline-block; color: var(--logo-o); }
 
 /* Neon Pink: O becomes ♦ */
 [data-theme="neonpink"] .hero-lpolvo .ho1::before { content: "♦"; }
-[data-theme="neonpink"] .hero-lpolvo .ho1 { font-size: 0; }
-[data-theme="neonpink"] .hero-lpolvo .ho1::before { font-size: 0.85em; display: inline-block; }
-[data-theme="neonpink"] .logo-O1::before { content: "♦"; }
 [data-theme="neonpink"] .logo-O1 { font-size: 0; }
-[data-theme="neonpink"] .logo-O1::before { font-size: 14px; display: inline-block; }
+[data-theme="neonpink"] .logo-O1::before { content: "♦"; font-size: 14px; display: inline-block; color: var(--logo-o); }
 
 /* Void: O becomes ∅ */
 [data-theme="void"] .hero-lpolvo .ho1::before { content: "∅"; }
-[data-theme="void"] .hero-lpolvo .ho1 { font-size: 0; }
-[data-theme="void"] .hero-lpolvo .ho1::before { font-size: 0.9em; display: inline-block; }
-[data-theme="void"] .logo-O1::before { content: "∅"; }
 [data-theme="void"] .logo-O1 { font-size: 0; }
-[data-theme="void"] .logo-O1::before { font-size: 15px; display: inline-block; }
+[data-theme="void"] .logo-O1::before { content: "∅"; font-size: 15px; display: inline-block; color: var(--logo-o); }
 
 /* Candy: O becomes ♡ */
-[data-theme="candy"] .hero-lpolvo .ho1::before { content: "♡"; }
-[data-theme="candy"] .hero-lpolvo .ho1 { font-size: 0; }
-[data-theme="candy"] .hero-lpolvo .ho1::before { font-size: 0.9em; display: inline-block; animation: heartBeat 1.5s ease infinite; }
-[data-theme="candy"] .logo-O1::before { content: "♡"; }
+[data-theme="candy"] .hero-lpolvo .ho1::before { content: "♡"; animation: heartBeat 1.5s ease infinite; }
 [data-theme="candy"] .logo-O1 { font-size: 0; }
-[data-theme="candy"] .logo-O1::before { font-size: 15px; display: inline-block; }
+[data-theme="candy"] .logo-O1::before { content: "♡"; font-size: 15px; display: inline-block; color: var(--logo-o); }
 
 /* Ice King: O becomes ❄ */
-[data-theme="iceking"] .hero-lpolvo .ho1::before { content: "❄"; }
-[data-theme="iceking"] .hero-lpolvo .ho1 { font-size: 0; }
-[data-theme="iceking"] .hero-lpolvo .ho1::before { font-size: 0.85em; display: inline-block; animation: iceSpin 4s linear infinite; }
-[data-theme="iceking"] .logo-O1::before { content: "❄"; }
+[data-theme="iceking"] .hero-lpolvo .ho1::before { content: "❄"; animation: iceSpin 4s linear infinite; }
 [data-theme="iceking"] .logo-O1 { font-size: 0; }
-[data-theme="iceking"] .logo-O1::before { font-size: 14px; display: inline-block; }
-@keyframes iceSpin { 0%,100%{ transform: rotate(0deg); } 50%{ transform: rotate(60deg); } }
+[data-theme="iceking"] .logo-O1::before { content: "❄"; font-size: 14px; display: inline-block; color: var(--logo-o); }
+@keyframes iceSpin { 0%,100%{ transform: rotate(0deg) translateY(-50%); } 50%{ transform: rotate(60deg) translateY(-50%); } }
 
 /* Plasma: O becomes ◉ */
-[data-theme="plasma"] .hero-lpolvo .ho1::before { content: "◉"; }
-[data-theme="plasma"] .hero-lpolvo .ho1 { font-size: 0; }
-[data-theme="plasma"] .hero-lpolvo .ho1::before { font-size: 0.9em; display: inline-block; animation: plasmaPulse 1s ease infinite; }
-[data-theme="plasma"] .logo-O1::before { content: "◉"; }
+[data-theme="plasma"] .hero-lpolvo .ho1::before { content: "◉"; animation: plasmaPulse 1s ease infinite; }
 [data-theme="plasma"] .logo-O1 { font-size: 0; }
-[data-theme="plasma"] .logo-O1::before { font-size: 15px; display: inline-block; }
-@keyframes plasmaPulse { 0%,100%{ transform: scale(1); text-shadow: 0 0 8px #d946ef; } 50%{ transform: scale(1.2); text-shadow: 0 0 20px #f0abfc; } }
+[data-theme="plasma"] .logo-O1::before { content: "◉"; font-size: 15px; display: inline-block; color: var(--logo-o); }
+@keyframes plasmaPulse { 0%,100%{ transform: translateY(-50%) scale(1); text-shadow: 0 0 8px #d946ef; } 50%{ transform: translateY(-50%) scale(1.2); text-shadow: 0 0 20px #f0abfc; } }
 
 /* Fire: O becomes 🔥 */
 [data-theme="fire"] .hero-lpolvo .ho1::before { content: "🔥"; }
-[data-theme="fire"] .hero-lpolvo .ho1 { font-size: 0; }
-[data-theme="fire"] .hero-lpolvo .ho1::before { font-size: 0.85em; display: inline-block; }
-[data-theme="fire"] .logo-O1::before { content: "🔥"; }
 [data-theme="fire"] .logo-O1 { font-size: 0; }
-[data-theme="fire"] .logo-O1::before { font-size: 14px; display: inline-block; }
+[data-theme="fire"] .logo-O1::before { content: "🔥"; font-size: 14px; display: inline-block; }
 
 /* Lava: O becomes 🌋 */
 [data-theme="lava"] .hero-lpolvo .ho1::before { content: "🌋"; }
-[data-theme="lava"] .hero-lpolvo .ho1 { font-size: 0; }
-[data-theme="lava"] .hero-lpolvo .ho1::before { font-size: 0.85em; display: inline-block; }
-[data-theme="lava"] .logo-O1::before { content: "🌋"; }
 [data-theme="lava"] .logo-O1 { font-size: 0; }
-[data-theme="lava"] .logo-O1::before { font-size: 14px; display: inline-block; }
+[data-theme="lava"] .logo-O1::before { content: "🌋"; font-size: 14px; display: inline-block; }
 
 /* Blood Moon: O becomes 🌑 */
-[data-theme="bloodmoon"] .hero-lpolvo .ho1::before { content: "🌑"; }
-[data-theme="bloodmoon"] .hero-lpolvo .ho1 { font-size: 0; }
-[data-theme="bloodmoon"] .hero-lpolvo .ho1::before { font-size: 0.85em; display: inline-block; animation: moonGlow 2s ease infinite; }
-[data-theme="bloodmoon"] .logo-O1::before { content: "🌑"; }
+[data-theme="bloodmoon"] .hero-lpolvo .ho1::before { content: "🌑"; animation: moonGlow 2s ease infinite; }
 [data-theme="bloodmoon"] .logo-O1 { font-size: 0; }
-[data-theme="bloodmoon"] .logo-O1::before { font-size: 14px; display: inline-block; }
+[data-theme="bloodmoon"] .logo-O1::before { content: "🌑"; font-size: 14px; display: inline-block; color: var(--logo-o); }
 @keyframes moonGlow { 0%,100%{ filter: drop-shadow(0 0 6px #b91c1c); } 50%{ filter: drop-shadow(0 0 18px #dc2626) drop-shadow(0 0 30px rgba(185,28,28,0.6)); } }
 
 .typewriter {
@@ -4815,12 +4822,30 @@ function init() {
     if (window.scrollY > 60) { nav.classList.add('scrolled'); fab.classList.add('visible'); }
     else { nav.classList.remove('scrolled'); fab.classList.remove('visible'); }
   });
+
+  // Hash-based routing — read initial URL on load
+  const initHash = window.location.hash;
+  if (initHash && initHash.length > 1) {
+    routeFromHash(initHash);
+  } else {
+    showPage('home', true);
+  }
+
+  // Listen for browser back/forward navigation
+  window.addEventListener('popstate', e => {
+    routeFromHash(window.location.hash);
+  });
+
+  // Also handle plain hashchange (without pushState, e.g. anchor clicks)
+  window.addEventListener('hashchange', e => {
+    routeFromHash(window.location.hash);
+  });
 }
 
 /* ═══════════════════════════════════════════════════════════════
    THEME SYSTEM
 ═══════════════════════════════════════════════════════════════ */
-function applyTheme(id, showToast = true) {
+function applyTheme(id, showToast = true, _skipHash) {
   currentTheme = id;
   document.documentElement.setAttribute('data-theme', id);
   localStorage.setItem('lpolvo_theme', id);
@@ -4833,6 +4858,11 @@ function applyTheme(id, showToast = true) {
   // Restart special effects for new theme
   stopSpecialEffects();
   setTimeout(() => startSpecialEffects(), 100);
+
+  // Update URL hash — show theme slug (only from home page or when on home)
+  if (!_skipHash && (!currentPage || currentPage === 'home')) {
+    updateHash(id === 'default' ? 'home' : id);
+  }
 
   if (showToast) {
     const t = ALL_THEMES.find(t => t.id === id);
@@ -4965,9 +4995,38 @@ function closeMenus() {
 }
 
 /* ═══════════════════════════════════════════════════════════════
-   PAGE ROUTING
+   HASH URL ROUTING
+   Scheme:
+     Pages  → #/home  #/explore-scripts  #/videos  #/upload
+               #/about  #/sign-in  #/sign-up  #/forgot-password  #/account
+     Themes → #/sakura  #/galaxy  #/default  … (any theme id)
 ═══════════════════════════════════════════════════════════════ */
-function showPage(id) {
+const PAGE_TO_HASH = {
+  home: 'home', explore: 'explore-scripts', videos: 'videos',
+  upload: 'upload', about: 'about', signin: 'sign-in',
+  signup: 'sign-up', forgot: 'forgot-password', account: 'account'
+};
+const HASH_TO_PAGE = {};
+Object.entries(PAGE_TO_HASH).forEach(([k,v]) => { HASH_TO_PAGE[v] = k; });
+
+function getThemeIds() { return (window.ALL_THEMES || ALL_THEMES).map(t => t.id); }
+
+function updateHash(hash) {
+  const newHash = '#/' + hash;
+  if (window.location.hash !== newHash) {
+    history.pushState({ hash }, '', newHash);
+  }
+}
+
+function routeFromHash(hash) {
+  const slug = (hash || '').replace(/^#\/?/, '').toLowerCase().trim();
+  if (!slug || slug === 'home') { showPage('home', true); return; }
+  if (HASH_TO_PAGE[slug]) { showPage(HASH_TO_PAGE[slug], true); return; }
+  if (getThemeIds().includes(slug)) { applyTheme(slug, false, true); showPage('home', true); return; }
+  showPage('home', true);
+}
+
+function showPage(id, _fromRouter) {
   document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
   const target = document.getElementById('page-' + id);
   if (target) {
@@ -4978,13 +5037,14 @@ function showPage(id) {
     closeMenus();
     if (id === 'upload') updateUploadContent();
     if (id === 'account') updateAccountPage();
+    if (!_fromRouter) updateHash(PAGE_TO_HASH[id] || id);
   }
 }
 
 function updateNavLinks() {
   document.querySelectorAll('.nav-links a').forEach(a => {
-    const pg = a.getAttribute('onclick').match(/'([^']+)'/)[1];
-    a.classList.toggle('active', pg === currentPage);
+    const m = a.getAttribute('onclick').match(/'([^']+)'/);
+    if (m) a.classList.toggle('active', m[1] === currentPage);
   });
 }
 
