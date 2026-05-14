@@ -1982,6 +1982,38 @@ nav.scrolled { box-shadow: 0 4px 30px rgba(0,0,0,0.4); }
 @keyframes fireFlicker { 0%,100% { text-shadow: 0 0 8px #f97316, 0 0 20px rgba(249,115,22,0.8); transform: scale(1); } 50% { text-shadow: 0 0 15px #fbbf24, 0 0 35px rgba(251,191,36,0.9); transform: scale(1.1) rotate(2deg); } }
 @keyframes neonPingPong { 0%,100% { text-shadow: 0 0 10px #ff0066; } 50% { text-shadow: 0 0 20px #00ffcc, 0 0 40px rgba(0,255,204,0.8); } }
 
+
+/* ── YouTube Embed Cards ── */
+.yt-embed-card { overflow: hidden; }
+.yt-iframe-wrap { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; background: #000; }
+.yt-iframe-wrap iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0; }
+.yt-home-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 16px;
+  margin-top: 16px;
+}
+.yt-home-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  transition: transform 0.2s, border-color 0.2s;
+}
+.yt-home-card:hover { transform: translateY(-3px); border-color: var(--border2); }
+.yt-home-card .yt-iframe-wrap { border-radius: 0; }
+.yt-home-card .yt-card-title {
+  font-size: 12px; font-weight: 700;
+  color: var(--text); padding: 10px 12px 4px;
+  line-height: 1.4;
+}
+.yt-home-card .yt-card-link {
+  display: block; padding: 0 12px 10px;
+  font-size: 11px; color: var(--accent2);
+  cursor: pointer;
+}
+.yt-home-card .yt-card-link:hover { text-decoration: underline; }
+
 /* Nav links */
 .nav-links { display: none; gap: 0; list-style: none; align-items: center; }
 @media(min-width: 700px) { .nav-links { display: flex; } }
@@ -2245,118 +2277,62 @@ nav.scrolled { box-shadow: 0 4px 30px rgba(0,0,0,0.4); }
 .hero-lpolvo .ho2 { color: var(--logo-o2); transition: color 0.55s; display: inline-block; }
 
 /* Sakura: O becomes ♥ heart */
-[data-theme="sakura"] .hero-lpolvo .ho1::before { content: "♥"; }
-[data-theme="sakura"] .hero-lpolvo .ho1 { font-size: 0; }
 [data-theme="sakura"] .hero-lpolvo .ho1::before { font-size: 1em; display: inline-block; animation: heartBeat 1.2s ease infinite; }
-[data-theme="sakura"] .logo-O1::before { content: "♥"; }
-[data-theme="sakura"] .logo-O1 { font-size: 0; }
 [data-theme="sakura"] .logo-O1::before { font-size: 15px; display: inline-block; animation: heartBeat 1.2s ease infinite; }
 @keyframes heartBeat { 0%,100% { transform: scale(1); } 25% { transform: scale(1.3); } 50% { transform: scale(1.1); } 75% { transform: scale(1.25); } }
 
 /* Galaxy: O becomes ★ */
-[data-theme="galaxy"] .hero-lpolvo .ho1::before { content: "★"; }
-[data-theme="galaxy"] .hero-lpolvo .ho1 { font-size: 0; }
 [data-theme="galaxy"] .hero-lpolvo .ho1::before { font-size: 1em; display: inline-block; animation: starSpin 3s linear infinite; }
-[data-theme="galaxy"] .logo-O1::before { content: "★"; }
-[data-theme="galaxy"] .logo-O1 { font-size: 0; }
 [data-theme="galaxy"] .logo-O1::before { font-size: 15px; display: inline-block; }
 
 /* Toxic: O becomes ☢ */
-[data-theme="toxic"] .hero-lpolvo .ho1::before { content: "☢"; }
-[data-theme="toxic"] .hero-lpolvo .ho1 { font-size: 0; }
 [data-theme="toxic"] .hero-lpolvo .ho1::before { font-size: 0.85em; display: inline-block; }
-[data-theme="toxic"] .logo-O1::before { content: "☢"; }
-[data-theme="toxic"] .logo-O1 { font-size: 0; }
 [data-theme="toxic"] .logo-O1::before { font-size: 14px; display: inline-block; }
 
 /* Storm: O becomes ⚡ */
-[data-theme="storm"] .hero-lpolvo .ho1::before { content: "⚡"; }
-[data-theme="storm"] .hero-lpolvo .ho1 { font-size: 0; }
 [data-theme="storm"] .hero-lpolvo .ho1::before { font-size: 0.85em; display: inline-block; }
-[data-theme="storm"] .logo-O1::before { content: "⚡"; }
-[data-theme="storm"] .logo-O1 { font-size: 0; }
 [data-theme="storm"] .logo-O1::before { font-size: 14px; display: inline-block; }
 
 /* Royal: O becomes ♔ */
-[data-theme="royal"] .hero-lpolvo .ho1::before { content: "♔"; }
-[data-theme="royal"] .hero-lpolvo .ho1 { font-size: 0; }
 [data-theme="royal"] .hero-lpolvo .ho1::before { font-size: 0.85em; display: inline-block; animation: royalShine 2.5s ease infinite; }
-[data-theme="royal"] .logo-O1::before { content: "♔"; }
-[data-theme="royal"] .logo-O1 { font-size: 0; }
 [data-theme="royal"] .logo-O1::before { font-size: 14px; display: inline-block; }
 
 /* Hacker: O becomes [] */
-[data-theme="hacker"] .hero-lpolvo .ho1::before { content: "[]"; }
-[data-theme="hacker"] .hero-lpolvo .ho1 { font-size: 0; }
 [data-theme="hacker"] .hero-lpolvo .ho1::before { font-size: 0.75em; display: inline-block; }
-[data-theme="hacker"] .logo-O1::before { content: "[]"; }
-[data-theme="hacker"] .logo-O1 { font-size: 0; }
 [data-theme="hacker"] .logo-O1::before { font-size: 13px; display: inline-block; }
 
 /* Neon Pink: O becomes ♦ */
-[data-theme="neonpink"] .hero-lpolvo .ho1::before { content: "♦"; }
-[data-theme="neonpink"] .hero-lpolvo .ho1 { font-size: 0; }
 [data-theme="neonpink"] .hero-lpolvo .ho1::before { font-size: 0.85em; display: inline-block; }
-[data-theme="neonpink"] .logo-O1::before { content: "♦"; }
-[data-theme="neonpink"] .logo-O1 { font-size: 0; }
 [data-theme="neonpink"] .logo-O1::before { font-size: 14px; display: inline-block; }
 
 /* Void: O becomes ∅ */
-[data-theme="void"] .hero-lpolvo .ho1::before { content: "∅"; }
-[data-theme="void"] .hero-lpolvo .ho1 { font-size: 0; }
 [data-theme="void"] .hero-lpolvo .ho1::before { font-size: 0.9em; display: inline-block; }
-[data-theme="void"] .logo-O1::before { content: "∅"; }
-[data-theme="void"] .logo-O1 { font-size: 0; }
 [data-theme="void"] .logo-O1::before { font-size: 15px; display: inline-block; }
 
 /* Candy: O becomes ♡ */
-[data-theme="candy"] .hero-lpolvo .ho1::before { content: "♡"; }
-[data-theme="candy"] .hero-lpolvo .ho1 { font-size: 0; }
 [data-theme="candy"] .hero-lpolvo .ho1::before { font-size: 0.9em; display: inline-block; animation: heartBeat 1.5s ease infinite; }
-[data-theme="candy"] .logo-O1::before { content: "♡"; }
-[data-theme="candy"] .logo-O1 { font-size: 0; }
 [data-theme="candy"] .logo-O1::before { font-size: 15px; display: inline-block; }
 
 /* Ice King: O becomes ❄ */
-[data-theme="iceking"] .hero-lpolvo .ho1::before { content: "❄"; }
-[data-theme="iceking"] .hero-lpolvo .ho1 { font-size: 0; }
 [data-theme="iceking"] .hero-lpolvo .ho1::before { font-size: 0.85em; display: inline-block; animation: iceSpin 4s linear infinite; }
-[data-theme="iceking"] .logo-O1::before { content: "❄"; }
-[data-theme="iceking"] .logo-O1 { font-size: 0; }
 [data-theme="iceking"] .logo-O1::before { font-size: 14px; display: inline-block; }
 @keyframes iceSpin { 0%,100%{ transform: rotate(0deg); } 50%{ transform: rotate(60deg); } }
 
 /* Plasma: O becomes ◉ */
-[data-theme="plasma"] .hero-lpolvo .ho1::before { content: "◉"; }
-[data-theme="plasma"] .hero-lpolvo .ho1 { font-size: 0; }
 [data-theme="plasma"] .hero-lpolvo .ho1::before { font-size: 0.9em; display: inline-block; animation: plasmaPulse 1s ease infinite; }
-[data-theme="plasma"] .logo-O1::before { content: "◉"; }
-[data-theme="plasma"] .logo-O1 { font-size: 0; }
 [data-theme="plasma"] .logo-O1::before { font-size: 15px; display: inline-block; }
 @keyframes plasmaPulse { 0%,100%{ transform: scale(1); text-shadow: 0 0 8px #d946ef; } 50%{ transform: scale(1.2); text-shadow: 0 0 20px #f0abfc; } }
 
 /* Fire: O becomes 🔥 */
-[data-theme="fire"] .hero-lpolvo .ho1::before { content: "🔥"; }
-[data-theme="fire"] .hero-lpolvo .ho1 { font-size: 0; }
 [data-theme="fire"] .hero-lpolvo .ho1::before { font-size: 0.85em; display: inline-block; }
-[data-theme="fire"] .logo-O1::before { content: "🔥"; }
-[data-theme="fire"] .logo-O1 { font-size: 0; }
 [data-theme="fire"] .logo-O1::before { font-size: 14px; display: inline-block; }
 
 /* Lava: O becomes 🌋 */
-[data-theme="lava"] .hero-lpolvo .ho1::before { content: "🌋"; }
-[data-theme="lava"] .hero-lpolvo .ho1 { font-size: 0; }
 [data-theme="lava"] .hero-lpolvo .ho1::before { font-size: 0.85em; display: inline-block; }
-[data-theme="lava"] .logo-O1::before { content: "🌋"; }
-[data-theme="lava"] .logo-O1 { font-size: 0; }
 [data-theme="lava"] .logo-O1::before { font-size: 14px; display: inline-block; }
 
 /* Blood Moon: O becomes 🌑 */
-[data-theme="bloodmoon"] .hero-lpolvo .ho1::before { content: "🌑"; }
-[data-theme="bloodmoon"] .hero-lpolvo .ho1 { font-size: 0; }
 [data-theme="bloodmoon"] .hero-lpolvo .ho1::before { font-size: 0.85em; display: inline-block; animation: moonGlow 2s ease infinite; }
-[data-theme="bloodmoon"] .logo-O1::before { content: "🌑"; }
-[data-theme="bloodmoon"] .logo-O1 { font-size: 0; }
 [data-theme="bloodmoon"] .logo-O1::before { font-size: 14px; display: inline-block; }
 @keyframes moonGlow { 0%,100%{ filter: drop-shadow(0 0 6px #b91c1c); } 50%{ filter: drop-shadow(0 0 18px #dc2626) drop-shadow(0 0 30px rgba(185,28,28,0.6)); } }
 
@@ -3327,6 +3303,20 @@ body.lite-mode * { animation-duration: 0.01ms !important; animation-iteration-co
     <button class="btn-rscripts" onclick="window.open('https://rscripts.net/user/lpolvo','_blank')">
       📄 <span data-i18n="view_on_rscripts">VIEW ON RSCRIPTS</span>
     </button>
+  </div>
+
+
+  <!-- LATEST VIDEOS -->
+  <div class="section-wrap">
+    <span class="section-label">LATEST VIDEOS</span>
+    <h2 class="section-title"><span>Latest</span> <span style="color:var(--accent2)">Videos</span></h2>
+    <p class="section-sub">Watch the latest LPOLVO script tutorials on YouTube</p>
+    <div class="yt-home-grid" id="homeVideosList"></div>
+    <div style="text-align:center;margin-top:18px">
+      <button class="btn btn-outline-hero" onclick="showPage('videos')">
+        <span>📺</span> <span>View All Videos</span>
+      </button>
+    </div>
   </div>
 
   <!-- WHY CHOOSE -->
@@ -4734,24 +4724,43 @@ const SCRIPTS_DATA = [
 const VIDEOS_DATA = [
   {
     id: 'v1',
+    ytId: 'CFL4ozSOciY',
     title: 'Launch Yourself For Brainrots Script — INSANE AUTO GOD FEATURE 🔥',
     desc: 'Powerful Roblox script with Auto God Feature. Full tutorial on YouTube.',
     thumbEmoji: '🎮',
-    link: 'https://youtube.com/@lpolvo',
+    link: 'https://www.youtube.com/watch?v=CFL4ozSOciY',
   },
   {
     id: 'v2',
-    title: 'RIVALS Script 🔥 BEST SILENT AIM 🎯',
+    ytId: 'tkablaZrw3o',
+    title: 'RIVALS Script 🔥 BEST SILENT AIM 🎯 | OP Aim Assist + UNDETECTED',
     desc: 'Best silent aim with OP Aim Assist. Full tutorial included.',
     thumbEmoji: '🎯',
-    link: 'https://youtube.com/@lpolvo',
+    link: 'https://www.youtube.com/watch?v=tkablaZrw3o',
   },
   {
     id: 'v3',
+    ytId: 'c0u_d_ikhMs',
     title: 'Cursed Blade AUTO FARM + AUTO LOOT Full Guide',
     desc: 'Complete guide for Cursed Blade automation script.',
     thumbEmoji: '⚔️',
-    link: 'https://youtube.com/@lpolvo',
+    link: 'https://www.youtube.com/watch?v=c0u_d_ikhMs',
+  },
+  {
+    id: 'v4',
+    ytId: 'xDYC6IzhHpY',
+    title: 'LPOLVO Script Tutorial — Advanced Automation',
+    desc: 'Advanced automation tutorial. Watch the full guide on YouTube.',
+    thumbEmoji: '🤖',
+    link: 'https://www.youtube.com/watch?v=xDYC6IzhHpY',
+  },
+  {
+    id: 'v5',
+    ytId: 'zH27zcQaE3A',
+    title: 'LPOLVO Latest Script Release 🔥',
+    desc: 'Latest script release with full walkthrough and setup guide.',
+    thumbEmoji: '🚀',
+    link: 'https://www.youtube.com/watch?v=zH27zcQaE3A',
   },
 ];
 
@@ -4782,6 +4791,7 @@ function init() {
   buildHomeScripts();
   buildExploreScripts();
   buildVideosList();
+  buildHomeVideosList();
   buildFeaturesList();
   buildSkillsCloud();
   buildTicker();
@@ -5066,19 +5076,32 @@ function buildUserScripts(filter = 'all', query = '') {
   el.innerHTML = `<div class="empty-state"><div class="empty-state-icon">🔍</div><div class="empty-state-title">${tr('no_results')}</div><div style="font-size:12px;color:var(--muted)">${tr('no_results_sub')}</div></div>`;
 }
 
+
+function buildHomeVideosList() {
+  const el = document.getElementById('homeVideosList');
+  if (!el) return;
+  el.innerHTML = VIDEOS_DATA.slice(0,4).map(v => `
+    <div class="yt-home-card">
+      <div class="yt-iframe-wrap">
+        <iframe src="https://www.youtube.com/embed/${v.ytId}" title="${v.title.replace(/"/g,'&quot;')}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+      </div>
+      <div class="yt-card-title">${v.title}</div>
+      <span class="yt-card-link" onclick="window.open('${v.link}','_blank')">▶ Watch on YouTube</span>
+    </div>
+  `).join('');
+}
+
 function buildVideosList() {
   document.getElementById('videosList').innerHTML = VIDEOS_DATA.map(v => `
-    <div class="script-card" onclick="openVideoModal('${v.id}')">
-      <div class="script-thumb" style="cursor:pointer">
-        <div class="thumb-placeholder">${v.thumbEmoji}</div>
-        <div class="script-badge-video">VIDEO</div>
-        <div class="play-btn-overlay" style="opacity:1"><div class="play-circle">▶</div></div>
+    <div class="script-card yt-embed-card">
+      <div class="yt-iframe-wrap">
+        <iframe src="https://www.youtube.com/embed/${v.ytId}" title="${v.title.replace(/"/g,'&quot;')}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
       </div>
       <div class="script-body">
         <div class="script-title">${v.title}</div>
         <div class="script-desc">${v.desc}</div>
-        <button class="btn-view-script" onclick="window.open('${v.link}','_blank');event.stopPropagation()">
-          👁️ <span>${tr('view_script')}</span>
+        <button class="btn-view-script" onclick="window.open('${v.link}','_blank')">
+          ▶ <span>Watch on YouTube</span>
         </button>
       </div>
     </div>
@@ -5088,8 +5111,12 @@ function buildVideosList() {
 function openVideoModal(id) {
   const v = VIDEOS_DATA.find(x => x.id === id);
   if (!v) return;
-  document.getElementById('videoModalTitle').textContent = tr('video_preview');
-  document.getElementById('videoModalContent').innerHTML = `<span style="font-size:60px">${v.thumbEmoji}</span>`;
+  document.getElementById('videoModalTitle').textContent = v.title;
+  if (v.ytId) {
+    document.getElementById('videoModalContent').innerHTML = `<div style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden;border-radius:8px;"><iframe src="https://www.youtube.com/embed/${v.ytId}?autoplay=1" style="position:absolute;top:0;left:0;width:100%;height:100%;" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>`;
+  } else {
+    document.getElementById('videoModalContent').innerHTML = `<span style="font-size:60px">${v.thumbEmoji}</span>`;
+  }
   document.getElementById('videoModalDesc').textContent = v.desc;
   document.getElementById('videoModalScriptBtn').onclick = () => window.open(v.link, '_blank');
   document.getElementById('videoModal').classList.add('open');
