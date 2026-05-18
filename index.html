@@ -1293,17 +1293,37 @@ body::after {
   pointer-events: none; opacity: 0.55;
   transition: opacity 0.6s;
 }
-#galaxyCanvas, #sakuraCanvas, #stormCanvas, #toxicCanvas, #matrixCanvas, #fireCanvas, #snowCanvas {
-  position: fixed; inset: 0; z-index: 0;
-  pointer-events: none; display: none;
+#galaxyCanvas, #sakuraCanvas, #stormCanvas, #toxicCanvas, #matrixCanvas,
+#fireCanvas, #snowCanvas, #crystalCanvas, #desertCanvas, #forestCanvas,
+#electricCanvas, #nebulaCanvas, #spaceCanvas, #neonpinkCanvas, #rainbowCanvas {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  display: none;
+  width: 100%;
+  height: 100%;
 }
 [data-theme="galaxy"] #galaxyCanvas { display: block; }
 [data-theme="sakura"] #sakuraCanvas { display: block; }
 [data-theme="storm"] #stormCanvas { display: block; }
 [data-theme="toxic"] #toxicCanvas { display: block; }
-[data-theme="matrix"] #matrixCanvas { display: block; }
-[data-theme="fire"] #fireCanvas { display: block; }
-[data-theme="iceking"] #snowCanvas, [data-theme="arcticnight"] #snowCanvas { display: block; }
+[data-theme="matrix"] #matrixCanvas, [data-theme="hacker"] #matrixCanvas { display: block; }
+[data-theme="fire"] #fireCanvas,
+[data-theme="lava"] #fireCanvas,
+[data-theme="magma"] #fireCanvas,
+[data-theme="volcano"] #fireCanvas { display: block; }
+[data-theme="iceking"] #snowCanvas,
+[data-theme="arcticnight"] #snowCanvas,
+[data-theme="arctic"] #snowCanvas { display: block; }
+[data-theme="crystal"] #crystalCanvas { display: block; }
+[data-theme="desert"] #desertCanvas { display: block; }
+[data-theme="forest"] #forestCanvas, [data-theme="venom"] #forestCanvas { display: block; }
+[data-theme="electric"] #electricCanvas { display: block; }
+[data-theme="nebula"] #nebulaCanvas { display: block; }
+[data-theme="space"] #spaceCanvas { display: block; }
+[data-theme="neonpink"] #neonpinkCanvas { display: block; }
+[data-theme="rainbow"] #rainbowCanvas, [data-theme="candy"] #rainbowCanvas { display: block; }
 #matrixCanvas { opacity: 0.35; }
 
 /* ══════════════════════════════════════════════════════════════
@@ -2472,6 +2492,14 @@ select.form-input { cursor: pointer; }
 <canvas id="matrixCanvas"></canvas>
 <canvas id="fireCanvas"></canvas>
 <canvas id="snowCanvas"></canvas>
+<canvas id="crystalCanvas"></canvas>
+<canvas id="desertCanvas"></canvas>
+<canvas id="forestCanvas"></canvas>
+<canvas id="electricCanvas"></canvas>
+<canvas id="nebulaCanvas"></canvas>
+<canvas id="spaceCanvas"></canvas>
+<canvas id="neonpinkCanvas"></canvas>
+<canvas id="rainbowCanvas"></canvas>
 
 <!-- ══════ SPLASH ══════ -->
 <div id="splashScreen">
@@ -3607,15 +3635,1171 @@ const T = {
   }
 };
 
-/* Fill missing lang translations with EN fallback */
-['es','de','pt','ru','zh','ja','ko','tr','it','id'].forEach(lc => {
-  T[lc] = Object.assign({}, T.en, {
-    splashLoading: {es:'Cargando...',de:'Laden...',pt:'Carregando...',ru:'Загрузка...',
-      zh:'加载中...',ja:'読み込み中...',ko:'로딩 중...',tr:'Yükleniyor...',it:'Caricamento...',id:'Memuat...'}[lc] || 'Loading...',
-    authNavSignIn: {es:'ENTRAR',de:'ANMELDEN',pt:'ENTRAR',ru:'ВОЙТИ',
-      zh:'登录',ja:'ログイン',ko:'로그인',tr:'GİRİŞ',it:'ACCEDI',id:'MASUK'}[lc] || 'SIGN IN'
-  });
-});
+/* ══════ FRENCH TRANSLATION ══════ */
+T.fr = {
+  splashLoading: 'Chargement...',
+  heroBadge: 'SCRIPTS AVANCÉS & AUTOMATISATION',
+  heroWelcome: 'Bienvenue sur',
+  heroSub: 'Façonner l\'avenir, un script à la fois...',
+  heroDesc: 'Un hub centralisé pour des scripts premium, des outils d\'automatisation intelligents et des applications innovantes.',
+  heroExplore: 'EXPLORER LES PROJETS',
+  heroJoin: 'REJOINDRE LA COMMUNAUTÉ',
+  heroUserScripts: 'SCRIPTS UTILISATEURS',
+  heroUpload: 'PUBLIER UN SCRIPT',
+  statProjects: 'PROJETS',
+  statUsers: 'UTILISATEURS ACTIFS',
+  statFree: 'ACCÈS GRATUIT',
+  featuredLabel: 'À LA UNE',
+  featuredTitle: 'Scripts Roblox',
+  featuredTitle2: ' Premium',
+  featuredDesc: 'Scripts Roblox premium et outils d\'automatisation',
+  viewScriptTxt: 'VOIR LE SCRIPT',
+  rscriptsTitle: 'Tous les scripts sur RScripts',
+  rscriptsDesc: 'Parcourez tous les scripts LPOLVO sur RScripts.net — gratuits et prêts à l\'emploi.',
+  rscriptsBtnTxt: 'VOIR SUR RSCRIPTS',
+  platformLabel: 'PLATEFORME',
+  platformTitle: 'Pourquoi choisir LPOLVO ?',
+  feat1Title: 'Authentification Sécurisée',
+  feat1Desc: 'Liaison HWID, chiffrement AES-256 et rotation mensuelle des clés pour une sécurité maximale.',
+  feat2Title: 'Haute Performance',
+  feat2Desc: 'Scripts optimisés pour une utilisation minimale du CPU/mémoire avec une exécution ultra-rapide.',
+  feat3Title: 'Communauté Active',
+  feat3Desc: 'Partagez, découvrez et collaborez sur des scripts avec une communauté mondiale en pleine croissance.',
+  feat4Title: '50 Thèmes',
+  feat4Desc: 'Personnalisez entièrement votre expérience avec 50 thèmes uniques — chacun avec ses propres animations.',
+  feat5Title: 'Publication Facile',
+  feat5Desc: 'Publiez vos scripts en quelques secondes grâce à notre outil de publication multi-étapes.',
+  feat6Title: 'Multi-Langues',
+  feat6Desc: '14 langues dont le Darija marocain — conçu pour une communauté mondiale.',
+  communityLabel: 'COMMUNAUTÉ',
+  communityLabel2: 'COMMUNAUTÉ',
+  exploreTitle: 'Explorer les Scripts',
+  exploreDesc: 'Découvrez et utilisez les meilleurs scripts de la collection LPOLVO',
+  filterAll: 'TOUS', filterRoblox: 'ROBLOX', filterPython: 'PYTHON',
+  filterLua: 'LUA', filterWeb: 'WEB', filterOther: 'AUTRE',
+  noResultsTitle: 'Aucun résultat trouvé',
+  noResultsDesc: 'Essayez une autre recherche ou un autre filtre !',
+  shareLabel: 'PARTAGEZ VOTRE SCRIPT',
+  uploadTitle: 'Publier Votre Script',
+  uploadDesc: 'Partagez vos créations avec la communauté LPOLVO. Tous les dépôts sont vérifiés pour la qualité.',
+  uploadLockedTitle: 'Connexion Requise',
+  uploadLockedDesc: 'Vous devez vous connecter pour publier des scripts.',
+  uploadSignInTxt: 'SE CONNECTER',
+  uploadCreateTxt: 'CRÉER UN COMPTE',
+  ulPublishBtn: 'PUBLIER LE SCRIPT',
+  latestVideosLabel: 'DERNIÈRES VIDÉOS',
+  videosTitle: 'Dernières Vidéos',
+  videosDesc: 'Regardez les derniers tutoriels de scripts LPOLVO sur YouTube',
+  watchOnYT: 'Voir sur YouTube',
+  viewAllVideosTxt: 'VOIR TOUTES LES VIDÉOS',
+  devLabel: 'DÉVELOPPEUR',
+  aboutTitle: 'Conçu pour la Performance.',
+  aboutP1: 'Je me spécialise dans le développement d\'architectures de scripts avancées, de protocoles d\'authentification sécurisés et de solutions d\'automatisation.',
+  aboutP2: 'Avec des années d\'expérience en Luau, Python et JavaScript, je crée des outils qui fonctionnent vraiment.',
+  aboutJoin: 'REJOINDRE LA COMMUNAUTÉ',
+  aboutExplore: 'EXPLORER LES PROJETS',
+  siTitle: 'Bon retour',
+  siSub: 'Connectez-vous à votre compte',
+  siGoogle: 'Continuer avec Google',
+  siOr: 'OU',
+  siEmailLabel: 'E-mail',
+  siPwLabel: 'Mot de passe',
+  siForgot: 'Mot de passe oublié ?',
+  siBtnTxt: 'Se connecter',
+  siSwitch: 'Pas encore de compte ?',
+  siSwitchLink: ' En créer un',
+  siBack: 'Retour à l\'accueil',
+  suTitle: 'Créer un Compte',
+  suSub: 'Rejoignez la communauté LPOLVO',
+  suGoogle: 'Continuer avec Google',
+  suOr: 'OU',
+  suNameLabel: 'Nom d\'affichage',
+  suEmailLabel: 'E-mail',
+  suPwLabel: 'Mot de passe',
+  suBtnTxt: 'Créer un compte',
+  suSwitch: 'Vous avez déjà un compte ?',
+  suSwitchLink: ' Se connecter',
+  suBack: 'Retour à l\'accueil',
+  authNavSignIn: 'CONNEXION',
+  themeDDTitle: 'CHOISISSEZ VOTRE THÈME',
+  langDDTitle: 'LANGUE',
+  mHome: 'Accueil', mExplore: 'Explorer', mUserScripts: 'Scripts Utilisateurs',
+  mVideos: 'Vidéos', mUpload: 'Publier un Script', mAbout: 'À Propos',
+  navHome: 'ACCUEIL', navExplore: 'EXPLORER', navVideos: 'VIDÉOS', navAbout: 'À PROPOS',
+  usEmptyTitle: 'Aucun résultat trouvé',
+  usEmptyDesc: 'Essayez une autre recherche ou publiez d\'abord !',
+  userScriptsTitle: 'Scripts Utilisateurs',
+  liteBtnTxt: 'LITE',
+  themesBtnLabel: 'THÈMES',
+  flYT: 'YouTube', flIG: 'Instagram', flDC: 'Discord', flRS: 'RScripts',
+  fcRights: 'Tous Droits Réservés',
+  fcTagline: 'Façonner l\'avenir, un script à la fois.',
+  fnHome: 'Accueil', fnExplore: 'Explorer', fnVideos: 'Vidéos', fnUpload: 'Publier', fnAbout: 'À Propos',
+  tPerf: 'Performance Optimisée', tAes: 'Chiffrement AES-256', tSmart: 'Bots Intelligents',
+  tHwid: 'Liaison HWID', tMulti: 'Support Multi-Langues', tFree: 'Accès 100% Gratuit',
+  ulScriptName: 'Nom du Script *', ulDescription: 'Description *', ulCategory: 'Catégorie',
+  ulType: 'Type', ulScriptCode: 'Code du Script *', ulVideoLink: 'Lien Tutoriel Vidéo (optionnel)',
+};
+
+/* ══════ SPANISH TRANSLATION ══════ */
+T.es = {
+  splashLoading: 'Cargando...',
+  heroBadge: 'SCRIPTS AVANZADOS Y AUTOMATIZACIÓN',
+  heroWelcome: 'Bienvenido a',
+  heroSub: 'Construyendo el futuro, un script a la vez...',
+  heroDesc: 'Un hub centralizado para scripts premium, herramientas de automatización inteligentes y aplicaciones innovadoras.',
+  heroExplore: 'EXPLORAR PROYECTOS',
+  heroJoin: 'UNIRSE A LA COMUNIDAD',
+  heroUserScripts: 'SCRIPTS DE USUARIOS',
+  heroUpload: 'SUBIR SCRIPT',
+  statProjects: 'PROYECTOS',
+  statUsers: 'USUARIOS ACTIVOS',
+  statFree: 'ACCESO GRATUITO',
+  featuredLabel: 'DESTACADO',
+  featuredTitle: 'Scripts Roblox',
+  featuredTitle2: ' Premium',
+  featuredDesc: 'Scripts premium de Roblox y herramientas de automatización',
+  viewScriptTxt: 'VER SCRIPT',
+  rscriptsTitle: 'Todos los Scripts en RScripts',
+  rscriptsDesc: 'Navega todos los scripts de LPOLVO en RScripts.net — gratis y listos para usar.',
+  rscriptsBtnTxt: 'VER EN RSCRIPTS',
+  platformLabel: 'PLATAFORMA',
+  platformTitle: '¿Por qué elegir LPOLVO?',
+  feat1Title: 'Autenticación Segura',
+  feat1Desc: 'Enlace HWID, cifrado AES-256 y rotación mensual de claves para máxima seguridad.',
+  feat2Title: 'Alto Rendimiento',
+  feat2Desc: 'Scripts optimizados para mínimo uso de CPU/memoria con ejecución ultra-rápida.',
+  feat3Title: 'Comunidad Activa',
+  feat3Desc: 'Comparte, descubre y colabora en scripts con una comunidad global en crecimiento.',
+  feat4Title: '50 Temas',
+  feat4Desc: 'Personaliza tu experiencia con 50 temas únicos — cada uno con sus propias animaciones.',
+  feat5Title: 'Carga Fácil',
+  feat5Desc: 'Sube tus scripts en segundos con nuestra herramienta de carga de múltiples pasos.',
+  feat6Title: 'Multi-Idioma',
+  feat6Desc: '14 idiomas incluyendo Darija marroquí — construido para una comunidad global.',
+  communityLabel: 'COMUNIDAD',
+  communityLabel2: 'COMUNIDAD',
+  exploreTitle: 'Explorar Scripts',
+  exploreDesc: 'Descubre y usa los mejores scripts de la colección LPOLVO',
+  filterAll: 'TODOS', filterRoblox: 'ROBLOX', filterPython: 'PYTHON',
+  filterLua: 'LUA', filterWeb: 'WEB', filterOther: 'OTRO',
+  noResultsTitle: 'No se encontraron resultados',
+  noResultsDesc: '¡Prueba una búsqueda o filtro diferente!',
+  shareLabel: 'COMPARTE TU SCRIPT',
+  uploadTitle: 'Sube Tu Script',
+  uploadDesc: 'Comparte tus creaciones con la comunidad LPOLVO. Todas las cargas se revisan para calidad.',
+  uploadLockedTitle: 'Inicio de Sesión Requerido',
+  uploadLockedDesc: 'Necesitas iniciar sesión para subir scripts.',
+  uploadSignInTxt: 'INICIAR SESIÓN',
+  uploadCreateTxt: 'CREAR CUENTA',
+  ulPublishBtn: 'PUBLICAR SCRIPT',
+  latestVideosLabel: 'ÚLTIMOS VIDEOS',
+  videosTitle: 'Últimos Videos',
+  videosDesc: 'Mira los últimos tutoriales de scripts LPOLVO en YouTube',
+  watchOnYT: 'Ver en YouTube',
+  viewAllVideosTxt: 'VER TODOS LOS VIDEOS',
+  devLabel: 'DESARROLLADOR',
+  aboutTitle: 'Construido para el Rendimiento.',
+  aboutP1: 'Me especializo en desarrollar arquitecturas de scripts avanzadas, protocolos de autenticación seguros y soluciones de automatización.',
+  aboutP2: 'Con años de experiencia en Luau, Python y JavaScript, construyo herramientas que realmente funcionan.',
+  aboutJoin: 'UNIRSE A LA COMUNIDAD',
+  aboutExplore: 'EXPLORAR PROYECTOS',
+  siTitle: 'Bienvenido de vuelta',
+  siSub: 'Inicia sesión en tu cuenta',
+  siGoogle: 'Continuar con Google',
+  siOr: 'O',
+  siEmailLabel: 'Correo electrónico',
+  siPwLabel: 'Contraseña',
+  siForgot: '¿Olvidaste tu contraseña?',
+  siBtnTxt: 'Iniciar sesión',
+  siSwitch: '¿No tienes una cuenta?',
+  siSwitchLink: ' Créala',
+  siBack: 'Volver al inicio',
+  suTitle: 'Crear Cuenta',
+  suSub: 'Únete a la comunidad LPOLVO',
+  suGoogle: 'Continuar con Google',
+  suOr: 'O',
+  suNameLabel: 'Nombre de usuario',
+  suEmailLabel: 'Correo electrónico',
+  suPwLabel: 'Contraseña',
+  suBtnTxt: 'Crear cuenta',
+  suSwitch: '¿Ya tienes una cuenta?',
+  suSwitchLink: ' Inicia sesión',
+  suBack: 'Volver al inicio',
+  authNavSignIn: 'ENTRAR',
+  themeDDTitle: 'ELIGE TU TEMA',
+  langDDTitle: 'IDIOMA',
+  mHome: 'Inicio', mExplore: 'Explorar', mUserScripts: 'Scripts de Usuarios',
+  mVideos: 'Videos', mUpload: 'Subir Script', mAbout: 'Acerca de',
+  navHome: 'INICIO', navExplore: 'EXPLORAR', navVideos: 'VIDEOS', navAbout: 'ACERCA',
+  usEmptyTitle: 'No se encontraron resultados',
+  usEmptyDesc: '¡Prueba una búsqueda diferente o sube primero!',
+  userScriptsTitle: 'Scripts de Usuarios',
+  liteBtnTxt: 'LITE',
+  themesBtnLabel: 'TEMAS',
+  flYT: 'YouTube', flIG: 'Instagram', flDC: 'Discord', flRS: 'RScripts',
+  fcRights: 'Todos los Derechos Reservados',
+  fcTagline: 'Construyendo el futuro, un script a la vez.',
+  fnHome: 'Inicio', fnExplore: 'Explorar', fnVideos: 'Videos', fnUpload: 'Subir', fnAbout: 'Acerca',
+  tPerf: 'Rendimiento Optimizado', tAes: 'Cifrado AES-256', tSmart: 'Bots Inteligentes',
+  tHwid: 'Enlace HWID', tMulti: 'Soporte Multi-Idioma', tFree: 'Acceso 100% Gratuito',
+  ulScriptName: 'Nombre del Script *', ulDescription: 'Descripción *', ulCategory: 'Categoría',
+  ulType: 'Tipo', ulScriptCode: 'Código del Script *', ulVideoLink: 'Enlace Tutorial en Video (opcional)',
+};
+
+/* ══════ GERMAN TRANSLATION ══════ */
+T.de = {
+  splashLoading: 'Laden...',
+  heroBadge: 'ERWEITERTE SKRIPTE & AUTOMATISIERUNG',
+  heroWelcome: 'Willkommen bei',
+  heroSub: 'Die Zukunft gestalten, ein Skript nach dem anderen...',
+  heroDesc: 'Ein zentralisierter Hub für Premium-Skripte, intelligente Automatisierungstools und innovative Anwendungen.',
+  heroExplore: 'PROJEKTE ERKUNDEN',
+  heroJoin: 'GEMEINSCHAFT BEITRETEN',
+  heroUserScripts: 'NUTZER-SKRIPTE',
+  heroUpload: 'SKRIPT HOCHLADEN',
+  statProjects: 'PROJEKTE',
+  statUsers: 'AKTIVE NUTZER',
+  statFree: 'KOSTENLOSER ZUGANG',
+  featuredLabel: 'EMPFOHLEN',
+  featuredTitle: 'Premium',
+  featuredTitle2: ' Roblox-Skripte',
+  featuredDesc: 'Premium Roblox-Skripte & Automatisierungstools',
+  viewScriptTxt: 'SKRIPT ANSEHEN',
+  rscriptsTitle: 'Alle Skripte auf RScripts',
+  rscriptsDesc: 'Alle LPOLVO-Skripte auf RScripts.net durchsuchen — kostenlos und bereit zur Nutzung.',
+  rscriptsBtnTxt: 'AUF RSCRIPTS ANSEHEN',
+  platformLabel: 'PLATTFORM',
+  platformTitle: 'Warum LPOLVO wählen?',
+  feat1Title: 'Sichere Authentifizierung',
+  feat1Desc: 'HWID-Bindung, AES-256-Verschlüsselung und monatliche Schlüsselrotation für maximale Sicherheit.',
+  feat2Title: 'Hohe Leistung',
+  feat2Desc: 'Optimierte Skripte für minimalen CPU-/Speicherverbrauch mit blitzschneller Ausführung.',
+  feat3Title: 'Gemeinschaftsorientiert',
+  feat3Desc: 'Teilen, entdecken und an Skripten mit einer wachsenden globalen Gemeinschaft zusammenarbeiten.',
+  feat4Title: '50 Themes',
+  feat4Desc: 'Passe dein Erlebnis mit 50 einzigartigen Themes an — jedes mit eigenen Animationen und Farben.',
+  feat5Title: 'Einfacher Upload',
+  feat5Desc: 'Lade deine Skripte in Sekunden mit unserem mehrstufigen Uploader hoch.',
+  feat6Title: 'Mehrsprachig',
+  feat6Desc: '14 Sprachen einschließlich Marokkanischem Darija — für eine globale Gemeinschaft.',
+  communityLabel: 'GEMEINSCHAFT',
+  communityLabel2: 'GEMEINSCHAFT',
+  exploreTitle: 'Skripte Erkunden',
+  exploreDesc: 'Entdecke und nutze die besten Skripte aus der LPOLVO-Sammlung',
+  filterAll: 'ALLE', filterRoblox: 'ROBLOX', filterPython: 'PYTHON',
+  filterLua: 'LUA', filterWeb: 'WEB', filterOther: 'ANDERE',
+  noResultsTitle: 'Keine Ergebnisse gefunden',
+  noResultsDesc: 'Versuche eine andere Suche oder einen anderen Filter!',
+  shareLabel: 'SKRIPT TEILEN',
+  uploadTitle: 'Dein Skript Hochladen',
+  uploadDesc: 'Teile deine Kreationen mit der LPOLVO-Gemeinschaft. Alle Uploads werden auf Qualität geprüft.',
+  uploadLockedTitle: 'Anmeldung Erforderlich',
+  uploadLockedDesc: 'Du musst dich anmelden, um Skripte hochzuladen.',
+  uploadSignInTxt: 'ANMELDEN',
+  uploadCreateTxt: 'KONTO ERSTELLEN',
+  ulPublishBtn: 'SKRIPT VERÖFFENTLICHEN',
+  latestVideosLabel: 'NEUESTE VIDEOS',
+  videosTitle: 'Neueste Videos',
+  videosDesc: 'Schau die neuesten LPOLVO-Skript-Tutorials auf YouTube',
+  watchOnYT: 'Auf YouTube ansehen',
+  viewAllVideosTxt: 'ALLE VIDEOS ANSEHEN',
+  devLabel: 'ENTWICKLER',
+  aboutTitle: 'Für Leistung Gebaut.',
+  aboutP1: 'Ich spezialisiere mich auf die Entwicklung fortgeschrittener Skript-Architekturen, sicherer Authentifizierungsprotokolle und nahtloser Automatisierungslösungen.',
+  aboutP2: 'Mit jahrelanger Erfahrung in Luau, Python und JavaScript baue ich Tools, die wirklich funktionieren.',
+  aboutJoin: 'GEMEINSCHAFT BEITRETEN',
+  aboutExplore: 'PROJEKTE ERKUNDEN',
+  siTitle: 'Willkommen zurück',
+  siSub: 'Melde dich bei deinem Konto an',
+  siGoogle: 'Mit Google fortfahren',
+  siOr: 'ODER',
+  siEmailLabel: 'E-Mail',
+  siPwLabel: 'Passwort',
+  siForgot: 'Passwort vergessen?',
+  siBtnTxt: 'Anmelden',
+  siSwitch: 'Noch kein Konto?',
+  siSwitchLink: ' Erstelle eines',
+  siBack: 'Zurück zur Startseite',
+  suTitle: 'Konto Erstellen',
+  suSub: 'Tritt der LPOLVO-Gemeinschaft bei',
+  suGoogle: 'Mit Google fortfahren',
+  suOr: 'ODER',
+  suNameLabel: 'Anzeigename',
+  suEmailLabel: 'E-Mail',
+  suPwLabel: 'Passwort',
+  suBtnTxt: 'Konto erstellen',
+  suSwitch: 'Hast du bereits ein Konto?',
+  suSwitchLink: ' Anmelden',
+  suBack: 'Zurück zur Startseite',
+  authNavSignIn: 'ANMELDEN',
+  themeDDTitle: 'WÄHLE DEIN THEME',
+  langDDTitle: 'SPRACHE',
+  mHome: 'Startseite', mExplore: 'Erkunden', mUserScripts: 'Nutzer-Skripte',
+  mVideos: 'Videos', mUpload: 'Skript Hochladen', mAbout: 'Über Uns',
+  navHome: 'START', navExplore: 'ERKUNDEN', navVideos: 'VIDEOS', navAbout: 'ÜBER',
+  usEmptyTitle: 'Keine Ergebnisse gefunden',
+  usEmptyDesc: 'Versuche eine andere Suche oder lade zuerst hoch!',
+  userScriptsTitle: 'Nutzer-Skripte',
+  liteBtnTxt: 'LITE',
+  themesBtnLabel: 'THEMES',
+  flYT: 'YouTube', flIG: 'Instagram', flDC: 'Discord', flRS: 'RScripts',
+  fcRights: 'Alle Rechte Vorbehalten',
+  fcTagline: 'Die Zukunft gestalten, ein Skript nach dem anderen.',
+  fnHome: 'Startseite', fnExplore: 'Erkunden', fnVideos: 'Videos', fnUpload: 'Hochladen', fnAbout: 'Über',
+  tPerf: 'Leistungsoptimiert', tAes: 'AES-256-Verschlüsselung', tSmart: 'Intelligente Bots',
+  tHwid: 'HWID-Bindung', tMulti: 'Mehrsprachige Unterstützung', tFree: '100% Kostenloser Zugang',
+  ulScriptName: 'Skriptname *', ulDescription: 'Beschreibung *', ulCategory: 'Kategorie',
+  ulType: 'Typ', ulScriptCode: 'Skript-Code *', ulVideoLink: 'Video-Tutorial-Link (optional)',
+};
+
+/* ══════ PORTUGUESE TRANSLATION ══════ */
+T.pt = {
+  splashLoading: 'Carregando...',
+  heroBadge: 'SCRIPTS AVANÇADOS E AUTOMAÇÃO',
+  heroWelcome: 'Bem-vindo ao',
+  heroSub: 'Construindo o futuro, um script por vez...',
+  heroDesc: 'Um hub centralizado para scripts premium, ferramentas de automação inteligentes e aplicações inovadoras.',
+  heroExplore: 'EXPLORAR PROJETOS',
+  heroJoin: 'ENTRAR NA COMUNIDADE',
+  heroUserScripts: 'SCRIPTS DOS USUÁRIOS',
+  heroUpload: 'ENVIAR SCRIPT',
+  statProjects: 'PROJETOS',
+  statUsers: 'USUÁRIOS ATIVOS',
+  statFree: 'ACESSO GRATUITO',
+  featuredLabel: 'DESTAQUE',
+  featuredTitle: 'Scripts Roblox',
+  featuredTitle2: ' Premium',
+  featuredDesc: 'Scripts premium de Roblox e ferramentas de automação',
+  viewScriptTxt: 'VER SCRIPT',
+  rscriptsTitle: 'Todos os Scripts no RScripts',
+  rscriptsDesc: 'Navegue por todos os scripts LPOLVO no RScripts.net — gratuitos e prontos para usar.',
+  rscriptsBtnTxt: 'VER NO RSCRIPTS',
+  platformLabel: 'PLATAFORMA',
+  platformTitle: 'Por que escolher LPOLVO?',
+  feat1Title: 'Autenticação Segura',
+  feat1Desc: 'Vinculação HWID, criptografia AES-256 e rotação mensal de chaves para máxima segurança.',
+  feat2Title: 'Alto Desempenho',
+  feat2Desc: 'Scripts otimizados para uso mínimo de CPU/memória com execução ultra-rápida.',
+  feat3Title: 'Comunidade Ativa',
+  feat3Desc: 'Compartilhe, descubra e colabore em scripts com uma comunidade global em crescimento.',
+  feat4Title: '50 Temas',
+  feat4Desc: 'Personalize sua experiência com 50 temas únicos — cada um com suas próprias animações.',
+  feat5Title: 'Upload Fácil',
+  feat5Desc: 'Envie seus scripts em segundos com nossa ferramenta de upload de múltiplas etapas.',
+  feat6Title: 'Multi-Idioma',
+  feat6Desc: '14 idiomas incluindo Darija marroquino — construído para uma comunidade global.',
+  communityLabel: 'COMUNIDADE',
+  communityLabel2: 'COMUNIDADE',
+  exploreTitle: 'Explorar Scripts',
+  exploreDesc: 'Descubra e use os melhores scripts da coleção LPOLVO',
+  filterAll: 'TODOS', filterRoblox: 'ROBLOX', filterPython: 'PYTHON',
+  filterLua: 'LUA', filterWeb: 'WEB', filterOther: 'OUTRO',
+  noResultsTitle: 'Nenhum resultado encontrado',
+  noResultsDesc: 'Tente uma busca ou filtro diferente!',
+  shareLabel: 'COMPARTILHE SEU SCRIPT',
+  uploadTitle: 'Envie Seu Script',
+  uploadDesc: 'Compartilhe suas criações com a comunidade LPOLVO. Todos os envios são revisados para qualidade.',
+  uploadLockedTitle: 'Login Necessário',
+  uploadLockedDesc: 'Você precisa fazer login para enviar scripts.',
+  uploadSignInTxt: 'ENTRAR',
+  uploadCreateTxt: 'CRIAR CONTA',
+  ulPublishBtn: 'PUBLICAR SCRIPT',
+  latestVideosLabel: 'ÚLTIMOS VÍDEOS',
+  videosTitle: 'Últimos Vídeos',
+  videosDesc: 'Assista aos últimos tutoriais de scripts LPOLVO no YouTube',
+  watchOnYT: 'Assistir no YouTube',
+  viewAllVideosTxt: 'VER TODOS OS VÍDEOS',
+  devLabel: 'DESENVOLVEDOR',
+  aboutTitle: 'Construído para Desempenho.',
+  aboutP1: 'Especializo-me em desenvolver arquiteturas de scripts avançadas, protocolos de autenticação seguros e soluções de automação.',
+  aboutP2: 'Com anos de experiência em Luau, Python e JavaScript, construo ferramentas que realmente funcionam.',
+  aboutJoin: 'ENTRAR NA COMUNIDADE',
+  aboutExplore: 'EXPLORAR PROJETOS',
+  siTitle: 'Bem-vindo de volta',
+  siSub: 'Entre na sua conta',
+  siGoogle: 'Continuar com Google',
+  siOr: 'OU',
+  siEmailLabel: 'E-mail',
+  siPwLabel: 'Senha',
+  siForgot: 'Esqueceu a senha?',
+  siBtnTxt: 'Entrar',
+  siSwitch: 'Não tem uma conta?',
+  siSwitchLink: ' Crie uma',
+  siBack: 'Voltar ao início',
+  suTitle: 'Criar Conta',
+  suSub: 'Junte-se à comunidade LPOLVO',
+  suGoogle: 'Continuar com Google',
+  suOr: 'OU',
+  suNameLabel: 'Nome de exibição',
+  suEmailLabel: 'E-mail',
+  suPwLabel: 'Senha',
+  suBtnTxt: 'Criar conta',
+  suSwitch: 'Já tem uma conta?',
+  suSwitchLink: ' Entrar',
+  suBack: 'Voltar ao início',
+  authNavSignIn: 'ENTRAR',
+  themeDDTitle: 'ESCOLHA SEU TEMA',
+  langDDTitle: 'IDIOMA',
+  mHome: 'Início', mExplore: 'Explorar', mUserScripts: 'Scripts de Usuários',
+  mVideos: 'Vídeos', mUpload: 'Enviar Script', mAbout: 'Sobre',
+  navHome: 'INÍCIO', navExplore: 'EXPLORAR', navVideos: 'VÍDEOS', navAbout: 'SOBRE',
+  usEmptyTitle: 'Nenhum resultado encontrado',
+  usEmptyDesc: 'Tente uma busca diferente ou envie primeiro!',
+  userScriptsTitle: 'Scripts de Usuários',
+  liteBtnTxt: 'LITE',
+  themesBtnLabel: 'TEMAS',
+  flYT: 'YouTube', flIG: 'Instagram', flDC: 'Discord', flRS: 'RScripts',
+  fcRights: 'Todos os Direitos Reservados',
+  fcTagline: 'Construindo o futuro, um script por vez.',
+  fnHome: 'Início', fnExplore: 'Explorar', fnVideos: 'Vídeos', fnUpload: 'Enviar', fnAbout: 'Sobre',
+  tPerf: 'Desempenho Otimizado', tAes: 'Criptografia AES-256', tSmart: 'Bots Inteligentes',
+  tHwid: 'Vinculação HWID', tMulti: 'Suporte Multi-Idioma', tFree: 'Acesso 100% Gratuito',
+  ulScriptName: 'Nome do Script *', ulDescription: 'Descrição *', ulCategory: 'Categoria',
+  ulType: 'Tipo', ulScriptCode: 'Código do Script *', ulVideoLink: 'Link de Tutorial em Vídeo (opcional)',
+};
+
+/* ══════ RUSSIAN TRANSLATION ══════ */
+T.ru = {
+  splashLoading: 'Загрузка...',
+  heroBadge: 'ПРОДВИНУТЫЕ СКРИПТЫ И АВТОМАТИЗАЦИЯ',
+  heroWelcome: 'Добро пожаловать в',
+  heroSub: 'Создавая будущее, один скрипт за другим...',
+  heroDesc: 'Централизованный хаб для премиальных скриптов, интеллектуальных инструментов автоматизации и инновационных приложений.',
+  heroExplore: 'ИССЛЕДОВАТЬ ПРОЕКТЫ',
+  heroJoin: 'ВСТУПИТЬ В СООБЩЕСТВО',
+  heroUserScripts: 'СКРИПТЫ ПОЛЬЗОВАТЕЛЕЙ',
+  heroUpload: 'ЗАГРУЗИТЬ СКРИПТ',
+  statProjects: 'ПРОЕКТЫ',
+  statUsers: 'АКТИВНЫЕ ПОЛЬЗОВАТЕЛИ',
+  statFree: 'БЕСПЛАТНЫЙ ДОСТУП',
+  featuredLabel: 'РЕКОМЕНДУЕМОЕ',
+  featuredTitle: 'Премиальные',
+  featuredTitle2: ' Скрипты Roblox',
+  featuredDesc: 'Премиальные скрипты Roblox и инструменты автоматизации',
+  viewScriptTxt: 'ПРОСМОТРЕТЬ СКРИПТ',
+  rscriptsTitle: 'Все Скрипты на RScripts',
+  rscriptsDesc: 'Просматривайте все скрипты LPOLVO на RScripts.net — бесплатно и готово к использованию.',
+  rscriptsBtnTxt: 'ПРОСМОТРЕТЬ НА RSCRIPTS',
+  platformLabel: 'ПЛАТФОРМА',
+  platformTitle: 'Почему выбирают LPOLVO?',
+  feat1Title: 'Безопасная Аутентификация',
+  feat1Desc: 'Привязка HWID, шифрование AES-256 и ежемесячная ротация ключей для максимальной безопасности.',
+  feat2Title: 'Высокая Производительность',
+  feat2Desc: 'Скрипты оптимизированы для минимального использования CPU/памяти с молниеносным выполнением.',
+  feat3Title: 'Сообщество',
+  feat3Desc: 'Делитесь, открывайте и сотрудничайте над скриптами с растущим глобальным сообществом.',
+  feat4Title: '50 Тем',
+  feat4Desc: 'Полностью настройте свой опыт с 50 уникальными темами — каждая со своими анимациями.',
+  feat5Title: 'Простая Загрузка',
+  feat5Desc: 'Загружайте свои скрипты за секунды с помощью нашего многошагового загрузчика.',
+  feat6Title: 'Много Языков',
+  feat6Desc: '14 языков включая марокканский дари — создан для глобального сообщества.',
+  communityLabel: 'СООБЩЕСТВО',
+  communityLabel2: 'СООБЩЕСТВО',
+  exploreTitle: 'Исследовать Скрипты',
+  exploreDesc: 'Открывайте и используйте лучшие скрипты из коллекции LPOLVO',
+  filterAll: 'ВСЕ', filterRoblox: 'ROBLOX', filterPython: 'PYTHON',
+  filterLua: 'LUA', filterWeb: 'ВЕБ', filterOther: 'ДРУГОЕ',
+  noResultsTitle: 'Результатов не найдено',
+  noResultsDesc: 'Попробуйте другой поиск или фильтр!',
+  shareLabel: 'ПОДЕЛИТЕСЬ СКРИПТОМ',
+  uploadTitle: 'Загрузите Свой Скрипт',
+  uploadDesc: 'Делитесь своими творениями с сообществом LPOLVO. Все загрузки проверяются на качество.',
+  uploadLockedTitle: 'Требуется Вход',
+  uploadLockedDesc: 'Вам нужно войти, чтобы загружать скрипты.',
+  uploadSignInTxt: 'ВОЙТИ',
+  uploadCreateTxt: 'СОЗДАТЬ АККАУНТ',
+  ulPublishBtn: 'ОПУБЛИКОВАТЬ СКРИПТ',
+  latestVideosLabel: 'ПОСЛЕДНИЕ ВИДЕО',
+  videosTitle: 'Последние Видео',
+  videosDesc: 'Смотрите последние обучающие видео по скриптам LPOLVO на YouTube',
+  watchOnYT: 'Смотреть на YouTube',
+  viewAllVideosTxt: 'СМОТРЕТЬ ВСЕ ВИДЕО',
+  devLabel: 'РАЗРАБОТЧИК',
+  aboutTitle: 'Создано для Производительности.',
+  aboutP1: 'Я специализируюсь на разработке продвинутых архитектур скриптов, безопасных протоколов аутентификации и решений автоматизации.',
+  aboutP2: 'С многолетним опытом в Luau, Python и JavaScript я создаю инструменты, которые действительно работают.',
+  aboutJoin: 'ВСТУПИТЬ В СООБЩЕСТВО',
+  aboutExplore: 'ИССЛЕДОВАТЬ ПРОЕКТЫ',
+  siTitle: 'Добро пожаловать обратно',
+  siSub: 'Войдите в свой аккаунт',
+  siGoogle: 'Продолжить с Google',
+  siOr: 'ИЛИ',
+  siEmailLabel: 'Эл. почта',
+  siPwLabel: 'Пароль',
+  siForgot: 'Забыли пароль?',
+  siBtnTxt: 'Войти',
+  siSwitch: 'Нет аккаунта?',
+  siSwitchLink: ' Создайте его',
+  siBack: 'Вернуться на главную',
+  suTitle: 'Создать Аккаунт',
+  suSub: 'Присоединяйтесь к сообществу LPOLVO',
+  suGoogle: 'Продолжить с Google',
+  suOr: 'ИЛИ',
+  suNameLabel: 'Отображаемое имя',
+  suEmailLabel: 'Эл. почта',
+  suPwLabel: 'Пароль',
+  suBtnTxt: 'Создать аккаунт',
+  suSwitch: 'Уже есть аккаунт?',
+  suSwitchLink: ' Войти',
+  suBack: 'Вернуться на главную',
+  authNavSignIn: 'ВОЙТИ',
+  themeDDTitle: 'ВЫБЕРИТЕ ТЕМУ',
+  langDDTitle: 'ЯЗЫК',
+  mHome: 'Главная', mExplore: 'Исследовать', mUserScripts: 'Скрипты Пользователей',
+  mVideos: 'Видео', mUpload: 'Загрузить Скрипт', mAbout: 'О нас',
+  navHome: 'ГЛАВНАЯ', navExplore: 'ОБЗОР', navVideos: 'ВИДЕО', navAbout: 'О НАС',
+  usEmptyTitle: 'Результатов не найдено',
+  usEmptyDesc: 'Попробуйте другой поиск или загрузите сначала!',
+  userScriptsTitle: 'Скрипты Пользователей',
+  liteBtnTxt: 'LITE',
+  themesBtnLabel: 'ТЕМЫ',
+  flYT: 'YouTube', flIG: 'Instagram', flDC: 'Discord', flRS: 'RScripts',
+  fcRights: 'Все Права Защищены',
+  fcTagline: 'Создавая будущее, один скрипт за другим.',
+  fnHome: 'Главная', fnExplore: 'Обзор', fnVideos: 'Видео', fnUpload: 'Загрузить', fnAbout: 'О нас',
+  tPerf: 'Оптимизированная Производительность', tAes: 'Шифрование AES-256', tSmart: 'Умные Боты',
+  tHwid: 'Привязка HWID', tMulti: 'Многоязычная Поддержка', tFree: '100% Бесплатный Доступ',
+  ulScriptName: 'Название Скрипта *', ulDescription: 'Описание *', ulCategory: 'Категория',
+  ulType: 'Тип', ulScriptCode: 'Код Скрипта *', ulVideoLink: 'Ссылка на видео-урок (необязательно)',
+};
+
+/* ══════ CHINESE TRANSLATION ══════ */
+T.zh = {
+  splashLoading: '加载中...',
+  heroBadge: '高级脚本与自动化',
+  heroWelcome: '欢迎来到',
+  heroSub: '一个脚本一个脚本地创造未来...',
+  heroDesc: '一个集中化的平台，提供高级脚本、智能自动化工具和创新应用程序。',
+  heroExplore: '探索项目',
+  heroJoin: '加入社区',
+  heroUserScripts: '用户脚本',
+  heroUpload: '上传脚本',
+  statProjects: '项目',
+  statUsers: '活跃用户',
+  statFree: '免费访问',
+  featuredLabel: '精选',
+  featuredTitle: '高级',
+  featuredTitle2: ' Roblox 脚本',
+  featuredDesc: '高级 Roblox 脚本和自动化工具',
+  viewScriptTxt: '查看脚本',
+  rscriptsTitle: 'RScripts 上的所有脚本',
+  rscriptsDesc: '在 RScripts.net 上浏览所有 LPOLVO 脚本——免费且随时可用。',
+  rscriptsBtnTxt: '在 RSCRIPTS 查看',
+  platformLabel: '平台',
+  platformTitle: '为什么选择 LPOLVO？',
+  feat1Title: '安全认证',
+  feat1Desc: 'HWID 绑定、AES-256 加密和每月密钥轮换，实现最大安全性。',
+  feat2Title: '高性能',
+  feat2Desc: '脚本经过优化，CPU/内存使用率最低，执行速度极快。',
+  feat3Title: '社区驱动',
+  feat3Desc: '与不断壮大的全球社区分享、发现和协作脚本。',
+  feat4Title: '50 个主题',
+  feat4Desc: '通过 50 个独特主题完全自定义您的体验——每个都有独特的动画和颜色。',
+  feat5Title: '轻松上传',
+  feat5Desc: '通过我们的多步骤上传工具，在几秒钟内上传您的脚本。',
+  feat6Title: '多语言',
+  feat6Desc: '14 种语言，包括摩洛哥达里贾语——为全球社区而建。',
+  communityLabel: '社区',
+  communityLabel2: '社区',
+  exploreTitle: '探索脚本',
+  exploreDesc: '发现并使用 LPOLVO 收藏中的最佳脚本',
+  filterAll: '全部', filterRoblox: 'ROBLOX', filterPython: 'PYTHON',
+  filterLua: 'LUA', filterWeb: '网页', filterOther: '其他',
+  noResultsTitle: '未找到结果',
+  noResultsDesc: '尝试不同的搜索或过滤器！',
+  shareLabel: '分享您的脚本',
+  uploadTitle: '上传您的脚本',
+  uploadDesc: '与 LPOLVO 社区分享您的作品。所有上传都经过质量和安全审核。',
+  uploadLockedTitle: '需要登录',
+  uploadLockedDesc: '您需要登录才能上传脚本。',
+  uploadSignInTxt: '登录',
+  uploadCreateTxt: '创建账户',
+  ulPublishBtn: '发布脚本',
+  latestVideosLabel: '最新视频',
+  videosTitle: '最新视频',
+  videosDesc: '在 YouTube 上观看最新的 LPOLVO 脚本教程',
+  watchOnYT: '在 YouTube 上观看',
+  viewAllVideosTxt: '查看所有视频',
+  devLabel: '开发者',
+  aboutTitle: '为性能而生。',
+  aboutP1: '我专注于开发高级脚本架构、安全认证协议和无缝自动化解决方案。',
+  aboutP2: '凭借多年的 Luau、Python 和 JavaScript 经验，我构建真正有效的工具。',
+  aboutJoin: '加入社区',
+  aboutExplore: '探索项目',
+  siTitle: '欢迎回来',
+  siSub: '登录您的账户',
+  siGoogle: '使用 Google 继续',
+  siOr: '或',
+  siEmailLabel: '电子邮件',
+  siPwLabel: '密码',
+  siForgot: '忘记密码？',
+  siBtnTxt: '登录',
+  siSwitch: '没有账户？',
+  siSwitchLink: ' 创建一个',
+  siBack: '返回首页',
+  suTitle: '创建账户',
+  suSub: '加入 LPOLVO 社区',
+  suGoogle: '使用 Google 继续',
+  suOr: '或',
+  suNameLabel: '显示名称',
+  suEmailLabel: '电子邮件',
+  suPwLabel: '密码',
+  suBtnTxt: '创建账户',
+  suSwitch: '已有账户？',
+  suSwitchLink: ' 登录',
+  suBack: '返回首页',
+  authNavSignIn: '登录',
+  themeDDTitle: '选择您的主题',
+  langDDTitle: '语言',
+  mHome: '首页', mExplore: '探索', mUserScripts: '用户脚本',
+  mVideos: '视频', mUpload: '上传脚本', mAbout: '关于',
+  navHome: '首页', navExplore: '探索', navVideos: '视频', navAbout: '关于',
+  usEmptyTitle: '未找到结果',
+  usEmptyDesc: '尝试不同的搜索或先上传！',
+  userScriptsTitle: '用户脚本',
+  liteBtnTxt: 'LITE',
+  themesBtnLabel: '主题',
+  flYT: 'YouTube', flIG: 'Instagram', flDC: 'Discord', flRS: 'RScripts',
+  fcRights: '版权所有',
+  fcTagline: '一个脚本一个脚本地创造未来。',
+  fnHome: '首页', fnExplore: '探索', fnVideos: '视频', fnUpload: '上传', fnAbout: '关于',
+  tPerf: '性能优化', tAes: 'AES-256 加密', tSmart: '智能机器人',
+  tHwid: 'HWID 绑定', tMulti: '多语言支持', tFree: '100% 免费访问',
+  ulScriptName: '脚本名称 *', ulDescription: '描述 *', ulCategory: '类别',
+  ulType: '类型', ulScriptCode: '脚本代码 *', ulVideoLink: '视频教程链接（可选）',
+};
+
+/* ══════ JAPANESE TRANSLATION ══════ */
+T.ja = {
+  splashLoading: '読み込み中...',
+  heroBadge: '高度なスクリプトと自動化',
+  heroWelcome: 'へようこそ',
+  heroSub: '未来を築く、一つのスクリプトずつ...',
+  heroDesc: 'プレミアムスクリプト、インテリジェントな自動化ツール、革新的なアプリケーションの集中ハブ。',
+  heroExplore: 'プロジェクトを探索',
+  heroJoin: 'コミュニティに参加',
+  heroUserScripts: 'ユーザースクリプト',
+  heroUpload: 'スクリプトをアップロード',
+  statProjects: 'プロジェクト',
+  statUsers: 'アクティブユーザー',
+  statFree: '無料アクセス',
+  featuredLabel: '注目',
+  featuredTitle: 'プレミアム',
+  featuredTitle2: ' Robloxスクリプト',
+  featuredDesc: 'プレミアムRobloxスクリプトと自動化ツール',
+  viewScriptTxt: 'スクリプトを見る',
+  rscriptsTitle: 'RScriptsの全スクリプト',
+  rscriptsDesc: 'RScripts.netでLPOLVOの全スクリプトを閲覧 — 無料でいつでも使用可能。',
+  rscriptsBtnTxt: 'RScriptsで見る',
+  platformLabel: 'プラットフォーム',
+  platformTitle: 'なぜLPOLVOを選ぶのか？',
+  feat1Title: '安全な認証',
+  feat1Desc: 'HWID バインディング、AES-256 暗号化、月次キーローテーションで最大限のセキュリティを実現。',
+  feat2Title: '高パフォーマンス',
+  feat2Desc: 'CPU/メモリ使用量を最小限に抑え、超高速実行に最適化されたスクリプト。',
+  feat3Title: 'コミュニティ主導',
+  feat3Desc: '成長する世界的なコミュニティとスクリプトを共有、発見、協力。',
+  feat4Title: '50テーマ',
+  feat4Desc: '50の独自テーマで完全にカスタマイズ — それぞれ独自のアニメーションと色があります。',
+  feat5Title: '簡単アップロード',
+  feat5Desc: '多段階アップローダーで数秒でスクリプトをアップロード。',
+  feat6Title: '多言語対応',
+  feat6Desc: 'モロッコ語ダリジャを含む14言語 — グローバルコミュニティのために構築。',
+  communityLabel: 'コミュニティ',
+  communityLabel2: 'コミュニティ',
+  exploreTitle: 'スクリプトを探索',
+  exploreDesc: 'LPOLVOコレクションから最高のスクリプトを発見して使用',
+  filterAll: '全て', filterRoblox: 'ROBLOX', filterPython: 'PYTHON',
+  filterLua: 'LUA', filterWeb: 'ウェブ', filterOther: 'その他',
+  noResultsTitle: '結果が見つかりません',
+  noResultsDesc: '別の検索やフィルターを試してください！',
+  shareLabel: 'スクリプトを共有',
+  uploadTitle: 'スクリプトをアップロード',
+  uploadDesc: 'LPOLVOコミュニティとあなたの作品を共有。全アップロードは品質確認されます。',
+  uploadLockedTitle: 'サインインが必要です',
+  uploadLockedDesc: 'スクリプトをアップロードするにはサインインが必要です。',
+  uploadSignInTxt: 'サインイン',
+  uploadCreateTxt: 'アカウント作成',
+  ulPublishBtn: 'スクリプトを公開',
+  latestVideosLabel: '最新動画',
+  videosTitle: '最新動画',
+  videosDesc: 'YouTubeでLPOLVOスクリプトの最新チュートリアルを視聴',
+  watchOnYT: 'YouTubeで見る',
+  viewAllVideosTxt: '全動画を見る',
+  devLabel: '開発者',
+  aboutTitle: 'パフォーマンスのために構築。',
+  aboutP1: '高度なスクリプトアーキテクチャ、安全な認証プロトコル、シームレスな自動化ソリューションの開発に特化しています。',
+  aboutP2: 'Luau、Python、JavaScriptでの長年の経験を持ち、実際に機能するツールを構築します。',
+  aboutJoin: 'コミュニティに参加',
+  aboutExplore: 'プロジェクトを探索',
+  siTitle: 'おかえりなさい',
+  siSub: 'アカウントにサインイン',
+  siGoogle: 'Googleで続ける',
+  siOr: 'または',
+  siEmailLabel: 'メール',
+  siPwLabel: 'パスワード',
+  siForgot: 'パスワードを忘れましたか？',
+  siBtnTxt: 'ログイン',
+  siSwitch: 'アカウントをお持ちでない方は？',
+  siSwitchLink: ' 作成する',
+  siBack: 'ホームに戻る',
+  suTitle: 'アカウント作成',
+  suSub: 'LPOLVOコミュニティに参加',
+  suGoogle: 'Googleで続ける',
+  suOr: 'または',
+  suNameLabel: '表示名',
+  suEmailLabel: 'メール',
+  suPwLabel: 'パスワード',
+  suBtnTxt: 'アカウントを作成',
+  suSwitch: 'すでにアカウントをお持ちですか？',
+  suSwitchLink: ' サインイン',
+  suBack: 'ホームに戻る',
+  authNavSignIn: 'ログイン',
+  themeDDTitle: 'テーマを選択',
+  langDDTitle: '言語',
+  mHome: 'ホーム', mExplore: '探索', mUserScripts: 'ユーザースクリプト',
+  mVideos: '動画', mUpload: 'スクリプトをアップロード', mAbout: 'について',
+  navHome: 'ホーム', navExplore: '探索', navVideos: '動画', navAbout: 'について',
+  usEmptyTitle: '結果が見つかりません',
+  usEmptyDesc: '別の検索を試すか、先にアップロードしてください！',
+  userScriptsTitle: 'ユーザースクリプト',
+  liteBtnTxt: 'LITE',
+  themesBtnLabel: 'テーマ',
+  flYT: 'YouTube', flIG: 'Instagram', flDC: 'Discord', flRS: 'RScripts',
+  fcRights: 'All Rights Reserved',
+  fcTagline: '未来を築く、一つのスクリプトずつ。',
+  fnHome: 'ホーム', fnExplore: '探索', fnVideos: '動画', fnUpload: 'アップロード', fnAbout: 'について',
+  tPerf: 'パフォーマンス最適化', tAes: 'AES-256 暗号化', tSmart: 'スマートボット',
+  tHwid: 'HWID バインディング', tMulti: '多言語サポート', tFree: '100% 無料アクセス',
+  ulScriptName: 'スクリプト名 *', ulDescription: '説明 *', ulCategory: 'カテゴリ',
+  ulType: 'タイプ', ulScriptCode: 'スクリプトコード *', ulVideoLink: '動画チュートリアルリンク（任意）',
+};
+
+/* ══════ KOREAN TRANSLATION ══════ */
+T.ko = {
+  splashLoading: '로딩 중...',
+  heroBadge: '고급 스크립트 & 자동화',
+  heroWelcome: '에 오신 것을 환영합니다',
+  heroSub: '미래를 만들어가다, 하나의 스크립트씩...',
+  heroDesc: '프리미엄 스크립트, 지능형 자동화 도구, 혁신적인 애플리케이션을 위한 중앙 허브.',
+  heroExplore: '프로젝트 탐색',
+  heroJoin: '커뮤니티 참여',
+  heroUserScripts: '유저 스크립트',
+  heroUpload: '스크립트 업로드',
+  statProjects: '프로젝트',
+  statUsers: '활성 사용자',
+  statFree: '무료 이용',
+  featuredLabel: '추천',
+  featuredTitle: '프리미엄',
+  featuredTitle2: ' Roblox 스크립트',
+  featuredDesc: '프리미엄 Roblox 스크립트와 자동화 도구',
+  viewScriptTxt: '스크립트 보기',
+  rscriptsTitle: 'RScripts의 모든 스크립트',
+  rscriptsDesc: 'RScripts.net에서 모든 LPOLVO 스크립트 탐색 — 무료로 바로 사용 가능.',
+  rscriptsBtnTxt: 'RSCRIPTS에서 보기',
+  platformLabel: '플랫폼',
+  platformTitle: '왜 LPOLVO를 선택하나요?',
+  feat1Title: '안전한 인증',
+  feat1Desc: 'HWID 바인딩, AES-256 암호화, 월간 키 순환으로 최대 보안 실현.',
+  feat2Title: '고성능',
+  feat2Desc: 'CPU/메모리 사용량을 최소화하고 번개처럼 빠른 실행을 위해 최적화된 스크립트.',
+  feat3Title: '커뮤니티 중심',
+  feat3Desc: '성장하는 글로벌 커뮤니티와 스크립트를 공유, 발견, 협력.',
+  feat4Title: '50가지 테마',
+  feat4Desc: '50가지 고유 테마로 경험을 완전히 커스터마이징 — 각각 고유한 애니메이션과 색상.',
+  feat5Title: '쉬운 업로드',
+  feat5Desc: '다단계 업로더로 몇 초 만에 스크립트 업로드.',
+  feat6Title: '다국어 지원',
+  feat6Desc: '모로코 다리자를 포함한 14개 언어 — 글로벌 커뮤니티를 위해 구축.',
+  communityLabel: '커뮤니티',
+  communityLabel2: '커뮤니티',
+  exploreTitle: '스크립트 탐색',
+  exploreDesc: 'LPOLVO 컬렉션에서 최고의 스크립트를 발견하고 사용',
+  filterAll: '전체', filterRoblox: 'ROBLOX', filterPython: 'PYTHON',
+  filterLua: 'LUA', filterWeb: '웹', filterOther: '기타',
+  noResultsTitle: '결과를 찾을 수 없습니다',
+  noResultsDesc: '다른 검색이나 필터를 시도해 보세요!',
+  shareLabel: '스크립트 공유',
+  uploadTitle: '스크립트 업로드',
+  uploadDesc: 'LPOLVO 커뮤니티와 창작물을 공유하세요. 모든 업로드는 품질 검토를 거칩니다.',
+  uploadLockedTitle: '로그인 필요',
+  uploadLockedDesc: '스크립트를 업로드하려면 로그인이 필요합니다.',
+  uploadSignInTxt: '로그인',
+  uploadCreateTxt: '계정 만들기',
+  ulPublishBtn: '스크립트 게시',
+  latestVideosLabel: '최신 동영상',
+  videosTitle: '최신 동영상',
+  videosDesc: 'YouTube에서 최신 LPOLVO 스크립트 튜토리얼 시청',
+  watchOnYT: 'YouTube에서 보기',
+  viewAllVideosTxt: '모든 동영상 보기',
+  devLabel: '개발자',
+  aboutTitle: '성능을 위해 제작됨.',
+  aboutP1: '고급 스크립트 아키텍처, 안전한 인증 프로토콜, 원활한 자동화 솔루션 개발을 전문으로 합니다.',
+  aboutP2: 'Luau, Python, JavaScript에서 수년간의 경험으로 실제로 작동하는 도구를 구축합니다.',
+  aboutJoin: '커뮤니티 참여',
+  aboutExplore: '프로젝트 탐색',
+  siTitle: '다시 오신 것을 환영합니다',
+  siSub: '계정에 로그인',
+  siGoogle: 'Google로 계속하기',
+  siOr: '또는',
+  siEmailLabel: '이메일',
+  siPwLabel: '비밀번호',
+  siForgot: '비밀번호를 잊으셨나요?',
+  siBtnTxt: '로그인',
+  siSwitch: '계정이 없으신가요?',
+  siSwitchLink: ' 만들기',
+  siBack: '홈으로 돌아가기',
+  suTitle: '계정 만들기',
+  suSub: 'LPOLVO 커뮤니티에 참여',
+  suGoogle: 'Google로 계속하기',
+  suOr: '또는',
+  suNameLabel: '표시 이름',
+  suEmailLabel: '이메일',
+  suPwLabel: '비밀번호',
+  suBtnTxt: '계정 만들기',
+  suSwitch: '이미 계정이 있으신가요?',
+  suSwitchLink: ' 로그인',
+  suBack: '홈으로 돌아가기',
+  authNavSignIn: '로그인',
+  themeDDTitle: '테마 선택',
+  langDDTitle: '언어',
+  mHome: '홈', mExplore: '탐색', mUserScripts: '유저 스크립트',
+  mVideos: '동영상', mUpload: '스크립트 업로드', mAbout: '소개',
+  navHome: '홈', navExplore: '탐색', navVideos: '동영상', navAbout: '소개',
+  usEmptyTitle: '결과를 찾을 수 없습니다',
+  usEmptyDesc: '다른 검색을 시도하거나 먼저 업로드하세요!',
+  userScriptsTitle: '유저 스크립트',
+  liteBtnTxt: 'LITE',
+  themesBtnLabel: '테마',
+  flYT: 'YouTube', flIG: 'Instagram', flDC: 'Discord', flRS: 'RScripts',
+  fcRights: 'All Rights Reserved',
+  fcTagline: '미래를 만들어가다, 하나의 스크립트씩.',
+  fnHome: '홈', fnExplore: '탐색', fnVideos: '동영상', fnUpload: '업로드', fnAbout: '소개',
+  tPerf: '성능 최적화', tAes: 'AES-256 암호화', tSmart: '스마트 봇',
+  tHwid: 'HWID 바인딩', tMulti: '다국어 지원', tFree: '100% 무료 이용',
+  ulScriptName: '스크립트 이름 *', ulDescription: '설명 *', ulCategory: '카테고리',
+  ulType: '유형', ulScriptCode: '스크립트 코드 *', ulVideoLink: '동영상 튜토리얼 링크 (선택사항)',
+};
+
+/* ══════ TURKISH TRANSLATION ══════ */
+T.tr = {
+  splashLoading: 'Yükleniyor...',
+  heroBadge: 'GELİŞMİŞ SCRIPTLER VE OTOMASYON',
+  heroWelcome: 'Hoş Geldiniz',
+  heroSub: 'Geleceği inşa ediyoruz, bir script\'ten bir diğerine...',
+  heroDesc: 'Premium scriptler, akıllı otomasyon araçları ve yenilikçi uygulamalar için merkezi bir hub.',
+  heroExplore: 'PROJELERİ KEŞFET',
+  heroJoin: 'TOPLULUĞA KATIL',
+  heroUserScripts: 'KULLANICI SCRİPTLERİ',
+  heroUpload: 'SCRİPT YÜKLE',
+  statProjects: 'PROJE',
+  statUsers: 'AKTİF KULLANICI',
+  statFree: 'ÜCRETSİZ ERİŞİM',
+  featuredLabel: 'ÖNE ÇIKAN',
+  featuredTitle: 'Premium',
+  featuredTitle2: ' Roblox Scriptleri',
+  featuredDesc: 'Premium Roblox scriptleri ve otomasyon araçları',
+  viewScriptTxt: 'SCRİPTİ GÖR',
+  rscriptsTitle: 'RScripts\'teki Tüm Scriptler',
+  rscriptsDesc: 'RScripts.net\'te tüm LPOLVO scriptlerini inceleyin — ücretsiz ve kullanıma hazır.',
+  rscriptsBtnTxt: 'RSCRIPTS\'TE GÖR',
+  platformLabel: 'PLATFORM',
+  platformTitle: 'Neden LPOLVO\'yu Seçmelisiniz?',
+  feat1Title: 'Güvenli Kimlik Doğrulama',
+  feat1Desc: 'Maksimum güvenlik için HWID bağlama, AES-256 şifreleme ve aylık anahtar rotasyonu.',
+  feat2Title: 'Yüksek Performans',
+  feat2Desc: 'Minimum CPU/bellek kullanımı ve yıldırım hızında çalışma için optimize edilmiş scriptler.',
+  feat3Title: 'Topluluk Odaklı',
+  feat3Desc: 'Büyüyen küresel bir toplulukla scriptleri paylaşın, keşfedin ve iş birliği yapın.',
+  feat4Title: '50 Tema',
+  feat4Desc: '50 benzersiz tema ile deneyiminizi tam olarak özelleştirin — her birinin kendine özgü animasyonları var.',
+  feat5Title: 'Kolay Yükleme',
+  feat5Desc: 'Çok adımlı yükleyicimizle scriptlerinizi saniyeler içinde yükleyin.',
+  feat6Title: 'Çok Dilli',
+  feat6Desc: 'Fas Darija\'sı dahil 14 dil — küresel bir topluluk için inşa edildi.',
+  communityLabel: 'TOPLULUK',
+  communityLabel2: 'TOPLULUK',
+  exploreTitle: 'Scriptleri Keşfet',
+  exploreDesc: 'LPOLVO koleksiyonundan en iyi scriptleri keşfedin ve kullanın',
+  filterAll: 'TÜMÜ', filterRoblox: 'ROBLOX', filterPython: 'PYTHON',
+  filterLua: 'LUA', filterWeb: 'WEB', filterOther: 'DİĞER',
+  noResultsTitle: 'Sonuç bulunamadı',
+  noResultsDesc: 'Farklı bir arama veya filtre deneyin!',
+  shareLabel: 'SCRİPTİNİZİ PAYLAŞIN',
+  uploadTitle: 'Scriptinizi Yükleyin',
+  uploadDesc: 'Yaratımlarınızı LPOLVO topluluğuyla paylaşın. Tüm yüklemeler kalite açısından incelenir.',
+  uploadLockedTitle: 'Giriş Yapmanız Gerekiyor',
+  uploadLockedDesc: 'Script yüklemek için giriş yapmanız gerekiyor.',
+  uploadSignInTxt: 'GİRİŞ YAP',
+  uploadCreateTxt: 'HESAP OLUŞTUR',
+  ulPublishBtn: 'SCRİPTİ YAYINLA',
+  latestVideosLabel: 'SON VİDEOLAR',
+  videosTitle: 'Son Videolar',
+  videosDesc: 'YouTube\'da en son LPOLVO script eğitimlerini izleyin',
+  watchOnYT: 'YouTube\'da İzle',
+  viewAllVideosTxt: 'TÜM VİDEOLARI GÖR',
+  devLabel: 'GELİŞTİRİCİ',
+  aboutTitle: 'Performans İçin Tasarlandı.',
+  aboutP1: 'Gelişmiş script mimarileri, güvenli kimlik doğrulama protokolleri ve sorunsuz otomasyon çözümleri geliştirme konusunda uzmanlaşıyorum.',
+  aboutP2: 'Luau, Python ve JavaScript\'te yıllarca süren deneyimle gerçekten işe yarayan araçlar geliştiriyorum.',
+  aboutJoin: 'TOPLULUĞA KATIL',
+  aboutExplore: 'PROJELERİ KEŞFET',
+  siTitle: 'Tekrar hoş geldiniz',
+  siSub: 'Hesabınıza giriş yapın',
+  siGoogle: 'Google ile devam et',
+  siOr: 'VEYA',
+  siEmailLabel: 'E-posta',
+  siPwLabel: 'Şifre',
+  siForgot: 'Şifrenizi mi unuttunuz?',
+  siBtnTxt: 'Giriş Yap',
+  siSwitch: 'Hesabınız yok mu?',
+  siSwitchLink: ' Oluşturun',
+  siBack: 'Ana Sayfaya Dön',
+  suTitle: 'Hesap Oluştur',
+  suSub: 'LPOLVO topluluğuna katılın',
+  suGoogle: 'Google ile devam et',
+  suOr: 'VEYA',
+  suNameLabel: 'Görünen Ad',
+  suEmailLabel: 'E-posta',
+  suPwLabel: 'Şifre',
+  suBtnTxt: 'Hesap Oluştur',
+  suSwitch: 'Zaten hesabınız var mı?',
+  suSwitchLink: ' Giriş yapın',
+  suBack: 'Ana Sayfaya Dön',
+  authNavSignIn: 'GİRİŞ',
+  themeDDTitle: 'TEMANı SEÇ',
+  langDDTitle: 'DİL',
+  mHome: 'Ana Sayfa', mExplore: 'Keşfet', mUserScripts: 'Kullanıcı Scriptleri',
+  mVideos: 'Videolar', mUpload: 'Script Yükle', mAbout: 'Hakkında',
+  navHome: 'ANA SAYFA', navExplore: 'KEŞFET', navVideos: 'VİDEOLAR', navAbout: 'HAKKINDA',
+  usEmptyTitle: 'Sonuç bulunamadı',
+  usEmptyDesc: 'Farklı bir arama deneyin veya önce yükleyin!',
+  userScriptsTitle: 'Kullanıcı Scriptleri',
+  liteBtnTxt: 'LITE',
+  themesBtnLabel: 'TEMALAR',
+  flYT: 'YouTube', flIG: 'Instagram', flDC: 'Discord', flRS: 'RScripts',
+  fcRights: 'Tüm Hakları Saklıdır',
+  fcTagline: 'Geleceği inşa ediyoruz, bir script\'ten bir diğerine.',
+  fnHome: 'Ana Sayfa', fnExplore: 'Keşfet', fnVideos: 'Videolar', fnUpload: 'Yükle', fnAbout: 'Hakkında',
+  tPerf: 'Performans Optimizasyonu', tAes: 'AES-256 Şifreleme', tSmart: 'Akıllı Botlar',
+  tHwid: 'HWID Bağlama', tMulti: 'Çok Dilli Destek', tFree: '%100 Ücretsiz Erişim',
+  ulScriptName: 'Script Adı *', ulDescription: 'Açıklama *', ulCategory: 'Kategori',
+  ulType: 'Tür', ulScriptCode: 'Script Kodu *', ulVideoLink: 'Video Eğitim Bağlantısı (isteğe bağlı)',
+};
+
+/* ══════ ITALIAN TRANSLATION ══════ */
+T.it = {
+  splashLoading: 'Caricamento...',
+  heroBadge: 'SCRIPT AVANZATI E AUTOMAZIONE',
+  heroWelcome: 'Benvenuto su',
+  heroSub: 'Costruendo il futuro, uno script alla volta...',
+  heroDesc: 'Un hub centralizzato per script premium, strumenti di automazione intelligenti e applicazioni innovative.',
+  heroExplore: 'ESPLORA PROGETTI',
+  heroJoin: 'UNISCITI ALLA COMUNITÀ',
+  heroUserScripts: 'SCRIPT UTENTI',
+  heroUpload: 'CARICA SCRIPT',
+  statProjects: 'PROGETTI',
+  statUsers: 'UTENTI ATTIVI',
+  statFree: 'ACCESSO GRATUITO',
+  featuredLabel: 'IN EVIDENZA',
+  featuredTitle: 'Script Roblox',
+  featuredTitle2: ' Premium',
+  featuredDesc: 'Script premium Roblox e strumenti di automazione',
+  viewScriptTxt: 'VEDI SCRIPT',
+  rscriptsTitle: 'Tutti gli Script su RScripts',
+  rscriptsDesc: 'Sfoglia tutti gli script LPOLVO su RScripts.net — gratuiti e pronti all\'uso.',
+  rscriptsBtnTxt: 'VEDI SU RSCRIPTS',
+  platformLabel: 'PIATTAFORMA',
+  platformTitle: 'Perché scegliere LPOLVO?',
+  feat1Title: 'Autenticazione Sicura',
+  feat1Desc: 'Binding HWID, crittografia AES-256 e rotazione mensile delle chiavi per la massima sicurezza.',
+  feat2Title: 'Alte Prestazioni',
+  feat2Desc: 'Script ottimizzati per un utilizzo minimo di CPU/memoria con esecuzione ultra-veloce.',
+  feat3Title: 'Guidato dalla Comunità',
+  feat3Desc: 'Condividi, scopri e collabora agli script con una comunità globale in crescita.',
+  feat4Title: '50 Temi',
+  feat4Desc: 'Personalizza completamente la tua esperienza con 50 temi unici — ciascuno con le proprie animazioni.',
+  feat5Title: 'Upload Facile',
+  feat5Desc: 'Carica i tuoi script in pochi secondi con il nostro caricatore multi-step.',
+  feat6Title: 'Multi-Lingua',
+  feat6Desc: '14 lingue incluso il Darija marocchino — costruito per una comunità globale.',
+  communityLabel: 'COMUNITÀ',
+  communityLabel2: 'COMUNITÀ',
+  exploreTitle: 'Esplora Script',
+  exploreDesc: 'Scopri e usa i migliori script dalla collezione LPOLVO',
+  filterAll: 'TUTTI', filterRoblox: 'ROBLOX', filterPython: 'PYTHON',
+  filterLua: 'LUA', filterWeb: 'WEB', filterOther: 'ALTRO',
+  noResultsTitle: 'Nessun risultato trovato',
+  noResultsDesc: 'Prova una ricerca o un filtro diverso!',
+  shareLabel: 'CONDIVIDI IL TUO SCRIPT',
+  uploadTitle: 'Carica il Tuo Script',
+  uploadDesc: 'Condividi le tue creazioni con la comunità LPOLVO. Tutti i caricamenti vengono esaminati per qualità.',
+  uploadLockedTitle: 'Accesso Richiesto',
+  uploadLockedDesc: 'Devi accedere per caricare script.',
+  uploadSignInTxt: 'ACCEDI',
+  uploadCreateTxt: 'CREA ACCOUNT',
+  ulPublishBtn: 'PUBBLICA SCRIPT',
+  latestVideosLabel: 'ULTIMI VIDEO',
+  videosTitle: 'Ultimi Video',
+  videosDesc: 'Guarda gli ultimi tutorial di script LPOLVO su YouTube',
+  watchOnYT: 'Guarda su YouTube',
+  viewAllVideosTxt: 'VEDI TUTTI I VIDEO',
+  devLabel: 'SVILUPPATORE',
+  aboutTitle: 'Costruito per le Prestazioni.',
+  aboutP1: 'Mi specializzo nello sviluppo di architetture di script avanzate, protocolli di autenticazione sicuri e soluzioni di automazione.',
+  aboutP2: 'Con anni di esperienza in Luau, Python e JavaScript, costruisco strumenti che funzionano davvero.',
+  aboutJoin: 'UNISCITI ALLA COMUNITÀ',
+  aboutExplore: 'ESPLORA PROGETTI',
+  siTitle: 'Bentornato',
+  siSub: 'Accedi al tuo account',
+  siGoogle: 'Continua con Google',
+  siOr: 'OPPURE',
+  siEmailLabel: 'Email',
+  siPwLabel: 'Password',
+  siForgot: 'Password dimenticata?',
+  siBtnTxt: 'Accedi',
+  siSwitch: 'Non hai un account?',
+  siSwitchLink: ' Creane uno',
+  siBack: 'Torna alla Home',
+  suTitle: 'Crea Account',
+  suSub: 'Unisciti alla comunità LPOLVO',
+  suGoogle: 'Continua con Google',
+  suOr: 'OPPURE',
+  suNameLabel: 'Nome visualizzato',
+  suEmailLabel: 'Email',
+  suPwLabel: 'Password',
+  suBtnTxt: 'Crea account',
+  suSwitch: 'Hai già un account?',
+  suSwitchLink: ' Accedi',
+  suBack: 'Torna alla Home',
+  authNavSignIn: 'ACCEDI',
+  themeDDTitle: 'SCEGLI IL TUO TEMA',
+  langDDTitle: 'LINGUA',
+  mHome: 'Home', mExplore: 'Esplora', mUserScripts: 'Script Utenti',
+  mVideos: 'Video', mUpload: 'Carica Script', mAbout: 'Chi Siamo',
+  navHome: 'HOME', navExplore: 'ESPLORA', navVideos: 'VIDEO', navAbout: 'CHI SIAMO',
+  usEmptyTitle: 'Nessun risultato trovato',
+  usEmptyDesc: 'Prova una ricerca diversa o carica prima!',
+  userScriptsTitle: 'Script Utenti',
+  liteBtnTxt: 'LITE',
+  themesBtnLabel: 'TEMI',
+  flYT: 'YouTube', flIG: 'Instagram', flDC: 'Discord', flRS: 'RScripts',
+  fcRights: 'Tutti i Diritti Riservati',
+  fcTagline: 'Costruendo il futuro, uno script alla volta.',
+  fnHome: 'Home', fnExplore: 'Esplora', fnVideos: 'Video', fnUpload: 'Carica', fnAbout: 'Chi Siamo',
+  tPerf: 'Prestazioni Ottimizzate', tAes: 'Crittografia AES-256', tSmart: 'Bot Intelligenti',
+  tHwid: 'Binding HWID', tMulti: 'Supporto Multi-Lingua', tFree: 'Accesso 100% Gratuito',
+  ulScriptName: 'Nome Script *', ulDescription: 'Descrizione *', ulCategory: 'Categoria',
+  ulType: 'Tipo', ulScriptCode: 'Codice Script *', ulVideoLink: 'Link Tutorial Video (opzionale)',
+};
+
+/* ══════ INDONESIAN TRANSLATION ══════ */
+T.id = {
+  splashLoading: 'Memuat...',
+  heroBadge: 'SKRIP LANJUTAN & OTOMASI',
+  heroWelcome: 'Selamat Datang di',
+  heroSub: 'Membangun masa depan, satu skrip dalam satu waktu...',
+  heroDesc: 'Hub terpusat untuk skrip premium, alat otomasi cerdas, dan aplikasi inovatif.',
+  heroExplore: 'JELAJAHI PROYEK',
+  heroJoin: 'BERGABUNG KE KOMUNITAS',
+  heroUserScripts: 'SKRIP PENGGUNA',
+  heroUpload: 'UNGGAH SKRIP',
+  statProjects: 'PROYEK',
+  statUsers: 'PENGGUNA AKTIF',
+  statFree: 'AKSES GRATIS',
+  featuredLabel: 'UNGGULAN',
+  featuredTitle: 'Skrip Roblox',
+  featuredTitle2: ' Premium',
+  featuredDesc: 'Skrip Roblox premium dan alat otomasi',
+  viewScriptTxt: 'LIHAT SKRIP',
+  rscriptsTitle: 'Semua Skrip di RScripts',
+  rscriptsDesc: 'Telusuri semua skrip LPOLVO di RScripts.net — gratis dan siap digunakan.',
+  rscriptsBtnTxt: 'LIHAT DI RSCRIPTS',
+  platformLabel: 'PLATFORM',
+  platformTitle: 'Mengapa Memilih LPOLVO?',
+  feat1Title: 'Autentikasi Aman',
+  feat1Desc: 'Binding HWID, enkripsi AES-256, dan rotasi kunci bulanan untuk keamanan maksimal.',
+  feat2Title: 'Performa Tinggi',
+  feat2Desc: 'Skrip dioptimalkan untuk penggunaan CPU/memori minimal dengan eksekusi super cepat.',
+  feat3Title: 'Berbasis Komunitas',
+  feat3Desc: 'Bagikan, temukan, dan berkolaborasi dalam skrip dengan komunitas global yang berkembang.',
+  feat4Title: '50 Tema',
+  feat4Desc: 'Kustomisasi penuh pengalaman Anda dengan 50 tema unik — masing-masing dengan animasi dan warna sendiri.',
+  feat5Title: 'Unggah Mudah',
+  feat5Desc: 'Unggah skrip Anda dalam hitungan detik dengan pengunggah multi-langkah kami.',
+  feat6Title: 'Multi-Bahasa',
+  feat6Desc: '14 bahasa termasuk Darija Maroko — dibangun untuk komunitas global.',
+  communityLabel: 'KOMUNITAS',
+  communityLabel2: 'KOMUNITAS',
+  exploreTitle: 'Jelajahi Skrip',
+  exploreDesc: 'Temukan dan gunakan skrip terbaik dari koleksi LPOLVO',
+  filterAll: 'SEMUA', filterRoblox: 'ROBLOX', filterPython: 'PYTHON',
+  filterLua: 'LUA', filterWeb: 'WEB', filterOther: 'LAINNYA',
+  noResultsTitle: 'Tidak ada hasil ditemukan',
+  noResultsDesc: 'Coba pencarian atau filter yang berbeda!',
+  shareLabel: 'BAGIKAN SKRIP ANDA',
+  uploadTitle: 'Unggah Skrip Anda',
+  uploadDesc: 'Bagikan kreasi Anda dengan komunitas LPOLVO. Semua unggahan ditinjau untuk kualitas dan keamanan.',
+  uploadLockedTitle: 'Diperlukan Masuk',
+  uploadLockedDesc: 'Anda perlu masuk untuk mengunggah skrip.',
+  uploadSignInTxt: 'MASUK',
+  uploadCreateTxt: 'BUAT AKUN',
+  ulPublishBtn: 'TERBITKAN SKRIP',
+  latestVideosLabel: 'VIDEO TERBARU',
+  videosTitle: 'Video Terbaru',
+  videosDesc: 'Tonton tutorial skrip LPOLVO terbaru di YouTube',
+  watchOnYT: 'Tonton di YouTube',
+  viewAllVideosTxt: 'LIHAT SEMUA VIDEO',
+  devLabel: 'PENGEMBANG',
+  aboutTitle: 'Dibangun untuk Performa.',
+  aboutP1: 'Saya mengkhususkan diri dalam mengembangkan arsitektur skrip lanjutan, protokol autentikasi aman, dan solusi otomasi yang mulus.',
+  aboutP2: 'Dengan pengalaman bertahun-tahun di Luau, Python, dan JavaScript, saya membangun alat yang benar-benar berfungsi.',
+  aboutJoin: 'BERGABUNG KE KOMUNITAS',
+  aboutExplore: 'JELAJAHI PROYEK',
+  siTitle: 'Selamat datang kembali',
+  siSub: 'Masuk ke akun Anda',
+  siGoogle: 'Lanjutkan dengan Google',
+  siOr: 'ATAU',
+  siEmailLabel: 'Email',
+  siPwLabel: 'Kata Sandi',
+  siForgot: 'Lupa kata sandi?',
+  siBtnTxt: 'Masuk',
+  siSwitch: 'Belum punya akun?',
+  siSwitchLink: ' Buat satu',
+  siBack: 'Kembali ke Beranda',
+  suTitle: 'Buat Akun',
+  suSub: 'Bergabunglah dengan komunitas LPOLVO',
+  suGoogle: 'Lanjutkan dengan Google',
+  suOr: 'ATAU',
+  suNameLabel: 'Nama Tampilan',
+  suEmailLabel: 'Email',
+  suPwLabel: 'Kata Sandi',
+  suBtnTxt: 'Buat akun',
+  suSwitch: 'Sudah punya akun?',
+  suSwitchLink: ' Masuk',
+  suBack: 'Kembali ke Beranda',
+  authNavSignIn: 'MASUK',
+  themeDDTitle: 'PILIH TEMA ANDA',
+  langDDTitle: 'BAHASA',
+  mHome: 'Beranda', mExplore: 'Jelajahi', mUserScripts: 'Skrip Pengguna',
+  mVideos: 'Video', mUpload: 'Unggah Skrip', mAbout: 'Tentang',
+  navHome: 'BERANDA', navExplore: 'JELAJAHI', navVideos: 'VIDEO', navAbout: 'TENTANG',
+  usEmptyTitle: 'Tidak ada hasil ditemukan',
+  usEmptyDesc: 'Coba pencarian berbeda atau unggah terlebih dahulu!',
+  userScriptsTitle: 'Skrip Pengguna',
+  liteBtnTxt: 'LITE',
+  themesBtnLabel: 'TEMA',
+  flYT: 'YouTube', flIG: 'Instagram', flDC: 'Discord', flRS: 'RScripts',
+  fcRights: 'Semua Hak Dilindungi',
+  fcTagline: 'Membangun masa depan, satu skrip dalam satu waktu.',
+  fnHome: 'Beranda', fnExplore: 'Jelajahi', fnVideos: 'Video', fnUpload: 'Unggah', fnAbout: 'Tentang',
+  tPerf: 'Performa Dioptimalkan', tAes: 'Enkripsi AES-256', tSmart: 'Bot Cerdas',
+  tHwid: 'Binding HWID', tMulti: 'Dukungan Multi-Bahasa', tFree: 'Akses 100% Gratis',
+  ulScriptName: 'Nama Skrip *', ulDescription: 'Deskripsi *', ulCategory: 'Kategori',
+  ulType: 'Jenis', ulScriptCode: 'Kode Skrip *', ulVideoLink: 'Tautan Tutorial Video (opsional)',
+};
 
 /* ══════ STATE ══════ */
 let currentLang = localStorage.getItem('lpolvo_lang') || 'en';
@@ -3628,12 +4812,150 @@ let particleAnim, specialAnim;
 
 /* ══════ SCRIPTS DATA ══════ */
 const SCRIPTS_DATA = [
-  { id:1, title:'Launch Yourself For Brainrots Script — INSANE AUTO GOD FEATURE 🔥', desc:'Powerful Roblox script with Auto God Feature. Full tutorial on YouTube.', tags:['roblox','lua','free'], emoji:'🎮', badges:['vid','free'], url:'https://lpolvo.github.io/explorescripts' },
-  { id:2, title:'RIVALS Script 🔥 BEST SILENT AIM 🎯 | OP Aim Assist + UNDETECTED', desc:'Full tutorial on YouTube. Best silent aim with OP Aim Assist.', tags:['roblox','lua','free'], emoji:'🎯', badges:['vid','free'], url:'https://lpolvo.github.io/explorescripts' },
-  { id:3, title:'Cursed Blade Script - AUTO FARM AUTO LOOT', desc:'Full auto farm and loot script for Cursed Blade.', tags:['roblox','lua','free'], emoji:'⚔️', badges:['new','free'], url:'https://lpolvo.github.io/explorescripts' },
-  { id:4, title:'Advanced Python Automation Bot', desc:'Python automation bot with anti-detection and smart scheduling.', tags:['python','other'], emoji:'🐍', badges:['new'], url:'https://lpolvo.github.io/explorescripts' },
-  { id:5, title:'Web Scraper Pro', desc:'Advanced web scraping tool with proxy rotation.', tags:['python','web'], emoji:'🕷️', badges:['free'], url:'https://lpolvo.github.io/explorescripts' },
-  { id:6, title:'Roblox Universal Script Hub', desc:'Universal script hub for multiple Roblox games.', tags:['roblox','lua','free'], emoji:'🌐', badges:['new','free'], url:'https://lpolvo.github.io/explorescripts' }
+  {
+    id: 1,
+    title: 'Launch Yourself For Brainrots Script — INSANE AUTO GOD FEATURE 🔥',
+    desc: 'Powerful Roblox script with Auto God Feature. Full tutorial on YouTube. HWID secured and AES-256 encrypted for maximum safety.',
+    tags: ['roblox', 'lua', 'free'],
+    emoji: '🎮',
+    badges: ['vid', 'free'],
+    url: 'https://lpolvo.github.io/explorescripts'
+  },
+  {
+    id: 2,
+    title: 'RIVALS Script 🔥 BEST SILENT AIM 🎯 | OP Aim Assist + UNDETECTED',
+    desc: 'Full tutorial on YouTube. Best silent aim with OP Aim Assist. Fully undetected with advanced anti-cheat bypass technology.',
+    tags: ['roblox', 'lua', 'free'],
+    emoji: '🎯',
+    badges: ['vid', 'free'],
+    url: 'https://lpolvo.github.io/explorescripts'
+  },
+  {
+    id: 3,
+    title: 'Cursed Blade Script — AUTO FARM AUTO LOOT ⚔️',
+    desc: 'Full auto farm and auto loot script for Cursed Blade. Features intelligent pathing, anti-AFK, and boss detection systems.',
+    tags: ['roblox', 'lua', 'free'],
+    emoji: '⚔️',
+    badges: ['new', 'free'],
+    url: 'https://lpolvo.github.io/explorescripts'
+  },
+  {
+    id: 4,
+    title: 'Advanced Python Automation Bot 🐍',
+    desc: 'Python automation bot with anti-detection, smart scheduling, proxy rotation, and CAPTCHA solving integration.',
+    tags: ['python', 'other'],
+    emoji: '🐍',
+    badges: ['new'],
+    url: 'https://lpolvo.github.io/explorescripts'
+  },
+  {
+    id: 5,
+    title: 'Web Scraper Pro — Proxy Rotation & Anti-Bot 🕷️',
+    desc: 'Advanced web scraping tool with automatic proxy rotation, headless browser support, and intelligent rate limiting.',
+    tags: ['python', 'web'],
+    emoji: '🕷️',
+    badges: ['free'],
+    url: 'https://lpolvo.github.io/explorescripts'
+  },
+  {
+    id: 6,
+    title: 'Roblox Universal Script Hub 🌐',
+    desc: 'Universal script hub compatible with multiple Roblox games. Auto-detects game and loads appropriate module automatically.',
+    tags: ['roblox', 'lua', 'free'],
+    emoji: '🌐',
+    badges: ['new', 'free'],
+    url: 'https://lpolvo.github.io/explorescripts'
+  },
+  {
+    id: 7,
+    title: 'Blox Fruits Script — MAX LEVEL AUTO FARM 🍎',
+    desc: 'The most powerful Blox Fruits automation script. Auto sea events, auto boss, auto chest, race v4 unlock support.',
+    tags: ['roblox', 'lua', 'free'],
+    emoji: '🍎',
+    badges: ['new', 'free', 'vid'],
+    url: 'https://lpolvo.github.io/explorescripts'
+  },
+  {
+    id: 8,
+    title: 'Fisch Script — AUTO FISH ALL LOCATIONS 🎣',
+    desc: 'Ultimate Fisch auto-fishing script. Supports all fishing locations, auto shake, auto sell, rare fish detection.',
+    tags: ['roblox', 'lua', 'free'],
+    emoji: '🎣',
+    badges: ['new', 'free'],
+    url: 'https://lpolvo.github.io/explorescripts'
+  },
+  {
+    id: 9,
+    title: 'Strongest Battlegrounds Script — OP COMBO 🥊',
+    desc: 'Dominate every fight with auto-combo, silent aim, and speed glitch. Compatible with all latest updates.',
+    tags: ['roblox', 'lua', 'free'],
+    emoji: '🥊',
+    badges: ['vid', 'free'],
+    url: 'https://lpolvo.github.io/explorescripts'
+  },
+  {
+    id: 10,
+    title: 'Anime Defenders Script — AUTO PLACE & UPGRADE 🗡️',
+    desc: 'Best Anime Defenders automation script. Auto place optimal units, auto upgrade, wave skip and infinite farm mode.',
+    tags: ['roblox', 'lua', 'free'],
+    emoji: '🗡️',
+    badges: ['new', 'free'],
+    url: 'https://lpolvo.github.io/explorescripts'
+  },
+  {
+    id: 11,
+    title: 'Discord Self-Bot Toolkit 💬',
+    desc: 'Advanced Discord automation utilities. Auto-responder, scheduled messages, server analytics, and webhook manager.',
+    tags: ['python', 'other'],
+    emoji: '💬',
+    badges: ['new'],
+    url: 'https://lpolvo.github.io/explorescripts'
+  },
+  {
+    id: 12,
+    title: 'HWID Spoofer & Key System Template 🔑',
+    desc: 'Full HWID-based key system template with Firebase backend, AES-256 encryption, and expiry management.',
+    tags: ['python', 'other'],
+    emoji: '🔑',
+    badges: ['new'],
+    url: 'https://lpolvo.github.io/explorescripts'
+  },
+  {
+    id: 13,
+    title: 'Steal Time Script — MAX SPEED FARM ⏱️',
+    desc: 'Steal Time from Nobles auto-farm with max speed optimization. Auto collect, auto upgrade, loop farm support.',
+    tags: ['roblox', 'lua', 'free'],
+    emoji: '⏱️',
+    badges: ['free'],
+    url: 'https://lpolvo.github.io/explorescripts'
+  },
+  {
+    id: 14,
+    title: 'JavaScript Anti-Detect Browser Automation 🌍',
+    desc: 'Browser automation framework with fingerprint randomization, canvas spoofing, and WebGL masking for stealth operations.',
+    tags: ['python', 'web', 'other'],
+    emoji: '🌍',
+    badges: ['new'],
+    url: 'https://lpolvo.github.io/explorescripts'
+  },
+  {
+    id: 15,
+    title: 'Loot Legends Script — FULL AUTO DUNGEON 🏰',
+    desc: 'Complete dungeon automation for Loot Legends. Auto path, auto combat, boss detection, loot filtering system.',
+    tags: ['roblox', 'lua', 'free'],
+    emoji: '🏰',
+    badges: ['new', 'free', 'vid'],
+    url: 'https://lpolvo.github.io/explorescripts'
+  },
+  {
+    id: 16,
+    title: 'Python API Rate-Limiter & Queue Manager 📡',
+    desc: 'Production-ready API rate limiter with Redis queue, exponential backoff, circuit breaker pattern implementation.',
+    tags: ['python', 'web'],
+    emoji: '📡',
+    badges: ['new'],
+    url: 'https://lpolvo.github.io/explorescripts'
+  }
 ];
 let userScripts = JSON.parse(localStorage.getItem('lpolvo_user_scripts') || '[]');
 
@@ -4104,22 +5426,46 @@ function startParticles() {
 /* ══════ SPECIAL THEME ANIMATIONS ══════ */
 function stopSpecialAnims() {
   if(specialAnim) cancelAnimationFrame(specialAnim);
-  ['galaxyCanvas','sakuraCanvas','stormCanvas','toxicCanvas','matrixCanvas','fireCanvas','snowCanvas'].forEach(id => {
+  const canvasIds = [
+    'galaxyCanvas', 'sakuraCanvas', 'stormCanvas', 'toxicCanvas',
+    'matrixCanvas', 'fireCanvas', 'snowCanvas', 'crystalCanvas',
+    'desertCanvas', 'forestCanvas', 'electricCanvas', 'nebulaCanvas',
+    'spaceCanvas', 'neonpinkCanvas', 'lavaCanvas', 'rainbowCanvas'
+  ];
+  canvasIds.forEach(id => {
     const c = document.getElementById(id);
-    if(c) c.getContext('2d').clearRect(0, 0, c.width, c.height);
+    if(c) {
+      const ctx = c.getContext('2d');
+      ctx.clearRect(0, 0, c.width, c.height);
+    }
   });
 }
 
 function startSpecialThemeAnim(theme) {
   const anims = {
-    galaxy: runGalaxyAnim,
-    sakura: runSakuraAnim,
-    storm:  runStormAnim,
-    toxic:  runToxicAnim,
-    matrix: runMatrixAnim,
-    fire:   runFireAnim,
-    iceking: runSnowAnim,
-    arcticnight: runSnowAnim
+    galaxy:      runGalaxyAnim,
+    sakura:      runSakuraAnim,
+    storm:       runStormAnim,
+    toxic:       runToxicAnim,
+    matrix:      runMatrixAnim,
+    hacker:      runMatrixAnim,
+    fire:        runFireAnim,
+    lava:        runFireAnim,
+    magma:       runFireAnim,
+    volcano:     runFireAnim,
+    iceking:     runSnowAnim,
+    arcticnight: runSnowAnim,
+    arctic:      runSnowAnim,
+    crystal:     runCrystalAnim,
+    desert:      runDesertAnim,
+    forest:      runForestAnim,
+    venom:       runForestAnim,
+    electric:    runElectricAnim,
+    nebula:      runNebulaAnim,
+    space:       runSpaceAnim,
+    neonpink:    runNeonPinkAnim,
+    rainbow:     runRainbowAnim,
+    candy:       runRainbowAnim
   };
   if(anims[theme]) anims[theme]();
 }
@@ -4293,13 +5639,441 @@ function runSnowAnim() {
   draw();
 }
 
+/* Crystal Rain — falling prismatic shards */
+function runCrystalAnim() {
+  const canvas = document.getElementById('crystalCanvas');
+  if(!canvas) return;
+  const ctx = canvas.getContext('2d');
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+  const shards = Array.from({length: 40}, () => ({
+    x: Math.random() * canvas.width,
+    y: Math.random() * canvas.height - canvas.height,
+    vy: Math.random() * 2 + 0.8,
+    vx: (Math.random() - 0.5) * 0.4,
+    len: Math.random() * 20 + 8,
+    angle: Math.random() * Math.PI,
+    va: (Math.random() - 0.5) * 0.02,
+    hue: Math.floor(Math.random() * 60 + 170),
+    o: Math.random() * 0.5 + 0.2
+  }));
+  function draw() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    shards.forEach(s => {
+      s.y += s.vy;
+      s.x += s.vx;
+      s.angle += s.va;
+      if(s.y > canvas.height + 30) {
+        s.y = -30;
+        s.x = Math.random() * canvas.width;
+      }
+      ctx.save();
+      ctx.translate(s.x, s.y);
+      ctx.rotate(s.angle);
+      ctx.beginPath();
+      ctx.moveTo(0, -s.len / 2);
+      ctx.lineTo(s.len * 0.2, 0);
+      ctx.lineTo(0, s.len / 2);
+      ctx.lineTo(-s.len * 0.2, 0);
+      ctx.closePath();
+      ctx.fillStyle = `hsla(${s.hue}, 80%, 75%, ${s.o})`;
+      ctx.strokeStyle = `hsla(${s.hue}, 100%, 90%, ${s.o * 0.6})`;
+      ctx.lineWidth = 0.5;
+      ctx.fill();
+      ctx.stroke();
+      ctx.restore();
+    });
+    specialAnim = requestAnimationFrame(draw);
+  }
+  draw();
+}
+
+/* Desert Sandstorm — swirling sand particles */
+function runDesertAnim() {
+  const canvas = document.getElementById('desertCanvas');
+  if(!canvas) return;
+  const ctx = canvas.getContext('2d');
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+  const grains = Array.from({length: 120}, () => ({
+    x: Math.random() * canvas.width,
+    y: Math.random() * canvas.height,
+    vx: Math.random() * 3 + 1.5,
+    vy: (Math.random() - 0.5) * 0.8,
+    r: Math.random() * 1.5 + 0.3,
+    o: Math.random() * 0.4 + 0.1,
+    wave: Math.random() * Math.PI * 2,
+    waveSpeed: Math.random() * 0.04 + 0.01
+  }));
+  function draw() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    grains.forEach(g => {
+      g.wave += g.waveSpeed;
+      g.x += g.vx;
+      g.y += g.vy + Math.sin(g.wave) * 0.3;
+      if(g.x > canvas.width + 10) {
+        g.x = -10;
+        g.y = Math.random() * canvas.height;
+      }
+      ctx.beginPath();
+      ctx.arc(g.x, g.y, g.r, 0, Math.PI * 2);
+      ctx.fillStyle = `rgba(217, 119, 6, ${g.o})`;
+      ctx.fill();
+    });
+    specialAnim = requestAnimationFrame(draw);
+  }
+  draw();
+}
+
+/* Forest Leaves — gently falling leaves */
+function runForestAnim() {
+  const canvas = document.getElementById('forestCanvas');
+  if(!canvas) return;
+  const ctx = canvas.getContext('2d');
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+  const leaves = Array.from({length: 35}, () => ({
+    x: Math.random() * canvas.width,
+    y: Math.random() * canvas.height - canvas.height,
+    vx: (Math.random() - 0.5) * 1.2,
+    vy: Math.random() * 1.2 + 0.4,
+    r: Math.random() * 7 + 4,
+    angle: Math.random() * Math.PI * 2,
+    va: (Math.random() - 0.5) * 0.04,
+    swing: Math.random() * Math.PI * 2,
+    swingSpeed: Math.random() * 0.03 + 0.01,
+    hue: Math.floor(Math.random() * 40 + 100),
+    o: Math.random() * 0.5 + 0.25
+  }));
+  function draw() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    leaves.forEach(l => {
+      l.swing += l.swingSpeed;
+      l.x += l.vx + Math.sin(l.swing) * 0.5;
+      l.y += l.vy;
+      l.angle += l.va;
+      if(l.y > canvas.height + 20) {
+        l.y = -20;
+        l.x = Math.random() * canvas.width;
+      }
+      ctx.save();
+      ctx.translate(l.x, l.y);
+      ctx.rotate(l.angle);
+      ctx.beginPath();
+      ctx.ellipse(0, 0, l.r, l.r * 0.55, 0, 0, Math.PI * 2);
+      ctx.fillStyle = `hsla(${l.hue}, 65%, 38%, ${l.o})`;
+      ctx.fill();
+      ctx.restore();
+    });
+    specialAnim = requestAnimationFrame(draw);
+  }
+  draw();
+}
+
+/* Electric Sparks — lightning tendrils across screen */
+function runElectricAnim() {
+  const canvas = document.getElementById('electricCanvas');
+  if(!canvas) return;
+  const ctx = canvas.getContext('2d');
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+  let frame = 0;
+  function spark(x1, y1, x2, y2, depth) {
+    if(depth <= 0) return;
+    const mx = (x1 + x2) / 2 + (Math.random() - 0.5) * 60;
+    const my = (y1 + y2) / 2 + (Math.random() - 0.5) * 30;
+    ctx.beginPath();
+    ctx.moveTo(x1, y1);
+    ctx.lineTo(mx, my);
+    ctx.lineTo(x2, y2);
+    const alpha = 0.8 / (4 - depth);
+    ctx.strokeStyle = `rgba(250, 204, 21, ${alpha})`;
+    ctx.lineWidth = depth * 0.6;
+    ctx.shadowBlur = 12;
+    ctx.shadowColor = 'rgba(250, 204, 21, 0.8)';
+    ctx.stroke();
+    ctx.shadowBlur = 0;
+    if(Math.random() > 0.55) {
+      spark(mx, my, mx + (Math.random() - 0.5) * 80, my + 40, depth - 1);
+    }
+  }
+  function draw() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    frame++;
+    if(frame % 80 < 6) {
+      const x = Math.random() * canvas.width;
+      spark(x, 0, x + (Math.random() - 0.5) * 120, canvas.height * 0.6, 3);
+    }
+    if(frame % 130 < 4) {
+      const x2 = Math.random() * canvas.width;
+      spark(x2, canvas.height, x2 + (Math.random() - 0.5) * 80, canvas.height * 0.4, 2);
+    }
+    specialAnim = requestAnimationFrame(draw);
+  }
+  draw();
+}
+
+/* Nebula Clouds — drifting cosmic gas */
+function runNebulaAnim() {
+  const canvas = document.getElementById('nebulaCanvas');
+  if(!canvas) return;
+  const ctx = canvas.getContext('2d');
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+  const clouds = Array.from({length: 8}, () => ({
+    x: Math.random() * canvas.width,
+    y: Math.random() * canvas.height,
+    rx: Math.random() * 180 + 80,
+    ry: Math.random() * 100 + 50,
+    hue: Math.floor(Math.random() * 120 + 200),
+    o: Math.random() * 0.08 + 0.03,
+    vx: (Math.random() - 0.5) * 0.15,
+    vy: (Math.random() - 0.5) * 0.08,
+    angle: Math.random() * Math.PI * 2
+  }));
+  const stars = Array.from({length: 150}, () => ({
+    x: Math.random() * canvas.width,
+    y: Math.random() * canvas.height,
+    r: Math.random() * 1.2 + 0.2,
+    t: Math.random() * Math.PI * 2,
+    speed: Math.random() * 0.015 + 0.005
+  }));
+  function draw() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    clouds.forEach(c => {
+      c.x += c.vx;
+      c.y += c.vy;
+      if(c.x < -c.rx) c.x = canvas.width + c.rx;
+      if(c.x > canvas.width + c.rx) c.x = -c.rx;
+      if(c.y < -c.ry) c.y = canvas.height + c.ry;
+      if(c.y > canvas.height + c.ry) c.y = -c.ry;
+      const grad = ctx.createRadialGradient(c.x, c.y, 0, c.x, c.y, c.rx);
+      grad.addColorStop(0, `hsla(${c.hue}, 85%, 65%, ${c.o})`);
+      grad.addColorStop(0.5, `hsla(${c.hue + 30}, 80%, 55%, ${c.o * 0.5})`);
+      grad.addColorStop(1, `hsla(${c.hue}, 70%, 40%, 0)`);
+      ctx.beginPath();
+      ctx.ellipse(c.x, c.y, c.rx, c.ry, c.angle, 0, Math.PI * 2);
+      ctx.fillStyle = grad;
+      ctx.fill();
+    });
+    stars.forEach(s => {
+      s.t += s.speed;
+      const o = 0.3 + 0.7 * Math.abs(Math.sin(s.t));
+      ctx.beginPath();
+      ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
+      ctx.fillStyle = `rgba(180, 160, 255, ${o})`;
+      ctx.fill();
+    });
+    specialAnim = requestAnimationFrame(draw);
+  }
+  draw();
+}
+
+/* Space Warp — deep space star-field with warp effect */
+function runSpaceAnim() {
+  const canvas = document.getElementById('spaceCanvas');
+  if(!canvas) return;
+  const ctx = canvas.getContext('2d');
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+  const cx = canvas.width / 2;
+  const cy = canvas.height / 2;
+  const stars = Array.from({length: 200}, () => ({
+    x: (Math.random() - 0.5) * canvas.width,
+    y: (Math.random() - 0.5) * canvas.height,
+    z: Math.random() * canvas.width,
+    pz: 0
+  }));
+  function draw() {
+    ctx.fillStyle = 'rgba(0, 0, 5, 0.12)';
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+    stars.forEach(s => {
+      s.pz = s.z;
+      s.z -= 2.5;
+      if(s.z <= 0) {
+        s.x = (Math.random() - 0.5) * canvas.width;
+        s.y = (Math.random() - 0.5) * canvas.height;
+        s.z = canvas.width;
+        s.pz = s.z;
+      }
+      const sx = (s.x / s.z) * canvas.width + cx;
+      const sy = (s.y / s.z) * canvas.height + cy;
+      const px = (s.x / s.pz) * canvas.width + cx;
+      const py = (s.y / s.pz) * canvas.height + cy;
+      const size = Math.max(0.1, (1 - s.z / canvas.width) * 2.5);
+      const brightness = Math.floor((1 - s.z / canvas.width) * 255);
+      ctx.beginPath();
+      ctx.moveTo(px, py);
+      ctx.lineTo(sx, sy);
+      ctx.strokeStyle = `rgb(${brightness}, ${brightness}, ${Math.min(255, brightness + 30)})`;
+      ctx.lineWidth = size;
+      ctx.stroke();
+    });
+    specialAnim = requestAnimationFrame(draw);
+  }
+  draw();
+}
+
+/* Neon Pink Grid — cyberpunk grid with scanlines */
+function runNeonPinkAnim() {
+  const canvas = document.getElementById('neonpinkCanvas');
+  if(!canvas) return;
+  const ctx = canvas.getContext('2d');
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+  let offset = 0;
+  const nodes = Array.from({length: 12}, () => ({
+    x: Math.random() * canvas.width,
+    y: Math.random() * canvas.height,
+    vx: (Math.random() - 0.5) * 0.6,
+    vy: (Math.random() - 0.5) * 0.6,
+    r: Math.random() * 3 + 1.5
+  }));
+  function draw() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    offset += 0.4;
+    /* horizontal scanlines */
+    for(let y = 0; y < canvas.height; y += 60) {
+      const yo = (y + offset) % canvas.height;
+      ctx.beginPath();
+      ctx.moveTo(0, yo);
+      ctx.lineTo(canvas.width, yo);
+      ctx.strokeStyle = 'rgba(255, 0, 102, 0.04)';
+      ctx.lineWidth = 1;
+      ctx.stroke();
+    }
+    /* moving nodes */
+    nodes.forEach((n, i) => {
+      n.x += n.vx;
+      n.y += n.vy;
+      if(n.x < 0 || n.x > canvas.width) n.vx *= -1;
+      if(n.y < 0 || n.y > canvas.height) n.vy *= -1;
+      /* connections */
+      nodes.forEach((m, j) => {
+        if(j <= i) return;
+        const dx = n.x - m.x;
+        const dy = n.y - m.y;
+        const d = Math.sqrt(dx * dx + dy * dy);
+        if(d < 200) {
+          const alpha = (1 - d / 200) * 0.25;
+          ctx.beginPath();
+          ctx.moveTo(n.x, n.y);
+          ctx.lineTo(m.x, m.y);
+          ctx.strokeStyle = `rgba(255, 0, 102, ${alpha})`;
+          ctx.lineWidth = 0.8;
+          ctx.stroke();
+        }
+      });
+      ctx.beginPath();
+      ctx.arc(n.x, n.y, n.r, 0, Math.PI * 2);
+      ctx.fillStyle = 'rgba(255, 0, 102, 0.7)';
+      ctx.fill();
+    });
+    specialAnim = requestAnimationFrame(draw);
+  }
+  draw();
+}
+
+/* Rainbow Prism — shifting color wave pulses */
+function runRainbowAnim() {
+  const canvas = document.getElementById('rainbowCanvas');
+  if(!canvas) return;
+  const ctx = canvas.getContext('2d');
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+  let tick = 0;
+  const orbs = Array.from({length: 6}, (_, i) => ({
+    angle: (i / 6) * Math.PI * 2,
+    speed: 0.004 + i * 0.001,
+    radius: 120 + i * 30,
+    hue: i * 60,
+    size: 80 + i * 15
+  }));
+  function draw() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    tick++;
+    const cx = canvas.width / 2;
+    const cy = canvas.height / 2;
+    orbs.forEach(o => {
+      o.angle += o.speed;
+      o.hue = (o.hue + 0.4) % 360;
+      const x = cx + Math.cos(o.angle) * o.radius;
+      const y = cy + Math.sin(o.angle) * (o.radius * 0.45);
+      const grad = ctx.createRadialGradient(x, y, 0, x, y, o.size);
+      grad.addColorStop(0, `hsla(${o.hue}, 100%, 65%, 0.12)`);
+      grad.addColorStop(0.5, `hsla(${(o.hue + 30) % 360}, 100%, 55%, 0.06)`);
+      grad.addColorStop(1, `hsla(${o.hue}, 100%, 45%, 0)`);
+      ctx.beginPath();
+      ctx.arc(x, y, o.size, 0, Math.PI * 2);
+      ctx.fillStyle = grad;
+      ctx.fill();
+    });
+    specialAnim = requestAnimationFrame(draw);
+  }
+  draw();
+}
+
+/* ══════ KEYBOARD SHORTCUTS ══════ */
+document.addEventListener('keydown', e => {
+  /* ESC — close all dropdowns */
+  if(e.key === 'Escape') {
+    closeAllDropdowns();
+  }
+  /* Ctrl+/ or Ctrl+K — focus search on explore page */
+  if((e.ctrlKey || e.metaKey) && (e.key === '/' || e.key === 'k')) {
+    if(currentPage === 'explore') {
+      e.preventDefault();
+      const s = document.getElementById('exploreSearch');
+      if(s) { s.focus(); s.select(); }
+    }
+  }
+});
+
+/* ══════ PERFORMANCE: intersection observer for card animations ══════ */
+(function setupCardObserver() {
+  if(!('IntersectionObserver' in window)) return;
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if(entry.isIntersecting) {
+        entry.target.style.opacity = '1';
+        entry.target.style.transform = 'translateY(0)';
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+  /* observe on page changes */
+  const origShowPage = window.showPage;
+  if(typeof origShowPage === 'function') {
+    window.showPage = function(page) {
+      origShowPage(page);
+      setTimeout(() => {
+        document.querySelectorAll('.script-card').forEach(card => {
+          card.style.opacity = '0';
+          card.style.transform = 'translateY(20px)';
+          card.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
+          observer.observe(card);
+        });
+      }, 50);
+    };
+  }
+})();
+
 /* ══════ RESIZE ══════ */
 window.addEventListener('resize', () => {
-  ['galaxyCanvas','sakuraCanvas','stormCanvas','toxicCanvas','matrixCanvas','fireCanvas','snowCanvas','particlesCanvas'].forEach(id => {
+  const allCanvases = [
+    'galaxyCanvas', 'sakuraCanvas', 'stormCanvas', 'toxicCanvas',
+    'matrixCanvas', 'fireCanvas', 'snowCanvas', 'crystalCanvas',
+    'desertCanvas', 'forestCanvas', 'electricCanvas', 'nebulaCanvas',
+    'spaceCanvas', 'neonpinkCanvas', 'rainbowCanvas', 'particlesCanvas'
+  ];
+  allCanvases.forEach(id => {
     const c = document.getElementById(id);
-    if(c) { c.width = window.innerWidth; c.height = window.innerHeight; }
+    if(c) {
+      c.width = window.innerWidth;
+      c.height = window.innerHeight;
+    }
   });
-}, { passive:true });
+}, { passive: true });
 </script>
 </body>
 </html>
