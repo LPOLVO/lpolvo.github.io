@@ -942,8 +942,9 @@ animation:themeBgPulse 8s ease-in-out infinite;
 /* ═════════════════════════════════════════════════════════════════
    SPLASH SCREEN
 ═════════════════════════════════════════════════════════════════ */
-#splashScreen{position:fixed;inset:0;z-index:99998;display:flex;flex-direction:column;align-items:center;justify-content:center;background:var(--splash-bg);transition:opacity .7s ease,visibility .7s ease}
-#splashScreen.hidden{opacity:0;visibility:hidden;pointer-events:none}
+#splashScreen{position:fixed;inset:0;z-index:99998;display:flex;flex-direction:column;align-items:center;justify-content:center;background:var(--splash-bg);transition:opacity .7s ease,visibility .7s ease;animation:splashAutoHide 0.01s 2.2s forwards}
+#splashScreen.hidden{opacity:0;visibility:hidden;pointer-events:none;animation:none}
+@keyframes splashAutoHide{to{opacity:0;visibility:hidden;pointer-events:none}}
 .splash-logo{font-family:'Orbitron',sans-serif;font-size:clamp(2.5rem,8vw,5rem);font-weight:900;letter-spacing:.2em;color:var(--accent);text-shadow:0 0 30px var(--glow),0 0 60px var(--glow2);animation:splashPulse 1.5s ease-in-out infinite;direction:ltr}
 @keyframes splashPulse{0%,100%{text-shadow:0 0 30px var(--glow),0 0 60px var(--glow2)}50%{text-shadow:0 0 60px var(--glow),0 0 120px var(--glow2),0 0 180px var(--glow2)}}
 .splash-sub{font-family:'Rajdhani',sans-serif;font-size:1rem;color:var(--text2);letter-spacing:3px;margin-top:20px;text-transform:uppercase}
