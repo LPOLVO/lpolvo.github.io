@@ -20,14 +20,17 @@ window.__FB={ready:true,auth,googleProvider,signInWithEmailAndPassword,createUse
 onAuthStateChanged(auth,user=>{if(window.onFirebaseAuthState)window.onFirebaseAuthState(user);else window.__pendingAuthUser=user;});
 } catch(e){console.error('[LPOLVO] Firebase:',e.message);window.__FB={ready:false,error:e.message};}
 </script>
+<script>
+window.addEventListener('DOMContentLoaded',()=>{setTimeout(()=>{const s=document.getElementById('splashScreen');if(s)s.classList.add('hidden');},2500);});
+</script>
 <style>
 /* ══════════════════════════════════════════════════════════════════════════════
 LPOLVO HUB v2 — COMPLETE STYLESHEET
 55+ Themes | Responsive | RTL | Loading Bar | Click Effects | Buy Key Banner
 ══════════════════════════════════════════════════════════════════════════════ */
 
-/* ── RESET & BOX MODEL ── /
-,::before,::after{box-sizing:border-box;margin:0;padding:0}
+/* ── RESET & BOX MODEL ── */
+*,::before,::after{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth;overflow-x:hidden}
 body{font-family:'Inter','Rajdhani',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;overflow-x:hidden;transition:background 0.6s ease,color 0.4s ease;position:relative}
 img{max-width:100%;height:auto;display:block}
@@ -836,7 +839,7 @@ input,textarea,select{font-family:inherit;outline:none}
 --bg:#000005; --bg2:#02020d; --bg3:#040414; --card:#030312;
 --accent:#636efa; --accent2:#4f58e8; --accent3:#a0a8ff;
 --text:#f0f0ff; --text2:#7880cc; --text3:#4c54aa;
---border:#18183c; --border2:#101028;
+--border:#181830; --border2:#10102a;
 --glow:rgba(99,110,250,0.35); --glow2:rgba(99,110,250,0.12);
 --nav-bg:rgba(0,0,5,0.93); --splash-bg:linear-gradient(135deg,#000005,#02020d,#040414);
 --hero-grad:linear-gradient(135deg,#000005 0%,#050518 40%,#080820 70%,#000005 100%);
@@ -1055,7 +1058,7 @@ BASE LAYOUT & CANVASES
 .click-canvas{position:fixed;top:0;left:0;width:100%;height:100%;z-index:9999;pointer-events:none}
 
 /* ══════════════════════════════════════════════════════════════════════════════
-LOADING BAR (top progress bar on page transitions)
+LOADING BAR
 ══════════════════════════════════════════════════════════════════════════════ */
 #loadingBar{
 position:fixed; top:0; left:0; height:3px; width:0%; z-index:99999;
@@ -1184,7 +1187,7 @@ flex-direction:column; gap:4px;
 .mobile-menu a:hover,.mobile-menu a.active{color:var(--accent);background:rgba(255,255,255,0.05);border-color:var(--border)}
 
 /* ══════════════════════════════════════════════════════════════════════════════
-DROPDOWN (themes & language)
+DROPDOWN
 ══════════════════════════════════════════════════════════════════════════════ */
 .dd-wrap{position:relative}
 .dropdown{
@@ -1265,7 +1268,7 @@ SECTION LAYOUTS
 .section-desc{font-size:1rem;color:var(--text2);max-width:560px;line-height:1.7;margin-bottom:40px}
 
 /* ══════════════════════════════════════════════════════════════════════════════
-FEATURED SCRIPT CARD (home)
+FEATURED SCRIPT CARD
 ══════════════════════════════════════════════════════════════════════════════ */
 .featured-grid{display:grid;grid-template-columns:1fr 1fr;gap:30px;align-items:center}
 @media(max-width:900px){.featured-grid{grid-template-columns:1fr}}
@@ -1278,8 +1281,6 @@ FEATURED SCRIPT CARD (home)
 .fc-title{font-family:'Orbitron',sans-serif;font-size:clamp(1.1rem,2.5vw,1.6rem);font-weight:900;color:var(--text);margin-bottom:8px;line-height:1.3}
 .fc-title span{color:var(--accent)}
 .fc-desc{font-size:0.9rem;color:var(--text2);line-height:1.7;margin-bottom:24px}
-
-/* RSCRIPTS CARD (home) */
 .rscripts-card{background:var(--card);border:1px solid var(--border);border-radius:20px;padding:36px;display:flex;flex-direction:column;gap:16px;box-shadow:var(--shadow-card);transition:all 0.4s;position:relative;overflow:hidden}
 .rscripts-card:hover{border-color:var(--accent);transform:translateY(-6px)}
 .rscripts-logo-wrap{display:flex;align-items:center;gap:12px}
@@ -1315,8 +1316,8 @@ position:relative; overflow:hidden; margin:60px 0;
 .comm-btns{display:flex;flex-wrap:wrap;gap:14px;justify-content:center}
 
 /* ══════════════════════════════════════════════════════════════════════════════
-SOCIAL PLATFORM LOGOS FOOTER
-══════════════════════════════════════════════════════════════════════════════ /
+SOCIAL LINKS
+══════════════════════════════════════════════════════════════════════════════ */
 .footer-socials{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin-top:30px}
 .social-link{
 display:flex; align-items:center; gap:8px; padding:10px 18px;
@@ -1327,7 +1328,6 @@ font-family:'Rajdhani',sans-serif; font-weight:600;
 }
 .social-link:hover{border-color:var(--accent);color:var(--accent);background:rgba(255,255,255,0.08);transform:translateY(-2px)}
 .social-icon{width:20px;height:20px;flex-shrink:0}
-/ Platform brand colors on hover */
 .social-link.discord:hover{border-color:#5865f2;color:#5865f2}
 .social-link.youtube:hover{border-color:#ff0000;color:#ff0000}
 .social-link.instagram:hover{border-color:#e1306c;color:#e1306c}
@@ -1335,17 +1335,17 @@ font-family:'Rajdhani',sans-serif; font-weight:600;
 .social-link.rscripts:hover{border-color:#44aaff;color:#44aaff}
 
 /* ══════════════════════════════════════════════════════════════════════════════
-SCRIPT CARDS (explore / userscripts)
+SCRIPT CARDS
 ══════════════════════════════════════════════════════════════════════════════ */
 .page-inner{padding:clamp(20px,5vw,60px) clamp(16px,4vw,40px);max-width:1400px;margin:0 auto}
 .page-header{margin-bottom:32px;text-align:center}
 .page-header h1{font-family:'Orbitron',sans-serif;font-size:clamp(1.4rem,4vw,2.4rem);font-weight:900;color:var(--accent);text-shadow:0 0 20px var(--glow);margin-bottom:8px;direction:ltr;unicode-bidi:isolate}
 .page-header p{font-size:0.9rem;color:var(--text2)}
 .search-filter-row{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:28px;align-items:center}
-.search-box{flex:1;min-width:180px;padding:11px 16px;background:var(--bg2);border:1px solid var(--border);border-radius:10px;color:var(--text);font-size:0.88rem;transition:border-color 0.3s}
+.search-box{flex:1;min-width:200px;padding:10px 16px;background:var(--bg2);border:1px solid var(--border);border-radius:10px;color:var(--text);font-size:0.85rem;transition:all 0.3s}
 .search-box:focus{border-color:var(--accent);box-shadow:0 0 0 3px var(--glow2)}
 .filter-btns{display:flex;flex-wrap:wrap;gap:6px}
-.filter-btn{padding:8px 14px;background:rgba(255,255,255,0.04);border:1px solid var(--border);border-radius:8px;color:var(--text2);font-family:'Orbitron',sans-serif;font-size:0.6rem;letter-spacing:1.5px;cursor:pointer;transition:all 0.25s}
+.filter-btn{font-family:'Orbitron',sans-serif;font-size:0.6rem;letter-spacing:1.5px;padding:7px 14px;background:rgba(255,255,255,0.05);border:1px solid var(--border);border-radius:8px;color:var(--text2);cursor:pointer;transition:all 0.3s}
 .filter-btn:hover,.filter-btn.active{background:var(--accent);color:#000;border-color:var(--accent);box-shadow:0 0 10px var(--glow2)}
 .scripts-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:18px}
 .script-card{background:var(--card);border:1px solid var(--border);border-radius:16px;overflow:hidden;cursor:pointer;transition:all 0.35s;position:relative}
@@ -1372,7 +1372,7 @@ SCRIPT CARDS (explore / userscripts)
 .empty-desc{color:var(--text2);font-size:0.88rem}
 
 /* ══════════════════════════════════════════════════════════════════════════════
-VIDEOS PAGE (with YouTube thumbnails)
+VIDEOS PAGE
 ══════════════════════════════════════════════════════════════════════════════ */
 .videos-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:20px}
 .video-card{background:var(--card);border:1px solid var(--border);border-radius:16px;overflow:hidden;cursor:pointer;transition:all 0.35s;position:relative}
@@ -1503,7 +1503,7 @@ TOAST NOTIFICATIONS
 @keyframes toastOut{from{opacity:1;transform:translateX(0)}to{opacity:0;transform:translateX(40px)}}
 
 /* ══════════════════════════════════════════════════════════════════════════════
-RTL SUPPORT (Arabic, Darija, Hebrew)
+RTL SUPPORT
 ══════════════════════════════════════════════════════════════════════════════ */
 [dir="rtl"] body{font-family:'Cairo','Inter',sans-serif}
 [dir="rtl"] .nav-inner{flex-direction:row-reverse}
@@ -1518,16 +1518,13 @@ RTL SUPPORT (Arabic, Darija, Hebrew)
 [dir="rtl"] .pw-toggle{left:12px;right:auto}
 [dir="rtl"] .auth-forgot{text-align:left}
 
-/* ── LPOLVO text is ALWAYS LTR regardless of page direction ── */
-.logo-text, .hero-lpolvo, .auth-logo-text, .footer-logo, .splash-logo,
-[dir="rtl"] .logo-text, [dir="rtl"] .hero-lpolvo,
-[dir="rtl"] .auth-logo-text, [dir="rtl"] .footer-logo,
-[dir="rtl"] .splash-logo{
-direction:ltr !important; unicode-bidi:isolate !important;
-}
+.logo-text,.hero-lpolvo,.auth-logo-text,.footer-logo,.splash-logo,
+[dir="rtl"] .logo-text,[dir="rtl"] .hero-lpolvo,
+[dir="rtl"] .auth-logo-text,[dir="rtl"] .footer-logo,
+[dir="rtl"] .splash-logo{direction:ltr !important;unicode-bidi:isolate !important}
 
 /* ══════════════════════════════════════════════════════════════════════════════
-RESPONSIVE — MOBILE FIRST
+RESPONSIVE
 ══════════════════════════════════════════════════════════════════════════════ */
 @media(max-width:768px){
 .nav-links{display:none}
@@ -1618,14 +1615,12 @@ opacity:0; pointer-events:none; transform:translateY(10px);
 #scrollTopBtn:hover{transform:translateY(-3px);box-shadow:0 0 25px var(--glow)}
 
 /* ══════════════════════════════════════════════════════════════════════════════
-ADDITIONAL HOMEPAGE SECTIONS
+ADDITIONAL
 ══════════════════════════════════════════════════════════════════════════════ */
 .section-divider{width:100%;height:1px;background:linear-gradient(to right,transparent,var(--border),transparent);margin:20px 0}
 .highlighted-strip{background:linear-gradient(135deg,var(--bg2),var(--bg3));border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:32px 24px;text-align:center}
 .strip-text{font-family:'Orbitron',sans-serif;font-size:clamp(0.8rem,2vw,1.2rem);color:var(--text2);letter-spacing:2px}
 .strip-text span{color:var(--accent)}
-
-/* Glow accent lines */
 .accent-line{width:60px;height:3px;background:var(--btn-grad);border-radius:3px;margin:16px auto;box-shadow:0 0 10px var(--glow)}
 
 </style>
@@ -1635,7 +1630,7 @@ ADDITIONAL HOMEPAGE SECTIONS
 <!-- ═══ LOADING BAR ═══ -->
 <div id="loadingBar"></div>
 
-<!-- ═══ BACKGROUND CANVASES (one per special theme) ═══ -->
+<!-- ═══ BACKGROUND CANVASES ═══ -->
 <canvas id="galaxyCanvas" class="bg-canvas"></canvas>
 <canvas id="sakuraCanvas" class="bg-canvas"></canvas>
 <canvas id="stormCanvas" class="bg-canvas"></canvas>
@@ -1668,7 +1663,7 @@ ADDITIONAL HOMEPAGE SECTIONS
 <span class="buy-key-icon">🔑</span>
 <span class="buy-key-text">BUY MONTHLY KEY</span>
 <span class="buy-key-desc">Get premium access — HWID secured, AES-256 encrypted</span>
-<span class="buy-key-price">$`5/mo</span>
+<span class="buy-key-price">$5/mo</span>
 <a href="https://discord.gg/mA3SUaphr" target="_blank" class="buy-key-btn" rel="noopener">
 <svg class="discord-icon discord-bounce" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
 <path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057.1 18.085.12 18.11.148 18.12a19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028c.462-.63.874-1.295 1.226-1.994a.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z"/>
@@ -1693,7 +1688,6 @@ JOIN DISCORD
 <a data-page="about" id="navT-about" onclick="showPage('about')">ABOUT</a>
 </div>
 <div class="nav-right">
-<!-- Language Dropdown -->
 <div class="dd-wrap">
 <button class="lang-btn" onclick="toggleDropdown('langDD')" aria-label="Language">
 <span id="langFlag">🌐</span>
@@ -1704,7 +1698,6 @@ JOIN DISCORD
 <div id="langList"></div>
 </div>
 </div>
-<!-- Theme Dropdown -->
 <div class="dd-wrap">
 <button class="themes-nav-btn" onclick="toggleDropdown('themesDD')" aria-label="Themes">
 <span>🎨</span>
@@ -1715,11 +1708,9 @@ JOIN DISCORD
 <div class="themes-grid" id="themesGrid"></div>
 </div>
 </div>
-<!-- Auth Button — ONLY PLACE auth button appears in nav -->
 <button class="auth-nav-btn" id="authNavBtn" onclick="handleAuthNavClick()">
 <span id="authNavTxt">SIGN IN</span>
 </button>
-<!-- Mobile Hamburger -->
 <button class="nav-ham" id="navHam" onclick="toggleMobileMenu()" aria-label="Menu">
 <span class="ham-line"></span>
 <span class="ham-line"></span>
@@ -1739,12 +1730,8 @@ JOIN DISCORD
 <a data-page="about" id="mAbout" onclick="showPage('about');toggleMobileMenu()">ABOUT</a>
 </div>
 
-<!-- ════════════════════════════════════════════════════════════════════════════
-PAGE: HOME
-════════════════════════════════════════════════════════════════════════════ -->
+<!-- ════ PAGE: HOME ════ -->
 <div class="page active" id="page-home">
-
-<!-- HERO -->
 <section class="hero">
 <div class="hero-badge" id="heroBadge">ADVANCED SCRIPTS & AUTOMATION</div>
 <div class="hero-welcome" id="heroWelcome">Welcome to</div>
@@ -1761,26 +1748,13 @@ JOIN COMMUNITY
 <button class="btn-secondary" id="heroUpload" onclick="showPage('upload')">⬆️ UPLOAD</button>
 </div>
 <div class="stats-row">
-<div class="stat-item">
-<span class="stat-num">16+</span>
-<span class="stat-lbl" id="statProjects">PROJECTS</span>
-</div>
-<div class="stat-item">
-<span class="stat-num">1K+</span>
-<span class="stat-lbl" id="statUsers">ACTIVE USERS</span>
-</div>
-<div class="stat-item">
-<span class="stat-num">100%</span>
-<span class="stat-lbl" id="statFree">FREE ACCESS</span>
-</div>
-<div class="stat-item">
-<span class="stat-num">55+</span>
-<span class="stat-lbl">THEMES</span>
-</div>
+<div class="stat-item"><span class="stat-num">16+</span><span class="stat-lbl" id="statProjects">PROJECTS</span></div>
+<div class="stat-item"><span class="stat-num">1K+</span><span class="stat-lbl" id="statUsers">ACTIVE USERS</span></div>
+<div class="stat-item"><span class="stat-num">100%</span><span class="stat-lbl" id="statFree">FREE ACCESS</span></div>
+<div class="stat-item"><span class="stat-num">55+</span><span class="stat-lbl">THEMES</span></div>
 </div>
 </section>
 
-<!-- TICKER -->
 <div class="ticker-wrap" aria-hidden="true">
 <div class="ticker-inner">
 <span class="ticker-item"><span class="ticker-dot"></span><span class="t-perf">PERFORMANCE OPTIMIZED</span></span>
@@ -1798,10 +1772,8 @@ JOIN COMMUNITY
 </div>
 </div>
 
-<!-- FEATURED SCRIPTS + RSCRIPTS SECTION -->
 <div class="section">
 <div class="featured-grid">
-<!-- Featured Script Card -->
 <div class="featured-card">
 <div class="fc-label" id="featuredLabel">FEATURED</div>
 <span class="fc-emoji">🎮</span>
@@ -1809,7 +1781,6 @@ JOIN COMMUNITY
 <p class="fc-desc" id="featuredDesc">Premium Roblox scripts and automation tools — HWID secured, AES-256 encrypted, always updated.</p>
 <button class="btn-primary" id="viewScriptTxt" onclick="window.open('https://lpolvo.github.io/explorescripts','_blank')">👁 VIEW SCRIPTS</button>
 </div>
-<!-- RScripts Card -->
 <div class="rscripts-card">
 <div class="rscripts-logo-wrap">
 <div class="rscripts-logo">
@@ -1825,46 +1796,20 @@ VIEW ON RSCRIPTS
 </div>
 </div>
 
-<!-- PLATFORM FEATURES -->
 <div style="margin-top:70px">
 <div class="section-label" id="platformLabel">PLATFORM</div>
 <div class="section-title" id="platformTitle">Why choose <span>LPOLVO</span>?</div>
 <div class="accent-line"></div>
 <div class="features-grid">
-<div class="feat-card">
-<span class="feat-icon">🔐</span>
-<div class="feat-title" id="feat1Title">Secure Authentication</div>
-<p class="feat-desc" id="feat1Desc">HWID binding, AES-256 encryption, and monthly key rotation for maximum security.</p>
-</div>
-<div class="feat-card">
-<span class="feat-icon">⚡</span>
-<div class="feat-title" id="feat2Title">High Performance</div>
-<p class="feat-desc" id="feat2Desc">Optimized for minimal CPU/memory usage with lightning-fast execution.</p>
-</div>
-<div class="feat-card">
-<span class="feat-icon">🌍</span>
-<div class="feat-title" id="feat3Title">Community Driven</div>
-<p class="feat-desc" id="feat3Desc">Share, discover, and collaborate on scripts with a growing global community.</p>
-</div>
-<div class="feat-card">
-<span class="feat-icon">🎨</span>
-<div class="feat-title" id="feat4Title">55+ Themes</div>
-<p class="feat-desc" id="feat4Desc">Fully customize your experience with 55+ unique themes — each with its own animations and ambient sound.</p>
-</div>
-<div class="feat-card">
-<span class="feat-icon">📤</span>
-<div class="feat-title" id="feat5Title">Easy Upload</div>
-<p class="feat-desc" id="feat5Desc">Upload your scripts in seconds with our multi-step upload tool.</p>
-</div>
-<div class="feat-card">
-<span class="feat-icon">🌐</span>
-<div class="feat-title" id="feat6Title">Multilingual</div>
-<p class="feat-desc" id="feat6Desc">14 languages including Moroccan Darija — built for a global community.</p>
-</div>
+<div class="feat-card"><span class="feat-icon">🔐</span><div class="feat-title" id="feat1Title">Secure Authentication</div><p class="feat-desc" id="feat1Desc">HWID binding, AES-256 encryption, and monthly key rotation for maximum security.</p></div>
+<div class="feat-card"><span class="feat-icon">⚡</span><div class="feat-title" id="feat2Title">High Performance</div><p class="feat-desc" id="feat2Desc">Optimized for minimal CPU/memory usage with lightning-fast execution.</p></div>
+<div class="feat-card"><span class="feat-icon">🌍</span><div class="feat-title" id="feat3Title">Community Driven</div><p class="feat-desc" id="feat3Desc">Share, discover, and collaborate on scripts with a growing global community.</p></div>
+<div class="feat-card"><span class="feat-icon">🎨</span><div class="feat-title" id="feat4Title">55+ Themes</div><p class="feat-desc" id="feat4Desc">Fully customize your experience with 55+ unique themes — each with its own animations and ambient sound.</p></div>
+<div class="feat-card"><span class="feat-icon">📤</span><div class="feat-title" id="feat5Title">Easy Upload</div><p class="feat-desc" id="feat5Desc">Upload your scripts in seconds with our multi-step upload tool.</p></div>
+<div class="feat-card"><span class="feat-icon">🌐</span><div class="feat-title" id="feat6Title">Multilingual</div><p class="feat-desc" id="feat6Desc">14 languages including Moroccan Darija — built for a global community.</p></div>
 </div>
 </div>
 
-<!-- COMMUNITY BANNER -->
 <div class="community-banner">
 <div class="comm-label" id="communityLabel">COMMUNITY</div>
 <div class="comm-title" id="communityLabel2">Join the LPOLVO Community</div>
@@ -1878,7 +1823,6 @@ JOIN DISCORD
 </div>
 </div>
 
-<!-- SOCIAL LINKS -->
 <div style="text-align:center;margin-top:20px">
 <div class="footer-socials">
 <a href="https://discord.gg/mA3SUaphr" target="_blank" class="social-link discord" rel="noopener">
@@ -1893,10 +1837,6 @@ JOIN DISCORD
 <svg class="social-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
 <span id="flIG">Instagram</span>
 </a>
-<a href="https://tiktok.com/@lpolvo.rblx" target="_blank" class="social-link tiktok" rel="noopener">
-<svg class="social-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.27 6.27 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.18 8.18 0 0 0 4.79 1.53V6.79a4.85 4.85 0 0 1-1.02-.1z"/></svg>
-<span>TikTok</span>
-</a>
 <a href="https://rscripts.net" target="_blank" class="social-link rscripts" rel="noopener">
 <svg class="social-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
 <span id="flRS">RScripts</span>
@@ -1905,7 +1845,6 @@ JOIN DISCORD
 </div>
 </div>
 
-<!-- SITE FOOTER -->
 <footer class="site-footer">
 <div class="footer-logo" style="direction:ltr;unicode-bidi:isolate">LPOLVO</div>
 <div class="footer-nav">
@@ -1920,9 +1859,7 @@ JOIN DISCORD
 </footer>
 </div>
 
-<!-- ════════════════════════════════════════════════════════════════════════════
-PAGE: EXPLORE SCRIPTS
-════════════════════════════════════════════════════════════════════════════ -->
+<!-- ════ PAGE: EXPLORE ════ -->
 <div class="page" id="page-explore">
 <div class="page-inner">
 <div class="page-header">
@@ -1949,9 +1886,7 @@ PAGE: EXPLORE SCRIPTS
 </div>
 </div>
 
-<!-- ════════════════════════════════════════════════════════════════════════════
-PAGE: USER SCRIPTS
-════════════════════════════════════════════════════════════════════════════ -->
+<!-- ════ PAGE: USER SCRIPTS ════ -->
 <div class="page" id="page-userscripts">
 <div class="page-inner">
 <div class="page-header">
@@ -1975,9 +1910,7 @@ PAGE: USER SCRIPTS
 </div>
 </div>
 
-<!-- ════════════════════════════════════════════════════════════════════════════
-PAGE: VIDEOS (with YouTube thumbnails)
-════════════════════════════════════════════════════════════════════════════ -->
+<!-- ════ PAGE: VIDEOS ════ -->
 <div class="page" id="page-videos">
 <div class="page-inner">
 <div class="page-header">
@@ -1986,94 +1919,54 @@ PAGE: VIDEOS (with YouTube thumbnails)
 <p id="videosDesc">Watch the latest LPOLVO script tutorials on YouTube</p>
 </div>
 <div class="videos-grid" id="videosGrid">
-<!-- Video 1: Launch Yourself For Brainrots -->
 <div class="video-card" onclick="openYT('https://youtu.be/CFL4ozSOciY')">
 <div class="video-thumb-wrap">
 <img src="https://img.youtube.com/vi/CFL4ozSOciY/hqdefault.jpg" alt="Launch Yourself For Brainrots Script" loading="lazy" onerror="this.src='https://img.youtube.com/vi/CFL4ozSOciY/mqdefault.jpg'">
-<div class="video-play-overlay">
-<div class="play-btn-circle">
-<svg class="play-icon" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-</div>
-</div>
+<div class="video-play-overlay"><div class="play-btn-circle"><svg class="play-icon" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
 </div>
 <div class="video-info">
 <div class="video-title">Launch Yourself For Brainrots Script — INSANE AUTO GOD FEATURE 🔥</div>
-<div class="video-channel">
-<svg class="yt-mini-icon" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
-LPOLVOXD1
+<div class="video-channel"><svg class="yt-mini-icon" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>LPOLVOXD1</div>
 </div>
 </div>
-</div>
-<!-- Video 2: RIVALS Script -->
 <div class="video-card" onclick="openYT('https://youtu.be/tkablaZrw3o')">
 <div class="video-thumb-wrap">
 <img src="https://img.youtube.com/vi/tkablaZrw3o/hqdefault.jpg" alt="RIVALS Script" loading="lazy" onerror="this.src='https://img.youtube.com/vi/tkablaZrw3o/mqdefault.jpg'">
-<div class="video-play-overlay">
-<div class="play-btn-circle">
-<svg class="play-icon" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-</div>
-</div>
+<div class="video-play-overlay"><div class="play-btn-circle"><svg class="play-icon" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
 </div>
 <div class="video-info">
 <div class="video-title">RIVALS Script 🔥 BEST SILENT AIM 🎯 | OP Aim Assist + UNDETECTED</div>
-<div class="video-channel">
-<svg class="yt-mini-icon" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
-LPOLVOXD1
+<div class="video-channel"><svg class="yt-mini-icon" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>LPOLVOXD1</div>
 </div>
 </div>
-</div>
-<!-- Video 3: c0u_d_ikhMs -->
 <div class="video-card" onclick="openYT('https://youtu.be/c0u_d_ikhMs')">
 <div class="video-thumb-wrap">
-<img src="https://img.youtube.com/vi/c0u_d_ikhMs/hqdefault.jpg" alt="LPOLVO Script Video" loading="lazy" onerror="this.src='https://img.youtube.com/vi/c0u_d_ikhMs/mqdefault.jpg'">
-<div class="video-play-overlay">
-<div class="play-btn-circle">
-<svg class="play-icon" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-</div>
-</div>
+<img src="https://img.youtube.com/vi/c0u_d_ikhMs/hqdefault.jpg" alt="Cursed Blade Script" loading="lazy" onerror="this.src='https://img.youtube.com/vi/c0u_d_ikhMs/mqdefault.jpg'">
+<div class="video-play-overlay"><div class="play-btn-circle"><svg class="play-icon" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
 </div>
 <div class="video-info">
 <div class="video-title">Cursed Blade Script — AUTO FARM AUTO LOOT ⚔️</div>
-<div class="video-channel">
-<svg class="yt-mini-icon" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
-LPOLVOXD1
+<div class="video-channel"><svg class="yt-mini-icon" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>LPOLVOXD1</div>
 </div>
 </div>
-</div>
-<!-- Video 4: zH27zcQaE3A -->
 <div class="video-card" onclick="openYT('https://youtu.be/zH27zcQaE3A')">
 <div class="video-thumb-wrap">
-<img src="https://img.youtube.com/vi/zH27zcQaE3A/hqdefault.jpg" alt="LPOLVO Script Video" loading="lazy" onerror="this.src='https://img.youtube.com/vi/zH27zcQaE3A/mqdefault.jpg'">
-<div class="video-play-overlay">
-<div class="play-btn-circle">
-<svg class="play-icon" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-</div>
-</div>
+<img src="https://img.youtube.com/vi/zH27zcQaE3A/hqdefault.jpg" alt="Blox Fruits Script" loading="lazy" onerror="this.src='https://img.youtube.com/vi/zH27zcQaE3A/mqdefault.jpg'">
+<div class="video-play-overlay"><div class="play-btn-circle"><svg class="play-icon" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
 </div>
 <div class="video-info">
 <div class="video-title">Blox Fruits Script — MAX LEVEL AUTO FARM 🍎 Full Tutorial</div>
-<div class="video-channel">
-<svg class="yt-mini-icon" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
-LPOLVOXD1
+<div class="video-channel"><svg class="yt-mini-icon" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>LPOLVOXD1</div>
 </div>
 </div>
-</div>
-<!-- Video 5: xDYC6IzhHpY -->
 <div class="video-card" onclick="openYT('https://youtu.be/xDYC6IzhHpY')">
 <div class="video-thumb-wrap">
-<img src="https://img.youtube.com/vi/xDYC6IzhHpY/hqdefault.jpg" alt="LPOLVO Script Video" loading="lazy" onerror="this.src='https://img.youtube.com/vi/xDYC6IzhHpY/mqdefault.jpg'">
-<div class="video-play-overlay">
-<div class="play-btn-circle">
-<svg class="play-icon" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-</div>
-</div>
+<img src="https://img.youtube.com/vi/xDYC6IzhHpY/hqdefault.jpg" alt="Strongest Battlegrounds Script" loading="lazy" onerror="this.src='https://img.youtube.com/vi/xDYC6IzhHpY/mqdefault.jpg'">
+<div class="video-play-overlay"><div class="play-btn-circle"><svg class="play-icon" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
 </div>
 <div class="video-info">
 <div class="video-title">Strongest Battlegrounds Script — OP COMBO & Silent Aim 🥊</div>
-<div class="video-channel">
-<svg class="yt-mini-icon" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
-LPOLVOXD1
-</div>
+<div class="video-channel"><svg class="yt-mini-icon" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>LPOLVOXD1</div>
 </div>
 </div>
 </div>
@@ -2086,9 +1979,7 @@ VIEW ALL VIDEOS
 </div>
 </div>
 
-<!-- ════════════════════════════════════════════════════════════════════════════
-PAGE: UPLOAD SCRIPT
-════════════════════════════════════════════════════════════════════════════ -->
+<!-- ════ PAGE: UPLOAD ════ -->
 <div class="page" id="page-upload">
 <div class="page-inner">
 <div class="page-header">
@@ -2097,7 +1988,6 @@ PAGE: UPLOAD SCRIPT
 <p id="uploadDesc">Share your creations with the LPOLVO community. All submissions reviewed for quality and safety.</p>
 </div>
 <div class="upload-wrap">
-<!-- LOCKED STATE (shown when not logged in) -->
 <div class="upload-locked" id="uploadLocked">
 <span class="locked-icon">🔒</span>
 <div class="locked-title" id="uploadLockedTitle">Login Required</div>
@@ -2107,91 +1997,30 @@ PAGE: UPLOAD SCRIPT
 <button class="btn-secondary" id="uploadCreateTxt" onclick="showPage('signup')">CREATE ACCOUNT</button>
 </div>
 </div>
-<!-- UPLOAD FORM (shown when logged in) -->
 <div class="upload-form-wrap" id="uploadFormWrap">
 <form class="upload-form" onsubmit="handleUploadSubmit(event)">
-<div class="form-group">
-<label class="form-label" id="ulScriptName">SCRIPT NAME *</label>
-<input type="text" class="form-input" placeholder="e.g. Blox Fruits Auto Farm" required>
-</div>
-<div class="form-group">
-<label class="form-label" id="ulDescription">DESCRIPTION *</label>
-<textarea class="form-textarea" placeholder="Describe your script..." required></textarea>
-</div>
-<div class="form-group">
-<label class="form-label" id="ulCategory">CATEGORY</label>
-<select class="form-select">
-<option value="roblox">Roblox</option>
-<option value="python">Python</option>
-<option value="lua">Lua</option>
-<option value="web">Web</option>
-<option value="other">Other</option>
-</select>
-</div>
-<div class="form-group">
-<label class="form-label" id="ulType">TYPE</label>
-<select class="form-select">
-<option value="free">Free</option>
-<option value="premium">Premium</option>
-</select>
-</div>
-<div class="form-group">
-<label class="form-label" id="ulScriptCode">SCRIPT CODE *</label>
-<textarea class="form-textarea" placeholder="Paste your script code here..." style="min-height:160px;font-family:monospace;font-size:0.82rem" required></textarea>
-</div>
-<div class="form-group">
-<label class="form-label" id="ulVideoLink">VIDEO TUTORIAL LINK (optional)</label>
-<input type="url" class="form-input" placeholder="https://youtube.com/watch?v=...">
-</div>
+<div class="form-group"><label class="form-label" id="ulScriptName">SCRIPT NAME *</label><input type="text" class="form-input" placeholder="e.g. Blox Fruits Auto Farm" required></div>
+<div class="form-group"><label class="form-label" id="ulDescription">DESCRIPTION *</label><textarea class="form-textarea" placeholder="Describe your script..." required></textarea></div>
+<div class="form-group"><label class="form-label" id="ulCategory">CATEGORY</label><select class="form-select"><option value="roblox">Roblox</option><option value="python">Python</option><option value="lua">Lua</option><option value="web">Web</option><option value="other">Other</option></select></div>
+<div class="form-group"><label class="form-label" id="ulType">TYPE</label><select class="form-select"><option value="free">Free</option><option value="premium">Premium</option></select></div>
+<div class="form-group"><label class="form-label" id="ulScriptCode">SCRIPT CODE *</label><textarea class="form-textarea" placeholder="Paste your script code here..." style="min-height:160px;font-family:monospace;font-size:0.82rem" required></textarea></div>
+<div class="form-group"><label class="form-label" id="ulVideoLink">VIDEO TUTORIAL LINK (optional)</label><input type="url" class="form-input" placeholder="https://youtube.com/watch?v=..."></div>
 <button type="submit" class="form-publish-btn" id="ulPublishBtn">🚀 PUBLISH SCRIPT</button>
 </form>
 </div>
-<!-- UPLOAD INFO / RULES -->
 <div class="upload-info">
 <div class="section-label">SUBMISSION RULES</div>
-<div class="upload-rule">
-<span class="rule-icon">✅</span>
-<div>
-<div class="rule-title">Original Work</div>
-<p class="rule-desc">Only upload scripts you created or have permission to share.</p>
-</div>
-</div>
-<div class="upload-rule">
-<span class="rule-icon">🛡️</span>
-<div>
-<div class="rule-title">No Malware</div>
-<p class="rule-desc">Scripts with malicious code will be permanently removed and the account banned.</p>
-</div>
-</div>
-<div class="upload-rule">
-<span class="rule-icon">📝</span>
-<div>
-<div class="rule-title">Clear Description</div>
-<p class="rule-desc">Describe what your script does, which game it's for, and how to use it.</p>
-</div>
-</div>
-<div class="upload-rule">
-<span class="rule-icon">⚡</span>
-<div>
-<div class="rule-title">Quality Standard</div>
-<p class="rule-desc">Scripts should be tested, working, and provide value to the community.</p>
-</div>
-</div>
-<div class="upload-rule">
-<span class="rule-icon">🌐</span>
-<div>
-<div class="rule-title">Community Guidelines</div>
-<p class="rule-desc">Respect the community — no spam, no copied scripts, no inappropriate content.</p>
-</div>
-</div>
+<div class="upload-rule"><span class="rule-icon">✅</span><div><div class="rule-title">Original Work</div><p class="rule-desc">Only upload scripts you created or have permission to share.</p></div></div>
+<div class="upload-rule"><span class="rule-icon">🛡️</span><div><div class="rule-title">No Malware</div><p class="rule-desc">Scripts with malicious code will be permanently removed and the account banned.</p></div></div>
+<div class="upload-rule"><span class="rule-icon">📝</span><div><div class="rule-title">Clear Description</div><p class="rule-desc">Describe what your script does, which game it's for, and how to use it.</p></div></div>
+<div class="upload-rule"><span class="rule-icon">⚡</span><div><div class="rule-title">Quality Standard</div><p class="rule-desc">Scripts should be tested, working, and provide value to the community.</p></div></div>
+<div class="upload-rule"><span class="rule-icon">🌐</span><div><div class="rule-title">Community Guidelines</div><p class="rule-desc">Respect the community — no spam, no copied scripts, no inappropriate content.</p></div></div>
 </div>
 </div>
 </div>
 </div>
 
-<!-- ════════════════════════════════════════════════════════════════════════════
-PAGE: ABOUT
-════════════════════════════════════════════════════════════════════════════ -->
+<!-- ════ PAGE: ABOUT ════ -->
 <div class="page" id="page-about">
 <div class="page-inner">
 <div class="section-label" id="devLabel">DEVELOPER</div>
@@ -2211,15 +2040,9 @@ PAGE: ABOUT
 <p class="about-p" id="aboutP1">I specialize in developing advanced script architectures, secure authentication protocols, and seamless automation solutions.</p>
 <p class="about-p" id="aboutP2">With years of experience in Luau, Python, and JavaScript, I build tools that actually work.</p>
 <div class="skills-wrap">
-<span class="skill-tag">Luau</span>
-<span class="skill-tag">Python</span>
-<span class="skill-tag">JavaScript</span>
-<span class="skill-tag">Firebase</span>
-<span class="skill-tag">AES-256</span>
-<span class="skill-tag">HWID Systems</span>
-<span class="skill-tag">Roblox Scripts</span>
-<span class="skill-tag">Anti-Cheat Bypass</span>
-<span class="skill-tag">Web Automation</span>
+<span class="skill-tag">Luau</span><span class="skill-tag">Python</span><span class="skill-tag">JavaScript</span>
+<span class="skill-tag">Firebase</span><span class="skill-tag">AES-256</span><span class="skill-tag">HWID Systems</span>
+<span class="skill-tag">Roblox Scripts</span><span class="skill-tag">Anti-Cheat Bypass</span><span class="skill-tag">Web Automation</span>
 </div>
 <div class="about-btns">
 <a href="https://discord.gg/mA3SUaphr" target="_blank" class="btn-primary" id="aboutJoin" rel="noopener">JOIN COMMUNITY</a>
@@ -2230,9 +2053,7 @@ PAGE: ABOUT
 </div>
 </div>
 
-<!-- ════════════════════════════════════════════════════════════════════════════
-PAGE: SIGN IN
-════════════════════════════════════════════════════════════════════════════ -->
+<!-- ════ PAGE: SIGN IN ════ -->
 <div class="page" id="page-signin">
 <div class="auth-page">
 <div class="auth-card">
@@ -2245,35 +2066,19 @@ PAGE: SIGN IN
 </button>
 <div class="auth-divider"><span id="siOr">OR</span></div>
 <form class="auth-form" onsubmit="handleSignIn(event)">
-<div class="auth-field">
-<label id="siEmailLabel">EMAIL</label>
-<input type="email" id="siEmail" autocomplete="email" required>
-</div>
-<div class="auth-field">
-<label id="siPwLabel">PASSWORD</label>
-<input type="password" id="siPw" autocomplete="current-password" required>
-<button type="button" class="pw-toggle" onclick="togglePw('siPw',this)">👁</button>
-</div>
+<div class="auth-field"><label id="siEmailLabel">EMAIL</label><input type="email" id="siEmail" autocomplete="email" required></div>
+<div class="auth-field"><label id="siPwLabel">PASSWORD</label><input type="password" id="siPw" autocomplete="current-password" required><button type="button" class="pw-toggle" onclick="togglePw('siPw',this)">👁</button></div>
 <div class="auth-forgot" id="siForgot" onclick="handleForgotPassword()">Forgot password?</div>
-<button type="submit" class="auth-submit-btn" id="siBtn">
-<span id="siBtnTxt">Log In</span>
-</button>
+<button type="submit" class="auth-submit-btn" id="siBtn"><span id="siBtnTxt">Log In</span></button>
 </form>
 <div id="siToast" class="auth-toast"></div>
-<div class="auth-switch">
-<span id="siSwitch">Don't have an account?</span>
-<span id="siSwitchLink" onclick="showPage('signup')"> Create one</span>
-</div>
-<div class="auth-back">
-<span id="siBack" onclick="showPage('home')">← Back to Home</span>
-</div>
+<div class="auth-switch"><span id="siSwitch">Don't have an account?</span><span id="siSwitchLink" onclick="showPage('signup')"> Create one</span></div>
+<div class="auth-back"><span id="siBack" onclick="showPage('home')">← Back to Home</span></div>
 </div>
 </div>
 </div>
 
-<!-- ════════════════════════════════════════════════════════════════════════════
-PAGE: SIGN UP
-════════════════════════════════════════════════════════════════════════════ -->
+<!-- ════ PAGE: SIGN UP ════ -->
 <div class="page" id="page-signup">
 <div class="auth-page">
 <div class="auth-card">
@@ -2286,42 +2091,21 @@ PAGE: SIGN UP
 </button>
 <div class="auth-divider"><span id="suOr">OR</span></div>
 <form class="auth-form" onsubmit="handleSignUp(event)">
-<div class="auth-field">
-<label id="suNameLabel">DISPLAY NAME</label>
-<input type="text" id="suName" autocomplete="name" required>
-</div>
-<div class="auth-field">
-<label id="suEmailLabel">EMAIL</label>
-<input type="email" id="suEmail" autocomplete="email" required>
-</div>
-<div class="auth-field">
-<label id="suPwLabel">PASSWORD</label>
-<input type="password" id="suPw" autocomplete="new-password" required minlength="6">
-<button type="button" class="pw-toggle" onclick="togglePw('suPw',this)">👁</button>
-</div>
-<button type="submit" class="auth-submit-btn" id="suBtn">
-<span id="suBtnTxt">Create Account</span>
-</button>
+<div class="auth-field"><label id="suNameLabel">DISPLAY NAME</label><input type="text" id="suName" autocomplete="name" required></div>
+<div class="auth-field"><label id="suEmailLabel">EMAIL</label><input type="email" id="suEmail" autocomplete="email" required></div>
+<div class="auth-field"><label id="suPwLabel">PASSWORD</label><input type="password" id="suPw" autocomplete="new-password" required minlength="6"><button type="button" class="pw-toggle" onclick="togglePw('suPw',this)">👁</button></div>
+<button type="submit" class="auth-submit-btn" id="suBtn"><span id="suBtnTxt">Create Account</span></button>
 </form>
 <div id="suToast" class="auth-toast"></div>
-<div class="auth-switch">
-<span id="suSwitch">Already have an account?</span>
-<span id="suSwitchLink" onclick="showPage('signin')"> Sign in</span>
-</div>
-<div class="auth-back">
-<span id="suBack" onclick="showPage('home')">← Back to Home</span>
-</div>
+<div class="auth-switch"><span id="suSwitch">Already have an account?</span><span id="suSwitchLink" onclick="showPage('signin')"> Sign in</span></div>
+<div class="auth-back"><span id="suBack" onclick="showPage('home')">← Back to Home</span></div>
 </div>
 </div>
 </div>
 
 <!-- ═══ MUSIC INDICATOR ═══ -->
 <div id="musicIndicator" onclick="toggleMusic()">
-<div class="music-bars">
-<div class="music-bar"></div>
-<div class="music-bar"></div>
-<div class="music-bar"></div>
-</div>
+<div class="music-bars"><div class="music-bar"></div><div class="music-bar"></div><div class="music-bar"></div></div>
 <span class="music-text">THEME SOUND</span>
 </div>
 
@@ -2333,9 +2117,7 @@ PAGE: SIGN UP
 
 <script>
 /* ══════════════════════════════════════════════════════════════════════════════
-LPOLVO HUB v2 — COMPLETE JAVASCRIPT
-Themes | Languages | Translations | Pages | Auth | Canvas Animations |
-Click Effects | Theme Music | Loading Bar | Particles | Responsive
+LPOLVO HUB v2 — COMPLETE JAVASCRIPT (FIXED)
 ══════════════════════════════════════════════════════════════════════════════ */
 
 /* ══════ THEMES CONFIG ══════ */
@@ -2419,105 +2201,55 @@ ma:{name:'Darija (Morocco)',native:'الدارجة',flag:'🇲🇦',dir:'rtl'},
 /* ══════ TRANSLATIONS ══════ */
 const T = {};
 
-/* ── ENGLISH ── */
 T.en = {
-splashLoading:'SCRIPTS HUB',
-heroBadge:'ADVANCED SCRIPTS & AUTOMATION',
-heroWelcome:'Welcome to',
-heroSub:'Building the future, one script at a time...',
+splashLoading:'SCRIPTS HUB',heroBadge:'ADVANCED SCRIPTS & AUTOMATION',
+heroWelcome:'Welcome to',heroSub:'Building the future, one script at a time...',
 heroDesc:'A centralized hub for premium scripts, intelligent automation tools, and innovative applications.',
-heroExplore:'🚀 EXPLORE PROJECTS',
-heroJoin:'JOIN COMMUNITY',
-heroUserScripts:'📜 USER SCRIPTS',
-heroUpload:'⬆️ UPLOAD',
-statProjects:'PROJECTS',
-statUsers:'ACTIVE USERS',
-statFree:'FREE ACCESS',
-featuredLabel:'FEATURED',
-featuredTitle:'Premium',
-featuredTitle2:' Roblox Scripts',
+heroExplore:'🚀 EXPLORE PROJECTS',heroJoin:'JOIN COMMUNITY',
+heroUserScripts:'📜 USER SCRIPTS',heroUpload:'⬆️ UPLOAD',
+statProjects:'PROJECTS',statUsers:'ACTIVE USERS',statFree:'FREE ACCESS',
+featuredLabel:'FEATURED',featuredTitle:'Premium',featuredTitle2:' Roblox Scripts',
 featuredDesc:'Premium Roblox scripts and automation tools — HWID secured, AES-256 encrypted.',
-viewScriptTxt:'👁 VIEW SCRIPTS',
-rscriptsTitle:'All Scripts on RScripts',
+viewScriptTxt:'👁 VIEW SCRIPTS',rscriptsTitle:'All Scripts on RScripts',
 rscriptsDesc:'Browse all LPOLVO scripts on RScripts.net — free and ready to use.',
-rscriptsBtnTxt:'VIEW ON RSCRIPTS',
-platformLabel:'PLATFORM',
+rscriptsBtnTxt:'VIEW ON RSCRIPTS',platformLabel:'PLATFORM',
 platformTitle:'Why choose LPOLVO?',
-feat1Title:'Secure Authentication',
-feat1Desc:'HWID binding, AES-256 encryption, and monthly key rotation for maximum security.',
-feat2Title:'High Performance',
-feat2Desc:'Optimized scripts for minimal CPU/memory usage with lightning-fast execution.',
-feat3Title:'Community Driven',
-feat3Desc:'Share, discover, and collaborate on scripts with a growing global community.',
-feat4Title:'55+ Themes',
-feat4Desc:'Fully customize your experience with 55+ unique themes — each with its own animations and sound.',
-feat5Title:'Easy Upload',
-feat5Desc:'Upload your scripts in seconds with our multi-step upload tool.',
-feat6Title:'Multilingual',
-feat6Desc:'14 languages including Moroccan Darija — built for a global community.',
-communityLabel:'COMMUNITY',
-communityLabel2:'Join the LPOLVO Community',
-exploreTitle:'Explore Scripts',
-exploreDesc:'Discover and use the best scripts from the LPOLVO collection',
+feat1Title:'Secure Authentication',feat1Desc:'HWID binding, AES-256 encryption, and monthly key rotation for maximum security.',
+feat2Title:'High Performance',feat2Desc:'Optimized scripts for minimal CPU/memory usage with lightning-fast execution.',
+feat3Title:'Community Driven',feat3Desc:'Share, discover, and collaborate on scripts with a growing global community.',
+feat4Title:'55+ Themes',feat4Desc:'Fully customize your experience with 55+ unique themes — each with its own animations and sound.',
+feat5Title:'Easy Upload',feat5Desc:'Upload your scripts in seconds with our multi-step upload tool.',
+feat6Title:'Multilingual',feat6Desc:'14 languages including Moroccan Darija — built for a global community.',
+communityLabel:'COMMUNITY',communityLabel2:'Join the LPOLVO Community',
+exploreTitle:'Explore Scripts',exploreDesc:'Discover and use the best scripts from the LPOLVO collection',
 filterAll:'ALL',filterRoblox:'ROBLOX',filterPython:'PYTHON',
 filterLua:'LUA',filterWeb:'WEB',filterOther:'OTHER',
-noResultsTitle:'No results found',
-noResultsDesc:'Try a different search or filter!',
-shareLabel:'SHARE YOUR SCRIPT',
-uploadTitle:'Upload Your Script',
+noResultsTitle:'No results found',noResultsDesc:'Try a different search or filter!',
+shareLabel:'SHARE YOUR SCRIPT',uploadTitle:'Upload Your Script',
 uploadDesc:'Share your creations with the LPOLVO community. All submissions reviewed for quality and safety.',
-uploadLockedTitle:'Login Required',
-uploadLockedDesc:'You need to sign in to upload scripts.',
-uploadSignInTxt:'SIGN IN',
-uploadCreateTxt:'CREATE ACCOUNT',
-ulPublishBtn:'🚀 PUBLISH SCRIPT',
-latestVideosLabel:'LATEST VIDEOS',
-videosTitle:'Latest Videos',
+uploadLockedTitle:'Login Required',uploadLockedDesc:'You need to sign in to upload scripts.',
+uploadSignInTxt:'SIGN IN',uploadCreateTxt:'CREATE ACCOUNT',ulPublishBtn:'🚀 PUBLISH SCRIPT',
+latestVideosLabel:'LATEST VIDEOS',videosTitle:'Latest Videos',
 videosDesc:'Watch the latest LPOLVO script tutorials on YouTube',
-watchOnYT:'Watch on YouTube',
-viewAllVideosTxt:'VIEW ALL VIDEOS',
-devLabel:'DEVELOPER',
-aboutTitle:'Built for Performance.',
+watchOnYT:'Watch on YouTube',viewAllVideosTxt:'VIEW ALL VIDEOS',
+devLabel:'DEVELOPER',aboutTitle:'Built for Performance.',
 aboutP1:'I specialize in developing advanced script architectures, secure authentication protocols, and seamless automation solutions.',
 aboutP2:'With years of experience in Luau, Python, and JavaScript, I build tools that actually work.',
-aboutJoin:'JOIN COMMUNITY',
-aboutExplore:'EXPLORE PROJECTS',
-siTitle:'Welcome Back',
-siSub:'Sign in to your account',
-siGoogle:'Continue with Google',
-siOr:'OR',
-siEmailLabel:'EMAIL',
-siPwLabel:'PASSWORD',
-siForgot:'Forgot password?',
-siBtnTxt:'Log In',
-siSwitch:"Don't have an account?",
-siSwitchLink:' Create one',
-siBack:'← Back to Home',
-suTitle:'Create Account',
-suSub:'Join the LPOLVO community',
-suGoogle:'Continue with Google',
-suOr:'OR',
-suNameLabel:'DISPLAY NAME',
-suEmailLabel:'EMAIL',
-suPwLabel:'PASSWORD',
-suBtnTxt:'Create Account',
-suSwitch:'Already have an account?',
-suSwitchLink:' Sign in',
-suBack:'← Back to Home',
-authNavSignIn:'SIGN IN',
-themeDDTitle:'CHOOSE YOUR THEME',
-langDDTitle:'LANGUAGE',
+aboutJoin:'JOIN COMMUNITY',aboutExplore:'EXPLORE PROJECTS',
+siTitle:'Welcome Back',siSub:'Sign in to your account',siGoogle:'Continue with Google',
+siOr:'OR',siEmailLabel:'EMAIL',siPwLabel:'PASSWORD',siForgot:'Forgot password?',
+siBtnTxt:'Log In',siSwitch:"Don't have an account?",siSwitchLink:' Create one',siBack:'← Back to Home',
+suTitle:'Create Account',suSub:'Join the LPOLVO community',suGoogle:'Continue with Google',
+suOr:'OR',suNameLabel:'DISPLAY NAME',suEmailLabel:'EMAIL',suPwLabel:'PASSWORD',
+suBtnTxt:'Create Account',suSwitch:'Already have an account?',suSwitchLink:' Sign in',suBack:'← Back to Home',
+authNavSignIn:'SIGN IN',themeDDTitle:'CHOOSE YOUR THEME',langDDTitle:'LANGUAGE',
 mHome:'Home',mExplore:'Explore',mUserScripts:'User Scripts',
 mVideos:'Videos',mUpload:'Upload Script',mAbout:'About',
 navHome:'HOME',navExplore:'EXPLORE',navVideos:'VIDEOS',navAbout:'ABOUT',
-usEmptyTitle:'No results found',
-usEmptyDesc:'Try a different search or upload first!',
-userScriptsTitle:'User Scripts',
-liteBtnTxt:'LITE',
-themesBtnLabel:'THEMES',
+usEmptyTitle:'No results found',usEmptyDesc:'Try a different search or upload first!',
+userScriptsTitle:'User Scripts',themesBtnLabel:'THEMES',
 flYT:'YouTube',flIG:'Instagram',flDC:'Discord',flRS:'RScripts',
-fcRights:'All Rights Reserved',
-fcTagline:'Building the future, one script at a time.',
+fcRights:'All Rights Reserved',fcTagline:'Building the future, one script at a time.',
 fnHome:'Home',fnExplore:'Explore',fnVideos:'Videos',fnUpload:'Upload',fnAbout:'About',
 tPerf:'Performance Optimized',tAes:'AES-256 Encryption',tSmart:'Intelligent Bots',
 tHwid:'HWID Binding',tMulti:'Multilingual Support',tFree:'100% Free Access',
@@ -2525,16 +2257,15 @@ ulScriptName:'SCRIPT NAME *',ulDescription:'DESCRIPTION *',ulCategory:'CATEGORY'
 ulType:'TYPE',ulScriptCode:'SCRIPT CODE *',ulVideoLink:'VIDEO TUTORIAL LINK (optional)',
 };
 
-/* ── FRENCH ── */
 T.fr = {
 splashLoading:'SCRIPTS HUB',heroBadge:'SCRIPTS AVANCÉS ET AUTOMATISATION',
-heroWelcome:'Bienvenue sur',heroSub:'Construire l'avenir, un script à la fois...',
-heroDesc:'Un hub centralisé pour des scripts premium, des outils d'automatisation intelligents et des applications innovantes.',
+heroWelcome:'Bienvenue sur',heroSub:"Construire l'avenir, un script à la fois...",
+heroDesc:"Un hub centralisé pour des scripts premium, des outils d'automatisation intelligents.",
 heroExplore:'🚀 EXPLORER',heroJoin:'REJOINDRE LA COMMUNAUTÉ',
 heroUserScripts:'📜 SCRIPTS UTILISATEURS',heroUpload:'⬆️ TÉLÉCHARGER',
 statProjects:'PROJETS',statUsers:'UTILISATEURS ACTIFS',statFree:'ACCÈS GRATUIT',
 featuredLabel:'À LA UNE',featuredTitle:'Premium',featuredTitle2:' Scripts Roblox',
-featuredDesc:'Scripts Roblox premium et outils d'automatisation.',
+featuredDesc:"Scripts Roblox premium et outils d'automatisation.",
 viewScriptTxt:'👁 VOIR LE SCRIPT',rscriptsTitle:'Tous les Scripts sur RScripts',
 rscriptsDesc:'Parcourez tous les scripts LPOLVO sur RScripts.net — gratuits.',
 rscriptsBtnTxt:'VOIR SUR RSCRIPTS',platformLabel:'PLATEFORME',
@@ -2558,8 +2289,8 @@ latestVideosLabel:'DERNIÈRES VIDÉOS',videosTitle:'Dernières Vidéos',
 videosDesc:'Regardez les derniers tutoriels LPOLVO sur YouTube',
 watchOnYT:'Regarder sur YouTube',viewAllVideosTxt:'VOIR TOUTES LES VIDÉOS',
 devLabel:'DÉVELOPPEUR',aboutTitle:'Construit pour la Performance.',
-aboutP1:'Je me spécialise dans le développement d'architectures de scripts avancées.',
-aboutP2:'Avec des années d'expérience en Luau, Python et JavaScript.',
+aboutP1:"Je me spécialise dans le développement d'architectures de scripts avancées.",
+aboutP2:"Avec des années d'expérience en Luau, Python et JavaScript.",
 aboutJoin:'REJOINDRE LA COMMUNAUTÉ',aboutExplore:'EXPLORER LES PROJETS',
 siTitle:'Bon Retour',siSub:'Connectez-vous à votre compte',siGoogle:'Continuer avec Google',
 siOr:'OU',siEmailLabel:'E-MAIL',siPwLabel:'MOT DE PASSE',siForgot:'Mot de passe oublié?',
@@ -2572,9 +2303,9 @@ mHome:'Accueil',mExplore:'Explorer',mUserScripts:'Scripts Utilisateurs',
 mVideos:'Vidéos',mUpload:'Télécharger',mAbout:'À propos',
 navHome:'ACCUEIL',navExplore:'EXPLORER',navVideos:'VIDÉOS',navAbout:'À PROPOS',
 usEmptyTitle:'Aucun résultat',usEmptyDesc:'Essayez une autre recherche!',
-userScriptsTitle:'Scripts Utilisateurs',liteBtnTxt:'LITE',themesBtnLabel:'THÈMES',
+userScriptsTitle:'Scripts Utilisateurs',themesBtnLabel:'THÈMES',
 flYT:'YouTube',flIG:'Instagram',flDC:'Discord',flRS:'RScripts',
-fcRights:'Tous Droits Réservés',fcTagline:'Construire l'avenir, un script à la fois.',
+fcRights:'Tous Droits Réservés',fcTagline:"Construire l'avenir, un script à la fois.",
 fnHome:'Accueil',fnExplore:'Explorer',fnVideos:'Vidéos',fnUpload:'Télécharger',fnAbout:'À propos',
 tPerf:'Performance Optimisée',tAes:'Chiffrement AES-256',tSmart:'Bots Intelligents',
 tHwid:'Liaison HWID',tMulti:'Support Multilingue',tFree:'Accès 100% Gratuit',
@@ -2582,7 +2313,6 @@ ulScriptName:'NOM DU SCRIPT *',ulDescription:'DESCRIPTION *',ulCategory:'CATÉGO
 ulType:'TYPE',ulScriptCode:'CODE DU SCRIPT *',ulVideoLink:'LIEN TUTORIEL VIDÉO (optionnel)',
 };
 
-/* ── ARABIC ── */
 T.ar = {
 splashLoading:'مركز السكريبتات',heroBadge:'سكريبتات متطورة وأتمتة',
 heroWelcome:'مرحباً بك في',heroSub:'نبني المستقبل سكريبتاً تلو الآخر...',
@@ -2630,7 +2360,7 @@ mHome:'الرئيسية',mExplore:'استكشاف',mUserScripts:'سكريبتا�
 mVideos:'الفيديوهات',mUpload:'رفع سكريبت',mAbout:'حول',
 navHome:'الرئيسية',navExplore:'استكشاف',navVideos:'الفيديوهات',navAbout:'حول',
 usEmptyTitle:'لا توجد نتائج',usEmptyDesc:'جرب بحثاً مختلفاً أو ارفع أولاً!',
-userScriptsTitle:'سكريبتات المستخدمين',liteBtnTxt:'لايت',themesBtnLabel:'الثيمات',
+userScriptsTitle:'سكريبتات المستخدمين',themesBtnLabel:'الثيمات',
 flYT:'يوتيوب',flIG:'إنستغرام',flDC:'ديسكورد',flRS:'آر سكريبتس',
 fcRights:'جميع الحقوق محفوظة',fcTagline:'نبني المستقبل سكريبتاً تلو الآخر.',
 fnHome:'الرئيسية',fnExplore:'استكشاف',fnVideos:'الفيديوهات',fnUpload:'رفع',fnAbout:'حول',
@@ -2640,7 +2370,6 @@ ulScriptName:'اسم السكريبت *',ulDescription:'الوصف *',ulCategory
 ulType:'النوع',ulScriptCode:'كود السكريبت *',ulVideoLink:'رابط فيديو تعليمي (اختياري)',
 };
 
-/* ── MOROCCAN DARIJA ── */
 T.ma = {
 splashLoading:'مركز السكريبتات',heroBadge:'سكريبتات متطورة وأوتوماتيك',
 heroWelcome:'مرحبا بيك في',heroSub:'كنبنيو المستقبل، سكريبت من بعد سكريبت...',
@@ -2688,7 +2417,7 @@ mHome:'الرئيسية',mExplore:'استكشاف',mUserScripts:'سكريبتا�
 mVideos:'الفيديوهات',mUpload:'رفع سكريبت',mAbout:'حول',
 navHome:'الرئيسية',navExplore:'استكشاف',navVideos:'الفيديوهات',navAbout:'حول',
 usEmptyTitle:'ما كاين نتايج',usEmptyDesc:'جرب بحث آخر أو ارفع أولاً!',
-userScriptsTitle:'سكريبتات المستخدمين',liteBtnTxt:'لايت',themesBtnLabel:'الثيمات',
+userScriptsTitle:'سكريبتات المستخدمين',themesBtnLabel:'الثيمات',
 flYT:'يوتيوب',flIG:'إنستغرام',flDC:'ديسكورد',flRS:'آر سكريبتس',
 fcRights:'جميع الحقوق محفوظة',fcTagline:'كنبنيو المستقبل، سكريبت من بعد سكريبت.',
 fnHome:'الرئيسية',fnExplore:'استكشاف',fnVideos:'الفيديوهات',fnUpload:'رفع',fnAbout:'حول',
@@ -2698,7 +2427,6 @@ ulScriptName:'اسم السكريبت *',ulDescription:'الوصف *',ulCategory
 ulType:'النوع',ulScriptCode:'كود السكريبت *',ulVideoLink:'رابط فيديو تعليمي (اختياري)',
 };
 
-/* ── SPANISH ── */
 T.es = {
 splashLoading:'CENTRO DE SCRIPTS',heroBadge:'SCRIPTS AVANZADOS Y AUTOMATIZACIÓN',
 heroWelcome:'Bienvenido a',heroSub:'Construyendo el futuro, un script a la vez...',
@@ -2745,7 +2473,7 @@ mHome:'Inicio',mExplore:'Explorar',mUserScripts:'Scripts de Usuarios',
 mVideos:'Videos',mUpload:'Subir Script',mAbout:'Acerca de',
 navHome:'INICIO',navExplore:'EXPLORAR',navVideos:'VIDEOS',navAbout:'ACERCA DE',
 usEmptyTitle:'Sin resultados',usEmptyDesc:'¡Prueba una búsqueda diferente!',
-userScriptsTitle:'Scripts de Usuarios',liteBtnTxt:'LITE',themesBtnLabel:'TEMAS',
+userScriptsTitle:'Scripts de Usuarios',themesBtnLabel:'TEMAS',
 flYT:'YouTube',flIG:'Instagram',flDC:'Discord',flRS:'RScripts',
 fcRights:'Todos los Derechos Reservados',fcTagline:'Construyendo el futuro, un script a la vez.',
 fnHome:'Inicio',fnExplore:'Explorar',fnVideos:'Videos',fnUpload:'Subir',fnAbout:'Acerca de',
@@ -2755,10 +2483,7 @@ ulScriptName:'NOMBRE DEL SCRIPT *',ulDescription:'DESCRIPCIÓN *',ulCategory:'CA
 ulType:'TIPO',ulScriptCode:'CÓDIGO DEL SCRIPT *',ulVideoLink:'ENLACE DE TUTORIAL EN VIDEO (opcional)',
 };
 
-/* Use English as fallback for languages not fully defined */
-['de','pt','ru','zh','ja','ko','id','he','ber'].forEach(lc => {
-if(!T[lc]) T[lc] = Object.assign({}, T.en);
-});
+['de','pt','ru','zh','ja','ko','id','he','ber'].forEach(lc => { if(!T[lc]) T[lc] = Object.assign({}, T.en); });
 
 /* ══════ SCRIPTS DATA ══════ */
 const SCRIPTS_DATA = [
@@ -2779,6 +2504,7 @@ const SCRIPTS_DATA = [
 {id:15,title:'Loot Legends Script — FULL AUTO DUNGEON 🏰',desc:'Complete dungeon automation for Loot Legends. Auto path, auto combat, boss detection, loot filtering.',tags:['roblox','lua','free'],emoji:'🏰',badges:['new','free','vid'],url:'https://lpolvo.github.io/explorescripts'},
 {id:16,title:'Python API Rate-Limiter & Queue Manager 📡',desc:'Production-ready API rate limiter with Redis queue, exponential backoff, circuit breaker pattern.',tags:['python','web'],emoji:'📡',badges:['new'],url:'https://lpolvo.github.io/explorescripts'},
 ];
+
 let userScripts = JSON.parse(localStorage.getItem('lpolvo_user_scripts') || '[]');
 
 /* ══════ STATE ══════ */
@@ -2795,1251 +2521,1246 @@ let currentAudioNodes = [];
 
 /* ══════ INIT ══════ */
 window.addEventListener('DOMContentLoaded', () => {
-applyTheme(currentTheme);
-buildThemeGrid();
-buildLangList();
-applyLang(currentLang);
-setupNavScroll();
-startParticles();
-initFirebaseAuth();
-setupClickEffects();
-setupScrollTop();
-setTimeout(() => {
-document.getElementById('splashScreen').classList.add('hidden');
-if(!musicMuted) startThemeMusic(currentTheme);
-}, 1400);
+  applyTheme(currentTheme);
+  buildThemeGrid();
+  buildLangList();
+  applyLang(currentLang);
+  setupNavScroll();
+  startParticles();
+  initFirebaseAuth();
+  setupClickEffects();
+  setupScrollTop();
+  setTimeout(() => {
+    const splash = document.getElementById('splashScreen');
+    if(splash) splash.classList.add('hidden');
+    if(!musicMuted) startThemeMusic(currentTheme);
+  }, 1400);
 });
 
 /* ══════ LOADING BAR ══════ */
 let loadingBarTimer = null;
 function showLoadingBar() {
-const bar = document.getElementById('loadingBar');
-bar.style.width = '0%';
-bar.classList.add('active');
-bar.classList.remove('done');
-clearTimeout(loadingBarTimer);
-let w = 0;
-loadingBarTimer = setInterval(() => {
-w = Math.min(w + Math.random()*15 + 5, 85);
-bar.style.width = w + '%';
-}, 120);
+  const bar = document.getElementById('loadingBar');
+  bar.style.width = '0%';
+  bar.classList.add('active');
+  bar.classList.remove('done');
+  clearTimeout(loadingBarTimer);
+  let w = 0;
+  loadingBarTimer = setInterval(() => {
+    w = Math.min(w + Math.random()*15 + 5, 85);
+    bar.style.width = w + '%';
+  }, 120);
 }
 function hideLoadingBar() {
-clearTimeout(loadingBarTimer);
-const bar = document.getElementById('loadingBar');
-bar.style.width = '100%';
-setTimeout(() => { bar.classList.remove('active'); bar.classList.add('done'); }, 200);
+  const bar = document.getElementById('loadingBar');
+  clearInterval(loadingBarTimer);
+  bar.classList.add('done');
+  bar.style.width = '100%';
+  setTimeout(() => { bar.classList.remove('active','done'); bar.style.width='0%'; }, 700);
 }
 
 /* ══════ THEME ══════ */
 function applyTheme(id) {
-currentTheme = id;
-document.documentElement.setAttribute('data-theme', id);
-localStorage.setItem('lpolvo_theme', id);
-document.querySelectorAll('.theme-swatch').forEach(s => {
-s.classList.toggle('active', s.dataset.theme === id);
-});
-stopSpecialAnims();
-startSpecialThemeAnim(id);
-startParticles();
-if(!musicMuted) {
-stopThemeMusic();
-setTimeout(() => startThemeMusic(id), 300);
-}
+  currentTheme = id;
+  localStorage.setItem('lpolvo_theme', id);
+  document.documentElement.setAttribute('data-theme', id);
+  stopSpecialAnims();
+  startParticles();
+  startSpecialThemeAnim(id);
+  if(!musicMuted) { stopThemeMusic(); startThemeMusic(id); }
+  const grid = document.getElementById('themesGrid');
+  if(grid) buildThemeGrid();
 }
 
+/* ══════ THEME GRID ══════ */
 function buildThemeGrid() {
-const grid = document.getElementById('themesGrid');
-grid.innerHTML = THEMES.map(t => &lt;div class="theme-swatch${t.id===currentTheme?'active':''}" data-theme="{t.id}');closeAllDropdowns()">
-<div class="swatch-circle" style="background:radial-gradient(circle at 35% 35%,{t.c1})"></div>
-<div class="swatch-name">${t.name}&lt;/div&gt; &lt;/div&gt;).join('');
+  const grid = document.getElementById('themesGrid');
+  if(!grid) return;
+  grid.innerHTML = THEMES.map(t => `<div class="theme-swatch ${t.id===currentTheme?'active':''}" data-theme="${t.id}" onclick="applyTheme('${t.id}');closeAllDropdowns()">
+<div class="swatch-circle" style="background:radial-gradient(circle at 35% 35%,${t.c2},${t.c1})"></div>
+<div class="swatch-name">${t.name}</div></div>`).join('');
 }
 
-/* ══════ LANGUAGE ══════ /
+/* ══════ LANGUAGE ══════ */
 function applyLang(lc) {
-currentLang = lc;
-localStorage.setItem('lpolvo_lang', lc);
-const lang = LANGUAGES[lc];
-document.documentElement.setAttribute('lang', lc);
-document.documentElement.setAttribute('dir', lang.dir);
-document.getElementById('langFlag').textContent = lang.flag;
-document.getElementById('langCode').textContent = lc.toUpperCase();
-document.querySelectorAll('.lang-opt').forEach(o => o.classList.toggle('active', o.dataset.lang === lc));
-const tr = T[lc] || T.en;
-const ids = [
-'splashTitle','heroBadge','heroWelcome','heroSub','heroDesc','heroExplore','heroJoin',
-'heroUserScripts','heroUpload','statProjects','statUsers','statFree','featuredLabel',
-'featuredTitle','featuredTitle2','featuredDesc','viewScriptTxt','rscriptsTitle','rscriptsDesc',
-'rscriptsBtnTxt','platformLabel','platformTitle','feat1Title','feat1Desc','feat2Title','feat2Desc',
-'feat3Title','feat3Desc','feat4Title','feat4Desc','feat5Title','feat5Desc','feat6Title','feat6Desc',
-'communityLabel','communityLabel2','exploreTitle','exploreDesc','filterAll','filterRoblox','filterPython',
-'filterLua','filterWeb','filterOther','noResultsTitle','noResultsDesc','shareLabel','uploadTitle',
-'uploadDesc','uploadLockedTitle','uploadLockedDesc','uploadSignInTxt','uploadCreateTxt','ulPublishBtn',
-'latestVideosLabel','videosTitle','videosDesc','watchOnYT','viewAllVideosTxt','devLabel','aboutTitle',
-'aboutP1','aboutP2','aboutJoin','aboutExplore','siTitle','siSub','siGoogle','siOr','siEmailLabel',
-'siPwLabel','siForgot','siBtnTxt','siSwitch','siSwitchLink','siBack','suTitle','suSub','suGoogle',
-'suOr','suNameLabel','suEmailLabel','suPwLabel','suBtnTxt','suSwitch','suSwitchLink','suBack',
-'themeDDTitle','langDDTitle','mHome','mExplore','mUserScripts','mVideos','mUpload','mAbout',
-'usEmptyTitle','usEmptyDesc','userScriptsTitle','themesBtnLabel',
-'flYT','flIG','flDC','flRS','fcRights','fcTagline',
-'fnHome','fnExplore','fnVideos','fnUpload','fnAbout',
-'ulScriptName','ulDescription','ulCategory','ulType','ulScriptCode','ulVideoLink'
- ];
-ids.forEach(id => {
-const el = document.getElementById(id);
-if(el && tr[id] !== undefined) el.textContent = tr[id];
-});
-/ ticker /
-['t-perf','t-aes','t-smart','t-hwid','t-multi','t-free'].forEach((cls,i) => {
-const keys = ['tPerf','tAes','tSmart','tHwid','tMulti','tFree'];
-document.querySelectorAll('.'+cls).forEach(el => { if(tr[keys[i]]) el.textContent = tr[keys[i]]; });
-});
-/ nav links /
-const navMap = {home:'navT-home',explore:'navT-explore',videos:'navT-videos',about:'navT-about'};
-const navKeys = {home:'navHome',explore:'navExplore',videos:'navVideos',about:'navAbout'};
-Object.keys(navMap).forEach(k => {
-const el = document.getElementById(navMap[k]);
-if(el && tr[navKeys[k]]) el.textContent = tr[navKeys[k]];
-});
-/ auth nav btn /
-const authNavTxt = document.getElementById('authNavTxt');
-if(authNavTxt) {
-if(currentUser) authNavTxt.textContent = currentUser.displayName || currentUser.email?.split('@')[0] || '👤';
-else authNavTxt.textContent = tr.authNavSignIn || 'SIGN IN';
-}
-/ search placeholders */
-const isArabic = lang.dir === 'rtl';
-['exploreSearch','usSearch'].forEach(id => {
-const el = document.getElementById(id);
-if(el) el.placeholder = isArabic ? 'ابحث عن سكريبتات...' : 'Search scripts...';
-});
-renderExploreScripts();
-renderUserScripts();
+  currentLang = lc;
+  localStorage.setItem('lpolvo_lang', lc);
+  const lang = LANGUAGES[lc];
+  document.documentElement.setAttribute('lang', lc);
+  document.documentElement.setAttribute('dir', lang.dir);
+  document.getElementById('langFlag').textContent = lang.flag;
+  document.getElementById('langCode').textContent = lc.toUpperCase();
+  document.querySelectorAll('.lang-opt').forEach(o => o.classList.toggle('active', o.dataset.lang === lc));
+  const tr = T[lc] || T.en;
+  const ids = [
+    'splashTitle','heroBadge','heroWelcome','heroSub','heroDesc','heroExplore','heroJoin',
+    'heroUserScripts','heroUpload','statProjects','statUsers','statFree','featuredLabel',
+    'featuredTitle','featuredTitle2','featuredDesc','viewScriptTxt','rscriptsTitle','rscriptsDesc',
+    'rscriptsBtnTxt','platformLabel','platformTitle','feat1Title','feat1Desc','feat2Title','feat2Desc',
+    'feat3Title','feat3Desc','feat4Title','feat4Desc','feat5Title','feat5Desc','feat6Title','feat6Desc',
+    'communityLabel','communityLabel2','exploreTitle','exploreDesc','filterAll','filterRoblox','filterPython',
+    'filterLua','filterWeb','filterOther','noResultsTitle','noResultsDesc','shareLabel','uploadTitle',
+    'uploadDesc','uploadLockedTitle','uploadLockedDesc','uploadSignInTxt','uploadCreateTxt','ulPublishBtn',
+    'latestVideosLabel','videosTitle','videosDesc','watchOnYT','viewAllVideosTxt','devLabel','aboutTitle',
+    'aboutP1','aboutP2','aboutJoin','aboutExplore','siTitle','siSub','siGoogle','siOr','siEmailLabel',
+    'siPwLabel','siForgot','siBtnTxt','siSwitch','siSwitchLink','siBack','suTitle','suSub','suGoogle',
+    'suOr','suNameLabel','suEmailLabel','suPwLabel','suBtnTxt','suSwitch','suSwitchLink','suBack',
+    'themeDDTitle','langDDTitle','mHome','mExplore','mUserScripts','mVideos','mUpload','mAbout',
+    'usEmptyTitle','usEmptyDesc','userScriptsTitle','themesBtnLabel',
+    'flYT','flIG','flDC','flRS','fcRights','fcTagline',
+    'fnHome','fnExplore','fnVideos','fnUpload','fnAbout',
+    'ulScriptName','ulDescription','ulCategory','ulType','ulScriptCode','ulVideoLink'
+  ];
+  ids.forEach(id => {
+    const el = document.getElementById(id);
+    if(el && tr[id] !== undefined) el.textContent = tr[id];
+  });
+  ['t-perf','t-aes','t-smart','t-hwid','t-multi','t-free'].forEach((cls,i) => {
+    const keys = ['tPerf','tAes','tSmart','tHwid','tMulti','tFree'];
+    document.querySelectorAll('.'+cls).forEach(el => { if(tr[keys[i]]) el.textContent = tr[keys[i]]; });
+  });
+  const navMap = {home:'navT-home',explore:'navT-explore',videos:'navT-videos',about:'navT-about'};
+  const navKeys = {home:'navHome',explore:'navExplore',videos:'navVideos',about:'navAbout'};
+  Object.keys(navMap).forEach(k => {
+    const el = document.getElementById(navMap[k]);
+    if(el && tr[navKeys[k]]) el.textContent = tr[navKeys[k]];
+  });
+  const authNavTxt = document.getElementById('authNavTxt');
+  if(authNavTxt) {
+    if(currentUser) authNavTxt.textContent = currentUser.displayName || currentUser.email?.split('@')[0] || '👤';
+    else authNavTxt.textContent = tr.authNavSignIn || 'SIGN IN';
+  }
+  const isArabic = lang.dir === 'rtl';
+  ['exploreSearch','usSearch'].forEach(id => {
+    const el = document.getElementById(id);
+    if(el) el.placeholder = isArabic ? 'ابحث عن سكريبتات...' : 'Search scripts...';
+  });
+  renderExploreScripts();
+  renderUserScripts();
 }
 
 function buildLangList() {
-const list = document.getElementById('langList');
-const rtl = Object.keys(LANGUAGES).filter(k => LANGUAGES[k].dir === 'rtl');
-const ltr = Object.keys(LANGUAGES).filter(k => LANGUAGES[k].dir === 'ltr');
-list.innerHTML = <div class="lang-dd-section"&gt;🌍 International&lt;/div> +
-ltr.map(lc => langOptHTML(lc)).join('') +
-<div class="lang-dd-section"&gt;🌙 RTL / العربية&lt;/div> +
-rtl.map(lc => langOptHTML(lc)).join('');
+  const list = document.getElementById('langList');
+  if(!list) return;
+  const rtl = Object.keys(LANGUAGES).filter(k => LANGUAGES[k].dir === 'rtl');
+  const ltr = Object.keys(LANGUAGES).filter(k => LANGUAGES[k].dir === 'ltr');
+  list.innerHTML = `<div class="lang-dd-section">🌍 International</div>` +
+    ltr.map(lc => langOptHTML(lc)).join('') +
+    `<div class="lang-dd-section">🌙 RTL / العربية</div>` +
+    rtl.map(lc => langOptHTML(lc)).join('');
 }
 function langOptHTML(lc) {
-const lang = LANGUAGES[lc];
-return <div class="lang-opt${lc===currentLang?'active':''}" data-lang="{lc}');closeAllDropdowns()">
-<span>{lang.name}</span>
-<span class="lang-native">${lang.native}&lt;/span&gt; &lt;/div>;
+  const lang = LANGUAGES[lc];
+  return `<div class="lang-opt ${lc===currentLang?'active':''}" data-lang="${lc}" onclick="applyLang('${lc}');closeAllDropdowns()"><span>${lang.flag}</span><span>${lang.name}</span><span class="lang-native">${lang.native}</span></div>`;
 }
 
-/* ══════ PAGE NAVIGATION WITH LOADING BAR ══════ */
+/* ══════ PAGE NAVIGATION ══════ */
 function showPage(page) {
-if(page === currentPage) { closeAllDropdowns(); return; }
-showLoadingBar();
-setTimeout(() => {
-document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-const el = document.getElementById('page-'+page);
-if(el) el.classList.add('active');
-currentPage = page;
-window.scrollTo({top:0,behavior:'smooth'});
-document.querySelectorAll('.nav-links a').forEach(a => a.classList.toggle('active', a.dataset.page === page));
-document.querySelectorAll('.mobile-menu a').forEach(a => a.classList.toggle('active', a.dataset.page === page));
-closeAllDropdowns();
-if(page === 'explore') renderExploreScripts();
-if(page === 'userscripts') renderUserScripts();
-if(page === 'upload') updateUploadState();
-hideLoadingBar();
-}, 250);
+  if(page === currentPage) { closeAllDropdowns(); return; }
+  showLoadingBar();
+  setTimeout(() => {
+    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+    const el = document.getElementById('page-'+page);
+    if(el) el.classList.add('active');
+    currentPage = page;
+    window.scrollTo({top:0,behavior:'smooth'});
+    document.querySelectorAll('.nav-links a').forEach(a => a.classList.toggle('active', a.dataset.page === page));
+    document.querySelectorAll('.mobile-menu a').forEach(a => a.classList.toggle('active', a.dataset.page === page));
+    closeAllDropdowns();
+    if(page === 'explore') renderExploreScripts();
+    if(page === 'userscripts') renderUserScripts();
+    if(page === 'upload') updateUploadState();
+    hideLoadingBar();
+  }, 250);
 }
 
 /* ══════ DROPDOWNS ══════ */
 function toggleDropdown(id) {
-const dd = document.getElementById(id);
-const isOpen = dd.classList.contains('open');
-closeAllDropdowns();
-if(!isOpen) dd.classList.add('open');
+  const dd = document.getElementById(id);
+  const isOpen = dd.classList.contains('open');
+  closeAllDropdowns();
+  if(!isOpen) dd.classList.add('open');
 }
 function closeAllDropdowns() {
-document.querySelectorAll('.dropdown').forEach(d => d.classList.remove('open'));
+  document.querySelectorAll('.dropdown').forEach(d => d.classList.remove('open'));
 }
 document.addEventListener('click', e => {
-if(!e.target.closest('.dd-wrap') && !e.target.closest('.nav-ham')) closeAllDropdowns();
+  if(!e.target.closest('.dd-wrap') && !e.target.closest('.nav-ham')) closeAllDropdowns();
 });
 
 /* ══════ MOBILE MENU ══════ */
 function toggleMobileMenu() {
-const menu = document.getElementById('mobileMenu');
-menu.classList.toggle('open');
+  document.getElementById('mobileMenu').classList.toggle('open');
 }
 
 /* ══════ SCRIPTS RENDERING ══════ */
 function renderExploreScripts() {
-const q = (document.getElementById('exploreSearch')?.value || '').toLowerCase();
-const filtered = SCRIPTS_DATA.filter(s => {
-const matchQ = !q || s.title.toLowerCase().includes(q) || s.desc.toLowerCase().includes(q);
-const matchF = exploreFilter === 'all' || s.tags.includes(exploreFilter);
-return matchQ && matchF;
-});
-const grid = document.getElementById('exploreGrid');
-const empty = document.getElementById('exploreEmpty');
-if(!grid) return;
-if(filtered.length === 0) {
-grid.innerHTML = '';
-if(empty) empty.style.display = 'block';
-} else {
-if(empty) empty.style.display = 'none';
-grid.innerHTML = filtered.map(s => scriptCardHTML(s)).join('');
-}
+  const q = (document.getElementById('exploreSearch')?.value || '').toLowerCase();
+  const filtered = SCRIPTS_DATA.filter(s => {
+    const matchQ = !q || s.title.toLowerCase().includes(q) || s.desc.toLowerCase().includes(q);
+    const matchF = exploreFilter === 'all' || s.tags.includes(exploreFilter);
+    return matchQ && matchF;
+  });
+  const grid = document.getElementById('exploreGrid');
+  const empty = document.getElementById('exploreEmpty');
+  if(!grid) return;
+  if(filtered.length === 0) {
+    grid.innerHTML = '';
+    if(empty) empty.style.display = 'block';
+  } else {
+    if(empty) empty.style.display = 'none';
+    grid.innerHTML = filtered.map(s => scriptCardHTML(s)).join('');
+  }
 }
 function renderUserScripts() {
-const q = (document.getElementById('usSearch')?.value || '').toLowerCase();
-const filtered = userScripts.filter(s => {
-const matchQ = !q || s.title.toLowerCase().includes(q) || (s.desc||'').toLowerCase().includes(q);
-const matchF = userScriptsFilter === 'all' || (s.tags||[]).includes(userScriptsFilter);
-return matchQ && matchF;
-});
-const grid = document.getElementById('userScriptsGrid');
-const empty = document.getElementById('userScriptsEmpty');
-if(!grid) return;
-if(filtered.length === 0) {
-grid.innerHTML = '';
-if(empty) empty.style.display = 'block';
-} else {
-if(empty) empty.style.display = 'none';
-grid.innerHTML = filtered.map(s => scriptCardHTML(s)).join('');
-}
+  const q = (document.getElementById('usSearch')?.value || '').toLowerCase();
+  const filtered = userScripts.filter(s => {
+    const matchQ = !q || s.title.toLowerCase().includes(q) || (s.desc||'').toLowerCase().includes(q);
+    const matchF = userScriptsFilter === 'all' || (s.tags||[]).includes(userScriptsFilter);
+    return matchQ && matchF;
+  });
+  const grid = document.getElementById('userScriptsGrid');
+  const empty = document.getElementById('userScriptsEmpty');
+  if(!grid) return;
+  if(filtered.length === 0) {
+    grid.innerHTML = '';
+    if(empty) empty.style.display = 'block';
+  } else {
+    if(empty) empty.style.display = 'none';
+    grid.innerHTML = filtered.map(s => scriptCardHTML(s)).join('');
+  }
 }
 function scriptCardHTML(s) {
-const badges = (s.badges||[]).map(b => <span class="sc-badge${b}">{safeUrl}')">
-<div class="sc-thumb">{badges}</div></div>
+  const tr = T[currentLang] || T.en;
+  const viewTxt = tr.viewScriptTxt || '👁 VIEW';
+  const safeUrl = (s.url || '#').replace(/'/g, '%27');
+  const badges = (s.badges||[]).map(b => `<span class="sc-badge ${b}">${b.toUpperCase()}</span>`).join('');
+  const tags = (s.tags||[]).slice(0,3).map(t => `<span class="sc-tag">${t.toUpperCase()}</span>`).join('');
+  return `<div class="script-card" onclick="openScript('${safeUrl}')">
+<div class="sc-thumb"><span>${s.emoji||'📜'}</span><div class="sc-badge-wrap">${badges}</div></div>
 <div class="sc-body">
-<div class="sc-title">{s.desc}</div>
-<div class="sc-tags">latex
-{(s.tags||[]).slice(0,3).map(t=>`<span class="sc-tag"&gt;
-
-{t.toUpperCase()}</span>).join('')}&lt;/div&gt; &lt;div class="sc-footer"&gt;&lt;div class="btn-view-script"&gt;👁 ${viewTxt}</div></div>
-</div>
-</div>`;
+<div class="sc-title">${s.title}</div>
+<div class="sc-desc">${s.desc}</div>
+<div class="sc-tags">${tags}</div>
+<div class="sc-footer"><div class="btn-view-script">${viewTxt}</div></div>
+</div></div>`;
 }
 function filterScripts() { renderExploreScripts(); }
 function filterUserScripts() { renderUserScripts(); }
 function setFilter(f, btn) {
-exploreFilter = f;
-document.querySelectorAll('#page-explore .filter-btn').forEach(b => b.classList.remove('active'));
-if(btn) btn.classList.add('active');
-renderExploreScripts();
+  exploreFilter = f;
+  document.querySelectorAll('#page-explore .filter-btn').forEach(b => b.classList.remove('active'));
+  if(btn) btn.classList.add('active');
+  renderExploreScripts();
 }
 function setUserFilter(f, btn) {
-userScriptsFilter = f;
-document.querySelectorAll('#page-userscripts .filter-btn').forEach(b => b.classList.remove('active'));
-if(btn) btn.classList.add('active');
-renderUserScripts();
+  userScriptsFilter = f;
+  document.querySelectorAll('#page-userscripts .filter-btn').forEach(b => b.classList.remove('active'));
+  if(btn) btn.classList.add('active');
+  renderUserScripts();
 }
 function openScript(url) { window.open(url, '_blank', 'noopener'); }
 function openYT(url) { window.open(url, '_blank', 'noopener'); }
 
 /* ══════ UPLOAD ══════ */
 function updateUploadState() {
-const locked = document.getElementById('uploadLocked');
-const form = document.getElementById('uploadFormWrap');
-if(currentUser) {
-if(locked) locked.style.display = 'none';
-if(form) form.classList.add('visible');
-} else {
-if(locked) { locked.style.display = 'block'; locked.style.display = ''; }
-if(form) form.classList.remove('visible');
-}
+  const locked = document.getElementById('uploadLocked');
+  const form = document.getElementById('uploadFormWrap');
+  if(currentUser) {
+    if(locked) locked.style.display = 'none';
+    if(form) form.classList.add('visible');
+  } else {
+    if(locked) locked.style.display = '';
+    if(form) form.classList.remove('visible');
+  }
 }
 function handleUploadSubmit(e) {
-e.preventDefault();
-if(!currentUser) { showPage('signin'); return; }
-const inputs = e.target.querySelectorAll('input,textarea,select');
-const name = inputs[0].value;
-const desc = inputs[1].value;
-const cat = inputs[2].value.toLowerCase();
-const script = {id:Date.now(),title:name,desc,tags:[cat,'free'],emoji:'📜',badges:['new','free'],url:''};
-userScripts.push(script);
-localStorage.setItem('lpolvo_user_scripts', JSON.stringify(userScripts));
-showToast('✅ Script published successfully!','ok');
-e.target.reset();
-showPage('userscripts');
+  e.preventDefault();
+  if(!currentUser) { showPage('signin'); return; }
+  const inputs = e.target.querySelectorAll('input,textarea,select');
+  const name = inputs[0].value;
+  const desc = inputs[1].value;
+  const cat = inputs[2].value.toLowerCase();
+  const script = {id:Date.now(),title:name,desc,tags:[cat,'free'],emoji:'📜',badges:['new','free'],url:''};
+  userScripts.push(script);
+  localStorage.setItem('lpolvo_user_scripts', JSON.stringify(userScripts));
+  showToast('✅ Script published successfully!','ok');
+  e.target.reset();
+  showPage('userscripts');
 }
 
 /* ══════ AUTH ══════ */
 function initFirebaseAuth() {
-if(window.__pendingAuthUser !== undefined) onFirebaseAuthState(window.__pendingAuthUser);
-window.onFirebaseAuthState = user => {
-currentUser = user;
-updateAuthUI();
-updateUploadState();
-};
+  if(window.__pendingAuthUser !== undefined) onFirebaseAuthState(window.__pendingAuthUser);
+  window.onFirebaseAuthState = user => {
+    currentUser = user;
+    updateAuthUI();
+    updateUploadState();
+  };
 }
 function updateAuthUI() {
-const btn = document.getElementById('authNavBtn');
-const txt = document.getElementById('authNavTxt');
-if(!btn || !txt) return;
-const tr = T[currentLang] || T.en;
-if(currentUser) {
-btn.classList.add('logged-in');
-txt.textContent = currentUser.displayName || currentUser.email?.split('@')[0] || '👤';
-} else {
-btn.classList.remove('logged-in');
-txt.textContent = tr.authNavSignIn || 'SIGN IN';
-}
+  const btn = document.getElementById('authNavBtn');
+  const txt = document.getElementById('authNavTxt');
+  if(!btn || !txt) return;
+  const tr = T[currentLang] || T.en;
+  if(currentUser) {
+    btn.classList.add('logged-in');
+    txt.textContent = currentUser.displayName || currentUser.email?.split('@')[0] || '👤';
+  } else {
+    btn.classList.remove('logged-in');
+    txt.textContent = tr.authNavSignIn || 'SIGN IN';
+  }
 }
 function handleAuthNavClick() {
-if(currentUser) {
-showToast(👋${currentUser.displayName||currentUser.email?.split('@')[0]} — click to sign out,'info'); setTimeout(() =&gt; handleSignOut(), 2000); } else { showPage('signin'); } } async function handleSignIn(e) { e.preventDefault(); const toast = document.getElementById('siToast'); const btn = document.getElementById('siBtn'); const email = document.getElementById('siEmail').value; const pw = document.getElementById('siPw').value; if(!window.__FB?.ready) { showAuthToast(toast,'Firebase not configured','err'); return; } btn.disabled = true; document.getElementById('siBtnTxt').textContent = '...'; try { await window.__FB.signInWithEmailAndPassword(window.__FB.auth, email, pw); showAuthToast(toast,'✅ Signed in!','ok'); setTimeout(() =&gt; showPage('home'), 900); } catch(err) { showAuthToast(toast, err.message.replace('Firebase:','').trim(),'err'); } btn.disabled = false; document.getElementById('siBtnTxt').textContent = (T[currentLang]||T.en).siBtnTxt||'Log In'; } async function handleSignUp(e) { e.preventDefault(); const toast = document.getElementById('suToast'); const btn = document.getElementById('suBtn'); const name = document.getElementById('suName').value; const email = document.getElementById('suEmail').value; const pw = document.getElementById('suPw').value; if(!window.__FB?.ready) { showAuthToast(toast,'Firebase not configured','err'); return; } btn.disabled = true; document.getElementById('suBtnTxt').textContent = '...'; try { const cred = await window.__FB.createUserWithEmailAndPassword(window.__FB.auth, email, pw); await window.__FB.updateProfile(cred.user, {displayName: name}); showAuthToast(toast,'✅ Account created! Welcome!','ok'); setTimeout(() =&gt; showPage('home'), 900); } catch(err) { showAuthToast(toast, err.message.replace('Firebase:','').trim(),'err'); } btn.disabled = false; document.getElementById('suBtnTxt').textContent = (T[currentLang]||T.en).suBtnTxt||'Create Account'; } async function handleGoogleAuth() { if(!window.__FB?.ready) { showToast('Firebase not configured','err'); return; } try { await window.__FB.signInWithPopup(window.__FB.auth, window.__FB.googleProvider); showToast('✅ Signed in with Google!','ok'); showPage('home'); } catch(err) { showToast(err.message,'err'); } } async function handleSignOut() { if(!window.__FB?.ready) return; try { await window.__FB.signOut(window.__FB.auth); showToast('👋 Signed out','info'); } catch(err) { showToast(err.message,'err'); } } async function handleForgotPassword() { const email = document.getElementById('siEmail').value; if(!email) { showToast('Enter your email first','err'); return; } if(!window.__FB?.ready) return; try { await window.__FB.sendPasswordResetEmail(window.__FB.auth, email); showToast('📧 Reset email sent!','ok'); } catch(err) { showToast(err.message,'err'); } } function showAuthToast(el, msg, type) { el.className =auth-toast show ${type};
-el.textContent = msg;
-setTimeout(() => el.classList.remove('show'), 4000);
+  if(currentUser) {
+    showToast(`👋 ${currentUser.displayName||currentUser.email?.split('@')[0]} — click to sign out`, 'info');
+    setTimeout(() => handleSignOut(), 2000);
+  } else {
+    showPage('signin');
+  }
+}
+async function handleSignIn(e) {
+  e.preventDefault();
+  const toast = document.getElementById('siToast');
+  const btn = document.getElementById('siBtn');
+  const email = document.getElementById('siEmail').value;
+  const pw = document.getElementById('siPw').value;
+  if(!window.__FB?.ready) { showAuthToast(toast,'Firebase not configured','err'); return; }
+  btn.disabled = true;
+  document.getElementById('siBtnTxt').textContent = '...';
+  try {
+    await window.__FB.signInWithEmailAndPassword(window.__FB.auth, email, pw);
+    showAuthToast(toast,'✅ Signed in!','ok');
+    setTimeout(() => showPage('home'), 900);
+  } catch(err) {
+    showAuthToast(toast, err.message.replace('Firebase:','').trim(),'err');
+  }
+  btn.disabled = false;
+  document.getElementById('siBtnTxt').textContent = (T[currentLang]||T.en).siBtnTxt||'Log In';
+}
+async function handleSignUp(e) {
+  e.preventDefault();
+  const toast = document.getElementById('suToast');
+  const btn = document.getElementById('suBtn');
+  const name = document.getElementById('suName').value;
+  const email = document.getElementById('suEmail').value;
+  const pw = document.getElementById('suPw').value;
+  if(!window.__FB?.ready) { showAuthToast(toast,'Firebase not configured','err'); return; }
+  btn.disabled = true;
+  document.getElementById('suBtnTxt').textContent = '...';
+  try {
+    const cred = await window.__FB.createUserWithEmailAndPassword(window.__FB.auth, email, pw);
+    await window.__FB.updateProfile(cred.user, {displayName: name});
+    showAuthToast(toast,'✅ Account created! Welcome!','ok');
+    setTimeout(() => showPage('home'), 900);
+  } catch(err) {
+    showAuthToast(toast, err.message.replace('Firebase:','').trim(),'err');
+  }
+  btn.disabled = false;
+  document.getElementById('suBtnTxt').textContent = (T[currentLang]||T.en).suBtnTxt||'Create Account';
+}
+async function handleGoogleAuth() {
+  if(!window.__FB?.ready) { showToast('Firebase not configured', 'err'); return; }
+  try {
+    await window.__FB.signInWithPopup(window.__FB.auth, window.__FB.googleProvider);
+    showToast('✅ Signed in with Google!', 'ok');
+    setTimeout(() => showPage('home'), 900);
+  } catch(err) {
+    showToast(err.message.replace('Firebase:','').trim(), 'err');
+  }
+}
+async function handleSignOut() {
+  if(!window.__FB?.ready) return;
+  try {
+    await window.__FB.signOut(window.__FB.auth);
+    showToast('👋 Signed out!', 'info');
+  } catch(err) { showToast(err.message, 'err'); }
+}
+async function handleForgotPassword() {
+  const email = document.getElementById('siEmail')?.value;
+  if(!email) { showToast('Enter your email first', 'err'); return; }
+  if(!window.__FB?.ready) return;
+  try {
+    await window.__FB.sendPasswordResetEmail(window.__FB.auth, email);
+    showToast('📧 Reset email sent!', 'ok');
+  } catch(err) { showToast(err.message, 'err'); }
+}
+function showAuthToast(el, msg, type) {
+  el.className = `auth-toast ${type} show`;
+  el.textContent = msg;
+  setTimeout(() => el.classList.remove('show'), 4000);
 }
 function togglePw(id, btn) {
-const inp = document.getElementById(id);
-if(!inp) return;
-const show = inp.type === 'password';
-inp.type = show ? 'text' : 'password';
-btn.textContent = show ? '🙈' : '👁';
+  const inp = document.getElementById(id);
+  if(!inp) return;
+  const show = inp.type === 'password';
+  inp.type = show ? 'text' : 'password';
+  btn.textContent = show ? '🙈' : '👁';
 }
 
 /* ══════ TOAST ══════ */
 function showToast(msg, type='info') {
-const container = document.getElementById('toastContainer');
-const toast = document.createElement('div');
-toast.className = toast${type}`;
-toast.textContent = msg;
-container.appendChild(toast);
-setTimeout(() => {
-toast.classList.add('out');
-setTimeout(() => toast.remove(), 400);
-}, 3500);
+  const container = document.getElementById('toastContainer');
+  const toast = document.createElement('div');
+  toast.className = `toast ${type}`;
+  toast.textContent = msg;
+  container.appendChild(toast);
+  setTimeout(() => {
+    toast.classList.add('out');
+    setTimeout(() => toast.remove(), 400);
+  }, 3500);
 }
 
 /* ══════ NAV SCROLL ══════ */
 function setupNavScroll() {
-const nav = document.getElementById('navbar');
-window.addEventListener('scroll', () => {
-nav.classList.toggle('scrolled', window.scrollY > 40);
-}, {passive:true});
+  const nav = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 40);
+  }, {passive:true});
 }
 
 /* ══════ SCROLL TO TOP ══════ */
 function setupScrollTop() {
-const btn = document.getElementById('scrollTopBtn');
-window.addEventListener('scroll', () => {
-btn.classList.toggle('visible', window.scrollY > 400);
-}, {passive:true});
+  const btn = document.getElementById('scrollTopBtn');
+  window.addEventListener('scroll', () => {
+    btn.classList.toggle('visible', window.scrollY > 400);
+  }, {passive:true});
 }
 
-/* ══════ PARTICLES SYSTEM ══════ /
+/* ══════ PARTICLES SYSTEM ══════ */
 function startParticles() {
-const canvas = document.getElementById('particlesCanvas');
-if(!canvas) return;
-if(particleAnim) cancelAnimationFrame(particleAnim);
-const ctx = canvas.getContext('2d');
-canvas.width = window.innerWidth;
-canvas.height = window.innerHeight;
-const style = getComputedStyle(document.documentElement);
-const accentRaw = style.getPropertyValue('--accent').trim() || '#00d4ff';
-const count = Math.min(80, Math.floor(window.innerWidth / 14));
-const particles = Array.from({length:count}, () => ({
-x: Math.random() * canvas.width,
-y: Math.random() * canvas.height,
-vx: (Math.random()-0.5) * 0.5,
-vy: (Math.random()-0.5) * 0.5,
-r: Math.random() * 1.8 + 0.4,
-o: Math.random() * 0.5 + 0.1,
-t: Math.random() * Math.PI * 2,
-speed: Math.random() * 0.01 + 0.005
-}));
-function draw() {
-ctx.clearRect(0, 0, canvas.width, canvas.height);
-particles.forEach(p => {
-p.t += p.speed;
-p.x += p.vx;
-p.y += p.vy;
-const opacity = p.o * (0.6 + 0.4 * Math.sin(p.t));
-if(p.x < 0) p.x = canvas.width;
-if(p.x > canvas.width) p.x = 0;
-if(p.y < 0) p.y = canvas.height;
-if(p.y > canvas.height) p.y = 0;
-ctx.beginPath();
-ctx.arc(p.x, p.y, p.r, 0, Math.PI2);
-ctx.fillStyle = accentRaw.startsWith('#') ? hexToRgba(accentRaw, opacity) : rgba(0,212,255,${opacity}); ctx.fill(); }); /* draw connections */ for(let i = 0; i &lt; particles.length; i++) { for(let j = i+1; j &lt; particles.length; j++) { const dx = particles[i].x - particles[j].x; const dy = particles[i].y - particles[j].y; const d = Math.sqrt(dx*dx + dy*dy); if(d &lt; 120) { ctx.beginPath(); ctx.moveTo(particles[i].x, particles[i].y); ctx.lineTo(particles[j].x, particles[j].y); const a = (1 - d/120) * 0.12; ctx.strokeStyle = accentRaw.startsWith('#') ? hexToRgba(accentRaw, a) :rgba(0,212,255,${a});
-ctx.lineWidth = 0.5;
-ctx.stroke();
-}
-}
-}
-particleAnim = requestAnimationFrame(draw);
-}
-draw();
+  const canvas = document.getElementById('particlesCanvas');
+  if(!canvas) return;
+  if(particleAnim) cancelAnimationFrame(particleAnim);
+  const ctx = canvas.getContext('2d');
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+  const style = getComputedStyle(document.documentElement);
+  const accentRaw = style.getPropertyValue('--accent').trim() || '#00d4ff';
+  const count = Math.min(80, Math.floor(window.innerWidth / 14));
+  const particles = Array.from({length:count}, () => ({
+    x: Math.random() * canvas.width,
+    y: Math.random() * canvas.height,
+    vx: (Math.random()-0.5) * 0.5,
+    vy: (Math.random()-0.5) * 0.5,
+    r: Math.random() * 1.8 + 0.4,
+    o: Math.random() * 0.5 + 0.1,
+    t: Math.random() * Math.PI * 2,
+    speed: Math.random() * 0.01 + 0.005
+  }));
+  function draw() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    particles.forEach(p => {
+      p.t += p.speed;
+      p.x += p.vx;
+      p.y += p.vy;
+      const opacity = p.o * (0.6 + 0.4 * Math.sin(p.t));
+      if(p.x < 0) p.x = canvas.width;
+      if(p.x > canvas.width) p.x = 0;
+      if(p.y < 0) p.y = canvas.height;
+      if(p.y > canvas.height) p.y = 0;
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.r, 0, Math.PI*2);
+      ctx.fillStyle = accentRaw.startsWith('#') ? hexToRgba(accentRaw, opacity) : `rgba(0,212,255,${opacity})`;
+      ctx.fill();
+    });
+    for(let i = 0; i < particles.length; i++) {
+      for(let j = i+1; j < particles.length; j++) {
+        const dx = particles[i].x - particles[j].x;
+        const dy = particles[i].y - particles[j].y;
+        const d = Math.sqrt(dx*dx + dy*dy);
+        if(d < 120) {
+          ctx.beginPath();
+          ctx.moveTo(particles[i].x, particles[i].y);
+          ctx.lineTo(particles[j].x, particles[j].y);
+          const a = (1 - d/120) * 0.12;
+          ctx.strokeStyle = accentRaw.startsWith('#') ? hexToRgba(accentRaw, a) : `rgba(0,212,255,${a})`;
+          ctx.lineWidth = 0.5;
+          ctx.stroke();
+        }
+      }
+    }
+    particleAnim = requestAnimationFrame(draw);
+  }
+  draw();
 }
 
 function hexToRgba(hex, alpha) {
-const r = parseInt(hex.slice(1,3), 16);
-const g = parseInt(hex.slice(3,5), 16);
-const b = parseInt(hex.slice(5,7), 16);
-return rgba(${r},${g},${b},${alpha});
+  const r = parseInt(hex.slice(1,3), 16);
+  const g = parseInt(hex.slice(3,5), 16);
+  const b = parseInt(hex.slice(5,7), 16);
+  return `rgba(${r},${g},${b},${alpha})`;
 }
 
 /* ══════ SPECIAL THEME ANIMATIONS ══════ */
 const SPECIAL_ANIM_THEMES = {
-galaxy: 'galaxyCanvas', sakura: 'sakuraCanvas', storm: 'stormCanvas',
-toxic: 'toxicCanvas', matrix: 'matrixCanvas', hacker: 'matrixCanvas',
-fire: 'fireCanvas', lava: 'fireCanvas', volcano: 'fireCanvas', magma: 'fireCanvas',
-arctic: 'snowCanvas', iceking: 'snowCanvas', arcticnight: 'snowCanvas',
-crystal: 'crystalCanvas', desert: 'desertCanvas',
-forest: 'forestCanvas', tropical: 'forestCanvas', mint: 'forestCanvas',
-electric: 'electricCanvas',
-nebula: 'nebulaCanvas', aurora: 'nebulaCanvas', galaxy2: 'nebulaCanvas',
-space: 'spaceCanvas', midnight: 'spaceCanvas',
-neonpink: 'neonpinkCanvas', cyber: 'neonpinkCanvas',
-rainbow: 'rainbowCanvas',
+  galaxy:'galaxyCanvas', sakura:'sakuraCanvas', storm:'stormCanvas',
+  toxic:'toxicCanvas', matrix:'matrixCanvas', hacker:'matrixCanvas',
+  fire:'fireCanvas', lava:'fireCanvas', volcano:'fireCanvas', magma:'fireCanvas',
+  arctic:'snowCanvas', iceking:'snowCanvas', arcticnight:'snowCanvas',
+  crystal:'crystalCanvas', desert:'desertCanvas',
+  forest:'forestCanvas', tropical:'forestCanvas', mint:'forestCanvas',
+  electric:'electricCanvas',
+  nebula:'nebulaCanvas', aurora:'nebulaCanvas',
+  space:'spaceCanvas', midnight:'spaceCanvas',
+  neonpink:'neonpinkCanvas', cyber:'neonpinkCanvas',
+  rainbow:'rainbowCanvas',
 };
 
 function startSpecialThemeAnim(id) {
-document.querySelectorAll('.bg-canvas').forEach(c => c.classList.remove('visible'));
-document.getElementById('particlesCanvas')?.classList.add('visible');
-const canvasId = SPECIAL_ANIM_THEMES[id];
-if(!canvasId) return;
-const canvas = document.getElementById(canvasId);
-if(!canvas) return;
-canvas.classList.add('visible');
-const animMap = {
-galaxyCanvas: runGalaxyAnim,
-sakuraCanvas: runSakuraAnim,
-stormCanvas: runStormAnim,
-toxicCanvas: runToxicAnim,
-matrixCanvas: runMatrixAnim,
-fireCanvas: runFireAnim,
-snowCanvas: runSnowAnim,
-crystalCanvas: runCrystalAnim,
-desertCanvas: runDesertAnim,
-forestCanvas: runForestAnim,
-electricCanvas: runElectricAnim,
-nebulaCanvas: runNebulaAnim,
-spaceCanvas: runSpaceAnim,
-neonpinkCanvas: runNeonPinkAnim,
-rainbowCanvas: runRainbowAnim,
-};
-if(animMap[canvasId]) animMapcanvasId;
+  document.querySelectorAll('.bg-canvas').forEach(c => c.classList.remove('visible'));
+  document.getElementById('particlesCanvas')?.classList.add('visible');
+  const canvasId = SPECIAL_ANIM_THEMES[id];
+  if(!canvasId) return;
+  const canvas = document.getElementById(canvasId);
+  if(!canvas) return;
+  canvas.classList.add('visible');
+  const animMap = {
+    galaxyCanvas: runGalaxyAnim,
+    sakuraCanvas: runSakuraAnim,
+    stormCanvas: runStormAnim,
+    toxicCanvas: runToxicAnim,
+    matrixCanvas: runMatrixAnim,
+    fireCanvas: runFireAnim,
+    snowCanvas: runSnowAnim,
+    crystalCanvas: runCrystalAnim,
+    desertCanvas: runDesertAnim,
+    forestCanvas: runForestAnim,
+    electricCanvas: runElectricAnim,
+    nebulaCanvas: runNebulaAnim,
+    spaceCanvas: runSpaceAnim,
+    neonpinkCanvas: runNeonPinkAnim,
+    rainbowCanvas: runRainbowAnim,
+  };
+  if(animMap[canvasId]) animMap[canvasId]();
 }
 
 function stopSpecialAnims() {
-if(specialAnim) { cancelAnimationFrame(specialAnim); specialAnim = null; }
+  if(specialAnim) { cancelAnimationFrame(specialAnim); specialAnim = null; }
 }
 
 /* Galaxy Stars */
 function runGalaxyAnim() {
-const canvas = document.getElementById('galaxyCanvas');
-if(!canvas) return;
-const ctx = canvas.getContext('2d');
-canvas.width = window.innerWidth; canvas.height = window.innerHeight;
-const stars = Array.from({length:200}, () => ({
-x: Math.random()*canvas.width, y: Math.random()canvas.height,
-r: Math.random()1.5+0.2, t: Math.random()Math.PI2,
-speed: Math.random()0.015+0.003
-}));
-function draw() {
-ctx.clearRect(0,0,canvas.width,canvas.height);
-stars.forEach(s => {
-s.t += s.speed;
-const o = 0.3 + 0.7Math.abs(Math.sin(s.t));
-ctx.beginPath(); ctx.arc(s.x,s.y,s.r,0,Math.PI2);
-ctx.fillStyle = rgba(217,70,239,${o0.7})`; ctx.fill();
-});
-specialAnim = requestAnimationFrame(draw);
-}
-draw();
+  const canvas = document.getElementById('galaxyCanvas');
+  if(!canvas) return;
+  const ctx = canvas.getContext('2d');
+  canvas.width = window.innerWidth; canvas.height = window.innerHeight;
+  const stars = Array.from({length:200}, () => ({
+    x: Math.random()*canvas.width, y: Math.random()*canvas.height,
+    r: Math.random()*1.5+0.2, t: Math.random()*Math.PI*2,
+    speed: Math.random()*0.015+0.003
+  }));
+  function draw() {
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+    stars.forEach(s => {
+      s.t += s.speed;
+      const o = 0.3 + 0.7*Math.abs(Math.sin(s.t));
+      ctx.beginPath(); ctx.arc(s.x,s.y,s.r,0,Math.PI*2);
+      ctx.fillStyle = `rgba(217,70,239,${o*0.7})`; ctx.fill();
+    });
+    specialAnim = requestAnimationFrame(draw);
+  }
+  draw();
 }
 
 /* Sakura Petals */
 function runSakuraAnim() {
-const canvas = document.getElementById('sakuraCanvas');
-if(!canvas) return;
-const ctx = canvas.getContext('2d');
-canvas.width = window.innerWidth; canvas.height = window.innerHeight;
-const petals = Array.from({length:60}, () => createPetal(canvas));
-function createPetal(c) {
-return {
-x: Math.random()*c.width, y: -20,
-vx: (Math.random()-0.5)*1.5, vy: Math.random()*1.2+0.4,
-r: Math.random()*7+4, angle: Math.random()Math.PI2,
-va: (Math.random()-0.5)*0.06, swing: Math.random()Math.PI2,
-swingSpeed: Math.random()*0.04+0.01,
-hue: Math.floor(Math.random()*30+330), o: Math.random()*0.5+0.3
-};
-}
-function draw() {
-ctx.clearRect(0,0,canvas.width,canvas.height);
-petals.forEach((p,i) => {
-p.swing += p.swingSpeed;
-p.x += p.vx + Math.sin(p.swing)0.8;
-p.y += p.vy;
-p.angle += p.va;
-if(p.y > canvas.height+20) petals[i] = Object.assign(createPetal(canvas), {x: Math.random()canvas.width, y:-20});
-ctx.save(); ctx.translate(p.x,p.y); ctx.rotate(p.angle);
-ctx.beginPath();
-ctx.ellipse(0, 0, p.r, p.r0.6, 0, 0, Math.PI2);
-ctx.fillStyle = hsla(${p.hue}, 90%, 75%, ${p.o});
-ctx.fill(); ctx.restore();
-});
-specialAnim = requestAnimationFrame(draw);
-}
-draw();
+  const canvas = document.getElementById('sakuraCanvas');
+  if(!canvas) return;
+  const ctx = canvas.getContext('2d');
+  canvas.width = window.innerWidth; canvas.height = window.innerHeight;
+  const petals = Array.from({length:60}, () => createPetal(canvas));
+  function createPetal(c) {
+    return {
+      x: Math.random()*c.width, y: -20,
+      vx: (Math.random()-0.5)*1.5, vy: Math.random()*1.2+0.4,
+      r: Math.random()*7+4, angle: Math.random()*Math.PI*2,
+      va: (Math.random()-0.5)*0.06, swing: Math.random()*Math.PI*2,
+      swingSpeed: Math.random()*0.04+0.01,
+      hue: Math.floor(Math.random()*30+330), o: Math.random()*0.5+0.3
+    };
+  }
+  function draw() {
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+    petals.forEach((p,i) => {
+      p.swing += p.swingSpeed;
+      p.x += p.vx + Math.sin(p.swing)*0.8;
+      p.y += p.vy;
+      p.angle += p.va;
+      if(p.y > canvas.height+20) petals[i] = Object.assign(createPetal(canvas), {x: Math.random()*canvas.width, y:-20});
+      ctx.save(); ctx.translate(p.x,p.y); ctx.rotate(p.angle);
+      ctx.beginPath();
+      ctx.ellipse(0, 0, p.r, p.r*0.6, 0, 0, Math.PI*2);
+      ctx.fillStyle = `hsla(${p.hue}, 90%, 75%, ${p.o})`;
+      ctx.fill(); ctx.restore();
+    });
+    specialAnim = requestAnimationFrame(draw);
+  }
+  draw();
 }
 
 /* Storm Lightning */
 function runStormAnim() {
-const canvas = document.getElementById('stormCanvas');
-if(!canvas) return;
-const ctx = canvas.getContext('2d');
-canvas.width = window.innerWidth; canvas.height = window.innerHeight;
-let frame = 0;
-function bolt(x1,y1,x2,y2,d) {
-if(d <= 0) return;
-const mx = (x1+x2)/2 + (Math.random()-0.5)*50;
-const my = (y1+y2)/2 + (Math.random()-0.5)25;
-ctx.beginPath(); ctx.moveTo(x1,y1); ctx.lineTo(mx,my); ctx.lineTo(x2,y2);
-ctx.strokeStyle = rgba(147,197,253,${0.8/(3-d)})`;
-ctx.lineWidth = d0.7;
-ctx.shadowBlur = 15; ctx.shadowColor = '#60a5fa';
-ctx.stroke(); ctx.shadowBlur = 0;
-if(Math.random()>0.5) bolt(mx,my, mx+(Math.random()-0.5)*70, my+40, d-1);
-}
-function draw() {
-ctx.clearRect(0,0,canvas.width,canvas.height);
-frame++;
-if(frame%90 < 5) {
-const x = Math.random()*canvas.width;
-bolt(x,0,x+(Math.random()-0.5)100,canvas.height0.7,3);
-}
-specialAnim = requestAnimationFrame(draw);
-}
-draw();
+  const canvas = document.getElementById('stormCanvas');
+  if(!canvas) return;
+  const ctx = canvas.getContext('2d');
+  canvas.width = window.innerWidth; canvas.height = window.innerHeight;
+  let frame = 0;
+  function bolt(x1,y1,x2,y2,d) {
+    if(d <= 0) return;
+    const mx = (x1+x2)/2 + (Math.random()-0.5)*50;
+    const my = (y1+y2)/2 + (Math.random()-0.5)*25;
+    ctx.beginPath(); ctx.moveTo(x1,y1); ctx.lineTo(mx,my); ctx.lineTo(x2,y2);
+    ctx.strokeStyle = `rgba(147,197,253,${0.8/(3-d)})`;
+    ctx.lineWidth = d*0.7;
+    ctx.shadowBlur = 15; ctx.shadowColor = '#60a5fa';
+    ctx.stroke(); ctx.shadowBlur = 0;
+    if(Math.random()>0.5) bolt(mx,my, mx+(Math.random()-0.5)*70, my+40, d-1);
+  }
+  function draw() {
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+    frame++;
+    if(frame%90 < 5) {
+      const x = Math.random()*canvas.width;
+      bolt(x,0,x+(Math.random()-0.5)*100,canvas.height*0.7,3);
+    }
+    specialAnim = requestAnimationFrame(draw);
+  }
+  draw();
 }
 
 /* Toxic Bubbles */
 function runToxicAnim() {
-const canvas = document.getElementById('toxicCanvas');
-if(!canvas) return;
-const ctx = canvas.getContext('2d');
-canvas.width = window.innerWidth; canvas.height = window.innerHeight;
-const bubbles = Array.from({length:30}, () => ({
-x: Math.random()*canvas.width, y: canvas.height+Math.random()*100,
-r: Math.random()*18+5, vy: -(Math.random()*1+0.3), o: Math.random()0.4+0.1
-}));
-function draw() {
-ctx.clearRect(0,0,canvas.width,canvas.height);
-bubbles.forEach(b => {
-b.y += b.vy;
-if(b.y < -b.r2) { b.y = canvas.height+b.r; b.x = Math.random()canvas.width; }
-ctx.beginPath(); ctx.arc(b.x,b.y,b.r,0,Math.PI2);
-ctx.strokeStyle = rgba(132,204,22,${b.o})`; ctx.lineWidth = 1.5; ctx.stroke();
-});
-specialAnim = requestAnimationFrame(draw);
-}
-draw();
+  const canvas = document.getElementById('toxicCanvas');
+  if(!canvas) return;
+  const ctx = canvas.getContext('2d');
+  canvas.width = window.innerWidth; canvas.height = window.innerHeight;
+  const bubbles = Array.from({length:30}, () => ({
+    x: Math.random()*canvas.width, y: canvas.height+Math.random()*100,
+    r: Math.random()*18+5, vy: -(Math.random()*1+0.3), o: Math.random()*0.4+0.1
+  }));
+  function draw() {
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+    bubbles.forEach(b => {
+      b.y += b.vy;
+      if(b.y < -b.r*2) { b.y = canvas.height+b.r; b.x = Math.random()*canvas.width; }
+      ctx.beginPath(); ctx.arc(b.x,b.y,b.r,0,Math.PI*2);
+      ctx.strokeStyle = `rgba(132,204,22,${b.o})`; ctx.lineWidth = 1.5; ctx.stroke();
+    });
+    specialAnim = requestAnimationFrame(draw);
+  }
+  draw();
 }
 
-/* Matrix Rain /
+/* Matrix Rain */
 function runMatrixAnim() {
-const canvas = document.getElementById('matrixCanvas');
-if(!canvas) return;
-const ctx = canvas.getContext('2d');
-canvas.width = window.innerWidth; canvas.height = window.innerHeight;
-const cols = Math.floor(canvas.width/14);
-const drops = Array(cols).fill(1);
-const chars = 'アイウエオカキクケコ0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-const accentColor = currentTheme === 'hacker' ? '#00ff00' : '#00ff41';
-function draw() {
-ctx.fillStyle = 'rgba(0,0,0,0.05)'; ctx.fillRect(0,0,canvas.width,canvas.height);
-ctx.fillStyle = accentColor; ctx.font = '13px Courier New';
-drops.forEach((d,i) => {
-const c = chars[Math.floor(Math.random()*chars.length)];
-ctx.fillText(c, i14, d14);
-if(d14 > canvas.height && Math.random()>0.975) drops[i] = 0;
-drops[i]++;
-});
-specialAnim = requestAnimationFrame(draw);
-}
-draw();
+  const canvas = document.getElementById('matrixCanvas');
+  if(!canvas) return;
+  const ctx = canvas.getContext('2d');
+  canvas.width = window.innerWidth; canvas.height = window.innerHeight;
+  const cols = Math.floor(canvas.width/14);
+  const drops = Array(cols).fill(1);
+  const chars = 'アイウエオカキクケコ0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+  const accentColor = currentTheme === 'hacker' ? '#00ff00' : '#00ff41';
+  function draw() {
+    ctx.fillStyle = 'rgba(0,0,0,0.05)'; ctx.fillRect(0,0,canvas.width,canvas.height);
+    ctx.fillStyle = accentColor; ctx.font = '13px Courier New';
+    drops.forEach((d,i) => {
+      const c = chars[Math.floor(Math.random()*chars.length)];
+      ctx.fillText(c, i*14, d*14);
+      if(d*14 > canvas.height && Math.random()>0.975) drops[i] = 0;
+      drops[i]++;
+    });
+    specialAnim = requestAnimationFrame(draw);
+  }
+  draw();
 }
 
 /* Fire Embers */
 function runFireAnim() {
-const canvas = document.getElementById('fireCanvas');
-if(!canvas) return;
-const ctx = canvas.getContext('2d');
-canvas.width = window.innerWidth; canvas.height = window.innerHeight;
-const embers = Array.from({length:70}, () => createEmber(canvas));
-const col1 = currentTheme === 'lava' ? [255,34,0] : currentTheme === 'volcano' ? [249,115,22] : currentTheme === 'magma' ? [255,102,0] : [255,200,50];
-const col2 = currentTheme === 'lava' ? [255,136,0] : currentTheme === 'volcano' ? [220,38,38] : currentTheme === 'magma' ? [255,68,0] : [255,50,0];
-function createEmber(c) {
-return {x: Math.random()*c.width, y: c.height+10, vx: (Math.random()-0.5)*2, vy: -(Math.random()*3+1), r: Math.random()*4+1, life: 1};
-}
-function draw() {
-ctx.clearRect(0,0,canvas.width,canvas.height);
-embers.forEach((e,i) => {
-e.x += e.vx; e.y += e.vy; e.life -= 0.012; e.vx += (Math.random()-0.5)0.3;
-if(e.life <= 0 || e.y < 0) embers[i] = createEmber(canvas);
-const g = ctx.createRadialGradient(e.x,e.y,0,e.x,e.y,e.r);
-g.addColorStop(0,rgba(${col1[0]},{col1[1]},{col1[2]},{e.life})`); g.addColorStop(1,`rgba({col2[0]},{col2[1]},{col2[2]},0)`);
-ctx.beginPath(); ctx.arc(e.x,e.y,e.r,0,Math.PI2);
-ctx.fillStyle = g; ctx.fill();
-});
-specialAnim = requestAnimationFrame(draw);
-}
-draw();
+  const canvas = document.getElementById('fireCanvas');
+  if(!canvas) return;
+  const ctx = canvas.getContext('2d');
+  canvas.width = window.innerWidth; canvas.height = window.innerHeight;
+  const embers = Array.from({length:70}, () => createEmber(canvas));
+  const col1 = currentTheme==='lava'?[255,34,0]:currentTheme==='volcano'?[249,115,22]:currentTheme==='magma'?[255,102,0]:[255,200,50];
+  const col2 = currentTheme==='lava'?[255,136,0]:currentTheme==='volcano'?[220,38,38]:currentTheme==='magma'?[255,68,0]:[255,50,0];
+  function createEmber(c) {
+    return {x:Math.random()*c.width, y:c.height+10, vx:(Math.random()-0.5)*2, vy:-(Math.random()*3+1), r:Math.random()*4+1, life:1};
+  }
+  function draw() {
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+    embers.forEach((e,i) => {
+      e.x+=e.vx; e.y+=e.vy; e.life-=0.012; e.vx+=(Math.random()-0.5)*0.3;
+      if(e.life<=0||e.y<0) embers[i]=createEmber(canvas);
+      const g = ctx.createRadialGradient(e.x,e.y,0,e.x,e.y,e.r);
+      g.addColorStop(0,`rgba(${col1[0]},${col1[1]},${col1[2]},${e.life})`);
+      g.addColorStop(1,`rgba(${col2[0]},${col2[1]},${col2[2]},0)`);
+      ctx.beginPath(); ctx.arc(e.x,e.y,e.r,0,Math.PI*2);
+      ctx.fillStyle=g; ctx.fill();
+    });
+    specialAnim = requestAnimationFrame(draw);
+  }
+  draw();
 }
 
 /* Snow Flakes */
 function runSnowAnim() {
-const canvas = document.getElementById('snowCanvas');
-if(!canvas) return;
-const ctx = canvas.getContext('2d');
-canvas.width = window.innerWidth; canvas.height = window.innerHeight;
-const color = currentTheme === 'iceking' ? [200,240,255] : currentTheme === 'arcticnight' ? [72,201,208] : [200,235,255];
-const flakes = Array.from({length:70}, () => ({
-x: Math.random()*canvas.width, y: Math.random()*canvas.height,
-r: Math.random()*3+1, vy: Math.random()*0.8+0.3, vx: (Math.random()-0.5)*0.5,
-o: Math.random()*0.6+0.2
-}));
-function draw() {
-ctx.clearRect(0,0,canvas.width,canvas.height);
-flakes.forEach(f => {
-f.y += f.vy; f.x += f.vx;
-if(f.y > canvas.height) { f.y = -5; f.x = Math.random()canvas.width; }
-if(f.x > canvas.width) f.x = 0; if(f.x < 0) f.x = canvas.width;
-ctx.beginPath(); ctx.arc(f.x,f.y,f.r,0,Math.PI2);
-ctx.fillStyle = rgba(${color[0]},${color[1]},${color[2]},${f.o}); ctx.fill();
-});
-specialAnim = requestAnimationFrame(draw);
-}
-draw();
+  const canvas = document.getElementById('snowCanvas');
+  if(!canvas) return;
+  const ctx = canvas.getContext('2d');
+  canvas.width = window.innerWidth; canvas.height = window.innerHeight;
+  const color = currentTheme==='iceking'?[200,240,255]:currentTheme==='arcticnight'?[72,201,208]:[200,235,255];
+  const flakes = Array.from({length:70}, () => ({
+    x:Math.random()*canvas.width, y:Math.random()*canvas.height,
+    r:Math.random()*3+1, vy:Math.random()*0.8+0.3, vx:(Math.random()-0.5)*0.5,
+    o:Math.random()*0.6+0.2
+  }));
+  function draw() {
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+    flakes.forEach(f => {
+      f.y+=f.vy; f.x+=f.vx;
+      if(f.y>canvas.height){f.y=-5;f.x=Math.random()*canvas.width;}
+      if(f.x>canvas.width) f.x=0; if(f.x<0) f.x=canvas.width;
+      ctx.beginPath(); ctx.arc(f.x,f.y,f.r,0,Math.PI*2);
+      ctx.fillStyle=`rgba(${color[0]},${color[1]},${color[2]},${f.o})`; ctx.fill();
+    });
+    specialAnim = requestAnimationFrame(draw);
+  }
+  draw();
 }
 
 /* Crystal Rain */
 function runCrystalAnim() {
-const canvas = document.getElementById('crystalCanvas');
-if(!canvas) return;
-const ctx = canvas.getContext('2d');
-canvas.width = window.innerWidth; canvas.height = window.innerHeight;
-const shards = Array.from({length:45}, () => ({
-x: Math.random()*canvas.width, y: Math.random()*canvas.height - canvas.height,
-vy: Math.random()*2+0.8, vx: (Math.random()-0.5)*0.4,
-len: Math.random()*20+8, angle: Math.random()*Math.PI, va: (Math.random()-0.5)*0.02,
-hue: Math.floor(Math.random()*60+170), o: Math.random()0.5+0.2
-}));
-function draw() {
-ctx.clearRect(0,0,canvas.width,canvas.height);
-shards.forEach(s => {
-s.y += s.vy; s.x += s.vx; s.angle += s.va;
-if(s.y > canvas.height+30) { s.y = -30; s.x = Math.random()canvas.width; }
-ctx.save(); ctx.translate(s.x,s.y); ctx.rotate(s.angle);
-ctx.beginPath(); ctx.moveTo(0,-s.len/2); ctx.lineTo(s.len0.2,0);
-ctx.lineTo(0,s.len/2); ctx.lineTo(-s.len0.2,0); ctx.closePath();
-ctx.fillStyle = hsla(${s.hue},80%,75%,${s.o}); ctx.fill();
-ctx.restore();
-});
-specialAnim = requestAnimationFrame(draw);
-}
-draw();
+  const canvas = document.getElementById('crystalCanvas');
+  if(!canvas) return;
+  const ctx = canvas.getContext('2d');
+  canvas.width = window.innerWidth; canvas.height = window.innerHeight;
+  const shards = Array.from({length:45}, () => ({
+    x:Math.random()*canvas.width, y:Math.random()*canvas.height-canvas.height,
+    vy:Math.random()*2+0.8, vx:(Math.random()-0.5)*0.4,
+    len:Math.random()*20+8, angle:Math.random()*Math.PI, va:(Math.random()-0.5)*0.02,
+    hue:Math.floor(Math.random()*60+170), o:Math.random()*0.5+0.2
+  }));
+  function draw() {
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+    shards.forEach(s => {
+      s.y+=s.vy; s.x+=s.vx; s.angle+=s.va;
+      if(s.y>canvas.height+30){s.y=-30;s.x=Math.random()*canvas.width;}
+      ctx.save(); ctx.translate(s.x,s.y); ctx.rotate(s.angle);
+      ctx.beginPath(); ctx.moveTo(0,-s.len/2); ctx.lineTo(s.len*0.2,0);
+      ctx.lineTo(0,s.len/2); ctx.lineTo(-s.len*0.2,0); ctx.closePath();
+      ctx.fillStyle=`hsla(${s.hue},80%,75%,${s.o})`; ctx.fill();
+      ctx.restore();
+    });
+    specialAnim = requestAnimationFrame(draw);
+  }
+  draw();
 }
 
 /* Desert Sand */
 function runDesertAnim() {
-const canvas = document.getElementById('desertCanvas');
-if(!canvas) return;
-const ctx = canvas.getContext('2d');
-canvas.width = window.innerWidth; canvas.height = window.innerHeight;
-const grains = Array.from({length:130}, () => ({
-x: Math.random()*canvas.width, y: Math.random()*canvas.height,
-vx: Math.random()*3+1.5, vy: (Math.random()-0.5)*0.8,
-r: Math.random()*1.5+0.3, o: Math.random()*0.4+0.1,
-wave: Math.random()Math.PI2, waveSpeed: Math.random()*0.04+0.01
-}));
-function draw() {
-ctx.clearRect(0,0,canvas.width,canvas.height);
-grains.forEach(g => {
-g.wave += g.waveSpeed; g.x += g.vx; g.y += g.vy + Math.sin(g.wave)*0.3;
-if(g.x > canvas.width+10) { g.x = -10; g.y = Math.random()canvas.height; }
-ctx.beginPath(); ctx.arc(g.x,g.y,g.r,0,Math.PI2);
-ctx.fillStyle = rgba(217,119,6,${g.o})`; ctx.fill();
-});
-specialAnim = requestAnimationFrame(draw);
-}
-draw();
+  const canvas = document.getElementById('desertCanvas');
+  if(!canvas) return;
+  const ctx = canvas.getContext('2d');
+  canvas.width = window.innerWidth; canvas.height = window.innerHeight;
+  const grains = Array.from({length:130}, () => ({
+    x:Math.random()*canvas.width, y:Math.random()*canvas.height,
+    vx:Math.random()*3+1.5, vy:(Math.random()-0.5)*0.8,
+    r:Math.random()*1.5+0.3, o:Math.random()*0.4+0.1,
+    wave:Math.random()*Math.PI*2, waveSpeed:Math.random()*0.04+0.01
+  }));
+  function draw() {
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+    grains.forEach(g => {
+      g.wave+=g.waveSpeed; g.x+=g.vx; g.y+=g.vy+Math.sin(g.wave)*0.3;
+      if(g.x>canvas.width+10){g.x=-10;g.y=Math.random()*canvas.height;}
+      ctx.beginPath(); ctx.arc(g.x,g.y,g.r,0,Math.PI*2);
+      ctx.fillStyle=`rgba(217,119,6,${g.o})`; ctx.fill();
+    });
+    specialAnim = requestAnimationFrame(draw);
+  }
+  draw();
 }
 
 /* Forest Leaves */
 function runForestAnim() {
-const canvas = document.getElementById('forestCanvas');
-if(!canvas) return;
-const ctx = canvas.getContext('2d');
-canvas.width = window.innerWidth; canvas.height = window.innerHeight;
-const hueBase = currentTheme === 'tropical' ? 140 : currentTheme === 'mint' ? 145 : 100;
-const leaves = Array.from({length:40}, () => ({
-x: Math.random()*canvas.width, y: Math.random()*canvas.height - canvas.height,
-vx: (Math.random()-0.5)*1.2, vy: Math.random()*1.2+0.4,
-r: Math.random()*7+4, angle: Math.random()Math.PI2, va: (Math.random()-0.5)*0.04,
-swing: Math.random()Math.PI2, swingSpeed: Math.random()*0.03+0.01,
-hue: Math.floor(Math.random()*40+hueBase), o: Math.random()*0.5+0.25
-}));
-function draw() {
-ctx.clearRect(0,0,canvas.width,canvas.height);
-leaves.forEach(l => {
-l.swing += l.swingSpeed; l.x += l.vx + Math.sin(l.swing)0.5;
-l.y += l.vy; l.angle += l.va;
-if(l.y > canvas.height+20) { l.y = -20; l.x = Math.random()canvas.width; }
-ctx.save(); ctx.translate(l.x,l.y); ctx.rotate(l.angle);
-ctx.beginPath(); ctx.ellipse(0,0,l.r,l.r0.55,0,0,Math.PI2);
-ctx.fillStyle = hsla(${l.hue},65%,38%,${l.o}); ctx.fill();
-ctx.restore();
-});
-specialAnim = requestAnimationFrame(draw);
-}
-draw();
+  const canvas = document.getElementById('forestCanvas');
+  if(!canvas) return;
+  const ctx = canvas.getContext('2d');
+  canvas.width = window.innerWidth; canvas.height = window.innerHeight;
+  const hueBase = currentTheme==='tropical'?140:currentTheme==='mint'?145:100;
+  const leaves = Array.from({length:40}, () => ({
+    x:Math.random()*canvas.width, y:Math.random()*canvas.height-canvas.height,
+    vx:(Math.random()-0.5)*1.2, vy:Math.random()*1.2+0.4,
+    r:Math.random()*7+4, angle:Math.random()*Math.PI*2, va:(Math.random()-0.5)*0.04,
+    swing:Math.random()*Math.PI*2, swingSpeed:Math.random()*0.03+0.01,
+    hue:Math.floor(Math.random()*40+hueBase), o:Math.random()*0.5+0.25
+  }));
+  function draw() {
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+    leaves.forEach(l => {
+      l.swing+=l.swingSpeed; l.x+=l.vx+Math.sin(l.swing)*0.5;
+      l.y+=l.vy; l.angle+=l.va;
+      if(l.y>canvas.height+20){l.y=-20;l.x=Math.random()*canvas.width;}
+      ctx.save(); ctx.translate(l.x,l.y); ctx.rotate(l.angle);
+      ctx.beginPath(); ctx.ellipse(0,0,l.r,l.r*0.55,0,0,Math.PI*2);
+      ctx.fillStyle=`hsla(${l.hue},65%,38%,${l.o})`; ctx.fill();
+      ctx.restore();
+    });
+    specialAnim = requestAnimationFrame(draw);
+  }
+  draw();
 }
 
 /* Electric Sparks */
 function runElectricAnim() {
-const canvas = document.getElementById('electricCanvas');
-if(!canvas) return;
-const ctx = canvas.getContext('2d');
-canvas.width = window.innerWidth; canvas.height = window.innerHeight;
-let frame = 0;
-function spark(x1,y1,x2,y2,d) {
-if(d<=0) return;
-const mx = (x1+x2)/2 + (Math.random()-0.5)*60;
-const my = (y1+y2)/2 + (Math.random()-0.5)30;
-ctx.beginPath(); ctx.moveTo(x1,y1); ctx.lineTo(mx,my); ctx.lineTo(x2,y2);
-ctx.strokeStyle = rgba(250,204,21,${0.8/(4-d)})`;
-ctx.lineWidth = d0.6; ctx.shadowBlur = 12; ctx.shadowColor = 'rgba(250,204,21,0.8)';
-ctx.stroke(); ctx.shadowBlur = 0;
-if(Math.random()>0.55) spark(mx,my,mx+(Math.random()-0.5)*80,my+40,d-1);
-}
-function draw() {
-ctx.clearRect(0,0,canvas.width,canvas.height);
-frame++;
-if(frame%80<6) { const x=Math.random()*canvas.width; spark(x,0,x+(Math.random()-0.5)120,canvas.height0.6,3); }
-if(frame%130<4) { const x2=Math.random()*canvas.width; spark(x2,canvas.height,x2+(Math.random()-0.5)80,canvas.height0.4,2); }
-specialAnim = requestAnimationFrame(draw);
-}
-draw();
+  const canvas = document.getElementById('electricCanvas');
+  if(!canvas) return;
+  const ctx = canvas.getContext('2d');
+  canvas.width = window.innerWidth; canvas.height = window.innerHeight;
+  let frame = 0;
+  function spark(x1,y1,x2,y2,d) {
+    if(d<=0) return;
+    const mx=(x1+x2)/2+(Math.random()-0.5)*60;
+    const my=(y1+y2)/2+(Math.random()-0.5)*30;
+    ctx.beginPath(); ctx.moveTo(x1,y1); ctx.lineTo(mx,my); ctx.lineTo(x2,y2);
+    ctx.strokeStyle=`rgba(250,204,21,${0.8/(4-d)})`;
+    ctx.lineWidth=d*0.6; ctx.shadowBlur=12; ctx.shadowColor='rgba(250,204,21,0.8)';
+    ctx.stroke(); ctx.shadowBlur=0;
+    if(Math.random()>0.55) spark(mx,my,mx+(Math.random()-0.5)*80,my+40,d-1);
+  }
+  function draw() {
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+    frame++;
+    if(frame%80<6){const x=Math.random()*canvas.width;spark(x,0,x+(Math.random()-0.5)*120,canvas.height*0.6,3);}
+    if(frame%130<4){const x2=Math.random()*canvas.width;spark(x2,canvas.height,x2+(Math.random()-0.5)*80,canvas.height*0.4,2);}
+    specialAnim = requestAnimationFrame(draw);
+  }
+  draw();
 }
 
 /* Nebula Clouds */
 function runNebulaAnim() {
-const canvas = document.getElementById('nebulaCanvas');
-if(!canvas) return;
-const ctx = canvas.getContext('2d');
-canvas.width = window.innerWidth; canvas.height = window.innerHeight;
-const hueBase = currentTheme === 'aurora' ? 270 : 220;
-const clouds = Array.from({length:8}, () => ({
-x: Math.random()*canvas.width, y: Math.random()*canvas.height,
-rx: Math.random()*180+80, ry: Math.random()*100+50,
-hue: Math.floor(Math.random()*120+hueBase), o: Math.random()*0.08+0.03,
-vx: (Math.random()-0.5)*0.15, vy: (Math.random()-0.5)*0.08, angle: Math.random()Math.PI2
-}));
-const stars = Array.from({length:150}, () => ({
-x: Math.random()*canvas.width, y: Math.random()*canvas.height,
-r: Math.random()*1.2+0.2, t: Math.random()Math.PI2, speed: Math.random()*0.015+0.005
-}));
-function draw() {
-ctx.clearRect(0,0,canvas.width,canvas.height);
-clouds.forEach(c => {
-c.x += c.vx; c.y += c.vy;
-if(c.x < -c.rx) c.x = canvas.width+c.rx;
-if(c.x > canvas.width+c.rx) c.x = -c.rx;
-if(c.y < -c.ry) c.y = canvas.height+c.ry;
-if(c.y > canvas.height+c.ry) c.y = -c.ry;
-const grad = ctx.createRadialGradient(c.x,c.y,0,c.x,c.y,c.rx);
-grad.addColorStop(0,hsla(${c.hue},85%,65%,${c.o}));
-grad.addColorStop(0.5,hsla(${(c.hue+30)%360},80%,55%,${c.o*0.5}));
-grad.addColorStop(1,hsla(${c.hue},70%,40%,0)); ctx.beginPath(); ctx.ellipse(c.x,c.y,c.rx,c.ry,c.angle,0,Math.PI*2); ctx.fillStyle = grad; ctx.fill(); }); stars.forEach(s =&gt; { s.t += s.speed; const o = 0.3 + 0.7*Math.abs(Math.sin(s.t)); ctx.beginPath(); ctx.arc(s.x,s.y,s.r,0,Math.PI*2); ctx.fillStyle =rgba(180,160,255,${o}); ctx.fill();
-});
-specialAnim = requestAnimationFrame(draw);
-}
-draw();
+  const canvas = document.getElementById('nebulaCanvas');
+  if(!canvas) return;
+  const ctx = canvas.getContext('2d');
+  canvas.width = window.innerWidth; canvas.height = window.innerHeight;
+  const hueBase = currentTheme==='aurora'?270:220;
+  const clouds = Array.from({length:8}, () => ({
+    x:Math.random()*canvas.width, y:Math.random()*canvas.height,
+    rx:Math.random()*180+80, ry:Math.random()*100+50,
+    hue:Math.floor(Math.random()*120+hueBase), o:Math.random()*0.08+0.03,
+    vx:(Math.random()-0.5)*0.15, vy:(Math.random()-0.5)*0.08, angle:Math.random()*Math.PI*2
+  }));
+  const stars = Array.from({length:150}, () => ({
+    x:Math.random()*canvas.width, y:Math.random()*canvas.height,
+    r:Math.random()*1.2+0.2, t:Math.random()*Math.PI*2, speed:Math.random()*0.015+0.005
+  }));
+  function draw() {
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+    clouds.forEach(c => {
+      c.x+=c.vx; c.y+=c.vy;
+      if(c.x<-c.rx) c.x=canvas.width+c.rx;
+      if(c.x>canvas.width+c.rx) c.x=-c.rx;
+      if(c.y<-c.ry) c.y=canvas.height+c.ry;
+      if(c.y>canvas.height+c.ry) c.y=-c.ry;
+      const grad=ctx.createRadialGradient(c.x,c.y,0,c.x,c.y,c.rx);
+      grad.addColorStop(0,`hsla(${c.hue},85%,65%,${c.o})`);
+      grad.addColorStop(0.5,`hsla(${(c.hue+30)%360},80%,55%,${c.o*0.5})`);
+      grad.addColorStop(1,`hsla(${c.hue},70%,40%,0)`);
+      ctx.beginPath(); ctx.ellipse(c.x,c.y,c.rx,c.ry,c.angle,0,Math.PI*2);
+      ctx.fillStyle=grad; ctx.fill();
+    });
+    stars.forEach(s => {
+      s.t+=s.speed;
+      const o=0.3+0.7*Math.abs(Math.sin(s.t));
+      ctx.beginPath(); ctx.arc(s.x,s.y,s.r,0,Math.PI*2);
+      ctx.fillStyle=`rgba(180,160,255,${o})`; ctx.fill();
+    });
+    specialAnim = requestAnimationFrame(draw);
+  }
+  draw();
 }
 
 /* Space Warp */
 function runSpaceAnim() {
-const canvas = document.getElementById('spaceCanvas');
-if(!canvas) return;
-const ctx = canvas.getContext('2d');
-canvas.width = window.innerWidth; canvas.height = window.innerHeight;
-const cx = canvas.width/2, cy = canvas.height/2;
-const stars = Array.from({length:200}, () => ({
-x: (Math.random()-0.5)*canvas.width, y: (Math.random()-0.5)*canvas.height,
-z: Math.random()*canvas.width, pz: 0
-}));
-function draw() {
-ctx.fillStyle = 'rgba(0,0,5,0.12)'; ctx.fillRect(0,0,canvas.width,canvas.height);
-stars.forEach(s => {
-s.pz = s.z; s.z -= 2.5;
-if(s.z <= 0) { s.x = (Math.random()-0.5)*canvas.width; s.y = (Math.random()-0.5)*canvas.height; s.z = canvas.width; s.pz = s.z; }
-const sx = (s.x/s.z)*canvas.width+cx, sy = (s.y/s.z)*canvas.height+cy;
-const px = (s.x/s.pz)*canvas.width+cx, py = (s.y/s.pz)*canvas.height+cy;
-const size = Math.max(0.1, (1-s.z/canvas.width)*2.5);
-const bright = Math.floor((1-s.z/canvas.width)*255);
-ctx.beginPath(); ctx.moveTo(px,py); ctx.lineTo(sx,sy);
-ctx.strokeStyle = rgb(${bright},${bright},${Math.min(255,bright+30)})`;
-ctx.lineWidth = size; ctx.stroke();
-});
-specialAnim = requestAnimationFrame(draw);
-}
-draw();
+  const canvas = document.getElementById('spaceCanvas');
+  if(!canvas) return;
+  const ctx = canvas.getContext('2d');
+  canvas.width = window.innerWidth; canvas.height = window.innerHeight;
+  const cx = canvas.width/2, cy = canvas.height/2;
+  const stars = Array.from({length:200}, () => ({
+    x:(Math.random()-0.5)*canvas.width, y:(Math.random()-0.5)*canvas.height,
+    z:Math.random()*canvas.width, pz:0
+  }));
+  function draw() {
+    ctx.fillStyle='rgba(0,0,5,0.12)'; ctx.fillRect(0,0,canvas.width,canvas.height);
+    stars.forEach(s => {
+      s.pz=s.z; s.z-=2.5;
+      if(s.z<=0){s.x=(Math.random()-0.5)*canvas.width;s.y=(Math.random()-0.5)*canvas.height;s.z=canvas.width;s.pz=s.z;}
+      const sx=(s.x/s.z)*canvas.width+cx, sy=(s.y/s.z)*canvas.height+cy;
+      const px=(s.x/s.pz)*canvas.width+cx, py=(s.y/s.pz)*canvas.height+cy;
+      const size=Math.max(0.1,(1-s.z/canvas.width)*2.5);
+      const bright=Math.floor((1-s.z/canvas.width)*255);
+      ctx.beginPath(); ctx.moveTo(px,py); ctx.lineTo(sx,sy);
+      ctx.strokeStyle=`rgb(${bright},${bright},${Math.min(255,bright+30)})`;
+      ctx.lineWidth=size; ctx.stroke();
+    });
+    specialAnim = requestAnimationFrame(draw);
+  }
+  draw();
 }
 
 /* Neon Pink Grid */
 function runNeonPinkAnim() {
-const canvas = document.getElementById('neonpinkCanvas');
-if(!canvas) return;
-const ctx = canvas.getContext('2d');
-canvas.width = window.innerWidth; canvas.height = window.innerHeight;
-let offset = 0;
-const color = currentTheme === 'cyber' ? '0,255,255' : '255,0,102';
-const nodes = Array.from({length:12}, () => ({
-x: Math.random()*canvas.width, y: Math.random()*canvas.height,
-vx: (Math.random()-0.5)*0.6, vy: (Math.random()-0.5)*0.6,
-r: Math.random()*3+1.5
-}));
-function draw() {
-ctx.clearRect(0,0,canvas.width,canvas.height);
-offset += 0.4;
-for(let y = 0; y < canvas.height; y += 60) {
-const yo = (y+offset)%canvas.height;
-ctx.beginPath(); ctx.moveTo(0,yo); ctx.lineTo(canvas.width,yo);
-ctx.strokeStyle = rgba(${color},0.04); ctx.lineWidth = 1; ctx.stroke(); } nodes.forEach((n,i) =&gt; { n.x += n.vx; n.y += n.vy; if(n.x &lt; 0 || n.x &gt; canvas.width) n.vx *= -1; if(n.y &lt; 0 || n.y &gt; canvas.height) n.vy *= -1; nodes.forEach((m,j) =&gt; { if(j &lt;= i) return; const dx = n.x-m.x, dy = n.y-m.y, d = Math.sqrt(dx*dx+dy*dy); if(d &lt; 200) { ctx.beginPath(); ctx.moveTo(n.x,n.y); ctx.lineTo(m.x,m.y); ctx.strokeStyle =rgba({(1-d/200)*0.25}); ctx.lineWidth = 0.8; ctx.stroke(); } }); ctx.beginPath(); ctx.arc(n.x,n.y,n.r,0,Math.PI*2); ctx.fillStyle =rgba(${color},0.7); ctx.fill();
-});
-specialAnim = requestAnimationFrame(draw);
-}
-draw();
+  const canvas = document.getElementById('neonpinkCanvas');
+  if(!canvas) return;
+  const ctx = canvas.getContext('2d');
+  canvas.width = window.innerWidth; canvas.height = window.innerHeight;
+  let offset = 0;
+  const color = currentTheme==='cyber'?'0,255,255':'255,0,102';
+  const nodes = Array.from({length:12}, () => ({
+    x:Math.random()*canvas.width, y:Math.random()*canvas.height,
+    vx:(Math.random()-0.5)*0.6, vy:(Math.random()-0.5)*0.6,
+    r:Math.random()*3+1.5
+  }));
+  function draw() {
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+    offset+=0.4;
+    for(let y=0;y<canvas.height;y+=60){
+      const yo=(y+offset)%canvas.height;
+      ctx.beginPath(); ctx.moveTo(0,yo); ctx.lineTo(canvas.width,yo);
+      ctx.strokeStyle=`rgba(${color},0.04)`; ctx.lineWidth=1; ctx.stroke();
+    }
+    nodes.forEach((n,i) => {
+      n.x+=n.vx; n.y+=n.vy;
+      if(n.x<0||n.x>canvas.width) n.vx*=-1;
+      if(n.y<0||n.y>canvas.height) n.vy*=-1;
+      nodes.forEach((m,j) => {
+        if(j<=i) return;
+        const dx=n.x-m.x, dy=n.y-m.y, d=Math.sqrt(dx*dx+dy*dy);
+        if(d<200){
+          ctx.beginPath(); ctx.moveTo(n.x,n.y); ctx.lineTo(m.x,m.y);
+          ctx.strokeStyle=`rgba(${color},${(1-d/200)*0.25})`; ctx.lineWidth=0.8; ctx.stroke();
+        }
+      });
+      ctx.beginPath(); ctx.arc(n.x,n.y,n.r,0,Math.PI*2);
+      ctx.fillStyle=`rgba(${color},0.7)`; ctx.fill();
+    });
+    specialAnim = requestAnimationFrame(draw);
+  }
+  draw();
 }
 
-/* Rainbow Prism /
+/* Rainbow Prism */
 function runRainbowAnim() {
-const canvas = document.getElementById('rainbowCanvas');
-if(!canvas) return;
-const ctx = canvas.getContext('2d');
-canvas.width = window.innerWidth; canvas.height = window.innerHeight;
-const orbs = Array.from({length:6}, (_,i) => ({
-angle: (i/6)Math.PI2, speed: 0.004+i0.001,
-radius: 120+i30, hue: i60, size: 80+i15
-}));
-function draw() {
-ctx.clearRect(0,0,canvas.width,canvas.height);
-const cx = canvas.width/2, cy = canvas.height/2;
-orbs.forEach(o => {
-o.angle += o.speed; o.hue = (o.hue+0.4)%360;
-const x = cx + Math.cos(o.angle)o.radius;
-const y = cy + Math.sin(o.angle)(o.radius0.45);
-const grad = ctx.createRadialGradient(x,y,0,x,y,o.size);
-grad.addColorStop(0,hsla(${o.hue},100%,65%,0.12)); grad.addColorStop(0.5,hsla({o.hue},100%,45%,0)`);
-ctx.beginPath(); ctx.arc(x,y,o.size,0,Math.PI*2);
-ctx.fillStyle = grad; ctx.fill();
-});
-specialAnim = requestAnimationFrame(draw);
-}
-draw();
+  const canvas = document.getElementById('rainbowCanvas');
+  if(!canvas) return;
+  const ctx = canvas.getContext('2d');
+  canvas.width = window.innerWidth; canvas.height = window.innerHeight;
+  const orbs = Array.from({length:6}, (_,i) => ({
+    angle:(i/6)*Math.PI*2, speed:0.004+i*0.001,
+    radius:120+i*30, hue:i*60, size:80+i*15
+  }));
+  function draw() {
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+    const cx=canvas.width/2, cy=canvas.height/2;
+    orbs.forEach(o => {
+      o.angle+=o.speed; o.hue=(o.hue+0.4)%360;
+      const x=cx+Math.cos(o.angle)*o.radius;
+      const y=cy+Math.sin(o.angle)*(o.radius*0.45);
+      const grad=ctx.createRadialGradient(x,y,0,x,y,o.size);
+      grad.addColorStop(0,`hsla(${o.hue},100%,65%,0.12)`);
+      grad.addColorStop(0.5,`hsla(${o.hue},100%,45%,0)`);
+      ctx.beginPath(); ctx.arc(x,y,o.size,0,Math.PI*2);
+      ctx.fillStyle=grad; ctx.fill();
+    });
+    specialAnim = requestAnimationFrame(draw);
+  }
+  draw();
 }
 
 /* ══════ CLICK EFFECTS ══════ */
 const THEME_CLICK_EFFECTS = {
-sakura: 'petal', blossom: 'petal', dusk: 'petal', rose: 'petal', candy: 'petal',
-storm: 'lightning', electric: 'lightning',
-toxic: 'bubble', venom: 'bubble', neon: 'bubble', neongreen: 'bubble',
-fire: 'spark', volcano: 'spark', lava: 'spark', magma: 'spark',
-matrix: 'code', hacker: 'code',
-galaxy: 'star', space: 'star', nebula: 'star', midnight: 'star', aurora: 'star',
-rainbow: 'rainbow',
-void: 'void',
+  sakura:'petal', blossom:'petal', dusk:'petal', rose:'petal', candy:'petal',
+  storm:'lightning', electric:'lightning',
+  toxic:'bubble', venom:'bubble', neon:'bubble', neongreen:'bubble',
+  fire:'spark', volcano:'spark', lava:'spark', magma:'spark',
+  matrix:'code', hacker:'code',
+  galaxy:'star', space:'star', nebula:'star', midnight:'star', aurora:'star',
+  rainbow:'rainbow',
+  void:'void',
 };
 
 function setupClickEffects() {
-document.addEventListener('click', e => {
-if(e.target.closest('#buyKeyBanner') || e.target.closest('#navbar') ||
-e.target.closest('.dropdown') || e.target.closest('.mobile-menu')) return;
-spawnClickEffect(e.clientX, e.clientY);
-});
+  document.addEventListener('click', e => {
+    if(e.target.closest('#buyKeyBanner')||e.target.closest('#navbar')||
+       e.target.closest('.dropdown')||e.target.closest('.mobile-menu')) return;
+    spawnClickEffect(e.clientX, e.clientY);
+  });
 }
 
 function spawnClickEffect(x, y) {
-const effectType = THEME_CLICK_EFFECTS[currentTheme] || 'ripple';
-const style = getComputedStyle(document.documentElement);
-const accent = style.getPropertyValue('--accent').trim() || '#00d4ff';
-
-if(effectType === 'ripple' || !THEME_CLICK_EFFECTS[currentTheme]) {
-spawnRipple(x, y, accent);
-} else if(effectType === 'petal') {
-for(let i = 0; i < 8; i++) spawnPetal(x, y);
-} else if(effectType === 'spark') {
-for(let i = 0; i < 10; i++) spawnSpark(x, y, accent);
-} else if(effectType === 'bubble') {
-for(let i = 0; i < 6; i++) spawnBubble(x, y, accent);
-} else if(effectType === 'lightning') {
-spawnLightning(x, y);
-} else if(effectType === 'code') {
-for(let i = 0; i < 6; i++) spawnCodeChar(x, y);
-} else if(effectType === 'star') {
-for(let i = 0; i < 8; i++) spawnStar(x, y);
-} else if(effectType === 'rainbow') {
-for(let i = 0; i < 8; i++) spawnRainbowParticle(x, y, i);
-} else if(effectType === 'void') {
-spawnVoidEffect(x, y);
-} else {
-spawnRipple(x, y, accent);
-}
+  const effectType = THEME_CLICK_EFFECTS[currentTheme] || 'ripple';
+  const style = getComputedStyle(document.documentElement);
+  const accent = style.getPropertyValue('--accent').trim() || '#00d4ff';
+  if(effectType==='ripple'||!THEME_CLICK_EFFECTS[currentTheme]) { spawnRipple(x,y,accent); }
+  else if(effectType==='petal') { for(let i=0;i<8;i++) spawnPetal(x,y); }
+  else if(effectType==='spark') { for(let i=0;i<10;i++) spawnSpark(x,y,accent); }
+  else if(effectType==='bubble') { for(let i=0;i<6;i++) spawnBubble(x,y,accent); }
+  else if(effectType==='lightning') { spawnLightning(x,y); }
+  else if(effectType==='code') { for(let i=0;i<6;i++) spawnCodeChar(x,y); }
+  else if(effectType==='star') { for(let i=0;i<8;i++) spawnStar(x,y); }
+  else if(effectType==='rainbow') { for(let i=0;i<8;i++) spawnRainbowParticle(x,y,i); }
+  else if(effectType==='void') { spawnVoidEffect(x,y); }
+  else { spawnRipple(x,y,accent); }
 }
 
 function spawnRipple(x, y, color) {
-const ripple = document.createElement('div');
-ripple.className = 'click-ripple';
-ripple.style.cssText = left:${x}px;top:${y}px;border-color:${color}`;
-document.body.appendChild(ripple);
-setTimeout(() => ripple.remove(), 700);
+  const ripple = document.createElement('div');
+  ripple.className = 'click-ripple';
+  ripple.style.cssText = `left:${x}px;top:${y}px;border-color:${color}`;
+  document.body.appendChild(ripple);
+  setTimeout(() => ripple.remove(), 700);
 }
 
 function spawnParticle(x, y, color, dx, dy, size) {
-const p = document.createElement('div');
-p.className = 'click-particle';
-p.style.cssText = left:${x}px;top:{size}px;height:{color};
---dx:{dy}px;
-`;
-document.body.appendChild(p);
-setTimeout(() => p.remove(), 900);
+  const p = document.createElement('div');
+  p.className = 'click-particle';
+  p.style.cssText = `left:${x}px;top:${y}px;width:${size}px;height:${size}px;background:${color};--dx:${dx}px;--dy:${dy}px`;
+  document.body.appendChild(p);
+  setTimeout(() => p.remove(), 900);
 }
 
 function spawnPetal(x, y) {
-const hue = Math.floor(Math.random()*30 + 330);
-const color = hsla(${hue},90%,75%,0.9); const angle = Math.random()*Math.PI*2; const dist = Math.random()*80 + 30; const dx = Math.cos(angle)*dist; const dy = Math.sin(angle)*dist - 40; const p = document.createElement('div'); p.className = 'click-particle'; p.style.cssText =
-left:${x}px;top:${y}px;width:8px;height:5px;
-background:${color};border-radius:50% 0 50% 0; --dx:${dx}px;--dy:${dy}px;;
-document.body.appendChild(p);
-setTimeout(() => p.remove(), 900);
+  const hue = Math.floor(Math.random()*30+330);
+  const color = `hsla(${hue},90%,75%,0.9)`;
+  const angle = Math.random()*Math.PI*2;
+  const dist = Math.random()*80+30;
+  const dx = Math.cos(angle)*dist;
+  const dy = Math.sin(angle)*dist-40;
+  const p = document.createElement('div');
+  p.className = 'click-particle';
+  p.style.cssText = `left:${x}px;top:${y}px;width:8px;height:5px;background:${color};border-radius:50% 0 50% 0;--dx:${dx}px;--dy:${dy}px`;
+  document.body.appendChild(p);
+  setTimeout(() => p.remove(), 900);
 }
 
 function spawnSpark(x, y, color) {
-const angle = Math.random()Math.PI2;
-const dist = Math.random()*60+20;
-const dx = Math.cos(angle)*dist;
-const dy = Math.sin(angle)*dist;
-spawnParticle(x, y, color, dx, dy, Math.random()*4+2);
+  const angle = Math.random()*Math.PI*2;
+  const dist = Math.random()*60+20;
+  spawnParticle(x, y, color, Math.cos(angle)*dist, Math.sin(angle)*dist, Math.random()*4+2);
 }
 
 function spawnBubble(x, y, color) {
-const angle = Math.random()Math.PI2;
-const dist = Math.random()*50+20;
-const p = document.createElement('div');
-p.className = 'click-particle';
-p.style.cssText = left:${x}px;top:${y}px;width:10px;height:10px; background:transparent;border:2px solid ${color};
---dx:${Math.cos(angle)*dist}px;--dy:${Math.sin(angle)*dist-30}px;
-`;
-document.body.appendChild(p);
-setTimeout(() => p.remove(), 900);
+  const angle = Math.random()*Math.PI*2;
+  const dist = Math.random()*50+20;
+  const p = document.createElement('div');
+  p.className = 'click-particle';
+  p.style.cssText = `left:${x}px;top:${y}px;width:10px;height:10px;background:transparent;border:2px solid ${color};--dx:${Math.cos(angle)*dist}px;--dy:${Math.sin(angle)*dist-30}px`;
+  document.body.appendChild(p);
+  setTimeout(() => p.remove(), 900);
 }
 
 function spawnLightning(x, y) {
-const canvas = document.getElementById('clickCanvas');
-const ctx = canvas.getContext('2d');
-canvas.width = window.innerWidth; canvas.height = window.innerHeight;
-const endX = x + (Math.random()-0.5)*120;
-const endY = y + Math.random()*80 + 30;
-ctx.clearRect(0,0,canvas.width,canvas.height);
-ctx.beginPath();
-ctx.moveTo(x, y);
-const mx = (x+endX)/2+(Math.random()-0.5)*40;
-const my = (y+endY)/2+(Math.random()-0.5)*20;
-ctx.quadraticCurveTo(mx,my,endX,endY);
-ctx.strokeStyle = 'rgba(147,197,253,0.9)';
-ctx.lineWidth = 2;
-ctx.shadowBlur = 10;
-ctx.shadowColor = '#60a5fa';
-ctx.stroke();
-setTimeout(() => ctx.clearRect(0,0,canvas.width,canvas.height), 150);
+  const canvas = document.getElementById('clickCanvas');
+  const ctx = canvas.getContext('2d');
+  canvas.width = window.innerWidth; canvas.height = window.innerHeight;
+  const endX = x+(Math.random()-0.5)*120;
+  const endY = y+Math.random()*80+30;
+  ctx.clearRect(0,0,canvas.width,canvas.height);
+  ctx.beginPath(); ctx.moveTo(x,y);
+  const mx=(x+endX)/2+(Math.random()-0.5)*40;
+  const my=(y+endY)/2+(Math.random()-0.5)*20;
+  ctx.quadraticCurveTo(mx,my,endX,endY);
+  ctx.strokeStyle='rgba(147,197,253,0.9)';
+  ctx.lineWidth=2; ctx.shadowBlur=10; ctx.shadowColor='#60a5fa';
+  ctx.stroke();
+  setTimeout(() => ctx.clearRect(0,0,canvas.width,canvas.height), 150);
 }
 
 function spawnCodeChar(x, y) {
-const chars = '01ABCDEF<>{}[]';
-const c = chars[Math.floor(Math.random()*chars.length)];
-const el = document.createElement('div');
-const dx = (Math.random()-0.5)*100;
-const dy = -(Math.random()*80+30);
-el.style.cssText = position:fixed;left:${x}px;top:latex
-{y}px; color:#00ff41;font-family:monospace;font-size:
-
-{Math.random()*8+8}px;
-pointer-events:none;z-index:99998;font-weight:bold;
-animation:particleFly 0.9s ease-out forwards;
---dx:{dy}px;
-`;
-el.textContent = c;
-document.body.appendChild(el);
-setTimeout(() => el.remove(), 1000);
+  const chars='01ABCDEF<>{}[]';
+  const c=chars[Math.floor(Math.random()*chars.length)];
+  const el=document.createElement('div');
+  const dx=(Math.random()-0.5)*100;
+  const dy=-(Math.random()*80+30);
+  el.style.cssText=`position:fixed;left:${x}px;top:${y}px;color:#00ff41;font-family:monospace;font-size:${Math.random()*8+8}px;pointer-events:none;z-index:99998;font-weight:bold;animation:particleFly 0.9s ease-out forwards;--dx:${dx}px;--dy:${dy}px`;
+  el.textContent=c;
+  document.body.appendChild(el);
+  setTimeout(() => el.remove(), 1000);
 }
 
 function spawnStar(x, y) {
-const el = document.createElement('div');
-const dx = (Math.random()-0.5)*100;
-const dy = (Math.random()-0.5)*100;
-const hue = Math.floor(Math.random()*360);
-el.style.cssText = position:fixed;left:${x}px;top:${y}px; font-size:${Math.random()*8+8}px;
-pointer-events:none;z-index:99998;
-animation:particleFly 0.9s ease-out forwards;
---dx:${dx}px;--dy:${dy}px;
-filter:hue-rotate(${hue}deg);;
-el.textContent = '✦';
-document.body.appendChild(el);
-setTimeout(() => el.remove(), 1000);
+  const el=document.createElement('div');
+  const dx=(Math.random()-0.5)*100;
+  const dy=(Math.random()-0.5)*100;
+  const hue=Math.floor(Math.random()*360);
+  el.style.cssText=`position:fixed;left:${x}px;top:${y}px;font-size:${Math.random()*8+8}px;pointer-events:none;z-index:99998;animation:particleFly 0.9s ease-out forwards;--dx:${dx}px;--dy:${dy}px;filter:hue-rotate(${hue}deg)`;
+  el.textContent='✦';
+  document.body.appendChild(el);
+  setTimeout(() => el.remove(), 1000);
 }
 
 function spawnRainbowParticle(x, y, i) {
-const hue = i * 45;
-const angle = (i/8)Math.PI2;
-const dist = Math.random()*60+20;
-spawnParticle(x, y, hsl(${hue},100%,65%)`,
-Math.cos(angle)*dist, Math.sin(angle)*dist, Math.random()*6+3);
+  const hue=i*45;
+  const angle=(i/8)*Math.PI*2;
+  const dist=Math.random()*60+20;
+  spawnParticle(x, y, `hsl(${hue},100%,65%)`, Math.cos(angle)*dist, Math.sin(angle)*dist, Math.random()*6+3);
 }
 
 function spawnVoidEffect(x, y) {
-const ripple = document.createElement('div');
-ripple.className = 'click-ripple';
-ripple.style.cssText = left:${x}px;top:${y}px;border-color:#6600ff;box-shadow:0 0 20px #6600ff`;
-document.body.appendChild(ripple);
-setTimeout(() => ripple.remove(), 700);
-for(let i = 0; i < 6; i++) {
-const angle = (i/6)Math.PI2;
-const dist = Math.random()*60+20;
-spawnParticle(x, y, '#6600ff', Math.cos(angle)*dist, Math.sin(angle)*dist, Math.random()*5+3);
-}
+  const ripple=document.createElement('div');
+  ripple.className='click-ripple';
+  ripple.style.cssText=`left:${x}px;top:${y}px;border-color:#6600ff;box-shadow:0 0 20px #6600ff`;
+  document.body.appendChild(ripple);
+  setTimeout(() => ripple.remove(), 700);
+  for(let i=0;i<6;i++){
+    const angle=(i/6)*Math.PI*2;
+    const dist=Math.random()*60+20;
+    spawnParticle(x,y,'#6600ff',Math.cos(angle)*dist,Math.sin(angle)*dist,Math.random()*5+3);
+  }
 }
 
-/* ══════ THEME MUSIC (Web Audio API) ══════ */
+/* ══════ THEME MUSIC ══════ */
 const THEME_MUSIC_CONFIG = {
-default: {type:'ambient', freq:[80,160,320], bpm:60, color:'blue'},
-ruby: {type:'pulse', freq:[100,200,300], bpm:80, color:'red'},
-emerald: {type:'nature', freq:[220,440,880], bpm:70, color:'green'},
-aurora: {type:'ethereal',freq:[174,261,348], bpm:55, color:'purple'},
-sunset: {type:'warm', freq:[120,180,240], bpm:65, color:'orange'},
-arctic: {type:'crystal', freq:[300,600,900], bpm:50, color:'white'},
-neon: {type:'pulse', freq:[110,220,440], bpm:100, color:'green'},
-gold: {type:'warm', freq:[200,300,400], bpm:70, color:'gold'},
-sakura: {type:'nature', freq:[261,329,392], bpm:60, color:'pink'},
-midnight: {type:'deep', freq:[55,110,220], bpm:45, color:'indigo'},
-ocean: {type:'wave', freq:[140,280,420], bpm:55, color:'cyan'},
-volcano: {type:'rumble', freq:[60,120,80], bpm:90, color:'orange'},
-galaxy: {type:'space', freq:[90,135,180], bpm:40, color:'purple'},
-matrix: {type:'digital', freq:[220,330,440], bpm:120, color:'green'},
-fire: {type:'rumble', freq:[80,160,240], bpm:85, color:'red'},
-storm: {type:'pulse', freq:[100,150,200], bpm:95, color:'blue'},
-cyber: {type:'digital', freq:[200,400,600], bpm:110, color:'cyan'},
-plasma: {type:'ethereal',freq:[180,270,360], bpm:70, color:'purple'},
-electric: {type:'zap', freq:[440,880,220], bpm:100, color:'yellow'},
-rainbow: {type:'warm', freq:[261,330,392], bpm:70, color:'multi'},
-space: {type:'space', freq:[60,90,120], bpm:35, color:'blue'},
+  default:{type:'ambient',freq:[80,160,320],bpm:60},
+  ruby:{type:'pulse',freq:[100,200,300],bpm:80},
+  emerald:{type:'nature',freq:[220,440,880],bpm:70},
+  aurora:{type:'ethereal',freq:[174,261,348],bpm:55},
+  sunset:{type:'warm',freq:[120,180,240],bpm:65},
+  arctic:{type:'crystal',freq:[300,600,900],bpm:50},
+  neon:{type:'pulse',freq:[110,220,440],bpm:100},
+  gold:{type:'warm',freq:[200,300,400],bpm:70},
+  sakura:{type:'nature',freq:[261,329,392],bpm:60},
+  midnight:{type:'deep',freq:[55,110,220],bpm:45},
+  ocean:{type:'wave',freq:[140,280,420],bpm:55},
+  volcano:{type:'rumble',freq:[60,120,80],bpm:90},
+  galaxy:{type:'space',freq:[90,135,180],bpm:40},
+  matrix:{type:'digital',freq:[220,330,440],bpm:120},
+  fire:{type:'rumble',freq:[80,160,240],bpm:85},
+  storm:{type:'pulse',freq:[100,150,200],bpm:95},
+  cyber:{type:'digital',freq:[200,400,600],bpm:110},
+  plasma:{type:'ethereal',freq:[180,270,360],bpm:70},
+  electric:{type:'zap',freq:[440,880,220],bpm:100},
+  rainbow:{type:'warm',freq:[261,330,392],bpm:70},
+  space:{type:'space',freq:[60,90,120],bpm:35},
 };
 
 function getAudioCtx() {
-if(!audioCtx) {
-try {
-audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-} catch(e) { return null; }
+  if(!audioCtx) {
+    try { audioCtx=new(window.AudioContext||window.webkitAudioContext)(); } catch(e){return null;}
+  }
+  if(audioCtx.state==='suspended') audioCtx.resume();
+  return audioCtx;
 }
-if(audioCtx.state === 'suspended') audioCtx.resume();
-return audioCtx;
-}
-
 function stopThemeMusic() {
-currentAudioNodes.forEach(n => {
-try { n.stop && n.stop(); n.disconnect && n.disconnect(); } catch(e){}
-});
-currentAudioNodes = [];
+  currentAudioNodes.forEach(n => { try{n.stop&&n.stop();n.disconnect&&n.disconnect();}catch(e){} });
+  currentAudioNodes=[];
 }
-
 function startThemeMusic(themeId) {
-if(musicMuted) return;
-const ctx = getAudioCtx();
-if(!ctx) return;
-stopThemeMusic();
-const config = THEME_MUSIC_CONFIG[themeId] || THEME_MUSIC_CONFIG.default;
-const masterGain = ctx.createGain();
-masterGain.gain.setValueAtTime(0.04, ctx.currentTime);
-masterGain.connect(ctx.destination);
-currentAudioNodes.push(masterGain);
-
-config.freq.forEach((f, i) => {
-const osc = ctx.createOscillator();
-const gainNode = ctx.createGain();
-const filterNode = ctx.createBiquadFilter();
-
-filterNode.type = 'lowpass';
-filterNode.frequency.value = 800;
-
-osc.type = config.type === 'digital' ? 'square' :
-config.type === 'pulse' ? 'sawtooth' :
-config.type === 'rumble' ? 'sawtooth' : 'sine';
-osc.frequency.value = f;
-gainNode.gain.setValueAtTime(0.015 / (i + 1), ctx.currentTime);
-
-/* Slow LFO modulation for ambient feel */
-const lfo = ctx.createOscillator();
-const lfoGain = ctx.createGain();
-lfo.frequency.value = 0.2 + i * 0.07;
-lfoGain.gain.value = f * 0.02;
-lfo.connect(lfoGain);
-lfoGain.connect(osc.frequency);
-lfo.start();
-currentAudioNodes.push(lfo);
-
-osc.connect(filterNode);
-filterNode.connect(gainNode);
-gainNode.connect(masterGain);
-osc.start();
-currentAudioNodes.push(osc);
-currentAudioNodes.push(gainNode);
-currentAudioNodes.push(filterNode);
-currentAudioNodes.push(lfoGain);
-});
-
-/* Rhythmic pulse for non-ambient themes */
-if(['pulse','digital','zap','rumble'].includes(config.type)) {
-addRhythmicBeat(ctx, masterGain, config.bpm);
+  if(musicMuted) return;
+  const ctx=getAudioCtx();
+  if(!ctx) return;
+  stopThemeMusic();
+  const config=THEME_MUSIC_CONFIG[themeId]||THEME_MUSIC_CONFIG.default;
+  const masterGain=ctx.createGain();
+  masterGain.gain.setValueAtTime(0.04,ctx.currentTime);
+  masterGain.connect(ctx.destination);
+  currentAudioNodes.push(masterGain);
+  config.freq.forEach((f,i) => {
+    const osc=ctx.createOscillator();
+    const gainNode=ctx.createGain();
+    const filterNode=ctx.createBiquadFilter();
+    filterNode.type='lowpass'; filterNode.frequency.value=800;
+    osc.type=config.type==='digital'?'square':config.type==='pulse'?'sawtooth':config.type==='rumble'?'sawtooth':'sine';
+    osc.frequency.value=f;
+    gainNode.gain.setValueAtTime(0.015/(i+1),ctx.currentTime);
+    const lfo=ctx.createOscillator();
+    const lfoGain=ctx.createGain();
+    lfo.frequency.value=0.2+i*0.07;
+    lfoGain.gain.value=f*0.02;
+    lfo.connect(lfoGain); lfoGain.connect(osc.frequency); lfo.start();
+    currentAudioNodes.push(lfo);
+    osc.connect(filterNode); filterNode.connect(gainNode); gainNode.connect(masterGain);
+    osc.start();
+    currentAudioNodes.push(osc,gainNode,filterNode,lfoGain);
+  });
+  if(['pulse','digital','zap','rumble'].includes(config.type)) addRhythmicBeat(ctx,masterGain,config.bpm);
+  updateMusicIndicator();
 }
-
-updateMusicIndicator();
+function addRhythmicBeat(ctx,dest,bpm) {
+  const interval=60/bpm;
+  let beatCount=0;
+  function scheduleBeat() {
+    const now=ctx.currentTime;
+    const osc=ctx.createOscillator();
+    const gainNode=ctx.createGain();
+    osc.frequency.value=80; osc.type='sine';
+    gainNode.gain.setValueAtTime(0.08,now);
+    gainNode.gain.exponentialRampToValueAtTime(0.001,now+0.1);
+    osc.connect(gainNode); gainNode.connect(dest);
+    osc.start(now); osc.stop(now+0.15);
+    beatCount++;
+    if(beatCount<200&&!musicMuted) setTimeout(scheduleBeat,interval*1000);
+  }
+  setTimeout(scheduleBeat,0);
 }
-
-function addRhythmicBeat(ctx, dest, bpm) {
-const interval = 60 / bpm;
-let beatCount = 0;
-function scheduleBeat() {
-const now = ctx.currentTime;
-const osc = ctx.createOscillator();
-const gainNode = ctx.createGain();
-osc.frequency.value = 80;
-osc.type = 'sine';
-gainNode.gain.setValueAtTime(0.08, now);
-gainNode.gain.exponentialRampToValueAtTime(0.001, now + 0.1);
-osc.connect(gainNode);
-gainNode.connect(dest);
-osc.start(now);
-osc.stop(now + 0.15);
-beatCount++;
-if(beatCount < 200 && !musicMuted) {
-setTimeout(scheduleBeat, interval * 1000);
-}
-}
-setTimeout(scheduleBeat, 0);
-}
-
 function toggleMusic() {
-musicMuted = !musicMuted;
-localStorage.setItem('lpolvo_music_muted', musicMuted ? 'true' : 'false');
-if(musicMuted) {
-stopThemeMusic();
-} else {
-startThemeMusic(currentTheme);
+  musicMuted=!musicMuted;
+  localStorage.setItem('lpolvo_music_muted',musicMuted?'true':'false');
+  if(musicMuted) stopThemeMusic(); else startThemeMusic(currentTheme);
+  updateMusicIndicator();
 }
-updateMusicIndicator();
-}
-
 function updateMusicIndicator() {
-const indicator = document.getElementById('musicIndicator');
-if(!indicator) return;
-indicator.classList.toggle('muted', musicMuted);
-indicator.classList.add('visible');
+  const indicator=document.getElementById('musicIndicator');
+  if(!indicator) return;
+  indicator.classList.toggle('muted',musicMuted);
+  indicator.classList.add('visible');
 }
+document.addEventListener('click',()=>{ const ind=document.getElementById('musicIndicator'); if(ind) ind.classList.add('visible'); },{once:false});
 
-/* Show music indicator on first interaction */
-document.addEventListener('click', () => {
-const indicator = document.getElementById('musicIndicator');
-if(indicator) indicator.classList.add('visible');
-}, {once: false});
-
-/* ══════ KEYBOARD SHORTCUTS ══════ /
+/* ══════ KEYBOARD SHORTCUTS ══════ */
 document.addEventListener('keydown', e => {
-if(e.key === 'Escape') closeAllDropdowns();
-if((e.ctrlKey || e.metaKey) && (e.key === '/' || e.key === 'k')) {
-if(currentPage === 'explore') {
-e.preventDefault();
-const s = document.getElementById('exploreSearch');
-if(s) { s.focus(); s.select(); }
-}
-}
-/ Ctrl+M: Toggle music */
-if((e.ctrlKey || e.metaKey) && e.key === 'm') {
-e.preventDefault();
-toggleMusic();
-}
+  if(e.key==='Escape') closeAllDropdowns();
+  if((e.ctrlKey||e.metaKey)&&(e.key==='/'||e.key==='k')) {
+    if(currentPage==='explore') { e.preventDefault(); const s=document.getElementById('exploreSearch'); if(s){s.focus();s.select();} }
+  }
+  if((e.ctrlKey||e.metaKey)&&e.key==='m') { e.preventDefault(); toggleMusic(); }
 });
 
-/* ══════ INTERSECTION OBSERVER FOR CARD ANIMATIONS ══════ */
+/* ══════ CARD ANIMATIONS ══════ */
 (function setupCardObserver() {
-if(!('IntersectionObserver' in window)) return;
-const observer = new IntersectionObserver(entries => {
-entries.forEach(entry => {
-if(entry.isIntersecting) {
-entry.target.style.opacity = '1';
-entry.target.style.transform = 'translateY(0)';
-observer.unobserve(entry.target);
-}
-});
-}, {threshold:0.1, rootMargin:'0px 0px -40px 0px'});
-
-const origShowPage = window.showPage;
-window.showPage = function(page) {
-origShowPage(page);
-setTimeout(() => {
-document.querySelectorAll('.script-card,.video-card,.feat-card').forEach(card => {
-card.style.opacity = '0';
-card.style.transform = 'translateY(20px)';
-card.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
-observer.observe(card);
-});
-}, 50);
-};
+  if(!('IntersectionObserver' in window)) return;
+  const observer=new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if(entry.isIntersecting) { entry.target.style.opacity='1'; entry.target.style.transform='translateY(0)'; observer.unobserve(entry.target); }
+    });
+  },{threshold:0.1,rootMargin:'0px 0px -40px 0px'});
+  const origShowPage=window.showPage;
+  window.showPage=function(page) {
+    origShowPage(page);
+    setTimeout(()=>{
+      document.querySelectorAll('.script-card,.video-card,.feat-card').forEach(card=>{
+        card.style.opacity='0'; card.style.transform='translateY(20px)'; card.style.transition='opacity 0.3s ease, transform 0.3s ease';
+        observer.observe(card);
+      });
+    },50);
+  };
 })();
 
 /* ══════ RESIZE HANDLER ══════ */
 let resizeTimer;
 window.addEventListener('resize', () => {
-clearTimeout(resizeTimer);
-resizeTimer = setTimeout(() => {
-const allCanvases = [
-'galaxyCanvas','sakuraCanvas','stormCanvas','toxicCanvas','matrixCanvas',
-'fireCanvas','snowCanvas','crystalCanvas','desertCanvas','forestCanvas',
-'electricCanvas','nebulaCanvas','spaceCanvas','neonpinkCanvas','rainbowCanvas',
-'particlesCanvas','clickCanvas'
- ];
-allCanvases.forEach(id => {
-const c = document.getElementById(id);
-if(c) { c.width = window.innerWidth; c.height = window.innerHeight; }
-});
-startParticles();
-}, 200);
-}, {passive:true});
-
-/* ══════ SERVICE WORKER (optional PWA support) ══════ /
-/ Not registering SW in this single-file build to keep it simple */
-
-/* ══════ PERFORMANCE: lazy-load video thumbnails ══════ /
-(function lazyImages() {
-if('loading' in HTMLImageElement.prototype) return; / native lazy loading supported */
-const imgs = document.querySelectorAll('img[loading="lazy"]');
-const observer = new IntersectionObserver(entries => {
-entries.forEach(e => {
-if(e.isIntersecting) {
-const img = e.target;
-img.src = img.dataset.src || img.src;
-observer.unobserve(img);
-}
-});
-});
-imgs.forEach(img => observer.observe(img));
-})();
+  clearTimeout(resizeTimer);
+  resizeTimer=setTimeout(()=>{
+    ['galaxyCanvas','sakuraCanvas','stormCanvas','toxicCanvas','matrixCanvas','fireCanvas','snowCanvas','crystalCanvas','desertCanvas','forestCanvas','electricCanvas','nebulaCanvas','spaceCanvas','neonpinkCanvas','rainbowCanvas','particlesCanvas','clickCanvas'].forEach(id=>{
+      const c=document.getElementById(id); if(c){c.width=window.innerWidth;c.height=window.innerHeight;}
+    });
+    startParticles();
+  },200);
+},{passive:true});
 
 </script>
 </body>
