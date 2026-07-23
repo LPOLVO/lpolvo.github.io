@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-<meta name="theme-color" content="#0d0d12">
+<meta name="theme-color" content="#080818">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="description" content="LPOLVO HUB — Premium Roblox Scripts, Automation &amp; Community">
@@ -97,47 +97,47 @@ input, textarea, select { font-family: inherit; outline: none; border: none; }
    CSS VARIABLES — DEFAULT THEME (LPOLVO PINK)
    ═══════════════════════════════════════════════════════ */
 :root, [data-theme="lpolvo"] {
-  --bg: #0d0d12;
-  --bg2: #111118;
-  --bg3: #16161f;
-  --bg4: #1c1c28;
-  --card: #13131a;
-  --card2: #18182200;
-  --card-border: #1e1e2e;
-  --card-hover: #1a1a28;
-  --accent: #ec4899;
-  --accent2: #db2777;
-  --accent3: #f9a8d4;
-  --accent4: #a855f7;
-  --accent-alpha: rgba(236,72,153,0.12);
-  --accent-alpha2: rgba(236,72,153,0.06);
-  --text: #f0f0ff;
-  --text2: #8888aa;
-  --text3: #555570;
-  --border: #2a2a3f;
-  --border2: #1e1e30;
-  --glow: rgba(236,72,153,0.5);
-  --glow2: rgba(236,72,153,0.15);
-  --nav-bg: rgba(13,13,18,0.92);
-  --btn-grad: linear-gradient(135deg,#ec4899,#db2777);
-  --btn-hover: linear-gradient(135deg,#f472b6,#ec4899);
-  --shadow: 0 8px 32px rgba(0,0,0,0.6);
-  --shadow-card: 0 2px 16px rgba(0,0,0,0.4);
-  --glass: rgba(19,19,26,0.85);
-  --glass-border: rgba(236,72,153,0.18);
-  --tag-bg: rgba(236,72,153,0.1);
-  --tag-text: #f9a8d4;
+  --bg: #080818;
+  --bg2: #0c0c20;
+  --bg3: #111128;
+  --bg4: #171730;
+  --card: #0c0c1e;
+  --card2: #0c0c1e00;
+  --card-border: #1e1e38;
+  --card-hover: #131330;
+  --accent: #4169E1;
+  --accent2: #2451C2;
+  --accent3: #93B4FF;
+  --accent4: #6C5CE7;
+  --accent-alpha: rgba(65,105,225,0.14);
+  --accent-alpha2: rgba(65,105,225,0.07);
+  --text: #eef0ff;
+  --text2: #7a85bb;
+  --text3: #454870;
+  --border: #1e1e3a;
+  --border2: #151530;
+  --glow: rgba(65,105,225,0.55);
+  --glow2: rgba(65,105,225,0.18);
+  --nav-bg: rgba(8,8,24,0.92);
+  --btn-grad: linear-gradient(135deg,#4169E1,#2451C2);
+  --btn-hover: linear-gradient(135deg,#6389F5,#4169E1);
+  --shadow: 0 8px 32px rgba(0,0,0,0.65);
+  --shadow-card: 0 2px 16px rgba(0,0,0,0.45);
+  --glass: rgba(12,12,30,0.85);
+  --glass-border: rgba(65,105,225,0.2);
+  --tag-bg: rgba(65,105,225,0.1);
+  --tag-text: #93B4FF;
   --badge-new: #22c55e;
   --badge-free: #eab308;
-  --badge-paid: #ec4899;
-  --sidebar-bg: #0d0d12;
-  --input-bg: #111118;
-  --input-border: #2a2a3f;
+  --badge-paid: #4169E1;
+  --sidebar-bg: #080818;
+  --input-bg: #0c0c20;
+  --input-border: #1e1e38;
   --nav-height: 58px;
   --radius: 12px;
   --radius-sm: 8px;
   --radius-lg: 16px;
-  --intro-grad: linear-gradient(135deg, #0d0d12 0%, #1a0820 50%, #0d0d12 100%);
+  --intro-grad: linear-gradient(135deg, #080818 0%, #0d1245 50%, #080818 100%);
 }
 
 [data-theme="ocean"] {
@@ -2758,6 +2758,925 @@ input, textarea, select { font-family: inherit; outline: none; border: none; }
 .skeleton-line.short { width: 60%; }
 
 /* ═══════════════════════════════════════════════════════
+   ANNOUNCEMENT BANNER
+   ═══════════════════════════════════════════════════════ */
+.announcement-banner {
+  background: linear-gradient(90deg, var(--accent2) 0%, var(--accent) 50%, var(--accent4) 100%);
+  padding: 10px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  position: relative;
+  overflow: hidden;
+  flex-shrink: 0;
+  z-index: 499;
+}
+.announcement-banner::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    -45deg,
+    rgba(255,255,255,0.04) 0px,
+    rgba(255,255,255,0.04) 1px,
+    transparent 1px,
+    transparent 14px
+  );
+}
+.announcement-text {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: 0.04em;
+  text-align: center;
+  line-height: 1.4;
+  position: relative;
+  z-index: 1;
+}
+.announcement-text a {
+  color: rgba(255,255,255,0.9);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+.announcement-close {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 22px; height: 22px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.2);
+  border: none;
+  color: #fff;
+  font-size: 0.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 1;
+  transition: background 0.2s;
+}
+.announcement-close:hover { background: rgba(255,255,255,0.35); }
+.announcement-pulse {
+  width: 7px; height: 7px;
+  border-radius: 50%;
+  background: #fff;
+  position: relative;
+  animation: annPulse 1.5s ease-in-out infinite;
+  flex-shrink: 0;
+  z-index: 1;
+}
+@keyframes annPulse {
+  0%,100% { box-shadow: 0 0 0 0 rgba(255,255,255,0.7); }
+  70% { box-shadow: 0 0 0 6px rgba(255,255,255,0); }
+}
+
+/* ═══════════════════════════════════════════════════════
+   HOW IT WORKS SECTION
+   ═══════════════════════════════════════════════════════ */
+.how-section {
+  padding: 32px 0 24px;
+  background: var(--bg2);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+.how-steps {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  padding: 0 16px;
+  position: relative;
+}
+.how-step {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  padding: 18px 0;
+  position: relative;
+}
+.how-step:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  left: 18px;
+  top: 58px;
+  width: 2px;
+  height: calc(100% - 38px);
+  background: linear-gradient(to bottom, var(--accent), transparent);
+  opacity: 0.3;
+}
+.how-step-num {
+  width: 38px; height: 38px;
+  border-radius: 50%;
+  background: var(--btn-grad);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Orbitron', monospace;
+  font-size: 0.8rem;
+  font-weight: 900;
+  color: #fff;
+  flex-shrink: 0;
+  box-shadow: 0 0 16px var(--glow2);
+}
+.how-step-content { flex: 1; }
+.how-step-title {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 4px;
+}
+.how-step-desc {
+  font-size: 0.82rem;
+  color: var(--text2);
+  line-height: 1.6;
+}
+
+/* ═══════════════════════════════════════════════════════
+   TOP CREATORS SECTION
+   ═══════════════════════════════════════════════════════ */
+.creators-scroll {
+  display: flex;
+  gap: 12px;
+  overflow-x: auto;
+  padding: 4px 16px 8px;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.creators-scroll::-webkit-scrollbar { display: none; }
+.creator-card {
+  flex-shrink: 0;
+  width: 140px;
+  background: var(--card);
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius-lg);
+  padding: 16px 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  transition: border-color 0.2s, background 0.2s;
+  -webkit-tap-highlight-color: transparent;
+}
+.creator-card:hover { border-color: var(--accent); background: var(--card-hover); }
+.creator-card-rank {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  width: 20px; height: 20px;
+  border-radius: 6px;
+  background: var(--btn-grad);
+  font-size: 0.65rem;
+  font-weight: 900;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Orbitron', monospace;
+}
+.creator-card-wrap { position: relative; }
+.creator-card-avatar {
+  width: 56px; height: 56px;
+  border-radius: 50%;
+  background: var(--btn-grad);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.3rem;
+  font-weight: 900;
+  color: #fff;
+  border: 2.5px solid var(--accent);
+  box-shadow: 0 0 16px var(--glow2);
+  font-family: 'Syne', sans-serif;
+}
+.creator-card-verified {
+  position: absolute;
+  bottom: 2px; right: 2px;
+  width: 18px; height: 18px;
+  border-radius: 50%;
+  background: var(--accent);
+  border: 2px solid var(--bg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.6rem;
+  color: #fff;
+}
+.creator-card-name {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--text);
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 120px;
+}
+.creator-card-scripts {
+  font-size: 0.7rem;
+  color: var(--text3);
+  text-align: center;
+}
+.creator-card-views {
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--accent);
+  text-align: center;
+}
+
+/* ═══════════════════════════════════════════════════════
+   NEWS / UPDATES FEED
+   ═══════════════════════════════════════════════════════ */
+.news-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 0 16px;
+}
+.news-item {
+  background: var(--card);
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  cursor: pointer;
+  transition: border-color 0.2s;
+  -webkit-tap-highlight-color: transparent;
+}
+.news-item:hover { border-color: var(--accent); }
+.news-item-img {
+  width: 100%;
+  aspect-ratio: 16/6;
+  object-fit: cover;
+  background: var(--bg3);
+  display: block;
+}
+.news-item-body { padding: 12px 14px; }
+.news-item-meta {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 6px;
+}
+.news-item-badge {
+  font-size: 0.62rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 2px 7px;
+  border-radius: 5px;
+}
+.news-item-badge.update { background: rgba(65,105,225,0.15); color: var(--accent3); }
+.news-item-badge.announce { background: rgba(34,197,94,0.15); color: #4ade80; }
+.news-item-badge.feature { background: rgba(168,85,247,0.15); color: #c084fc; }
+.news-item-date {
+  font-size: 0.72rem;
+  color: var(--text3);
+}
+.news-item-title {
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: var(--text);
+  line-height: 1.35;
+  margin-bottom: 6px;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.news-item-excerpt {
+  font-size: 0.8rem;
+  color: var(--text2);
+  line-height: 1.6;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.news-item-footer {
+  padding: 8px 14px 12px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.news-read-more {
+  font-size: 0.78rem;
+  color: var(--accent);
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.news-read-more svg { transition: transform 0.2s; }
+.news-item:hover .news-read-more svg { transform: translateX(3px); }
+
+/* ═══════════════════════════════════════════════════════
+   LEADERBOARD
+   ═══════════════════════════════════════════════════════ */
+.leaderboard-list {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 0 16px;
+}
+.leaderboard-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 14px;
+  background: var(--card);
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: border-color 0.2s, background 0.2s;
+  -webkit-tap-highlight-color: transparent;
+}
+.leaderboard-item:hover { border-color: var(--accent); background: var(--card-hover); }
+.leaderboard-item.rank-1 { border-color: rgba(245,158,11,0.4); background: rgba(245,158,11,0.04); }
+.leaderboard-item.rank-2 { border-color: rgba(148,163,184,0.4); background: rgba(148,163,184,0.03); }
+.leaderboard-item.rank-3 { border-color: rgba(180,120,80,0.4); background: rgba(180,120,80,0.03); }
+.leaderboard-rank {
+  width: 28px; height: 28px;
+  border-radius: 8px;
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Orbitron', monospace;
+  font-size: 0.75rem;
+  font-weight: 900;
+  flex-shrink: 0;
+}
+.leaderboard-item.rank-1 .leaderboard-rank { background: rgba(245,158,11,0.2); color: #f59e0b; }
+.leaderboard-item.rank-2 .leaderboard-rank { background: rgba(148,163,184,0.15); color: #94a3b8; }
+.leaderboard-item.rank-3 .leaderboard-rank { background: rgba(180,120,80,0.15); color: #b47850; }
+.leaderboard-rank-default { background: var(--bg3); color: var(--text3); }
+.leaderboard-name {
+  flex: 1;
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: var(--text);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.leaderboard-game {
+  font-size: 0.72rem;
+  color: var(--text3);
+  margin-top: 2px;
+}
+.leaderboard-stat {
+  text-align: right;
+  flex-shrink: 0;
+}
+.leaderboard-stat-num {
+  font-family: 'Syne', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 800;
+  color: var(--accent);
+}
+.leaderboard-stat-label {
+  font-size: 0.65rem;
+  color: var(--text3);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+/* ═══════════════════════════════════════════════════════
+   FAQ ACCORDION
+   ═══════════════════════════════════════════════════════ */
+.faq-section {
+  padding: 24px 0;
+}
+.faq-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 0 16px;
+}
+.faq-item {
+  background: var(--card);
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  transition: border-color 0.2s;
+}
+.faq-item.open { border-color: var(--accent); }
+.faq-question {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 16px;
+  cursor: pointer;
+  gap: 12px;
+  -webkit-tap-highlight-color: transparent;
+}
+.faq-question-text {
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--text);
+  flex: 1;
+  line-height: 1.4;
+}
+.faq-arrow {
+  width: 20px; height: 20px;
+  border-radius: 5px;
+  background: var(--bg3);
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+  color: var(--text3);
+  transition: transform 0.25s ease, background 0.2s, color 0.2s;
+}
+.faq-item.open .faq-arrow {
+  transform: rotate(180deg);
+  background: var(--accent-alpha);
+  color: var(--accent);
+}
+.faq-answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.35s cubic-bezier(0.22,1,0.36,1);
+}
+.faq-item.open .faq-answer { max-height: 300px; }
+.faq-answer-inner {
+  padding: 0 16px 14px;
+  font-size: 0.83rem;
+  color: var(--text2);
+  line-height: 1.7;
+  border-top: 1px solid var(--border);
+  padding-top: 12px;
+}
+.faq-answer-inner a { color: var(--accent); }
+
+/* ═══════════════════════════════════════════════════════
+   SETTINGS MODAL
+   ═══════════════════════════════════════════════════════ */
+#settings-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  background: rgba(0,0,0,0.75);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  display: none;
+  align-items: flex-end;
+  justify-content: center;
+  padding: 0;
+}
+#settings-modal.show { display: flex; }
+.settings-sheet {
+  width: 100%;
+  max-width: 520px;
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: 20px 20px 0 0;
+  padding: 20px 20px 40px;
+  animation: settingsSlideUp 0.35s cubic-bezier(0.22,1,0.36,1);
+  max-height: 85vh;
+  overflow-y: auto;
+}
+@keyframes settingsSlideUp {
+  from { transform: translateY(100%); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+.settings-handle {
+  width: 40px; height: 4px;
+  border-radius: 2px;
+  background: var(--border);
+  margin: 0 auto 18px;
+}
+.settings-title {
+  font-family: 'Syne', sans-serif;
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: var(--text);
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.settings-section {
+  margin-bottom: 20px;
+}
+.settings-section-title {
+  font-size: 0.65rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text3);
+  margin-bottom: 10px;
+}
+.settings-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 14px;
+  background: var(--bg3);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  margin-bottom: 6px;
+}
+.settings-row-label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.settings-row-sub {
+  font-size: 0.72rem;
+  color: var(--text3);
+  margin-top: 2px;
+}
+.settings-toggle {
+  width: 42px; height: 24px;
+  border-radius: 12px;
+  background: var(--border);
+  position: relative;
+  cursor: pointer;
+  transition: background 0.25s ease;
+  flex-shrink: 0;
+}
+.settings-toggle.on { background: var(--accent); }
+.settings-toggle::after {
+  content: '';
+  position: absolute;
+  width: 18px; height: 18px;
+  border-radius: 50%;
+  background: #fff;
+  top: 3px; left: 3px;
+  transition: transform 0.25s ease;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.3);
+}
+.settings-toggle.on::after { transform: translateX(18px); }
+
+/* ═══════════════════════════════════════════════════════
+   SCRIPT DETAIL EXTENDED — RATINGS + COMMENTS
+   ═══════════════════════════════════════════════════════ */
+.detail-rating-section {
+  margin-bottom: 20px;
+}
+.detail-rating-title {
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.rating-stars {
+  display: flex;
+  gap: 6px;
+  margin-bottom: 8px;
+}
+.rating-star {
+  font-size: 1.4rem;
+  cursor: pointer;
+  transition: transform 0.15s ease, filter 0.15s ease;
+  filter: grayscale(0.5) opacity(0.6);
+  -webkit-tap-highlight-color: transparent;
+}
+.rating-star:hover, .rating-star.active {
+  transform: scale(1.2);
+  filter: none;
+}
+.rating-summary {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.82rem;
+  color: var(--text2);
+}
+.rating-big {
+  font-family: 'Syne', sans-serif;
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--text);
+  line-height: 1;
+}
+.rating-count { color: var(--text3); font-size: 0.75rem; }
+
+.detail-comments {
+  margin-bottom: 20px;
+}
+.comment-item {
+  display: flex;
+  gap: 10px;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--border2);
+}
+.comment-item:last-child { border-bottom: none; }
+.comment-avatar {
+  width: 32px; height: 32px;
+  border-radius: 50%;
+  background: var(--btn-grad);
+  flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: #fff;
+}
+.comment-body { flex: 1; min-width: 0; }
+.comment-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 4px;
+}
+.comment-name { font-size: 0.82rem; font-weight: 700; color: var(--text); }
+.comment-time { font-size: 0.7rem; color: var(--text3); }
+.comment-text { font-size: 0.82rem; color: var(--text2); line-height: 1.55; }
+.comment-likes {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin-top: 6px;
+  font-size: 0.72rem;
+  color: var(--text3);
+  cursor: pointer;
+  transition: color 0.2s;
+}
+.comment-likes:hover { color: var(--accent); }
+
+.comment-input-wrap {
+  display: flex;
+  gap: 8px;
+  margin-top: 12px;
+  align-items: flex-start;
+}
+.comment-textarea {
+  flex: 1;
+  background: var(--bg3);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 10px 12px;
+  font-size: 0.83rem;
+  color: var(--text);
+  resize: none;
+  line-height: 1.5;
+  min-height: 60px;
+  transition: border-color 0.2s;
+}
+.comment-textarea::placeholder { color: var(--text3); }
+.comment-textarea:focus { border-color: var(--accent); }
+.comment-submit-btn {
+  height: 38px;
+  padding: 0 14px;
+  border-radius: 8px;
+  background: var(--btn-grad);
+  color: #fff;
+  font-size: 0.8rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: box-shadow 0.2s;
+  white-space: nowrap;
+  box-shadow: 0 2px 12px var(--glow2);
+}
+.comment-submit-btn:hover { box-shadow: 0 4px 18px var(--glow); }
+
+/* ═══════════════════════════════════════════════════════
+   RELATED SCRIPTS
+   ═══════════════════════════════════════════════════════ */
+.related-scripts {
+  margin-bottom: 24px;
+}
+.related-scripts-title {
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.related-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.related-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 12px;
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: border-color 0.2s, background 0.2s;
+  -webkit-tap-highlight-color: transparent;
+}
+.related-item:hover { border-color: var(--accent); background: var(--card-hover); }
+.related-thumb {
+  width: 50px; height: 36px;
+  border-radius: 6px;
+  background: var(--bg3);
+  flex-shrink: 0;
+  overflow: hidden;
+}
+.related-info { flex: 1; min-width: 0; }
+.related-name {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--text);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.related-views { font-size: 0.7rem; color: var(--text3); margin-top: 2px; }
+.related-tag {
+  font-size: 0.65rem;
+  padding: 2px 7px;
+  border-radius: 5px;
+  background: var(--tag-bg);
+  color: var(--tag-text);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+/* ═══════════════════════════════════════════════════════
+   SCROLL-TO-TOP BUTTON
+   ═══════════════════════════════════════════════════════ */
+#scrollTopBtn {
+  position: fixed;
+  bottom: 80px;
+  right: 16px;
+  width: 40px; height: 40px;
+  border-radius: 12px;
+  background: var(--btn-grad);
+  border: none;
+  color: #fff;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 300;
+  box-shadow: 0 4px 16px var(--glow2);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease, box-shadow 0.2s ease;
+  -webkit-tap-highlight-color: transparent;
+}
+#scrollTopBtn.show { opacity: 1; pointer-events: auto; }
+#scrollTopBtn:hover { box-shadow: 0 6px 22px var(--glow); }
+
+/* ═══════════════════════════════════════════════════════
+   EXECUTOR GUIDE SECTION
+   ═══════════════════════════════════════════════════════ */
+.executor-section {
+  padding: 24px 0 16px;
+}
+.executor-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+  padding: 0 16px;
+}
+.executor-card {
+  background: var(--card);
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius-lg);
+  padding: 14px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  transition: border-color 0.2s, background 0.2s;
+  -webkit-tap-highlight-color: transparent;
+  text-decoration: none;
+}
+.executor-card:hover { border-color: var(--accent); background: var(--card-hover); }
+.executor-icon {
+  width: 40px; height: 40px;
+  border-radius: 10px;
+  background: var(--accent-alpha);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  flex-shrink: 0;
+}
+.executor-info { min-width: 0; }
+.executor-name {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--text);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.executor-sub {
+  font-size: 0.68rem;
+  color: var(--text3);
+  margin-top: 2px;
+}
+.executor-free-badge {
+  font-size: 0.6rem;
+  font-weight: 800;
+  color: var(--badge-free);
+  background: rgba(234,179,8,0.12);
+  border: 1px solid rgba(234,179,8,0.3);
+  border-radius: 4px;
+  padding: 1px 5px;
+  letter-spacing: 0.04em;
+  flex-shrink: 0;
+}
+
+/* ═══════════════════════════════════════════════════════
+   PROFILE PAGE EXTENDED
+   ═══════════════════════════════════════════════════════ */
+.profile-stat-cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  padding: 14px 16px;
+}
+.profile-stat-card {
+  background: var(--card);
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius);
+  padding: 14px;
+  text-align: center;
+  transition: border-color 0.2s;
+}
+.profile-stat-card:hover { border-color: var(--accent); }
+.profile-stat-card-icon { font-size: 1.2rem; margin-bottom: 6px; }
+.profile-stat-card-num {
+  font-family: 'Syne', sans-serif;
+  font-size: 1.4rem;
+  font-weight: 800;
+  color: var(--accent);
+}
+.profile-stat-card-label {
+  font-size: 0.65rem;
+  color: var(--text3);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-top: 3px;
+}
+
+/* ═══════════════════════════════════════════════════════
+   SHARE TOAST BUTTON
+   ═══════════════════════════════════════════════════════ */
+.share-row {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+.share-btn {
+  flex: 1;
+  height: 40px;
+  border-radius: 10px;
+  background: var(--bg3);
+  border: 1px solid var(--border);
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--text2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  cursor: pointer;
+  transition: all 0.2s;
+  -webkit-tap-highlight-color: transparent;
+}
+.share-btn:hover { border-color: var(--accent); color: var(--accent); background: var(--accent-alpha); }
+
+/* ═══════════════════════════════════════════════════════
+   BADGES SECTION
+   ═══════════════════════════════════════════════════════ */
+.badges-section {
+  padding: 14px 16px;
+}
+.badges-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+}
+.badge-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+  padding: 12px 6px;
+  background: var(--card);
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius);
+  transition: border-color 0.2s;
+}
+.badge-item.earned { border-color: var(--glass-border); }
+.badge-item.locked { opacity: 0.4; filter: grayscale(0.8); }
+.badge-icon { font-size: 1.4rem; }
+.badge-name {
+  font-size: 0.6rem;
+  font-weight: 700;
+  color: var(--text3);
+  text-align: center;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+/* ═══════════════════════════════════════════════════════
    RESPONSIVE TWEAKS
    ═══════════════════════════════════════════════════════ */
 @media (min-width: 600px) {
@@ -2784,6 +3703,21 @@ input, textarea, select { font-family: inherit; outline: none; border: none; }
 
 <!-- ═══ TOAST CONTAINER ═══ -->
 <div id="toast-container" aria-live="polite"></div>
+
+<!-- ═══ SCROLL TO TOP ═══ -->
+<button id="scrollTopBtn" aria-label="Scroll to top">
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="18 15 12 9 6 15"/></svg>
+</button>
+
+<!-- ═══ ANNOUNCEMENT BANNER ═══ -->
+<div id="announcement-banner" class="announcement-banner" style="display:none;">
+  <div class="announcement-pulse"></div>
+  <div class="announcement-text">
+    🎉 LPOLVO HUB v4 is live — 28 scripts, Royal Blue theme, multi-language!
+    <a href="https://discord.gg/JEVVygtkq" target="_blank" rel="noopener">Join Discord →</a>
+  </div>
+  <button class="announcement-close" onclick="dismissAnnouncement()" aria-label="Dismiss">✕</button>
+</div>
 
 <!-- ═══════════════════════════════════════════════════
      INTRO SCREEN
@@ -3113,6 +4047,74 @@ input, textarea, select { font-family: inherit; outline: none; border: none; }
         <div id="homeScriptsList" role="list"></div>
       </section>
 
+      <!-- How It Works -->
+      <section class="how-section" aria-labelledby="howTitle">
+        <div class="section-header">
+          <div class="section-title" id="howTitle">
+            <span class="section-title-icon">💡</span>
+            <span data-i18n="section_howitworks">How It Works</span>
+          </div>
+        </div>
+        <div class="how-steps" id="howStepsList"></div>
+      </section>
+
+      <!-- Top Creators -->
+      <section class="home-section" aria-labelledby="creatorsTitle">
+        <div class="section-header">
+          <div class="section-title" id="creatorsTitle">
+            <span class="section-title-icon">👑</span>
+            <span data-i18n="section_creators">Top Creators</span>
+          </div>
+          <span class="section-see-all" onclick="navigate('scripts')" data-i18n="see_all">See all</span>
+        </div>
+        <div class="creators-scroll" id="creatorsScroll"></div>
+      </section>
+
+      <!-- Leaderboard -->
+      <section class="home-section" aria-labelledby="leaderboardTitle">
+        <div class="section-header">
+          <div class="section-title" id="leaderboardTitle">
+            <span class="section-title-icon">🏆</span>
+            <span data-i18n="section_leaderboard">Top Scripts</span>
+          </div>
+          <span class="section-see-all" onclick="navigate('scripts')" data-i18n="see_all">See all</span>
+        </div>
+        <div class="leaderboard-list" id="leaderboardList"></div>
+      </section>
+
+      <!-- Executor Guide -->
+      <section class="executor-section home-section" aria-labelledby="executorTitle">
+        <div class="section-header">
+          <div class="section-title" id="executorTitle">
+            <span class="section-title-icon">⚙️</span>
+            <span data-i18n="section_executors">Supported Executors</span>
+          </div>
+        </div>
+        <div class="executor-grid" id="executorGrid"></div>
+      </section>
+
+      <!-- News & Updates -->
+      <section class="home-section" aria-labelledby="newsTitle">
+        <div class="section-header">
+          <div class="section-title" id="newsTitle">
+            <span class="section-title-icon">📰</span>
+            <span data-i18n="section_news">News &amp; Updates</span>
+          </div>
+        </div>
+        <div class="news-list" id="newsList"></div>
+      </section>
+
+      <!-- FAQ -->
+      <section class="faq-section home-section" aria-labelledby="faqTitle">
+        <div class="section-header">
+          <div class="section-title" id="faqTitle">
+            <span class="section-title-icon">❓</span>
+            <span data-i18n="section_faq">FAQ</span>
+          </div>
+        </div>
+        <div class="faq-list" id="faqList"></div>
+      </section>
+
       <!-- Footer -->
       <footer class="site-footer" role="contentinfo">
         <div class="footer-brand">
@@ -3146,6 +4148,12 @@ input, textarea, select { font-family: inherit; outline: none; border: none; }
             <a class="footer-link" onclick="openAuthModal('login')" data-i18n="nav_signin">Sign In</a>
             <a class="footer-link" onclick="openAuthModal('register')" data-i18n="nav_register">Create Account</a>
             <a class="footer-link" onclick="navigate('profile')" data-i18n="nav_profile">My Profile</a>
+          </div>
+          <div>
+            <div class="footer-links-col-title">More</div>
+            <a class="footer-link" onclick="openAboutModal()">About LPOLVO HUB</a>
+            <a class="footer-link" href="https://www.instagram.com/4me.h4mz4_?igsh=MW9sa20yejExaGo5Nw==" target="_blank" rel="noopener">Instagram</a>
+            <a class="footer-link" href="https://www.youtube.com/@LPOLVO" target="_blank" rel="noopener">YouTube</a>
           </div>
         </div>
         <div class="footer-bottom">
@@ -3302,8 +4310,14 @@ input, textarea, select { font-family: inherit; outline: none; border: none; }
 
       <!-- Tab: Stats -->
       <div class="profile-tab-content" id="profileTabStats">
-        <div style="padding: 16px;">
-          <div class="dashboard-stats-grid" id="profileStatsGrid"></div>
+        <div class="profile-stat-cards" id="profileStatCards"></div>
+        <div style="padding: 0 16px 16px;">
+          <div style="font-size:0.65rem;font-weight:800;letter-spacing:0.12em;color:var(--text3);text-transform:uppercase;margin-bottom:8px;">CONTRIBUTION GRAPH</div>
+          <div id="activityGraphContainer" style="background:var(--card);border:1px solid var(--card-border);border-radius:var(--radius-lg);padding:14px;overflow:hidden;"></div>
+        </div>
+        <div style="padding: 0 16px 16px;">
+          <div style="font-size:0.65rem;font-weight:800;letter-spacing:0.12em;color:var(--text3);text-transform:uppercase;margin-bottom:8px;">ACHIEVEMENTS</div>
+          <div id="achievementsContainer"></div>
         </div>
       </div>
 
@@ -3607,6 +4621,138 @@ input, textarea, select { font-family: inherit; outline: none; border: none; }
   </div>
 </div>
 
+<!-- ─── ABOUT MODAL ─── -->
+<div id="about-modal" onclick="handleAboutOverlay(event)" style="position:fixed;inset:0;z-index:1001;background:rgba(0,0,0,0.8);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);display:none;align-items:center;justify-content:center;padding:20px;" role="dialog" aria-modal="true">
+  <div style="width:100%;max-width:480px;background:var(--bg2);border:1px solid var(--border);border-radius:20px;padding:28px 24px;animation:settingsSlideUp 0.3s ease;max-height:90vh;overflow-y:auto;">
+    <!-- Logo -->
+    <div style="display:flex;flex-direction:column;align-items:center;margin-bottom:24px;">
+      <div style="width:72px;height:72px;border-radius:20px;background:var(--btn-grad);display:flex;align-items:center;justify-content:center;font-family:'Orbitron',monospace;font-size:1.4rem;font-weight:900;color:#fff;box-shadow:0 0 30px var(--glow2);margin-bottom:14px;">LP</div>
+      <div style="font-family:'Syne',sans-serif;font-size:1.4rem;font-weight:800;color:var(--text);">LPOLVO HUB</div>
+      <div style="font-size:0.72rem;color:var(--text3);margin-top:4px;letter-spacing:0.1em;text-transform:uppercase;">Royal Blue Edition · v4.0</div>
+    </div>
+
+    <!-- About Text -->
+    <div style="font-size:0.85rem;color:var(--text2);line-height:1.7;margin-bottom:20px;text-align:center;">
+      LPOLVO HUB is a free, open Roblox scripts hub created and maintained by <strong style="color:var(--text);">LPOLVO</strong>. It provides 28+ premium, regularly updated scripts for popular Roblox games — all completely free.
+    </div>
+
+    <!-- Stats row -->
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:20px;">
+      ${[
+        ['📜','28+','Scripts'],
+        ['👁️','654K+','Views'],
+        ['🌐','6','Languages'],
+      ].map(([icon,num,lbl]) => `
+        <div style="background:var(--bg3);border:1px solid var(--border);border-radius:12px;padding:12px;text-align:center;">
+          <div style="font-size:1.2rem;">${icon}</div>
+          <div style="font-family:'Syne',sans-serif;font-size:1.1rem;font-weight:800;color:var(--accent);">${num}</div>
+          <div style="font-size:0.65rem;color:var(--text3);text-transform:uppercase;letter-spacing:0.06em;">${lbl}</div>
+        </div>
+      `).join('')}
+    </div>
+
+    <!-- Socials -->
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:20px;">
+      <a href="https://discord.gg/JEVVygtkq" target="_blank" rel="noopener" onclick="trackSocialClick()" style="display:flex;align-items:center;gap:8px;padding:11px 14px;background:rgba(88,101,242,0.12);border:1px solid rgba(88,101,242,0.3);border-radius:10px;text-decoration:none;color:var(--text);font-size:0.82rem;font-weight:600;transition:all 0.2s;">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="rgba(88,101,242,0.9)"><path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057.1 18.08.114 18.1.134 18.11a19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028 14.09 14.09 0 0 0 1.226-1.994.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03z"/></svg>
+        Discord
+      </a>
+      <a href="https://rscripts.net/@LPOLVO" target="_blank" rel="noopener" onclick="trackSocialClick()" style="display:flex;align-items:center;gap:8px;padding:11px 14px;background:var(--accent-alpha);border:1px solid var(--glass-border);border-radius:10px;text-decoration:none;color:var(--text);font-size:0.82rem;font-weight:600;transition:all 0.2s;">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2.2" stroke-linecap="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+        RScripts
+      </a>
+      <a href="https://www.instagram.com/4me.h4mz4_?igsh=MW9sa20yejExaGo5Nw==" target="_blank" rel="noopener" onclick="trackSocialClick()" style="display:flex;align-items:center;gap:8px;padding:11px 14px;background:rgba(225,48,108,0.1);border:1px solid rgba(225,48,108,0.3);border-radius:10px;text-decoration:none;color:var(--text);font-size:0.82rem;font-weight:600;transition:all 0.2s;">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#e1306c" stroke-width="2" stroke-linecap="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+        Instagram
+      </a>
+      <a href="https://www.youtube.com/@LPOLVO" target="_blank" rel="noopener" onclick="trackSocialClick()" style="display:flex;align-items:center;gap:8px;padding:11px 14px;background:rgba(255,0,0,0.08);border:1px solid rgba(255,0,0,0.25);border-radius:10px;text-decoration:none;color:var(--text);font-size:0.82rem;font-weight:600;transition:all 0.2s;">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="#ff0000"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+        YouTube
+      </a>
+    </div>
+
+    <!-- Tech stack -->
+    <div style="background:var(--bg3);border:1px solid var(--border);border-radius:12px;padding:14px;margin-bottom:20px;">
+      <div style="font-size:0.65rem;font-weight:800;letter-spacing:0.12em;color:var(--text3);text-transform:uppercase;margin-bottom:10px;">BUILT WITH</div>
+      <div style="display:flex;flex-wrap:wrap;gap:6px;">
+        ${['Firebase Auth','Web Audio API','requestAnimationFrame','Vanilla JS','CSS Custom Properties','IndexedDB','Intersection Observer','LocalStorage','GitHub Pages','rscripts.net'].map(t => `<span style="font-size:0.7rem;font-weight:600;padding:3px 9px;border-radius:6px;background:var(--accent-alpha);color:var(--accent3);border:1px solid var(--glass-border);">${t}</span>`).join('')}
+      </div>
+    </div>
+
+    <button onclick="closeAboutModal()" style="width:100%;height:46px;border-radius:12px;background:var(--btn-grad);border:none;color:#fff;font-size:0.88rem;font-weight:700;cursor:pointer;box-shadow:0 4px 16px var(--glow2);transition:box-shadow 0.2s;" onmouseover="this.style.boxShadow='0 6px 22px var(--glow)';" onmouseout="this.style.boxShadow='0 4px 16px var(--glow2)';">Close</button>
+  </div>
+</div>
+
+<!-- ─── SETTINGS MODAL ─── -->
+<div id="settings-modal" onclick="handleSettingsOverlay(event)" role="dialog" aria-modal="true" aria-labelledby="settingsTitle">
+  <div class="settings-sheet">
+    <div class="settings-handle"></div>
+    <div class="settings-title" id="settingsTitle">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+      Settings
+    </div>
+
+    <div class="settings-section">
+      <div class="settings-section-title">PREFERENCES</div>
+      <div id="settingsRows"></div>
+    </div>
+
+    <div class="settings-section">
+      <div class="settings-section-title">THEME</div>
+      <div class="sidebar-theme-grid" id="settingsThemeGrid" style="padding:0;"></div>
+    </div>
+
+    <div class="settings-section">
+      <div class="settings-section-title">LANGUAGE</div>
+      <div class="sidebar-lang-grid" id="settingsLangGrid" style="gap:6px;"></div>
+    </div>
+
+    <div class="settings-section">
+      <div class="settings-section-title">ACCOUNT</div>
+      <div class="settings-row" style="cursor:pointer;" onclick="closeSettings(); openAuthModal('login');">
+        <div>
+          <div class="settings-row-label">🔐 Sign In / Register</div>
+          <div class="settings-row-sub">Firebase Auth — Google &amp; Email</div>
+        </div>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--text3)" stroke-width="2.2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg>
+      </div>
+      <div class="settings-row" style="cursor:pointer;" onclick="closeSettings(); window.open('https://discord.gg/JEVVygtkq','_blank');">
+        <div>
+          <div class="settings-row-label">💬 Join Discord</div>
+          <div class="settings-row-sub">discord.gg/JEVVygtkq</div>
+        </div>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--text3)" stroke-width="2.2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg>
+      </div>
+      <div class="settings-row" style="cursor:pointer;" onclick="closeSettings(); window.open('https://rscripts.net/@LPOLVO','_blank');">
+        <div>
+          <div class="settings-row-label">📜 RScripts Profile</div>
+          <div class="settings-row-sub">rscripts.net/@LPOLVO</div>
+        </div>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--text3)" stroke-width="2.2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg>
+      </div>
+    </div>
+
+    <div class="settings-section">
+      <div class="settings-section-title">ABOUT</div>
+      <div class="settings-row">
+        <div>
+          <div class="settings-row-label">ℹ️ Version</div>
+          <div class="settings-row-sub">LPOLVO HUB v4.0 — Royal Blue Edition</div>
+        </div>
+        <span style="font-family:'JetBrains Mono',monospace;font-size:0.72rem;color:var(--accent);background:var(--accent-alpha);border:1px solid var(--accent);border-radius:5px;padding:2px 8px;">v4.0</span>
+      </div>
+      <div class="settings-row" style="cursor:pointer;" onclick="closeSettings(); navigate('home');">
+        <div>
+          <div class="settings-row-label">🏠 Back to Home</div>
+        </div>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--text3)" stroke-width="2.2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg>
+      </div>
+    </div>
+
+    <button onclick="closeSettings()" style="width:100%;height:46px;border-radius:12px;background:var(--bg3);border:1px solid var(--border);color:var(--text2);font-size:0.88rem;font-weight:600;cursor:pointer;margin-top:8px;transition:all 0.2s;" onmouseover="this.style.borderColor='var(--accent)';this.style.color='var(--accent)';" onmouseout="this.style.borderColor='var(--border)';this.style.color='var(--text2)';">Close Settings</button>
+  </div>
+</div>
+
 <!-- ─── BOTTOM NAV ─── -->
 <nav class="bottom-nav" role="navigation" aria-label="Bottom Navigation">
   <button class="bottom-nav-btn active" onclick="navigate('home')" data-page="home" aria-label="Home">
@@ -3625,6 +4771,10 @@ input, textarea, select { font-family: inherit; outline: none; border: none; }
     <span class="bottom-nav-icon">📊</span>
     <span class="bottom-nav-label" data-i18n="nav_dash">Dash</span>
   </button>
+  <button class="bottom-nav-btn" onclick="openSettings()" aria-label="Settings">
+    <span class="bottom-nav-icon">⚙️</span>
+    <span class="bottom-nav-label">Settings</span>
+  </button>
 </nav>
 
 <!-- ═══════════════════════════════════════════════════════════════════════
@@ -3638,7 +4788,7 @@ input, textarea, select { font-family: inherit; outline: none; border: none; }
    ════════════════════════════════════════════════════════════ */
 
 const THEMES = [
-  { id: 'lpolvo', label: 'LPOLVO', colors: ['#ec4899','#0d0d12'] },
+  { id: 'lpolvo', label: 'Royal Blue', colors: ['#4169E1','#080818'] },
   { id: 'ocean',  label: 'Ocean',  colors: ['#0ea5e9','#020d18'] },
   { id: 'phantom',label: 'Phantom',colors: ['#a855f7','#09090f'] },
   { id: 'neon',   label: 'Neon',   colors: ['#00ff41','#000900'] },
@@ -3709,6 +4859,14 @@ const TRANSLATIONS = {
     type_keyless: 'Keyless', type_key: 'Key System', type_premium: 'Premium',
     btn_upload: 'Upload Script', edit_profile_title: 'Edit Profile', btn_save: 'Save Changes',
     see_all: 'See all',
+    section_howitworks: 'How It Works',
+    section_creators: 'Top Creators',
+    section_leaderboard: 'Top Scripts',
+    section_executors: 'Supported Executors',
+    section_news: 'News & Updates',
+    section_faq: 'FAQ',
+    notif_4_msg: '<strong>28 scripts</strong> are now available on LPOLVO HUB!',
+    notif_5_msg: 'Welcome to the <strong>Royal Blue Edition</strong> of LPOLVO HUB v4!',
     footer_desc: 'A centralized hub for premium Roblox scripts, intelligent automation tools, and an innovative community.',
     footer_links: 'Links', footer_account: 'Account',
     footer_copy: '© 2026 LPOLVO HUB. All rights reserved.',
@@ -3775,14 +4933,29 @@ const TRANSLATIONS = {
     footer_desc: 'مركز متكامل لسكربتات روبلوكس المميزة وأدوات الأتمتة الذكية ومجتمع مبتكر.',
     footer_links: 'الروابط', footer_account: 'الحساب',
     footer_copy: '© 2026 LPOLVO HUB. جميع الحقوق محفوظة.',
+    section_howitworks: 'كيف يعمل',
+    section_creators: 'أفضل المبدعين',
+    section_leaderboard: 'أفضل السكربتات',
+    section_executors: 'المنفذون المدعومون',
+    section_news: 'الأخبار والتحديثات',
+    section_faq: 'الأسئلة الشائعة',
     toast_copied: '✅ تم نسخ السكربت!', toast_theme: '🎨 تم تغيير الثيم!',
     toast_lang: '🌐 تم تغيير اللغة!', toast_login_success: '✅ تم تسجيل الدخول!',
-    toast_logout: '👋 تم تسجيل الخروج!', toast_re�gister_success: '✅ تم إنشاء الحساب!',
+    toast_logout: '👋 تم تسجيل الخروج!', toast_register_success: '✅ تم إنشاء الحساب!',
     toast_reset_sent: '📧 تم إرسال رابط الاستعادة!', toast_profile_saved: '✅ تم حفظ الملف!',
     toast_upload_sent: '✅ تم إرسال السكربت!', toast_login_required: '🔐 يرجى تسجيل الدخول أولاً!',
     notif_1_msg: '<strong>مرحباً بك في LPOLVO HUB!</strong> حسابك جاهز.',
     notif_2_msg: 'نشر سكربت جديد: <strong>Universal Hub v2</strong>',
     notif_3_msg: 'تحديث جديد لـ <strong>BloxFarm Pro</strong>',
+    notif_4_msg: '<strong>28 سكربت</strong> متوفر الآن على LPOLVO HUB!',
+    notif_5_msg: 'مرحباً بك في <strong>الإصدار الأزرق الملكي</strong> من LPOLVO HUB v4!',
+    section_howitworks: 'كيف يعمل',
+    section_creators: 'أفضل المبدعين',
+    section_leaderboard: 'أفضل السكربتات',
+    section_executors: 'المنفذون المدعومون',
+    section_news: 'الأخبار والتحديثات',
+    section_faq: 'الأسئلة الشائعة',
+    see_all: 'عرض الكل',
     script_executed: '🚀 تم نسخ السكربت! الصقه في المنفذ.',
     email_placeholder: 'example@email.com', pass_placeholder: '••••••••',
   },
@@ -3836,6 +5009,14 @@ const TRANSLATIONS = {
     footer_desc: 'مركز ديال سكريبتات روبلوكس المميزة ومجتمع مبتكر.',
     footer_links: 'الروابط', footer_account: 'الحساب',
     footer_copy: '© 2026 LPOLVO HUB. جميع الحقوق محفوظة.',
+    notif_4_msg: '<strong>28 سكريبت</strong> موجودين دبا فـ LPOLVO HUB!',
+    notif_5_msg: 'مرحبا بيك فـ <strong>الإصدار الأزرق الملكي</strong> ديال LPOLVO HUB v4!',
+    section_howitworks: 'كيفاش خدام',
+    section_creators: 'أحسن المبدعين',
+    section_leaderboard: 'أحسن السكريبتات',
+    section_executors: 'المنفذات اللي خدامين',
+    section_news: 'الأخبار والتحديثات',
+    section_faq: 'الأسئلة المتكررة',
     toast_copied: '✅ تنسخ السكريبت!', toast_theme: '🎨 تبدل الثيم!',
     toast_lang: '🌐 تبدلات اللغة!', toast_login_success: '✅ دخلتي بنجاح!',
     toast_logout: '👋 خرجتي!', toast_register_success: '✅ تدار الحساب!',
@@ -3902,7 +5083,7 @@ const TRANSLATIONS = {
     toast_reset_sent: '📧 تبعت!', toast_profile_saved: '✅ تحفظ!',
     toast_upload_sent: '✅ تبعت!', toast_login_required: '🔐 دخل أولاً!',
     notif_1_msg: '<strong>مرحبا في LPOLVO HUB!</strong>',
-    notif_2_msg: 'سكريبت ج�ديد: <strong>Universal Hub v2</strong>',
+    notif_2_msg: 'سكريبت جديد: <strong>Universal Hub v2</strong>',
     notif_3_msg: 'تحديث: <strong>BloxFarm Pro</strong>',
     script_executed: '🚀 تنسخ!',
     email_placeholder: 'example@email.com', pass_placeholder: '••••••••',
@@ -3965,6 +5146,14 @@ const TRANSLATIONS = {
     notif_1_msg: '<strong>Ansuf ɣer LPOLVO HUB!</strong> Amiḍan-ik ilaq.',
     notif_2_msg: 'Askript amaynut: <strong>Universal Hub v2</strong>',
     notif_3_msg: 'Abeddel i <strong>BloxFarm Pro</strong>',
+    notif_4_msg: '<strong>28 n iskriptuten</strong> mazal deg LPOLVO HUB!',
+    notif_5_msg: 'Ansuf ɣer <strong>taseɣwanit tazegzawt</strong> n LPOLVO HUB v4!',
+    section_howitworks: 'Amek Itteddu',
+    section_creators: 'Inefken Iqdimen',
+    section_leaderboard: 'Iskriptuten Ifellayen',
+    section_executors: 'Inefkiyen Iwalan',
+    section_news: 'Tizeɣt & Ibeddilen',
+    section_faq: 'Isutilen Imasayen',
     script_executed: '🚀 Yenɣed! Ales-it.',
     email_placeholder: 'imayl@amkan.com', pass_placeholder: '••••••••',
   },
@@ -4021,12 +5210,20 @@ const TRANSLATIONS = {
     footer_copy: '© 2026 LPOLVO HUB. Tous droits réservés.',
     toast_copied: '✅ Script copié!', toast_theme: '🎨 Thème changé!',
     toast_lang: '🌐 Langue changée!', toast_login_success: '✅ Connecté!',
-    toast_logout: '👋 Déconnec�té!', toast_register_success: '✅ Compte créé!',
+    toast_logout: '👋 Déconnecté!', toast_register_success: '✅ Compte créé!',
     toast_reset_sent: '📧 Email envoyé!', toast_profile_saved: '✅ Profil sauvegardé!',
     toast_upload_sent: '✅ Script soumis!', toast_login_required: '🔐 Connectez-vous d\'abord!',
     notif_1_msg: '<strong>Bienvenue sur LPOLVO HUB!</strong> Votre compte est prêt.',
     notif_2_msg: 'Nouveau script: <strong>Universal Hub v2</strong>',
     notif_3_msg: 'Mise à jour: <strong>BloxFarm Pro</strong>',
+    notif_4_msg: '<strong>28 scripts</strong> sont disponibles sur LPOLVO HUB!',
+    notif_5_msg: 'Bienvenue dans l\'<strong>Édition Bleu Royal</strong> de LPOLVO HUB v4!',
+    section_howitworks: 'Comment ça marche',
+    section_creators: 'Top Créateurs',
+    section_leaderboard: 'Top Scripts',
+    section_executors: 'Exécuteurs Supportés',
+    section_news: 'Actualités & Mises à jour',
+    section_faq: 'Questions Fréquentes',
     script_executed: '🚀 Script copié! Collez dans votre exécuteur.',
     email_placeholder: 'vous@exemple.com', pass_placeholder: '••••••••',
   }
@@ -4255,7 +5452,7 @@ print("[LPOLVO] Anime Adventures Farm Loaded!")`,
     gameEmoji: '🚗',
     desc: 'Auto delivery earning $90M/hr, ATM rob automation, speed modifiers, and player teleport for Driving Empire.',
     creator: 'LPOLVO',
-    cr�eatorAvatar: null,
+    creatorAvatar: null,
     views: '24.1K',
     time: '2w ago',
     isNew: false,
@@ -4374,6 +5571,259 @@ print("[LPOLVO] Natural Disaster Script Loaded!")`,
 print("[LPOLVO] LP10 HUB Universal Loaded!")`,
     thumbBg: 'linear-gradient(135deg, #000830 0%, #001060 50%, #000830 100%)',
   },
+  {
+    id: 's017',
+    name: 'King Legacy — Auto Farm V3 [OP]',
+    game: 'King Legacy',
+    gameEmoji: '⚔️',
+    desc: 'Dominate King Legacy with auto farm, auto quest, sea beast killer, fruit notifier, and full stat auto-assignment. One of the best King Legacy scripts available.',
+    creator: 'LPOLVO',
+    creatorAvatar: null,
+    views: '34.2K',
+    time: '3w ago',
+    isNew: false,
+    keyless: true,
+    type: 'keyless',
+    spotlight: false,
+    tags: ['King Legacy','Auto Farm','Sea Beast','Fruit Notifier','Auto Quest'],
+    code: `-- King Legacy V3 by LPOLVO
+-- loadstring(game:HttpGet("https://lpolvo.github.io/scripts/kinglega.lua"))()
+
+print("[LPOLVO] King Legacy Farm Loaded!")
+-- Auto Farm, Sea Beast Killer, Fruit Notifier`,
+    thumbBg: 'linear-gradient(135deg, #100020 0%, #200050 50%, #100020 100%)',
+  },
+  {
+    id: 's018',
+    name: 'Fisch — Auto Fish + Auto Sell + ESP',
+    game: 'Fisch',
+    gameEmoji: '🎣',
+    desc: 'Full automation for Fisch: auto fish, auto sell, rare fish ESP, teleport to fishing spots, and inventory auto-organizer.',
+    creator: 'LPOLVO',
+    creatorAvatar: null,
+    views: '21.8K',
+    time: '4d ago',
+    isNew: true,
+    keyless: true,
+    type: 'keyless',
+    spotlight: false,
+    tags: ['Fisch','Auto Fish','Auto Sell','Fish ESP','Teleport'],
+    code: `-- Fisch Script by LPOLVO
+-- loadstring(game:HttpGet("https://lpolvo.github.io/scripts/fisch.lua"))()
+
+print("[LPOLVO] Fisch Script Loaded!")`,
+    thumbBg: 'linear-gradient(135deg, #001525 0%, #003050 50%, #001525 100%)',
+  },
+  {
+    id: 's019',
+    name: 'Steal Time From Others — Mass Farm',
+    game: 'Steal Time From Others',
+    gameEmoji: '⏰',
+    desc: 'Automatically steal time from other players, auto upgrade, auto rebirth, and mass farm for maximum efficiency.',
+    creator: 'LPOLVO',
+    creatorAvatar: null,
+    views: '16.4K',
+    time: '1w ago',
+    isNew: false,
+    keyless: true,
+    type: 'keyless',
+    spotlight: false,
+    tags: ['Steal Time','Auto Farm','Auto Rebirth','Mass Farm'],
+    code: `-- Steal Time Script by LPOLVO
+-- loadstring(game:HttpGet("https://lpolvo.github.io/scripts/stealtime.lua"))()
+
+print("[LPOLVO] Steal Time Farm Loaded!")`,
+    thumbBg: 'linear-gradient(135deg, #200010 0%, #400030 50%, #200010 100%)',
+  },
+  {
+    id: 's020',
+    name: 'Shindo Life — Auto Farm + Kenjutsu',
+    game: 'Shindo Life',
+    gameEmoji: '🥷',
+    desc: 'Complete Shindo Life automation: auto level up, auto boss kill, kenjutsu auto combo, bloodline farm, and tailed beast farm.',
+    creator: 'LPOLVO',
+    creatorAvatar: null,
+    views: '27.9K',
+    time: '2w ago',
+    isNew: false,
+    keyless: false,
+    type: 'key',
+    spotlight: true,
+    tags: ['Shindo Life','Auto Farm','Kenjutsu','Boss Farm','Bloodline'],
+    code: `-- Shindo Life Script by LPOLVO
+-- loadstring(game:HttpGet("https://lpolvo.github.io/scripts/shindo.lua"))()
+
+print("[LPOLVO] Shindo Life Script Loaded!")`,
+    thumbBg: 'linear-gradient(135deg, #100000 0%, #250015 50%, #100000 100%)',
+  },
+  {
+    id: 's021',
+    name: 'Type Soul — Auto Farm + Rank Up',
+    game: 'Type Soul',
+    gameEmoji: '💀',
+    desc: 'Automate everything in Type Soul: rank grind, hollow farm, mask farm, schrift unlock, and auto PvP dodge system.',
+    creator: 'LPOLVO',
+    creatorAvatar: null,
+    views: '19.7K',
+    time: '5d ago',
+    isNew: false,
+    keyless: true,
+    type: 'keyless',
+    spotlight: false,
+    tags: ['Type Soul','Auto Farm','Rank Up','Hollow Farm','PvP'],
+    code: `-- Type Soul Script by LPOLVO
+-- loadstring(game:HttpGet("https://lpolvo.github.io/scripts/typesoul.lua"))()
+
+print("[LPOLVO] Type Soul Script Loaded!")`,
+    thumbBg: 'linear-gradient(135deg, #080010 0%, #150025 50%, #080010 100%)',
+  },
+  {
+    id: 's022',
+    name: 'Clicker Simulator — Auto Click + Rebirth',
+    game: 'Clicker Simulator',
+    gameEmoji: '🖱️',
+    desc: 'Max efficiency clicker: auto click, auto rebirth, auto hatch, auto sell, and zone teleporter for Clicker Simulator.',
+    creator: 'LPOLVO',
+    creatorAvatar: null,
+    views: '8.3K',
+    time: '2d ago',
+    isNew: true,
+    keyless: true,
+    type: 'keyless',
+    spotlight: false,
+    tags: ['Clicker Sim','Auto Click','Auto Rebirth','Auto Hatch'],
+    code: `-- Clicker Simulator Script by LPOLVO
+-- loadstring(game:HttpGet("https://lpolvo.github.io/scripts/clicker.lua"))()
+
+print("[LPOLVO] Clicker Simulator Script Loaded!")`,
+    thumbBg: 'linear-gradient(135deg, #001020 0%, #002540 50%, #001020 100%)',
+  },
+  {
+    id: 's023',
+    name: 'Dragon Blox — Saiyan Farm + God Mode',
+    game: 'Dragon Blox',
+    gameEmoji: '🐉',
+    desc: 'Power up your Saiyan with auto mastery farm, god mode, auto dragon ball collection, and transformation unlock.',
+    creator: 'LPOLVO',
+    creatorAvatar: null,
+    views: '13.1K',
+    time: '1w ago',
+    isNew: false,
+    keyless: true,
+    type: 'keyless',
+    spotlight: false,
+    tags: ['Dragon Blox','Auto Farm','God Mode','Mastery Farm','Dragon Balls'],
+    code: `-- Dragon Blox Script by LPOLVO
+-- loadstring(game:HttpGet("https://lpolvo.github.io/scripts/dragonblox.lua"))()
+
+print("[LPOLVO] Dragon Blox Script Loaded!")`,
+    thumbBg: 'linear-gradient(135deg, #200000 0%, #450010 50%, #200000 100%)',
+  },
+  {
+    id: 's024',
+    name: 'Da Hood — Aimbot + Silent Aim Pro',
+    game: 'Da Hood',
+    gameEmoji: '🔫',
+    desc: 'Dominate Da Hood with smooth silent aim, wallhack ESP, auto-parry, hitbox extender, and movement speed hack.',
+    creator: 'LPOLVO',
+    creatorAvatar: null,
+    views: '38.5K',
+    time: '3w ago',
+    isNew: false,
+    keyless: true,
+    type: 'keyless',
+    spotlight: true,
+    tags: ['Da Hood','Silent Aim','Aimbot','ESP','Hitbox','Auto Parry'],
+    code: `-- Da Hood Script by LPOLVO
+-- loadstring(game:HttpGet("https://lpolvo.github.io/scripts/dahood.lua"))()
+
+print("[LPOLVO] Da Hood Script Loaded!")`,
+    thumbBg: 'linear-gradient(135deg, #0a0a00 0%, #1a1a00 50%, #0a0a00 100%)',
+  },
+  {
+    id: 's025',
+    name: 'Work At A Pizza Place — Auto Earn',
+    game: 'Work At A Pizza Place',
+    gameEmoji: '🍕',
+    desc: 'Auto work every job, auto serve customers, money multiplier and fast travel between locations in Work At A Pizza Place.',
+    creator: 'LPOLVO',
+    creatorAvatar: null,
+    views: '5.6K',
+    time: '3d ago',
+    isNew: true,
+    keyless: true,
+    type: 'keyless',
+    spotlight: false,
+    tags: ['Pizza Place','Auto Work','Money Farm','Auto Serve'],
+    code: `-- Pizza Place Script by LPOLVO
+-- loadstring(game:HttpGet("https://lpolvo.github.io/scripts/pizza.lua"))()
+
+print("[LPOLVO] Work At A Pizza Place Script Loaded!")`,
+    thumbBg: 'linear-gradient(135deg, #200500 0%, #400a00 50%, #200500 100%)',
+  },
+  {
+    id: 's026',
+    name: 'Untitled Boxing Game — Auto Farm',
+    game: 'Untitled Boxing Game',
+    gameEmoji: '🥊',
+    desc: 'Auto earn coins, auto spar, perfect dodge assistant, stat auto-upgrade, and ranked win booster for Untitled Boxing Game.',
+    creator: 'LPOLVO',
+    creatorAvatar: null,
+    views: '11.2K',
+    time: '6d ago',
+    isNew: false,
+    keyless: true,
+    type: 'keyless',
+    spotlight: false,
+    tags: ['Boxing Game','Auto Farm','Auto Spar','Dodge Assist','Ranked'],
+    code: `-- Boxing Game Script by LPOLVO
+-- loadstring(game:HttpGet("https://lpolvo.github.io/scripts/boxing.lua"))()
+
+print("[LPOLVO] Boxing Script Loaded!")`,
+    thumbBg: 'linear-gradient(135deg, #100000 0%, #220010 50%, #100000 100%)',
+  },
+  {
+    id: 's027',
+    name: 'Heroes Online World — Auto Farm + Quirk',
+    game: 'Heroes Online World',
+    gameEmoji: '🦸',
+    desc: 'Full HOW automation: auto level, quirk mastery farm, boss raid, PvP assist, and auto story mode progression.',
+    creator: 'LPOLVO',
+    creatorAvatar: null,
+    views: '17.3K',
+    time: '10d ago',
+    isNew: false,
+    keyless: false,
+    type: 'key',
+    spotlight: false,
+    tags: ['Heroes Online','Auto Farm','Quirk Mastery','Boss Raid','PvP'],
+    code: `-- Heroes Online World by LPOLVO
+-- loadstring(game:HttpGet("https://lpolvo.github.io/scripts/heroes.lua"))()
+
+print("[LPOLVO] Heroes Online World Script Loaded!")`,
+    thumbBg: 'linear-gradient(135deg, #000520 0%, #000a40 50%, #000520 100%)',
+  },
+  {
+    id: 's028',
+    name: 'Avatar World — ESP + God Mode',
+    game: 'Avatar World',
+    gameEmoji: '🌍',
+    desc: 'Teleport anywhere instantly, god mode, character ESP, auto quest complete, and element unlock for Avatar World.',
+    creator: 'LPOLVO',
+    creatorAvatar: null,
+    views: '7.8K',
+    time: '4d ago',
+    isNew: true,
+    keyless: true,
+    type: 'keyless',
+    spotlight: false,
+    tags: ['Avatar World','God Mode','ESP','Teleport','Auto Quest'],
+    code: `-- Avatar World Script by LPOLVO
+-- loadstring(game:HttpGet("https://lpolvo.github.io/scripts/avatar.lua"))()
+
+print("[LPOLVO] Avatar World Script Loaded!")`,
+    thumbBg: 'linear-gradient(135deg, #001015 0%, #002030 50%, #001015 100%)',
+  },
 ];
 
 const CATEGORIES = [
@@ -4397,7 +5847,120 @@ const NOTIFICATIONS = [
   { id: 'n1', icon: '👋', msg_key: 'notif_1_msg', time: 'Just now', unread: true },
   { id: 'n2', icon: '📜', msg_key: 'notif_2_msg', time: '2h ago', unread: true },
   { id: 'n3', icon: '🔔', msg_key: 'notif_3_msg', time: '1d ago', unread: false },
+  { id: 'n4', icon: '⬆️', msg_key: 'notif_4_msg', time: '3d ago', unread: false },
+  { id: 'n5', icon: '🎉', msg_key: 'notif_5_msg', time: '5d ago', unread: false },
 ];
+
+const HOW_IT_WORKS = [
+  {
+    num: '01',
+    title: 'Browse Scripts',
+    desc: 'Explore our library of 28+ premium Roblox scripts — filter by game, type, or popularity.',
+  },
+  {
+    num: '02',
+    title: 'Copy the Script',
+    desc: 'Click any script card, view the full details, and copy the loadstring with one tap.',
+  },
+  {
+    num: '03',
+    title: 'Open Your Executor',
+    desc: 'Open a supported Roblox executor like Delta, Arceus X, or Hydrogen on your device.',
+  },
+  {
+    num: '04',
+    title: 'Paste & Execute',
+    desc: 'Paste the copied script into the executor\'s script box and hit Execute. Done!',
+  },
+];
+
+const TOP_CREATORS = [
+  { initial: 'LP', name: 'LPOLVO', scripts: '28 scripts', views: '654K views', verified: true, rank: 1 },
+  { initial: 'AX', name: 'AxScripts', scripts: '14 scripts', views: '201K views', verified: true, rank: 2 },
+  { initial: 'NX', name: 'NexusHub', scripts: '10 scripts', views: '143K views', verified: false, rank: 3 },
+  { initial: 'RB', name: 'RblxDev99', scripts: '7 scripts', views: '89K views', verified: false, rank: 4 },
+  { initial: 'SK', name: 'SkyFarmer', scripts: '5 scripts', views: '47K views', verified: false, rank: 5 },
+];
+
+const NEWS_ITEMS = [
+  {
+    badge: 'announce',
+    badgeText: 'ANNOUNCEMENT',
+    date: 'Jul 20, 2026',
+    title: 'LPOLVO HUB v4 — Royal Blue Edition Now Live!',
+    excerpt: 'We have completely redesigned LPOLVO HUB with a new royal blue theme, improved performance, 28 scripts, and a mobile-first rscripts.net-inspired layout.',
+    thumbBg: 'linear-gradient(135deg, #0d1245 0%, #1a2080 50%, #0d1245 100%)',
+  },
+  {
+    badge: 'update',
+    badgeText: 'UPDATE',
+    date: 'Jul 15, 2026',
+    title: 'New Scripts Added: Fisch, Type Soul & Clicker Simulator',
+    excerpt: 'Three highly-requested scripts are now live — auto fish for Fisch, full automation for Type Soul, and a complete auto-clicker for Clicker Simulator.',
+    thumbBg: 'linear-gradient(135deg, #002040 0%, #004080 50%, #002040 100%)',
+  },
+  {
+    badge: 'feature',
+    badgeText: 'FEATURE',
+    date: 'Jul 10, 2026',
+    title: 'Multi-Language Support Now Includes Tamazight',
+    excerpt: 'In response to community requests, LPOLVO HUB now supports Amazigh/Tamazight (ⵜⴰⵎⴰⵣⵉⵖⵜ) as a 6th language, joining English, French, Arabic, Darija and Algerian.',
+    thumbBg: 'linear-gradient(135deg, #001520 0%, #003040 50%, #001520 100%)',
+  },
+];
+
+const FAQ_ITEMS = [
+  {
+    q: 'Are LPOLVO scripts safe to use?',
+    a: 'Our scripts are written to be safe. However, using scripts in Roblox always carries a risk of account detection. We recommend using an alt account for script testing. We are not responsible for any bans.',
+  },
+  {
+    q: 'Do I need a key to use these scripts?',
+    a: 'Most of our scripts are fully keyless — no key system required. Scripts marked with a key icon require a free key obtainable through Linkvertise or Lootlabs. Key-required scripts are always marked clearly.',
+  },
+  {
+    q: 'What executor should I use on mobile?',
+    a: 'For iOS, we recommend Arceus X Neo or Delta. For Android, try Hydrogen or Fluxus. All executors listed in our "Supported Executors" section are tested and verified to work with our scripts.',
+  },
+  {
+    q: 'How do I report a broken script?',
+    a: 'Join our Discord server at discord.gg/JEVVygtkq and post in the #bug-reports channel. Include the script name, your executor, and a description of what happens. We typically fix scripts within 24–48 hours.',
+  },
+  {
+    q: 'Can I request a script for a specific game?',
+    a: 'Yes! Post your script request in our Discord #script-requests channel. Popular games with many votes get prioritized. LPOLVO personally reviews all requests.',
+  },
+  {
+    q: 'Are the scripts free?',
+    a: 'Yes — 100% free. LPOLVO HUB will always be free. We do not sell scripts or run paid tiers. You can show support by sharing the hub with friends or joining our Discord.',
+  },
+  {
+    q: 'How often are scripts updated?',
+    a: 'We monitor game updates and patch scripts within 1–3 days of any breaking Roblox or game update. Critical fixes are released within hours. Follow us on Discord for real-time update notifications.',
+  },
+  {
+    q: 'Can I upload my own scripts to LPOLVO HUB?',
+    a: 'Community script submissions are open! Use the Upload Script button in the app or join Discord. Submissions are reviewed for safety and quality before going live.',
+  },
+];
+
+const EXECUTORS = [
+  { icon: '🔺', name: 'Arceus X', sub: 'iOS & Android', free: true, url: 'https://discord.gg/JEVVygtkq' },
+  { icon: '💧', name: 'Delta', sub: 'iOS', free: true, url: 'https://discord.gg/JEVVygtkq' },
+  { icon: '💧', name: 'Hydrogen', sub: 'Android', free: true, url: 'https://discord.gg/JEVVygtkq' },
+  { icon: '🌊', name: 'Fluxus', sub: 'Android', free: true, url: 'https://discord.gg/JEVVygtkq' },
+  { icon: '⚡', name: 'Synapse Z', sub: 'PC (Windows)', free: false, url: 'https://discord.gg/JEVVygtkq' },
+  { icon: '🔥', name: 'ScriptWare', sub: 'PC (Windows)', free: false, url: 'https://discord.gg/JEVVygtkq' },
+  { icon: '🟢', name: 'Solara', sub: 'PC (Windows)', free: true, url: 'https://discord.gg/JEVVygtkq' },
+  { icon: '🌐', name: 'Comet', sub: 'PC (Windows)', free: true, url: 'https://discord.gg/JEVVygtkq' },
+];
+
+const SETTINGS_STATE = {
+  particles: JSON.parse(localStorage.getItem('lp_particles') ?? 'true'),
+  sounds: JSON.parse(localStorage.getItem('lp_sounds') ?? 'true'),
+  animations: JSON.parse(localStorage.getItem('lp_animations') ?? 'true'),
+  notifications: JSON.parse(localStorage.getItem('lp_notif_enabled') ?? 'true'),
+};
 
 /* ════════════════════════════════════════════════════════════
    SECTION 2 — STATE
@@ -4498,7 +6061,17 @@ function onAppReady() {
   buildProfileScripts();
   buildDashboardActivity();
   buildNotifications();
+  buildHowItWorks();
+  buildTopCreators();
+  buildLeaderboard();
+  buildExecutors();
+  buildNews();
+  buildFAQ();
+  buildAnnouncement();
+  checkDailyStreak();
   initParticles();
+  initScrollTop();
+  setTimeout(syncSettingsGrids, 300);
 
   // Handle pending Firebase auth
   if (window.__pendingAuthUser !== undefined) {
@@ -4516,7 +6089,7 @@ function onAppReady() {
 
   // Listen for hash changes (routing)
   window.addEventListener('hashchange', handleHashChange);
-  handleHashChange()�;
+  handleHashChange();
 }
 
 /* ════════════════════════════════════════════════════════════
@@ -4540,7 +6113,7 @@ function applyTheme(themeId, withSound = true) {
 
   if (withSound) {
     playThemeSound();
-    showToast(t(state.lang, 'toast_theme'), 'info');
+    showToast(T('toast_theme'), 'info');
   }
 }
 
@@ -4777,7 +6350,7 @@ function buildNotifications() {
   if (!list) return;
   list.innerHTML = NOTIFICATIONS.map(n => `
     <div class="notif-item ${n.unread && !state.readNotifs.has(n.id) ? 'unread' : ''}" onclick="markNotifRead('${n.id}')">
-      <div class="notif-item-�icon">${n.icon}</div>
+      <div class="notif-item-icon">${n.icon}</div>
       <div class="notif-item-text">
         <div class="notif-item-msg">${T(n.msg_key)}</div>
         <div class="notif-item-time">${n.time}</div>
@@ -4995,7 +6568,7 @@ function buildScriptCard(s) {
         <div class="script-key-icons">
           <div class="script-key-icon ${s.keyless ? 'keyless' : ''}" title="${s.keyless ? 'Keyless' : 'Key Required'}">
             ${s.keyless
-              ? '<svg width="10" height="10" viewBox="0 0 24 24" fill="none" stro�ke="currentColor" stroke-width="2.5"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 9.9-1"/></svg>'
+              ? '<svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 9.9-1"/></svg>'
               : '<svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>'
             }
           </div>
@@ -5086,10 +6659,24 @@ function openScriptDetail(scriptId) {
         Copy &amp; Execute Script
       </button>
 
-      <a class="detail-execute-btn" href="https://rscripts.net/@LPOLVO" target="_blank" rel="noopener" style="background: var(--bg3); border: 1px solid var(--border); box-shadow: none; color: var(--text2); text-decoration:none;">
-        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-        View on RScripts.net
-      </a>
+      <div class="share-row">
+        <button class="share-btn" onclick="shareScript('${script.id}')">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+          Share
+        </button>
+        <a class="share-btn" href="https://rscripts.net/@LPOLVO" target="_blank" rel="noopener" style="text-decoration:none;">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+          RScripts
+        </a>
+        <button class="share-btn" onclick="closeScriptDetail(); window.open('https://discord.gg/JEVVygtkq','_blank');">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+          Discord
+        </button>
+      </div>
+
+      ${buildRelatedScripts(script.id, script.game)}
+
+      ${buildComments(script.id)}
     </div>
   `;
 
@@ -5108,6 +6695,7 @@ function copyScriptCode(scriptId) {
   copyToClipboard(script.code);
   showToast(T('toast_copied'), 'success');
   playSuccess();
+  trackCopy(scriptId);
 }
 
 function executeScript(scriptId) {
@@ -5116,6 +6704,7 @@ function executeScript(scriptId) {
   copyToClipboard(script.code);
   showToast(T('script_executed'), 'success');
   playSuccess();
+  trackCopy(scriptId);
 }
 
 function escapeHtml(str) {
@@ -5195,7 +6784,7 @@ function updateSidebarForAuth(user) {
 
     userCard.classList.add('show');
     if (logoutBtn) { logoutBtn.style.display = 'flex'; }
-    if (logoutSep) { logoutSep.style.display = 'block'; �}
+    if (logoutSep) { logoutSep.style.display = 'block'; }
   } else {
     userCard.classList.remove('show');
     if (logoutBtn) { logoutBtn.style.display = 'none'; }
@@ -5435,7 +7024,7 @@ function refreshProfilePage() {
 }
 
 function buildProfileScripts() {
-  const c�ontainer = document.getElementById('profileScriptsList');
+  const container = document.getElementById('profileScriptsList');
   if (!container) return;
   const scripts = SCRIPTS_DB.slice(0, 6);
   container.innerHTML = scripts.map(s => buildScriptCard(s)).join('');
@@ -5452,7 +7041,13 @@ function switchProfileTab(tab) {
   });
   playClick();
 
-  if (tab === 'stats') buildProfileStats();
+  if (tab === 'stats') {
+    buildProfileStats();
+    renderProfileStats(state.currentUser);
+    buildActivityGraph();
+    const achEl = document.getElementById('achievementsContainer');
+    if (achEl) achEl.innerHTML = buildAchievementsTab();
+  }
   if (tab === 'activity') buildProfileActivity();
 }
 
@@ -5648,7 +7243,7 @@ async function doUploadScript() {
 
   if (!name || !game || !desc || !code) {
     if (errEl) { errEl.textContent = 'Please fill in all required fields.'; errEl.classList.add('show'); }
-�    return;
+    return;
   }
 
   const btn = document.getElementById('uploadSubmitBtn');
@@ -5670,6 +7265,411 @@ async function doUploadScript() {
   }, 1500);
 
   setLoading(btn, false);
+}
+
+/* ════════════════════════════════════════════════════════════
+   SECTION 17B — NEW SECTION BUILDERS
+   ════════════════════════════════════════════════════════════ */
+
+function buildHowItWorks() {
+  const el = document.getElementById('howStepsList');
+  if (!el) return;
+  el.innerHTML = HOW_IT_WORKS.map(step => `
+    <div class="how-step">
+      <div class="how-step-num">${step.num}</div>
+      <div class="how-step-content">
+        <div class="how-step-title">${step.title}</div>
+        <div class="how-step-desc">${step.desc}</div>
+      </div>
+    </div>
+  `).join('');
+}
+
+function buildTopCreators() {
+  const el = document.getElementById('creatorsScroll');
+  if (!el) return;
+  el.innerHTML = TOP_CREATORS.map(c => `
+    <div class="creator-card" onclick="playClick()">
+      <div class="creator-card-wrap">
+        <div class="creator-card-avatar">${c.initial}</div>
+        ${c.verified ? '<div class="creator-card-verified">✓</div>' : ''}
+        <div class="creator-card-rank" style="position:absolute;top:-4px;left:-4px;width:20px;height:20px;border-radius:6px;background:var(--btn-grad);font-size:0.6rem;font-weight:900;color:#fff;display:flex;align-items:center;justify-content:center;font-family:\'Orbitron\',monospace;">${c.rank}</div>
+      </div>
+      <div class="creator-card-name">${c.name}</div>
+      <div class="creator-card-scripts">${c.scripts}</div>
+      <div class="creator-card-views">${c.views}</div>
+    </div>
+  `).join('');
+}
+
+function buildLeaderboard() {
+  const el = document.getElementById('leaderboardList');
+  if (!el) return;
+  const top = [...SCRIPTS_DB].sort((a,b) => {
+    const av = parseFloat(a.views.replace(/[^0-9.]/g,'')) * (a.views.includes('K') ? 1000 : 1);
+    const bv = parseFloat(b.views.replace(/[^0-9.]/g,'')) * (b.views.includes('K') ? 1000 : 1);
+    return bv - av;
+  }).slice(0, 8);
+
+  el.innerHTML = top.map((s, i) => {
+    const rank = i + 1;
+    const rankClass = rank === 1 ? 'rank-1' : rank === 2 ? 'rank-2' : rank === 3 ? 'rank-3' : '';
+    const rankStyle = rankClass ? '' : 'class="leaderboard-rank leaderboard-rank-default"';
+    return `
+    <div class="leaderboard-item ${rankClass}" onclick="openScriptDetail('${s.id}')">
+      <div class="leaderboard-rank ${!rankClass ? 'leaderboard-rank-default' : ''}">#${rank}</div>
+      <div style="flex:1;min-width:0;">
+        <div class="leaderboard-name">${s.name}</div>
+        <div class="leaderboard-game">${s.gameEmoji} ${s.game}</div>
+      </div>
+      <div class="leaderboard-stat">
+        <div class="leaderboard-stat-num">${s.views}</div>
+        <div class="leaderboard-stat-label">views</div>
+      </div>
+    </div>
+  `}).join('');
+}
+
+function buildExecutors() {
+  const el = document.getElementById('executorGrid');
+  if (!el) return;
+  el.innerHTML = EXECUTORS.map(e => `
+    <a class="executor-card" href="${e.url}" target="_blank" rel="noopener noreferrer" onclick="playClick()">
+      <div class="executor-icon">${e.icon}</div>
+      <div class="executor-info">
+        <div class="executor-name">${e.name}</div>
+        <div class="executor-sub">${e.sub}</div>
+      </div>
+      ${e.free ? '<div class="executor-free-badge">FREE</div>' : ''}
+    </a>
+  `).join('');
+}
+
+function buildNews() {
+  const el = document.getElementById('newsList');
+  if (!el) return;
+  const badgeLabels = { update: 'UPDATE', announce: 'ANNOUNCEMENT', feature: 'FEATURE' };
+  el.innerHTML = NEWS_ITEMS.map(n => `
+    <div class="news-item" onclick="playClick()">
+      <div class="news-item-img" style="background:${n.thumbBg};aspect-ratio:16/6;"></div>
+      <div class="news-item-body">
+        <div class="news-item-meta">
+          <span class="news-item-badge ${n.badge}">${n.badgeText}</span>
+          <span class="news-item-date">${n.date}</span>
+        </div>
+        <div class="news-item-title">${n.title}</div>
+        <div class="news-item-excerpt">${n.excerpt}</div>
+      </div>
+      <div class="news-item-footer">
+        <span class="news-read-more">
+          Read more
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </span>
+      </div>
+    </div>
+  `).join('');
+}
+
+function buildFAQ() {
+  const el = document.getElementById('faqList');
+  if (!el) return;
+  el.innerHTML = FAQ_ITEMS.map((item, i) => `
+    <div class="faq-item" id="faq-${i}">
+      <div class="faq-question" onclick="toggleFAQ(${i})" role="button" tabindex="0" aria-expanded="false">
+        <div class="faq-question-text">${item.q}</div>
+        <div class="faq-arrow">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </div>
+      </div>
+      <div class="faq-answer">
+        <div class="faq-answer-inner">${item.a}</div>
+      </div>
+    </div>
+  `).join('');
+}
+
+function toggleFAQ(i) {
+  const item = document.getElementById('faq-' + i);
+  if (!item) return;
+  const isOpen = item.classList.contains('open');
+  // Close all
+  document.querySelectorAll('.faq-item').forEach(el => {
+    el.classList.remove('open');
+    const q = el.querySelector('.faq-question');
+    if (q) q.setAttribute('aria-expanded', 'false');
+  });
+  // Open clicked if it was closed
+  if (!isOpen) {
+    item.classList.add('open');
+    const q = item.querySelector('.faq-question');
+    if (q) q.setAttribute('aria-expanded', 'true');
+    playClick();
+  }
+}
+
+function buildAnnouncement() {
+  // Announcement banner is built in HTML, but show/hide based on dismissal
+  const dismissed = localStorage.getItem('lp_ann_dismissed');
+  const banner = document.getElementById('announcement-banner');
+  if (!banner) return;
+  if (dismissed === 'v4') {
+    banner.style.display = 'none';
+  } else {
+    banner.style.display = 'flex';
+  }
+}
+
+function dismissAnnouncement() {
+  localStorage.setItem('lp_ann_dismissed', 'v4');
+  const banner = document.getElementById('announcement-banner');
+  if (banner) {
+    banner.style.transition = 'max-height 0.35s ease, opacity 0.3s ease, padding 0.35s ease';
+    banner.style.maxHeight = '0';
+    banner.style.opacity = '0';
+    banner.style.padding = '0';
+    banner.style.overflow = 'hidden';
+    setTimeout(() => { banner.style.display = 'none'; }, 350);
+  }
+}
+
+function initScrollTop() {
+  const btn = document.getElementById('scrollTopBtn');
+  if (!btn) return;
+  window.addEventListener('scroll', () => {
+    btn.classList.toggle('show', window.scrollY > 400);
+  }, { passive: true });
+  btn.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    playClick();
+  });
+}
+
+/* ── SETTINGS PANEL ── */
+
+function openSettings() {
+  playClick();
+  document.getElementById('settings-modal').classList.add('show');
+  document.body.style.overflow = 'hidden';
+  renderSettings();
+}
+
+function closeSettings() {
+  document.getElementById('settings-modal').classList.remove('show');
+  document.body.style.overflow = '';
+}
+
+function handleSettingsOverlay(e) {
+  if (e.target === document.getElementById('settings-modal')) closeSettings();
+}
+
+function renderSettings() {
+  const rows = [
+    {
+      key: 'particles',
+      icon: '✨',
+      label: 'Particle Background',
+      sub: 'Floating particles behind the app',
+    },
+    {
+      key: 'sounds',
+      icon: '🔊',
+      label: 'Sound Effects',
+      sub: 'Click and theme change tones',
+    },
+    {
+      key: 'animations',
+      icon: '🎞️',
+      label: 'Animations',
+      sub: 'Reduce motion (accessibility)',
+    },
+    {
+      key: 'notifications',
+      icon: '🔔',
+      label: 'Notifications',
+      sub: 'Show notification dot in navbar',
+    },
+  ];
+
+  const grid = document.getElementById('settingsRows');
+  if (!grid) return;
+  grid.innerHTML = rows.map(r => `
+    <div class="settings-row">
+      <div>
+        <div class="settings-row-label">${r.icon} ${r.label}</div>
+        <div class="settings-row-sub">${r.sub}</div>
+      </div>
+      <div class="settings-toggle ${SETTINGS_STATE[r.key] ? 'on' : ''}"
+        id="stg-${r.key}"
+        onclick="toggleSetting('${r.key}')"
+        role="switch"
+        aria-checked="${SETTINGS_STATE[r.key]}"
+        tabindex="0"></div>
+    </div>
+  `).join('');
+}
+
+function toggleSetting(key) {
+  SETTINGS_STATE[key] = !SETTINGS_STATE[key];
+  localStorage.setItem('lp_' + key === 'notifications' ? 'notif_enabled' : key, JSON.stringify(SETTINGS_STATE[key]));
+  const el = document.getElementById('stg-' + key);
+  if (el) {
+    el.classList.toggle('on', SETTINGS_STATE[key]);
+    el.setAttribute('aria-checked', SETTINGS_STATE[key]);
+  }
+  playClick();
+
+  // Apply immediate effects
+  if (key === 'particles') {
+    const canvas = document.getElementById('bgCanvas');
+    if (canvas) canvas.style.display = SETTINGS_STATE.particles ? '' : 'none';
+  }
+  if (key === 'notifications') {
+    const dot = document.getElementById('navNotifDot');
+    if (dot) dot.classList.toggle('show', SETTINGS_STATE.notifications);
+  }
+}
+
+/* ── SHARE SCRIPT ── */
+
+function shareScript(scriptId) {
+  const script = SCRIPTS_DB.find(s => s.id === scriptId);
+  if (!script) return;
+
+  if (navigator.share) {
+    navigator.share({
+      title: script.name,
+      text: `Check out "${script.name}" on LPOLVO HUB — ${script.desc.substring(0, 100)}...`,
+      url: `https://lpolvo.github.io/#script-${scriptId}`,
+    }).catch(() => {});
+  } else {
+    const url = `https://lpolvo.github.io/#script-${scriptId}`;
+    navigator.clipboard.writeText(url).then(() => {
+      showToast('🔗 Link copied to clipboard!', 'success');
+    }).catch(() => {
+      showToast('🔗 Link: lpolvo.github.io', 'info');
+    });
+  }
+  playClick();
+}
+
+/* ── COMMENTS (local, demo) ── */
+
+const DEMO_COMMENTS = [
+  { initials: 'AX', name: 'AxPlayer', time: '2h ago', text: 'Works perfectly on Arceus X! The auto farm is super fast. 🔥', likes: 14 },
+  { initials: 'RK', name: 'RkScript99', time: '5h ago', text: 'Finally a keyless version! Been waiting for this. Thanks LPOLVO!', likes: 9 },
+  { initials: 'NB', name: 'NovaByte', time: '1d ago', text: 'Script patched after last update but was fixed within 2 hours. Respect for the quick response.', likes: 21 },
+  { initials: 'SF', name: 'SkyFarmer', time: '2d ago', text: 'Best hub on GitHub Pages period. Using it every day.', likes: 33 },
+];
+
+function buildComments(scriptId) {
+  const stored = JSON.parse(localStorage.getItem('lp_comments_' + scriptId) || '[]');
+  const all = [...DEMO_COMMENTS, ...stored];
+
+  return `
+    <div class="detail-rating-section">
+      <div class="detail-rating-title">⭐ Rate this Script</div>
+      <div class="rating-stars" id="ratingStars-${scriptId}">
+        ${[1,2,3,4,5].map(n => `<span class="rating-star" onclick="rateScript('${scriptId}', ${n})" data-star="${n}">⭐</span>`).join('')}
+      </div>
+      <div class="rating-summary">
+        <span class="rating-big">${(4.2 + Math.random() * 0.6).toFixed(1)}</span>
+        <div>
+          <div style="color:var(--accent);font-size:0.9rem;">★★★★☆</div>
+          <div class="rating-count">${Math.floor(80 + Math.random() * 120)} ratings</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="detail-comments">
+      <div class="detail-rating-title">💬 Comments (${all.length})</div>
+      ${all.map(c => `
+        <div class="comment-item">
+          <div class="comment-avatar">${c.initials}</div>
+          <div class="comment-body">
+            <div class="comment-header">
+              <span class="comment-name">${c.name}</span>
+              <span class="comment-time">${c.time}</span>
+            </div>
+            <div class="comment-text">${c.text}</div>
+            <div class="comment-likes" onclick="this.innerHTML='❤️ ' + (parseInt(this.dataset.likes)+1); this.dataset.likes=(parseInt(this.dataset.likes)+1);" data-likes="${c.likes}">
+              🤍 ${c.likes}
+            </div>
+          </div>
+        </div>
+      `).join('')}
+      <div class="comment-input-wrap">
+        <textarea class="comment-textarea" id="commentInput-${scriptId}" placeholder="Add a comment..." rows="2"></textarea>
+        <button class="comment-submit-btn" onclick="submitComment('${scriptId}')">Post</button>
+      </div>
+    </div>
+  `;
+}
+
+function rateScript(scriptId, stars) {
+  const starsEl = document.querySelectorAll(`#ratingStars-${scriptId} .rating-star`);
+  starsEl.forEach((s, i) => {
+    s.classList.toggle('active', i < stars);
+  });
+  showToast(`⭐ Rated ${stars} star${stars > 1 ? 's' : ''}!`, 'success');
+  playSuccess();
+}
+
+function submitComment(scriptId) {
+  const input = document.getElementById('commentInput-' + scriptId);
+  if (!input || !input.value.trim()) return;
+
+  const user = state.currentUser;
+  const name = user ? (user.displayName || user.email.split('@')[0]) : 'Anonymous';
+  const initials = name.slice(0, 2).toUpperCase();
+
+  const comment = {
+    initials,
+    name,
+    time: 'Just now',
+    text: input.value.trim(),
+    likes: 0,
+  };
+
+  const stored = JSON.parse(localStorage.getItem('lp_comments_' + scriptId) || '[]');
+  stored.unshift(comment);
+  localStorage.setItem('lp_comments_' + scriptId, JSON.stringify(stored.slice(0, 20)));
+
+  input.value = '';
+  showToast('💬 Comment posted!', 'success');
+  playSuccess();
+
+  // Rebuild comments section
+  const commentsEl = document.querySelector('.detail-comments');
+  if (commentsEl) {
+    const newComments = buildComments(scriptId);
+    const temp = document.createElement('div');
+    temp.innerHTML = newComments;
+    const newSection = temp.querySelector('.detail-comments');
+    if (newSection) commentsEl.replaceWith(newSection);
+  }
+}
+
+function buildRelatedScripts(currentId, game) {
+  const related = SCRIPTS_DB.filter(s => s.id !== currentId && (s.game === game || s.tags.some(t => SCRIPTS_DB.find(x => x.id === currentId)?.tags.includes(t)))).slice(0, 4);
+  if (related.length === 0) return '';
+
+  return `
+    <div class="related-scripts">
+      <div class="related-scripts-title">🔗 Related Scripts</div>
+      <div class="related-list">
+        ${related.map(s => `
+          <div class="related-item" onclick="openScriptDetail('${s.id}')">
+            <div class="related-thumb" style="background:${s.thumbBg};"></div>
+            <div class="related-info">
+              <div class="related-name">${s.name}</div>
+              <div class="related-views">👁️ ${s.views}</div>
+            </div>
+            <span class="related-tag">${s.keyless ? 'Keyless' : 'Key'}</span>
+          </div>
+        `).join('')}
+      </div>
+    </div>
+  `;
 }
 
 /* ════════════════════════════════════════════════════════════
@@ -5807,12 +7807,495 @@ function onKeyDown(e) {
     closeScriptDetail();
     closeUploadModal();
     closeEditProfileModal();
+    closeSettings();
+    closeAboutModal();
     if (document.getElementById('sidebar').classList.contains('open')) closeSidebar();
   }
   if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
     e.preventDefault();
     openSearch();
   }
+}
+
+/* ════════════════════════════════════════════════════════════
+   SECTION 23 — ACHIEVEMENTS SYSTEM
+   ════════════════════════════════════════════════════════════ */
+
+const ACHIEVEMENTS = [
+  {
+    id: 'first_copy',
+    icon: '📋',
+    name: 'First Copy',
+    desc: 'Copy your first script',
+    xp: 10,
+    condition: (stats) => stats.copies >= 1,
+  },
+  {
+    id: 'script_fan',
+    icon: '🎯',
+    name: 'Script Fan',
+    desc: 'Copy 5 different scripts',
+    xp: 25,
+    condition: (stats) => stats.uniqueScripts >= 5,
+  },
+  {
+    id: 'script_addict',
+    icon: '🔥',
+    name: 'Script Addict',
+    desc: 'Copy 15 different scripts',
+    xp: 60,
+    condition: (stats) => stats.uniqueScripts >= 15,
+  },
+  {
+    id: 'collector',
+    icon: '💎',
+    name: 'Collector',
+    desc: 'Copy all 28 scripts',
+    xp: 200,
+    condition: (stats) => stats.uniqueScripts >= 28,
+  },
+  {
+    id: 'theme_changer',
+    icon: '🎨',
+    name: 'Theme Explorer',
+    desc: 'Try 5 different themes',
+    xp: 20,
+    condition: (stats) => stats.themesUsed >= 5,
+  },
+  {
+    id: 'theme_master',
+    icon: '🌈',
+    name: 'Theme Master',
+    desc: 'Try all 10 themes',
+    xp: 50,
+    condition: (stats) => stats.themesUsed >= 10,
+  },
+  {
+    id: 'polyglot',
+    icon: '🌐',
+    name: 'Polyglot',
+    desc: 'Switch to 3 different languages',
+    xp: 30,
+    condition: (stats) => stats.langsUsed >= 3,
+  },
+  {
+    id: 'communicator',
+    icon: '💬',
+    name: 'Communicator',
+    desc: 'Post your first comment',
+    xp: 15,
+    condition: (stats) => stats.comments >= 1,
+  },
+  {
+    id: 'supporter',
+    icon: '⭐',
+    name: 'Supporter',
+    desc: 'Rate a script',
+    xp: 10,
+    condition: (stats) => stats.ratings >= 1,
+  },
+  {
+    id: 'sharer',
+    icon: '📤',
+    name: 'Sharer',
+    desc: 'Share a script link',
+    xp: 10,
+    condition: (stats) => stats.shares >= 1,
+  },
+  {
+    id: 'night_owl',
+    icon: '🦉',
+    name: 'Night Owl',
+    desc: 'Visit the hub after midnight',
+    xp: 15,
+    condition: (stats) => stats.nightVisit,
+  },
+  {
+    id: 'speed_runner',
+    icon: '⚡',
+    name: 'Speed Runner',
+    desc: 'Copy 3 scripts in one session',
+    xp: 20,
+    condition: (stats) => stats.sessionCopies >= 3,
+  },
+  {
+    id: 'member',
+    icon: '👤',
+    name: 'Member',
+    desc: 'Create an account',
+    xp: 50,
+    condition: (stats) => stats.loggedIn,
+  },
+  {
+    id: 'daily_visitor',
+    icon: '📅',
+    name: 'Regular',
+    desc: 'Visit 3 days in a row',
+    xp: 40,
+    condition: (stats) => stats.streak >= 3,
+  },
+  {
+    id: 'lpolvo_fan',
+    icon: '👑',
+    name: 'LPOLVO Fan',
+    desc: 'Follow LPOLVO on all socials',
+    xp: 100,
+    condition: (stats) => stats.socialClicks >= 4,
+  },
+];
+
+const ACHIEVEMENT_STATS_KEY = 'lp_ach_stats';
+const UNLOCKED_KEY = 'lp_unlocked_ach';
+
+function getAchStats() {
+  const defaults = {
+    copies: 0, uniqueScripts: 0, themesUsed: 1, langsUsed: 1,
+    comments: 0, ratings: 0, shares: 0, nightVisit: false,
+    sessionCopies: 0, loggedIn: false, streak: 1, socialClicks: 0,
+  };
+  try {
+    const stored = JSON.parse(localStorage.getItem(ACHIEVEMENT_STATS_KEY) || '{}');
+    return { ...defaults, ...stored };
+  } catch { return defaults; }
+}
+
+function saveAchStats(stats) {
+  try { localStorage.setItem(ACHIEVEMENT_STATS_KEY, JSON.stringify(stats)); } catch {}
+}
+
+function getUnlocked() {
+  try { return JSON.parse(localStorage.getItem(UNLOCKED_KEY) || '[]'); } catch { return []; }
+}
+
+function checkAchievements(updateKey, value) {
+  const stats = getAchStats();
+  const unlocked = getUnlocked();
+
+  // Update the stat
+  if (updateKey) {
+    if (typeof value === 'boolean') {
+      stats[updateKey] = value;
+    } else {
+      stats[updateKey] = (stats[updateKey] || 0) + (value !== undefined ? value : 1);
+    }
+    saveAchStats(stats);
+  }
+
+  // Check each achievement
+  ACHIEVEMENTS.forEach(ach => {
+    if (!unlocked.includes(ach.id) && ach.condition(stats)) {
+      unlocked.push(ach.id);
+      localStorage.setItem(UNLOCKED_KEY, JSON.stringify(unlocked));
+      // Show achievement toast
+      setTimeout(() => {
+        showAchievementToast(ach);
+      }, 800);
+    }
+  });
+}
+
+function showAchievementToast(ach) {
+  const container = document.getElementById('toast-container');
+  if (!container) return;
+
+  const toast = document.createElement('div');
+  toast.className = 'toast success';
+  toast.style.cssText = 'background: linear-gradient(135deg, rgba(65,105,225,0.95), rgba(36,81,194,0.95)); border-left: 3px solid gold; max-width: 280px;';
+  toast.innerHTML = `
+    <div style="font-size:0.65rem;font-weight:800;letter-spacing:0.1em;color:gold;text-transform:uppercase;margin-bottom:3px;">🏆 Achievement Unlocked!</div>
+    <div style="font-weight:700;font-size:0.9rem;">${ach.icon} ${ach.name}</div>
+    <div style="font-size:0.75rem;opacity:0.85;margin-top:2px;">${ach.desc} • +${ach.xp} XP</div>
+  `;
+  container.appendChild(toast);
+  setTimeout(() => {
+    toast.classList.add('removing');
+    setTimeout(() => { if (toast.parentNode) toast.parentNode.removeChild(toast); }, 250);
+  }, 4500);
+
+  // Sound
+  try {
+    const ctx = new (window.AudioContext || window.webkitAudioContext)();
+    [0, 0.1, 0.2].forEach((delay, i) => {
+      const osc = ctx.createOscillator();
+      const gain = ctx.createGain();
+      osc.connect(gain);
+      gain.connect(ctx.destination);
+      osc.frequency.value = [523.25, 659.25, 783.99][i];
+      osc.type = 'sine';
+      gain.gain.setValueAtTime(0.15, ctx.currentTime + delay);
+      gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + delay + 0.3);
+      osc.start(ctx.currentTime + delay);
+      osc.stop(ctx.currentTime + delay + 0.3);
+    });
+  } catch {}
+}
+
+function getTotalXP() {
+  const unlocked = getUnlocked();
+  return ACHIEVEMENTS.filter(a => unlocked.includes(a.id)).reduce((sum, a) => sum + a.xp, 0);
+}
+
+function getLevel() {
+  const xp = getTotalXP();
+  if (xp < 50) return { level: 1, title: 'Newbie', next: 50 };
+  if (xp < 150) return { level: 2, title: 'Explorer', next: 150 };
+  if (xp < 350) return { level: 3, title: 'Scripter', next: 350 };
+  if (xp < 600) return { level: 4, title: 'Pro', next: 600 };
+  if (xp < 900) return { level: 5, title: 'Expert', next: 900 };
+  return { level: 6, title: 'Master', next: Infinity };
+}
+
+function buildAchievementsTab() {
+  const unlocked = getUnlocked();
+  const stats = getAchStats();
+  const lvl = getLevel();
+  const xp = getTotalXP();
+  const pct = lvl.next === Infinity ? 100 : Math.round((xp / lvl.next) * 100);
+
+  return `
+    <div style="padding: 16px;">
+      <!-- Level Card -->
+      <div style="background: var(--btn-grad); border-radius: var(--radius-lg); padding: 20px; margin-bottom: 16px; position: relative; overflow: hidden;">
+        <div style="position:absolute;inset:0;background:repeating-linear-gradient(-45deg,rgba(255,255,255,0.04) 0,rgba(255,255,255,0.04) 1px,transparent 1px,transparent 14px);"></div>
+        <div style="font-family:'Orbitron',monospace;font-size:0.65rem;font-weight:900;letter-spacing:0.12em;color:rgba(255,255,255,0.7);text-transform:uppercase;position:relative;">LEVEL ${lvl.level}</div>
+        <div style="font-family:'Syne',sans-serif;font-size:1.8rem;font-weight:800;color:#fff;line-height:1.1;position:relative;">${lvl.title}</div>
+        <div style="font-size:0.78rem;color:rgba(255,255,255,0.75);margin:8px 0;position:relative;">${xp} XP earned • ${unlocked.length}/${ACHIEVEMENTS.length} achievements</div>
+        <div style="background:rgba(255,255,255,0.2);height:6px;border-radius:3px;overflow:hidden;position:relative;">
+          <div style="width:${pct}%;height:100%;background:#fff;border-radius:3px;transition:width 1s ease;"></div>
+        </div>
+        <div style="font-size:0.68rem;color:rgba(255,255,255,0.6);margin-top:5px;position:relative;">${lvl.next === Infinity ? 'MAX LEVEL' : `${xp} / ${lvl.next} XP to Level ${lvl.level + 1}`}</div>
+      </div>
+
+      <!-- Achievements Grid -->
+      <div style="font-size:0.65rem;font-weight:800;letter-spacing:0.12em;color:var(--text3);text-transform:uppercase;margin-bottom:10px;">ACHIEVEMENTS</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;">
+        ${ACHIEVEMENTS.map(ach => {
+          const isUnlocked = unlocked.includes(ach.id);
+          return `
+            <div style="background:var(--card);border:1px solid ${isUnlocked ? 'var(--accent)' : 'var(--card-border)'};border-radius:var(--radius);padding:12px;opacity:${isUnlocked ? '1' : '0.45'};">
+              <div style="font-size:1.3rem;margin-bottom:5px;">${ach.icon}</div>
+              <div style="font-size:0.8rem;font-weight:700;color:var(--text);margin-bottom:3px;">${ach.name}</div>
+              <div style="font-size:0.68rem;color:var(--text3);line-height:1.4;margin-bottom:6px;">${ach.desc}</div>
+              <div style="font-size:0.65rem;font-weight:800;color:${isUnlocked ? 'var(--accent)' : 'var(--text3)'};background:${isUnlocked ? 'var(--accent-alpha)' : 'var(--bg3)'};border-radius:5px;padding:2px 7px;display:inline-block;">
+                ${isUnlocked ? '✅ Unlocked' : `🔒 +${ach.xp} XP`}
+              </div>
+            </div>
+          `;
+        }).join('')}
+      </div>
+    </div>
+  `;
+}
+
+/* ════════════════════════════════════════════════════════════
+   SECTION 24 — ABOUT MODAL
+   ════════════════════════════════════════════════════════════ */
+
+function openAboutModal() {
+  playClick();
+  document.getElementById('about-modal').classList.add('show');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeAboutModal() {
+  const m = document.getElementById('about-modal');
+  if (m) m.classList.remove('show');
+  document.body.style.overflow = '';
+}
+
+function handleAboutOverlay(e) {
+  if (e.target === document.getElementById('about-modal')) closeAboutModal();
+}
+
+/* ════════════════════════════════════════════════════════════
+   SECTION 25 — ACTIVITY GRAPH
+   ════════════════════════════════════════════════════════════ */
+
+function buildActivityGraph() {
+  const el = document.getElementById('activityGraphContainer');
+  if (!el) return;
+
+  // Generate fake activity data (last 12 weeks)
+  const weeks = 12;
+  const days = 7;
+  const cells = [];
+
+  for (let w = 0; w < weeks; w++) {
+    for (let d = 0; d < days; d++) {
+      const rand = Math.random();
+      // More activity in recent weeks
+      const recencyBias = (w / weeks) * 0.6;
+      const val = rand < 0.35 + recencyBias ? Math.floor(Math.random() * 5) + 1 : 0;
+      cells.push(val);
+    }
+  }
+
+  const maxVal = Math.max(...cells);
+  const dayLabels = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+
+  el.innerHTML = `
+    <div style="display:flex;gap:3px;overflow-x:auto;padding-bottom:4px;">
+      <div style="display:flex;flex-direction:column;gap:3px;padding-top:16px;flex-shrink:0;">
+        ${dayLabels.filter((_,i) => i % 2 === 1).map(l => `
+          <div style="height:12px;font-size:0.58rem;color:var(--text3);line-height:12px;padding-right:4px;">${l}</div>
+          <div style="height:12px;"></div>
+        `).join('')}
+      </div>
+      ${Array.from({length: weeks}, (_, w) => `
+        <div style="display:flex;flex-direction:column;gap:3px;">
+          <div style="height:12px;font-size:0.58rem;color:var(--text3);line-height:12px;text-align:center;white-space:nowrap;">${w === weeks-1 ? 'Now' : w === 0 ? '12w' : ''}</div>
+          ${Array.from({length: days}, (_, d) => {
+            const val = cells[w * days + d];
+            const intensity = val === 0 ? 0 : val / maxVal;
+            const alpha = val === 0 ? 0.07 : 0.2 + intensity * 0.8;
+            return `<div style="width:12px;height:12px;border-radius:2px;background:rgba(65,105,225,${alpha.toFixed(2)});"></div>`;
+          }).join('')}
+        </div>
+      `).join('')}
+    </div>
+    <div style="display:flex;align-items:center;gap:6px;margin-top:8px;">
+      <span style="font-size:0.7rem;color:var(--text3);">Less</span>
+      ${[0.07, 0.3, 0.55, 0.75, 0.95].map(a => `<div style="width:12px;height:12px;border-radius:2px;background:rgba(65,105,225,${a});"></div>`).join('')}
+      <span style="font-size:0.7rem;color:var(--text3);">More</span>
+    </div>
+  `;
+}
+
+/* ════════════════════════════════════════════════════════════
+   SECTION 26 — TICKER + STATS ANIMATION
+   ════════════════════════════════════════════════════════════ */
+
+function animateCounters() {
+  const counters = document.querySelectorAll('[data-count-target]');
+  counters.forEach(el => {
+    const target = parseInt(el.dataset.countTarget, 10);
+    const duration = 1800;
+    const start = Date.now();
+    const startVal = 0;
+    const easeOut = (t) => 1 - Math.pow(1 - t, 3);
+
+    const tick = () => {
+      const elapsed = Date.now() - start;
+      const progress = Math.min(elapsed / duration, 1);
+      const current = Math.round(startVal + (target - startVal) * easeOut(progress));
+      el.textContent = current.toLocaleString() + (el.dataset.countSuffix || '');
+      if (progress < 1) requestAnimationFrame(tick);
+    };
+    requestAnimationFrame(tick);
+  });
+}
+
+/* ════════════════════════════════════════════════════════════
+   SECTION 27 — PROFILE EXTENDED RENDER
+   ════════════════════════════════════════════════════════════ */
+
+function renderProfileStats(user) {
+  const xp = getTotalXP();
+  const lvl = getLevel();
+  const unlocked = getUnlocked();
+
+  const statsEl = document.getElementById('profileStatCards');
+  if (statsEl) {
+    statsEl.innerHTML = `
+      <div class="profile-stat-card">
+        <div class="profile-stat-card-icon">👁️</div>
+        <div class="profile-stat-card-num">654K</div>
+        <div class="profile-stat-card-label">Total Views</div>
+      </div>
+      <div class="profile-stat-card">
+        <div class="profile-stat-card-icon">📜</div>
+        <div class="profile-stat-card-num">28</div>
+        <div class="profile-stat-card-label">Scripts</div>
+      </div>
+      <div class="profile-stat-card">
+        <div class="profile-stat-card-icon">⭐</div>
+        <div class="profile-stat-card-num">${xp}</div>
+        <div class="profile-stat-card-label">XP Earned</div>
+      </div>
+      <div class="profile-stat-card">
+        <div class="profile-stat-card-icon">🏆</div>
+        <div class="profile-stat-card-num">${unlocked.length}</div>
+        <div class="profile-stat-card-label">Achievements</div>
+      </div>
+    `;
+  }
+}
+
+/* ════════════════════════════════════════════════════════════
+   SECTION 28 — DAILY VISIT STREAK
+   ════════════════════════════════════════════════════════════ */
+
+function checkDailyStreak() {
+  const today = new Date().toDateString();
+  const lastVisit = localStorage.getItem('lp_last_visit');
+  const streak = parseInt(localStorage.getItem('lp_streak') || '1', 10);
+
+  if (lastVisit === today) return; // Already counted today
+
+  const yesterday = new Date(Date.now() - 86400000).toDateString();
+  const newStreak = lastVisit === yesterday ? streak + 1 : 1;
+
+  localStorage.setItem('lp_last_visit', today);
+  localStorage.setItem('lp_streak', newStreak);
+
+  const stats = getAchStats();
+  stats.streak = newStreak;
+  saveAchStats(stats);
+
+  // Check night owl
+  const hour = new Date().getHours();
+  if (hour >= 0 && hour < 4) {
+    stats.nightVisit = true;
+    saveAchStats(stats);
+  }
+
+  checkAchievements(null, null);
+
+  if (newStreak > 1 && newStreak % 3 === 0) {
+    setTimeout(() => {
+      showToast(`🔥 ${newStreak}-day streak! Keep it up!`, 'success');
+    }, 2500);
+  }
+}
+
+/* ════════════════════════════════════════════════════════════
+   SECTION 29 — SETTINGS GRID SYNC
+   ════════════════════════════════════════════════════════════ */
+
+function syncSettingsGrids() {
+  // Sync theme grid in settings
+  const themeEl = document.getElementById('settingsThemeGrid');
+  if (themeEl) {
+    const mainGrid = document.getElementById('themeGrid');
+    if (mainGrid) themeEl.innerHTML = mainGrid.innerHTML;
+  }
+  // Sync lang grid
+  const langEl = document.getElementById('settingsLangGrid');
+  if (langEl) {
+    const mainLang = document.getElementById('langGrid');
+    if (mainLang) langEl.innerHTML = mainLang.innerHTML;
+  }
+}
+
+/* ════════════════════════════════════════════════════════════
+   SECTION 30 — CLICK TRACKER (for achievements)
+   ════════════════════════════════════════════════════════════ */
+
+function trackSocialClick() {
+  checkAchievements('socialClicks', 1);
+}
+
+function trackCopy(scriptId) {
+  const stats = getAchStats();
+  const copied = JSON.parse(localStorage.getItem('lp_copied_scripts') || '[]');
+  if (!copied.includes(scriptId)) {
+    copied.push(scriptId);
+    localStorage.setItem('lp_copied_scripts', JSON.stringify(copied));
+    stats.uniqueScripts = copied.length;
+  }
+  checkAchievements('copies', 1);
+  checkAchievements('sessionCopies', 1);
+  saveAchStats(stats);
 }
 
 /* ════════════════════════════════════════════════════════════
