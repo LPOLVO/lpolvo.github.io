@@ -12,9 +12,10 @@
     <meta property="og:type" content="website">
     <title>LPOLVO HUB v3.2</title>
     <link rel="icon" type="image/png" href="favicon.png">
+    <!-- Premium Fonts: Manrope, Syne, JetBrains Mono, Orbitron, Noto Kufi Arabic -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500;600;700&family=Orbitron:wght@400;500;600;700;800;900&family=Syne:wght@400;500;600;700;800&family=Noto+Kufi+Arabic:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Manrope:wght@400;500;600;700;800&family=Syne:wght@400;500;600;700;800&family=JetBrains+Mono:wght@300;400;500;600;700&family=Orbitron:wght@400;500;600;700;800;900&family=Noto+Kufi+Arabic:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 
     <!-- Firebase SDK -->
     <script type="module">
@@ -69,7 +70,7 @@
 
     <style>
         /* ═══════════════════════════════════════════════════════════════════
-           LPOLVO HUB v3.2 — ULTIMATE THEME SYSTEM
+           LPOLVO HUB v3.2 — PREMIUM TYPOGRAPHY SYSTEM
            ═══════════════════════════════════════════════════════════════════ */
 
         /* ── BASE VARIABLES ── */
@@ -81,11 +82,36 @@
             --transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
             --nav-h: 56px;
             --bottom-h: 60px;
-            --font-sans: 'Inter', sans-serif;
-            --font-display: 'Syne', sans-serif;
-            --font-mono: 'JetBrains Mono', monospace;
-            --font-orb: 'Orbitron', monospace;
-            --font-arabic: 'Noto Kufi Arabic', sans-serif;
+            /* ── TYPOGRAPHY ── */
+            --font-sans: 'Manrope', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            --font-display: 'Syne', 'Inter', sans-serif;
+            --font-mono: 'JetBrains Mono', 'Cascadia Code', monospace;
+            --font-orb: 'Orbitron', 'Inter', sans-serif;
+            --font-arabic: 'Noto Kufi Arabic', 'Tajawal', 'Inter', sans-serif;
+            --font-weight-thin: 300;
+            --font-weight-regular: 400;
+            --font-weight-medium: 500;
+            --font-weight-semibold: 600;
+            --font-weight-bold: 700;
+            --font-weight-extrabold: 800;
+            --font-weight-black: 900;
+            --letter-spacing-tight: -0.03em;
+            --letter-spacing-normal: 0em;
+            --letter-spacing-wide: 0.06em;
+            --letter-spacing-wider: 0.1em;
+            --line-height-tight: 1.05;
+            --line-height-normal: 1.5;
+            --line-height-relaxed: 1.65;
+            --text-size-xs: 0.65rem;
+            --text-size-sm: 0.75rem;
+            --text-size-base: 0.875rem;
+            --text-size-md: 1rem;
+            --text-size-lg: 1.125rem;
+            --text-size-xl: 1.25rem;
+            --text-size-2xl: 1.5rem;
+            --text-size-3xl: 2rem;
+            --text-size-4xl: 2.5rem;
+            --text-size-5xl: 3.2rem;
             --ripple-color: rgba(255, 255, 255, 0.2);
             --shadow-soft: 0 8px 32px rgba(0, 0, 0, 0.3);
             --shadow-glow: 0 0 40px rgba(65, 105, 225, 0.15);
@@ -94,7 +120,139 @@
             --theme-bg-layer: rgba(0, 0, 0, 0.3);
         }
 
-        /* ── THEME DEFINITIONS ── 50+ UNIQUE THEMES ── */
+        /* ── RTL OVERRIDES ── */
+        [dir="rtl"] {
+            --lang-direction: rtl;
+            font-family: var(--font-arabic), var(--font-sans);
+        }
+        [dir="rtl"] .nav-logo-text,
+        [dir="rtl"] .sidebar-header-title,
+        [dir="rtl"] .hero-title,
+        [dir="rtl"] .section-title,
+        [dir="rtl"] .dashboard-username,
+        [dir="rtl"] .profile-name,
+        [dir="rtl"] .settings-row-label,
+        [dir="rtl"] .script-card-title,
+        [dir="rtl"] .faq-question,
+        [dir="rtl"] .news-title,
+        [dir="rtl"] .empty-state-title,
+        [dir="rtl"] .auth-title,
+        [dir="rtl"] .onboarding-title,
+        [dir="rtl"] .creator-name,
+        [dir="rtl"] .script-detail-title,
+        [dir="rtl"] .heading-1,
+        [dir="rtl"] .heading-2,
+        [dir="rtl"] .heading-3,
+        [dir="rtl"] .heading-4 {
+            font-family: var(--font-arabic), var(--font-display);
+        }
+        [dir="rtl"] .bottom-nav-label,
+        [dir="rtl"] .nav-sign-btn,
+        [dir="rtl"] .sidebar-nav-item,
+        [dir="rtl"] .onboarding-sub,
+        [dir="rtl"] .creator-handle,
+        [dir="rtl"] .script-detail-meta,
+        [dir="rtl"] .body-text,
+        [dir="rtl"] .label-text,
+        [dir="rtl"] .button-text {
+            font-family: var(--font-arabic), var(--font-sans);
+        }
+
+        /* ── TYPOGRAPHY UTILITY CLASSES ── */
+        .heading-1 {
+            font-family: var(--font-display);
+            font-weight: var(--font-weight-black);
+            font-size: var(--text-size-4xl);
+            line-height: var(--line-height-tight);
+            letter-spacing: var(--letter-spacing-tight);
+            color: var(--text);
+        }
+        .heading-2 {
+            font-family: var(--font-display);
+            font-weight: var(--font-weight-bold);
+            font-size: var(--text-size-2xl);
+            line-height: var(--line-height-tight);
+            letter-spacing: var(--letter-spacing-tight);
+            color: var(--text);
+        }
+        .heading-3 {
+            font-family: var(--font-display);
+            font-weight: var(--font-weight-bold);
+            font-size: var(--text-size-xl);
+            line-height: var(--line-height-tight);
+            letter-spacing: var(--letter-spacing-tight);
+            color: var(--text);
+        }
+        .heading-4 {
+            font-family: var(--font-display);
+            font-weight: var(--font-weight-semibold);
+            font-size: var(--text-size-lg);
+            line-height: var(--line-height-tight);
+            letter-spacing: var(--letter-spacing-tight);
+            color: var(--text);
+        }
+        .body-text {
+            font-family: var(--font-sans);
+            font-weight: var(--font-weight-regular);
+            font-size: var(--text-size-base);
+            line-height: var(--line-height-relaxed);
+            color: var(--text2);
+        }
+        .body-text-sm {
+            font-family: var(--font-sans);
+            font-weight: var(--font-weight-regular);
+            font-size: var(--text-size-sm);
+            line-height: var(--line-height-normal);
+            color: var(--text3);
+        }
+        .body-text-xs {
+            font-family: var(--font-sans);
+            font-weight: var(--font-weight-medium);
+            font-size: var(--text-size-xs);
+            line-height: var(--line-height-normal);
+            color: var(--text3);
+            letter-spacing: var(--letter-spacing-wide);
+            text-transform: uppercase;
+        }
+        .label-text {
+            font-family: var(--font-sans);
+            font-weight: var(--font-weight-semibold);
+            font-size: var(--text-size-xs);
+            letter-spacing: var(--letter-spacing-wider);
+            text-transform: uppercase;
+            color: var(--text3);
+        }
+        .button-text {
+            font-family: var(--font-sans);
+            font-weight: var(--font-weight-bold);
+            font-size: var(--text-size-sm);
+            letter-spacing: var(--letter-spacing-wide);
+            text-transform: uppercase;
+        }
+        .mono-text {
+            font-family: var(--font-mono);
+            font-weight: var(--font-weight-medium);
+            font-size: var(--text-size-sm);
+            line-height: var(--line-height-normal);
+        }
+        .orb-text {
+            font-family: var(--font-orb);
+            font-weight: var(--font-weight-bold);
+            letter-spacing: var(--letter-spacing-wide);
+        }
+        .display-text {
+            font-family: var(--font-display);
+            font-weight: var(--font-weight-black);
+            letter-spacing: var(--letter-spacing-tight);
+        }
+        .text-gradient {
+            background: var(--btn-grad);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* ── THEME DEFINITIONS ── 50+ UNIQUE THEMES (condensed for brevity) ── */
         [data-theme] {
             --bg: #06091a;
             --bg2: #080c20;
@@ -175,7 +333,6 @@
             --particles: rgba(65, 105, 225, 0.4);
             --theme-bg-layer: rgba(0, 0, 20, 0.4);
             --theme-ambient: rgba(65, 105, 225, 0.05);
-            --theme-cursor: default;
             --btn-radius: 12px;
             --card-radius: var(--radius-lg);
             --glow-intensity: 0.4;
@@ -229,7 +386,6 @@
             --banner-overlay: rgba(40, 0, 10, 0.5);
             --theme-bg-layer: rgba(30, 0, 10, 0.5);
             --theme-ambient: rgba(220, 38, 38, 0.08);
-            --theme-cursor: default;
             --btn-radius: 14px;
             --card-radius: 18px;
             --glow-intensity: 0.6;
@@ -284,7 +440,6 @@
             --banner-overlay: rgba(0, 0, 30, 0.4);
             --theme-bg-layer: rgba(0, 0, 40, 0.4);
             --theme-ambient: rgba(96, 165, 250, 0.04);
-            --theme-cursor: default;
             --btn-radius: 12px;
             --card-radius: var(--radius-lg);
             --glow-intensity: 0.4;
@@ -339,7 +494,6 @@
             --banner-overlay: rgba(40, 30, 0, 0.3);
             --theme-bg-layer: rgba(40, 30, 0, 0.3);
             --theme-ambient: rgba(251, 191, 36, 0.06);
-            --theme-cursor: default;
             --btn-radius: 10px;
             --card-radius: var(--radius-lg);
             --glow-intensity: 0.45;
@@ -394,7 +548,6 @@
             --banner-overlay: rgba(0, 0, 30, 0.4);
             --theme-bg-layer: rgba(0, 0, 40, 0.5);
             --theme-ambient: rgba(252, 211, 77, 0.04);
-            --theme-cursor: default;
             --btn-radius: 12px;
             --card-radius: var(--radius-lg);
             --glow-intensity: 0.5;
@@ -449,7 +602,6 @@
             --banner-overlay: rgba(40, 10, 0, 0.5);
             --theme-bg-layer: rgba(30, 5, 0, 0.5);
             --theme-ambient: rgba(239, 68, 68, 0.06);
-            --theme-cursor: default;
             --btn-radius: 14px;
             --card-radius: 18px;
             --glow-intensity: 0.6;
@@ -504,7 +656,6 @@
             --banner-overlay: rgba(40, 10, 20, 0.4);
             --theme-bg-layer: rgba(30, 5, 15, 0.4);
             --theme-ambient: rgba(244, 63, 94, 0.06);
-            --theme-cursor: default;
             --btn-radius: 12px;
             --card-radius: var(--radius-lg);
             --glow-intensity: 0.55;
@@ -559,7 +710,6 @@
             --banner-overlay: rgba(0, 20, 10, 0.3);
             --theme-bg-layer: rgba(0, 10, 20, 0.4);
             --theme-ambient: rgba(52, 211, 153, 0.04);
-            --theme-cursor: default;
             --btn-radius: 14px;
             --card-radius: 16px;
             --glow-intensity: 0.4;
@@ -614,14 +764,13 @@
             --banner-overlay: rgba(0, 0, 20, 0.4);
             --theme-bg-layer: rgba(0, 0, 30, 0.5);
             --theme-ambient: rgba(0, 212, 255, 0.04);
-            --theme-cursor: default;
             --btn-radius: 8px;
             --card-radius: 12px;
             --glow-intensity: 0.5;
             --text-shadow: 0 0 30px rgba(0, 212, 255, 0.03);
         }
 
-        /* ── 10. SAMURAI ── */
+        /* ── 10-50. Additional themes (condensed for brevity, full set included in final) ── */
         [data-theme="samurai"] {
             --bg: #0a0808;
             --bg2: #141010;
@@ -669,14 +818,11 @@
             --banner-overlay: rgba(30, 20, 10, 0.3);
             --theme-bg-layer: rgba(20, 10, 5, 0.3);
             --theme-ambient: rgba(234, 179, 8, 0.04);
-            --theme-cursor: default;
             --btn-radius: 6px;
             --card-radius: 8px;
             --glow-intensity: 0.35;
             --text-shadow: 0 0 30px rgba(234, 179, 8, 0.03);
         }
-
-        /* ── 11. ANCIENT EGYPT ── */
         [data-theme="egypt"] {
             --bg: #0a0600;
             --bg2: #140c00;
@@ -724,14 +870,11 @@
             --banner-overlay: rgba(40, 30, 0, 0.3);
             --theme-bg-layer: rgba(30, 20, 0, 0.3);
             --theme-ambient: rgba(245, 158, 11, 0.05);
-            --theme-cursor: default;
             --btn-radius: 10px;
             --card-radius: 14px;
             --glow-intensity: 0.4;
             --text-shadow: 0 0 30px rgba(245, 158, 11, 0.03);
         }
-
-        /* ── 12. DARK CASTLE ── */
         [data-theme="darkcastle"] {
             --bg: #060608;
             --bg2: #0c0c10;
@@ -779,14 +922,11 @@
             --banner-overlay: rgba(0, 0, 10, 0.5);
             --theme-bg-layer: rgba(0, 0, 10, 0.5);
             --theme-ambient: rgba(107, 114, 128, 0.02);
-            --theme-cursor: default;
             --btn-radius: 8px;
             --card-radius: 12px;
             --glow-intensity: 0.3;
             --text-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
         }
-
-        /* ── 13. ANGEL ── */
         [data-theme="angel"] {
             --bg: #08080f;
             --bg2: #0e0e1a;
@@ -834,14 +974,11 @@
             --banner-overlay: rgba(0, 0, 20, 0.2);
             --theme-bg-layer: rgba(0, 0, 30, 0.3);
             --theme-ambient: rgba(240, 240, 255, 0.03);
-            --theme-cursor: default;
             --btn-radius: 20px;
             --card-radius: 16px;
             --glow-intensity: 0.3;
             --text-shadow: 0 0 40px rgba(240, 240, 255, 0.03);
         }
-
-        /* ── 14. DEMON ── */
         [data-theme="demon"] {
             --bg: #0a0000;
             --bg2: #140000;
@@ -889,14 +1026,11 @@
             --banner-overlay: rgba(40, 0, 0, 0.55);
             --theme-bg-layer: rgba(30, 0, 0, 0.55);
             --theme-ambient: rgba(239, 68, 68, 0.08);
-            --theme-cursor: default;
             --btn-radius: 10px;
             --card-radius: 14px;
             --glow-intensity: 0.7;
             --text-shadow: 0 0 30px rgba(239, 68, 68, 0.05);
         }
-
-        /* ── 15. CRYSTAL ── */
         [data-theme="crystal"] {
             --bg: #0a0a1a;
             --bg2: #101028;
@@ -944,14 +1078,11 @@
             --banner-overlay: rgba(0, 0, 30, 0.25);
             --theme-bg-layer: rgba(0, 0, 30, 0.3);
             --theme-ambient: rgba(103, 232, 249, 0.03);
-            --theme-cursor: default;
             --btn-radius: 16px;
             --card-radius: 16px;
             --glow-intensity: 0.35;
             --text-shadow: 0 0 40px rgba(103, 232, 249, 0.03);
         }
-
-        /* ── 16. ROYAL PALACE ── */
         [data-theme="royalpalace"] {
             --bg: #0a0800;
             --bg2: #141000;
@@ -999,14 +1130,11 @@
             --banner-overlay: rgba(40, 30, 0, 0.3);
             --theme-bg-layer: rgba(40, 30, 0, 0.3);
             --theme-ambient: rgba(245, 158, 11, 0.06);
-            --theme-cursor: default;
             --btn-radius: 12px;
             --card-radius: 14px;
             --glow-intensity: 0.45;
             --text-shadow: 0 0 40px rgba(245, 158, 11, 0.05);
         }
-
-        /* ── 17. UNDERWATER KINGDOM ── */
         [data-theme="underwater"] {
             --bg: #030a14;
             --bg2: #051020;
@@ -1054,14 +1182,11 @@
             --banner-overlay: rgba(0, 10, 30, 0.3);
             --theme-bg-layer: rgba(0, 10, 30, 0.3);
             --theme-ambient: rgba(6, 182, 212, 0.04);
-            --theme-cursor: default;
             --btn-radius: 14px;
             --card-radius: 14px;
             --glow-intensity: 0.35;
             --text-shadow: 0 0 30px rgba(6, 182, 212, 0.03);
         }
-
-        /* ── 18. DREAM WORLD ── */
         [data-theme="dreamworld"] {
             --bg: #0a0515;
             --bg2: #120a20;
@@ -1109,14 +1234,11 @@
             --banner-overlay: rgba(20, 0, 40, 0.3);
             --theme-bg-layer: rgba(10, 0, 30, 0.4);
             --theme-ambient: rgba(192, 132, 252, 0.04);
-            --theme-cursor: default;
             --btn-radius: 18px;
             --card-radius: 16px;
             --glow-intensity: 0.4;
             --text-shadow: 0 0 40px rgba(192, 132, 252, 0.03);
         }
-
-        /* ── 19. FANTASY FOREST ── */
         [data-theme="fantasyforest"] {
             --bg: #030f08;
             --bg2: #051a0e;
@@ -1164,14 +1286,11 @@
             --banner-overlay: rgba(0, 20, 5, 0.3);
             --theme-bg-layer: rgba(0, 20, 5, 0.3);
             --theme-ambient: rgba(34, 197, 94, 0.04);
-            --theme-cursor: default;
             --btn-radius: 12px;
             --card-radius: 14px;
             --glow-intensity: 0.4;
             --text-shadow: 0 0 30px rgba(34, 197, 94, 0.03);
         }
-
-        /* ── 20. TIME TRAVEL ── */
         [data-theme="timetravel"] {
             --bg: #060810;
             --bg2: #0c0e1a;
@@ -1219,14 +1338,11 @@
             --banner-overlay: rgba(0, 0, 20, 0.3);
             --theme-bg-layer: rgba(0, 0, 20, 0.3);
             --theme-ambient: rgba(252, 211, 77, 0.04);
-            --theme-cursor: default;
             --btn-radius: 10px;
             --card-radius: 12px;
             --glow-intensity: 0.35;
             --text-shadow: 0 0 30px rgba(252, 211, 77, 0.03);
         }
-
-        /* ── 21. ROBOT FUTURE ── */
         [data-theme="robotfuture"] {
             --bg: #06080a;
             --bg2: #0c0e12;
@@ -1274,14 +1390,11 @@
             --banner-overlay: rgba(0, 0, 10, 0.3);
             --theme-bg-layer: rgba(0, 0, 15, 0.3);
             --theme-ambient: rgba(0, 212, 255, 0.03);
-            --theme-cursor: default;
             --btn-radius: 6px;
             --card-radius: 10px;
             --glow-intensity: 0.3;
             --text-shadow: 0 0 20px rgba(0, 212, 255, 0.02);
         }
-
-        /* ── 22. AI THEME ── */
         [data-theme="ai"] {
             --bg: #05050f;
             --bg2: #0a0a18;
@@ -1329,14 +1442,11 @@
             --banner-overlay: rgba(0, 0, 30, 0.3);
             --theme-bg-layer: rgba(0, 0, 30, 0.3);
             --theme-ambient: rgba(139, 92, 246, 0.04);
-            --theme-cursor: default;
             --btn-radius: 8px;
             --card-radius: 12px;
             --glow-intensity: 0.4;
             --text-shadow: 0 0 30px rgba(139, 92, 246, 0.02);
         }
-
-        /* ── 23. QUANTUM ── */
         [data-theme="quantum"] {
             --bg: #050510;
             --bg2: #0a0a1a;
@@ -1384,14 +1494,11 @@
             --banner-overlay: rgba(0, 0, 20, 0.3);
             --theme-bg-layer: rgba(0, 0, 30, 0.3);
             --theme-ambient: rgba(6, 182, 212, 0.03);
-            --theme-cursor: default;
             --btn-radius: 8px;
             --card-radius: 12px;
             --glow-intensity: 0.35;
             --text-shadow: 0 0 30px rgba(6, 182, 212, 0.02);
         }
-
-        /* ── 24. GALAXY WAR ── */
         [data-theme="galaxywar"] {
             --bg: #050012;
             --bg2: #0a0020;
@@ -1439,14 +1546,11 @@
             --banner-overlay: rgba(10, 0, 30, 0.4);
             --theme-bg-layer: rgba(5, 0, 30, 0.5);
             --theme-ambient: rgba(168, 85, 247, 0.04);
-            --theme-cursor: default;
             --btn-radius: 12px;
             --card-radius: 14px;
             --glow-intensity: 0.5;
             --text-shadow: 0 0 40px rgba(168, 85, 247, 0.03);
         }
-
-        /* ── 25. ANCIENT CIVILIZATION ── */
         [data-theme="ancient"] {
             --bg: #0a0600;
             --bg2: #140c00;
@@ -1494,15 +1598,11 @@
             --banner-overlay: rgba(40, 30, 0, 0.3);
             --theme-bg-layer: rgba(30, 20, 0, 0.3);
             --theme-ambient: rgba(217, 119, 6, 0.05);
-            --theme-cursor: default;
             --btn-radius: 10px;
             --card-radius: 14px;
             --glow-intensity: 0.4;
             --text-shadow: 0 0 30px rgba(217, 119, 6, 0.03);
         }
-
-        /* ── 26-50. Additional themes ── */
-        /* 26. Sakura (cherry blossom) */
         [data-theme="sakura"] {
             --bg: #120810;
             --bg2: #180e16;
@@ -1550,14 +1650,11 @@
             --banner-overlay: rgba(30, 10, 20, 0.3);
             --theme-bg-layer: rgba(30, 5, 20, 0.4);
             --theme-ambient: rgba(244, 114, 182, 0.05);
-            --theme-cursor: default;
             --btn-radius: 16px;
             --card-radius: 16px;
             --glow-intensity: 0.45;
             --text-shadow: 0 0 40px rgba(244, 114, 182, 0.03);
         }
-
-        /* 27. Ocean */
         [data-theme="ocean"] {
             --bg: #030c12;
             --bg2: #041520;
@@ -1605,14 +1702,11 @@
             --banner-overlay: rgba(0, 20, 30, 0.3);
             --theme-bg-layer: rgba(0, 10, 20, 0.4);
             --theme-ambient: rgba(6, 182, 212, 0.04);
-            --theme-cursor: default;
             --btn-radius: 14px;
             --card-radius: 14px;
             --glow-intensity: 0.4;
             --text-shadow: 0 0 30px rgba(6, 182, 212, 0.03);
         }
-
-        /* 28. Hacker */
         [data-theme="hacker"] {
             --bg: #000500;
             --bg2: #000800;
@@ -1660,14 +1754,11 @@
             --banner-overlay: rgba(0, 10, 0, 0.5);
             --theme-bg-layer: rgba(0, 10, 0, 0.5);
             --theme-ambient: rgba(57, 255, 20, 0.04);
-            --theme-cursor: default;
             --btn-radius: 6px;
             --card-radius: 8px;
             --glow-intensity: 0.6;
             --text-shadow: 0 0 30px rgba(57, 255, 20, 0.03);
         }
-
-        /* 29. Galaxy */
         [data-theme="galaxy"] {
             --bg: #050012;
             --bg2: #0a0020;
@@ -1715,14 +1806,11 @@
             --banner-overlay: rgba(10, 0, 30, 0.4);
             --theme-bg-layer: rgba(5, 0, 30, 0.5);
             --theme-ambient: rgba(168, 85, 247, 0.04);
-            --theme-cursor: default;
             --btn-radius: 14px;
             --card-radius: 16px;
             --glow-intensity: 0.5;
             --text-shadow: 0 0 40px rgba(168, 85, 247, 0.03);
         }
-
-        /* 30. Fire */
         [data-theme="fire"] {
             --bg: #0e0500;
             --bg2: #180800;
@@ -1770,14 +1858,11 @@
             --banner-overlay: rgba(40, 10, 0, 0.5);
             --theme-bg-layer: rgba(30, 5, 0, 0.5);
             --theme-ambient: rgba(255, 107, 53, 0.08);
-            --theme-cursor: default;
             --btn-radius: 14px;
             --card-radius: 16px;
             --glow-intensity: 0.6;
             --text-shadow: 0 0 30px rgba(255, 107, 53, 0.05);
         }
-
-        /* 31. Moon */
         [data-theme="moon"] {
             --bg: #0a0a1a;
             --bg2: #101025;
@@ -1825,14 +1910,11 @@
             --banner-overlay: rgba(0, 0, 20, 0.4);
             --theme-bg-layer: rgba(0, 0, 30, 0.5);
             --theme-ambient: rgba(226, 232, 240, 0.03);
-            --theme-cursor: default;
             --btn-radius: 16px;
             --card-radius: 16px;
             --glow-intensity: 0.4;
             --text-shadow: 0 0 40px rgba(226, 232, 240, 0.02);
         }
-
-        /* 32. Sun */
         [data-theme="sun"] {
             --bg: #1a0e00;
             --bg2: #221808;
@@ -1880,14 +1962,11 @@
             --banner-overlay: rgba(40, 20, 0, 0.3);
             --theme-bg-layer: rgba(40, 20, 0, 0.4);
             --theme-ambient: rgba(251, 191, 36, 0.06);
-            --theme-cursor: default;
             --btn-radius: 12px;
             --card-radius: 14px;
             --glow-intensity: 0.45;
             --text-shadow: 0 0 40px rgba(251, 191, 36, 0.03);
         }
-
-        /* 33. Midnight */
         [data-theme="midnight"] {
             --bg: #07070f;
             --bg2: #0c0c1a;
@@ -1935,14 +2014,11 @@
             --banner-overlay: rgba(0, 0, 20, 0.4);
             --theme-bg-layer: rgba(0, 0, 30, 0.4);
             --theme-ambient: rgba(99, 102, 241, 0.04);
-            --theme-cursor: default;
             --btn-radius: 10px;
             --card-radius: 12px;
             --glow-intensity: 0.4;
             --text-shadow: 0 0 30px rgba(99, 102, 241, 0.02);
         }
-
-        /* 34. Gold Luxury */
         [data-theme="gold"] {
             --bg: #0c0800;
             --bg2: #130f00;
@@ -1990,14 +2066,11 @@
             --banner-overlay: rgba(30, 20, 0, 0.3);
             --theme-bg-layer: rgba(30, 20, 0, 0.3);
             --theme-ambient: rgba(245, 158, 11, 0.06);
-            --theme-cursor: default;
             --btn-radius: 10px;
             --card-radius: 12px;
             --glow-intensity: 0.45;
             --text-shadow: 0 0 40px rgba(245, 158, 11, 0.03);
         }
-
-        /* 35. Neon */
         [data-theme="neon"] {
             --bg: #000900;
             --bg2: #010f00;
@@ -2045,14 +2118,11 @@
             --banner-overlay: rgba(0, 20, 0, 0.3);
             --theme-bg-layer: rgba(0, 20, 0, 0.3);
             --theme-ambient: rgba(0, 255, 65, 0.05);
-            --theme-cursor: default;
             --btn-radius: 8px;
             --card-radius: 10px;
             --glow-intensity: 0.5;
             --text-shadow: 0 0 30px rgba(0, 255, 65, 0.03);
         }
-
-        /* 36. Vaporwave */
         [data-theme="vaporwave"] {
             --bg: #0d0221;
             --bg2: #140430;
@@ -2100,14 +2170,11 @@
             --banner-overlay: rgba(30, 0, 40, 0.4);
             --theme-bg-layer: rgba(20, 0, 40, 0.4);
             --theme-ambient: rgba(255, 113, 206, 0.05);
-            --theme-cursor: default;
             --btn-radius: 12px;
             --card-radius: 14px;
             --glow-intensity: 0.5;
             --text-shadow: 0 0 40px rgba(255, 113, 206, 0.03);
         }
-
-        /* 37. Retro */
         [data-theme="retro"] {
             --bg: #1a1008;
             --bg2: #221810;
@@ -2155,14 +2222,11 @@
             --banner-overlay: rgba(30, 20, 0, 0.3);
             --theme-bg-layer: rgba(30, 20, 0, 0.3);
             --theme-ambient: rgba(251, 191, 36, 0.04);
-            --theme-cursor: default;
             --btn-radius: 8px;
             --card-radius: 10px;
             --glow-intensity: 0.35;
             --text-shadow: 0 0 30px rgba(251, 191, 36, 0.02);
         }
-
-        /* 38. Minimal */
         [data-theme="minimal"] {
             --bg: #f5f5f7;
             --bg2: #e8e8ed;
@@ -2210,14 +2274,11 @@
             --banner-overlay: rgba(0, 0, 0, 0.05);
             --theme-bg-layer: rgba(0, 0, 0, 0.02);
             --theme-ambient: rgba(26, 26, 46, 0.02);
-            --theme-cursor: default;
             --btn-radius: 8px;
             --card-radius: 8px;
             --glow-intensity: 0.2;
             --text-shadow: none;
         }
-
-        /* 39. Royal Blue */
         [data-theme="royal"] {
             --bg: #05071c;
             --bg2: #080d28;
@@ -2265,14 +2326,11 @@
             --banner-overlay: rgba(0, 0, 30, 0.3);
             --theme-bg-layer: rgba(0, 0, 30, 0.3);
             --theme-ambient: rgba(59, 130, 246, 0.05);
-            --theme-cursor: default;
             --btn-radius: 12px;
             --card-radius: 14px;
             --glow-intensity: 0.45;
             --text-shadow: 0 0 30px rgba(59, 130, 246, 0.03);
         }
-
-        /* 40. Space */
         [data-theme="space"] {
             --bg: #050012;
             --bg2: #0a0020;
@@ -2320,14 +2378,11 @@
             --banner-overlay: rgba(10, 0, 30, 0.4);
             --theme-bg-layer: rgba(5, 0, 30, 0.5);
             --theme-ambient: rgba(168, 85, 247, 0.04);
-            --theme-cursor: default;
             --btn-radius: 14px;
             --card-radius: 16px;
             --glow-intensity: 0.5;
             --text-shadow: 0 0 40px rgba(168, 85, 247, 0.03);
         }
-
-        /* 41. Matrix */
         [data-theme="matrix"] {
             --bg: #000500;
             --bg2: #000800;
@@ -2375,14 +2430,11 @@
             --banner-overlay: rgba(0, 10, 0, 0.4);
             --theme-bg-layer: rgba(0, 10, 0, 0.5);
             --theme-ambient: rgba(57, 255, 20, 0.04);
-            --theme-cursor: default;
             --btn-radius: 6px;
             --card-radius: 8px;
             --glow-intensity: 0.6;
             --text-shadow: 0 0 30px rgba(57, 255, 20, 0.03);
         }
-
-        /* 42. Volcano */
         [data-theme="volcano"] {
             --bg: #0a0400;
             --bg2: #140800;
@@ -2430,14 +2482,11 @@
             --banner-overlay: rgba(40, 10, 0, 0.4);
             --theme-bg-layer: rgba(30, 5, 0, 0.4);
             --theme-ambient: rgba(239, 68, 68, 0.06);
-            --theme-cursor: default;
             --btn-radius: 12px;
             --card-radius: 14px;
             --glow-intensity: 0.5;
             --text-shadow: 0 0 30px rgba(239, 68, 68, 0.04);
         }
-
-        /* 43. Lightning */
         [data-theme="lightning"] {
             --bg: #060610;
             --bg2: #0c0c1a;
@@ -2485,14 +2534,11 @@
             --banner-overlay: rgba(0, 0, 20, 0.3);
             --theme-bg-layer: rgba(0, 0, 20, 0.3);
             --theme-ambient: rgba(234, 179, 8, 0.05);
-            --theme-cursor: default;
             --btn-radius: 10px;
             --card-radius: 12px;
             --glow-intensity: 0.4;
             --text-shadow: 0 0 30px rgba(234, 179, 8, 0.03);
         }
-
-        /* 44. Purple */
         [data-theme="purple"] {
             --bg: #09090f;
             --bg2: #0e0a1a;
@@ -2540,14 +2586,11 @@
             --banner-overlay: rgba(20, 0, 30, 0.3);
             --theme-bg-layer: rgba(10, 0, 30, 0.3);
             --theme-ambient: rgba(168, 85, 247, 0.05);
-            --theme-cursor: default;
             --btn-radius: 14px;
             --card-radius: 14px;
             --glow-intensity: 0.45;
             --text-shadow: 0 0 30px rgba(168, 85, 247, 0.03);
         }
-
-        /* 45. Emerald */
         [data-theme="emerald"] {
             --bg: #03100a;
             --bg2: #051810;
@@ -2595,14 +2638,11 @@
             --banner-overlay: rgba(0, 20, 5, 0.3);
             --theme-bg-layer: rgba(0, 20, 5, 0.3);
             --theme-ambient: rgba(16, 185, 129, 0.04);
-            --theme-cursor: default;
             --btn-radius: 12px;
             --card-radius: 14px;
             --glow-intensity: 0.4;
             --text-shadow: 0 0 30px rgba(16, 185, 129, 0.03);
         }
-
-        /* 46. Red Devil */
         [data-theme="reddevil"] {
             --bg: #0a0000;
             --bg2: #140000;
@@ -2650,69 +2690,11 @@
             --banner-overlay: rgba(40, 0, 0, 0.5);
             --theme-bg-layer: rgba(30, 0, 0, 0.5);
             --theme-ambient: rgba(239, 68, 68, 0.07);
-            --theme-cursor: default;
             --btn-radius: 10px;
             --card-radius: 12px;
             --glow-intensity: 0.6;
             --text-shadow: 0 0 30px rgba(239, 68, 68, 0.04);
         }
-
-        /* 47. Crystal */
-        [data-theme="crystal"] {
-            --bg: #0a0a1a;
-            --bg2: #101028;
-            --bg3: #161636;
-            --bg4: #1c1c44;
-            --card: #0e0e24;
-            --card-border: #1a1a40;
-            --card-hover: #12122e;
-            --accent: #67e8f9;
-            --accent2: #22d3ee;
-            --accent3: #a5f3fc;
-            --accent4: #f0abfc;
-            --accent-alpha: rgba(103, 232, 249, 0.08);
-            --accent-alpha2: rgba(103, 232, 249, 0.04);
-            --text: #ecfeff;
-            --text2: #67e8f9;
-            --text3: #2a6688;
-            --border: #1a1a40;
-            --border2: #101028;
-            --glow: rgba(103, 232, 249, 0.45);
-            --glow2: rgba(103, 232, 249, 0.12);
-            --nav-bg: rgba(10, 10, 26, 0.95);
-            --btn-grad: linear-gradient(135deg, #67e8f9, #22d3ee);
-            --btn-hover: linear-gradient(135deg, #a5f3fc, #67e8f9);
-            --shadow: 0 8px 32px rgba(0, 0, 0, 0.7);
-            --shadow-card: 0 2px 16px rgba(0, 0, 0, 0.5);
-            --glass: rgba(14, 14, 36, 0.88);
-            --glass-border: rgba(103, 232, 249, 0.12);
-            --tag-bg: rgba(103, 232, 249, 0.04);
-            --tag-text: #a5f3fc;
-            --badge-new: #22c55e;
-            --badge-free: #eab308;
-            --badge-paid: #67e8f9;
-            --sidebar-bg: #0a0a1a;
-            --input-bg: #101028;
-            --input-border: #1a1a40;
-            --particles: rgba(103, 232, 249, 0.15);
-            --success: #22c55e;
-            --error: #ef4444;
-            --warning: #eab308;
-            --info: #67e8f9;
-            --card-shadow: 0 4px 24px rgba(0, 0, 0, 0.5);
-            --scrollbar-track: #161636;
-            --scrollbar-thumb: #67e8f9;
-            --banner-overlay: rgba(0, 0, 30, 0.25);
-            --theme-bg-layer: rgba(0, 0, 30, 0.3);
-            --theme-ambient: rgba(103, 232, 249, 0.03);
-            --theme-cursor: default;
-            --btn-radius: 16px;
-            --card-radius: 16px;
-            --glow-intensity: 0.35;
-            --text-shadow: 0 0 40px rgba(103, 232, 249, 0.03);
-        }
-
-        /* 48. Rainbow */
         [data-theme="rainbow"] {
             --bg: #0a0a1a;
             --bg2: #101028;
@@ -2760,14 +2742,11 @@
             --banner-overlay: rgba(0, 0, 30, 0.2);
             --theme-bg-layer: rgba(0, 0, 30, 0.2);
             --theme-ambient: rgba(244, 114, 182, 0.04);
-            --theme-cursor: default;
             --btn-radius: 14px;
             --card-radius: 14px;
             --glow-intensity: 0.35;
             --text-shadow: 0 0 30px rgba(244, 114, 182, 0.02);
         }
-
-        /* 49. Dark */
         [data-theme="dark"] {
             --bg: #0a0a0f;
             --bg2: #0f0f18;
@@ -2815,14 +2794,11 @@
             --banner-overlay: rgba(0, 0, 10, 0.4);
             --theme-bg-layer: rgba(0, 0, 10, 0.4);
             --theme-ambient: rgba(129, 140, 248, 0.04);
-            --theme-cursor: default;
             --btn-radius: 10px;
             --card-radius: 12px;
             --glow-intensity: 0.4;
             --text-shadow: 0 0 30px rgba(129, 140, 248, 0.02);
         }
-
-        /* 50. Light */
         [data-theme="light"] {
             --bg: #f8faff;
             --bg2: #eef2ff;
@@ -2870,14 +2846,11 @@
             --banner-overlay: rgba(0, 0, 0, 0.05);
             --theme-bg-layer: rgba(0, 0, 0, 0.02);
             --theme-ambient: rgba(65, 105, 225, 0.03);
-            --theme-cursor: default;
             --btn-radius: 10px;
             --card-radius: 10px;
             --glow-intensity: 0.25;
             --text-shadow: none;
         }
-
-        /* 51. Cyberpunk */
         [data-theme="cyberpunk"] {
             --bg: #0a0015;
             --bg2: #100020;
@@ -2925,14 +2898,11 @@
             --banner-overlay: rgba(20, 0, 30, 0.4);
             --theme-bg-layer: rgba(20, 0, 30, 0.4);
             --theme-ambient: rgba(255, 0, 255, 0.05);
-            --theme-cursor: default;
             --btn-radius: 8px;
             --card-radius: 10px;
             --glow-intensity: 0.55;
             --text-shadow: 0 0 30px rgba(255, 0, 255, 0.03);
         }
-
-        /* 52. Glass */
         [data-theme="glass"] {
             --bg: rgba(10, 14, 30, 0.7);
             --bg2: rgba(16, 20, 40, 0.6);
@@ -2980,7 +2950,6 @@
             --banner-overlay: rgba(0, 0, 0, 0.2);
             --theme-bg-layer: rgba(0, 0, 0, 0.1);
             --theme-ambient: rgba(255, 255, 255, 0.02);
-            --theme-cursor: default;
             --btn-radius: 16px;
             --card-radius: 16px;
             --glow-intensity: 0.2;
@@ -2988,7 +2957,6 @@
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
         }
-
 
         /* ── GLOBAL RESET ── */
         *,
@@ -3013,6 +2981,10 @@
             transition: var(--theme-transition);
             position: relative;
             padding-bottom: var(--bottom-h);
+            font-weight: var(--font-weight-regular);
+            line-height: var(--line-height-normal);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
         }
         img {
             max-width: 100%;
@@ -3023,7 +2995,8 @@
         input,
         textarea,
         select {
-            font-family: inherit;
+            font-family: var(--font-sans);
+            font-weight: var(--font-weight-medium);
         }
         a {
             color: inherit;
@@ -3041,25 +3014,90 @@
             border-radius: 99px;
         }
 
-        /* ── TYPOGRAPHY ENHANCEMENTS ── */
-        .premium-title {
+        /* ── APPLY TYPOGRAPHY TO ELEMENTS ── */
+        h1,
+        .h1 {
             font-family: var(--font-display);
-            font-weight: 800;
-            letter-spacing: -0.02em;
-            text-shadow: var(--text-shadow);
+            font-weight: var(--font-weight-black);
+            font-size: var(--text-size-4xl);
+            line-height: var(--line-height-tight);
+            letter-spacing: var(--letter-spacing-tight);
+            color: var(--text);
         }
-        .premium-subtitle {
+        h2,
+        .h2 {
+            font-family: var(--font-display);
+            font-weight: var(--font-weight-bold);
+            font-size: var(--text-size-2xl);
+            line-height: var(--line-height-tight);
+            letter-spacing: var(--letter-spacing-tight);
+            color: var(--text);
+        }
+        h3,
+        .h3 {
+            font-family: var(--font-display);
+            font-weight: var(--font-weight-bold);
+            font-size: var(--text-size-xl);
+            line-height: var(--line-height-tight);
+            letter-spacing: var(--letter-spacing-tight);
+            color: var(--text);
+        }
+        h4,
+        .h4 {
+            font-family: var(--font-display);
+            font-weight: var(--font-weight-semibold);
+            font-size: var(--text-size-lg);
+            line-height: var(--line-height-tight);
+            letter-spacing: var(--letter-spacing-tight);
+            color: var(--text);
+        }
+        p,
+        .p {
             font-family: var(--font-sans);
-            font-weight: 600;
-            letter-spacing: 0.01em;
+            font-weight: var(--font-weight-regular);
+            font-size: var(--text-size-base);
+            line-height: var(--line-height-relaxed);
+            color: var(--text2);
         }
-        .premium-mono {
+        .p-sm {
+            font-size: var(--text-size-sm);
+            line-height: var(--line-height-normal);
+            color: var(--text3);
+        }
+        .p-xs {
+            font-size: var(--text-size-xs);
+            line-height: var(--line-height-normal);
+            color: var(--text3);
+            letter-spacing: var(--letter-spacing-wide);
+            text-transform: uppercase;
+            font-weight: var(--font-weight-medium);
+        }
+        label,
+        .label {
+            font-family: var(--font-sans);
+            font-weight: var(--font-weight-semibold);
+            font-size: var(--text-size-xs);
+            letter-spacing: var(--letter-spacing-wider);
+            text-transform: uppercase;
+            color: var(--text3);
+        }
+        .mono {
             font-family: var(--font-mono);
+            font-weight: var(--font-weight-medium);
+            font-size: var(--text-size-sm);
+            line-height: var(--line-height-normal);
         }
-        .premium-orb {
+        .orb {
             font-family: var(--font-orb);
+            font-weight: var(--font-weight-bold);
+            letter-spacing: var(--letter-spacing-wide);
         }
-        .text-gradient {
+        .display {
+            font-family: var(--font-display);
+            font-weight: var(--font-weight-black);
+            letter-spacing: var(--letter-spacing-tight);
+        }
+        .gradient-text {
             background: var(--btn-grad);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
@@ -3210,11 +3248,11 @@
             z-index: 1;
         }
         .loading-text {
+            font-family: var(--font-mono);
             font-size: 0.7rem;
             color: var(--text3);
             letter-spacing: 0.15em;
             text-transform: uppercase;
-            font-family: var(--font-mono);
         }
 
         /* ── APP ── */
@@ -3279,6 +3317,7 @@
             color: var(--accent);
         }
         .nav-logo-badge {
+            font-family: var(--font-mono);
             font-size: 0.5rem;
             background: var(--btn-grad);
             color: #fff;
@@ -3340,9 +3379,11 @@
             background: var(--btn-grad);
             border: none;
             color: #fff;
+            font-family: var(--font-sans);
             font-size: 0.68rem;
             font-weight: 700;
             letter-spacing: 0.06em;
+            text-transform: uppercase;
             cursor: pointer;
             transition: box-shadow 0.3s, transform 0.15s;
             white-space: nowrap;
@@ -3455,6 +3496,7 @@
             background: transparent;
             border: none;
             color: var(--text);
+            font-family: var(--font-sans);
             font-size: 1rem;
             font-weight: 500;
             outline: none;
@@ -3466,7 +3508,9 @@
             background: transparent;
             border: none;
             color: var(--text2);
+            font-family: var(--font-sans);
             font-size: 0.85rem;
+            font-weight: 600;
             cursor: pointer;
             padding: 6px;
             white-space: nowrap;
@@ -3481,6 +3525,7 @@
         }
         .search-section-label {
             padding: 10px 14px 6px;
+            font-family: var(--font-sans);
             font-size: 0.65rem;
             font-weight: 700;
             color: var(--text3);
@@ -3520,6 +3565,7 @@
             min-width: 0;
         }
         .search-result-name {
+            font-family: var(--font-sans);
             font-size: 0.88rem;
             font-weight: 600;
             color: var(--text);
@@ -3528,11 +3574,13 @@
             text-overflow: ellipsis;
         }
         .search-result-sub {
+            font-family: var(--font-sans);
             font-size: 0.72rem;
             color: var(--text3);
             margin-top: 2px;
         }
         .search-result-badge {
+            font-family: var(--font-sans);
             font-size: 0.6rem;
             font-weight: 700;
             background: var(--accent-alpha);
@@ -3547,6 +3595,7 @@
             padding: 32px 16px;
             text-align: center;
             color: var(--text3);
+            font-family: var(--font-sans);
             font-size: 0.9rem;
         }
 
@@ -3654,11 +3703,13 @@
             object-fit: cover;
         }
         .sidebar-user-name {
+            font-family: var(--font-sans);
             font-size: 0.9rem;
             font-weight: 700;
             color: var(--text);
         }
         .sidebar-user-email {
+            font-family: var(--font-sans);
             font-size: 0.72rem;
             color: var(--text3);
             margin-top: 2px;
@@ -3675,6 +3726,7 @@
             cursor: pointer;
             transition: var(--transition);
             color: var(--text2);
+            font-family: var(--font-sans);
             font-size: 0.9rem;
             font-weight: 500;
             border: none;
@@ -3705,6 +3757,7 @@
         }
         .sidebar-section-label {
             padding: 10px 16px 4px;
+            font-family: var(--font-sans);
             font-size: 0.62rem;
             font-weight: 700;
             color: var(--text3);
@@ -3728,6 +3781,7 @@
             background: var(--bg3);
             border: 1px solid var(--border);
             color: var(--text2);
+            font-family: var(--font-sans);
             font-size: 0.72rem;
             font-weight: 600;
             cursor: pointer;
@@ -3796,6 +3850,7 @@
             align-items: center;
             gap: 6px;
             padding: 0 24px;
+            font-family: var(--font-sans);
             font-size: 0.7rem;
             font-weight: 600;
             color: var(--text2);
@@ -3821,6 +3876,7 @@
             border: 1px solid var(--glass-border);
             border-radius: 99px;
             padding: 5px 14px;
+            font-family: var(--font-sans);
             font-size: 0.65rem;
             font-weight: 700;
             color: var(--accent3);
@@ -3850,6 +3906,7 @@
             display: block;
         }
         .hero-desc {
+            font-family: var(--font-sans);
             font-size: 0.9rem;
             line-height: 1.65;
             color: var(--text2);
@@ -3869,6 +3926,7 @@
             background: var(--btn-grad);
             border: none;
             color: #fff;
+            font-family: var(--font-sans);
             font-size: 0.85rem;
             font-weight: 700;
             letter-spacing: 0.08em;
@@ -3900,6 +3958,7 @@
             background: var(--glass);
             border: 1px solid var(--border);
             color: var(--text2);
+            font-family: var(--font-sans);
             font-size: 0.85rem;
             font-weight: 600;
             cursor: pointer;
@@ -3949,6 +4008,7 @@
             margin-bottom: 3px;
         }
         .stat-label {
+            font-family: var(--font-sans);
             font-size: 0.55rem;
             font-weight: 700;
             color: var(--text3);
@@ -3984,6 +4044,7 @@
             font-size: 1.1rem;
         }
         .section-see-all {
+            font-family: var(--font-sans);
             font-size: 0.75rem;
             font-weight: 600;
             color: var(--accent);
@@ -4033,6 +4094,7 @@
             font-size: 1.3rem;
         }
         .cat-pill-name {
+            font-family: var(--font-sans);
             font-size: 0.62rem;
             font-weight: 700;
             color: var(--text2);
@@ -4088,6 +4150,7 @@
             position: absolute;
             top: 10px;
             right: 10px;
+            font-family: var(--font-sans);
             font-size: 0.55rem;
             font-weight: 800;
             padding: 3px 10px;
@@ -4132,15 +4195,18 @@
             min-width: 0;
         }
         .script-card-title {
-            font-size: 0.88rem;
-            font-weight: 700;
+            font-family: var(--font-display);
+            font-size: 0.92rem;
+            font-weight: 800;
             color: var(--text);
             white-space: nowrap;
             overflow: hidden;
             text-overflow: ellipsis;
         }
         .script-card-game {
-            font-size: 0.68rem;
+            font-family: var(--font-sans);
+            font-size: 0.72rem;
+            font-weight: 500;
             color: var(--text3);
         }
         .script-card-badges {
@@ -4150,6 +4216,7 @@
             flex-wrap: wrap;
         }
         .badge {
+            font-family: var(--font-sans);
             font-size: 0.5rem;
             font-weight: 800;
             padding: 2px 6px;
@@ -4184,6 +4251,7 @@
             color: var(--tag-text);
             border-radius: 6px;
             padding: 2px 8px;
+            font-family: var(--font-sans);
             font-size: 0.55rem;
             font-weight: 600;
         }
@@ -4199,7 +4267,9 @@
             display: flex;
             align-items: center;
             gap: 4px;
-            font-size: 0.68rem;
+            font-family: var(--font-sans);
+            font-size: 0.70rem;
+            font-weight: 500;
             color: var(--text3);
             padding: 0 8px;
             border-right: 1px solid var(--border);
@@ -4251,12 +4321,14 @@
             box-shadow: 0 2px 12px var(--glow2);
         }
         .how-step-title {
+            font-family: var(--font-sans);
             font-size: 0.88rem;
             font-weight: 700;
             color: var(--text);
             margin-bottom: 4px;
         }
         .how-step-desc {
+            font-family: var(--font-sans);
             font-size: 0.76rem;
             color: var(--text2);
             line-height: 1.5;
@@ -4359,6 +4431,7 @@
             border: 2px solid var(--card);
         }
         .creator-card-name {
+            font-family: var(--font-sans);
             font-size: 0.75rem;
             font-weight: 700;
             color: var(--text);
@@ -4368,10 +4441,12 @@
             white-space: nowrap;
         }
         .creator-card-scripts {
+            font-family: var(--font-sans);
             font-size: 0.6rem;
             color: var(--text3);
         }
         .creator-card-views {
+            font-family: var(--font-sans);
             font-size: 0.7rem;
             color: var(--accent);
             font-weight: 700;
@@ -4463,6 +4538,7 @@
             min-width: 0;
         }
         .leaderboard-name {
+            font-family: var(--font-sans);
             font-size: 0.85rem;
             font-weight: 700;
             color: var(--text);
@@ -4471,6 +4547,7 @@
             text-overflow: ellipsis;
         }
         .leaderboard-game {
+            font-family: var(--font-sans);
             font-size: 0.7rem;
             color: var(--text3);
             margin-top: 1px;
@@ -4487,6 +4564,7 @@
             color: var(--accent);
         }
         .leaderboard-stat-label {
+            font-family: var(--font-sans);
             font-size: 0.55rem;
             color: var(--text3);
             text-transform: uppercase;
@@ -4529,11 +4607,13 @@
             flex-shrink: 0;
         }
         .executor-name {
+            font-family: var(--font-sans);
             font-size: 0.8rem;
             font-weight: 700;
             color: var(--text);
         }
         .executor-platform {
+            font-family: var(--font-sans);
             font-size: 0.62rem;
             color: var(--text3);
             margin-top: 1px;
@@ -4541,6 +4621,7 @@
         .executor-badge {
             margin-left: auto;
             flex-shrink: 0;
+            font-family: var(--font-sans);
             font-size: 0.5rem;
             font-weight: 800;
             background: var(--badge-free);
@@ -4578,6 +4659,7 @@
             margin-bottom: 10px;
         }
         .news-badge {
+            font-family: var(--font-sans);
             font-size: 0.55rem;
             font-weight: 800;
             padding: 3px 8px;
@@ -4598,17 +4680,20 @@
             color: #000;
         }
         .news-date {
+            font-family: var(--font-sans);
             font-size: 0.65rem;
             color: var(--text3);
             margin-left: auto;
         }
         .news-title {
+            font-family: var(--font-sans);
             font-size: 0.88rem;
             font-weight: 700;
             color: var(--text);
             margin-bottom: 6px;
         }
         .news-desc {
+            font-family: var(--font-sans);
             font-size: 0.76rem;
             color: var(--text2);
             line-height: 1.5;
@@ -4637,6 +4722,7 @@
             align-items: center;
             justify-content: space-between;
             padding: 14px;
+            font-family: var(--font-sans);
             font-size: 0.85rem;
             font-weight: 600;
             color: var(--text);
@@ -4664,6 +4750,7 @@
             overflow: hidden;
             transition: max-height 0.3s ease, padding 0.3s ease;
             padding: 0 14px;
+            font-family: var(--font-sans);
             font-size: 0.8rem;
             color: var(--text2);
             line-height: 1.6;
@@ -4692,6 +4779,7 @@
             background: var(--bg3);
             border: 1px solid var(--border);
             color: var(--text2);
+            font-family: var(--font-sans);
             font-size: 0.75rem;
             font-weight: 600;
             cursor: pointer;
@@ -4719,8 +4807,8 @@
         }
         .scripts-page-title {
             font-family: var(--font-display);
-            font-size: 1.2rem;
-            font-weight: 900;
+            font-size: 1.34rem;
+            font-weight: 800;
             color: var(--text);
             display: flex;
             align-items: center;
@@ -4751,7 +4839,9 @@
             background: transparent;
             border: none;
             color: var(--text);
-            font-size: 0.85rem;
+            font-family: var(--font-sans);
+            font-size: 0.9rem;
+            font-weight: 500;
             outline: none;
         }
         .scripts-search-input::placeholder {
@@ -4780,6 +4870,7 @@
             background: rgba(0, 0, 0, 0.5);
             border: 1px solid rgba(255, 255, 255, 0.2);
             color: #fff;
+            font-family: var(--font-sans);
             font-size: 0.68rem;
             font-weight: 600;
             cursor: pointer;
@@ -4850,8 +4941,8 @@
         }
         .profile-name {
             font-family: var(--font-display);
-            font-size: 1.3rem;
-            font-weight: 900;
+            font-size: 1.42rem;
+            font-weight: 800;
             color: var(--text);
         }
         .profile-verified {
@@ -4866,12 +4957,15 @@
             justify-content: center;
         }
         .profile-handle {
+            font-family: var(--font-sans);
             font-size: 0.8rem;
+            font-weight: 600;
             color: var(--text3);
             margin-bottom: 10px;
         }
         .profile-bio {
-            font-size: 0.82rem;
+            font-family: var(--font-sans);
+            font-size: 0.88rem;
             color: var(--text2);
             line-height: 1.6;
             margin-bottom: 12px;
@@ -4886,7 +4980,9 @@
             display: flex;
             align-items: center;
             gap: 5px;
-            font-size: 0.72rem;
+            font-family: var(--font-sans);
+            font-size: 0.74rem;
+            font-weight: 500;
             color: var(--text3);
         }
         .profile-edit-btn {
@@ -4896,6 +4992,7 @@
             background: var(--bg3);
             border: 1px solid var(--border);
             color: var(--text2);
+            font-family: var(--font-sans);
             font-size: 0.8rem;
             font-weight: 600;
             cursor: pointer;
@@ -4926,16 +5023,17 @@
         }
         .profile-stat-num {
             font-family: var(--font-display);
-            font-size: 1.1rem;
-            font-weight: 900;
+            font-size: 1.2rem;
+            font-weight: 800;
             color: var(--text);
             line-height: 1;
         }
         .profile-stat-label {
-            font-size: 0.55rem;
+            font-family: var(--font-sans);
+            font-size: 0.58rem;
             font-weight: 700;
             color: var(--text3);
-            letter-spacing: 0.08em;
+            letter-spacing: 0.1em;
             text-transform: uppercase;
             margin-top: 2px;
         }
@@ -4954,8 +5052,9 @@
         .profile-tab {
             flex-shrink: 0;
             padding: 12px 16px;
+            font-family: var(--font-sans);
             font-size: 0.8rem;
-            font-weight: 600;
+            font-weight: 700;
             color: var(--text3);
             border-bottom: 2px solid transparent;
             cursor: pointer;
@@ -5003,6 +5102,7 @@
             margin-bottom: 6px;
         }
         .badge-card-name {
+            font-family: var(--font-sans);
             font-size: 0.55rem;
             font-weight: 800;
             color: var(--text2);
@@ -5017,14 +5117,18 @@
             border-bottom: 1px solid var(--border);
         }
         .dashboard-greeting {
-            font-size: 0.8rem;
+            font-family: var(--font-sans);
+            font-size: 0.76rem;
+            font-weight: 700;
             color: var(--text3);
+            letter-spacing: 0.075em;
+            text-transform: uppercase;
             margin-bottom: 2px;
         }
         .dashboard-username {
             font-family: var(--font-display);
-            font-size: 1.3rem;
-            font-weight: 900;
+            font-size: 1.46rem;
+            font-weight: 800;
             color: var(--text);
         }
         .dashboard-level-badge {
@@ -5034,7 +5138,8 @@
             border: 1px solid var(--glass-border);
             border-radius: 99px;
             padding: 3px 12px;
-            font-size: 0.68rem;
+            font-family: var(--font-sans);
+            font-size: 0.7rem;
             font-weight: 700;
             color: var(--accent3);
         }
@@ -5058,7 +5163,9 @@
             transition: width 0.6s cubic-bezier(0.22, 1, 0.36, 1);
         }
         .dashboard-xp-label {
-            font-size: 0.62rem;
+            font-family: var(--font-sans);
+            font-size: 0.66rem;
+            font-weight: 600;
             color: var(--text3);
             white-space: nowrap;
         }
@@ -5091,22 +5198,25 @@
             margin-bottom: 10px;
         }
         .dash-stat-label {
-            font-size: 0.62rem;
+            font-family: var(--font-sans);
+            font-size: 0.64rem;
             font-weight: 700;
             color: var(--text3);
             text-transform: uppercase;
-            letter-spacing: 0.08em;
+            letter-spacing: 0.1em;
             margin-bottom: 4px;
         }
         .dash-stat-value {
             font-family: var(--font-display);
-            font-size: 1.4rem;
-            font-weight: 900;
+            font-size: 1.5rem;
+            font-weight: 800;
             color: var(--text);
             line-height: 1;
         }
         .dash-stat-change {
-            font-size: 0.65rem;
+            font-family: var(--font-sans);
+            font-size: 0.68rem;
+            font-weight: 500;
             color: var(--text3);
             margin-top: 4px;
         }
@@ -5117,7 +5227,8 @@
             padding: 0 16px 16px;
         }
         .dashboard-section-title {
-            font-size: 0.85rem;
+            font-family: var(--font-display);
+            font-size: 0.92rem;
             font-weight: 800;
             color: var(--text);
             display: flex;
@@ -5161,8 +5272,9 @@
             font-size: 1.4rem;
         }
         .dash-quick-label {
-            font-size: 0.58rem;
-            font-weight: 600;
+            font-family: var(--font-sans);
+            font-size: 0.6rem;
+            font-weight: 700;
             color: var(--text3);
             text-align: center;
             line-height: 1.2;
@@ -5201,7 +5313,9 @@
             min-width: 0;
         }
         .activity-text {
-            font-size: 0.8rem;
+            font-family: var(--font-sans);
+            font-size: 0.82rem;
+            font-weight: 500;
             color: var(--text);
             line-height: 1.4;
         }
@@ -5210,7 +5324,9 @@
             font-weight: 700;
         }
         .activity-time {
-            font-size: 0.65rem;
+            font-family: var(--font-sans);
+            font-size: 0.66rem;
+            font-weight: 500;
             color: var(--text3);
             margin-top: 3px;
         }
@@ -5232,12 +5348,15 @@
             border-bottom: none;
         }
         .account-row-label {
-            font-size: 0.8rem;
-            font-weight: 600;
+            font-family: var(--font-sans);
+            font-size: 0.82rem;
+            font-weight: 700;
             color: var(--text);
         }
         .account-row-value {
-            font-size: 0.76rem;
+            font-family: var(--font-sans);
+            font-size: 0.78rem;
+            font-weight: 500;
             color: var(--text3);
         }
         .account-row-edit {
@@ -5247,6 +5366,7 @@
             background: var(--bg3);
             border: 1px solid var(--border);
             color: var(--text2);
+            font-family: var(--font-sans);
             font-size: 0.7rem;
             font-weight: 600;
             cursor: pointer;
@@ -5265,6 +5385,7 @@
             background: rgba(239, 68, 68, 0.08);
             border: 1px solid rgba(239, 68, 68, 0.3);
             color: var(--error);
+            font-family: var(--font-sans);
             font-size: 0.85rem;
             font-weight: 700;
             cursor: pointer;
@@ -5315,6 +5436,7 @@
             color: var(--text);
         }
         .notif-mark-all {
+            font-family: var(--font-sans);
             font-size: 0.7rem;
             color: var(--accent);
             cursor: pointer;
@@ -5362,6 +5484,7 @@
             min-width: 0;
         }
         .notif-item-text {
+            font-family: var(--font-sans);
             font-size: 0.8rem;
             color: var(--text);
             line-height: 1.4;
@@ -5371,6 +5494,7 @@
             font-weight: 700;
         }
         .notif-item-time {
+            font-family: var(--font-sans);
             font-size: 0.65rem;
             color: var(--text3);
             margin-top: 4px;
@@ -5388,6 +5512,7 @@
             padding: 40px 16px;
             text-align: center;
             color: var(--text3);
+            font-family: var(--font-sans);
             font-size: 0.85rem;
         }
 
@@ -5399,6 +5524,7 @@
             margin-bottom: 24px;
         }
         .settings-section-title {
+            font-family: var(--font-sans);
             font-size: 0.7rem;
             font-weight: 700;
             color: var(--text3);
@@ -5444,11 +5570,13 @@
             flex: 1;
         }
         .settings-row-label {
+            font-family: var(--font-sans);
             font-size: 0.85rem;
             font-weight: 600;
             color: var(--text);
         }
         .settings-row-desc {
+            font-family: var(--font-sans);
             font-size: 0.7rem;
             color: var(--text3);
             margin-top: 1px;
@@ -5516,11 +5644,13 @@
             box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
         }
         .theme-btn-name {
+            font-family: var(--font-sans);
             font-size: 0.75rem;
             font-weight: 700;
             color: var(--text);
         }
         .theme-btn-desc {
+            font-family: var(--font-sans);
             font-size: 0.6rem;
             color: var(--text3);
         }
@@ -5534,6 +5664,7 @@
             border: 1px solid var(--card-border);
             border-radius: 99px;
             padding: 6px 14px;
+            font-family: var(--font-sans);
             font-size: 0.75rem;
             font-weight: 600;
             color: var(--text2);
@@ -5651,6 +5782,7 @@
             text-align: center;
             padding: 8px;
             border-radius: calc(var(--radius) - 3px);
+            font-family: var(--font-sans);
             font-size: 0.82rem;
             font-weight: 600;
             color: var(--text3);
@@ -5670,6 +5802,7 @@
             margin-bottom: 4px;
         }
         .auth-sub {
+            font-family: var(--font-sans);
             font-size: 0.8rem;
             color: var(--text3);
             margin-bottom: 20px;
@@ -5684,6 +5817,7 @@
             margin-bottom: 14px;
         }
         .form-label {
+            font-family: var(--font-sans);
             font-size: 0.76rem;
             font-weight: 600;
             color: var(--text2);
@@ -5697,6 +5831,7 @@
             background: var(--input-bg);
             border: 1px solid var(--input-border);
             color: var(--text);
+            font-family: var(--font-sans);
             font-size: 0.88rem;
             padding: 0 14px;
             outline: none;
@@ -5717,6 +5852,7 @@
         }
         .auth-error {
             color: var(--error);
+            font-family: var(--font-sans);
             font-size: 0.76rem;
             margin-bottom: 12px;
             min-height: 0;
@@ -5724,6 +5860,7 @@
         }
         .auth-success {
             color: var(--success);
+            font-family: var(--font-sans);
             font-size: 0.76rem;
             margin-bottom: 12px;
         }
@@ -5734,6 +5871,7 @@
             background: var(--btn-grad);
             border: none;
             color: #fff;
+            font-family: var(--font-sans);
             font-size: 0.88rem;
             font-weight: 700;
             cursor: pointer;
@@ -5762,6 +5900,7 @@
             background: var(--border);
         }
         .auth-divider-text {
+            font-family: var(--font-sans);
             font-size: 0.7rem;
             color: var(--text3);
             white-space: nowrap;
@@ -5773,6 +5912,7 @@
             background: transparent;
             border: 1px solid var(--border);
             color: var(--text);
+            font-family: var(--font-sans);
             font-size: 0.85rem;
             font-weight: 600;
             cursor: pointer;
@@ -5790,6 +5930,7 @@
         }
         .auth-footer {
             text-align: center;
+            font-family: var(--font-sans);
             font-size: 0.76rem;
             color: var(--text3);
         }
@@ -5838,6 +5979,7 @@
             margin-bottom: 6px;
         }
         .onboarding-sub {
+            font-family: var(--font-sans);
             font-size: 0.85rem;
             color: var(--text3);
             text-align: center;
@@ -5903,6 +6045,7 @@
             background: var(--input-bg);
             border: 1px solid var(--input-border);
             color: var(--text);
+            font-family: var(--font-sans);
             font-size: 0.9rem;
             padding: 0 14px;
             outline: none;
@@ -5915,6 +6058,7 @@
             border-color: var(--error);
         }
         .onboarding-username-check {
+            font-family: var(--font-sans);
             font-size: 0.72rem;
             margin-top: 6px;
         }
@@ -5931,6 +6075,7 @@
             background: var(--input-bg);
             border: 1px solid var(--input-border);
             color: var(--text);
+            font-family: var(--font-sans);
             font-size: 0.9rem;
             padding: 0 14px;
             outline: none;
@@ -5947,6 +6092,7 @@
             flex: 1;
             height: 44px;
             border-radius: var(--btn-radius);
+            font-family: var(--font-sans);
             font-weight: 700;
             cursor: pointer;
             transition: var(--transition);
@@ -6050,6 +6196,7 @@
             color: var(--text);
         }
         .script-modal-game {
+            font-family: var(--font-sans);
             font-size: 0.76rem;
             color: var(--text3);
             margin-top: 3px;
@@ -6080,6 +6227,7 @@
             background: var(--btn-grad);
             border: none;
             color: #fff;
+            font-family: var(--font-sans);
             font-size: 0.88rem;
             font-weight: 700;
             cursor: pointer;
@@ -6106,6 +6254,7 @@
             background: var(--bg3);
             border: 1px solid var(--border);
             color: var(--text2);
+            font-family: var(--font-sans);
             font-size: 0.75rem;
             font-weight: 600;
             cursor: pointer;
@@ -6142,6 +6291,7 @@
             color: var(--text);
         }
         .script-modal-stat-lbl {
+            font-family: var(--font-sans);
             font-size: 0.55rem;
             color: var(--text3);
             text-transform: uppercase;
@@ -6182,6 +6332,7 @@
             margin-bottom: 4px;
         }
         .upload-modal-sub {
+            font-family: var(--font-sans);
             font-size: 0.76rem;
             color: var(--text3);
             margin-bottom: 20px;
@@ -6348,6 +6499,7 @@
             height: 22px;
         }
         .bottom-nav-label {
+            font-family: var(--font-sans);
             font-size: 0.55rem;
             font-weight: 600;
             letter-spacing: 0.04em;
@@ -6410,6 +6562,7 @@
             border: 1px solid var(--border);
             border-radius: var(--card-radius);
             box-shadow: 0 4px 24px rgba(0, 0, 0, 0.5);
+            font-family: var(--font-sans);
             font-size: 0.82rem;
             color: var(--text);
             animation: toastIn 0.3s cubic-bezier(0.22, 1, 0.36, 1);
@@ -6480,6 +6633,7 @@
         }
         .toast-msg {
             flex: 1;
+            font-family: var(--font-sans);
             font-size: 0.8rem;
             line-height: 1.4;
         }
@@ -6627,6 +6781,393 @@
             opacity: 1;
             transition: 0s;
         }
+        /* ── TYPOGRAPHY POLISH: SCRIPTS / PROFILE / DASHBOARD ── */
+        #page-scripts,
+        #page-profile,
+        #page-dash {
+            font-family: var(--font-sans);
+            text-rendering: optimizeLegibility;
+            -webkit-font-smoothing: antialiased;
+        }
+        #page-scripts button,
+        #page-scripts input,
+        #page-profile button,
+        #page-dash button {
+            font-family: var(--font-sans);
+        }
+
+        /* Scripts: a consistent hierarchy from page title to card metadata. */
+        #page-scripts .scripts-page-title {
+            font-family: var(--font-display);
+            font-size: 1.34rem;
+            font-weight: 800;
+            line-height: 1.15;
+            letter-spacing: -0.025em;
+        }
+        #page-scripts .scripts-page-header > button {
+            font-size: 0.76rem !important;
+            font-weight: 700 !important;
+            letter-spacing: 0.01em;
+        }
+        #page-scripts .scripts-search-input {
+            font-size: 0.9rem;
+            font-weight: 500;
+            line-height: 1.4;
+            letter-spacing: 0.005em;
+        }
+        #page-scripts .sort-btn {
+            font-size: 0.76rem;
+            font-weight: 700;
+            line-height: 1;
+            letter-spacing: 0.01em;
+        }
+        #page-scripts #scriptsCountLabel,
+        #page-scripts #scriptsCountNum {
+            font-family: var(--font-sans) !important;
+            font-size: 0.74rem !important;
+            font-weight: 600 !important;
+            line-height: 1.35;
+            letter-spacing: 0.015em;
+        }
+        #page-scripts .script-card,
+        #page-profile .script-card,
+        #page-dash .script-card {
+            font-family: var(--font-sans);
+        }
+        #page-scripts .script-card-title,
+        #page-profile .script-card-title,
+        #page-dash .script-card-title {
+            font-family: var(--font-display);
+            font-size: 0.92rem;
+            font-weight: 800;
+            line-height: 1.25;
+            letter-spacing: -0.012em;
+        }
+        #page-scripts .script-card-game,
+        #page-profile .script-card-game,
+        #page-dash .script-card-game {
+            font-size: 0.72rem;
+            font-weight: 500;
+            line-height: 1.35;
+            letter-spacing: 0.01em;
+        }
+        #page-scripts .script-card-thumb-badge,
+        #page-profile .script-card-thumb-badge,
+        #page-dash .script-card-thumb-badge {
+            font-size: 0.57rem;
+            font-weight: 700;
+            line-height: 1.2;
+            letter-spacing: 0.065em;
+        }
+        #page-scripts .badge,
+        #page-profile .badge,
+        #page-dash .badge {
+            font-size: 0.52rem;
+            font-weight: 800;
+            line-height: 1.2;
+            letter-spacing: 0.07em;
+        }
+        #page-scripts .tag-pill,
+        #page-profile .tag-pill,
+        #page-dash .tag-pill {
+            font-size: 0.58rem;
+            font-weight: 600;
+            line-height: 1.25;
+            letter-spacing: 0.025em;
+        }
+        #page-scripts .script-stat,
+        #page-profile .script-stat,
+        #page-dash .script-stat {
+            font-size: 0.7rem;
+            font-weight: 500;
+            line-height: 1.3;
+            letter-spacing: 0.005em;
+        }
+
+        /* Profile: refined identity, supporting copy, and stat labels. */
+        #page-profile .profile-banner-edit {
+            font-size: 0.7rem;
+            font-weight: 700;
+            line-height: 1;
+            letter-spacing: 0.015em;
+        }
+        #page-profile .profile-avatar {
+            font-family: var(--font-display);
+            font-weight: 800;
+        }
+        #page-profile .profile-name {
+            font-family: var(--font-display);
+            font-size: 1.42rem;
+            font-weight: 800;
+            line-height: 1.15;
+            letter-spacing: -0.025em;
+        }
+        #page-profile .profile-handle {
+            font-size: 0.8rem;
+            font-weight: 600;
+            line-height: 1.35;
+            letter-spacing: 0.02em;
+        }
+        #page-profile .profile-bio {
+            font-size: 0.88rem;
+            font-weight: 400;
+            line-height: 1.65;
+            letter-spacing: 0.002em;
+        }
+        #page-profile .profile-meta-item {
+            font-size: 0.74rem;
+            font-weight: 500;
+            line-height: 1.4;
+        }
+        #page-profile .profile-edit-btn {
+            font-size: 0.78rem;
+            font-weight: 700;
+            line-height: 1;
+            letter-spacing: 0.015em;
+        }
+        #page-profile .profile-stat-num {
+            font-family: var(--font-display);
+            font-size: 1.2rem;
+            font-weight: 800;
+            line-height: 1;
+            letter-spacing: -0.015em;
+        }
+        #page-profile .profile-stat-label {
+            font-size: 0.58rem;
+            font-weight: 700;
+            line-height: 1.25;
+            letter-spacing: 0.1em;
+        }
+        #page-profile .profile-tab {
+            font-size: 0.8rem;
+            font-weight: 700;
+            line-height: 1.25;
+            letter-spacing: 0.01em;
+        }
+        #page-profile .badge-card-name {
+            font-size: 0.58rem;
+            font-weight: 800;
+            line-height: 1.25;
+            letter-spacing: 0.07em;
+        }
+        #page-profile #profileTabContent [style*="font-size:0.76rem"],
+        #page-profile #profileTabContent [style*="font-size:0.8rem"] {
+            font-family: var(--font-sans) !important;
+            line-height: 1.5;
+        }
+        #page-profile #profileTabContent [style*="text-transform:uppercase"] {
+            font-weight: 700 !important;
+            letter-spacing: 0.09em !important;
+        }
+        #page-profile #profileTabContent [style*="border-bottom"] {
+            font-size: 0.82rem !important;
+            font-weight: 600;
+            line-height: 1.35;
+        }
+
+        /* Dashboard: precise metrics, readable controls, and stable labels. */
+        #page-dash .dashboard-greeting {
+            font-size: 0.76rem;
+            font-weight: 700;
+            line-height: 1.3;
+            letter-spacing: 0.075em;
+            text-transform: uppercase;
+        }
+        #page-dash .dashboard-username {
+            font-family: var(--font-display);
+            font-size: 1.46rem;
+            font-weight: 800;
+            line-height: 1.15;
+            letter-spacing: -0.025em;
+        }
+        #page-dash .dashboard-level-badge {
+            font-size: 0.7rem;
+            font-weight: 700;
+            line-height: 1.25;
+            letter-spacing: 0.025em;
+        }
+        #page-dash .dashboard-xp-row > div:first-child {
+            font-size: 0.72rem !important;
+            font-weight: 700;
+            line-height: 1;
+            letter-spacing: 0.08em;
+        }
+        #page-dash .dashboard-xp-label {
+            font-size: 0.66rem;
+            font-weight: 600;
+            line-height: 1.3;
+            letter-spacing: 0.02em;
+        }
+        #page-dash .dash-stat-label {
+            font-size: 0.64rem;
+            font-weight: 700;
+            line-height: 1.25;
+            letter-spacing: 0.1em;
+        }
+        #page-dash .dash-stat-value {
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+            font-weight: 800;
+            line-height: 1;
+            letter-spacing: -0.02em;
+        }
+        #page-dash .dash-stat-change {
+            font-size: 0.68rem;
+            font-weight: 500;
+            line-height: 1.35;
+            letter-spacing: 0.005em;
+        }
+        #page-dash .dashboard-section-title {
+            font-family: var(--font-display);
+            font-size: 0.92rem;
+            font-weight: 800;
+            line-height: 1.25;
+            letter-spacing: -0.01em;
+        }
+        #page-dash .dash-quick-label {
+            font-size: 0.6rem;
+            font-weight: 700;
+            line-height: 1.25;
+            letter-spacing: 0.01em;
+        }
+        #page-dash .activity-text {
+            font-size: 0.82rem;
+            font-weight: 500;
+            line-height: 1.5;
+        }
+        #page-dash .activity-time {
+            font-size: 0.66rem;
+            font-weight: 500;
+            line-height: 1.3;
+            letter-spacing: 0.015em;
+        }
+        #page-dash .account-row-label {
+            font-size: 0.82rem;
+            font-weight: 700;
+            line-height: 1.3;
+        }
+        #page-dash .account-row-value {
+            font-size: 0.78rem;
+            font-weight: 500;
+            line-height: 1.4;
+        }
+        #page-dash .account-row-edit {
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 0.015em;
+        }
+        #page-dash .dashboard-section > div[style*="display:flex"] > div:nth-child(2) > div:first-child {
+            font-family: var(--font-display) !important;
+            font-size: 0.84rem !important;
+            font-weight: 700 !important;
+            line-height: 1.25;
+            letter-spacing: -0.005em;
+        }
+        #page-dash .dashboard-section > div[style*="display:flex"] > div:nth-child(2) > div:last-child {
+            font-family: var(--font-sans) !important;
+            font-size: 0.72rem !important;
+            font-weight: 500 !important;
+            line-height: 1.35;
+        }
+        #page-dash .dashboard-section > div[style*="display:flex"] > button {
+            font-size: 0.72rem !important;
+            font-weight: 700 !important;
+            line-height: 1;
+            letter-spacing: 0.015em;
+        }
+        #page-dash #dashActivity,
+        #page-dash #dashActivitySection > div[style] {
+            font-family: var(--font-sans) !important;
+            font-size: 0.82rem !important;
+            line-height: 1.5;
+        }
+        #page-dash [style*="text-transform:uppercase"] {
+            font-family: var(--font-sans) !important;
+            font-weight: 700 !important;
+            letter-spacing: 0.09em !important;
+        }
+
+
+        /* ── EMPTY STATE ── */
+        .empty-state {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 48px 24px;
+            min-height: 300px;
+        }
+        .empty-icon-wrap {
+            font-size: 2.8rem;
+            margin-bottom: 16px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+        }
+        .empty-stars {
+            display: flex;
+            gap: 6px;
+        }
+        .empty-star {
+            font-size: 0.65rem;
+            color: var(--accent3);
+            opacity: 0.7;
+            animation: pulse 2.5s ease-in-out infinite;
+        }
+        .empty-star:nth-child(2) { animation-delay: 0.3s; }
+        .empty-star:nth-child(3) { animation-delay: 0.6s; }
+        .empty-star:nth-child(4) { animation-delay: 0.9s; }
+        .empty-state-title {
+            font-family: var(--font-display);
+            font-size: 1.05rem;
+            font-weight: 800;
+            color: var(--text);
+            line-height: 1.25;
+            letter-spacing: -0.015em;
+            text-shadow: var(--text-shadow);
+            margin-bottom: 8px;
+        }
+        .empty-state-quote {
+            font-family: var(--font-sans);
+            font-size: 0.78rem;
+            font-weight: 400;
+            color: var(--text3);
+            line-height: 1.6;
+            font-style: italic;
+            margin-bottom: 6px;
+            max-width: 280px;
+        }
+        .empty-state-sub {
+            font-family: var(--font-sans);
+            font-size: 0.8rem;
+            font-weight: 400;
+            color: var(--text2);
+            line-height: 1.6;
+            max-width: 280px;
+            margin-bottom: 20px;
+        }
+        .empty-state-cta {
+            height: 40px;
+            padding: 0 20px;
+            border-radius: var(--btn-radius);
+            background: var(--btn-grad);
+            border: none;
+            color: #fff;
+            font-family: var(--font-sans);
+            font-size: 0.82rem;
+            font-weight: 700;
+            letter-spacing: 0.04em;
+            cursor: pointer;
+            transition: box-shadow 0.3s, transform 0.15s;
+            box-shadow: 0 4px 20px var(--glow2);
+        }
+        .empty-state-cta:hover {
+            box-shadow: 0 8px 28px var(--glow);
+            transform: translateY(-2px);
+        }
+
     </style>
 </head>
 <body>
@@ -6743,23 +7284,23 @@
             <section class="home-section"><div class="section-header"><div class="section-title"><span class="section-title-icon">❓</span> FAQ</div></div><div class="faq-list" id="faqList"></div></section>
             <footer style="padding:32px 16px 16px;text-align:center;border-top:1px solid var(--border);">
                 <div style="font-family:var(--font-display);font-size:1.05rem;font-weight:800;color:var(--accent);margin-bottom:4px;">LPOLVO HUB</div>
-                <div style="font-size:0.7rem;color:var(--text3);margin-bottom:14px;">v3.2 — Premium Roblox Script Platform</div>
+                <div style="font-family:var(--font-sans);font-size:0.7rem;color:var(--text3);margin-bottom:14px;">v3.2 — Premium Roblox Script Platform</div>
                 <div style="display:flex;gap:16px;justify-content:center;margin-bottom:16px;flex-wrap:wrap;">
-                    <span onclick="openAboutModal()" style="font-size:0.75rem;color:var(--text3);cursor:pointer;">About</span>
-                    <a href="https://discord.gg/JEVVygtkq" target="_blank" style="font-size:0.75rem;color:var(--text3);cursor:pointer;">Discord</a>
-                    <span onclick="navigate('scripts')" style="font-size:0.75rem;color:var(--text3);cursor:pointer;">Scripts</span>
-                    <span onclick="navigate('settings')" style="font-size:0.75rem;color:var(--text3);cursor:pointer;">Settings</span>
+                    <span onclick="openAboutModal()" style="font-family:var(--font-sans);font-size:0.75rem;color:var(--text3);cursor:pointer;">About</span>
+                    <a href="https://discord.gg/JEVVygtkq" target="_blank" style="font-family:var(--font-sans);font-size:0.75rem;color:var(--text3);cursor:pointer;">Discord</a>
+                    <span onclick="navigate('scripts')" style="font-family:var(--font-sans);font-size:0.75rem;color:var(--text3);cursor:pointer;">Scripts</span>
+                    <span onclick="navigate('settings')" style="font-family:var(--font-sans);font-size:0.75rem;color:var(--text3);cursor:pointer;">Settings</span>
                 </div>
-                <div style="font-size:0.65rem;color:var(--text3);">Made with ❤️ by LPOLVO</div>
+                <div style="font-family:var(--font-sans);font-size:0.65rem;color:var(--text3);">Made with ❤️ by LPOLVO</div>
             </footer>
         </main>
 
         <!-- SCRIPTS -->
         <div class="page" id="page-scripts">
-            <div class="scripts-page-header"><div class="scripts-page-title">📜 Scripts</div><button onclick="openUploadModal()" style="height:34px;padding:0 12px;border-radius:9px;background:var(--btn-grad);border:none;color:#fff;font-size:0.72rem;font-weight:700;cursor:pointer;display:flex;align-items:center;gap:6px;box-shadow:0 2px 10px var(--glow2);"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>Add script</button></div>
+            <div class="scripts-page-header"><div class="scripts-page-title">📜 Scripts</div><button onclick="openUploadModal()" style="height:34px;padding:0 12px;border-radius:9px;background:var(--btn-grad);border:none;color:#fff;font-family:var(--font-sans);font-size:0.72rem;font-weight:700;cursor:pointer;display:flex;align-items:center;gap:6px;box-shadow:0 2px 10px var(--glow2);"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>Add script</button></div>
             <div class="scripts-search-wrap"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg><input class="scripts-search-input" id="scriptsPageSearch" placeholder="Search scripts, games, tags..." autocomplete="off"></div>
             <div class="sort-row" style="padding-bottom:12px;" id="scriptsSortRow"><button class="sort-btn active" onclick="setScriptsSort('all')" data-sort="all">🎮 All</button><button class="sort-btn" onclick="setScriptsSort('new')" data-sort="new">🆕 New</button><button class="sort-btn" onclick="setScriptsSort('hot')" data-sort="hot">🔥 Hot</button><button class="sort-btn" onclick="setScriptsSort('top')" data-sort="top">🏆 Top</button><button class="sort-btn" onclick="setScriptsSort('free')" data-sort="free">🆓 Free</button></div>
-            <div style="padding:0 16px 6px;display:flex;align-items:center;justify-content:space-between;"><span style="font-size:0.72rem;color:var(--text3);" id="scriptsCountLabel">All Scripts</span><span style="font-size:0.7rem;color:var(--text3);" id="scriptsCountNum">0 scripts</span></div>
+            <div style="padding:0 16px 6px;display:flex;align-items:center;justify-content:space-between;"><span style="font-family:var(--font-sans);font-size:0.72rem;color:var(--text3);" id="scriptsCountLabel">All Scripts</span><span style="font-family:var(--font-sans);font-size:0.7rem;color:var(--text3);" id="scriptsCountNum">0 scripts</span></div>
             <div id="scriptsPageList" class="scripts-grid" style="padding-bottom:16px;"></div>
         </div>
 
@@ -6828,10 +7369,10 @@
                 <div class="onboarding-title" id="onboardingTitle">Welcome to LPOLVO HUB</div>
                 <div class="onboarding-sub" id="onboardingSub">Let's set up your profile</div>
                 <div class="onboarding-progress"><div class="onboarding-dot active" data-step="0"></div><div class="onboarding-dot" data-step="1"></div><div class="onboarding-dot" data-step="2"></div><div class="onboarding-dot" data-step="3"></div><div class="onboarding-dot" data-step="4"></div></div>
-                <div class="onboarding-step active" data-step="0"><div style="text-align:center;padding:20px 0;"><div style="font-size:3rem;margin-bottom:12px;">🚀</div><div style="font-size:1.1rem;font-weight:700;color:var(--text);margin-bottom:8px;">Welcome to LPOLVO HUB</div><div style="font-size:0.85rem;color:var(--text3);line-height:1.6;">The ultimate platform for Roblox scripts. Let's get your profile ready in just a few steps.</div></div></div>
+                <div class="onboarding-step active" data-step="0"><div style="text-align:center;padding:20px 0;"><div style="font-size:3rem;margin-bottom:12px;">🚀</div><div style="font-family:var(--font-display);font-size:1.1rem;font-weight:700;color:var(--text);margin-bottom:8px;">Welcome to LPOLVO HUB</div><div style="font-family:var(--font-sans);font-size:0.85rem;color:var(--text3);line-height:1.6;">The ultimate platform for Roblox scripts. Let's get your profile ready in just a few steps.</div></div></div>
                 <div class="onboarding-step" data-step="1"><div style="margin-bottom:16px;"><label class="form-label">How old are you?</label><select class="onboarding-age-select" id="onboardingAge"><option value="">Select your age</option><option value="13-17">13 – 17</option><option value="18-24">18 – 24</option><option value="25-34">25 – 34</option><option value="35-44">35 – 44</option><option value="45+">45+</option></select></div></div>
-                <div class="onboarding-step" data-step="2"><div style="text-align:center;margin-bottom:16px;"><div class="onboarding-avatar-preview" id="onboardingAvatarPreview" onclick="document.getElementById('onboardingAvatarInput').click()">📷</div><input type="file" id="onboardingAvatarInput" accept="image/*" style="display:none;" onchange="onOnboardingAvatarChange(event)"><div style="font-size:0.78rem;color:var(--text3);">Tap to upload a profile picture</div></div></div>
-                <div class="onboarding-step" data-step="3"><div style="margin-bottom:16px;"><div style="font-size:0.85rem;font-weight:600;color:var(--text2);margin-bottom:8px;">Choose a banner image</div><div class="onboarding-banner-preview" id="onboardingBannerPreview" onclick="document.getElementById('onboardingBannerInput').click()"><span style="display:flex;flex-direction:column;align-items:center;gap:4px;"><span style="font-size:1.6rem;">🖼️</span><span style="font-size:0.7rem;">Tap to add banner</span></span></div><input type="file" id="onboardingBannerInput" accept="image/*" style="display:none;" onchange="onOnboardingBannerChange(event)"></div></div>
+                <div class="onboarding-step" data-step="2"><div style="text-align:center;margin-bottom:16px;"><div class="onboarding-avatar-preview" id="onboardingAvatarPreview" onclick="document.getElementById('onboardingAvatarInput').click()">📷</div><input type="file" id="onboardingAvatarInput" accept="image/*" style="display:none;" onchange="onOnboardingAvatarChange(event)"><div style="font-family:var(--font-sans);font-size:0.78rem;color:var(--text3);">Tap to upload a profile picture</div></div></div>
+                <div class="onboarding-step" data-step="3"><div style="margin-bottom:16px;"><div style="font-family:var(--font-sans);font-size:0.85rem;font-weight:600;color:var(--text2);margin-bottom:8px;">Choose a banner image</div><div class="onboarding-banner-preview" id="onboardingBannerPreview" onclick="document.getElementById('onboardingBannerInput').click()"><span style="display:flex;flex-direction:column;align-items:center;gap:4px;"><span style="font-size:1.6rem;">🖼️</span><span style="font-family:var(--font-sans);font-size:0.7rem;">Tap to add banner</span></span></div><input type="file" id="onboardingBannerInput" accept="image/*" style="display:none;" onchange="onOnboardingBannerChange(event)"></div></div>
                 <div class="onboarding-step" data-step="4"><div style="margin-bottom:16px;"><label class="form-label">Choose a unique username</label><input type="text" class="onboarding-username-input" id="onboardingUsername" placeholder="e.g. epic_script_master" maxlength="20" autocomplete="off"><div class="onboarding-username-check" id="onboardingUsernameCheck">Letters, numbers, and underscores only</div></div></div>
                 <div class="onboarding-nav"><button class="prev" id="onboardingPrev" onclick="onboardingPrev()">Back</button><button class="next" id="onboardingNext" onclick="onboardingNext()">Continue</button></div>
             </div>
@@ -6844,7 +7385,7 @@
         <div id="upload-modal" onclick="if(event.target===this)closeUploadModal()">
             <div class="upload-modal-card">
                 <div class="upload-modal-title">⬆️ Submit a Script</div><div class="upload-modal-sub">Share your script with the community</div>
-                <div class="upload-thumb-preview" id="thumbPreview" onclick="document.getElementById('thumbFileInput').click()"><div class="placeholder" id="thumbPlaceholder"><span>🖼️</span><span style="font-size:0.65rem;">Click to add thumbnail</span></div></div>
+                <div class="upload-thumb-preview" id="thumbPreview" onclick="document.getElementById('thumbFileInput').click()"><div class="placeholder" id="thumbPlaceholder"><span>🖼️</span><span style="font-family:var(--font-sans);font-size:0.65rem;">Click to add thumbnail</span></div></div>
                 <input type="file" id="thumbFileInput" accept="image/*" style="display:none;" onchange="onThumbFileChange(event)">
                 <div class="upload-progress-wrap" id="uploadProgressWrap"><div class="upload-progress-bar" id="uploadProgressBar"></div></div>
                 <div class="form-group"><label class="form-label">Script Name *</label><input type="text" class="form-input" id="uploadName" placeholder="e.g. Blox Fruits Auto Farm"></div>
@@ -6855,9 +7396,9 @@
                 <div class="form-group"><label class="form-label">Script Code *</label><textarea class="form-input" id="uploadCode" placeholder="-- Paste your Lua script here..." style="min-height:120px;font-family:var(--font-mono);font-size:0.78rem;"></textarea></div>
                 <div class="form-group"><label class="form-label">Description</label><textarea class="form-input" id="uploadDesc" placeholder="What does this script do?" style="min-height:60px;"></textarea></div>
                 <div class="form-group"><label class="form-label">Tags (comma-separated)</label><input type="text" class="form-input" id="uploadTags" placeholder="farm, auto, keyless"></div>
-                <div style="display:flex;gap:8px;margin-top:4px;flex-wrap:wrap;"><label style="display:flex;align-items:center;gap:6px;font-size:0.78rem;color:var(--text2);cursor:pointer;"><input type="checkbox" id="uploadFree" checked> Free</label><label style="display:flex;align-items:center;gap:6px;font-size:0.78rem;color:var(--text2);cursor:pointer;"><input type="checkbox" id="uploadKeyless"> Keyless</label><label style="display:flex;align-items:center;gap:6px;font-size:0.78rem;color:var(--text2);cursor:pointer;"><input type="checkbox" id="uploadPublic" checked> Public</label></div>
+                <div style="display:flex;gap:8px;margin-top:4px;flex-wrap:wrap;"><label style="display:flex;align-items:center;gap:6px;font-family:var(--font-sans);font-size:0.78rem;color:var(--text2);cursor:pointer;"><input type="checkbox" id="uploadFree" checked> Free</label><label style="display:flex;align-items:center;gap:6px;font-family:var(--font-sans);font-size:0.78rem;color:var(--text2);cursor:pointer;"><input type="checkbox" id="uploadKeyless"> Keyless</label><label style="display:flex;align-items:center;gap:6px;font-family:var(--font-sans);font-size:0.78rem;color:var(--text2);cursor:pointer;"><input type="checkbox" id="uploadPublic" checked> Public</label></div>
                 <div class="auth-error" id="uploadError" style="margin-top:10px;"></div>
-                <div style="display:flex;gap:8px;margin-top:16px;"><button onclick="closeUploadModal()" style="flex:1;height:44px;border-radius:var(--btn-radius);background:var(--bg3);border:1px solid var(--border);color:var(--text2);font-weight:600;cursor:pointer;">Cancel</button><button onclick="doUploadScript()" id="uploadBtn" style="flex:2;height:44px;border-radius:var(--btn-radius);background:var(--btn-grad);border:none;color:#fff;font-weight:700;cursor:pointer;box-shadow:0 4px 16px var(--glow2);">Submit Script</button></div>
+                <div style="display:flex;gap:8px;margin-top:16px;"><button onclick="closeUploadModal()" style="flex:1;height:44px;border-radius:var(--btn-radius);background:var(--bg3);border:1px solid var(--border);color:var(--text2);font-family:var(--font-sans);font-weight:600;cursor:pointer;">Cancel</button><button onclick="doUploadScript()" id="uploadBtn" style="flex:2;height:44px;border-radius:var(--btn-radius);background:var(--btn-grad);border:none;color:#fff;font-family:var(--font-sans);font-weight:700;cursor:pointer;box-shadow:0 4px 16px var(--glow2);">Submit Script</button></div>
             </div>
         </div>
 
@@ -6868,14 +7409,14 @@
                 <div style="text-align:center;margin-bottom:20px;">
                     <div id="editAvatarPreview" style="width:72px;height:72px;border-radius:50%;background:var(--btn-grad);color:#fff;font-size:1.3rem;font-weight:800;display:flex;align-items:center;justify-content:center;margin:0 auto 10px;overflow:hidden;border:3px solid var(--glass-border);cursor:pointer;" onclick="document.getElementById('avatarFileInput').click()"></div>
                     <input type="file" id="avatarFileInput" accept="image/*" style="display:none;" onchange="onAvatarFileChange(event)">
-                    <button onclick="document.getElementById('avatarFileInput').click()" style="height:30px;padding:0 12px;border-radius:8px;background:var(--bg3);border:1px solid var(--border);color:var(--text2);font-size:0.7rem;font-weight:600;cursor:pointer;">Change Photo</button>
+                    <button onclick="document.getElementById('avatarFileInput').click()" style="height:30px;padding:0 12px;border-radius:8px;background:var(--bg3);border:1px solid var(--border);color:var(--text2);font-family:var(--font-sans);font-size:0.7rem;font-weight:600;cursor:pointer;">Change Photo</button>
                 </div>
-                <div style="margin-bottom:16px;"><label class="form-label">Banner Image</label><div class="onboarding-banner-preview" id="editBannerPreview" onclick="document.getElementById('editBannerInput').click()"><span style="display:flex;flex-direction:column;align-items:center;gap:4px;"><span style="font-size:1.6rem;">🖼️</span><span style="font-size:0.65rem;">Tap to change banner</span></span></div><input type="file" id="editBannerInput" accept="image/*" style="display:none;" onchange="onEditBannerChange(event)"></div>
+                <div style="margin-bottom:16px;"><label class="form-label">Banner Image</label><div class="onboarding-banner-preview" id="editBannerPreview" onclick="document.getElementById('editBannerInput').click()"><span style="display:flex;flex-direction:column;align-items:center;gap:4px;"><span style="font-size:1.6rem;">🖼️</span><span style="font-family:var(--font-sans);font-size:0.65rem;">Tap to change banner</span></span></div><input type="file" id="editBannerInput" accept="image/*" style="display:none;" onchange="onEditBannerChange(event)"></div>
                 <div class="form-group"><label class="form-label">Display Name</label><input type="text" class="form-input" id="editName" placeholder="Your username" maxlength="20"></div>
                 <div class="form-group"><label class="form-label">Bio</label><textarea class="form-input" id="editBio" placeholder="Tell the community about yourself..." maxlength="160"></textarea></div>
                 <div class="form-group"><label class="form-label">Username (handle)</label><input type="text" class="form-input" id="editHandle" placeholder="@yourhandle" maxlength="20"></div>
                 <div class="auth-error" id="editError" style="margin-top:10px;"></div><div class="auth-success" id="editSuccess"></div>
-                <div style="display:flex;gap:8px;margin-top:16px;"><button onclick="closeEditModal()" style="flex:1;height:44px;border-radius:var(--btn-radius);background:var(--bg3);border:1px solid var(--border);color:var(--text2);font-weight:600;cursor:pointer;">Cancel</button><button onclick="doSaveProfile()" id="editSaveBtn" style="flex:2;height:44px;border-radius:var(--btn-radius);background:var(--btn-grad);border:none;color:#fff;font-weight:700;cursor:pointer;box-shadow:0 4px 16px var(--glow2);">Save Changes</button></div>
+                <div style="display:flex;gap:8px;margin-top:16px;"><button onclick="closeEditModal()" style="flex:1;height:44px;border-radius:var(--btn-radius);background:var(--bg3);border:1px solid var(--border);color:var(--text2);font-family:var(--font-sans);font-weight:600;cursor:pointer;">Cancel</button><button onclick="doSaveProfile()" id="editSaveBtn" style="flex:2;height:44px;border-radius:var(--btn-radius);background:var(--btn-grad);border:none;color:#fff;font-family:var(--font-sans);font-weight:700;cursor:pointer;box-shadow:0 4px 16px var(--glow2);">Save Changes</button></div>
             </div>
         </div>
 
@@ -6885,13 +7426,13 @@
                 <div style="text-align:center;margin-bottom:20px;">
                     <div style="width:72px;height:72px;border-radius:20px;background:var(--btn-grad);display:flex;align-items:center;justify-content:center;font-family:var(--font-orb);font-size:1.3rem;font-weight:900;color:#fff;margin:0 auto 12px;box-shadow:0 4px 20px var(--glow2);animation:glow-pulse 2s ease-in-out infinite;">LP</div>
                     <div style="font-family:var(--font-display);font-size:1.3rem;font-weight:900;color:var(--text);">LPOLVO HUB</div>
-                    <div style="font-size:0.72rem;color:var(--text3);margin-top:4px;">v3.2 — Premium Roblox Script Platform</div>
+                    <div style="font-family:var(--font-sans);font-size:0.72rem;color:var(--text3);margin-top:4px;">v3.2 — Premium Roblox Script Platform</div>
                 </div>
                 <div style="display:flex;flex-direction:column;gap:10px;margin-bottom:20px;">
-                    <div style="background:var(--bg3);border:1px solid var(--border);border-radius:var(--radius);padding:12px;font-size:0.8rem;color:var(--text2);line-height:1.5;">LPOLVO HUB is a community-driven platform for Roblox scripts. Find, share and discover high-quality Lua scripts for your favorite Roblox games.</div>
-                    <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;"><div style="background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:12px;text-align:center;"><div style="font-size:1.1rem;font-weight:800;color:var(--accent);" id="aboutStatScripts">—</div><div style="font-size:0.62rem;color:var(--text3);text-transform:uppercase;letter-spacing:0.08em;">Scripts</div></div><div style="background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:12px;text-align:center;"><div style="font-size:1.1rem;font-weight:800;color:var(--accent);" id="aboutStatUsers">—</div><div style="font-size:0.62rem;color:var(--text3);text-transform:uppercase;letter-spacing:0.08em;">Users</div></div></div>
+                    <div style="background:var(--bg3);border:1px solid var(--border);border-radius:var(--radius);padding:12px;font-family:var(--font-sans);font-size:0.8rem;color:var(--text2);line-height:1.5;">LPOLVO HUB is a community-driven platform for Roblox scripts. Find, share and discover high-quality Lua scripts for your favorite Roblox games.</div>
+                    <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;"><div style="background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:12px;text-align:center;"><div style="font-family:var(--font-display);font-size:1.1rem;font-weight:800;color:var(--accent);" id="aboutStatScripts">—</div><div style="font-family:var(--font-sans);font-size:0.62rem;color:var(--text3);text-transform:uppercase;letter-spacing:0.08em;">Scripts</div></div><div style="background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:12px;text-align:center;"><div style="font-family:var(--font-display);font-size:1.1rem;font-weight:800;color:var(--accent);" id="aboutStatUsers">—</div><div style="font-family:var(--font-sans);font-size:0.62rem;color:var(--text3);text-transform:uppercase;letter-spacing:0.08em;">Users</div></div></div>
                 </div>
-                <div style="display:flex;gap:8px;"><button onclick="closeAboutModal()" style="flex:1;height:44px;border-radius:var(--btn-radius);background:var(--btn-grad);border:none;color:#fff;font-weight:700;cursor:pointer;">Got it</button></div>
+                <div style="display:flex;gap:8px;"><button onclick="closeAboutModal()" style="flex:1;height:44px;border-radius:var(--btn-radius);background:var(--btn-grad);border:none;color:#fff;font-family:var(--font-sans);font-weight:700;cursor:pointer;">Got it</button></div>
             </div>
         </div>
 
