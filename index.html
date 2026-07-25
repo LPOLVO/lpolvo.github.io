@@ -58,8 +58,7 @@
                 increment, arrayUnion, arrayRemove, addDoc, where, onSnapshot,
                 deleteDoc, writeBatch, getCountFromServer, runTransaction
             };
-            onAuthStateChanged(auth, user => {
-                if (window.onFirebaseAuthState) window.onFirebaseAuthState(user);
+            onAuthStateChanged(auth, user => {                if (window.onFirebaseAuthState) window.onFirebaseAuthState(user);
                 else window.__pendingAuthUser = user;
             });
         } catch (e) {
@@ -5812,6 +5811,743 @@
             [data-theme="aetherdominion"] .nav-sign-btn::before { animation: none; opacity: 0.2; }
         }
 
+
+        /* ══════════════════════════════════════════════════════
+           ✨  TRANSCENDENT THEME #108 — THE ABSOLUTE
+               The Point Where Existence Ends.
+               Beyond space. Beyond time. Beyond imagination.
+           ══════════════════════════════════════════════════════ */
+
+        /* ── Variables ── */
+        [data-theme="theabsolute"] {
+            --bg:           #00000a;
+            --bg2:          #030010;
+            --bg3:          #060018;
+            --surface:      rgba(255,255,255,0.04);
+            --surface2:     rgba(255,255,255,0.08);
+            --border:       rgba(255,255,255,0.12);
+            --text:         #f0f0ff;
+            --text2:        #b8b8e0;
+            --text3:        #7070a0;
+            --accent:       #ffffff;
+            --accent2:      #c8aaff;
+            --accent3:      #80dfff;
+            --accent-alpha: rgba(255,255,255,0.12);
+            --glow:         rgba(255,255,255,0.35);
+            --glow2:        rgba(200,170,255,0.30);
+            --card-bg:      rgba(10,5,25,0.65);
+            --nav-bg:       rgba(2,0,12,0.85);
+            --btn-grad:     linear-gradient(135deg,rgba(255,255,255,0.15),rgba(200,170,255,0.20),rgba(128,223,255,0.15));
+            --radius-xl:    24px;
+            --transition:   all 0.42s cubic-bezier(0.23,1,0.32,1);
+            --theme-transition: all 1.4s cubic-bezier(0.23,1,0.32,1);
+            --particles:    rgba(255,255,255,0.6);
+        }
+
+        /* ── Body ── */
+        [data-theme="theabsolute"] body {
+            background: radial-gradient(ellipse 140% 100% at 50% 0%, #080020 0%, #03000f 40%, #00000a 100%);
+            color: var(--text);
+        }
+
+        /* ── Canvas filter ── */
+        [data-theme="theabsolute"] #bgCanvas {
+            filter: saturate(1.4) contrast(1.1) brightness(1.08);
+        }
+
+        /* ── Ambient glow ── */
+        [data-theme="theabsolute"] #ambientGlow {
+            background: radial-gradient(ellipse 100% 65% at 50% 0%,
+                rgba(180,140,255,0.14) 0%, rgba(80,200,255,0.08) 45%, transparent 80%);
+            animation: absoluteAmbientBreath 9s ease-in-out infinite;
+        }
+        @keyframes absoluteAmbientBreath {
+            0%,100% { opacity: 0.6; transform: scale(1); }
+            50%      { opacity: 1;   transform: scale(1.06); }
+        }
+
+        /* ── Navigation ── */
+        [data-theme="theabsolute"] #navbar,
+        [data-theme="theabsolute"] .bottom-nav {
+            background: rgba(2, 0, 14, 0.82) !important;
+            backdrop-filter: blur(28px) saturate(1.5) !important;
+            -webkit-backdrop-filter: blur(28px) saturate(1.5) !important;
+            border-bottom: 1px solid rgba(255,255,255,0.09) !important;
+            box-shadow: 0 4px 40px rgba(150,100,255,0.12), inset 0 1px rgba(255,255,255,0.07) !important;
+        }
+
+        /* ── Logo & titles — flowing white aurora ── */
+        [data-theme="theabsolute"] .nav-logo-text,
+        [data-theme="theabsolute"] .section-title,
+        [data-theme="theabsolute"] .settings-section-title {
+            background: linear-gradient(90deg,
+                #ffffff 0%, #c8aaff 18%, #80dfff 32%, #ffd9a0 48%,
+                #ff9de2 62%, #c8aaff 76%, #ffffff 100%);
+            background-size: 300% auto;
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: absoluteTextFlow 7s linear infinite;
+        }
+        @keyframes absoluteTextFlow { to { background-position: 300% center; } }
+
+        /* ── Cards — void glassmorphism with living borders ── */
+        [data-theme="theabsolute"] .script-card,
+        [data-theme="theabsolute"] .creator-card,
+        [data-theme="theabsolute"] .settings-card,
+        [data-theme="theabsolute"] .news-card,
+        [data-theme="theabsolute"] .executor-card,
+        [data-theme="theabsolute"] .dash-stat-card {
+            background: linear-gradient(135deg,
+                rgba(255,255,255,0.055) 0%,
+                rgba(150,100,255,0.04) 50%,
+                rgba(0,200,255,0.03) 100%) !important;
+            border: 1px solid rgba(255,255,255,0.10) !important;
+            box-shadow:
+                0 8px 40px rgba(0,0,0,0.65),
+                0 0 0 0.5px rgba(255,255,255,0.06),
+                inset 0 1px rgba(255,255,255,0.09) !important;
+            backdrop-filter: blur(18px) saturate(1.4) !important;
+            -webkit-backdrop-filter: blur(18px) saturate(1.4) !important;
+            border-radius: 24px !important;
+            transition: all 0.45s cubic-bezier(0.23,1,0.32,1) !important;
+            animation: absoluteCardFloat 11s ease-in-out infinite !important;
+            position: relative;
+        }
+        [data-theme="theabsolute"] .script-card:nth-child(2n)   { animation-delay: -3.5s; }
+        [data-theme="theabsolute"] .script-card:nth-child(3n)   { animation-delay: -7.2s; }
+        [data-theme="theabsolute"] .creator-card:nth-child(2n)  { animation-delay: -2.1s; }
+        @keyframes absoluteCardFloat {
+            0%,100% { transform: translateY(0px)   rotate(0deg); }
+            28%     { transform: translateY(-8px)  rotate(0.15deg); }
+            55%     { transform: translateY(-3px)  rotate(-0.1deg); }
+        }
+
+        /* Living border shimmer on cards */
+        [data-theme="theabsolute"] .script-card::before,
+        [data-theme="theabsolute"] .creator-card::before,
+        [data-theme="theabsolute"] .settings-card::before {
+            content: '';
+            position: absolute; inset: 0;
+            border-radius: inherit;
+            background: linear-gradient(90deg,
+                transparent 0%, rgba(255,255,255,0.06) 40%, transparent 100%);
+            background-size: 220% 100%;
+            animation: absoluteCardShimmer 6s ease-in-out infinite;
+            pointer-events: none;
+        }
+        @keyframes absoluteCardShimmer {
+            0%   { background-position: -100% 0; }
+            50%  { background-position:  200% 0; }
+            100% { background-position:  200% 0; }
+        }
+
+        [data-theme="theabsolute"] .script-card:hover,
+        [data-theme="theabsolute"] .creator-card:hover,
+        [data-theme="theabsolute"] .executor-card:hover {
+            border-color: rgba(255,255,255,0.28) !important;
+            box-shadow:
+                0 0 0 1px rgba(255,255,255,0.14),
+                0 16px 60px rgba(0,0,0,0.70),
+                0 0 30px rgba(200,170,255,0.18),
+                0 0 60px rgba(128,223,255,0.08),
+                inset 0 1px rgba(255,255,255,0.12) !important;
+            transform: translateY(-10px) scale(1.018) !important;
+        }
+
+        /* ── Buttons — crystal energy ── */
+        [data-theme="theabsolute"] button,
+        [data-theme="theabsolute"] .btn,
+        [data-theme="theabsolute"] .nav-sign-btn,
+        [data-theme="theabsolute"] .sort-btn.active,
+        [data-theme="theabsolute"] .cat-pill {
+            background: linear-gradient(135deg,
+                rgba(255,255,255,0.10) 0%,
+                rgba(200,170,255,0.12) 50%,
+                rgba(128,223,255,0.09) 100%) !important;
+            border: 1px solid rgba(255,255,255,0.22) !important;
+            box-shadow:
+                0 4px 20px rgba(150,100,255,0.20),
+                0 0 0 0.5px rgba(255,255,255,0.08),
+                inset 0 1px rgba(255,255,255,0.14) !important;
+            color: #f0f0ff !important;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.30s cubic-bezier(0.22,1,0.36,1) !important;
+            animation: absoluteBtnEnergy 5s ease-in-out infinite !important;
+        }
+        @keyframes absoluteBtnEnergy {
+            0%,100% { border-color: rgba(255,255,255,0.22); box-shadow: 0 4px 20px rgba(150,100,255,0.20),inset 0 1px rgba(255,255,255,0.14); }
+            33%     { border-color: rgba(200,170,255,0.40); box-shadow: 0 4px 24px rgba(200,170,255,0.30),inset 0 1px rgba(255,255,255,0.20); }
+            66%     { border-color: rgba(128,223,255,0.38); box-shadow: 0 4px 22px rgba(128,223,255,0.25),inset 0 1px rgba(255,255,255,0.18); }
+        }
+
+        /* Energy sweep shimmer */
+        [data-theme="theabsolute"] button::before,
+        [data-theme="theabsolute"] .btn::before,
+        [data-theme="theabsolute"] .nav-sign-btn::before {
+            content: '';
+            position: absolute; inset: 0;
+            background: linear-gradient(110deg,
+                transparent 20%, rgba(255,255,255,0.10) 50%, transparent 80%);
+            background-size: 240% 100%;
+            background-position: -100% 0;
+            animation: absoluteBtnShimmer 4.5s ease-in-out infinite;
+            pointer-events: none;
+        }
+        @keyframes absoluteBtnShimmer {
+            0%   { background-position: -100% 0; }
+            50%  { background-position:  220% 0; }
+            100% { background-position:  220% 0; }
+        }
+
+        [data-theme="theabsolute"] button:hover,
+        [data-theme="theabsolute"] .btn:hover,
+        [data-theme="theabsolute"] .nav-sign-btn:hover {
+            background: linear-gradient(135deg,
+                rgba(255,255,255,0.18) 0%,
+                rgba(200,170,255,0.22) 50%,
+                rgba(128,223,255,0.16) 100%) !important;
+            border-color: rgba(255,255,255,0.50) !important;
+            box-shadow:
+                0 6px 32px rgba(200,170,255,0.35),
+                0 0 16px rgba(255,255,255,0.18),
+                inset 0 1px rgba(255,255,255,0.22) !important;
+            transform: translateY(-2px) scale(1.03) !important;
+        }
+        [data-theme="theabsolute"] button:active,
+        [data-theme="theabsolute"] .btn:active {
+            transform: translateY(0) scale(0.97) !important;
+            box-shadow: 0 2px 10px rgba(200,170,255,0.20) !important;
+        }
+
+        /* ── scrollTop fix ── */
+        [data-theme="theabsolute"] #scrollTop {
+            position: fixed !important; right: 12px !important; left: auto !important;
+            bottom: calc(var(--bottom-h) + 12px) !important;
+            overflow: visible !important; z-index: 490 !important;
+        }
+        [data-theme="theabsolute"] #scrollTop::before { display: none !important; }
+
+        /* ── modal-close-btn fix ── */
+        [data-theme="theabsolute"] .modal-close-btn {
+            position: absolute !important;
+            top: 16px !important; right: 16px !important; left: auto !important;
+            bottom: auto !important; overflow: visible !important; z-index: 10 !important;
+            width: 30px !important; height: 30px !important; border-radius: 8px !important;
+            background: var(--bg3) !important;
+            border: 1px solid var(--border) !important;
+            color: var(--text2) !important;
+            box-shadow: none !important; animation: none !important; transform: none !important;
+        }
+        [data-theme="theabsolute"] .modal-close-btn::before { display: none !important; }
+        [data-theme="theabsolute"] .modal-close-btn:hover {
+            background: var(--bg3) !important; border-color: var(--accent) !important;
+            color: var(--accent) !important; box-shadow: none !important;
+            transform: rotate(90deg) !important; animation: none !important;
+        }
+
+        /* ── Inputs ── */
+        [data-theme="theabsolute"] input[type="text"],
+        [data-theme="theabsolute"] input[type="search"],
+        [data-theme="theabsolute"] textarea,
+        [data-theme="theabsolute"] select,
+        [data-theme="theabsolute"] .search-input {
+            background: rgba(255,255,255,0.05) !important;
+            border: 1px solid rgba(255,255,255,0.16) !important;
+            color: var(--text) !important;
+            border-radius: 14px !important;
+        }
+        [data-theme="theabsolute"] input:focus,
+        [data-theme="theabsolute"] textarea:focus,
+        [data-theme="theabsolute"] .search-input:focus {
+            border-color: rgba(255,255,255,0.45) !important;
+            box-shadow: 0 0 0 3px rgba(255,255,255,0.08), 0 0 20px rgba(200,170,255,0.15) !important;
+            outline: none !important;
+        }
+
+        /* ── Active theme-btn ── */
+        [data-theme="theabsolute"] .theme-btn[data-theme="theabsolute"] {
+            border-color: rgba(255,255,255,0.80) !important;
+            animation: absoluteThemeBtnPulse 2.8s ease-in-out infinite !important;
+        }
+        @keyframes absoluteThemeBtnPulse {
+            0%,100% { box-shadow: 0 0 0 2px #fff, 0 0 20px rgba(255,255,255,.5), 0 0 50px rgba(200,170,255,.25); }
+            33%     { box-shadow: 0 0 0 2px #ffd9a0, 0 0 28px rgba(255,210,150,.6), 0 0 60px rgba(255,150,100,.2); }
+            66%     { box-shadow: 0 0 0 2px #80dfff, 0 0 24px rgba(128,223,255,.6), 0 0 55px rgba(128,223,255,.2); }
+        }
+
+        /* ── Custom cursor — orbiting energy rings ── */
+        #absolute-cursor { display: none; }
+        [data-theme="theabsolute"] * { cursor: none !important; }
+        [data-theme="theabsolute"] #sidebar,
+        [data-theme="theabsolute"] #sidebar *,
+        [data-theme="theabsolute"] #sidebar-overlay {
+            cursor: auto !important;
+            pointer-events: auto !important;
+        }
+        [data-theme="theabsolute"] #absolute-cursor { display: block; }
+        #absolute-cursor {
+            position: fixed; pointer-events: none; z-index: 999999;
+            width: 26px; height: 26px;
+            transform: translate(-50%,-50%);
+        }
+        #absolute-cursor::before {
+            content: '';
+            position: absolute; inset: 0; border-radius: 50%;
+            border: 1.5px solid rgba(255,255,255,0.80);
+            box-shadow: 0 0 10px rgba(255,255,255,0.55), 0 0 22px rgba(200,170,255,0.35);
+            animation: absoluteCursorRing1 2.2s linear infinite;
+        }
+        #absolute-cursor::after {
+            content: '';
+            position: absolute; top: 50%; left: 50%;
+            width: 5px; height: 5px;
+            background: #ffffff;
+            border-radius: 50%;
+            transform: translate(-50%,-50%);
+            box-shadow: 0 0 10px rgba(255,255,255,0.9), 0 0 20px rgba(200,170,255,0.55);
+        }
+        @keyframes absoluteCursorRing1 {
+            0%   { transform: rotate(0deg)   scale(1); }
+            50%  { transform: rotate(180deg) scale(1.15); }
+            100% { transform: rotate(360deg) scale(1); }
+        }
+        .absolute-orb {
+            position: fixed; pointer-events: none; z-index: 999998; border-radius: 50%;
+            animation: absoluteOrbFade 0.9s ease-out forwards;
+        }
+        @keyframes absoluteOrbFade {
+            0%   { opacity: 0.85; transform: translate(-50%,-50%) scale(1); }
+            100% { opacity: 0;    transform: translate(-50%,-50%) scale(0.05); }
+        }
+
+        /* ── Theme activation burst particles ── */
+        .absolute-burst {
+            position: fixed; pointer-events: none; z-index: 99001; border-radius: 50%;
+            animation: absoluteBurstOut 1.4s ease-out forwards;
+        }
+        @keyframes absoluteBurstOut {
+            0%   { opacity: 1; transform: translate(-50%,-50%) scale(1); }
+            100% { opacity: 0; transform: translate(calc(-50% + var(--dx)), calc(-50% + var(--dy))) scale(0); }
+        }
+
+        /* ── Activation flash ── */
+        .absolute-flash {
+            position: fixed; inset: 0; z-index: 99999;
+            background: radial-gradient(ellipse at 50% 50%, rgba(255,255,255,0.95) 0%, rgba(200,170,255,0.5) 40%, transparent 80%);
+            pointer-events: none !important;
+            animation: absoluteActivateFlash 2.2s cubic-bezier(0.22,1,0.36,1) both;
+        }
+        @keyframes absoluteActivateFlash {
+            0%   { opacity: 0; }
+            18%  { opacity: 1; }
+            100% { opacity: 0; }
+        }
+
+        /* ── Rebuild assemble animation ── */
+        .absolute-assemble {
+            animation: absoluteAssemble 1.1s cubic-bezier(0.22,1,0.36,1) both !important;
+            animation-delay: var(--abs-delay, 0ms) !important;
+        }
+        @keyframes absoluteAssemble {
+            0%   { opacity: 0; filter: blur(14px) brightness(2); transform: translateY(18px) scale(0.92); }
+            60%  { filter: blur(2px) brightness(1.3); }
+            100% { opacity: 1; filter: blur(0) brightness(1);   transform: translateY(0) scale(1); }
+        }
+
+        /* ── Ambient body overlay ── */
+        [data-theme="theabsolute"] body::after {
+            content:''; position:fixed; top:0; left:0; right:0; bottom:0;
+            background:
+                radial-gradient(ellipse 80% 45% at 15% 10%,  rgba(200,170,255,0.06) 0%, transparent 65%),
+                radial-gradient(ellipse 60% 35% at 85% 85%,  rgba(128,223,255,0.04) 0%, transparent 55%),
+                radial-gradient(ellipse 50% 30% at 50% 50%,  rgba(255,255,255,0.025) 0%, transparent 60%);
+            pointer-events:none; z-index:0;
+            animation: absoluteAmbientShift 15s ease-in-out infinite;
+        }
+        @keyframes absoluteAmbientShift {
+            0%,100% { opacity: 0.7; }
+            50%     { opacity: 1; }
+        }
+
+        /* ── Mobile optimizations ── */
+        @media (max-width: 700px) {
+            [data-theme="theabsolute"] .script-card,
+            [data-theme="theabsolute"] .creator-card { animation: none; }
+            [data-theme="theabsolute"] * { scroll-behavior: auto !important; }
+            [data-theme="theabsolute"] #bgCanvas { filter: saturate(1.2) contrast(1.06); }
+            [data-theme="theabsolute"] #ambientGlow { animation: none; opacity: 0.8; }
+            [data-theme="theabsolute"] .script-card,
+            [data-theme="theabsolute"] .creator-card,
+            [data-theme="theabsolute"] .settings-card,
+            [data-theme="theabsolute"] .news-card,
+            [data-theme="theabsolute"] .executor-card,
+            [data-theme="theabsolute"] .dash-stat-card {
+                backdrop-filter: blur(10px) !important;
+                -webkit-backdrop-filter: blur(10px) !important;
+                animation-duration: 18s;
+            }
+            [data-theme="theabsolute"] button::before,
+            [data-theme="theabsolute"] .btn::before,
+            [data-theme="theabsolute"] .nav-sign-btn::before { animation: none; opacity: 0.15; }
+            [data-theme="theabsolute"] .script-card::before,
+            [data-theme="theabsolute"] .creator-card::before,
+            [data-theme="theabsolute"] .settings-card::before { animation: none; }
+        }
+
+        /* ══════════════════════════════════════════════════════════════════════
+           ✦ TRANSCENDENT THEME #109 — ETERNAL NEXUS
+              The intersection of every universe, timeline and possible reality.
+           ══════════════════════════════════════════════════════════════════════ */
+
+        [data-theme="eternalnexus"] {
+            --bg: #02020d;
+            --bg2: #05031a;
+            --bg3: #0a0626;
+            --bg4: #120b36;
+            --card: rgba(8, 7, 31, 0.72);
+            --card-border: rgba(126, 225, 255, 0.24);
+            --card-hover: rgba(20, 13, 58, 0.88);
+            --accent: #78e7ff;
+            --accent2: #8d6bff;
+            --accent3: #ffe4a3;
+            --accent4: #ff83d6;
+            --accent-alpha: rgba(120, 231, 255, 0.13);
+            --accent-alpha2: rgba(141, 107, 255, 0.07);
+            --text: #f5f2ff;
+            --text2: #b8b1df;
+            --text3: #726b9f;
+            --border: rgba(126, 225, 255, 0.20);
+            --border2: rgba(141, 107, 255, 0.14);
+            --glow: rgba(120, 231, 255, 0.65);
+            --glow2: rgba(141, 107, 255, 0.28);
+            --nav-bg: rgba(2, 2, 14, 0.84);
+            --btn-grad: linear-gradient(135deg, rgba(120,231,255,.24), rgba(141,107,255,.32), rgba(255,131,214,.20));
+            --btn-hover: linear-gradient(135deg, rgba(255,228,163,.32), rgba(120,231,255,.34), rgba(141,107,255,.38));
+            --shadow: 0 12px 54px rgba(0, 0, 0, 0.78);
+            --shadow-card: 0 4px 30px rgba(7, 3, 32, 0.72);
+            --glass: rgba(8, 7, 31, 0.72);
+            --glass-border: rgba(120, 231, 255, 0.22);
+            --tag-bg: rgba(120, 231, 255, 0.11);
+            --tag-text: #b9f5ff;
+            --badge-new: #74ffb0;
+            --badge-free: #ffe4a3;
+            --badge-paid: #78e7ff;
+            --sidebar-bg: #030314;
+            --input-bg: rgba(8, 7, 31, 0.82);
+            --input-border: rgba(120, 231, 255, 0.22);
+            --particles: rgba(120, 231, 255, 0.58);
+            --success: #74ffb0;
+            --error: #ff718f;
+            --warning: #ffe4a3;
+            --info: #78e7ff;
+            --card-shadow: 0 6px 36px rgba(92, 62, 190, 0.30);
+            --scrollbar-track: #05031a;
+            --scrollbar-thumb: #78e7ff;
+            --banner-overlay: rgba(2, 2, 14, 0.48);
+            --theme-bg-layer: rgba(5, 3, 26, 0.52);
+            --theme-ambient: rgba(120, 231, 255, 0.09);
+            --btn-radius: 14px;
+            --card-radius: 22px;
+            --border-width: 1px;
+            --glow-intensity: 0.9;
+            --text-shadow: 0 0 42px rgba(120, 231, 255, 0.20);
+            --theme-transition: all 1.25s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+
+        [data-theme="eternalnexus"] body {
+            background:
+                radial-gradient(ellipse 90% 55% at 50% -10%, rgba(108, 77, 255, .18), transparent 72%),
+                radial-gradient(ellipse 75% 50% at 8% 86%, rgba(0, 208, 255, .08), transparent 70%),
+                radial-gradient(ellipse 65% 45% at 92% 58%, rgba(255, 90, 207, .07), transparent 70%),
+                #02020d;
+        }
+        [data-theme="eternalnexus"] #bgCanvas {
+            filter: saturate(1.28) contrast(1.08) brightness(1.04);
+        }
+        [data-theme="eternalnexus"] #ambientGlow {
+            background:
+                radial-gradient(ellipse 90% 62% at 50% 0%, rgba(108, 77, 255, .17), transparent 70%),
+                radial-gradient(ellipse 55% 42% at 15% 90%, rgba(0, 215, 255, .10), transparent 70%),
+                radial-gradient(ellipse 48% 38% at 88% 65%, rgba(255, 108, 213, .08), transparent 70%);
+            animation: nexusAmbientBreath 11s ease-in-out infinite;
+        }
+        @keyframes nexusAmbientBreath {
+            0%, 100% { opacity: .62; transform: scale(1) rotate(0deg); }
+            50% { opacity: 1; transform: scale(1.055) rotate(1deg); }
+        }
+        [data-theme="eternalnexus"] #navbar,
+        [data-theme="eternalnexus"] #bottom-nav {
+            background: rgba(2, 2, 14, .80) !important;
+            backdrop-filter: blur(26px) saturate(1.55) !important;
+            -webkit-backdrop-filter: blur(26px) saturate(1.55) !important;
+            border-color: rgba(126, 225, 255, .15) !important;
+            box-shadow: 0 8px 42px rgba(72, 39, 180, .18), inset 0 1px rgba(255,255,255,.09) !important;
+        }
+        [data-theme="eternalnexus"] .nav-logo-text,
+        [data-theme="eternalnexus"] .section-title,
+        [data-theme="eternalnexus"] .settings-section-title {
+            background: linear-gradient(90deg, #78e7ff 0%, #b994ff 21%, #ffe4a3 40%, #ff83d6 58%, #74ffb0 76%, #78e7ff 100%);
+            background-size: 360% auto;
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: nexusTextFlow 8s linear infinite;
+            text-shadow: none;
+        }
+        @keyframes nexusTextFlow { to { background-position: 360% center; } }
+        [data-theme="eternalnexus"] .nav-logo-icon {
+            background: conic-gradient(from 120deg, #78e7ff, #8d6bff, #ff83d6, #ffe4a3, #74ffb0, #78e7ff) !important;
+            box-shadow: 0 0 20px rgba(120,231,255,.42), 0 0 42px rgba(141,107,255,.22) !important;
+        }
+        [data-theme="eternalnexus"] .script-card,
+        [data-theme="eternalnexus"] .creator-card,
+        [data-theme="eternalnexus"] .settings-card,
+        [data-theme="eternalnexus"] .news-card,
+        [data-theme="eternalnexus"] .executor-card,
+        [data-theme="eternalnexus"] .dash-stat-card {
+            background:
+                linear-gradient(135deg, rgba(255,255,255,.075), rgba(141,107,255,.045) 48%, rgba(0,215,255,.035)) !important;
+            border: 1px solid rgba(126,225,255,.17) !important;
+            box-shadow: 0 10px 42px rgba(0,0,0,.56), 0 0 30px rgba(102,76,225,.10), inset 0 1px rgba(255,255,255,.11) !important;
+            backdrop-filter: blur(18px) saturate(1.45) !important;
+            -webkit-backdrop-filter: blur(18px) saturate(1.45) !important;
+            border-radius: 22px !important;
+            position: relative;
+            overflow: hidden;
+            animation: nexusCardFloat 12s ease-in-out infinite !important;
+        }
+        [data-theme="eternalnexus"] .script-card:nth-child(2n) { animation-delay: -3.2s; }
+        [data-theme="eternalnexus"] .script-card:nth-child(3n) { animation-delay: -7.4s; }
+        @keyframes nexusCardFloat {
+            0%, 100% { transform: translateY(0) rotate(0); }
+            32% { transform: translateY(-6px) rotate(.12deg); }
+            66% { transform: translateY(-2px) rotate(-.10deg); }
+        }
+        [data-theme="eternalnexus"] .script-card::before,
+        [data-theme="eternalnexus"] .creator-card::before,
+        [data-theme="eternalnexus"] .settings-card::before,
+        [data-theme="eternalnexus"] .news-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: inherit;
+            background: linear-gradient(108deg, transparent 18%, rgba(255,255,255,.12) 48%, transparent 78%);
+            background-size: 240% 100%;
+            animation: nexusCardReflection 7s ease-in-out infinite;
+            pointer-events: none;
+            z-index: 0;
+        }
+        @keyframes nexusCardReflection {
+            0%, 34% { background-position: -130% 0; }
+            68%, 100% { background-position: 230% 0; }
+        }
+        [data-theme="eternalnexus"] .script-card > *,
+        [data-theme="eternalnexus"] .creator-card > *,
+        [data-theme="eternalnexus"] .settings-card > *,
+        [data-theme="eternalnexus"] .news-card > * { position: relative; z-index: 1; }
+        [data-theme="eternalnexus"] .script-card:hover,
+        [data-theme="eternalnexus"] .creator-card:hover,
+        [data-theme="eternalnexus"] .executor-card:hover {
+            border-color: rgba(255,228,163,.60) !important;
+            box-shadow: 0 16px 62px rgba(0,0,0,.70), 0 0 32px rgba(120,231,255,.24), 0 0 70px rgba(255,131,214,.10), inset 0 1px rgba(255,255,255,.18) !important;
+            transform: translateY(-9px) scale(1.018) !important;
+            animation: none !important;
+        }
+        [data-theme="eternalnexus"] button,
+        [data-theme="eternalnexus"] .btn,
+        [data-theme="eternalnexus"] .nav-sign-btn,
+        [data-theme="eternalnexus"] .sort-btn.active,
+        [data-theme="eternalnexus"] .cat-pill {
+            background: linear-gradient(120deg, rgba(120,231,255,.16), rgba(141,107,255,.19), rgba(255,131,214,.12)) !important;
+            background-size: 220% 220% !important;
+            border: 1px solid rgba(168,240,255,.34) !important;
+            color: #f5f2ff !important;
+            box-shadow: 0 6px 24px rgba(91,64,198,.23), inset 0 1px rgba(255,255,255,.16) !important;
+            position: relative;
+            overflow: hidden;
+            animation: nexusButtonBreathe 5s ease-in-out infinite !important;
+        }
+        @keyframes nexusButtonBreathe {
+            0%, 100% { background-position: 0% 50%; box-shadow: 0 6px 24px rgba(91,64,198,.23), inset 0 1px rgba(255,255,255,.16); }
+            50% { background-position: 100% 50%; box-shadow: 0 8px 32px rgba(120,231,255,.30), 0 0 18px rgba(255,131,214,.12), inset 0 1px rgba(255,255,255,.22); }
+        }
+        [data-theme="eternalnexus"] button::before,
+        [data-theme="eternalnexus"] .btn::before,
+        [data-theme="eternalnexus"] .nav-sign-btn::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(110deg, transparent 18%, rgba(255,255,255,.17) 50%, transparent 82%);
+            background-size: 230% 100%;
+            animation: nexusButtonSweep 4.2s ease-in-out infinite;
+            pointer-events: none;
+        }
+        @keyframes nexusButtonSweep {
+            0%, 40% { background-position: -120% 0; }
+            70%, 100% { background-position: 220% 0; }
+        }
+        [data-theme="eternalnexus"] button:hover,
+        [data-theme="eternalnexus"] .btn:hover,
+        [data-theme="eternalnexus"] .nav-sign-btn:hover {
+            background: linear-gradient(120deg, rgba(255,228,163,.24), rgba(120,231,255,.24), rgba(141,107,255,.28)) !important;
+            border-color: rgba(255,228,163,.72) !important;
+            box-shadow: 0 10px 38px rgba(120,231,255,.34), 0 0 22px rgba(255,228,163,.18), inset 0 1px rgba(255,255,255,.28) !important;
+            transform: translateY(-2px) scale(1.025) !important;
+        }
+        [data-theme="eternalnexus"] button:active,
+        [data-theme="eternalnexus"] .btn:active { transform: translateY(0) scale(.965) !important; }
+        [data-theme="eternalnexus"] input[type="text"],
+        [data-theme="eternalnexus"] input[type="search"],
+        [data-theme="eternalnexus"] textarea,
+        [data-theme="eternalnexus"] select,
+        [data-theme="eternalnexus"] .search-input {
+            background: rgba(7, 6, 29, .72) !important;
+            border-color: rgba(126,225,255,.24) !important;
+            color: var(--text) !important;
+            box-shadow: inset 0 1px rgba(255,255,255,.06) !important;
+        }
+        [data-theme="eternalnexus"] input:focus,
+        [data-theme="eternalnexus"] textarea:focus,
+        [data-theme="eternalnexus"] .search-input:focus {
+            border-color: rgba(120,231,255,.72) !important;
+            box-shadow: 0 0 0 3px rgba(120,231,255,.10), 0 0 24px rgba(141,107,255,.20) !important;
+            outline: none !important;
+        }
+        [data-theme="eternalnexus"] .theme-btn[data-theme="eternalnexus"] {
+            border-color: rgba(255,228,163,.86) !important;
+            background: linear-gradient(120deg, rgba(255,228,163,.14), rgba(120,231,255,.14), rgba(255,131,214,.13)) !important;
+            animation: nexusThemePulse 2.6s ease-in-out infinite !important;
+        }
+        @keyframes nexusThemePulse {
+            0%, 100% { box-shadow: 0 0 14px rgba(120,231,255,.46), 0 0 38px rgba(141,107,255,.20); }
+            50% { box-shadow: 0 0 24px rgba(255,228,163,.72), 0 0 56px rgba(255,131,214,.26), 0 0 84px rgba(120,231,255,.14); }
+        }
+        [data-theme="eternalnexus"] * { cursor: none !important; }
+        [data-theme="eternalnexus"] #sidebar,
+        [data-theme="eternalnexus"] #sidebar *,
+        [data-theme="eternalnexus"] #sidebar-overlay { cursor: auto !important; pointer-events: auto !important; }
+        #nexus-cursor { display: none; }
+        [data-theme="eternalnexus"] #nexus-cursor { display: block; }
+        #nexus-cursor {
+            position: fixed;
+            width: 30px;
+            height: 30px;
+            pointer-events: none;
+            z-index: 999999;
+            transform: translate(-50%, -50%);
+            border: 1px solid rgba(255,255,255,.72);
+            border-radius: 50%;
+            box-shadow: 0 0 12px rgba(120,231,255,.80), 0 0 26px rgba(141,107,255,.54), 0 0 48px rgba(255,131,214,.20);
+            animation: nexusCursorOrbit 2.8s linear infinite;
+        }
+        #nexus-cursor::before {
+            content: '';
+            position: absolute;
+            inset: 6px;
+            border-radius: 50%;
+            background: radial-gradient(circle, #fff 0 12%, #78e7ff 28%, #8d6bff 60%, transparent 72%);
+            box-shadow: 0 0 12px #78e7ff, 0 0 24px rgba(255,228,163,.75);
+        }
+        #nexus-cursor::after {
+            content: '✦';
+            position: absolute;
+            inset: -8px;
+            color: #ffe4a3;
+            font-size: 10px;
+            text-align: center;
+            line-height: 46px;
+            text-shadow: 0 0 12px #ffe4a3;
+        }
+        @keyframes nexusCursorOrbit {
+            0% { transform: translate(-50%,-50%) rotate(0deg) scale(1); }
+            50% { transform: translate(-50%,-50%) rotate(180deg) scale(1.13); }
+            100% { transform: translate(-50%,-50%) rotate(360deg) scale(1); }
+        }
+        .nexus-cursor-spark {
+            position: fixed;
+            pointer-events: none;
+            z-index: 999998;
+            width: 4px;
+            height: 4px;
+            border-radius: 50%;
+            animation: nexusCursorSpark .9s ease-out forwards;
+        }
+        @keyframes nexusCursorSpark {
+            from { opacity: .85; transform: translate(-50%,-50%) scale(1); }
+            to { opacity: 0; transform: translate(calc(-50% + var(--spark-x)), calc(-50% + var(--spark-y))) scale(.05); }
+        }
+        .nexus-activation {
+            position: fixed;
+            inset: 0;
+            z-index: 99999;
+            pointer-events: none;
+            background:
+                radial-gradient(ellipse at 50% 50%, rgba(255,255,255,.92), rgba(120,231,255,.28) 24%, rgba(4,2,20,.96) 76%),
+                #02020d;
+            animation: nexusActivation 2.85s cubic-bezier(.22,1,.36,1) both;
+        }
+        @keyframes nexusActivation {
+            0% { opacity: 0; filter: brightness(1); }
+            13% { opacity: 1; filter: brightness(2.2); }
+            36% { opacity: .96; filter: brightness(1.15); }
+            100% { opacity: 0; filter: brightness(1); }
+        }
+        .nexus-burst {
+            position: fixed;
+            pointer-events: none;
+            z-index: 100000;
+            border-radius: 50%;
+            animation: nexusBurst 1.8s cubic-bezier(.2,.8,.2,1) forwards;
+        }
+        @keyframes nexusBurst {
+            0% { opacity: 0; transform: translate(-50%,-50%) scale(.1); }
+            16% { opacity: 1; }
+            100% { opacity: 0; transform: translate(calc(-50% + var(--nexus-x)), calc(-50% + var(--nexus-y))) scale(0); }
+        }
+        .nexus-assemble {
+            animation: nexusAssemble 1.25s cubic-bezier(.22,1,.36,1) both !important;
+            animation-delay: var(--nexus-delay, 0ms) !important;
+        }
+        @keyframes nexusAssemble {
+            0% { opacity: 0; filter: blur(16px) brightness(1.8); transform: translateY(20px) scale(.90); }
+            62% { filter: blur(2px) brightness(1.25); }
+            100% { opacity: 1; filter: blur(0) brightness(1); transform: translateY(0) scale(1); }
+        }
+        [data-theme="eternalnexus"] body::after {
+            content: '';
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            z-index: 0;
+            background:
+                radial-gradient(ellipse 60% 38% at 14% 12%, rgba(120,231,255,.06), transparent 70%),
+                radial-gradient(ellipse 52% 34% at 84% 82%, rgba(255,131,214,.05), transparent 70%),
+                radial-gradient(ellipse 48% 32% at 50% 48%, rgba(141,107,255,.045), transparent 70%);
+            animation: nexusWorldBreath 17s ease-in-out infinite;
+        }
+        @keyframes nexusWorldBreath { 0%,100% { opacity: .66; } 50% { opacity: 1; } }
+        @media (max-width: 700px) {
+            [data-theme="eternalnexus"] .script-card,
+            [data-theme="eternalnexus"] .creator-card { animation: none !important; }
+            [data-theme="eternalnexus"] * { scroll-behavior: auto !important; }
+            [data-theme="eternalnexus"] #bgCanvas { filter: saturate(1.16) contrast(1.04); }
+            [data-theme="eternalnexus"] #ambientGlow { animation: none; opacity: .78; }
+            [data-theme="eternalnexus"] .script-card,
+            [data-theme="eternalnexus"] .creator-card,
+            [data-theme="eternalnexus"] .settings-card,
+            [data-theme="eternalnexus"] .news-card,
+            [data-theme="eternalnexus"] .executor-card,
+            [data-theme="eternalnexus"] .dash-stat-card {
+                backdrop-filter: blur(9px) !important;
+                -webkit-backdrop-filter: blur(9px) !important;
+            }
+            [data-theme="eternalnexus"] button::before,
+            [data-theme="eternalnexus"] .btn::before,
+            [data-theme="eternalnexus"] .nav-sign-btn::before { animation: none; opacity: .18; }
+        }
+
         /* ── GLOBAL RESET ── */
         *,
         *::before,
@@ -8514,6 +9250,37 @@
             box-shadow: 0 0 12px rgba(199,125,255,.75), 0 0 24px rgba(116,199,255,.4), inset 0 0 0 1px rgba(255,255,255,.28);
         }
         .theme-btn[data-mythic="true"] { animation: mythicBorderPulse 3.5s ease-in-out infinite !important; }
+
+        /* ══ ✨ TRANSCENDENT BADGE ══ */
+        @keyframes transcendentBadgeShimmer {
+            0%   { background-position: 0% 50%; filter: brightness(1); }
+            25%  { background-position: 50% 0%; filter: brightness(1.3); }
+            50%  { background-position: 100% 50%; filter: brightness(1); }
+            75%  { background-position: 50% 100%; filter: brightness(1.4); }
+            100% { background-position: 0% 50%; filter: brightness(1); }
+        }
+        @keyframes transcendentBadgePulse {
+            0%,100% { box-shadow: 0 0 6px 2px rgba(255,255,255,.8), 0 0 14px rgba(200,180,255,.7); }
+            33%     { box-shadow: 0 0 10px 3px rgba(255,220,100,.9), 0 0 22px rgba(255,150,100,.5); }
+            66%     { box-shadow: 0 0 8px 2px rgba(100,200,255,.9), 0 0 18px rgba(180,100,255,.6); }
+        }
+        @keyframes transcendentBorderPulse {
+            0%,100% { box-shadow: 0 0 14px rgba(255,255,255,.6),0 0 28px rgba(200,180,255,.4),0 0 50px rgba(150,100,255,.2); }
+            33%     { box-shadow: 0 0 20px rgba(255,220,100,.7),0 0 38px rgba(255,150,50,.3),0 0 70px rgba(255,100,50,.15); }
+            66%     { box-shadow: 0 0 18px rgba(100,200,255,.7),0 0 32px rgba(180,100,255,.4),0 0 60px rgba(100,200,255,.2); }
+        }
+        .theme-btn[data-transcendent="true"]::after {
+            content: '✨ TRANSCENDENT';
+            position: absolute; top: 4px; right: 4px;
+            background: linear-gradient(270deg,#fff 0%,#ffd700 14%,#ff9de2 28%,#c77dff 42%,#00e5ff 56%,#74ff9d 70%,#ffd700 84%,#fff 100%);
+            background-size: 600% 600%;
+            color: #0a0010; font-size: 7px; font-weight: 900; border-radius: 6px;
+            padding: 2px 5px; letter-spacing: .06em;
+            animation: transcendentBadgeShimmer 2.4s ease-in-out infinite, transcendentBadgePulse 3s ease-in-out infinite;
+            text-shadow: 0 0 6px rgba(255,255,255,1), 0 1px 2px rgba(0,0,0,.15);
+        }
+        .theme-btn[data-transcendent="true"] { animation: transcendentBorderPulse 3s ease-in-out infinite !important; }
+
         .theme-btn { position:relative; }
         .theme-btn.active {
             border-color: var(--accent);
@@ -10499,6 +11266,10 @@
             { id: 'elysium', name: 'Elysium', desc: 'Paradise Beyond Heaven, Space & Time', color: '#c77dff', anim: 'elysium', op: true, sss: true, mythic: true },
             /* 💠 MYTHIC #107 */
             { id: 'aetherdominion', name: 'Aether Dominion', desc: 'Where Pure Energy Controls Reality', color: '#00e5ff', anim: 'aetherdominion', op: true, sss: true, mythic: true },
+            /* ✨ TRANSCENDENT #108 */
+            { id: 'theabsolute', name: 'The Absolute', desc: 'The Point Where Existence Ends', color: '#ffffff', anim: 'theabsolute', op: true, sss: true, mythic: true, transcendent: true },
+            /* ✦ TRANSCENDENT #109 */
+            { id: 'eternalnexus', name: '∞ Eternal Nexus', desc: 'Where Every Reality Intersects', color: '#78e7ff', anim: 'eternalnexus', op: true, sss: true, mythic: true, transcendent: true },
         ];
 
         const BADGES_DEF = [
@@ -10643,6 +11414,7 @@
             else if (theme === 'chronoinfinity') freqs = [1047,988,880,784,880,988,1047,1175,1047,784];
             else if (theme === 'elysium') freqs = [659,784,880,1047,1175,1319,1568,1760,1568,1319,1175,1047,880,784,659];
             else if (theme === 'aetherdominion') freqs = [523, 659, 784, 988, 1175, 1397, 1568, 1760, 1568, 1397, 1175, 988, 784, 659, 523];
+            else if (theme === 'eternalnexus') freqs = [196, 294, 392, 523, 659, 784, 988, 1175, 988, 784, 659, 523, 392, 294, 196];
             freqs.forEach((f, i) => setTimeout(() => playTone(f, 0.04, 'sine', 0.03, 0.15), i * 30));
         }
 
@@ -10680,7 +11452,7 @@
                     celestialascension: 160, blackholesingularity: 28, crimsonapocalypse: 44,
                     frozeneternity: 96, neoncybernexus: 82, phantomnightmare: 50,
                     dragonemperor: 66, universecreator: 36, divineocean: 110,
-                    infernalking: 40, sakuraheaven: 150, infinitydimension: 70, arabianlegacy: 108, moroccanlegacy: 116, godsdomain: 174, genesisprotocol: 32, chronoinfinity: 88, elysium: 528, aetherdominion: 42 };
+                    infernalking: 40, sakuraheaven: 150, infinitydimension: 70, arabianlegacy: 108, moroccanlegacy: 116, godsdomain: 174, genesisprotocol: 32, chronoinfinity: 88, elysium: 528, aetherdominion: 42, eternalnexus: 396 };
                 osc.frequency.setValueAtTime(freqs[state.theme] || 85, ctx.currentTime);
                 gain.gain.setValueAtTime(0.012, ctx.currentTime);
                 osc.start(ctx.currentTime);
@@ -10714,6 +11486,12 @@
             startThemeAnimation(theme?.anim || 'particles');
             if (themeId === 'aetherdominion' && previousTheme !== themeId && withSound) {
                 runAetherDominionActivation();
+            }
+            if (themeId === 'theabsolute' && previousTheme !== themeId && withSound) {
+                runTheAbsoluteActivation();
+            }
+            if (themeId === 'eternalnexus' && previousTheme !== themeId && withSound) {
+                runEternalNexusActivation();
             }
 
             if (withSound) {
@@ -10854,6 +11632,8 @@
                 chronoinfinity: runChronoInfinityAnimation,
                 elysium: runElysiumAnimation,
                 aetherdominion: runAetherDominionAnimation,
+                theabsolute: runTheAbsoluteAnimation,
+                eternalnexus: runEternalNexusAnimation,
             };
 
             const fn = animMap[type] || runParticlesAnimation;
@@ -16453,6 +17233,761 @@
         }
 
 
+        /* ══ ✨ TRANSCENDENT — The Absolute Activation ══ */
+        function runTheAbsoluteActivation() {
+            if (SETTINGS.reducedMotion) return;
+
+            // White-light collapse flash
+            var flashDiv = document.createElement('div');
+            flashDiv.className = 'absolute-flash';
+            document.body.appendChild(flashDiv);
+            setTimeout(function() { if (flashDiv && flashDiv.remove) flashDiv.remove(); }, 2400);
+
+            // Large particle burst from centre
+            var burstCount = window.innerWidth < 600 ? 35 : 65;
+            var cx = window.innerWidth / 2, cy = window.innerHeight / 2;
+            var colors = ['#ffffff','#c8aaff','#80dfff','#ffd9a0','#ff9de2','#74ff9d'];
+            for (var i = 0; i < burstCount; i++) {
+                var p = document.createElement('span');
+                p.className = 'absolute-burst';
+                var size = (3 + Math.random() * 10).toFixed(1) + 'px';
+                var angle = Math.random() * Math.PI * 2;
+                var dist = 60 + Math.random() * Math.min(window.innerWidth, window.innerHeight) * 0.50;
+                var dx = (Math.cos(angle) * dist).toFixed(1) + 'px';
+                var dy = (Math.sin(angle) * dist).toFixed(1) + 'px';
+                p.style.cssText = 'width:' + size + ';height:' + size + ';left:' + cx + 'px;top:' + cy + 'px;' +
+                    'background:' + colors[Math.floor(Math.random() * colors.length)] + ';' +
+                    'box-shadow:0 0 10px rgba(255,255,255,0.8),0 0 20px rgba(200,170,255,0.5);';
+                p.style.setProperty('--dx', dx);
+                p.style.setProperty('--dy', dy);
+                p.style.animationDelay = (Math.random() * 0.18).toFixed(2) + 's';
+                document.body.appendChild(p);
+                (function(el) { setTimeout(function() { if (el.remove) el.remove(); }, 1600); })(p);
+            }
+
+            // Staggered rebuild of UI elements
+            var rawTargets = document.querySelectorAll(
+                '#navbar, #app > *, .section-title, .script-card, .creator-card, .news-card, .executor-card, .settings-card, .bottom-nav'
+            );
+            var sidebar = document.getElementById('sidebar');
+            var sidebarOverlay = document.getElementById('sidebar-overlay');
+            var targets = Array.prototype.filter.call(rawTargets, function(el) {
+                return el !== sidebar && el !== sidebarOverlay &&
+                       !el.closest('#sidebar') && !el.closest('#sidebar-overlay');
+            });
+            setTimeout(function() {
+                targets.forEach(function(el, i) {
+                    el.classList.remove('absolute-assemble');
+                    el.style.setProperty('--abs-delay', Math.min(i * 30, 500) + 'ms');
+                });
+                void document.body.offsetWidth;
+                targets.forEach(function(el) { el.classList.add('absolute-assemble'); });
+                setTimeout(function() {
+                    targets.forEach(function(el) { el.classList.remove('absolute-assemble'); });
+                }, 2000);
+            }, 300);
+        }
+
+        /* ══ ✨ TRANSCENDENT — The Absolute Background Animation ══ */
+        function runTheAbsoluteAnimation() {
+            var ctx = setupCanvas('bgCanvas');
+            if (!ctx) return;
+            var canvas = ctx.canvas;
+            var W = window.innerWidth, H = window.innerHeight;
+            var isMobile = W < 700;
+            var tick = 0, lastFrameTime = 0;
+            var FPS_CAP = isMobile ? 32 : 50;
+            var FRAME_MS = 1000 / FPS_CAP;
+            var isVisible = !document.hidden;
+
+            // ── Custom cursor ──
+            var hasFinePointer = window.matchMedia && window.matchMedia('(pointer:fine)').matches;
+            var cursorEl = document.getElementById('absolute-cursor');
+            if (!cursorEl) { cursorEl = document.createElement('div'); cursorEl.id = 'absolute-cursor'; document.body.appendChild(cursorEl); }
+            var mouseX = W / 2, mouseY = H / 2;
+            var cursorX = mouseX, cursorY = mouseY;
+            var lastOrbTime = 0;
+            var orbColors = ['rgba(255,255,255,0.70)','rgba(200,170,255,0.60)','rgba(128,223,255,0.55)','rgba(255,217,160,0.50)','rgba(255,157,226,0.45)'];
+
+            function spawnOrb(x, y) {
+                if (!hasFinePointer) return;
+                var now = Date.now();
+                if (now - lastOrbTime < 38) return;
+                lastOrbTime = now;
+                var o = document.createElement('span');
+                o.className = 'absolute-orb';
+                var sz = (2 + Math.random() * 7).toFixed(1);
+                o.style.cssText = 'width:'+sz+'px;height:'+sz+'px;left:'+x+'px;top:'+y+'px;background:'+
+                    orbColors[Math.floor(Math.random()*orbColors.length)]+';box-shadow:0 0 8px rgba(255,255,255,0.6);';
+                document.body.appendChild(o);
+                (function(el){ setTimeout(function(){ if(el&&el.remove)el.remove(); }, 1000); })(o);
+            }
+            function updateCursor() {
+                if (!hasFinePointer || !cursorEl) return;
+                if (state.theme !== 'theabsolute') return;
+                cursorX += (mouseX - cursorX) * 0.20;
+                cursorY += (mouseY - cursorY) * 0.20;
+                cursorEl.style.left = cursorX.toFixed(1) + 'px';
+                cursorEl.style.top  = cursorY.toFixed(1) + 'px';
+                requestAnimationFrame(updateCursor);
+            }
+            var onCursorMove;
+            if (hasFinePointer) {
+                onCursorMove = function(e) { mouseX = e.clientX; mouseY = e.clientY; spawnOrb(e.clientX, e.clientY); };
+                document.addEventListener('mousemove', onCursorMove, { passive: true });
+                updateCursor();
+            }
+
+            function rand(a, b) { return a + Math.random() * (b - a); }
+            function randInt(a, b) { return Math.floor(rand(a, b + 1)); }
+
+            // ── Stars (multi-size, multi-color, twinkling) ──
+            var starCount = isMobile ? 120 : 280;
+            var stars = [];
+            for (var si = 0; si < starCount; si++) {
+                stars.push({
+                    x: rand(0, W), y: rand(0, H),
+                    r: rand(0.3, isMobile ? 2.0 : 2.8),
+                    alpha: rand(0.2, 1.0),
+                    twinkleSpeed: rand(0.008, 0.035),
+                    twinklePhase: rand(0, Math.PI * 2),
+                    color: ['#ffffff','#f0f0ff','#dddaff','#c8f0ff','#fff0cc'][randInt(0, 4)]
+                });
+            }
+
+            // ── Nebulas (large soft colour blobs) ──
+            var nebulas = [];
+            var nebulaCount = isMobile ? 3 : 7;
+            var nebulaColors = [
+                'rgba(200,170,255,', 'rgba(128,223,255,', 'rgba(255,200,140,',
+                'rgba(255,157,226,', 'rgba(116,255,157,', 'rgba(255,255,255,', 'rgba(180,100,255,'
+            ];
+            for (var ni = 0; ni < nebulaCount; ni++) {
+                nebulas.push({
+                    x: rand(0, W), y: rand(0, H),
+                    w: rand(W * 0.25, W * 0.65),
+                    h: rand(H * 0.15, H * 0.40),
+                    color: nebulaColors[randInt(0, nebulaColors.length - 1)],
+                    alpha: rand(0.025, 0.075),
+                    speedX: rand(-0.12, 0.12),
+                    speedY: rand(-0.06, 0.06),
+                    phase: rand(0, Math.PI * 2),
+                    pulseSpeed: rand(0.0008, 0.002)
+                });
+            }
+
+            // ── Energy rings (rotating) ──
+            var rings = [];
+            var ringCount = isMobile ? 3 : 6;
+            for (var ri = 0; ri < ringCount; ri++) {
+                rings.push({
+                    x: rand(0.1, 0.9), y: rand(0.1, 0.9),
+                    r: rand(50, isMobile ? 100 : 180),
+                    rot: rand(0, Math.PI * 2),
+                    rotSpeed: rand(0.0005, 0.002) * (Math.random() > 0.5 ? 1 : -1),
+                    sides: [5, 6, 7, 8][randInt(0, 3)],
+                    alpha: rand(0.05, 0.18),
+                    color: ['rgba(255,255,255,','rgba(200,170,255,','rgba(128,223,255,'][randInt(0, 2)]
+                });
+            }
+
+            // ── Cosmic void portals (concentric circles breathing) ──
+            var portals = [];
+            var portalCount = isMobile ? 2 : 4;
+            for (var pi = 0; pi < portalCount; pi++) {
+                portals.push({
+                    x: rand(0.1, 0.9), y: rand(0.1, 0.9),
+                    maxR: rand(60, isMobile ? 100 : 160),
+                    phase: rand(0, Math.PI * 2),
+                    speed: rand(0.004, 0.010),
+                    color: ['rgba(255,255,255,','rgba(200,170,255,','rgba(128,223,255,','rgba(255,217,160,'][randInt(0, 3)]
+                });
+            }
+
+            // ── Quantum dust particles ──
+            var dustCount = isMobile ? 35 : 90;
+            var dust = [];
+            for (var di = 0; di < dustCount; di++) {
+                dust.push({
+                    x: rand(0, W), y: rand(0, H),
+                    r: rand(0.8, 3.5),
+                    vx: rand(-0.25, 0.25), vy: rand(-0.35, 0.05),
+                    alpha: rand(0.2, 0.75),
+                    color: ['rgba(255,255,255,','rgba(200,170,255,','rgba(128,223,255,','rgba(255,217,160,'][randInt(0, 3)],
+                    phase: rand(0, Math.PI * 2),
+                    pulseSpeed: rand(0.02, 0.06)
+                });
+            }
+
+            // ── Energy ribbons / aurora rivers ──
+            var ribbons = [];
+            var ribbonCount = isMobile ? 3 : 7;
+            for (var rbi = 0; rbi < ribbonCount; rbi++) {
+                ribbons.push({
+                    baseY: rand(H * 0.05, H * 0.95),
+                    amplitude: rand(H * 0.04, H * 0.14),
+                    speed: rand(0.3, 0.9),
+                    offset: rand(0, Math.PI * 2),
+                    color: ['rgba(255,255,255,','rgba(200,170,255,','rgba(128,223,255,','rgba(255,217,160,','rgba(255,157,226,'][randInt(0, 4)],
+                    width: rand(0.8, 2.5),
+                    alpha: rand(0.06, 0.18)
+                });
+            }
+
+            // ── Shooting stars ──
+            var shooters = [];
+            var lastShooterTime = 0;
+
+            // ── Floating light columns (vertical energy veins) ──
+            var columns = [];
+            var columnCount = isMobile ? 2 : 5;
+            for (var ci2 = 0; ci2 < columnCount; ci2++) {
+                columns.push({
+                    x: rand(0.05, 0.95),
+                    alpha: rand(0.03, 0.10),
+                    width: rand(1, 5),
+                    height: rand(H * 0.25, H * 0.75),
+                    y: rand(-0.2, 0.6),
+                    speed: rand(0.0002, 0.0005),
+                    phase: rand(0, Math.PI * 2),
+                    color: ['rgba(255,255,255,','rgba(200,170,255,','rgba(128,223,255,'][randInt(0, 2)]
+                });
+            }
+
+            // ── Floating monolith rectangles ──
+            var monoliths = [];
+            var monolithCount = isMobile ? 2 : 4;
+            for (var mi = 0; mi < monolithCount; mi++) {
+                monoliths.push({
+                    x: rand(0.05, 0.95), y: rand(0.2, 0.85),
+                    w: rand(6, 18), h: rand(40, 120),
+                    alpha: rand(0.06, 0.16),
+                    speed: rand(0.00005, 0.00014),
+                    phase: rand(0, Math.PI * 2),
+                    color: ['rgba(200,170,255,','rgba(128,223,255,','rgba(255,255,255,'][randInt(0, 2)]
+                });
+            }
+
+            function drawPolygon(cx, cy, r, sides, rot, color, alpha, lw) {
+                ctx.save(); ctx.translate(cx, cy); ctx.rotate(rot);
+                ctx.globalAlpha = alpha; ctx.lineWidth = lw || 1.2;
+                ctx.strokeStyle = color;
+                ctx.beginPath();
+                for (var v = 0; v < sides; v++) {
+                    var ang = (v / sides) * Math.PI * 2;
+                    v === 0 ? ctx.moveTo(Math.cos(ang)*r, Math.sin(ang)*r) : ctx.lineTo(Math.cos(ang)*r, Math.sin(ang)*r);
+                }
+                ctx.closePath(); ctx.stroke(); ctx.restore();
+            }
+
+            function resizeCanvas() {
+                W = window.innerWidth; H = window.innerHeight;
+                canvas.width = W; canvas.height = H; isMobile = W < 700;
+            }
+
+            function draw(ts) {
+                if (!isVisible) return;
+                if (ts - lastFrameTime < FRAME_MS) { state.bgAnimFrame = requestAnimationFrame(draw); return; }
+                lastFrameTime = ts;
+                ctx.clearRect(0, 0, W, H);
+
+                // Deep void background
+                var bgGrad = ctx.createRadialGradient(W*0.5, H*0.3, 0, W*0.5, H*0.5, Math.max(W, H)*0.85);
+                bgGrad.addColorStop(0,   '#080020');
+                bgGrad.addColorStop(0.35,'#040014');
+                bgGrad.addColorStop(0.7, '#020009');
+                bgGrad.addColorStop(1,   '#00000a');
+                ctx.fillStyle = bgGrad; ctx.globalAlpha = 1; ctx.fillRect(0, 0, W, H);
+
+                var t = tick * 0.016;
+
+                // ── Nebulas ──
+                nebulas.forEach(function(n) {
+                    n.x += n.speedX; n.y += n.speedY;
+                    if (n.x < -n.w) n.x = W + n.w;
+                    if (n.x > W + n.w) n.x = -n.w;
+                    if (n.y < -n.h) n.y = H + n.h;
+                    if (n.y > H + n.h) n.y = -n.h;
+                    n.phase += n.pulseSpeed;
+                    var pulse = 0.7 + 0.3 * Math.sin(n.phase);
+                    var grad = ctx.createRadialGradient(n.x, n.y, 0, n.x, n.y, n.w * 0.5);
+                    grad.addColorStop(0, n.color + (n.alpha * pulse).toFixed(3) + ')');
+                    grad.addColorStop(1, n.color + '0)');
+                    ctx.fillStyle = grad; ctx.globalAlpha = 1;
+                    ctx.beginPath(); ctx.ellipse(n.x, n.y, n.w * 0.5, n.h * 0.5, 0, 0, Math.PI * 2); ctx.fill();
+                });
+
+                // ── Stars ──
+                ctx.globalAlpha = 1;
+                stars.forEach(function(s) {
+                    s.twinklePhase += s.twinkleSpeed;
+                    var a = s.alpha * (0.5 + 0.5 * Math.sin(s.twinklePhase));
+                    ctx.beginPath(); ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
+                    ctx.fillStyle = s.color; ctx.globalAlpha = a; ctx.fill();
+                });
+                ctx.globalAlpha = 1;
+
+                // ── Aurora ribbons ──
+                ribbons.forEach(function(rb) {
+                    ctx.beginPath(); ctx.globalAlpha = rb.alpha; ctx.lineWidth = rb.width;
+                    ctx.strokeStyle = rb.color + '0.9)';
+                    for (var px = 0; px <= W; px += 3) {
+                        var py = rb.baseY + Math.sin((px/W)*Math.PI*3.5 + t*rb.speed + rb.offset)*rb.amplitude;
+                        px === 0 ? ctx.moveTo(px, py) : ctx.lineTo(px, py);
+                    }
+                    ctx.stroke();
+                    ctx.lineWidth = rb.width * 4; ctx.globalAlpha = rb.alpha * 0.25; ctx.stroke();
+                    ctx.globalAlpha = 1;
+                });
+
+                // ── Portals ──
+                portals.forEach(function(po) {
+                    po.phase += po.speed;
+                    var px2 = W * po.x + Math.sin(po.phase * 0.4) * 22;
+                    var py2 = H * po.y + Math.cos(po.phase * 0.3) * 14;
+                    for (var pr = 1; pr <= 4; pr++) {
+                        var rr = po.maxR * (pr / 4) * (0.8 + 0.2 * Math.sin(po.phase + pr));
+                        ctx.beginPath(); ctx.arc(px2, py2, rr, 0, Math.PI * 2);
+                        ctx.strokeStyle = po.color + (0.12 - pr * 0.025).toFixed(3) + ')';
+                        ctx.lineWidth = 1.2 - pr * 0.2;
+                        ctx.globalAlpha = 1; ctx.stroke();
+                    }
+                });
+
+                // ── Energy rings (geometric) ──
+                rings.forEach(function(rg) {
+                    rg.rot += rg.rotSpeed;
+                    drawPolygon(
+                        W * rg.x + Math.sin(t * 0.18 + rg.rot) * 15,
+                        H * rg.y + Math.cos(t * 0.13 + rg.rot) * 10,
+                        rg.r, rg.sides, rg.rot, rg.color + '0.9)', rg.alpha, 1.2
+                    );
+                    // Inner ring
+                    drawPolygon(
+                        W * rg.x + Math.sin(t * 0.18 + rg.rot) * 15,
+                        H * rg.y + Math.cos(t * 0.13 + rg.rot) * 10,
+                        rg.r * 0.55, rg.sides, -rg.rot * 1.3, rg.color + '0.7)', rg.alpha * 0.55, 0.7
+                    );
+                });
+
+                // ── Light columns ──
+                columns.forEach(function(col) {
+                    col.phase += col.speed;
+                    var cx2 = W * col.x + Math.sin(col.phase * 1.5) * 18;
+                    var cy2 = H * col.y + Math.sin(col.phase * 0.8) * H * 0.05;
+                    var a = col.alpha * (0.6 + 0.4 * Math.sin(col.phase * 3));
+                    var grad = ctx.createLinearGradient(cx2, cy2, cx2, cy2 + col.height);
+                    grad.addColorStop(0, col.color + '0)');
+                    grad.addColorStop(0.2, col.color + a.toFixed(3) + ')');
+                    grad.addColorStop(0.8, col.color + a.toFixed(3) + ')');
+                    grad.addColorStop(1, col.color + '0)');
+                    ctx.fillStyle = grad; ctx.globalAlpha = 1;
+                    ctx.fillRect(cx2 - col.width/2, cy2, col.width, col.height);
+                });
+
+                // ── Monoliths ──
+                monoliths.forEach(function(m) {
+                    m.phase += m.speed;
+                    var mx2 = W * m.x + Math.sin(m.phase * 600) * 10;
+                    var my2 = H * m.y + Math.cos(m.phase * 400) * 6;
+                    var pulse = 0.7 + 0.3 * Math.sin(m.phase * 1200);
+                    ctx.fillStyle = m.color + (m.alpha * pulse).toFixed(3) + ')';
+                    ctx.globalAlpha = 1;
+                    ctx.fillRect(mx2 - m.w/2, my2 - m.h/2, m.w, m.h);
+                    // Glow top
+                    var tGrad = ctx.createRadialGradient(mx2, my2 - m.h/2, 0, mx2, my2 - m.h/2, m.w * 3);
+                    tGrad.addColorStop(0, m.color + (m.alpha * 0.7 * pulse).toFixed(3) + ')');
+                    tGrad.addColorStop(1, m.color + '0)');
+                    ctx.fillStyle = tGrad;
+                    ctx.beginPath(); ctx.arc(mx2, my2 - m.h/2, m.w * 3, 0, Math.PI * 2); ctx.fill();
+                });
+
+                // ── Shooting stars ──
+                var nowMs = Date.now();
+                if (nowMs - lastShooterTime > (isMobile ? 3200 : 1800) && shooters.length < (isMobile ? 3 : 6)) {
+                    lastShooterTime = nowMs;
+                    var shootColors = ['#ffffff','#c8aaff','#80dfff','#ffd9a0'];
+                    shooters.push({
+                        x: rand(W * 0.05, W * 0.95), y: rand(0, H * 0.45),
+                        vx: rand(2.5, 7), vy: rand(1, 3.5),
+                        alpha: 1, fade: rand(0.016, 0.028),
+                        color: shootColors[randInt(0, 3)]
+                    });
+                }
+                shooters = shooters.filter(function(s) {
+                    s.x += s.vx; s.y += s.vy; s.alpha -= s.fade;
+                    if (s.alpha <= 0) return false;
+                    var cr = s.color;
+                    var len = 14;
+                    var grad = ctx.createLinearGradient(s.x, s.y, s.x - s.vx*len, s.y - s.vy*len);
+                    grad.addColorStop(0, 'rgba(255,255,255,' + s.alpha + ')');
+                    grad.addColorStop(1, 'rgba(255,255,255,0)');
+                    ctx.beginPath(); ctx.moveTo(s.x, s.y); ctx.lineTo(s.x - s.vx*len, s.y - s.vy*len);
+                    ctx.strokeStyle = grad; ctx.lineWidth = 2.2; ctx.globalAlpha = s.alpha; ctx.stroke();
+                    ctx.globalAlpha = 1;
+                    return s.x < W + 60 && s.y < H + 60;
+                });
+
+                // ── Quantum dust ──
+                dust.forEach(function(dp) {
+                    dp.x += dp.vx; dp.y += dp.vy;
+                    if (dp.x < -8) dp.x = W + 8; if (dp.x > W + 8) dp.x = -8;
+                    if (dp.y < -8) dp.y = H + 8; if (dp.y > H + 8) dp.y = -8;
+                    dp.phase += dp.pulseSpeed;
+                    var a = dp.alpha * (0.45 + 0.55 * Math.sin(dp.phase));
+                    ctx.beginPath(); ctx.arc(dp.x, dp.y, dp.r, 0, Math.PI * 2);
+                    ctx.fillStyle = dp.color + a.toFixed(3) + ')'; ctx.globalAlpha = 1; ctx.fill();
+                });
+
+                // ── Central void radiance (very subtle, breathing) ──
+                var cx3 = W * 0.5, cy3 = H * 0.38;
+                var vGrad = ctx.createRadialGradient(cx3, cy3, 0, cx3, cy3, W * 0.5);
+                vGrad.addColorStop(0,   'rgba(255,255,255,' + (0.03 + 0.015*Math.sin(t*0.7)).toFixed(4) + ')');
+                vGrad.addColorStop(0.4, 'rgba(200,170,255,' + (0.025 + 0.01*Math.sin(t*0.5)).toFixed(4) + ')');
+                vGrad.addColorStop(1,   'rgba(0,0,0,0)');
+                ctx.fillStyle = vGrad; ctx.globalAlpha = 1; ctx.fillRect(0, 0, W, H);
+
+                tick++;
+                state.bgAnimFrame = requestAnimationFrame(draw);
+            }
+
+            var onResize = function() { resizeCanvas(); };
+            var onVisibilityChange = function() {
+                isVisible = !document.hidden;
+                if (!isVisible && state.bgAnimFrame) {
+                    cancelAnimationFrame(state.bgAnimFrame); state.bgAnimFrame = null;
+                } else if (isVisible && state.theme === 'theabsolute' && !state.bgAnimFrame) {
+                    lastFrameTime = 0; state.bgAnimFrame = requestAnimationFrame(draw);
+                }
+            };
+            window.addEventListener('resize', onResize, { passive: true });
+            document.addEventListener('visibilitychange', onVisibilityChange, { passive: true });
+
+            state.originCleanup = function() {
+                window.removeEventListener('resize', onResize);
+                if (hasFinePointer && onCursorMove) document.removeEventListener('mousemove', onCursorMove);
+                if (cursorEl && cursorEl.remove) cursorEl.remove();
+            };
+            state.originVisibilityCleanup = function() {
+                document.removeEventListener('visibilitychange', onVisibilityChange);
+            };
+            state.bgAnimFrame = requestAnimationFrame(draw);
+        }
+
+        /* ══ ✦ TRANSCENDENT — ∞ Eternal Nexus Activation ══ */
+        function runEternalNexusActivation() {
+            if (SETTINGS.reducedMotion) return;
+
+            var veil = document.createElement('div');
+            veil.className = 'nexus-activation';
+            document.body.appendChild(veil);
+            setTimeout(function() { if (veil && veil.remove) veil.remove(); }, 3100);
+
+            var cx = window.innerWidth / 2, cy = window.innerHeight / 2;
+            var count = window.innerWidth < 700 ? 30 : 72;
+            var colors = ['#78e7ff', '#8d6bff', '#ff83d6', '#ffe4a3', '#74ffb0', '#ffffff'];
+            for (var i = 0; i < count; i++) {
+                var burst = document.createElement('span');
+                burst.className = 'nexus-burst';
+                var angle = Math.random() * Math.PI * 2;
+                var distance = 80 + Math.random() * Math.min(window.innerWidth, window.innerHeight) * .58;
+                var size = 2 + Math.random() * 8;
+                burst.style.cssText = 'left:' + cx + 'px;top:' + cy + 'px;width:' + size.toFixed(1) +
+                    'px;height:' + size.toFixed(1) + 'px;background:' + colors[i % colors.length] +
+                    ';box-shadow:0 0 10px ' + colors[i % colors.length] + ',0 0 28px rgba(120,231,255,.65);' +
+                    'animation-delay:' + (Math.random() * .32).toFixed(2) + 's;';
+                burst.style.setProperty('--nexus-x', (Math.cos(angle) * distance).toFixed(1) + 'px');
+                burst.style.setProperty('--nexus-y', (Math.sin(angle) * distance).toFixed(1) + 'px');
+                document.body.appendChild(burst);
+                (function(el) { setTimeout(function() { if (el && el.remove) el.remove(); }, 2300); })(burst);
+            }
+
+            var targets = document.querySelectorAll(
+                '#navbar, #app > *, .section-title, .script-card, .creator-card, .news-card, ' +
+                '.executor-card, .settings-card, .bottom-nav'
+            );
+            setTimeout(function() {
+                Array.prototype.forEach.call(targets, function(el, index) {
+                    if (!el.closest('#sidebar') && !el.closest('#sidebar-overlay')) {
+                        el.classList.remove('nexus-assemble');
+                        el.style.setProperty('--nexus-delay', Math.min(index * 28, 520) + 'ms');
+                        el.classList.add('nexus-assemble');
+                    }
+                });
+                setTimeout(function() {
+                    Array.prototype.forEach.call(targets, function(el) {
+                        el.classList.remove('nexus-assemble');
+                    });
+                }, 2100);
+            }, 360);
+        }
+
+        /* ══ ✦ TRANSCENDENT — ∞ Eternal Nexus Background Animation ══ */
+        function runEternalNexusAnimation() {
+            var ctx = setupCanvas('bgCanvas');
+            if (!ctx) return;
+
+            var W = window.innerWidth, H = window.innerHeight;
+            var mobile = W < 700;
+            var visible = !document.hidden;
+            var tick = 0, last = 0, lastMeteor = 0, lastPortal = 0;
+            var fps = mobile ? 30 : 48, frameMs = 1000 / fps;
+            var dpr = Math.min(window.devicePixelRatio || 1, mobile ? 1.25 : 1.7);
+            var canvas = ctx.canvas;
+            var starCount = mobile ? 95 : 235;
+            var starColors = ['#78e7ff', '#b994ff', '#ffe4a3', '#ff83d6', '#74ffb0'];
+            var stars = Array.from({ length: starCount }, function() {
+                return {
+                    x: Math.random(), y: Math.random(), z: .25 + Math.random() * .9,
+                    r: .25 + Math.random() * 1.7, phase: Math.random() * Math.PI * 2,
+                    color: starColors[Math.floor(Math.random() * starColors.length)]
+                };
+            });
+            var clouds = Array.from({ length: mobile ? 5 : 9 }, function(_, i) {
+                return {
+                    x: Math.random(), y: .08 + Math.random() * .78,
+                    r: .18 + Math.random() * .30, hue: i % 3,
+                    phase: Math.random() * Math.PI * 2, speed: .0008 + Math.random() * .0014
+                };
+            });
+            var rings = Array.from({ length: mobile ? 3 : 5 }, function(_, i) {
+                return { x: .18 + Math.random() * .64, y: .16 + Math.random() * .62,
+                    r: .045 + Math.random() * .09, tilt: Math.random() * Math.PI,
+                    spin: (i % 2 ? -1 : 1) * (.001 + Math.random() * .002), phase: Math.random() * 6 };
+            });
+            var galaxies = Array.from({ length: mobile ? 2 : 4 }, function() {
+                return { x: .12 + Math.random() * .76, y: .12 + Math.random() * .72,
+                    r: .025 + Math.random() * .045, spin: Math.random() * 6.28,
+                    arms: 2 + Math.floor(Math.random() * 3) };
+            });
+            var meteors = [], portals = [];
+            var palette = [
+                ['120,231,255', '141,107,255'],
+                ['255,131,214', '141,107,255'],
+                ['255,228,163', '120,231,255'],
+                ['116,255,176', '120,231,255']
+            ];
+
+            function resizeCanvas() {
+                W = window.innerWidth; H = window.innerHeight;
+                mobile = W < 700;
+                dpr = Math.min(window.devicePixelRatio || 1, mobile ? 1.25 : 1.7);
+                canvas.width = Math.max(1, Math.floor(W * dpr));
+                canvas.height = Math.max(1, Math.floor(H * dpr));
+                canvas.style.width = W + 'px'; canvas.style.height = H + 'px';
+                ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+            }
+            resizeCanvas();
+
+            function addMeteor(now) {
+                if (mobile && Math.random() < .42) return;
+                var leftToRight = Math.random() > .45;
+                meteors.push({
+                    x: leftToRight ? -.12 : 1.12, y: .08 + Math.random() * .48,
+                    vx: (leftToRight ? 1 : -1) * (.0032 + Math.random() * .004),
+                    vy: .002 + Math.random() * .003, life: 0, max: 105 + Math.random() * 90,
+                    color: starColors[Math.floor(Math.random() * starColors.length)], born: now
+                });
+            }
+            function addPortal() {
+                if (portals.length >= (mobile ? 1 : 2)) return;
+                portals.push({
+                    x: .16 + Math.random() * .68, y: .18 + Math.random() * .58,
+                    r: .035 + Math.random() * .045, life: 0, max: 260 + Math.random() * 180,
+                    hue: palette[Math.floor(Math.random() * palette.length)]
+                });
+            }
+
+            function draw(now) {
+                if (state.theme !== 'eternalnexus') return;
+                if (!visible) { state.bgAnimFrame = null; return; }
+                if (now - last < frameMs) {
+                    state.bgAnimFrame = requestAnimationFrame(draw);
+                    return;
+                }
+                last = now; tick++;
+                ctx.clearRect(0, 0, W, H);
+                var t = tick * .009;
+
+                // Deep space wash and slow-moving nebula clouds.
+                var wash = ctx.createRadialGradient(W * .5, H * .42, 0, W * .5, H * .42, Math.max(W, H) * .72);
+                wash.addColorStop(0, 'rgba(28,17,76,.11)');
+                wash.addColorStop(.45, 'rgba(8,11,48,.08)');
+                wash.addColorStop(1, 'rgba(0,0,0,0)');
+                ctx.fillStyle = wash; ctx.fillRect(0, 0, W, H);
+                clouds.forEach(function(cloud, i) {
+                    cloud.phase += cloud.speed;
+                    var x = (cloud.x + Math.sin(cloud.phase) * .035) * W;
+                    var y = (cloud.y + Math.cos(cloud.phase * .72) * .025) * H;
+                    var radius = cloud.r * Math.min(W, H);
+                    var rgb = i % 3 === 0 ? '120,231,255' : i % 3 === 1 ? '141,107,255' : '255,131,214';
+                    var ng = ctx.createRadialGradient(x, y, 0, x, y, radius);
+                    ng.addColorStop(0, 'rgba(' + rgb + ',.075)');
+                    ng.addColorStop(.42, 'rgba(' + rgb + ',.026)');
+                    ng.addColorStop(1, 'rgba(0,0,0,0)');
+                    ctx.fillStyle = ng; ctx.fillRect(x - radius, y - radius, radius * 2, radius * 2);
+                });
+
+                // Parallax starfield with chromatic twinkle.
+                stars.forEach(function(star) {
+                    star.phase += .012 * star.z;
+                    var sx = ((star.x + Math.sin(t * .13 + star.phase) * .004) % 1) * W;
+                    var sy = ((star.y + t * .00025 * star.z) % 1) * H;
+                    var alpha = (.16 + star.z * .44) * (.58 + Math.abs(Math.sin(star.phase)) * .42);
+                    ctx.globalAlpha = alpha;
+                    ctx.fillStyle = star.color;
+                    ctx.beginPath(); ctx.arc(sx, sy, star.r * (.75 + star.z * .45), 0, Math.PI * 2); ctx.fill();
+                    if (star.z > .82 && star.r > 1.25) {
+                        ctx.globalAlpha = alpha * .24;
+                        ctx.beginPath(); ctx.moveTo(sx - 6, sy); ctx.lineTo(sx + 6, sy);
+                        ctx.moveTo(sx, sy - 6); ctx.lineTo(sx, sy + 6); ctx.stroke();
+                    }
+                });
+                ctx.globalAlpha = 1;
+
+                // Independent dimensional rings.
+                rings.forEach(function(ring, i) {
+                    ring.phase += ring.spin;
+                    var rx = ring.x * W, ry = ring.y * H, rr = ring.r * Math.min(W, H);
+                    ctx.save(); ctx.translate(rx, ry); ctx.rotate(ring.tilt + ring.phase);
+                    ctx.strokeStyle = i % 2 ? 'rgba(255,131,214,.16)' : 'rgba(120,231,255,.17)';
+                    ctx.shadowBlur = 16; ctx.shadowColor = i % 2 ? '#ff83d6' : '#78e7ff';
+                    ctx.lineWidth = 1.1;
+                    ctx.beginPath(); ctx.ellipse(0, 0, rr * 1.8, rr * .48, 0, 0, Math.PI * 2); ctx.stroke();
+                    ctx.globalAlpha = .48; ctx.beginPath(); ctx.ellipse(0, 0, rr * .92, rr * .24, 0, 0, Math.PI * 2); ctx.stroke();
+                    ctx.restore();
+                });
+
+                // Small spiral galaxies.
+                galaxies.forEach(function(galaxy, gi) {
+                    galaxy.spin += .0015 * (gi % 2 ? -1 : 1);
+                    var gx = galaxy.x * W, gy = galaxy.y * H, gr = galaxy.r * Math.min(W, H);
+                    ctx.save(); ctx.translate(gx, gy); ctx.rotate(galaxy.spin);
+                    var gg = ctx.createRadialGradient(0, 0, 0, 0, 0, gr * 1.9);
+                    gg.addColorStop(0, 'rgba(255,255,255,.22)'); gg.addColorStop(.26, 'rgba(120,231,255,.11)'); gg.addColorStop(1, 'rgba(0,0,0,0)');
+                    ctx.fillStyle = gg; ctx.beginPath(); ctx.arc(0, 0, gr * 1.9, 0, Math.PI * 2); ctx.fill();
+                    ctx.strokeStyle = gi % 2 ? 'rgba(255,131,214,.20)' : 'rgba(120,231,255,.20)';
+                    ctx.lineWidth = 1;
+                    for (var arm = 0; arm < galaxy.arms; arm++) {
+                        ctx.beginPath();
+                        for (var step = 0; step < 19; step++) {
+                            var a = step * .34 + arm * (Math.PI * 2 / galaxy.arms), rad = gr * step / 18;
+                            var px = Math.cos(a) * rad * 1.75, py = Math.sin(a) * rad * .48;
+                            step ? ctx.lineTo(px, py) : ctx.moveTo(px, py);
+                        }
+                        ctx.stroke();
+                    }
+                    ctx.restore();
+                });
+
+                // Portals appear as brief, rotating dimensional gates.
+                if (now - lastPortal > (mobile ? 9000 : 5600) && Math.random() > .35) {
+                    lastPortal = now; addPortal();
+                }
+                portals = portals.filter(function(portal) {
+                    portal.life++;
+                    var p = portal.life / portal.max, alpha = Math.sin(Math.min(1, p) * Math.PI) * .68;
+                    var px = portal.x * W, py = portal.y * H, pr = portal.r * Math.min(W, H) * (1 + p * .22);
+                    ctx.save(); ctx.translate(px, py); ctx.rotate(portal.life * .018);
+                    ctx.globalAlpha = alpha; ctx.shadowBlur = 24; ctx.shadowColor = 'rgba(' + portal.hue[0] + ',.7)';
+                    for (var ringNo = 0; ringNo < 3; ringNo++) {
+                        ctx.strokeStyle = 'rgba(' + portal.hue[ringNo % 2] + ',' + (.24 - ringNo * .04) + ')';
+                        ctx.lineWidth = 1.3; ctx.beginPath();
+                        ctx.ellipse(0, 0, pr * (1 + ringNo * .24), pr * (.35 + ringNo * .08), ringNo * .6, 0, Math.PI * 2); ctx.stroke();
+                    }
+                    ctx.restore();
+                    return portal.life < portal.max;
+                });
+
+                // Auroral ribbons and light sweeps.
+                ctx.save(); ctx.globalAlpha = .13;
+                for (var ribbon = 0; ribbon < 3; ribbon++) {
+                    ctx.beginPath();
+                    for (var x = -30; x <= W + 30; x += 24) {
+                        var yy = H * (.24 + ribbon * .15) + Math.sin(x * .006 + t * (.8 + ribbon * .2)) * H * .045 +
+                            Math.sin(x * .014 - t * .5) * H * .018;
+                        x === -30 ? ctx.moveTo(x, yy) : ctx.lineTo(x, yy);
+                    }
+                    ctx.strokeStyle = ribbon === 0 ? '#78e7ff' : ribbon === 1 ? '#8d6bff' : '#ff83d6';
+                    ctx.lineWidth = 7; ctx.shadowBlur = 24; ctx.shadowColor = ctx.strokeStyle; ctx.stroke();
+                }
+                ctx.restore();
+                var sweepX = ((t * 42) % (W + 260)) - 130;
+                var sweep = ctx.createLinearGradient(sweepX - 80, 0, sweepX + 80, 0);
+                sweep.addColorStop(0, 'rgba(120,231,255,0)');
+                sweep.addColorStop(.5, 'rgba(255,228,163,.055)');
+                sweep.addColorStop(1, 'rgba(255,131,214,0)');
+                ctx.fillStyle = sweep; ctx.fillRect(sweepX - 80, 0, 160, H);
+
+                // Occasional shooting stars.
+                if (now - lastMeteor > (mobile ? 6500 : 3600) && Math.random() > .45) {
+                    lastMeteor = now; addMeteor(now);
+                }
+                meteors = meteors.filter(function(meteor) {
+                    meteor.life++; meteor.x += meteor.vx; meteor.y += meteor.vy;
+                    var a = Math.max(0, 1 - meteor.life / meteor.max);
+                    ctx.globalAlpha = a; ctx.strokeStyle = meteor.color; ctx.shadowBlur = 13; ctx.shadowColor = meteor.color;
+                    ctx.lineWidth = 1.5; ctx.beginPath();
+                    ctx.moveTo(meteor.x * W, meteor.y * H);
+                    ctx.lineTo((meteor.x - meteor.vx * 42) * W, (meteor.y - meteor.vy * 42) * H); ctx.stroke();
+                    ctx.globalAlpha = 1;
+                    return meteor.life < meteor.max && meteor.x > -.3 && meteor.x < 1.3 && meteor.y < 1.2;
+                });
+
+                tick++;
+                state.bgAnimFrame = requestAnimationFrame(draw);
+            }
+            function onResize() { resizeCanvas(); }
+            function onVisibilityChange() {
+                visible = !document.hidden;
+                if (!visible && state.bgAnimFrame) {
+                    cancelAnimationFrame(state.bgAnimFrame); state.bgAnimFrame = null;
+                } else if (visible && state.theme === 'eternalnexus' && !state.bgAnimFrame) {
+                    last = 0; state.bgAnimFrame = requestAnimationFrame(draw);
+                }
+            }
+            window.addEventListener('resize', onResize, { passive: true });
+            document.addEventListener('visibilitychange', onVisibilityChange, { passive: true });
+
+            var cursor = document.getElementById('nexus-cursor');
+            var finePointer = window.matchMedia && window.matchMedia('(pointer:fine)').matches;
+            var cursorX = W / 2, cursorY = H / 2, lastSpark = 0;
+            if (!cursor) {
+                cursor = document.createElement('div');
+                cursor.id = 'nexus-cursor';
+                document.body.appendChild(cursor);
+            }
+            function onCursorMove(event) {
+                if (!finePointer || state.theme !== 'eternalnexus') return;
+                cursorX = event.clientX; cursorY = event.clientY;
+                cursor.style.left = cursorX + 'px'; cursor.style.top = cursorY + 'px';
+                var now = performance.now();
+                if (now - lastSpark < 55) return;
+                lastSpark = now;
+                var spark = document.createElement('i');
+                spark.className = 'nexus-cursor-spark';
+                spark.style.left = cursorX + 'px'; spark.style.top = cursorY + 'px';
+                spark.style.background = starColors[Math.floor(Math.random() * starColors.length)];
+                spark.style.boxShadow = '0 0 8px ' + spark.style.background;
+                spark.style.setProperty('--spark-x', ((Math.random() - .5) * 32).toFixed(1) + 'px');
+                spark.style.setProperty('--spark-y', ((Math.random() - .5) * 32).toFixed(1) + 'px');
+                document.body.appendChild(spark);
+                setTimeout(function() { if (spark && spark.remove) spark.remove(); }, 950);
+            }
+            if (finePointer) document.addEventListener('mousemove', onCursorMove, { passive: true });
+            state.originCleanup = function() {
+                window.removeEventListener('resize', onResize);
+                if (finePointer) document.removeEventListener('mousemove', onCursorMove);
+                if (cursor && cursor.remove) cursor.remove();
+                document.querySelectorAll('.nexus-cursor-spark').forEach(function(el) { el.remove(); });
+            };
+            state.originVisibilityCleanup = function() {
+                document.removeEventListener('visibilitychange', onVisibilityChange);
+            };
+            state.bgAnimFrame = requestAnimationFrame(draw);
+        }
+
+
         /* ── FIREBASE DATA LOADING ── */
         async function loadRealStats() {
             const fb = window.__FB;
@@ -17427,7 +18962,7 @@
             <div class="settings-row-desc">${getTranslation('notifsDesc')}</div></div>
             <div class="settings-toggle ${SETTINGS.notifications ? 'on' : ''}" id="toggle-notifications"><div class="settings-toggle-knob"></div></div></div></div></div>
             <div class="settings-section"><div class="settings-section-title">${getTranslation('themeOptionsLabel')} — ${THEMES.length}</div>
-            <div class="theme-grid">${THEMES.map(t => `<div class="theme-btn ${state.theme === t.id ? 'active' : ''}" data-theme="${t.id}" ${t.op ? 'data-op="true"' : ''} ${t.sss ? 'data-sss="true"' : ''} ${t.mythic ? 'data-mythic="true"' : ''} onclick="applyTheme('${t.id}');buildSettings();">
+            <div class="theme-grid">${THEMES.map(t => `<div class="theme-btn ${state.theme === t.id ? 'active' : ''}" data-theme="${t.id}" ${t.op ? 'data-op="true"' : ''} ${t.sss ? 'data-sss="true"' : ''} ${t.mythic ? 'data-mythic="true"' : ''} ${t.transcendent ? 'data-transcendent="true"' : ''} onclick="applyTheme('${t.id}');buildSettings();">
             <div class="theme-swatch" style="background:${t.color};box-shadow:0 2px 8px ${t.color}44;"></div>
             <div><div class="theme-btn-name">${t.name}</div><div class="theme-btn-desc">${t.desc}</div></div></div>`).join('')}</div></div>
             ${state.currentUser ? `<div class="settings-section"><div class="settings-section-title">${getTranslation('settingsAccount')}</div>
