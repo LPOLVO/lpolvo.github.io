@@ -6548,7 +6548,612 @@
             [data-theme="eternalnexus"] .nav-sign-btn::before { animation: none; opacity: .18; }
         }
 
-        /* ── GLOBAL RESET ── */
+        /* ── modal-close-btn fix: Eternal Nexus applies position:relative + overflow:hidden to all buttons ── */
+        [data-theme="eternalnexus"] .modal-close-btn {
+            position: absolute !important;
+            top: 16px !important; right: 16px !important; left: auto !important;
+            bottom: auto !important; overflow: visible !important; z-index: 10 !important;
+            width: 30px !important; height: 30px !important; border-radius: 8px !important;
+            background: var(--bg3) !important;
+            border: 1px solid var(--border) !important;
+            color: var(--text2) !important;
+            box-shadow: none !important; animation: none !important; transform: none !important;
+        }
+        [data-theme="eternalnexus"] .modal-close-btn::before { display: none !important; }
+        [data-theme="eternalnexus"] .modal-close-btn:hover {
+            background: var(--bg3) !important; border-color: var(--accent) !important;
+            color: var(--accent) !important; box-shadow: none !important;
+            transform: rotate(90deg) !important; animation: none !important;
+        }
+
+                /* ══════════════════════════════════════════════════════════════════════
+           👁️ OMNISCIENT #110 — THE OMNISCIENT EYE
+              The website's consciousness: the world watches back.
+           ══════════════════════════════════════════════════════════════════════ */
+        [data-theme="omniscienteye"] {
+            --bg: #05040a;
+            --bg2: #0b0815;
+            --bg3: #16101e;
+            --bg4: #231827;
+            --card: rgba(18, 13, 28, .73);
+            --card-border: rgba(255, 224, 125, .25);
+            --card-hover: rgba(35, 24, 43, .9);
+            --accent: #ffe27a;
+            --accent2: #ffb52e;
+            --accent3: #fff8d7;
+            --accent4: #78e7ff;
+            --accent-alpha: rgba(255, 226, 122, .14);
+            --accent-alpha2: rgba(255, 181, 46, .075);
+            --text: #fffdf1;
+            --text2: #d4c794;
+            --text3: #8d8058;
+            --border: rgba(255, 220, 112, .2);
+            --border2: rgba(120, 231, 255, .14);
+            --glow: rgba(255, 226, 122, .75);
+            --glow2: rgba(255, 181, 46, .3);
+            --nav-bg: rgba(6, 4, 12, .84);
+            --btn-grad: linear-gradient(120deg, rgba(255,248,215,.18), rgba(255,181,46,.24), rgba(120,231,255,.16));
+            --btn-hover: linear-gradient(120deg, rgba(255,255,255,.26), rgba(255,216,100,.36), rgba(120,231,255,.23));
+            --shadow: 0 12px 58px rgba(0, 0, 0, .82);
+            --shadow-card: 0 5px 32px rgba(0, 0, 0, .72);
+            --glass: rgba(18, 13, 28, .75);
+            --glass-border: rgba(255, 226, 122, .23);
+            --tag-bg: rgba(255, 226, 122, .12);
+            --tag-text: #fff1a8;
+            --badge-new: #8dffbd;
+            --badge-free: #fff1a8;
+            --badge-paid: #ffe27a;
+            --sidebar-bg: #08050e;
+            --input-bg: rgba(18, 13, 28, .86);
+            --input-border: rgba(255, 226, 122, .24);
+            --particles: rgba(255, 226, 122, .72);
+            --success: #8dffbd;
+            --error: #ff819b;
+            --warning: #ffe27a;
+            --info: #78e7ff;
+            --card-shadow: 0 8px 40px rgba(255, 181, 46, .16);
+            --scrollbar-track: #0c0814;
+            --scrollbar-thumb: #e6b843;
+            --banner-overlay: rgba(5, 4, 10, .52);
+            --theme-bg-layer: rgba(5, 4, 10, .5);
+            --theme-ambient: rgba(255, 226, 122, .1);
+            --btn-radius: 15px;
+            --card-radius: 22px;
+            --border-width: 1px;
+            --glow-intensity: 1;
+            --text-shadow: 0 0 42px rgba(255, 226, 122, .22);
+            --theme-transition: all 1.4s cubic-bezier(.22, 1, .36, 1);
+        }
+        [data-theme="omniscienteye"] body {
+            background:
+                radial-gradient(ellipse 80% 56% at 50% -12%, rgba(255, 190, 54, .2), transparent 70%),
+                radial-gradient(ellipse 62% 45% at 8% 86%, rgba(77, 184, 255, .1), transparent 70%),
+                radial-gradient(ellipse 58% 42% at 92% 48%, rgba(255, 111, 178, .08), transparent 70%),
+                #05040a;
+        }
+        [data-theme="omniscienteye"] #bgCanvas { filter: saturate(1.34) contrast(1.1) brightness(1.08); }
+        [data-theme="omniscienteye"] #ambientGlow {
+            background:
+                radial-gradient(ellipse 80% 60% at 50% 0%, rgba(255, 191, 51, .18), transparent 70%),
+                radial-gradient(ellipse 54% 42% at 14% 90%, rgba(87, 211, 255, .11), transparent 70%),
+                radial-gradient(ellipse 48% 38% at 88% 62%, rgba(255, 123, 189, .08), transparent 70%);
+            animation: omniscientAmbientBreath 9s ease-in-out infinite;
+        }
+        @keyframes omniscientAmbientBreath {
+            0%, 100% { opacity: .6; transform: scale(1) rotate(0deg); }
+            50% { opacity: 1; transform: scale(1.065) rotate(-1deg); }
+        }
+        [data-theme="omniscienteye"] #navbar,
+        [data-theme="omniscienteye"] #bottom-nav {
+            background: rgba(7, 5, 13, .82) !important;
+            backdrop-filter: blur(26px) saturate(1.6) !important;
+            -webkit-backdrop-filter: blur(26px) saturate(1.6) !important;
+            border-color: rgba(255, 226, 122, .18) !important;
+            box-shadow: 0 8px 44px rgba(177, 104, 24, .19), inset 0 1px rgba(255,255,255,.1) !important;
+        }
+        [data-theme="omniscienteye"] .nav-logo-text,
+        [data-theme="omniscienteye"] .section-title,
+        [data-theme="omniscienteye"] .settings-section-title {
+            background: linear-gradient(90deg, #fff, #ffe27a 22%, #ffb52e 42%, #78e7ff 63%, #fff 83%, #ffe27a);
+            background-size: 360% auto;
+            -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
+            animation: omniscientTextFlow 7s linear infinite;
+            text-shadow: none;
+        }
+        @keyframes omniscientTextFlow { to { background-position: 360% center; } }
+        [data-theme="omniscienteye"] .nav-logo-icon {
+            background: conic-gradient(from 30deg, #fff, #ffe27a, #ff9f2e, #78e7ff, #ff83c6, #fff) !important;
+            box-shadow: 0 0 22px rgba(255, 226, 122, .52), 0 0 44px rgba(255, 174, 45, .24) !important;
+        }
+        [data-theme="omniscienteye"] .script-card,
+        [data-theme="omniscienteye"] .creator-card,
+        [data-theme="omniscienteye"] .settings-card,
+        [data-theme="omniscienteye"] .news-card,
+        [data-theme="omniscienteye"] .executor-card,
+        [data-theme="omniscienteye"] .dash-stat-card {
+            background: linear-gradient(135deg, rgba(255,255,255,.08), rgba(255,194,62,.05) 48%, rgba(120,231,255,.035)) !important;
+            border: 1px solid rgba(255, 226, 122, .2) !important;
+            box-shadow: 0 11px 44px rgba(0,0,0,.62), 0 0 28px rgba(255,181,46,.1), inset 0 1px rgba(255,255,255,.12) !important;
+            backdrop-filter: blur(18px) saturate(1.5) !important;
+            -webkit-backdrop-filter: blur(18px) saturate(1.5) !important;
+            border-radius: 22px !important;
+            position: relative; overflow: hidden;
+            animation: omniscientCardFloat 12s ease-in-out infinite !important;
+        }
+        [data-theme="omniscienteye"] .script-card:nth-child(2n) { animation-delay: -3.4s; }
+        [data-theme="omniscienteye"] .script-card:nth-child(3n) { animation-delay: -7.1s; }
+        @keyframes omniscientCardFloat {
+            0%, 100% { transform: translateY(0) rotate(0); }
+            34% { transform: translateY(-6px) rotate(.12deg); }
+            68% { transform: translateY(-2px) rotate(-.1deg); }
+        }
+        [data-theme="omniscienteye"] .script-card::before,
+        [data-theme="omniscienteye"] .creator-card::before,
+        [data-theme="omniscienteye"] .settings-card::before,
+        [data-theme="omniscienteye"] .news-card::before {
+            content: ''; position: absolute; inset: 0; border-radius: inherit;
+            background: linear-gradient(108deg, transparent 16%, rgba(255,255,255,.15) 48%, transparent 80%);
+            background-size: 240% 100%; animation: omniscientCardReflection 6.5s ease-in-out infinite;
+            pointer-events: none; z-index: 0;
+        }
+        @keyframes omniscientCardReflection {
+            0%, 32% { background-position: -130% 0; }
+            68%, 100% { background-position: 230% 0; }
+        }
+        [data-theme="omniscienteye"] .script-card > *,
+        [data-theme="omniscienteye"] .creator-card > *,
+        [data-theme="omniscienteye"] .settings-card > *,
+        [data-theme="omniscienteye"] .news-card > * { position: relative; z-index: 1; }
+        [data-theme="omniscienteye"] .script-card:hover,
+        [data-theme="omniscienteye"] .creator-card:hover,
+        [data-theme="omniscienteye"] .executor-card:hover {
+            border-color: rgba(255, 246, 188, .75) !important;
+            box-shadow: 0 16px 62px rgba(0,0,0,.74), 0 0 34px rgba(255,226,122,.32), 0 0 68px rgba(120,231,255,.12), inset 0 1px rgba(255,255,255,.2) !important;
+            transform: translateY(-9px) scale(1.018) !important; animation: none !important;
+        }
+        [data-theme="omniscienteye"] button,
+        [data-theme="omniscienteye"] .btn,
+        [data-theme="omniscienteye"] .nav-sign-btn,
+        [data-theme="omniscienteye"] .sort-btn.active,
+        [data-theme="omniscienteye"] .cat-pill {
+            background: linear-gradient(120deg, rgba(255,255,255,.12), rgba(255,181,46,.18), rgba(120,231,255,.11)) !important;
+            background-size: 230% 230% !important;
+            border: 1px solid rgba(255, 239, 169, .36) !important;
+            color: #fffdf1 !important; box-shadow: 0 6px 25px rgba(190,119,25,.25), inset 0 1px rgba(255,255,255,.18) !important;
+            position: relative; overflow: hidden; animation: omniscientButtonBreathe 4.8s ease-in-out infinite !important;
+        }
+        @keyframes omniscientButtonBreathe {
+            0%, 100% { background-position: 0% 50%; box-shadow: 0 6px 25px rgba(190,119,25,.25), inset 0 1px rgba(255,255,255,.18); }
+            50% { background-position: 100% 50%; box-shadow: 0 8px 34px rgba(255,226,122,.34), 0 0 20px rgba(120,231,255,.14), inset 0 1px rgba(255,255,255,.24); }
+        }
+        [data-theme="omniscienteye"] button::before,
+        [data-theme="omniscienteye"] .btn::before,
+        [data-theme="omniscienteye"] .nav-sign-btn::before {
+            content: ''; position: absolute; inset: 0;
+            background: linear-gradient(110deg, transparent 17%, rgba(255,255,255,.2) 50%, transparent 83%);
+            background-size: 230% 100%; animation: omniscientButtonSweep 3.8s ease-in-out infinite;
+            pointer-events: none;
+        }
+        @keyframes omniscientButtonSweep {
+            0%, 40% { background-position: -120% 0; }
+            70%, 100% { background-position: 220% 0; }
+        }
+        [data-theme="omniscienteye"] button:hover,
+        [data-theme="omniscienteye"] .btn:hover,
+        [data-theme="omniscienteye"] .nav-sign-btn:hover {
+            background: linear-gradient(120deg, rgba(255,255,255,.24), rgba(255,226,122,.28), rgba(120,231,255,.21)) !important;
+            border-color: rgba(255, 247, 193, .82) !important;
+            box-shadow: 0 10px 40px rgba(255,226,122,.4), 0 0 23px rgba(255,255,255,.2), inset 0 1px rgba(255,255,255,.3) !important;
+            transform: translateY(-2px) scale(1.025) !important;
+        }
+        [data-theme="omniscienteye"] button:active,
+        [data-theme="omniscienteye"] .btn:active { transform: translateY(0) scale(.965) !important; }
+        [data-theme="omniscienteye"] input[type="text"],
+        [data-theme="omniscienteye"] input[type="search"],
+        [data-theme="omniscienteye"] textarea,
+        [data-theme="omniscienteye"] select,
+        [data-theme="omniscienteye"] .search-input {
+            background: rgba(16, 11, 26, .77) !important; border-color: rgba(255, 226, 122, .25) !important;
+            color: var(--text) !important; box-shadow: inset 0 1px rgba(255,255,255,.07) !important;
+        }
+        [data-theme="omniscienteye"] input:focus,
+        [data-theme="omniscienteye"] textarea:focus,
+        [data-theme="omniscienteye"] .search-input:focus {
+            border-color: rgba(255, 241, 168, .8) !important;
+            box-shadow: 0 0 0 3px rgba(255,226,122,.11), 0 0 26px rgba(255,181,46,.24) !important; outline: none !important;
+        }
+        [data-theme="omniscienteye"] .theme-btn[data-theme="omniscienteye"] {
+            border-color: rgba(255, 247, 193, .96) !important;
+            background: linear-gradient(120deg, rgba(255,255,255,.19), rgba(255,181,46,.2), rgba(120,231,255,.16)) !important;
+            animation: omniscientThemePulse 2.25s ease-in-out infinite !important;
+        }
+        @keyframes omniscientThemePulse {
+            0%, 100% { box-shadow: 0 0 16px rgba(255,226,122,.7), 0 0 42px rgba(255,181,46,.28); }
+            50% { box-shadow: 0 0 28px rgba(255,255,255,.9), 0 0 62px rgba(255,226,122,.58), 0 0 88px rgba(120,231,255,.16); }
+        }
+        [data-theme="omniscienteye"] * { cursor: none !important; }
+        [data-theme="omniscienteye"] #sidebar,
+        [data-theme="omniscienteye"] #sidebar *,
+        [data-theme="omniscienteye"] #sidebar-overlay { cursor: auto !important; pointer-events: auto !important; }
+        #omniscient-cursor { display: none; }
+        [data-theme="omniscienteye"] #omniscient-cursor { display: block; }
+        #omniscient-cursor {
+            position: fixed; pointer-events: none; z-index: 999999; width: 34px; height: 26px;
+            transform: translate(-50%, -50%); border: 1.5px solid rgba(255,241,168,.9);
+            border-radius: 58% 42% 58% 42%; box-shadow: 0 0 12px rgba(255,226,122,.9), 0 0 28px rgba(255,181,46,.5), 0 0 48px rgba(120,231,255,.22);
+            animation: omniscientCursorOrbit 2.1s linear infinite;
+        }
+        #omniscient-cursor::before {
+            content: ''; position: absolute; left: 50%; top: 50%; width: 10px; height: 10px;
+            transform: translate(-50%,-50%); border-radius: 50%;
+            background: radial-gradient(circle, #fff 0 18%, #ffe27a 30%, #ff9e2f 58%, transparent 76%);
+            box-shadow: 0 0 10px #fff, 0 0 24px #ffe27a, 0 0 36px rgba(120,231,255,.7);
+        }
+        #omniscient-cursor::after {
+            content: ''; position: absolute; inset: -10px; border: 1px solid rgba(120,231,255,.45);
+            border-radius: 50%; transform: rotate(28deg); box-shadow: 0 0 10px rgba(120,231,255,.35);
+        }
+        @keyframes omniscientCursorOrbit {
+            0% { transform: translate(-50%,-50%) rotate(0deg) scale(1); }
+            50% { transform: translate(-50%,-50%) rotate(180deg) scale(1.15); }
+            100% { transform: translate(-50%,-50%) rotate(360deg) scale(1); }
+        }
+        .omniscient-cursor-spark {
+            position: fixed; pointer-events: none; z-index: 999998; width: 4px; height: 4px; border-radius: 50%;
+            animation: omniscientCursorSpark 1.05s ease-out forwards;
+        }
+        @keyframes omniscientCursorSpark {
+            from { opacity: .9; transform: translate(-50%,-50%) scale(1); }
+            to { opacity: 0; transform: translate(calc(-50% + var(--eye-x)), calc(-50% + var(--eye-y))) scale(.04); }
+        }
+        .omniscient-activation {
+            position: fixed; inset: 0; z-index: 99999; pointer-events: none;
+            background: radial-gradient(ellipse at 50% 50%, rgba(255,255,255,.95), rgba(255,211,83,.26) 26%, rgba(4,3,10,.98) 78%), #030208;
+            animation: omniscientActivation 3.1s cubic-bezier(.22,1,.36,1) both;
+        }
+        @keyframes omniscientActivation {
+            0% { opacity: 0; filter: brightness(1); }
+            12% { opacity: 1; filter: brightness(2.3); }
+            30% { opacity: .96; filter: brightness(1.2); }
+            58% { opacity: .55; filter: brightness(1.04); }
+            100% { opacity: 0; filter: brightness(1); }
+        }
+        .omniscient-burst {
+            position: fixed; pointer-events: none; z-index: 100000; border-radius: 50%;
+            animation: omniscientBurst 2s cubic-bezier(.2,.8,.2,1) forwards;
+        }
+        @keyframes omniscientBurst {
+            0% { opacity: 0; transform: translate(-50%,-50%) scale(.1) rotate(0); }
+            14% { opacity: 1; }
+            100% { opacity: 0; transform: translate(calc(-50% + var(--eye-x)), calc(-50% + var(--eye-y))) scale(0) rotate(280deg); }
+        }
+        .omniscient-assemble {
+            animation: omniscientAssemble 1.45s cubic-bezier(.22,1,.36,1) both !important;
+            animation-delay: var(--eye-delay, 0ms) !important;
+        }
+        @keyframes omniscientAssemble {
+            0% { opacity: 0; filter: blur(18px) brightness(2.2); transform: translateY(22px) scale(.88) rotate(-.5deg); }
+            52% { filter: blur(2px) brightness(1.35); }
+            100% { opacity: 1; filter: blur(0) brightness(1); transform: translateY(0) scale(1) rotate(0); }
+        }
+        [data-theme="omniscienteye"] body::after {
+            content: ''; position: fixed; inset: 0; pointer-events: none; z-index: 0;
+            background:
+                radial-gradient(ellipse 74% 40% at 50% 10%, rgba(255,226,122,.08), transparent 72%),
+                radial-gradient(ellipse 54% 34% at 15% 82%, rgba(120,231,255,.055), transparent 72%),
+                radial-gradient(ellipse 48% 34% at 88% 66%, rgba(255,131,214,.045), transparent 72%);
+            animation: omniscientWorldBreath 13s ease-in-out infinite;
+        }
+        @keyframes omniscientWorldBreath { 0%,100% { opacity: .62; } 50% { opacity: 1; } }
+        @media (max-width: 700px) {
+            [data-theme="omniscienteye"] .script-card,
+            [data-theme="omniscienteye"] .creator-card { animation: none !important; }
+            [data-theme="omniscienteye"] * { scroll-behavior: auto !important; }
+            [data-theme="omniscienteye"] #bgCanvas { filter: saturate(1.2) contrast(1.05); }
+            [data-theme="omniscienteye"] #ambientGlow { animation: none; opacity: .8; }
+            [data-theme="omniscienteye"] .script-card,
+            [data-theme="omniscienteye"] .creator-card,
+            [data-theme="omniscienteye"] .settings-card,
+            [data-theme="omniscienteye"] .news-card,
+            [data-theme="omniscienteye"] .executor-card,
+            [data-theme="omniscienteye"] .dash-stat-card {
+                backdrop-filter: blur(9px) !important; -webkit-backdrop-filter: blur(9px) !important;
+            }
+            [data-theme="omniscienteye"] button::before,
+            [data-theme="omniscienteye"] .btn::before,
+            [data-theme="omniscienteye"] .nav-sign-btn::before { animation: none; opacity: .16; }
+        }
+
+        /* ── modal-close-btn fix: Omniscient Eye applies position:relative + overflow:hidden to all buttons ── */
+        [data-theme="omniscienteye"] .modal-close-btn {
+            position: absolute !important;
+            top: 16px !important; right: 16px !important; left: auto !important;
+            bottom: auto !important; overflow: visible !important; z-index: 10 !important;
+            width: 30px !important; height: 30px !important; border-radius: 8px !important;
+            background: var(--bg3) !important;
+            border: 1px solid var(--border) !important;
+            color: var(--text2) !important;
+            box-shadow: none !important; animation: none !important; transform: none !important;
+        }
+        [data-theme="omniscienteye"] .modal-close-btn::before { display: none !important; }
+        [data-theme="omniscienteye"] .modal-close-btn:hover {
+            background: var(--bg3) !important; border-color: var(--accent) !important;
+            color: var(--accent) !important; box-shadow: none !important;
+            transform: rotate(90deg) !important; animation: none !important;
+        }
+
+        /* ════════════════════════════════════════════════════════════════════════
+           ⚜ OMNIPOTENT #111 — INFINITY THRONE
+              The realm where existence itself is written. Absolute power.
+        ════════════════════════════════════════════════════════════════════════ */
+        [data-theme="infinitythrone"] {
+            --bg: #02010a;
+            --bg2: #07051a;
+            --bg3: #0e0b26;
+            --bg4: #181332;
+            --card: rgba(8, 5, 22, .78);
+            --card-border: rgba(220, 200, 255, .3);
+            --card-hover: rgba(20, 14, 40, .92);
+            --border: rgba(200, 170, 255, .22);
+            --text: #f5f0ff;
+            --text2: #c8b4ff;
+            --text3: rgba(200, 180, 255, .62);
+            --accent: #e8d5ff;
+            --accent2: #ffd700;
+            --accent-alpha: rgba(232, 213, 255, .12);
+            --glow: rgba(232, 213, 255, .28);
+            --glow2: rgba(255, 215, 0, .22);
+            --btn-grad: linear-gradient(135deg, #c8b4ff, #ffd700 45%, #ffffff 72%, #a8edff);
+            --card-radius: 18px;
+            --theme-transition: all .42s cubic-bezier(.16,1,.3,1);
+        }
+        [data-theme="infinitythrone"] body {
+            background: var(--bg);
+        }
+        [data-theme="infinitythrone"] #bgCanvas {
+            filter: saturate(1.4) contrast(1.12) brightness(1.1);
+        }
+        [data-theme="infinitythrone"] #ambientGlow {
+            background: radial-gradient(ellipse at 50% 0%, rgba(232,213,255,.18) 0%, rgba(255,215,0,.1) 38%, transparent 70%);
+            animation: infinityThroneAmbient 10s ease-in-out infinite;
+        }
+        @keyframes infinityThroneAmbient {
+            0%,100% { opacity: .85; transform: scaleX(1.0); }
+            33%     { opacity: 1.0; transform: scaleX(1.12); }
+            66%     { opacity: .75; transform: scaleX(.94); }
+        }
+        /* Navbar & bottom nav */
+        [data-theme="infinitythrone"] #navbar,
+        [data-theme="infinitythrone"] #bottom-nav {
+            background: rgba(7, 5, 18, .92);
+            border-color: rgba(200, 170, 255, .22);
+            backdrop-filter: blur(28px) saturate(1.6);
+            -webkit-backdrop-filter: blur(28px) saturate(1.6);
+        }
+        /* Logo & section titles */
+        [data-theme="infinitythrone"] .nav-logo-text,
+        [data-theme="infinitythrone"] .section-title,
+        [data-theme="infinitythrone"] .settings-section-title {
+            background: linear-gradient(110deg, #fff 0%, #ffd700 18%, #e8d5ff 36%, #fff 52%, #a8edff 68%, #ffd700 84%, #fff 100%);
+            background-size: 500% 500%;
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: infinityThroneTextFlow 6s linear infinite;
+        }
+        @keyframes infinityThroneTextFlow { to { background-position: 360% center; } }
+        [data-theme="infinitythrone"] .nav-logo-icon {
+            background: linear-gradient(135deg, #ffd700, #e8d5ff, #a8edff, #ffd700);
+            background-size: 300% 300%;
+            animation: infinityThroneTextFlow 4s linear infinite;
+            -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
+        }
+        /* Cards */
+        [data-theme="infinitythrone"] .script-card,
+        [data-theme="infinitythrone"] .creator-card,
+        [data-theme="infinitythrone"] .settings-card,
+        [data-theme="infinitythrone"] .news-card,
+        [data-theme="infinitythrone"] .executor-card,
+        [data-theme="infinitythrone"] .dash-stat-card {
+            background: rgba(10, 7, 26, .82);
+            border: 1.5px solid rgba(200, 170, 255, .28);
+            box-shadow: 0 4px 28px rgba(200, 170, 255, .13), 0 1px 0 rgba(255, 215, 0, .12) inset, 0 -1px 0 rgba(200,170,255,.1) inset;
+            backdrop-filter: blur(20px) saturate(1.5);
+            -webkit-backdrop-filter: blur(20px) saturate(1.5);
+            position: relative; overflow: hidden;
+            animation: infinityThroneCardFloat 11s ease-in-out infinite !important;
+        }
+        [data-theme="infinitythrone"] .script-card:nth-child(2n) { animation-delay: -3.1s; }
+        [data-theme="infinitythrone"] .script-card:nth-child(3n) { animation-delay: -6.7s; }
+        [data-theme="infinitythrone"] .script-card:nth-child(4n) { animation-delay: -1.9s; }
+        @keyframes infinityThroneCardFloat {
+            0%,100% { transform: translateY(0px); box-shadow: 0 4px 28px rgba(200,170,255,.13),0 8px 40px rgba(255,215,0,.07); }
+            40%     { transform: translateY(-5px); box-shadow: 0 10px 42px rgba(200,170,255,.22),0 16px 60px rgba(255,215,0,.12); }
+            70%     { transform: translateY(-2px); box-shadow: 0 6px 32px rgba(200,170,255,.17),0 10px 48px rgba(255,215,0,.09); }
+        }
+        [data-theme="infinitythrone"] .script-card::before,
+        [data-theme="infinitythrone"] .creator-card::before,
+        [data-theme="infinitythrone"] .settings-card::before,
+        [data-theme="infinitythrone"] .news-card::before {
+            content: '';
+            position: absolute; inset: 0; z-index: 0; pointer-events: none;
+            background: linear-gradient(118deg, rgba(255,255,255,.07) 0%, rgba(200,170,255,.04) 38%, rgba(255,215,0,.06) 68%, rgba(168,237,255,.04) 100%);
+            background-size: 300% 100%; animation: infinityThroneCardReflection 7s ease-in-out infinite;
+        }
+        @keyframes infinityThroneCardReflection {
+            0%,100% { background-position: 0% 50%; opacity: .6; }
+            50%     { background-position: 100% 50%; opacity: 1; }
+        }
+        [data-theme="infinitythrone"] .script-card > *,
+        [data-theme="infinitythrone"] .creator-card > *,
+        [data-theme="infinitythrone"] .settings-card > *,
+        [data-theme="infinitythrone"] .news-card > * { position: relative; z-index: 1; }
+        [data-theme="infinitythrone"] .script-card:hover,
+        [data-theme="infinitythrone"] .creator-card:hover,
+        [data-theme="infinitythrone"] .executor-card:hover {
+            border-color: rgba(255, 215, 0, .7);
+            box-shadow: 0 0 0 1px rgba(255,215,0,.5), 0 8px 48px rgba(255,215,0,.28), 0 0 80px rgba(200,170,255,.18);
+            transform: translateY(-5px) !important;
+        }
+        /* Buttons */
+        [data-theme="infinitythrone"] button,
+        [data-theme="infinitythrone"] .btn,
+        [data-theme="infinitythrone"] .nav-sign-btn,
+        [data-theme="infinitythrone"] .sort-btn.active,
+        [data-theme="infinitythrone"] .cat-pill {
+            background: linear-gradient(135deg, rgba(200,170,255,.18), rgba(255,215,0,.14), rgba(168,237,255,.1));
+            border-color: rgba(200, 170, 255, .45);
+            color: var(--text);
+            position: relative; overflow: hidden;
+            animation: infinityThroneButtonBreathe 5s ease-in-out infinite !important;
+        }
+        @keyframes infinityThroneButtonBreathe {
+            0%,100% { box-shadow: 0 0 8px rgba(200,170,255,.3), 0 0 18px rgba(255,215,0,.12); }
+            50%     { box-shadow: 0 0 16px rgba(200,170,255,.55), 0 0 32px rgba(255,215,0,.24); }
+        }
+        [data-theme="infinitythrone"] button::before,
+        [data-theme="infinitythrone"] .btn::before,
+        [data-theme="infinitythrone"] .nav-sign-btn::before {
+            content: ''; position: absolute; inset: 0; z-index: 0; pointer-events: none;
+            background: linear-gradient(110deg, transparent 0%, rgba(255,255,255,.14) 38%, rgba(255,215,0,.1) 55%, transparent 100%);
+            background-size: 300% 100%; animation: infinityThroneButtonSweep 4s ease-in-out infinite;
+        }
+        @keyframes infinityThroneButtonSweep {
+            0%,100% { background-position: -100% 50%; } 50% { background-position: 200% 50%; }
+        }
+        [data-theme="infinitythrone"] button:hover,
+        [data-theme="infinitythrone"] .btn:hover,
+        [data-theme="infinitythrone"] .nav-sign-btn:hover {
+            border-color: rgba(255,215,0,.85);
+            box-shadow: 0 0 20px rgba(255,215,0,.5), 0 0 42px rgba(200,170,255,.35), 0 0 70px rgba(255,215,0,.18);
+            transform: translateY(-2px) scale(1.025);
+        }
+        [data-theme="infinitythrone"] button:active,
+        [data-theme="infinitythrone"] .btn:active { transform: translateY(0) scale(.97) !important; }
+        /* Inputs */
+        [data-theme="infinitythrone"] input[type="text"],
+        [data-theme="infinitythrone"] input[type="search"],
+        [data-theme="infinitythrone"] textarea,
+        [data-theme="infinitythrone"] select,
+        [data-theme="infinitythrone"] .search-input {
+            background: rgba(12, 9, 28, .8);
+            border-color: rgba(200, 170, 255, .35);
+            color: var(--text);
+        }
+        [data-theme="infinitythrone"] input:focus,
+        [data-theme="infinitythrone"] textarea:focus,
+        [data-theme="infinitythrone"] .search-input:focus {
+            border-color: rgba(255, 215, 0, .8);
+            box-shadow: 0 0 0 2px rgba(255,215,0,.18), 0 0 20px rgba(200,170,255,.2);
+        }
+        /* Active theme button highlight */
+        [data-theme="infinitythrone"] .theme-btn[data-theme="infinitythrone"] {
+            border-color: rgba(255,215,0,.85);
+            animation: omnipotentBorderPulse 2.2s ease-in-out infinite !important;
+        }
+        /* Custom cursor */
+        [data-theme="infinitythrone"] * { cursor: none !important; }
+        [data-theme="infinitythrone"] #sidebar,
+        [data-theme="infinitythrone"] #sidebar *,
+        [data-theme="infinitythrone"] #sidebar-overlay { cursor: auto !important; pointer-events: auto !important; }
+        #infinitythrone-cursor { display: none; }
+        [data-theme="infinitythrone"] #infinitythrone-cursor { display: block; }
+        #infinitythrone-cursor {
+            position: fixed; width: 22px; height: 22px; border-radius: 50%;
+            background: radial-gradient(circle, #fff 0%, #ffd700 38%, rgba(200,170,255,.5) 70%, transparent 100%);
+            pointer-events: none; z-index: 99999; transform: translate(-50%,-50%);
+            box-shadow: 0 0 10px rgba(255,215,0,.9), 0 0 24px rgba(200,170,255,.6), 0 0 50px rgba(255,215,0,.3);
+            animation: infinityThroneCursorPulse 1.4s ease-in-out infinite;
+        }
+        @keyframes infinityThroneCursorPulse {
+            0%,100% { box-shadow: 0 0 10px rgba(255,215,0,.9),0 0 24px rgba(200,170,255,.6),0 0 50px rgba(255,215,0,.3); transform: translate(-50%,-50%) scale(1); }
+            50%     { box-shadow: 0 0 18px rgba(255,215,0,1),0 0 40px rgba(200,170,255,.8),0 0 80px rgba(255,215,0,.45); transform: translate(-50%,-50%) scale(1.18); }
+        }
+        #infinitythrone-cursor::before {
+            content: ''; position: absolute; inset: -8px; border-radius: 50%;
+            border: 1.5px solid rgba(255,215,0,.55);
+            animation: infinityThroneCursorOrbit 2s linear infinite;
+        }
+        #infinitythrone-cursor::after {
+            content: ''; position: absolute; inset: -16px; border-radius: 50%;
+            border: 1px solid rgba(200,170,255,.32);
+            animation: infinityThroneCursorOrbit 3.2s linear infinite reverse;
+        }
+        @keyframes infinityThroneCursorOrbit { to { transform: rotate(360deg); } }
+        .infinitythrone-cursor-spark {
+            position: fixed; width: 5px; height: 5px; border-radius: 50%;
+            pointer-events: none; z-index: 99998; transform: translate(-50%,-50%);
+            animation: infinityThroneSparkFade .9s ease-out forwards;
+        }
+        @keyframes infinityThroneSparkFade {
+            0%   { opacity: 1; transform: translate(-50%,-50%) scale(1.2); }
+            60%  { opacity: .6; transform: translate(calc(-50% + var(--tx,0px)), calc(-50% + var(--ty,0px))) scale(.8); }
+            100% { opacity: 0; transform: translate(calc(-50% + var(--tx,0px)), calc(-50% + var(--ty,0px))) scale(0); }
+        }
+        /* Omnipotent activation burst */
+        .infinitythrone-activation {
+            position: fixed; inset: 0; z-index: 9999; pointer-events: none;
+            background: radial-gradient(ellipse at 50% 50%, rgba(255,255,255,.22) 0%, rgba(255,215,0,.14) 30%, rgba(200,170,255,.08) 60%, transparent 80%);
+            animation: infinityThroneActivationFade 2.8s ease-out forwards;
+        }
+        @keyframes infinityThroneActivationFade {
+            0%   { opacity: 1; transform: scale(.85); }
+            18%  { opacity: 1; transform: scale(1.04); }
+            100% { opacity: 0; transform: scale(1.0); }
+        }
+        .infinitythrone-burst {
+            position: fixed; border-radius: 50%; pointer-events: none; z-index: 10000;
+            transform: translate(-50%,-50%);
+            animation: infinityThroneBurstFly 2s cubic-bezier(.16,1,.3,1) forwards;
+        }
+        @keyframes infinityThroneBurstFly {
+            0%   { opacity: 1; transform: translate(-50%,-50%) scale(1.5); }
+            60%  { opacity: .8; }
+            100% { opacity: 0; transform: translate(calc(-50% + var(--tx,0px)), calc(-50% + var(--ty,0px))) scale(0); }
+        }
+        .infinitythrone-assemble {
+            animation: infinityThroneAssemble .9s cubic-bezier(.2,.8,.4,1) both !important;
+            animation-delay: var(--pt-delay, 0ms) !important;
+        }
+        @keyframes infinityThroneAssemble {
+            0%   { opacity: 0; transform: translateY(22px) scale(.93); filter: brightness(3) saturate(0); }
+            50%  { filter: brightness(1.6) saturate(1.5); }
+            100% { opacity: 1; transform: translateY(0) scale(1); filter: brightness(1) saturate(1); }
+        }
+        /* Reduced motion */
+        @media (prefers-reduced-motion: reduce) {
+            [data-theme="infinitythrone"] * { scroll-behavior: auto !important; }
+            [data-theme="infinitythrone"] #bgCanvas { filter: saturate(1.2) contrast(1.05); }
+            [data-theme="infinitythrone"] #ambientGlow { animation: none; opacity: .85; }
+            [data-theme="infinitythrone"] .script-card,
+            [data-theme="infinitythrone"] .creator-card,
+            [data-theme="infinitythrone"] .settings-card,
+            [data-theme="infinitythrone"] .news-card,
+            [data-theme="infinitythrone"] .executor-card,
+            [data-theme="infinitythrone"] .dash-stat-card { animation: none !important; }
+            [data-theme="infinitythrone"] button::before,
+            [data-theme="infinitythrone"] .btn::before,
+            [data-theme="infinitythrone"] .nav-sign-btn::before { animation: none; opacity: .14; }
+        }
+        /* Modal close button fix (same issue as omniscient) */
+        [data-theme="infinitythrone"] .modal-close-btn {
+            position: absolute !important;
+            top: 16px !important; right: 16px !important; left: auto !important;
+            bottom: auto !important; overflow: visible !important; z-index: 10 !important;
+            width: 30px !important; height: 30px !important; border-radius: 8px !important;
+            background: var(--bg3) !important;
+            border: 1px solid var(--border) !important;
+            color: var(--text2) !important;
+            box-shadow: none !important; animation: none !important; transform: none !important;
+        }
+        [data-theme="infinitythrone"] .modal-close-btn::before { display: none !important; }
+        [data-theme="infinitythrone"] .modal-close-btn:hover {
+            background: var(--bg3) !important; border-color: var(--accent2) !important;
+            color: var(--accent2) !important; box-shadow: none !important;
+            transform: rotate(90deg) !important; animation: none !important;
+        }
+
+                /* ── GLOBAL RESET ── */
         *,
         *::before,
         *::after {
@@ -9281,6 +9886,66 @@
         }
         .theme-btn[data-transcendent="true"] { animation: transcendentBorderPulse 3s ease-in-out infinite !important; }
 
+        /* ══ 👁️ OMNISCIENT BADGE — rarity above TRANSCENDENT ══ */
+        @keyframes omniscientBadgeShimmer {
+            0%, 100% { background-position: 0% 50%; filter: brightness(1); }
+            25% { background-position: 100% 0%; filter: brightness(1.35); }
+            50% { background-position: 100% 100%; filter: brightness(1.05); }
+            75% { background-position: 0% 100%; filter: brightness(1.45); }
+        }
+        @keyframes omniscientBadgePulse {
+            0%, 100% { box-shadow: 0 0 7px 2px rgba(255,255,255,.92), 0 0 18px rgba(255,214,83,.76), 0 0 34px rgba(255,170,45,.3); }
+            50% { box-shadow: 0 0 12px 3px rgba(255,255,255,1), 0 0 28px rgba(255,226,119,.95), 0 0 52px rgba(255,174,53,.55); }
+        }
+        @keyframes omniscientBorderPulse {
+            0%, 100% { box-shadow: 0 0 16px rgba(255,241,168,.76), 0 0 36px rgba(255,178,62,.36), inset 0 0 14px rgba(255,255,255,.13); }
+            33% { box-shadow: 0 0 24px rgba(255,255,255,.9), 0 0 52px rgba(255,215,84,.56), inset 0 0 18px rgba(255,255,255,.22); }
+            66% { box-shadow: 0 0 20px rgba(120,231,255,.82), 0 0 46px rgba(255,241,168,.55), inset 0 0 16px rgba(255,255,255,.18); }
+        }
+        .theme-btn[data-omniscient="true"]::after {
+            content: '👁 OMNISCIENT';
+            position: absolute; top: 4px; right: 4px;
+            background: linear-gradient(110deg, #fff, #fff1a8 20%, #ffb83d 42%, #fff 58%, #8defff 76%, #fff1a8);
+            background-size: 500% 500%;
+            color: #261600; font-size: 7px; font-weight: 950; border-radius: 6px;
+            padding: 2px 5px; letter-spacing: .055em;
+            animation: omniscientBadgeShimmer 2.1s ease-in-out infinite, omniscientBadgePulse 2.7s ease-in-out infinite;
+            text-shadow: 0 0 5px rgba(255,255,255,.9), 0 1px 2px rgba(0,0,0,.24);
+        }
+        .theme-btn[data-omniscient="true"] { animation: omniscientBorderPulse 2.5s ease-in-out infinite !important; }
+
+        /* ══ ⚜️ OMNIPOTENT BADGE — THE ABSOLUTE PINNACLE ══ */
+        @keyframes omnipotentBadgeShimmer {
+            0%   { background-position: 0% 50%; filter: brightness(1) drop-shadow(0 0 4px rgba(255,255,255,.9)); }
+            20%  { background-position: 80% 0%; filter: brightness(1.6) drop-shadow(0 0 7px rgba(255,215,0,1)); }
+            40%  { background-position: 100% 50%; filter: brightness(1.1) drop-shadow(0 0 5px rgba(200,180,255,.9)); }
+            60%  { background-position: 50% 100%; filter: brightness(1.7) drop-shadow(0 0 8px rgba(255,255,255,1)); }
+            80%  { background-position: 20% 50%; filter: brightness(1.2) drop-shadow(0 0 6px rgba(255,215,0,.95)); }
+            100% { background-position: 0% 50%; filter: brightness(1) drop-shadow(0 0 4px rgba(255,255,255,.9)); }
+        }
+        @keyframes omnipotentBadgePulse {
+            0%,100% { box-shadow: 0 0 8px 3px rgba(255,255,255,1), 0 0 18px rgba(255,230,80,.9), 0 0 36px rgba(180,140,255,.55), 0 0 60px rgba(255,215,0,.25); }
+            33%     { box-shadow: 0 0 12px 4px rgba(255,215,0,1), 0 0 28px rgba(255,255,255,.95), 0 0 52px rgba(200,170,255,.65), 0 0 80px rgba(255,230,80,.35); }
+            66%     { box-shadow: 0 0 10px 3px rgba(200,170,255,1), 0 0 22px rgba(255,255,255,.9), 0 0 44px rgba(255,215,0,.7), 0 0 70px rgba(180,140,255,.3); }
+        }
+        @keyframes omnipotentBorderPulse {
+            0%,100% { box-shadow: 0 0 18px rgba(255,255,255,.8), 0 0 40px rgba(255,220,80,.55), 0 0 70px rgba(180,140,255,.3), inset 0 0 18px rgba(255,255,255,.15); border-color: rgba(255,255,255,.7); }
+            25%     { box-shadow: 0 0 28px rgba(255,215,0,.9), 0 0 60px rgba(255,255,255,.6), 0 0 100px rgba(200,170,255,.4), inset 0 0 24px rgba(255,215,0,.2); border-color: rgba(255,215,0,.9); }
+            50%     { box-shadow: 0 0 22px rgba(200,170,255,.9), 0 0 48px rgba(255,255,255,.7), 0 0 85px rgba(255,220,80,.35), inset 0 0 20px rgba(200,170,255,.2); border-color: rgba(200,170,255,.85); }
+            75%     { box-shadow: 0 0 26px rgba(255,255,255,1), 0 0 55px rgba(255,220,80,.65), 0 0 95px rgba(180,140,255,.45), inset 0 0 22px rgba(255,255,255,.18); border-color: rgba(255,255,255,.95); }
+        }
+        .theme-btn[data-omnipotent="true"]::after {
+            content: '⚜ OMNIPOTENT';
+            position: absolute; top: 4px; right: 4px;
+            background: linear-gradient(270deg, #fff 0%, #ffd700 10%, #e8d5ff 22%, #fff 34%, #c8b4ff 46%, #ffd700 58%, #fff 70%, #a8edff 82%, #ffd700 92%, #fff 100%);
+            background-size: 700% 700%;
+            color: #1a0a2e; font-size: 7px; font-weight: 900; border-radius: 6px;
+            padding: 2px 5px; letter-spacing: .07em;
+            animation: omnipotentBadgeShimmer 1.8s ease-in-out infinite, omnipotentBadgePulse 2.4s ease-in-out infinite;
+            text-shadow: 0 0 6px rgba(255,255,255,1), 0 0 12px rgba(255,215,0,.8), 0 1px 2px rgba(0,0,0,.15);
+        }
+        .theme-btn[data-omnipotent="true"] { animation: omnipotentBorderPulse 2.2s ease-in-out infinite !important; }
+
         .theme-btn { position:relative; }
         .theme-btn.active {
             border-color: var(--accent);
@@ -11070,10 +11735,10 @@
                 <div style="text-align:center;margin-bottom:20px;">
                     <div style="width:72px;height:72px;border-radius:20px;background:var(--btn-grad);display:flex;align-items:center;justify-content:center;font-family:var(--font-orb);font-size:1.3rem;font-weight:900;color:#fff;margin:0 auto 12px;box-shadow:0 4px 20px var(--glow2);animation:glow-pulse 2s ease-in-out infinite;">LP</div>
                     <div style="font-family:var(--font-display);font-size:1.3rem;font-weight:900;color:var(--text);">LPOLVO HUB</div>
-                    <div style="font-family:var(--font-sans);font-size:0.72rem;color:var(--text3);margin-top:4px;">v3.2 — Premium Roblox Script Platform</div>
+                    <div style="font-family:var(--font-sans);font-size:0.72rem;color:var(--text3);margin-top:4px;" id="aboutVersionText">v8.0 — Premium Roblox Script Platform</div>
                 </div>
                 <div style="display:flex;flex-direction:column;gap:10px;margin-bottom:20px;">
-                    <div style="background:var(--bg3);border:1px solid var(--border);border-radius:var(--radius);padding:12px;font-family:var(--font-sans);font-size:0.8rem;color:var(--text2);line-height:1.5;">LPOLVO HUB is a community-driven platform for Roblox scripts. Find, share and discover high-quality Lua scripts for your favorite Roblox games.</div>
+                    <div style="background:var(--bg3);border:1px solid var(--border);border-radius:var(--radius);padding:12px;font-family:var(--font-sans);font-size:0.8rem;color:var(--text2);line-height:1.5;">LPOLVO HUB V8 is a community-driven premium platform for Roblox scripts. Now featuring the first-ever OMNIPOTENT rarity with Infinity Throne — a divine operating system that controls reality. Find, share and discover high-quality Lua scripts for your favorite Roblox games.</div>
                     <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;"><div style="background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:12px;text-align:center;"><div style="font-family:var(--font-display);font-size:1.1rem;font-weight:800;color:var(--accent);" id="aboutStatScripts">—</div><div style="font-family:var(--font-sans);font-size:0.62rem;color:var(--text3);text-transform:uppercase;letter-spacing:0.08em;">Scripts</div></div><div style="background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:12px;text-align:center;"><div style="font-family:var(--font-display);font-size:1.1rem;font-weight:800;color:var(--accent);" id="aboutStatUsers">—</div><div style="font-family:var(--font-sans);font-size:0.62rem;color:var(--text3);text-transform:uppercase;letter-spacing:0.08em;">Users</div></div></div>
                 </div>
                 <div style="display:flex;gap:8px;"><button onclick="closeAboutModal()" style="flex:1;height:44px;border-radius:var(--btn-radius);background:var(--btn-grad);border:none;color:#fff;font-family:var(--font-sans);font-weight:700;cursor:pointer;">Got it</button></div>
@@ -11119,12 +11784,22 @@
         ];
 
         const NEWS = [
-            { badge: 'update', badgeClass: 'news-badge-update', date: 'Jul 2025', title: 'LPOLVO HUB v3.3 Released',
-                desc: 'Ultimate Theme Update: 52 immersive themes with dynamic backgrounds, particle systems, and unique soundscapes.' },
-            { badge: 'new', badgeClass: 'news-badge-new', date: 'Jun 2025', title: 'Dynamic Theme Engine',
-                desc: 'Each theme now has its own identity with animated backgrounds, particles, and ambient sounds.' },
-            { badge: 'fix', badgeClass: 'news-badge-fix', date: 'May 2025', title: 'Profile System Overhauled',
-                desc: 'Profile pictures, banners, and usernames now save correctly with Firebase persistence.' },
+            { badge: 'update', badgeClass: 'news-badge-update', date: 'Jul 2026', title: 'LPOLVO HUB V8 Released',
+                desc: 'Version 8 is live — the most advanced visual and audio overhaul in LPOLVO HUB history, introducing the first OMNIPOTENT rarity.' },
+            { badge: 'new', badgeClass: 'news-badge-new', date: 'Jul 2026', title: 'First OMNIPOTENT Rarity Introduced',
+                desc: 'OMNIPOTENT is a brand-new tier above OMNISCIENT, representing absolute power. Nothing will ever feel stronger.' },
+            { badge: 'new', badgeClass: 'news-badge-new', date: 'Jul 2026', title: 'Infinity Throne Added',
+                desc: 'The flagship OMNIPOTENT theme is here. A divine throne floating above existence, where reality itself is written.' },
+            { badge: 'update', badgeClass: 'news-badge-update', date: 'Jul 2026', title: 'New Cinematic Background Engine',
+                desc: 'Infinite celestial palace, floating crystal staircases, energy oceans, divine auroras, and world events all move with independent layered depth.' },
+            { badge: 'update', badgeClass: 'news-badge-update', date: 'Jul 2026', title: 'New Particle System',
+                desc: 'Diamond dust, sacred feathers, golden leaves, crystal snow, and radiant stars fill the Infinity Throne with living atmosphere.' },
+            { badge: 'update', badgeClass: 'news-badge-update', date: 'Jul 2026', title: 'Lighting & Cursor Improvements',
+                desc: 'New bloom, cinematic glow, crystal reflections, and a premium divine cursor with orbiting celestial rings and platinum sparks.' },
+            { badge: 'update', badgeClass: 'news-badge-update', date: 'Jul 2026', title: 'Better Animations Throughout',
+                desc: 'Cards float more naturally, buttons emit soft energy waves, and menus unfold with lighter, more elegant transitions.' },
+            { badge: 'fix', badgeClass: 'news-badge-fix', date: 'Jul 2026', title: 'Performance & Bug Fixes',
+                desc: 'Optimized requestAnimationFrame loops, reduced particle density on low-end devices, and various interaction and sound fixes.' },
         ];
 
         const FAQS = [
@@ -11270,6 +11945,10 @@
             { id: 'theabsolute', name: 'The Absolute', desc: 'The Point Where Existence Ends', color: '#ffffff', anim: 'theabsolute', op: true, sss: true, mythic: true, transcendent: true },
             /* ✦ TRANSCENDENT #109 */
             { id: 'eternalnexus', name: '∞ Eternal Nexus', desc: 'Where Every Reality Intersects', color: '#78e7ff', anim: 'eternalnexus', op: true, sss: true, mythic: true, transcendent: true },
+            /* 👁️ OMNISCIENT #110 — above every existing rarity */
+            { id: 'omniscienteye', name: 'The Omniscient Eye', desc: 'The Consciousness of LPOLVO HUB', color: '#fff1a8', anim: 'omniscienteye', op: true, sss: true, mythic: true, transcendent: true, omniscient: true },
+            /* ⚜ OMNIPOTENT #111 — the absolute pinnacle of LPOLVO HUB */
+            { id: 'infinitythrone', name: 'Infinity Throne', desc: 'The Realm Where Existence Is Written', color: '#e8d5ff', anim: 'infinitythrone', op: true, sss: true, mythic: true, transcendent: true, omniscient: true, omnipotent: true },
         ];
 
         const BADGES_DEF = [
@@ -11415,6 +12094,8 @@
             else if (theme === 'elysium') freqs = [659,784,880,1047,1175,1319,1568,1760,1568,1319,1175,1047,880,784,659];
             else if (theme === 'aetherdominion') freqs = [523, 659, 784, 988, 1175, 1397, 1568, 1760, 1568, 1397, 1175, 988, 784, 659, 523];
             else if (theme === 'eternalnexus') freqs = [196, 294, 392, 523, 659, 784, 988, 1175, 988, 784, 659, 523, 392, 294, 196];
+            else if (theme === 'omniscienteye') freqs = [261, 392, 523, 659, 784, 1047, 1319, 1568, 2093, 1568, 1319, 1047, 784, 523, 392];
+            else if (theme === 'infinitythrone') freqs = [174, 261, 349, 523, 698, 880, 1175, 1568, 2093, 2637, 2093, 1568, 1175, 880, 698, 523, 349, 261, 174];
             freqs.forEach((f, i) => setTimeout(() => playTone(f, 0.04, 'sine', 0.03, 0.15), i * 30));
         }
 
@@ -11452,7 +12133,7 @@
                     celestialascension: 160, blackholesingularity: 28, crimsonapocalypse: 44,
                     frozeneternity: 96, neoncybernexus: 82, phantomnightmare: 50,
                     dragonemperor: 66, universecreator: 36, divineocean: 110,
-                    infernalking: 40, sakuraheaven: 150, infinitydimension: 70, arabianlegacy: 108, moroccanlegacy: 116, godsdomain: 174, genesisprotocol: 32, chronoinfinity: 88, elysium: 528, aetherdominion: 42, eternalnexus: 396 };
+                    infernalking: 40, sakuraheaven: 150, infinitydimension: 70, arabianlegacy: 108, moroccanlegacy: 116, godsdomain: 174, genesisprotocol: 32, chronoinfinity: 88, elysium: 528, aetherdominion: 42, eternalnexus: 396, omniscienteye: 174, infinitythrone: 55 };
                 osc.frequency.setValueAtTime(freqs[state.theme] || 85, ctx.currentTime);
                 gain.gain.setValueAtTime(0.012, ctx.currentTime);
                 osc.start(ctx.currentTime);
@@ -11492,6 +12173,12 @@
             }
             if (themeId === 'eternalnexus' && previousTheme !== themeId && withSound) {
                 runEternalNexusActivation();
+            }
+            if (themeId === 'omniscienteye' && previousTheme !== themeId && withSound) {
+                runOmniscientActivation();
+            }
+            if (themeId === 'infinitythrone' && previousTheme !== themeId && withSound) {
+                runInfinityThroneActivation();
             }
 
             if (withSound) {
@@ -11634,6 +12321,8 @@
                 aetherdominion: runAetherDominionAnimation,
                 theabsolute: runTheAbsoluteAnimation,
                 eternalnexus: runEternalNexusAnimation,
+                omniscienteye: runOmniscientEyeAnimation,
+                infinitythrone: runInfinityThroneAnimation,
             };
 
             const fn = animMap[type] || runParticlesAnimation;
@@ -17987,6 +18676,592 @@
             state.bgAnimFrame = requestAnimationFrame(draw);
         }
 
+        /* ══ OMNISCIENT — The website becomes aware of the user ══ */
+        function runOmniscientActivation() {
+            if (SETTINGS.reducedMotion) return;
+            var veil = document.createElement('div');
+            veil.className = 'omniscient-activation';
+            document.body.appendChild(veil);
+            setTimeout(function() { if (veil && veil.remove) veil.remove(); }, 3300);
+
+            var mobile = window.innerWidth < 600;
+            var count = mobile ? 28 : 64;
+            var cx = window.innerWidth / 2, cy = window.innerHeight / 2;
+            var colors = ['#ffffff', '#fff1a8', '#ffe27a', '#ffb52e', '#78e7ff', '#ff83c6'];
+            for (var i = 0; i < count; i++) {
+                var shard = document.createElement('span');
+                shard.className = 'omniscient-burst';
+                var size = (2 + Math.random() * (mobile ? 6 : 11)).toFixed(1) + 'px';
+                var angle = Math.random() * Math.PI * 2;
+                var distance = 80 + Math.random() * Math.min(window.innerWidth, window.innerHeight) * .58;
+                shard.style.cssText = 'width:' + size + ';height:' + size + ';left:' + cx + 'px;top:' + cy + 'px;' +
+                    'background:' + colors[Math.floor(Math.random() * colors.length)] + ';' +
+                    'box-shadow:0 0 10px rgba(255,255,255,.9),0 0 24px rgba(255,210,90,.55);';
+                shard.style.setProperty('--eye-x', (Math.cos(angle) * distance).toFixed(1) + 'px');
+                shard.style.setProperty('--eye-y', (Math.sin(angle) * distance).toFixed(1) + 'px');
+                shard.style.animationDelay = (Math.random() * .25).toFixed(2) + 's';
+                document.body.appendChild(shard);
+                (function(el) { setTimeout(function() { if (el && el.remove) el.remove(); }, 2200); })(shard);
+            }
+
+            var rawTargets = document.querySelectorAll(
+                '#navbar, #app > *, .section-title, .script-card, .creator-card, .news-card, .executor-card, .settings-card, .bottom-nav'
+            );
+            var sidebar = document.getElementById('sidebar');
+            var sidebarOverlay = document.getElementById('sidebar-overlay');
+            var targets = Array.prototype.filter.call(rawTargets, function(el) {
+                return el !== sidebar && el !== sidebarOverlay &&
+                    !el.closest('#sidebar') && !el.closest('#sidebar-overlay');
+            });
+            targets.forEach(function(el, index) {
+                el.classList.remove('omniscient-assemble');
+                el.style.setProperty('--eye-delay', Math.min(index * 28, 620) + 'ms');
+            });
+            void document.body.offsetWidth;
+            targets.forEach(function(el) { el.classList.add('omniscient-assemble'); });
+            setTimeout(function() {
+                targets.forEach(function(el) { el.classList.remove('omniscient-assemble'); });
+            }, 2100);
+        }
+
+        function runOmniscientEyeAnimation() {
+            var ctx = setupCanvas('bgCanvas');
+            if (!ctx) return;
+            var canvas = ctx.canvas;
+            var W = window.innerWidth, H = window.innerHeight;
+            var mobile = W < 700;
+            var frameMs = mobile ? 1000 / 34 : 1000 / 52;
+            var visible = !document.hidden, last = 0, tick = 0;
+            var density = mobile ? .58 : 1;
+            var stars = Array.from({ length: Math.floor((mobile ? 92 : 180) * density) }, function() {
+                return {
+                    x: Math.random(), y: Math.random(), z: .2 + Math.random() * .8,
+                    r: .35 + Math.random() * 1.7, phase: Math.random() * 7,
+                    hue: Math.random() > .72 ? '#fff1a8' : (Math.random() > .5 ? '#78e7ff' : '#ffffff')
+                };
+            });
+            var dust = Array.from({ length: Math.floor((mobile ? 38 : 82) * density) }, function() {
+                return { x: Math.random(), y: Math.random(), vx: (Math.random() - .5) * .00022, vy: (Math.random() - .5) * .00016,
+                    r: .7 + Math.random() * 2.4, phase: Math.random() * 7, hue: Math.random() > .48 ? '#ffe27a' : '#78e7ff' };
+            });
+            var galaxies = Array.from({ length: mobile ? 3 : 6 }, function(_, index) {
+                return { x: .1 + Math.random() * .8, y: .08 + Math.random() * .78, r: 24 + Math.random() * 54,
+                    rot: Math.random() * 7, speed: (index % 2 ? -.002 : .0016) * (1 + Math.random() * .5), arms: 2 + Math.floor(Math.random() * 3) };
+            });
+            var rings = Array.from({ length: mobile ? 3 : 5 }, function(_, index) {
+                return { x: .08 + Math.random() * .84, y: .12 + Math.random() * .78, r: 35 + Math.random() * 75,
+                    rot: Math.random() * 7, speed: (index % 2 ? -.003 : .0025), tilt: (Math.random() - .5) * .8 };
+            });
+            var lightning = null, lightningLife = 0, lastLightning = 0;
+            var eyeX = W * .5, eyeY = H * .3, targetEyeX = eyeX, targetEyeY = eyeY;
+            var eyeOpen = 0.75, eyePulse = Math.random() * 7;
+
+            function resize() {
+                W = window.innerWidth; H = window.innerHeight; mobile = W < 700;
+                canvas.width = W; canvas.height = H;
+            }
+            function line(points, color, width, alpha) {
+                if (!points.length) return;
+                ctx.save(); ctx.globalAlpha = alpha; ctx.strokeStyle = color; ctx.lineWidth = width;
+                ctx.shadowBlur = width > 2 ? 16 : 5; ctx.shadowColor = color;
+                ctx.beginPath(); ctx.moveTo(points[0].x, points[0].y);
+                points.slice(1).forEach(function(point) { ctx.lineTo(point.x, point.y); });
+                ctx.stroke(); ctx.restore();
+            }
+            function makeLightning(x) {
+                var points = [{ x: x, y: H * .03 }], px = x, py = H * .03;
+                while (py < H * .68) {
+                    py += 18 + Math.random() * 38; px += (Math.random() - .5) * 54;
+                    points.push({ x: px, y: py });
+                }
+                return points;
+            }
+            function drawEye(time) {
+                var breathing = .9 + Math.sin(time * .72) * .08;
+                var open = Math.max(.18, Math.min(1, eyeOpen * breathing));
+                var radius = Math.min(W, H) * (mobile ? .2 : .24);
+                var gazeX = (targetEyeX - W * .5) / Math.max(W, 1);
+                var gazeY = (targetEyeY - H * .3) / Math.max(H, 1);
+                ctx.save(); ctx.translate(eyeX, eyeY); ctx.rotate(gazeX * .08);
+                var aura = ctx.createRadialGradient(0, 0, 2, 0, 0, radius * 2.2);
+                aura.addColorStop(0, 'rgba(255,226,122,.13)'); aura.addColorStop(.38, 'rgba(120,231,255,.06)'); aura.addColorStop(1, 'rgba(0,0,0,0)');
+                ctx.fillStyle = aura; ctx.beginPath(); ctx.arc(0, 0, radius * 2.2, 0, Math.PI * 2); ctx.fill();
+                ctx.globalAlpha = .52; ctx.strokeStyle = '#ffe27a'; ctx.shadowBlur = 24; ctx.shadowColor = '#ffb52e';
+                ctx.lineWidth = 1.2; ctx.beginPath(); ctx.ellipse(0, 0, radius * 1.55, radius * .56 * open, 0, 0, Math.PI * 2); ctx.stroke();
+                ctx.globalAlpha = .28; ctx.strokeStyle = '#78e7ff'; ctx.lineWidth = 2;
+                ctx.beginPath(); ctx.ellipse(0, 0, radius * 1.85, radius * .7 * open, 0, 0, Math.PI * 2); ctx.stroke();
+                ctx.save(); ctx.beginPath(); ctx.ellipse(0, 0, radius * 1.5, radius * .52 * open, 0, 0, Math.PI * 2); ctx.clip();
+                var iris = ctx.createRadialGradient(gazeX * radius * .35, gazeY * radius * .2, 2, 0, 0, radius * .75);
+                iris.addColorStop(0, '#fff'); iris.addColorStop(.12, '#fff1a8'); iris.addColorStop(.34, '#ffb52e'); iris.addColorStop(.72, '#6cc9e5'); iris.addColorStop(1, '#120a18');
+                ctx.fillStyle = iris; ctx.shadowBlur = 28; ctx.shadowColor = '#ffe27a';
+                ctx.beginPath(); ctx.arc(gazeX * radius * .35, gazeY * radius * .2, radius * .66, 0, Math.PI * 2); ctx.fill();
+                ctx.globalAlpha = .55; ctx.strokeStyle = '#fff8d7'; ctx.lineWidth = 1;
+                for (var ray = 0; ray < 14; ray++) {
+                    var angle = ray * Math.PI * 2 / 14 + time * .12;
+                    ctx.beginPath(); ctx.moveTo(gazeX * radius * .35, gazeY * radius * .2);
+                    ctx.lineTo(gazeX * radius * .35 + Math.cos(angle) * radius * .62, gazeY * radius * .2 + Math.sin(angle) * radius * .62); ctx.stroke();
+                }
+                ctx.restore();
+                ctx.globalAlpha = .95; ctx.fillStyle = '#05040a'; ctx.shadowBlur = 13; ctx.shadowColor = '#fff';
+                ctx.beginPath(); ctx.ellipse(gazeX * radius * .35, gazeY * radius * .2, radius * .15, radius * .42, 0, 0, Math.PI * 2); ctx.fill();
+                ctx.restore();
+            }
+            function draw(now) {
+                if (state.theme !== 'omniscienteye') return;
+                if (!visible) { state.bgAnimFrame = null; return; }
+                if (now - last < frameMs) { state.bgAnimFrame = requestAnimationFrame(draw); return; }
+                last = now; tick++;
+                var time = tick * .016;
+                ctx.clearRect(0, 0, W, H);
+                var voidGrad = ctx.createRadialGradient(W * .5, H * .28, 0, W * .5, H * .5, Math.max(W, H) * .9);
+                voidGrad.addColorStop(0, '#170f25'); voidGrad.addColorStop(.3, '#0a0715'); voidGrad.addColorStop(.72, '#05040b'); voidGrad.addColorStop(1, '#010107');
+                ctx.fillStyle = voidGrad; ctx.fillRect(0, 0, W, H);
+
+                stars.forEach(function(star) {
+                    star.phase += .01 * star.z;
+                    var sx = ((star.x + Math.sin(time * .12 + star.phase) * .006) % 1) * W;
+                    var sy = ((star.y + time * .00022 * star.z) % 1) * H;
+                    var alpha = (.16 + star.z * .5) * (.55 + Math.abs(Math.sin(star.phase)) * .45);
+                    ctx.globalAlpha = alpha; ctx.fillStyle = star.hue; ctx.shadowBlur = star.z > .8 ? 8 : 0; ctx.shadowColor = star.hue;
+                    ctx.beginPath(); ctx.arc(sx, sy, star.r * (.7 + star.z * .5), 0, Math.PI * 2); ctx.fill();
+                });
+                ctx.globalAlpha = 1;
+                dust.forEach(function(particle) {
+                    particle.phase += .025; particle.x += particle.vx; particle.y += particle.vy;
+                    if (particle.x < -.04) particle.x = 1.04; if (particle.x > 1.04) particle.x = -.04;
+                    if (particle.y < -.04) particle.y = 1.04; if (particle.y > 1.04) particle.y = -.04;
+                    var px = particle.x * W, py = particle.y * H, alpha = .18 + Math.abs(Math.sin(particle.phase)) * .42;
+                    ctx.globalAlpha = alpha; ctx.fillStyle = particle.hue; ctx.shadowBlur = 10; ctx.shadowColor = particle.hue;
+                    ctx.beginPath(); ctx.arc(px, py, particle.r, 0, Math.PI * 2); ctx.fill();
+                });
+                ctx.globalAlpha = 1;
+                galaxies.forEach(function(galaxy, index) {
+                    galaxy.rot += galaxy.speed; var gx = galaxy.x * W, gy = galaxy.y * H, gr = galaxy.r * Math.min(W, H) / 400;
+                    ctx.save(); ctx.translate(gx, gy); ctx.rotate(galaxy.rot);
+                    var glow = ctx.createRadialGradient(0, 0, 0, 0, 0, gr * 2.4);
+                    glow.addColorStop(0, 'rgba(255,241,168,.19)'); glow.addColorStop(.35, index % 2 ? 'rgba(120,231,255,.09)' : 'rgba(255,181,46,.1)'); glow.addColorStop(1, 'rgba(0,0,0,0)');
+                    ctx.fillStyle = glow; ctx.beginPath(); ctx.arc(0, 0, gr * 2.4, 0, Math.PI * 2); ctx.fill();
+                    for (var arm = 0; arm < galaxy.arms; arm++) {
+                        var points = [];
+                        for (var step = 0; step < 20; step++) {
+                            var a = step * .34 + arm * Math.PI * 2 / galaxy.arms, r = gr * step / 18;
+                            points.push({ x: Math.cos(a) * r * 1.9, y: Math.sin(a) * r * .5 });
+                        }
+                        line(points, index % 2 ? '#78e7ff' : '#ffe27a', 1, .22);
+                    }
+                    ctx.restore();
+                });
+                rings.forEach(function(ring, index) {
+                    ring.rot += ring.speed; var rr = ring.r * Math.min(W, H) / 180;
+                    ctx.save(); ctx.translate(ring.x * W, ring.y * H); ctx.rotate(ring.tilt + ring.rot);
+                    ctx.globalAlpha = .18; ctx.strokeStyle = index % 2 ? '#78e7ff' : '#ffe27a'; ctx.shadowBlur = 18; ctx.shadowColor = ctx.strokeStyle;
+                    ctx.lineWidth = 1.2; ctx.beginPath(); ctx.ellipse(0, 0, rr * 1.75, rr * .42, 0, 0, Math.PI * 2); ctx.stroke();
+                    ctx.globalAlpha = .1; ctx.beginPath(); ctx.ellipse(0, 0, rr * 1.2, rr * .27, 0, 0, Math.PI * 2); ctx.stroke();
+                    ctx.restore();
+                });
+                ctx.save(); ctx.globalAlpha = .13;
+                for (var ribbon = 0; ribbon < 3; ribbon++) {
+                    var points = [];
+                    for (var x = -30; x <= W + 30; x += 26) points.push({ x: x, y: H * (.17 + ribbon * .17) + Math.sin(x * .006 + time * (.7 + ribbon * .17)) * H * .055 + Math.sin(x * .013 - time * .5) * H * .02 });
+                    line(points, ribbon === 0 ? '#fff1a8' : ribbon === 1 ? '#78e7ff' : '#ff83c6', 6, .9);
+                }
+                ctx.restore();
+                if (now - lastLightning > (mobile ? 8200 : 4300) && Math.random() > .65) {
+                    lightning = makeLightning(Math.random() * W); lightningLife = 1; lastLightning = now;
+                }
+                if (lightning && lightningLife > .01) { line(lightning, '#fff8d7', 1.6, lightningLife); line(lightning, '#78e7ff', 6, lightningLife * .16); lightningLife *= .82; }
+                eyePulse += .016; eyeOpen = .66 + Math.sin(eyePulse) * .24;
+                eyeX += (W * .5 + Math.sin(time * .13) * W * .035 - eyeX) * .012;
+                eyeY += (H * .3 + Math.cos(time * .11) * H * .025 - eyeY) * .012;
+                drawEye(time);
+                ctx.globalAlpha = 1; state.bgAnimFrame = requestAnimationFrame(draw);
+            }
+            function visibility() {
+                visible = !document.hidden;
+                if (!visible && state.bgAnimFrame) { cancelAnimationFrame(state.bgAnimFrame); state.bgAnimFrame = null; }
+                else if (visible && state.theme === 'omniscienteye' && !state.bgAnimFrame) { last = 0; state.bgAnimFrame = requestAnimationFrame(draw); }
+            }
+            var finePointer = window.matchMedia && window.matchMedia('(pointer:fine)').matches;
+            var cursor = document.getElementById('omniscient-cursor');
+            if (!cursor) { cursor = document.createElement('div'); cursor.id = 'omniscient-cursor'; document.body.appendChild(cursor); }
+            var lastSpark = 0;
+            function cursorMove(event) {
+                if (!finePointer || state.theme !== 'omniscienteye') return;
+                targetEyeX = event.clientX; targetEyeY = event.clientY;
+                cursor.style.left = event.clientX + 'px'; cursor.style.top = event.clientY + 'px';
+                var current = performance.now(); if (current - lastSpark < 65) return; lastSpark = current;
+                var spark = document.createElement('i'); spark.className = 'omniscient-cursor-spark';
+                spark.style.left = event.clientX + 'px'; spark.style.top = event.clientY + 'px';
+                spark.style.background = Math.random() > .5 ? '#ffe27a' : '#78e7ff'; spark.style.boxShadow = '0 0 10px ' + spark.style.background;
+                spark.style.setProperty('--eye-x', ((Math.random() - .5) * 38).toFixed(1) + 'px');
+                spark.style.setProperty('--eye-y', ((Math.random() - .5) * 38).toFixed(1) + 'px');
+                document.body.appendChild(spark); setTimeout(function() { if (spark && spark.remove) spark.remove(); }, 1100);
+            }
+            window.addEventListener('resize', resize, { passive: true });
+            document.addEventListener('visibilitychange', visibility, { passive: true });
+            if (finePointer) document.addEventListener('mousemove', cursorMove, { passive: true });
+            state.originCleanup = function() {
+                window.removeEventListener('resize', resize); document.removeEventListener('visibilitychange', visibility);
+                if (finePointer) document.removeEventListener('mousemove', cursorMove);
+                if (cursor && cursor.remove) cursor.remove();
+                document.querySelectorAll('.omniscient-cursor-spark').forEach(function(el) { el.remove(); });
+            };
+            state.originVisibilityCleanup = function() {};
+            resize(); state.bgAnimFrame = requestAnimationFrame(draw);
+        }
+
+        /* ══ ⚜ OMNIPOTENT — INFINITY THRONE activation burst ══ */
+        function runInfinityThroneActivation() {
+            if (SETTINGS.reducedMotion) return;
+            var veil = document.createElement('div');
+            veil.className = 'infinitythrone-activation';
+            document.body.appendChild(veil);
+            setTimeout(function() { if (veil && veil.remove) veil.remove(); }, 3200);
+
+            var mobile = window.innerWidth < 600;
+            var count = mobile ? 38 : 80;
+            var cx = window.innerWidth / 2, cy = window.innerHeight / 2;
+            var colors = ['#ffffff', '#ffd700', '#e8d5ff', '#c8b4ff', '#a8edff', '#fffde7'];
+            for (var i = 0; i < count; i++) {
+                var shard = document.createElement('span');
+                shard.className = 'infinitythrone-burst';
+                var size = (2 + Math.random() * (mobile ? 7 : 13)).toFixed(1) + 'px';
+                var angle = Math.random() * Math.PI * 2;
+                var distance = 90 + Math.random() * Math.min(window.innerWidth, window.innerHeight) * .62;
+                shard.style.cssText = 'width:' + size + ';height:' + size + ';left:' + cx + 'px;top:' + cy + 'px;' +
+                    'background:' + colors[Math.floor(Math.random() * colors.length)] + ';' +
+                    'box-shadow:0 0 12px rgba(255,215,0,.95),0 0 28px rgba(200,170,255,.6);';
+                shard.style.setProperty('--tx', (Math.cos(angle) * distance).toFixed(1) + 'px');
+                shard.style.setProperty('--ty', (Math.sin(angle) * distance).toFixed(1) + 'px');
+                shard.style.animationDelay = (Math.random() * .22).toFixed(2) + 's';
+                document.body.appendChild(shard);
+                (function(el) { setTimeout(function() { if (el && el.remove) el.remove(); }, 2400); })(shard);
+            }
+
+            var rawTargets = document.querySelectorAll(
+                '#navbar, #app > *, .section-title, .script-card, .creator-card, .news-card, .executor-card, .settings-card, .bottom-nav'
+            );
+            var sidebar = document.getElementById('sidebar');
+            var sidebarOverlay = document.getElementById('sidebar-overlay');
+            var targets = Array.prototype.filter.call(rawTargets, function(el) {
+                return el !== sidebar && el !== sidebarOverlay &&
+                    !el.closest('#sidebar') && !el.closest('#sidebar-overlay');
+            });
+            targets.forEach(function(el, index) {
+                el.classList.remove('infinitythrone-assemble');
+                el.style.setProperty('--pt-delay', Math.min(index * 26, 580) + 'ms');
+            });
+            void document.body.offsetWidth;
+            targets.forEach(function(el) { el.classList.add('infinitythrone-assemble'); });
+            setTimeout(function() {
+                targets.forEach(function(el) { el.classList.remove('infinitythrone-assemble'); });
+            }, 2200);
+        }
+
+        /* ══ ⚜ OMNIPOTENT — INFINITY THRONE background engine ══ */
+        function runInfinityThroneAnimation() {
+            var ctx = setupCanvas('bgCanvas');
+            if (!ctx) return;
+            var canvas = ctx.canvas;
+            var W = window.innerWidth, H = window.innerHeight;
+            var mobile = W < 700;
+            var frameMs = mobile ? 1000 / 32 : 1000 / 50;
+            var visible = !document.hidden, last = 0, tick = 0;
+            var density = mobile ? .55 : 1;
+
+            /* ── Diamond stars ── */
+            var stars = Array.from({ length: Math.floor((mobile ? 100 : 200) * density) }, function() {
+                return {
+                    x: Math.random(), y: Math.random(), z: .2 + Math.random() * .8,
+                    r: .3 + Math.random() * 1.9, phase: Math.random() * 7,
+                    hue: ['#ffffff', '#fffde7', '#e8d5ff', '#a8edff', '#ffd700'][Math.floor(Math.random() * 5)]
+                };
+            });
+
+            /* ── Gold-dust particles ── */
+            var dust = Array.from({ length: Math.floor((mobile ? 44 : 95) * density) }, function() {
+                return {
+                    x: Math.random(), y: Math.random(),
+                    vx: (Math.random() - .5) * .00019, vy: (Math.random() - .5) * .00013,
+                    r: .6 + Math.random() * 2.6, phase: Math.random() * 7,
+                    hue: Math.random() > .5 ? '#ffd700' : (Math.random() > .5 ? '#e8d5ff' : '#a8edff')
+                };
+            });
+
+            /* ── Celestial rings (throne rings) ── */
+            var rings = Array.from({ length: mobile ? 4 : 8 }, function(_, index) {
+                return {
+                    x: .08 + Math.random() * .84, y: .1 + Math.random() * .8,
+                    r: 40 + Math.random() * 90, rot: Math.random() * 7,
+                    speed: (index % 2 ? -.0028 : .0022) * (1 + Math.random() * .4),
+                    tilt: (Math.random() - .5) * 1.1,
+                    hue: ['#ffd700', '#e8d5ff', '#ffffff', '#a8edff'][index % 4]
+                };
+            });
+
+            /* ── Floating islands / palace blobs ── */
+            var islands = Array.from({ length: mobile ? 3 : 6 }, function(_, i) {
+                return {
+                    x: .15 + Math.random() * .7, y: .2 + Math.random() * .6,
+                    r: 28 + Math.random() * 55, phase: Math.random() * 7,
+                    speed: .0008 + Math.random() * .0012,
+                    hue: i % 2 ? '#ffd700' : '#c8b4ff'
+                };
+            });
+
+            /* ── World events ── */
+            var event = null, eventLife = 0, lastEvent = 0;
+            var EVENT_INTERVAL = mobile ? 22000 : 14000;
+
+            /* ── Aurora ribbons ── */
+            var auroraPhase = 0;
+
+            /* ── Light pillars ── */
+            var pillars = Array.from({ length: mobile ? 2 : 4 }, function(_, i) {
+                return { x: .1 + i * (.8 / (mobile ? 2 : 4)) + Math.random() * .1, phase: Math.random() * 7, speed: .006 + Math.random() * .004 };
+            });
+
+            /* ── Cursor (fine pointer) ── */
+            var finePointer = window.matchMedia && window.matchMedia('(pointer:fine)').matches;
+            var thrCursor = document.getElementById('infinitythrone-cursor');
+            if (!thrCursor) {
+                thrCursor = document.createElement('div');
+                thrCursor.id = 'infinitythrone-cursor';
+                document.body.appendChild(thrCursor);
+            }
+            var lastSpark = 0;
+            function cursorMove(ev) {
+                if (!finePointer || state.theme !== 'infinitythrone') return;
+                thrCursor.style.left = ev.clientX + 'px'; thrCursor.style.top = ev.clientY + 'px';
+                var now = performance.now(); if (now - lastSpark < 55) return; lastSpark = now;
+                var colors = ['#ffd700', '#e8d5ff', '#ffffff', '#a8edff'];
+                var spark = document.createElement('i'); spark.className = 'infinitythrone-cursor-spark';
+                spark.style.left = ev.clientX + 'px'; spark.style.top = ev.clientY + 'px';
+                spark.style.background = colors[Math.floor(Math.random() * colors.length)];
+                spark.style.boxShadow = '0 0 8px ' + spark.style.background + ', 0 0 16px rgba(255,215,0,.5)';
+                spark.style.setProperty('--tx', ((Math.random() - .5) * 42).toFixed(1) + 'px');
+                spark.style.setProperty('--ty', ((Math.random() - .5) * 42).toFixed(1) + 'px');
+                document.body.appendChild(spark);
+                setTimeout(function() { if (spark && spark.remove) spark.remove(); }, 950);
+            }
+
+            function resize() {
+                W = window.innerWidth; H = window.innerHeight; mobile = W < 700;
+                canvas.width = W; canvas.height = H;
+            }
+
+            /* ── World event generator ── */
+            function triggerEvent() {
+                var types = ['phoenix', 'comet', 'pillar', 'dragon', 'eclipse', 'fracture'];
+                event = { type: types[Math.floor(Math.random() * types.length)], t: 0, x: Math.random() };
+                eventLife = 1;
+            }
+
+            function drawEvent(time) {
+                if (!event || eventLife <= .005) { event = null; return; }
+                ctx.save();
+                if (event.type === 'phoenix') {
+                    var px = event.x * W + Math.sin(time * 1.2) * W * .08;
+                    var py = H * (.12 + Math.sin(time * .5) * .07);
+                    var gg = ctx.createRadialGradient(px, py, 0, px, py, 60 * eventLife);
+                    gg.addColorStop(0, 'rgba(255,255,255,' + (.9 * eventLife) + ')');
+                    gg.addColorStop(.3, 'rgba(255,215,0,' + (.7 * eventLife) + ')');
+                    gg.addColorStop(.7, 'rgba(200,170,255,' + (.4 * eventLife) + ')');
+                    gg.addColorStop(1, 'rgba(0,0,0,0)');
+                    ctx.fillStyle = gg; ctx.beginPath(); ctx.arc(px, py, 60 * eventLife, 0, Math.PI * 2); ctx.fill();
+                    /* feathers */
+                    for (var f = 0; f < 8; f++) {
+                        var fa = event.t * 2.1 + f * Math.PI * 2 / 8;
+                        var fx = px + Math.cos(fa) * 80 * eventLife, fy = py + Math.sin(fa) * 40 * eventLife;
+                        ctx.globalAlpha = .55 * eventLife;
+                        ctx.fillStyle = f % 2 ? '#ffd700' : '#fff';
+                        ctx.beginPath(); ctx.arc(fx, fy, 5 * eventLife, 0, Math.PI * 2); ctx.fill();
+                    }
+                } else if (event.type === 'comet') {
+                    var cx2 = event.x * W + event.t * W * .55;
+                    var cy2 = H * .05 + event.t * H * .22;
+                    if (cx2 < W * 1.2) {
+                        ctx.globalAlpha = .85 * eventLife;
+                        ctx.strokeStyle = '#ffd700'; ctx.lineWidth = 3; ctx.shadowBlur = 30; ctx.shadowColor = '#ffd700';
+                        ctx.beginPath(); ctx.moveTo(cx2, cy2); ctx.lineTo(cx2 - 120 * eventLife, cy2 - 60 * eventLife); ctx.stroke();
+                        ctx.fillStyle = '#fff'; ctx.beginPath(); ctx.arc(cx2, cy2, 6 * eventLife, 0, Math.PI * 2); ctx.fill();
+                    }
+                } else if (event.type === 'eclipse') {
+                    ctx.globalAlpha = .18 * eventLife;
+                    ctx.fillStyle = '#07051a';
+                    ctx.beginPath(); ctx.arc(W * .5, H * .22, H * .25 * eventLife, 0, Math.PI * 2); ctx.fill();
+                    ctx.globalAlpha = .7 * eventLife;
+                    var halo = ctx.createRadialGradient(W * .5, H * .22, H * .25 * eventLife, W * .5, H * .22, H * .35 * eventLife);
+                    halo.addColorStop(0, 'rgba(255,215,0,.85)'); halo.addColorStop(.4, 'rgba(200,170,255,.5)'); halo.addColorStop(1, 'rgba(0,0,0,0)');
+                    ctx.fillStyle = halo; ctx.beginPath(); ctx.arc(W * .5, H * .22, H * .35 * eventLife, 0, Math.PI * 2); ctx.fill();
+                } else if (event.type === 'fracture') {
+                    ctx.globalAlpha = .28 * eventLife;
+                    ctx.strokeStyle = '#e8d5ff'; ctx.lineWidth = 1.5; ctx.shadowBlur = 20; ctx.shadowColor = '#e8d5ff';
+                    for (var fr = 0; fr < 6; fr++) {
+                        var fa2 = fr * Math.PI / 3;
+                        ctx.beginPath();
+                        ctx.moveTo(W * .5, H * .4);
+                        ctx.lineTo(W * .5 + Math.cos(fa2) * W * .45, H * .4 + Math.sin(fa2) * H * .38);
+                        ctx.stroke();
+                    }
+                } else if (event.type === 'pillar') {
+                    for (var pp = 0; pp < 3; pp++) {
+                        var px2 = (event.x * .5 + pp * .22) * W;
+                        var pg = ctx.createLinearGradient(px2, H, px2, 0);
+                        pg.addColorStop(0, 'rgba(255,215,0,0)');
+                        pg.addColorStop(.4, 'rgba(255,215,0,' + (.35 * eventLife) + ')');
+                        pg.addColorStop(.7, 'rgba(232,213,255,' + (.22 * eventLife) + ')');
+                        pg.addColorStop(1, 'rgba(255,255,255,0)');
+                        ctx.fillStyle = pg; ctx.fillRect(px2 - 4, 0, 8, H);
+                    }
+                } else if (event.type === 'dragon') {
+                    var ang = event.t * 1.6 + event.x * Math.PI * 2;
+                    var drx = W * .5 + Math.cos(ang) * W * .36;
+                    var dry = H * .35 + Math.sin(ang * .6) * H * .22;
+                    ctx.globalAlpha = .55 * eventLife;
+                    var dg = ctx.createRadialGradient(drx, dry, 0, drx, dry, 38 * eventLife);
+                    dg.addColorStop(0, 'rgba(255,255,255,.95)'); dg.addColorStop(.4, 'rgba(200,170,255,.7)'); dg.addColorStop(1, 'rgba(0,0,0,0)');
+                    ctx.fillStyle = dg; ctx.beginPath(); ctx.arc(drx, dry, 38 * eventLife, 0, Math.PI * 2); ctx.fill();
+                }
+                ctx.restore();
+                event.t += .016; eventLife *= .986;
+            }
+
+            function draw(now) {
+                if (state.theme !== 'infinitythrone') return;
+                if (!visible) { state.bgAnimFrame = null; return; }
+                if (now - last < frameMs) { state.bgAnimFrame = requestAnimationFrame(draw); return; }
+                last = now; tick++;
+                var time = tick * .016;
+                ctx.clearRect(0, 0, W, H);
+
+                /* ── Deep space background ── */
+                var bg = ctx.createRadialGradient(W * .5, H * .25, 0, W * .5, H * .5, Math.max(W, H) * .95);
+                bg.addColorStop(0, '#0e0b26'); bg.addColorStop(.28, '#07051a'); bg.addColorStop(.62, '#04030f'); bg.addColorStop(1, '#020109');
+                ctx.fillStyle = bg; ctx.fillRect(0, 0, W, H);
+
+                /* ── Celestial aurora backdrop ── */
+                auroraPhase += .007;
+                for (var a = 0; a < 3; a++) {
+                    var apts = [];
+                    for (var ax = -40; ax <= W + 40; ax += 28) {
+                        apts.push({ x: ax, y: H * (.14 + a * .12) + Math.sin(ax * .005 + auroraPhase * (.8 + a * .14)) * H * .065 + Math.cos(ax * .009 - auroraPhase * .42) * H * .025 });
+                    }
+                    ctx.save(); ctx.globalAlpha = .11 + a * .03; ctx.strokeStyle = a === 0 ? '#ffd700' : a === 1 ? '#e8d5ff' : '#a8edff';
+                    ctx.shadowBlur = 22; ctx.shadowColor = ctx.strokeStyle; ctx.lineWidth = 8 - a;
+                    ctx.beginPath(); ctx.moveTo(apts[0].x, apts[0].y);
+                    apts.slice(1).forEach(function(p) { ctx.lineTo(p.x, p.y); }); ctx.stroke(); ctx.restore();
+                }
+
+                /* ── Light pillars ── */
+                pillars.forEach(function(pil) {
+                    pil.phase += pil.speed;
+                    var px = pil.x * W;
+                    var alpha = .06 + Math.abs(Math.sin(pil.phase)) * .1;
+                    var pg = ctx.createLinearGradient(px, H, px, 0);
+                    pg.addColorStop(0, 'rgba(255,215,0,0)');
+                    pg.addColorStop(.45, 'rgba(255,215,0,' + alpha + ')');
+                    pg.addColorStop(.75, 'rgba(232,213,255,' + (alpha * .6) + ')');
+                    pg.addColorStop(1, 'rgba(255,255,255,0)');
+                    ctx.save(); ctx.fillStyle = pg; ctx.shadowBlur = 18; ctx.shadowColor = '#ffd700';
+                    ctx.fillRect(px - 3, 0, 6, H); ctx.restore();
+                });
+
+                /* ── Floating islands / palace ── */
+                islands.forEach(function(isl) {
+                    isl.phase += isl.speed;
+                    var ix = ((isl.x + Math.sin(isl.phase * .38) * .04) % 1) * W;
+                    var iy = isl.y * H + Math.sin(isl.phase) * 18;
+                    var ir = isl.r * Math.min(W, H) / 420;
+                    var ig = ctx.createRadialGradient(ix, iy, 0, ix, iy, ir * 1.6);
+                    ig.addColorStop(0, 'rgba(255,255,255,.09)');
+                    ig.addColorStop(.4, isl.hue === '#ffd700' ? 'rgba(255,215,0,.05)' : 'rgba(200,170,255,.05)');
+                    ig.addColorStop(1, 'rgba(0,0,0,0)');
+                    ctx.save(); ctx.fillStyle = ig; ctx.shadowBlur = 30; ctx.shadowColor = isl.hue;
+                    ctx.beginPath(); ctx.ellipse(ix, iy, ir * 1.6, ir * .45, 0, 0, Math.PI * 2); ctx.fill(); ctx.restore();
+                    ctx.save(); ctx.globalAlpha = .18; ctx.strokeStyle = isl.hue; ctx.lineWidth = 1;
+                    ctx.shadowBlur = 12; ctx.shadowColor = isl.hue;
+                    ctx.beginPath(); ctx.ellipse(ix, iy, ir * 1.4, ir * .38, 0, 0, Math.PI * 2); ctx.stroke(); ctx.restore();
+                });
+
+                /* ── Celestial rings ── */
+                rings.forEach(function(ring) {
+                    ring.rot += ring.speed;
+                    var rr = ring.r * Math.min(W, H) / 170;
+                    ctx.save(); ctx.translate(ring.x * W, ring.y * H);
+                    ctx.rotate(ring.tilt + ring.rot);
+                    ctx.globalAlpha = .2; ctx.strokeStyle = ring.hue; ctx.shadowBlur = 20; ctx.shadowColor = ring.hue;
+                    ctx.lineWidth = 1.4; ctx.beginPath(); ctx.ellipse(0, 0, rr * 1.85, rr * .44, 0, 0, Math.PI * 2); ctx.stroke();
+                    ctx.globalAlpha = .1; ctx.lineWidth = .8; ctx.beginPath(); ctx.ellipse(0, 0, rr * 1.25, rr * .3, 0, 0, Math.PI * 2); ctx.stroke();
+                    ctx.restore();
+                });
+
+                /* ── Diamond stars ── */
+                stars.forEach(function(star) {
+                    star.phase += .009 * star.z;
+                    var sx = ((star.x + Math.sin(time * .1 + star.phase) * .005) % 1) * W;
+                    var sy = ((star.y + time * .00018 * star.z) % 1) * H;
+                    var alpha = (.14 + star.z * .52) * (.5 + Math.abs(Math.sin(star.phase)) * .5);
+                    ctx.globalAlpha = alpha; ctx.fillStyle = star.hue;
+                    ctx.shadowBlur = star.z > .75 ? 10 : 0; ctx.shadowColor = star.hue;
+                    ctx.beginPath(); ctx.arc(sx, sy, star.r * (.65 + star.z * .55), 0, Math.PI * 2); ctx.fill();
+                });
+                ctx.globalAlpha = 1;
+
+                /* ── Gold dust ── */
+                dust.forEach(function(par) {
+                    par.phase += .022; par.x += par.vx; par.y += par.vy;
+                    if (par.x < -.04) par.x = 1.04; if (par.x > 1.04) par.x = -.04;
+                    if (par.y < -.04) par.y = 1.04; if (par.y > 1.04) par.y = -.04;
+                    var px = par.x * W, py = par.y * H;
+                    var alpha = .16 + Math.abs(Math.sin(par.phase)) * .44;
+                    ctx.globalAlpha = alpha; ctx.fillStyle = par.hue; ctx.shadowBlur = 10; ctx.shadowColor = par.hue;
+                    ctx.beginPath(); ctx.arc(px, py, par.r, 0, Math.PI * 2); ctx.fill();
+                });
+                ctx.globalAlpha = 1;
+
+                /* ── Central divine throne glow ── */
+                var throneX = W * .5 + Math.sin(time * .11) * W * .02;
+                var throneY = H * (.32 + Math.cos(time * .09) * .028);
+                var tg = ctx.createRadialGradient(throneX, throneY, 0, throneX, throneY, Math.min(W, H) * .38);
+                tg.addColorStop(0, 'rgba(255,255,255,.12)');
+                tg.addColorStop(.22, 'rgba(255,215,0,.08)');
+                tg.addColorStop(.55, 'rgba(200,170,255,.05)');
+                tg.addColorStop(1, 'rgba(0,0,0,0)');
+                ctx.fillStyle = tg; ctx.beginPath(); ctx.arc(throneX, throneY, Math.min(W, H) * .38, 0, Math.PI * 2); ctx.fill();
+
+                /* ── World events ── */
+                if (now - lastEvent > EVENT_INTERVAL && Math.random() > .55) {
+                    triggerEvent(); lastEvent = now;
+                }
+                drawEvent(time);
+
+                ctx.globalAlpha = 1; state.bgAnimFrame = requestAnimationFrame(draw);
+            }
+
+            function onVisibilityChange() {
+                visible = !document.hidden;
+                if (!visible && state.bgAnimFrame) { cancelAnimationFrame(state.bgAnimFrame); state.bgAnimFrame = null; }
+                else if (visible && state.theme === 'infinitythrone' && !state.bgAnimFrame) { last = 0; state.bgAnimFrame = requestAnimationFrame(draw); }
+            }
+
+            window.addEventListener('resize', resize, { passive: true });
+            document.addEventListener('visibilitychange', onVisibilityChange, { passive: true });
+            if (finePointer) document.addEventListener('mousemove', cursorMove, { passive: true });
+
+            state.originCleanup = function() {
+                window.removeEventListener('resize', resize);
+                document.removeEventListener('visibilitychange', onVisibilityChange);
+                if (finePointer) document.removeEventListener('mousemove', cursorMove);
+                if (thrCursor && thrCursor.remove) thrCursor.remove();
+                document.querySelectorAll('.infinitythrone-cursor-spark').forEach(function(el) { el.remove(); });
+            };
+            state.originVisibilityCleanup = function() {
+                document.removeEventListener('visibilitychange', onVisibilityChange);
+            };
+            resize(); state.bgAnimFrame = requestAnimationFrame(draw);
+        }
+
 
         /* ── FIREBASE DATA LOADING ── */
         async function loadRealStats() {
@@ -18962,7 +20237,7 @@
             <div class="settings-row-desc">${getTranslation('notifsDesc')}</div></div>
             <div class="settings-toggle ${SETTINGS.notifications ? 'on' : ''}" id="toggle-notifications"><div class="settings-toggle-knob"></div></div></div></div></div>
             <div class="settings-section"><div class="settings-section-title">${getTranslation('themeOptionsLabel')} — ${THEMES.length}</div>
-            <div class="theme-grid">${THEMES.map(t => `<div class="theme-btn ${state.theme === t.id ? 'active' : ''}" data-theme="${t.id}" ${t.op ? 'data-op="true"' : ''} ${t.sss ? 'data-sss="true"' : ''} ${t.mythic ? 'data-mythic="true"' : ''} ${t.transcendent ? 'data-transcendent="true"' : ''} onclick="applyTheme('${t.id}');buildSettings();">
+            <div class="theme-grid">${THEMES.map(t => `<div class="theme-btn ${state.theme === t.id ? 'active' : ''}" data-theme="${t.id}" ${t.op ? 'data-op="true"' : ''} ${t.sss ? 'data-sss="true"' : ''} ${t.mythic ? 'data-mythic="true"' : ''} ${t.transcendent ? 'data-transcendent="true"' : ''} ${t.omniscient ? 'data-omniscient="true"' : ''} ${t.omnipotent ? 'data-omnipotent="true"' : ''} onclick="applyTheme('${t.id}');buildSettings();">
             <div class="theme-swatch" style="background:${t.color};box-shadow:0 2px 8px ${t.color}44;"></div>
             <div><div class="theme-btn-name">${t.name}</div><div class="theme-btn-desc">${t.desc}</div></div></div>`).join('')}</div></div>
             ${state.currentUser ? `<div class="settings-section"><div class="settings-section-title">${getTranslation('settingsAccount')}</div>
