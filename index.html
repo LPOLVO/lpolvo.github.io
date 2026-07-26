@@ -6,11 +6,11 @@
     <meta name="theme-color" content="#080818">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="mobile-web-app-capable" content="yes">
-    <meta name="description" content="LPOLVO HUB v5 — Premium Roblox Scripts, Automation & Community">
-    <meta property="og:title" content="LPOLVO HUB v5">
-    <meta property="og:description" content="Premium Roblox Scripts & Automation Platform — Version 3.2">
+    <meta name="description" content="LPOLVO HUB V1 — Premium Roblox Scripts, Automation & Community">
+    <meta property="og:title" content="LPOLVO HUB V1">
+    <meta property="og:description" content="Premium Roblox Scripts & Automation Platform — V1 Official Public Release">
     <meta property="og:type" content="website">
-    <title>LPOLVO HUB v4</title>
+    <title>LPOLVO HUB V1</title>
     <link rel="icon" type="image/png" href="favicon.png">
     <!-- Premium Fonts: Manrope, Syne, JetBrains Mono, Orbitron, Noto Kufi Arabic -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -69,7 +69,7 @@
 
     <style>
         /* ═══════════════════════════════════════════════════════════════════
-           LPOLVO HUB v3.3 — PREMIUM TYPOGRAPHY SYSTEM
+           LPOLVO HUB V1 — PREMIUM TYPOGRAPHY SYSTEM
            ═══════════════════════════════════════════════════════════════════ */
 
         /* ── BASE VARIABLES ── */
@@ -124,6 +124,7 @@
             --lang-direction: rtl;
             font-family: var(--font-arabic), var(--font-sans);
         }
+        /* Arabic font for headings and display text */
         [dir="rtl"] .nav-logo-text,
         [dir="rtl"] .sidebar-header-title,
         [dir="rtl"] .hero-title,
@@ -142,9 +143,16 @@
         [dir="rtl"] .heading-1,
         [dir="rtl"] .heading-2,
         [dir="rtl"] .heading-3,
-        [dir="rtl"] .heading-4 {
+        [dir="rtl"] .heading-4,
+        [dir="rtl"] .dashboard-section-title,
+        [dir="rtl"] .settings-section-title,
+        [dir="rtl"] .news-card .news-title,
+        [dir="rtl"] .how-step-title,
+        [dir="rtl"] .theme-btn-name {
             font-family: var(--font-arabic), var(--font-display);
+            letter-spacing: 0;
         }
+        /* Arabic font for body text */
         [dir="rtl"] .bottom-nav-label,
         [dir="rtl"] .nav-sign-btn,
         [dir="rtl"] .sidebar-nav-item,
@@ -153,9 +161,81 @@
         [dir="rtl"] .script-detail-meta,
         [dir="rtl"] .body-text,
         [dir="rtl"] .label-text,
-        [dir="rtl"] .button-text {
+        [dir="rtl"] .button-text,
+        [dir="rtl"] .settings-row-desc,
+        [dir="rtl"] .news-desc,
+        [dir="rtl"] .faq-answer,
+        [dir="rtl"] .how-step-desc,
+        [dir="rtl"] .script-card-desc,
+        [dir="rtl"] .theme-btn-desc,
+        [dir="rtl"] .executor-platform,
+        [dir="rtl"] .empty-state-sub,
+        [dir="rtl"] .cat-pill-name,
+        [dir="rtl"] .toast-msg,
+        [dir="rtl"] input,
+        [dir="rtl"] textarea,
+        [dir="rtl"] button {
             font-family: var(--font-arabic), var(--font-sans);
+            letter-spacing: 0;
         }
+        /* RTL layout adjustments */
+        [dir="rtl"] .nav-bar { flex-direction: row-reverse; }
+        [dir="rtl"] .nav-actions { flex-direction: row-reverse; }
+        /* RTL sidebar: slide in from LEFT */
+        [dir="rtl"] #sidebar { left: 0; right: auto; border-left: none; border-right: 1px solid var(--border); transform: translateX(-100%); }
+        [dir="rtl"] #sidebar.open { transform: translateX(0); }
+        /* RTL sidebar header: flip so X button appears on left side */
+        [dir="rtl"] .sidebar-header { flex-direction: row-reverse; }
+        [dir="rtl"] .sidebar-nav-item { flex-direction: row-reverse; text-align: right; }
+        [dir="rtl"] .sidebar-nav-item .sidebar-nav-icon { margin-right: 0; margin-left: 10px; }
+        [dir="rtl"] .settings-row { flex-direction: row-reverse; text-align: right; }
+        [dir="rtl"] .settings-row-info { text-align: right; }
+        [dir="rtl"] .settings-row svg { transform: rotate(180deg); }
+        [dir="rtl"] .section-header { flex-direction: row-reverse; }
+        [dir="rtl"] .section-see-all { margin-right: auto; margin-left: 0; }
+        [dir="rtl"] .script-card { text-align: right; }
+        [dir="rtl"] .script-card-meta { flex-direction: row-reverse; }
+        [dir="rtl"] .script-card-tags { flex-direction: row-reverse; }
+        [dir="rtl"] .news-card { text-align: right; }
+        [dir="rtl"] .news-card-header { flex-direction: row-reverse; }
+        [dir="rtl"] .faq-question { flex-direction: row-reverse; }
+        [dir="rtl"] .how-step { flex-direction: row-reverse; text-align: right; }
+        [dir="rtl"] .how-step-num { margin-right: 0; margin-left: 12px; }
+        [dir="rtl"] .executor-card { flex-direction: row-reverse; text-align: right; }
+        [dir="rtl"] .executor-badge { margin-right: auto; margin-left: 0; }
+        [dir="rtl"] .creator-card { text-align: right; }
+        [dir="rtl"] .bottom-nav-item { flex-direction: column; }
+        [dir="rtl"] .dash-stat { text-align: right; }
+        [dir="rtl"] .dash-quick-actions { direction: rtl; }
+        [dir="rtl"] .profile-info { text-align: right; }
+        [dir="rtl"] .profile-stats { flex-direction: row-reverse; }
+        [dir="rtl"] .auth-modal .form-group label { text-align: right; display: block; }
+        [dir="rtl"] .form-input { text-align: right; }
+        [dir="rtl"] .toast { flex-direction: row-reverse; text-align: right; }
+        [dir="rtl"] .notif-panel { right: auto; left: 8px; }
+        [dir="rtl"] .search-panel { text-align: right; }
+        [dir="rtl"] .hero-content { text-align: center; }
+        [dir="rtl"] .about-card { text-align: right; }
+        [dir="rtl"] .about-card > div:first-child { text-align: center; }
+        [dir="rtl"] .script-meta-row { flex-direction: row-reverse; }
+        [dir="rtl"] .upload-form .form-group { text-align: right; }
+        [dir="rtl"] .sort-filters { flex-direction: row-reverse; }
+        [dir="rtl"] .scripts-filters { flex-direction: row-reverse; }
+        [dir="rtl"] .theme-btn { text-align: right; flex-direction: row-reverse; }
+        [dir="rtl"] .theme-btn .theme-swatch { margin-right: 0; margin-left: 8px; }
+        [dir="rtl"] .lang-grid { direction: rtl; }
+        /* RTL: auth modal close button moves to LEFT */
+        [dir="rtl"] .modal-close-btn,
+        [dir="rtl"] #authCloseBtn {
+            right: auto !important;
+            left: 16px !important;
+        }
+        /* RTL: scroll-to-top button moves to LEFT */
+        [dir="rtl"] #scrollTop { right: auto !important; left: 12px !important; }
+        /* RTL: settings page title alignment */
+        [dir="rtl"] .settings-page-title { text-align: right; }
+        /* RTL: footer text */
+        [dir="rtl"] footer { direction: rtl; }
 
         /* ── TYPOGRAPHY UTILITY CLASSES ── */
         .heading-1 {
@@ -11515,7 +11595,7 @@
             <div class="nav-logo" onclick="navigate('home')">
                 <div class="nav-logo-icon">LP</div>
                 <span class="nav-logo-text">LPOLVO <span>HUB</span></span>
-                <span class="nav-logo-badge">v3.2</span>
+                <span class="nav-logo-badge">V1</span>
             </div>
             <div class="nav-spacer"></div>
             <div class="nav-social-wrap" id="navSocialWrap">
@@ -11546,18 +11626,16 @@
                 <div><div class="sidebar-user-name" id="sidebarUserName"></div><div class="sidebar-user-email" id="sidebarUserEmail"></div></div>
             </div>
             <nav class="sidebar-nav">
-                <button class="sidebar-nav-item active" data-page="home" onclick="navigate('home');closeSidebar();"><span class="sidebar-nav-icon">🏠</span> Home</button>
-                <button class="sidebar-nav-item" data-page="scripts" onclick="navigate('scripts');closeSidebar();"><span class="sidebar-nav-icon">📜</span> Scripts</button>
-                <button class="sidebar-nav-item" data-page="profile" onclick="navigate('profile');closeSidebar();"><span class="sidebar-nav-icon">👤</span> Profile</button>
-                <button class="sidebar-nav-item" data-page="dash" onclick="navigate('dash');closeSidebar();"><span class="sidebar-nav-icon">📊</span> Dashboard</button>
+                <button class="sidebar-nav-item active" data-page="home" onclick="navigate('home');closeSidebar();"><span class="sidebar-nav-icon">🏠</span><span class="sidebar-label">Home</span></button>
+                <button class="sidebar-nav-item" data-page="scripts" onclick="navigate('scripts');closeSidebar();"><span class="sidebar-nav-icon">📜</span><span class="sidebar-label">Scripts</span></button>
+                <button class="sidebar-nav-item" data-page="profile" onclick="navigate('profile');closeSidebar();"><span class="sidebar-nav-icon">👤</span><span class="sidebar-label">Profile</span></button>
+                <button class="sidebar-nav-item" data-page="dash" onclick="navigate('dash');closeSidebar();"><span class="sidebar-nav-icon">📊</span><span class="sidebar-label">Dashboard</span></button>
+                <button class="sidebar-nav-item" data-page="settings" onclick="navigate('settings');closeSidebar();"><span class="sidebar-nav-icon">⚙️</span><span class="sidebar-label">Settings</span></button>
+                <button class="sidebar-nav-item" onclick="openAboutModal();closeSidebar();"><span class="sidebar-nav-icon">ℹ️</span><span class="sidebar-label">About</span></button>
+                <button class="sidebar-nav-item" onclick="closeSidebar();openAuthModal('login');" id="sidebarSignIn"><span class="sidebar-nav-icon">🔐</span><span class="sidebar-label">Sign In</span></button>
+                <button class="sidebar-nav-item" onclick="doSignOut();closeSidebar();" id="sidebarSignOut" style="display:none;"><span class="sidebar-nav-icon">🚪</span><span class="sidebar-label">Sign Out</span></button>
                 <div class="sidebar-divider"></div>
-                <div class="sidebar-section-label">Settings</div>
-                <button class="sidebar-nav-item" data-page="settings" onclick="navigate('settings');closeSidebar();"><span class="sidebar-nav-icon">⚙️</span> Settings</button>
-                <button class="sidebar-nav-item" onclick="openAboutModal();closeSidebar();"><span class="sidebar-nav-icon">ℹ️</span> About</button>
-                <button class="sidebar-nav-item" onclick="closeSidebar();openAuthModal('login');" id="sidebarSignIn"><span class="sidebar-nav-icon">🔐</span> Sign In</button>
-                <button class="sidebar-nav-item" onclick="doSignOut();closeSidebar();" id="sidebarSignOut" style="display:none;"><span class="sidebar-nav-icon">🚪</span> Sign Out</button>
-                <div class="sidebar-divider"></div>
-                <div class="sidebar-section-label">Connect</div>
+                <div class="sidebar-section-label" id="sidebarConnectLabel">Connect</div>
                 <div class="sidebar-social">
                     <a class="sidebar-social-link" href="https://youtube.com/@lpolvoxd1" target="_blank"><svg viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg> YouTube</a>
                     <a class="sidebar-social-link" href="https://discord.gg/JEVVygtkq" target="_blank"><svg viewBox="0 0 24 24"><path d="M20.317 4.3698a19.7913 19.7913 0 0 0-4.8851-1.5152.0741.0741 0 0 0-.0785.0371c-.211.3753-.4447.8648-.6083 1.2495-1.8447-.2762-3.68-.2762-5.5268 0-.1636-.3847-.3973-.8742-.6083-1.2495a.077.077 0 0 0-.0785-.037 19.7363 19.7363 0 0 0-4.8852 1.5152.07.07 0 0 0-.032.027C.5334 9.0458-.319 13.5799.0992 18.0578a.0824.0824 0 0 0 .0312.0561c2.0528 1.5076 4.0413 2.4228 5.9929 3.0294a.0777.0777 0 0 0 .0842-.0276c.4616-.6304.8731-1.2952 1.226-1.9942a.076.076 0 0 0-.0416-.1057c-.6528-.2476-1.2743-.5495-1.8722-.8984a.077.077 0 0 1-.0242-.1131c.1256-.1694.2513-.3444.3711-.5214a.0735.0735 0 0 1 .0846-.0306c3.9286 1.7933 8.1815 1.7933 12.0706 0a.0735.0735 0 0 1 .0846.0306c.1198.177.2455.352.3711.5214a.077.077 0 0 1-.0242.1131c-.5979.3489-1.2194.6508-1.8722.8984a.076.076 0 0 0-.0416.1057c.3529.699.7644 1.3638 1.226 1.9942a.0777.0777 0 0 0 .0842.0276c1.9516-.6066 3.9401-1.5218 5.9929-3.0294a.0824.0824 0 0 0 .0312-.0561c.5-5.177-.8382-9.6739-3.4485-13.651a.07.07 0 0 0-.032-.027zM8.12 15.6756c-1.1816 0-2.1522-1.0833-2.1522-2.4131 0-1.3298.9483-2.4131 2.1522-2.4131 1.204 0 2.1746 1.0833 2.1522 2.4131 0 1.3298-.9483 2.4131-2.1522 2.4131zm7.76 0c-1.1816 0-2.1522-1.0833-2.1522-2.4131 0-1.3298.9483-2.4131 2.1522-2.4131 1.204 0 2.1746 1.0833 2.1522 2.4131 0 1.3298-.9483 2.4131-2.1522 2.4131z"/></svg> Discord</a>
@@ -11569,8 +11647,8 @@
 
         <!-- NOTIFICATIONS -->
         <div id="notifPanel">
-            <div class="notif-panel-header"><span class="notif-panel-title">🔔 Notifications</span><button class="notif-mark-all" onclick="markAllNotifsRead()">Mark all read</button></div>
-            <div class="notif-list" id="notifList"><div class="notif-empty">No notifications yet</div></div>
+            <div class="notif-panel-header"><span class="notif-panel-title" id="notifPanelTitle">🔔 Notifications</span><button class="notif-mark-all" id="notifMarkAllBtn" onclick="markAllNotifsRead()">Mark all read</button></div>
+            <div class="notif-list" id="notifList"><div class="notif-empty" id="notifEmptyText">No notifications yet</div></div>
         </div>
 
         <!-- ═══ PAGES ═══ -->
@@ -11580,12 +11658,12 @@
             <div class="ticker-wrap"><div class="ticker-inner" id="tickerInner"></div></div>
             <div id="announcementBar" style="display:none;"></div>
             <section class="hero">
-                <div class="hero-badge"><span class="hero-badge-dot"></span>ADVANCED SCRIPTS &amp; AUTOMATION</div>
+                <div class="hero-badge"><span class="hero-badge-dot"></span><span id="heroSubtitleText" data-i18n="heroSubtitle">ADVANCED SCRIPTS &amp; AUTOMATION</span></div>
                 <h1 class="hero-title">LPOLVO <span>HUB</span></h1>
-                <p class="hero-desc">Building the future, one script at a time. A centralized hub for premium Roblox scripts and intelligent automation tools.</p>
+                <p id="heroDescText" class="hero-desc" data-i18n="heroDesc">Building the future, one script at a time. A centralized hub for premium Roblox scripts and intelligent automation tools.</p>
                 <div class="hero-btns">
-                    <button class="hero-btn-primary" onclick="navigate('scripts');playClick();"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>EXPLORE SCRIPTS</button>
-                    <button class="hero-btn-secondary" onclick="openAboutModal();playClick();"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>COMMUNITY</button>
+                    <button class="hero-btn-primary" onclick="navigate('scripts');playClick();"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg><span id="heroExploreTxt" data-i18n="exploreScripts">EXPLORE SCRIPTS</span></button>
+                    <button class="hero-btn-secondary" onclick="openAboutModal();playClick();"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg><span id="heroCommunityTxt" data-i18n="community">COMMUNITY</span></button>
                 </div>
             </section>
             <div class="stats-row" id="statsRow">
@@ -11596,7 +11674,7 @@
             </div>
             <section class="home-section"><div class="section-header"><div class="section-title"><span class="section-title-icon">🎮</span> <span class="sect-categories">Categories</span></div></div><div class="categories-scroll" id="categoriesContainer"></div></section>
             <section class="home-section"><div class="section-header"><div class="section-title"><span class="section-title-icon">⭐</span> <span class="sect-spotlight">Spotlight</span></div><span class="section-see-all" data-i18n="seeAll" onclick="navigate('scripts')">See all</span></div><div id="spotlightContainer" style="padding:0 16px;"></div></section>
-            <section class="home-section"><div class="section-header"><div class="section-title"><span class="section-title-icon">🆕</span> <span class="sect-latest">Latest Scripts</span></div><button class="section-see-all" onclick="openUploadModal()" style="background:none;border:none;cursor:pointer;color:var(--accent);font-size:0.75rem;font-weight:600;">+ Add Script</button></div><div class="sort-row" style="padding-bottom:12px;" id="homeSortRow"><button class="sort-btn active" onclick="setSortHome('new')" data-sort="new">🆕 New</button><button class="sort-btn" onclick="setSortHome('hot')" data-sort="hot">🔥 Hot</button><button class="sort-btn" onclick="setSortHome('top')" data-sort="top">🏆 Top</button><button class="sort-btn" onclick="setSortHome('free')" data-sort="free">🆓 Free</button></div><div id="homeScriptsList" class="scripts-grid"></div></section>
+            <section class="home-section"><div class="section-header"><div class="section-title"><span class="section-title-icon">🆕</span> <span class="sect-latest">Latest Scripts</span></div><button id="homeAddScriptBtn" class="section-see-all" onclick="openUploadModal()" style="background:none;border:none;cursor:pointer;color:var(--accent);font-size:0.75rem;font-weight:600;" data-i18n="addScript">+ Add Script</button></div><div class="sort-row" style="padding-bottom:12px;" id="homeSortRow"><button class="sort-btn active" onclick="setSortHome('new')" data-sort="new">🆕 New</button><button class="sort-btn" onclick="setSortHome('hot')" data-sort="hot">🔥 Hot</button><button class="sort-btn" onclick="setSortHome('top')" data-sort="top">🏆 Top</button><button class="sort-btn" onclick="setSortHome('free')" data-sort="free">🆓 Free</button></div><div id="homeScriptsList" class="scripts-grid"></div></section>
             <section class="home-section"><div class="section-header"><div class="section-title"><span class="section-title-icon">💡</span> <span class="sect-how">How It Works</span></div></div><div class="how-steps" id="howStepsList"></div></section>
             <section class="home-section"><div class="section-header"><div class="section-title"><span class="section-title-icon">👑</span> <span class="sect-creators">Top Creators</span></div><span class="section-see-all" data-i18n="seeAll" onclick="navigate('scripts')">See all</span></div><div class="creators-scroll" id="creatorsScroll"></div></section>
             <section class="home-section"><div class="section-header"><div class="section-title"><span class="section-title-icon">🏆</span> <span class="sect-topscripts">Top Scripts</span></div></div><div class="leaderboard-list" id="leaderboardList"></div></section>
@@ -11605,23 +11683,23 @@
             <section class="home-section"><div class="section-header"><div class="section-title"><span class="section-title-icon">❓</span> <span class="sect-faq">FAQ</span></div></div><div class="faq-list" id="faqList"></div></section>
             <footer style="padding:32px 16px 16px;text-align:center;border-top:1px solid var(--border);">
                 <div style="font-family:var(--font-display);font-size:1.05rem;font-weight:800;color:var(--accent);margin-bottom:4px;">LPOLVO HUB</div>
-                <div style="font-family:var(--font-sans);font-size:0.7rem;color:var(--text3);margin-bottom:14px;">v3.2 — Premium Roblox Script Platform</div>
+                <div id="footerVersionText" style="font-family:var(--font-sans);font-size:0.7rem;color:var(--text3);margin-bottom:14px;">V1 — Official Public Release</div>
                 <div style="display:flex;gap:16px;justify-content:center;margin-bottom:16px;flex-wrap:wrap;">
-                    <span onclick="openAboutModal()" style="font-family:var(--font-sans);font-size:0.75rem;color:var(--text3);cursor:pointer;">About</span>
+                    <span id="footerAboutLink" onclick="openAboutModal()" style="font-family:var(--font-sans);font-size:0.75rem;color:var(--text3);cursor:pointer;" data-i18n="footerAbout">About</span>
                     <a href="https://discord.gg/JEVVygtkq" target="_blank" style="font-family:var(--font-sans);font-size:0.75rem;color:var(--text3);cursor:pointer;">Discord</a>
-                    <span onclick="navigate('scripts')" style="font-family:var(--font-sans);font-size:0.75rem;color:var(--text3);cursor:pointer;">Scripts</span>
-                    <span onclick="navigate('settings')" style="font-family:var(--font-sans);font-size:0.75rem;color:var(--text3);cursor:pointer;">Settings</span>
+                    <span id="footerScriptsLink" onclick="navigate('scripts')" style="font-family:var(--font-sans);font-size:0.75rem;color:var(--text3);cursor:pointer;" data-i18n="footerScripts">Scripts</span>
+                    <span id="footerSettingsLink" onclick="navigate('settings')" style="font-family:var(--font-sans);font-size:0.75rem;color:var(--text3);cursor:pointer;" data-i18n="footerSettings">Settings</span>
                 </div>
-                <div style="font-family:var(--font-sans);font-size:0.65rem;color:var(--text3);">Made with ❤️ by LPOLVO</div>
+                <div id="footerMadeWith" style="font-family:var(--font-sans);font-size:0.65rem;color:var(--text3);">Made with ❤️ by LPOLVO</div>
             </footer>
         </main>
 
         <!-- SCRIPTS -->
         <div class="page" id="page-scripts">
-            <div class="scripts-page-header"><div class="scripts-page-title">📜 Scripts</div><button onclick="openUploadModal()" style="height:34px;padding:0 12px;border-radius:9px;background:var(--btn-grad);border:none;color:#fff;font-family:var(--font-sans);font-size:0.72rem;font-weight:700;cursor:pointer;display:flex;align-items:center;gap:6px;box-shadow:0 2px 10px var(--glow2);"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>Add script</button></div>
+            <div class="scripts-page-header"><div class="scripts-page-title" id="scriptsPageTitle">📜 Scripts</div><button id="addScriptBtn" onclick="openUploadModal()" style="height:34px;padding:0 12px;border-radius:9px;background:var(--btn-grad);border:none;color:#fff;font-family:var(--font-sans);font-size:0.72rem;font-weight:700;cursor:pointer;display:flex;align-items:center;gap:6px;box-shadow:0 2px 10px var(--glow2);"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg><span id="addScriptBtnText">Add script</span></button></div>
             <div class="scripts-search-wrap"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg><input class="scripts-search-input" id="scriptsPageSearch" placeholder="Search scripts, games, tags..." autocomplete="off"></div>
             <div class="sort-row" style="padding-bottom:12px;" id="scriptsSortRow"><button class="sort-btn active" onclick="setScriptsSort('all')" data-sort="all">🎮 All</button><button class="sort-btn" onclick="setScriptsSort('new')" data-sort="new">🆕 New</button><button class="sort-btn" onclick="setScriptsSort('hot')" data-sort="hot">🔥 Hot</button><button class="sort-btn" onclick="setScriptsSort('top')" data-sort="top">🏆 Top</button><button class="sort-btn" onclick="setScriptsSort('free')" data-sort="free">🆓 Free</button></div>
-            <div style="padding:0 16px 6px;display:flex;align-items:center;justify-content:space-between;"><span style="font-family:var(--font-sans);font-size:0.72rem;color:var(--text3);" id="scriptsCountLabel">All Scripts</span><span style="font-family:var(--font-sans);font-size:0.7rem;color:var(--text3);" id="scriptsCountNum">0 scripts</span></div>
+            <div style="padding:0 16px 6px;display:flex;align-items:center;justify-content:space-between;"><span style="font-family:var(--font-sans);font-size:0.72rem;color:var(--text3);" id="scriptsCountLabel" data-i18n="allScripts">All Scripts</span><span style="font-family:var(--font-sans);font-size:0.7rem;color:var(--text3);" id="scriptsCountNum">0 scripts</span></div>
             <div id="scriptsPageList" class="scripts-grid" style="padding-bottom:16px;"></div>
         </div>
 
@@ -11632,7 +11710,7 @@
         <div class="page" id="page-dash"><div id="dashContent"></div></div>
 
         <!-- SETTINGS -->
-        <div class="page" id="page-settings"><div style="padding:16px 16px 0;"><div style="font-family:var(--font-display);font-size:1.2rem;font-weight:900;color:var(--text);">⚙️ Settings</div></div><div class="settings-page" id="settingsContent"></div></div>
+        <div class="page" id="page-settings"><div style="padding:16px 16px 0;"><div id="settingsPageTitle" class="settings-page-title" style="font-family:var(--font-display);font-size:1.2rem;font-weight:900;color:var(--text);">⚙️ Settings</div></div><div class="settings-page" id="settingsContent"></div></div>
 
         <!-- BOTTOM NAV -->
         <nav id="bottom-nav">
@@ -11651,36 +11729,36 @@
         <!-- AUTH -->
         <div id="auth-modal">
             <div class="auth-card">
-                <button class="modal-close-btn" onclick="closeAuthModal()">✕</button>
-                <div class="auth-logo"><div class="auth-logo-icon">LP</div><span class="auth-logo-name">LPOLVO HUB</span></div>
-                <div class="auth-tabs"><div class="auth-tab active" id="authTabLogin" onclick="switchAuthMode('login')">Login</div><div class="auth-tab" id="authTabRegister" onclick="switchAuthMode('register')">Register</div><div class="auth-tab" id="authTabReset" onclick="switchAuthMode('reset')" style="display:none;">Reset</div></div>
-                <div class="auth-form active" id="loginForm">
-                    <div class="auth-title">Welcome back</div><div class="auth-sub">Sign in to your LPOLVO HUB account</div>
-                    <div class="form-group"><label class="form-label">Email</label><input type="email" class="form-input" id="loginEmail" placeholder="you@example.com"></div>
-                    <div class="form-group"><label class="form-label">Password</label><input type="password" class="form-input" id="loginPassword" placeholder="••••••••"></div>
-                    <div class="auth-error" id="loginError"></div>
-                    <button class="auth-submit-btn" id="loginBtn" onclick="doLogin()">Sign In</button>
-                    <div class="auth-divider"><div class="auth-divider-line"></div><span class="auth-divider-text">OR</span><div class="auth-divider-line"></div></div>
-                    <button class="google-btn" onclick="doGoogleLogin()"><svg width="18" height="18" viewBox="0 0 24 24"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg>Continue with Google</button>
-                    <div class="auth-footer">Forgot your password? <a onclick="switchAuthMode('reset')">Reset it</a></div>
-                </div>
-                <div class="auth-form" id="registerForm">
-                    <div class="auth-title">Create account</div><div class="auth-sub">Join LPOLVO HUB</div>
-                    <div class="form-group"><label class="form-label">Display Name</label><input type="text" class="form-input" id="regName" placeholder="Your username" maxlength="20"></div>
-                    <div class="form-group"><label class="form-label">Email</label><input type="email" class="form-input" id="regEmail" placeholder="you@example.com"></div>
-                    <div class="form-group"><label class="form-label">Password</label><input type="password" class="form-input" id="regPassword" placeholder="At least 6 characters"></div>
-                    <div class="auth-error" id="regError"></div><div class="auth-success" id="regSuccess"></div>
-                    <button class="auth-submit-btn" id="regBtn" onclick="doRegister()">Create Account</button>
-                    <div class="auth-divider"><div class="auth-divider-line"></div><span class="auth-divider-text">OR</span><div class="auth-divider-line"></div></div>
-                    <button class="google-btn" onclick="doGoogleLogin()"><svg width="18" height="18" viewBox="0 0 24 24"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg>Continue with Google</button>
-                </div>
-                <div class="auth-form" id="resetForm">
-                    <div class="auth-title">Reset password</div><div class="auth-sub">Enter your email to receive a reset link</div>
-                    <div class="form-group"><label class="form-label">Email</label><input type="email" class="form-input" id="resetEmail" placeholder="you@example.com"></div>
-                    <div class="auth-error" id="resetError"></div><div class="auth-success" id="resetSuccess"></div>
-                    <button class="auth-submit-btn" onclick="doPasswordReset()">Send Reset Link</button>
-                    <div class="auth-footer"><a onclick="switchAuthMode('login')">← Back to login</a></div>
-                </div>
+                <button class="modal-close-btn" id="authCloseBtn" onclick="closeAuthModal()">✕</button>
+                 <div class="auth-logo"><div class="auth-logo-icon">LP</div><span class="auth-logo-name">LPOLVO HUB</span></div>
+                 <div class="auth-tabs"><div class="auth-tab active" id="authTabLogin" onclick="switchAuthMode('login')">Login</div><div class="auth-tab" id="authTabRegister" onclick="switchAuthMode('register')">Register</div><div class="auth-tab" id="authTabReset" onclick="switchAuthMode('reset')" style="display:none;">Reset</div></div>
+                 <div class="auth-form active" id="loginForm">
+                     <div class="auth-title" id="loginTitle">Welcome back</div><div class="auth-sub" id="loginSub">Sign in to your LPOLVO HUB account</div>
+                     <div class="form-group"><label class="form-label" id="loginEmailLabel">Email</label><input type="email" class="form-input" id="loginEmail" placeholder="you@example.com"></div>
+                     <div class="form-group"><label class="form-label" id="loginPasswordLabel">Password</label><input type="password" class="form-input" id="loginPassword" placeholder="••••••••"></div>
+                     <div class="auth-error" id="loginError"></div>
+                     <button class="auth-submit-btn" id="loginBtn" onclick="doLogin()">Sign In</button>
+                     <div class="auth-divider"><div class="auth-divider-line"></div><span class="auth-divider-text" id="loginOrText">OR</span><div class="auth-divider-line"></div></div>
+                     <button class="google-btn" id="loginGoogleBtn" onclick="doGoogleLogin()"><svg width="18" height="18" viewBox="0 0 24 24"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg><span id="loginGoogleText">Continue with Google</span></button>
+                     <div class="auth-footer"><span id="loginForgotText">Forgot your password?</span> <a onclick="switchAuthMode('reset')" id="loginResetLink">Reset it</a></div>
+                 </div>
+                 <div class="auth-form" id="registerForm">
+                     <div class="auth-title" id="regTitle">Create account</div><div class="auth-sub" id="regSub">Join LPOLVO HUB</div>
+                     <div class="form-group"><label class="form-label" id="regNameLabel">Display Name</label><input type="text" class="form-input" id="regName" placeholder="Your username" maxlength="20"></div>
+                     <div class="form-group"><label class="form-label" id="regEmailLabel">Email</label><input type="email" class="form-input" id="regEmail" placeholder="you@example.com"></div>
+                     <div class="form-group"><label class="form-label" id="regPasswordLabel">Password</label><input type="password" class="form-input" id="regPassword" placeholder="At least 6 characters"></div>
+                     <div class="auth-error" id="regError"></div><div class="auth-success" id="regSuccess"></div>
+                     <button class="auth-submit-btn" id="regBtn" onclick="doRegister()">Create Account</button>
+                     <div class="auth-divider"><div class="auth-divider-line"></div><span class="auth-divider-text" id="regOrText">OR</span><div class="auth-divider-line"></div></div>
+                     <button class="google-btn" id="regGoogleBtn" onclick="doGoogleLogin()"><svg width="18" height="18" viewBox="0 0 24 24"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg><span id="regGoogleText">Continue with Google</span></button>
+                 </div>
+                 <div class="auth-form" id="resetForm">
+                     <div class="auth-title" id="resetTitle">Reset password</div><div class="auth-sub" id="resetSub">Enter your email to receive a reset link</div>
+                     <div class="form-group"><label class="form-label" id="resetEmailLabel">Email</label><input type="email" class="form-input" id="resetEmail" placeholder="you@example.com"></div>
+                     <div class="auth-error" id="resetError"></div><div class="auth-success" id="resetSuccess"></div>
+                     <button class="auth-submit-btn" id="resetSubmitBtn" onclick="doPasswordReset()">Send Reset Link</button>
+                     <div class="auth-footer"><a onclick="switchAuthMode('login')" id="resetBackLink">← Back to login</a></div>
+                 </div>
             </div>
         </div>
 
@@ -11735,10 +11813,10 @@
                 <div style="text-align:center;margin-bottom:20px;">
                     <div style="width:72px;height:72px;border-radius:20px;background:var(--btn-grad);display:flex;align-items:center;justify-content:center;font-family:var(--font-orb);font-size:1.3rem;font-weight:900;color:#fff;margin:0 auto 12px;box-shadow:0 4px 20px var(--glow2);animation:glow-pulse 2s ease-in-out infinite;">LP</div>
                     <div style="font-family:var(--font-display);font-size:1.3rem;font-weight:900;color:var(--text);">LPOLVO HUB</div>
-                    <div style="font-family:var(--font-sans);font-size:0.72rem;color:var(--text3);margin-top:4px;" id="aboutVersionText">v8.0 — Premium Roblox Script Platform</div>
+                    <div style="font-family:var(--font-sans);font-size:0.72rem;color:var(--text3);margin-top:4px;" id="aboutVersionText">V1 — Official Public Release</div>
                 </div>
                 <div style="display:flex;flex-direction:column;gap:10px;margin-bottom:20px;">
-                    <div style="background:var(--bg3);border:1px solid var(--border);border-radius:var(--radius);padding:12px;font-family:var(--font-sans);font-size:0.8rem;color:var(--text2);line-height:1.5;">LPOLVO HUB V8 is a community-driven premium platform for Roblox scripts. Now featuring the first-ever OMNIPOTENT rarity with Infinity Throne — a divine operating system that controls reality. Find, share and discover high-quality Lua scripts for your favorite Roblox games.</div>
+                    <div id="aboutDescText" style="background:var(--bg3);border:1px solid var(--border);border-radius:var(--radius);padding:12px;font-family:var(--font-sans);font-size:0.8rem;color:var(--text2);line-height:1.5;">LPOLVO HUB V1 is the first official public release — a community-driven premium platform for Roblox scripts. After extensive internal development, we are proud to present the most advanced version with full localization, 52+ themes, Firebase authentication, and complete Arabic & French support. Find, share and discover high-quality Lua scripts for your favorite Roblox games.</div>
                     <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;"><div style="background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:12px;text-align:center;"><div style="font-family:var(--font-display);font-size:1.1rem;font-weight:800;color:var(--accent);" id="aboutStatScripts">—</div><div style="font-family:var(--font-sans);font-size:0.62rem;color:var(--text3);text-transform:uppercase;letter-spacing:0.08em;">Scripts</div></div><div style="background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:12px;text-align:center;"><div style="font-family:var(--font-display);font-size:1.1rem;font-weight:800;color:var(--accent);" id="aboutStatUsers">—</div><div style="font-family:var(--font-sans);font-size:0.62rem;color:var(--text3);text-transform:uppercase;letter-spacing:0.08em;">Users</div></div></div>
                 </div>
                 <div style="display:flex;gap:8px;"><button onclick="closeAboutModal()" style="flex:1;height:44px;border-radius:var(--btn-radius);background:var(--btn-grad);border:none;color:#fff;font-family:var(--font-sans);font-weight:700;cursor:pointer;">Got it</button></div>
@@ -11749,7 +11827,7 @@
 
     <script>
         /* ═══════════════════════════════════════════════════════════════════
-           LPOLVO HUB v3.3 — COMPLETE APPLICATION
+           LPOLVO HUB V1 — COMPLETE APPLICATION
            ═══════════════════════════════════════════════════════════════════ */
 
         /* ── CONSTANTS ── */
@@ -11783,24 +11861,64 @@
             { num: '03', title: 'Run in Executor', desc: 'Paste the script into your favorite executor and enjoy the features.' },
         ];
 
-        const NEWS = [
-            { badge: 'update', badgeClass: 'news-badge-update', date: 'Jul 2026', title: 'LPOLVO HUB V8 Released',
-                desc: 'Version 8 is live — the most advanced visual and audio overhaul in LPOLVO HUB history, introducing the first OMNIPOTENT rarity.' },
-            { badge: 'new', badgeClass: 'news-badge-new', date: 'Jul 2026', title: 'First OMNIPOTENT Rarity Introduced',
-                desc: 'OMNIPOTENT is a brand-new tier above OMNISCIENT, representing absolute power. Nothing will ever feel stronger.' },
-            { badge: 'new', badgeClass: 'news-badge-new', date: 'Jul 2026', title: 'Infinity Throne Added',
-                desc: 'The flagship OMNIPOTENT theme is here. A divine throne floating above existence, where reality itself is written.' },
-            { badge: 'update', badgeClass: 'news-badge-update', date: 'Jul 2026', title: 'New Cinematic Background Engine',
-                desc: 'Infinite celestial palace, floating crystal staircases, energy oceans, divine auroras, and world events all move with independent layered depth.' },
-            { badge: 'update', badgeClass: 'news-badge-update', date: 'Jul 2026', title: 'New Particle System',
-                desc: 'Diamond dust, sacred feathers, golden leaves, crystal snow, and radiant stars fill the Infinity Throne with living atmosphere.' },
-            { badge: 'update', badgeClass: 'news-badge-update', date: 'Jul 2026', title: 'Lighting & Cursor Improvements',
-                desc: 'New bloom, cinematic glow, crystal reflections, and a premium divine cursor with orbiting celestial rings and platinum sparks.' },
-            { badge: 'update', badgeClass: 'news-badge-update', date: 'Jul 2026', title: 'Better Animations Throughout',
-                desc: 'Cards float more naturally, buttons emit soft energy waves, and menus unfold with lighter, more elegant transitions.' },
-            { badge: 'fix', badgeClass: 'news-badge-fix', date: 'Jul 2026', title: 'Performance & Bug Fixes',
-                desc: 'Optimized requestAnimationFrame loops, reduced particle density on low-end devices, and various interaction and sound fixes.' },
-        ];
+        const NEWS_DATA = {
+            en: [
+                { badge: 'update', badgeClass: 'news-badge-update', date: 'Jul 2026', title: 'LPOLVO HUB V1 — Official Public Release',
+                    desc: 'After extensive internal development, LPOLVO HUB V1 is officially live. This marks the first public release with all core systems fully operational.' },
+                { badge: 'new', badgeClass: 'news-badge-new', date: 'Jul 2026', title: 'Complete Localization System',
+                    desc: 'V1 introduces a professional localization system supporting English, French, and Arabic. Every element of the interface is fully translated.' },
+                { badge: 'new', badgeClass: 'news-badge-new', date: 'Jul 2026', title: 'Full Arabic Support with RTL',
+                    desc: 'Arabic speakers now enjoy a fully native experience with proper RTL layout, Arabic typography, and culturally natural translations throughout the entire platform.' },
+                { badge: 'new', badgeClass: 'news-badge-new', date: 'Jul 2026', title: 'Full French Support',
+                    desc: 'French-speaking users now have a completely localized experience with professional, native-quality translations across all pages and features.' },
+                { badge: 'update', badgeClass: 'news-badge-update', date: 'Jul 2026', title: 'Dynamic Translation — No Reload',
+                    desc: 'Switching language instantly updates every element on the page — nav, themes, descriptions, buttons, toasts — without any page reload.' },
+                { badge: 'new', badgeClass: 'news-badge-new', date: 'Jul 2026', title: 'Theme Name Localization',
+                    desc: 'All 52+ theme names and descriptions are now fully translated into Arabic and French, including Infinity Throne, The Omniscient Eye, Genesis Protocol, and all rarities.' },
+                { badge: 'update', badgeClass: 'news-badge-update', date: 'Jul 2026', title: 'UI Refinements & Better Performance',
+                    desc: 'Cards, buttons, menus and animations received polish passes. Optimized rendering loops for lower resource usage across all device types.' },
+                { badge: 'fix', badgeClass: 'news-badge-fix', date: 'Jul 2026', title: 'General Bug Fixes',
+                    desc: 'Resolved various interaction issues, improved Firebase reliability, and fixed several layout inconsistencies in RTL mode.' },
+            ],
+            ar: [
+                { badge: 'تحديث', badgeClass: 'news-badge-update', date: 'يوليو 2026', title: 'LPOLVO HUB V1 — الإصدار الرسمي',
+                    desc: 'بعد فترة طويلة من التطوير الداخلي، أصبح LPOLVO HUB V1 رسميًا متاحًا للعموم. هذا هو أول إصدار عام مع اكتمال جميع الأنظمة الأساسية.' },
+                { badge: 'جديد', badgeClass: 'news-badge-new', date: 'يوليو 2026', title: 'نظام التعريب الكامل',
+                    desc: 'يُقدّم الإصدار V1 نظام توطين احترافي يدعم الإنجليزية والفرنسية والعربية. كل عنصر في الواجهة مترجم بالكامل.' },
+                { badge: 'جديد', badgeClass: 'news-badge-new', date: 'يوليو 2026', title: 'دعم العربية الكامل مع RTL',
+                    desc: 'يتمتع المستخدمون الناطقون بالعربية الآن بتجربة أصيلة مع تخطيط RTL الصحيح وخطوط عربية وترجمات طبيعية في جميع أنحاء المنصة.' },
+                { badge: 'جديد', badgeClass: 'news-badge-new', date: 'يوليو 2026', title: 'دعم الفرنسية الكامل',
+                    desc: 'يتمتع المستخدمون الناطقون بالفرنسية بتجربة محلّية بالكامل مع ترجمات احترافية عالية الجودة في جميع الصفحات والميزات.' },
+                { badge: 'تحديث', badgeClass: 'news-badge-update', date: 'يوليو 2026', title: 'ترجمة فورية — بدون إعادة تحميل',
+                    desc: 'تبديل اللغة يُحدّث فورًا كل عنصر في الصفحة — التنقل، المظاهر، الأوصاف، الأزرار — دون أي إعادة تحميل.' },
+                { badge: 'جديد', badgeClass: 'news-badge-new', date: 'يوليو 2026', title: 'ترجمة أسماء المظاهر',
+                    desc: 'جميع أسماء المظاهر 52+ وأوصافها مترجمة الآن إلى العربية والفرنسية، بما في ذلك عرش اللانهاية وعين كليّ المعرفة وبروتوكول التكوين.' },
+                { badge: 'تحديث', badgeClass: 'news-badge-update', date: 'يوليو 2026', title: 'تحسينات الواجهة والأداء',
+                    desc: 'حصلت البطاقات والأزرار والقوائم والرسوم المتحركة على تحسينات. حلقات عرض محسّنة لاستخدام موارد أقل على جميع أنواع الأجهزة.' },
+                { badge: 'إصلاح', badgeClass: 'news-badge-fix', date: 'يوليو 2026', title: 'إصلاحات عامة',
+                    desc: 'حل مشكلات تفاعل متعددة، وتحسين موثوقية Firebase، وإصلاح عدة تناقضات في التخطيط في وضع RTL.' },
+            ],
+            fr: [
+                { badge: 'mise à jour', badgeClass: 'news-badge-update', date: 'Juil 2026', title: 'LPOLVO HUB V1 — Sortie Officielle',
+                    desc: 'Après un long développement interne, LPOLVO HUB V1 est officiellement disponible. Ceci marque la première sortie publique avec tous les systèmes principaux opérationnels.' },
+                { badge: 'nouveau', badgeClass: 'news-badge-new', date: 'Juil 2026', title: 'Système de Localisation Complet',
+                    desc: 'V1 introduit un système de localisation professionnel supportant l\'anglais, le français et l\'arabe. Chaque élément de l\'interface est entièrement traduit.' },
+                { badge: 'nouveau', badgeClass: 'news-badge-new', date: 'Juil 2026', title: 'Support Arabe Complet avec RTL',
+                    desc: 'Les arabophones bénéficient désormais d\'une expérience entièrement native avec une mise en page RTL correcte et des traductions culturellement naturelles.' },
+                { badge: 'nouveau', badgeClass: 'news-badge-new', date: 'Juil 2026', title: 'Support Français Complet',
+                    desc: 'Les francophones disposent maintenant d\'une expérience entièrement localisée avec des traductions professionnelles et natives sur toutes les pages.' },
+                { badge: 'mise à jour', badgeClass: 'news-badge-update', date: 'Juil 2026', title: 'Traduction Dynamique — Sans Rechargement',
+                    desc: 'Changer de langue met instantanément à jour chaque élément de la page — navigation, thèmes, descriptions, boutons — sans aucun rechargement.' },
+                { badge: 'nouveau', badgeClass: 'news-badge-new', date: 'Juil 2026', title: 'Localisation des Noms de Thèmes',
+                    desc: 'Tous les noms et descriptions des 52+ thèmes sont maintenant entièrement traduits en arabe et en français, incluant Trône de l\'Infini et L\'Œil Omniscient.' },
+                { badge: 'mise à jour', badgeClass: 'news-badge-update', date: 'Juil 2026', title: 'Améliorations UI & Performances',
+                    desc: 'Les cartes, boutons, menus et animations ont été polis. Boucles de rendu optimisées pour une utilisation réduite des ressources sur tous les appareils.' },
+                { badge: 'correctif', badgeClass: 'news-badge-fix', date: 'Juil 2026', title: 'Corrections Générales',
+                    desc: 'Résolution de divers problèmes d\'interaction, amélioration de la fiabilité Firebase et correction d\'incohérences de mise en page en mode RTL.' },
+            ],
+        };
+        // Backward compatible NEWS reference (used by buildNews if not updated)
+        const NEWS = NEWS_DATA.en;
 
         const FAQS = [
             { q: 'Are the scripts safe to use?',
@@ -11818,10 +11936,11 @@
         ];
 
         const TICKER_ITEMS = [
-            '🚀 LPOLVO HUB v3.3 is live!', '🎨 52 immersive themes with dynamic backgrounds',
-            '🔥 Each theme has unique particles & sounds', '⭐ Submit your script today',
-            '🌙 Blood Moon, Blue Moon, Ramadan & more', '🌐 52 premium themes available',
-            '👑 Creator profiles now live!', '🎮 100% compatible with mobile executors'
+            '🚀 LPOLVO HUB V1 — Official Public Release!', '🌐 Now with Full Arabic & French Support',
+            '🔥 52+ immersive themes with dynamic backgrounds', '⭐ Submit your script today',
+            '🌙 Complete RTL support for Arabic', '🎨 Each theme has unique particles & sounds',
+            '👑 Creator profiles now live!', '🎮 100% compatible with mobile executors',
+            '🌟 Dynamic Translation — no page reload needed', '⚡ Infinity Throne: OMNIPOTENT rarity'
         ];
 
         /* ── THEMES WITH METADATA ── */
@@ -11964,6 +12083,188 @@
             { id: 'top_creator', icon: '🏆', name: 'Top Creator', desc: 'Reached top 10 creators' },
             { id: 'popular', icon: '📈', name: 'Popular', desc: 'Script reached 1000 views' },
         ];
+
+        /* ── THEME NAME LOCALIZATIONS ── */
+        const THEME_NAMES = {
+            ar: {
+                lpolvo:'LPOLVO الأزرق', bloodmoon:'قمر الدم 🌑🔴', bluemoon:'القمر الأزرق 🌙🔵',
+                ramadan:'رمضان 🌙✨', eclipse:'كسوف 🌗', dragon:'التنين 🐉',
+                phoenix:'الفينيق 🔥', aurora:'الأورا 🌈', cybercity:'المدينة السيبرانية 🌃',
+                samurai:'الساموراي ⚔️', egypt:'مصر القديمة 🏛️', darkcastle:'القلعة المظلمة 🏰',
+                angel:'الملاك 👼', demon:'الشيطان 👿', crystal:'الكريستال 💎',
+                royalpalace:'القصر الملكي 👑', underwater:'تحت الماء 🌊', dreamworld:'عالم الأحلام 🌙',
+                fantasyforest:'الغابة الخيالية 🌳', timetravel:'السفر عبر الزمن ⏳',
+                robotfuture:'مستقبل الروبوت 🤖', ai:'الذكاء الاصطناعي 🧠',
+                quantum:'الكم ⚛️', galaxywar:'حرب المجرات 🌌', ancient:'الحضارة القديمة 🏺',
+                sakura:'الساكورا 🌸', ocean:'المحيط 🌊', hacker:'الهاكر 💻',
+                galaxy:'المجرة 🌌', fire:'النار 🔥', moon:'القمر 🌙', sun:'الشمس ☀️',
+                midnight:'منتصف الليل', gold:'الذهب الفاخر', neon:'النيون',
+                vaporwave:'موجة البخار', retro:'ريترو', minimal:'بسيط',
+                royal:'الأزرق الملكي', space:'الفضاء', matrix:'المصفوفة',
+                volcano:'البركان', lightning:'البرق', purple:'البنفسجي',
+                reddevil:'الشيطان الأحمر', emerald:'الزمرد', rainbow:'قوس قزح',
+                dark:'داكن', light:'فاتح', cyberpunk:'سايبربانك', glass:'زجاج',
+                cosmicvoid:'الفراغ الكوني 🌌', spiritblossom:'روح الزهرة 🌸',
+                thundergod:'إله الرعد ⚡', celestialkingdom:'المملكة السماوية 👑',
+                abyssalocean:'محيط الهاوية 🌊', frozenkingdom:'المملكة المجمدة 🧊',
+                meteorstorm:'عاصفة النيازك ☄️', infernalcore:'نواة الجحيم 🌋',
+                auroranova:'أورا نوفا 🌈', shadowrealm:'عالم الظلام 🌑',
+                crystalcave:'كهف الكريستال 💎', lunarwolf:'ذئب القمر 🐺',
+                steampunk:'ستيمبانك ⚙️', phantomcarnival:'كرنفال الشبح 🎭',
+                timerift:'شق الزمن 🌌', bloodeclipse:'كسوف الدم 🌑',
+                dragonrealm:'عالم التنانين 🐉', thunderstorm:'العاصفة الرعدية ⚡',
+                spiritsakura:'روح الساكورا 🌸', frozenempire:'الإمبراطورية المجمدة 🧊',
+                aurorasky:'سماء الأورا 🌌', moonkingdom:'مملكة القمر 🌙',
+                sunkingdom:'مملكة الشمس ☀️', dreamuniverse:'كون الأحلام 🌠',
+                phantomrealm:'عالم الشبح 👻', divineheaven:'الجنة الإلهية ✨',
+                voidwalker:'سالك الفراغ 🌌', abysscore:'نواة الهاوية 🌊',
+                solarflare:'الانفجار الشمسي ☀️', nebulacore:'نواة السديم 🌠',
+                shadowking:'ملك الظلال 👑', goldenempire:'الإمبراطورية الذهبية 💛',
+                crystalheart:'قلب الكريستال 💎', cosmicfire:'النار الكونية 🌋',
+                eternaldusk:'الغسق الأبدي 🌅', emeraldabyss:'هاوية الزمرد 💚',
+                rubyinferno:'جهنم الياقوت 🔥',
+                celestialascension:'⭐ الصعود السماوي 👑', blackholesingularity:'🔥 انفراد الثقب الأسود 🕳️',
+                crimsonapocalypse:'⭐ نهاية القرمزي ☄️', frozeneternity:'🔥 الأبدية المجمدة ❄️',
+                neoncybernexus:'⭐ نيكسوس النيون 🤖', phantomnightmare:'🔥 كابوس الشبح 👻',
+                dragonemperor:'⭐ إمبراطور التنين 🐉', universecreator:'🔥 خالق الكون 🌌',
+                divineocean:'⭐ المحيط الإلهي 🌊', infernalking:'🔥 ملك الجحيم 🔥',
+                sakuraheaven:'⭐ جنة الساكورا 🌸', infinitydimension:'🔥 بُعد اللانهاية ♾️',
+                arabianlegacy:'الإرث العربي', moroccanlegacy:'الإرث المغربي',
+                godsdomain:'مجال الإله', genesisprotocol:'بروتوكول التكوين 🌌',
+                chronoinfinity:'كرونو لانهاية ⏳', elysium:'إيليزيوم',
+                aetherdominion:'سيادة الأثير', theabsolute:'المطلق',
+                eternalnexus:'∞ النيكسوس الأبدي', omniscienteye:'عين كليّ المعرفة',
+                infinitythrone:'عرش اللانهاية',
+            },
+            fr: {
+                lpolvo:'LPOLVO Bleu', bloodmoon:'Lune de Sang 🌑🔴', bluemoon:'Lune Bleue 🌙🔵',
+                ramadan:'Ramadan 🌙✨', eclipse:'Éclipse 🌗', dragon:'Dragon 🐉',
+                phoenix:'Phénix 🔥', aurora:'Aurore 🌈', cybercity:'Cyber Cité 🌃',
+                samurai:'Samouraï ⚔️', egypt:'Égypte Antique 🏛️', darkcastle:'Château Sombre 🏰',
+                angel:'Ange 👼', demon:'Démon 👿', crystal:'Cristal 💎',
+                royalpalace:'Palais Royal 👑', underwater:'Sous-Marin 🌊', dreamworld:'Monde des Rêves 🌙',
+                fantasyforest:'Forêt Fantastique 🌳', timetravel:'Voyage dans le Temps ⏳',
+                robotfuture:'Futur Robot 🤖', ai:'IA 🧠', quantum:'Quantique ⚛️',
+                galaxywar:'Guerre des Galaxies 🌌', ancient:'Civilisation Ancienne 🏺',
+                sakura:'Sakura 🌸', ocean:'Océan 🌊', hacker:'Hacker 💻',
+                galaxy:'Galaxie 🌌', fire:'Feu 🔥', moon:'Lune 🌙', sun:'Soleil ☀️',
+                midnight:'Minuit', gold:'Or de Luxe', neon:'Néon',
+                vaporwave:'Vaporwave', retro:'Rétro', minimal:'Minimal',
+                royal:'Bleu Royal', space:'Espace', matrix:'Matrix',
+                volcano:'Volcan', lightning:'Foudre', purple:'Violet',
+                reddevil:'Diable Rouge', emerald:'Émeraude', rainbow:'Arc-en-Ciel',
+                dark:'Sombre', light:'Clair', cyberpunk:'Cyberpunk', glass:'Verre',
+                cosmicvoid:'Vide Cosmique 🌌', spiritblossom:'Esprit Floral 🌸',
+                thundergod:'Dieu du Tonnerre ⚡', celestialkingdom:'Royaume Céleste 👑',
+                abyssalocean:'Océan Abyssal 🌊', frozenkingdom:'Royaume Glacé 🧊',
+                meteorstorm:'Tempête de Météores ☄️', infernalcore:'Noyau Infernal 🌋',
+                auroranova:'Aurora Nova 🌈', shadowrealm:'Royaume des Ombres 🌑',
+                crystalcave:'Grotte de Cristal 💎', lunarwolf:'Loup Lunaire 🐺',
+                steampunk:'Steampunk ⚙️', phantomcarnival:'Carnaval Fantôme 🎭',
+                timerift:'Fissure Temporelle 🌌', bloodeclipse:'Éclipse de Sang 🌑',
+                dragonrealm:'Royaume des Dragons 🐉', thunderstorm:'Tempête ⚡',
+                spiritsakura:'Sakura Spirituel 🌸', frozenempire:'Empire Glacé 🧊',
+                aurorasky:'Ciel Aurora 🌌', moonkingdom:'Royaume de la Lune 🌙',
+                sunkingdom:'Royaume du Soleil ☀️', dreamuniverse:'Univers des Rêves 🌠',
+                phantomrealm:'Royaume Fantôme 👻', divineheaven:'Ciel Divin ✨',
+                voidwalker:'Marcheur du Vide 🌌', abysscore:'Noyau Abyssal 🌊',
+                solarflare:'Éruption Solaire ☀️', nebulacore:'Noyau Nébuleux 🌠',
+                shadowking:'Roi des Ombres 👑', goldenempire:'Empire Doré 💛',
+                crystalheart:'Cœur de Cristal 💎', cosmicfire:'Feu Cosmique 🌋',
+                eternaldusk:'Crépuscule Éternel 🌅', emeraldabyss:'Abîme Émeraude 💚',
+                rubyinferno:'Enfer de Rubis 🔥',
+                celestialascension:'⭐ Ascension Céleste 👑', blackholesingularity:'🔥 Singularité Trou Noir 🕳️',
+                crimsonapocalypse:'⭐ Apocalypse Cramoisi ☄️', frozeneternity:'🔥 Éternité Gelée ❄️',
+                neoncybernexus:'⭐ Néon Cyber Nexus 🤖', phantomnightmare:'🔥 Cauchemar Fantôme 👻',
+                dragonemperor:"⭐ Empereur Dragon 🐉", universecreator:'🔥 Créateur Universel 🌌',
+                divineocean:'⭐ Océan Divin 🌊', infernalking:'🔥 Roi Infernal 🔥',
+                sakuraheaven:'⭐ Paradis Sakura 🌸', infinitydimension:'🔥 Dimension Infinie ♾️',
+                arabianlegacy:'Héritage Arabe', moroccanlegacy:'Héritage Marocain',
+                godsdomain:'Domaine des Dieux', genesisprotocol:'Protocole de la Genèse 🌌',
+                chronoinfinity:'Chrono Infini ⏳', elysium:'Élysée',
+                aetherdominion:'Dominion Éthéré', theabsolute:"L'Absolu",
+                eternalnexus:'∞ Nexus Éternel', omniscienteye:"L'Œil Omniscient",
+                infinitythrone:"Trône de l'Infini",
+            }
+        };
+
+        /* ── THEME DESC LOCALIZATIONS ── */
+        const THEME_DESCS = {
+            ar: {
+                lpolvo:'افتراضي', bloodmoon:'غموض داكن', bluemoon:'سحر هادئ',
+                ramadan:'ليالٍ هادئة', eclipse:'النهار والليل', dragon:'نار وحراشف',
+                phoenix:'البعث', aurora:'الأضواء الشمالية', cybercity:'أضواء النيون',
+                samurai:'روح المحارب', egypt:'إرث الفرعون', darkcastle:'ظلال قوطية',
+                angel:'الضوء الإلهي', demon:'قوة جهنمية', crystal:'ساطع',
+                royalpalace:'فاخر', underwater:'أزرق عميق', dreamworld:'خيال',
+                fantasyforest:'مسحور', timetravel:'زمني', robotfuture:'تقنية',
+                ai:'ذكاء', quantum:'فيزياء', galaxywar:'معركة كونية', ancient:'غموض',
+                sakura:'زهر الكرز', ocean:'أعماق البحر', hacker:'مطر المصفوفة',
+                galaxy:'الفضاء العميق', fire:'حرارة ولهب', moon:'أجواء الليل',
+                sun:'ضوء ذهبي', midnight:'نيلي داكن', gold:'ذهب فاخر',
+                neon:'توهج النيون', vaporwave:'ريترو الثمانينيات', retro:'دفء كلاسيكي',
+                minimal:'ضوء نظيف', royal:'ملكي فاخر', space:'الفضاء الكوني',
+                matrix:'المطر الرقمي', volcano:'حرارة الحمم', lightning:'عاصفة كهربائية',
+                purple:'بنفسجي عميق', reddevil:'نار الجحيم', emerald:'أخضر عميق',
+                rainbow:'ملوّن', dark:'ظل عميق', light:'مضيء نظيف',
+                cyberpunk:'مستقبل النيون', glass:'مثلج',
+                celestialascension:'المملكة السماوية فوق الغيوم', blackholesingularity:'الجاذبية وتشويه الفضاء',
+                crimsonapocalypse:'نهاية العالم', frozeneternity:'المملكة المجمدة اللانهائية',
+                neoncybernexus:'هولوغرامات المدينة السيبرانية', phantomnightmare:'أشباح داكنة وضباب بنفسجي',
+                dragonemperor:'تنانين قديمة ونار ذهبية', universecreator:'المجرات والنجوم في طور الولادة',
+                divineocean:'مياه كريستالية وحياة مضيئة', infernalking:'براكين ونار شيطانية',
+                sakuraheaven:'أشجار الساكورا العملاقة والأضرحة', infinitydimension:'تشويه الواقع والبوابات',
+                arabianlegacy:'عظمة الصحراء والعصر الذهبي الإسلامي', moroccanlegacy:'المملكة الملكية وغموض الصحراء',
+                godsdomain:'السماء السماوية والسمو الإلهي', genesisprotocol:'ميلاد الواقع ذاته',
+                chronoinfinity:'سيد الزمن ذاته', elysium:'الجنة الخارجة عن الجنة والفضاء والزمن',
+                aetherdominion:'حيث تتحكم الطاقة النقية في الواقع', theabsolute:'النقطة التي ينتهي عندها الوجود',
+                eternalnexus:'حيث يتقاطع كل واقع', omniscienteye:'وعي LPOLVO HUB',
+                infinitythrone:'العالم الذي يُكتب فيه الوجود',
+            },
+            fr: {
+                lpolvo:'Par défaut', bloodmoon:'Mystère Sombre', bluemoon:'Magie Calme',
+                ramadan:'Nuits Paisibles', eclipse:'Jour & Nuit', dragon:'Feu & Écailles',
+                phoenix:'Renaissance', aurora:'Aurores Boréales', cybercity:'Lumières Néon',
+                samurai:"Esprit du Guerrier", egypt:'Héritage du Pharaon', darkcastle:'Ombres Gothiques',
+                angel:'Lumière Divine', demon:'Puissance Infernale', crystal:'Brillant',
+                royalpalace:'Luxe', underwater:'Bleu Profond', dreamworld:'Fantaisie',
+                fantasyforest:'Enchanté', timetravel:'Chrono', robotfuture:'Technologie',
+                ai:'Intelligence', quantum:'Physique', galaxywar:'Bataille Cosmique', ancient:'Mystère',
+                sakura:'Fleur de Cerisier', ocean:'Fond Marin', hacker:'Pluie Matrix',
+                galaxy:'Espace Profond', fire:'Chaleur & Flammes', moon:'Atmosphère Nocturne',
+                sun:'Lumière Dorée', midnight:'Indigo Sombre', gold:"Or Précieux",
+                neon:'Lueur Néon', vaporwave:'Rétro 80s', retro:'Chaleur Vintage',
+                minimal:'Lumière Épurée', royal:'Royal Luxueux', space:'Vide Cosmique',
+                matrix:'Pluie Numérique', volcano:'Chaleur Volcanique', lightning:'Tempête Électrique',
+                purple:'Violet Profond', reddevil:"Feu de l'Enfer", emerald:'Vert Profond',
+                rainbow:'Coloré', dark:'Ombre Profonde', light:'Lumineux Épuré',
+                cyberpunk:'Futur Néon', glass:'Givré',
+                celestialascension:'Royaume Céleste Au-dessus des Nuages', blackholesingularity:'Gravité & Distorsion Spatiale',
+                crimsonapocalypse:'Fin du Monde', frozeneternity:'Royaume Glacé Infini',
+                neoncybernexus:'Hologrammes Cyberpunk', phantomnightmare:'Fantômes Sombres & Brume Violette',
+                dragonemperor:'Dragons Anciens & Feu Doré', universecreator:'Galaxies & Étoiles en Formation',
+                divineocean:'Eaux de Cristal & Vie Lumineuse', infernalking:'Volcans & Feu Démoniaque',
+                sakuraheaven:'Grands Cerisiers & Sanctuaires', infinitydimension:'Réalité Distordue & Portails',
+                arabianlegacy:"Majesté du Désert & Âge d'Or Islamique", moroccanlegacy:'Royaume Royal & Mystique du Désert',
+                godsdomain:'Ciel Céleste & Suprématie Divine', genesisprotocol:'La Naissance de la Réalité Elle-Même',
+                chronoinfinity:'Maître du Temps Lui-Même', elysium:"Paradis Au-delà du Ciel, de l'Espace & du Temps",
+                aetherdominion:"Là Où l'Énergie Pure Contrôle la Réalité", theabsolute:"Le Point Où l'Existence Prend Fin",
+                eternalnexus:'Là Où Chaque Réalité Se Croise', omniscienteye:'La Conscience de LPOLVO HUB',
+                infinitythrone:"Le Royaume Où l'Existence Est Écrite",
+            }
+        };
+
+        function getThemeName(themeId) {
+            const lang = state.language || 'en';
+            if (lang === 'en') { const t = THEMES.find(x=>x.id===themeId); return t ? t.name : themeId; }
+            return (THEME_NAMES[lang] && THEME_NAMES[lang][themeId]) || (THEMES.find(x=>x.id===themeId)||{}).name || themeId;
+        }
+
+        function getThemeDesc(themeId) {
+            const lang = state.language || 'en';
+            if (lang === 'en') { const t = THEMES.find(x=>x.id===themeId); return t ? t.desc : ''; }
+            return (THEME_DESCS[lang] && THEME_DESCS[lang][themeId]) || (THEMES.find(x=>x.id===themeId)||{}).desc || '';
+        }
 
         const LANGUAGES = {
             en: { name: 'English', flag: '🇬🇧', dir: 'ltr' },
@@ -14845,6 +15146,141 @@
                 copiedToast:'Script copied!', likedToast:'Script liked!', uploadedToast:'Script uploaded!',
                 errorToast:'Something went wrong', savedToast:'Changes saved!',
                 signedOutToast:'Signed out successfully',
+                sidebarConnect:'Connect',
+                settingsTitle:'Settings ⚙️',
+                madeWith:'Made with ❤️ by LPOLVO',
+                notificationsTitle:'Notifications 🔔',
+                markAllRead:'Mark all read',
+                noNotifsYet:'No notifications yet',
+                signingIn:'Signing in...', creatingAccount:'Creating...', saving:'Saving...', submitting:'Submitting...',
+                welcomeBack2:'Welcome back! 👋', accountCreated:'Account created! Welcome 🎉',
+                accountCreatedToast:'Account created! Welcome to LPOLVO HUB 🎉',
+                signedInGoogle:'Signed in with Google! 👋',
+                signedOutSoon:'Signed out. See you soon! 👋',
+                signOutError:'Sign out error',
+                imageTooLarge:'Image must be smaller than 2MB',
+                profileSaved:'Profile saved!', profileUpdated:'Profile updated! ✅',
+                profileSaveFailed:'Failed to save profile. Try again.',
+                displayNameRequired:'Display name is required.',
+                resetLinkSent:'Reset link sent! Check your email.',
+                enterEmail:'Please enter your email.',
+                passwordMinLength:'Password must be at least 6 characters.',
+                scriptNameRequired:'Script name is required.',
+                gameNameRequired:'Game name is required.',
+                scriptCodeRequired:'Script code is required.',
+                scriptSubmitted:'Script submitted successfully! 🎉',
+                scriptSubmitFailed:'Failed to submit script. Please try again.',
+                pleaseSignIn:'Please sign in to submit a script',
+                signInFirst:'Please sign in first',
+                scriptNotFound:'Script not found',
+                noCodeToCopy:'No code to copy',
+                scriptCopiedClipboard:'Script copied to clipboard! 📋',
+                scriptCopiedShort:'Script copied! 📋',
+                couldNotUpdateFavs:'Could not update favorites',
+                linkCopied:'Link copied! 🔗',
+                reportSubmitted:'Report submitted. Thank you! 🚩',
+                userProfilesSoon:'User profiles coming soon!',
+                allNotifsRead:'All notifications marked as read',
+                noNotifsYetIcon:'No notifications yet 🔔',
+                copied:'✓ Copied!',
+                saveFav:'🤍 Save', savedFav:'❤️ Saved',
+                scriptsCountSingle:'script', scriptsCountPlural:'scripts',
+                firebaseNotConnected:'Firebase not connected',
+                allScripts:'All Scripts',
+                emailLabel:'Email', passwordLabel:'Password', displayNameLabel:'Display Name',
+                loginTitle:'Welcome back', loginSub:'Sign in to your LPOLVO HUB account',
+                regTitle:'Create account', regJoin:'Join LPOLVO HUB',
+                resetTitle:'Reset password', resetSub:'Enter your email to receive a reset link',
+                sendResetLink:'Send Reset Link', backToLoginLink:'← Back to login',
+                forgotText:'Forgot your password?',
+                /* Extended keys */
+                aboutLpolvoDesc:'LPOLVO HUB V1 is the first official public release — a community-driven premium platform for Roblox scripts. After extensive internal development, we are proud to present the most advanced version with full localization, 52+ themes, and complete Arabic & French support.',
+                gotIt:'Got it',
+                versionLabel:'V1 — Official Public Release',
+                scriptsCount:'Scripts', usersCount:'Users',
+                rarityOp:'OP', raritySSS:'SSS+', rarityMythic:'MYTHIC', rarityTranscendent:'TRANSCENDENT',
+                rarityOmniscient:'OMNISCIENT', rarityOmnipotent:'OMNIPOTENT',
+                themeDefault:'Default', themeDarkMystery:'Dark Mystery', themeCalmMagic:'Calm Magic',
+                themePeacefulNights:'Peaceful Nights', themeDayNight:'Day & Night',
+                themeFireScales:'Fire & Scales', themeRebirth:'Rebirth', themeNorthernLights:'Northern Lights',
+                themeNeonLights:'Neon Lights', themeWarriorSpirit:'Warrior Spirit',
+                themePharaohLegacy:'Pharaoh Legacy', themeGothicShadows:'Gothic Shadows',
+                themeDivineLight:'Divine Light', themeInfernalPower:'Infernal Power',
+                themeBrilliant:'Brilliant', themeLuxury:'Luxury', themeDeepBlue:'Deep Blue',
+                themeFantasy:'Fantasy', themeEnchanted:'Enchanted', themeChrono:'Chrono',
+                themeTech:'Tech', themeIntelligence:'Intelligence', themePhysics:'Physics',
+                themeCosmicBattle:'Cosmic Battle', themeMystery:'Mystery',
+                themeCherryBlossom:'Cherry Blossom', themeDeepSea:'Deep Sea',
+                themeMatrixRain:'Matrix Rain', themeDeepSpace:'Deep Space',
+                themeHeatFlames:'Heat & Flames', themeNightAtmosphere:'Night Atmosphere',
+                themeGoldenLight:'Golden Light', themeDarkIndigo:'Dark Indigo',
+                themeRichGold:'Rich Gold', themeNeonGlow:'Neon Glow',
+                themeRetro80s:'Retro 80s', themeVintageWarm:'Vintage Warm',
+                themeCleanLight:'Clean Light', themeLuxuryRoyal:'Luxury Royal',
+                themeCosmicVoid:'Cosmic Void', themeDigitalRain:'Digital Rain',
+                themeLavaHeat:'Lava Heat', themeElectricStorm:'Electric Storm',
+                themeDeepViolet:'Deep Violet', themeHellfire:'Hellfire',
+                themeDeepGreen:'Deep Green', themeColorful:'Colorful',
+                themeDeepShadow:'Deep Shadow', themeCleanBright:'Clean Bright',
+                themeNeonFuture:'Neon Future', themeFrosted:'Frosted',
+                themeBlackHoleUniverse:'Black Hole Universe', themeMagicalPetals:'Magical Petals',
+                themeHeavenlyKingdom:'Heavenly Kingdom Above the Clouds',
+                themeGravitySpace:'Gravity & Space Distortion',
+                themeEndOfWorld:'End of the World', themeInfiniteFrozen:'Infinite Frozen Kingdom',
+                themeCyberpunkHolograms:'Cyberpunk City Holograms',
+                themeDarkGhosts:'Dark Ghosts & Purple Mist',
+                themeAncientDragons:'Ancient Dragons & Golden Fire',
+                themeGalaxiesBorn:'Galaxies & Stars Being Born',
+                themeCrystalWaters:'Crystal Waters & Glowing Life',
+                themeVolcanoesFire:'Volcanoes & Demonic Fire',
+                themeSakuraTrees:'Massive Sakura Trees & Shrines',
+                themeRealityBending:'Reality Bending & Portals',
+                themeDesertMajesty:'Desert Majesty & Islamic Golden Age',
+                themeRoyalKingdom:'Royal Kingdom & Desert Mystique',
+                themeCelestialHeaven:'Celestial Heaven & Divine Supremacy',
+                themeBirthReality:'The Birth of Reality Itself',
+                themeMasterTime:'Master of Time Itself',
+                themeParadiseBeyond:'Paradise Beyond Heaven, Space & Time',
+                themePureEnergy:'Where Pure Energy Controls Reality',
+                themeExistenceEnds:'The Point Where Existence Ends',
+                themeRealityIntersects:'Where Every Reality Intersects',
+                themeConsciousness:'The Consciousness of LPOLVO HUB',
+                themeRealmExistence:'The Realm Where Existence Is Written',
+                howFind:'Find a Script', howFindDesc:'Browse our growing library of premium Roblox scripts sorted by game, popularity, and category.',
+                howCopy:'Copy the Script', howCopyDesc:'One-tap copy the script code to your clipboard. No extra steps needed.',
+                howRun:'Run in Executor', howRunDesc:'Paste the script into your favorite executor and enjoy the features.',
+                faqSafe:'Are the scripts safe to use?', faqSafeAns:'All scripts submitted go through community review. Use at your own discretion and always test in a safe environment first.',
+                faqMobile:'How do I run scripts on mobile?', faqMobileAns:'Download a mobile executor like Arceus X or Delta, then paste the copied script code into the executor and run it.',
+                faqKeyless:'What is a keyless script?', faqKeylessAns:'A keyless script does not require you to complete key verification steps. It runs immediately after pasting.',
+                faqSubmit:'Can I submit my own script?', faqSubmitAns:'Yes! Tap the "+ Add Script" button, fill in the details and paste your Lua code. Your script will be live immediately.',
+                faqBroken:'Why is a script not working?', faqBrokenAns:'Scripts may break after Roblox updates. Check for newer versions, or report the issue using the Report button on the script.',
+                faqFree:'Is LPOLVO HUB free?', faqFreeAns:'Yes, LPOLVO HUB is completely free. No subscriptions, no paywalls.',
+                catCombat:'Combat', catFarm:'Farm', catSpeed:'Speed', catEsp:'ESP',
+                catTeleport:'Teleport', catTroll:'Troll', catUtility:'Utility',
+                catGui:'GUI', catAuto:'Auto', catOther:'Other',
+                execMobile:'Mobile', execPC:'PC',
+                resetPassword:'Reset Password', resetPasswordDesc:'Enter your email to receive a reset link.',
+                resetEmail:'Email Address', sendReset:'Send Reset Link', backToLogin:'Back to login',
+                passwordResetSent:'Password reset email sent!',
+                scriptVersion:'Script Version', scriptCode:'Script Code',
+                scriptCodePlaceholder:'Paste your Lua script here...',
+                scriptNamePlaceholder:'e.g. Auto Farm Pro',
+                scriptGamePlaceholder:'e.g. Blox Fruits',
+                scriptDescPlaceholder:'Describe what the script does...',
+                scriptTagsPlaceholder:'e.g. farm, boss, auto',
+                scriptVersionPlaceholder:'e.g. 1.0.0',
+                notifEmpty:'No notifications yet', notifSignIn:'Sign in to see notifications',
+                reportScript:'Report Script', shareScript:'Share Script',
+                followBtn:'Follow', unfollowBtn:'Unfollow',
+                scriptDetails:'Script Details', backBtn:'Back',
+                executor:'Executor', platform:'Platform', free:'Free',
+                heroTitle:'LPOLVO HUB', heroSubtitle:'Advanced Scripts & Automation',
+                heroDesc:'Building the future, one script at a time. A centralized hub for premium Roblox scripts and intelligent automation tools.',
+                exploreScripts:'Explore Scripts', community:'Community',
+                themeMenuTitle:'Choose Theme', themeRarityAll:'All', themeRarityOp:'OP Legendary',
+                themeRaritySss:'SSS+ Ultimate', themeRarityMythic:'Mythic',
+                themeRarityTranscendent:'Transcendent', themeRarityOmniscient:'Omniscient',
+                themeRarityOmnipotent:'Omnipotent',
             },
             ar: {
                 signIn:'تسجيل الدخول', searchPlaceholder:'ابحث عن السكريبتات، المستخدمين، الوسوم...',
@@ -14926,6 +15362,141 @@
                 copiedToast:'تم نسخ السكريبت!', likedToast:'تم الإعجاب!', uploadedToast:'تم رفع السكريبت!',
                 errorToast:'حدث خطأ ما', savedToast:'تم حفظ التغييرات!',
                 signedOutToast:'تم تسجيل الخروج بنجاح',
+                sidebarConnect:'تواصل معنا',
+                settingsTitle:'الإعدادات ⚙️',
+                madeWith:'صُنع بـ ❤️ بواسطة LPOLVO',
+                notificationsTitle:'الإشعارات 🔔',
+                markAllRead:'تحديد الكل كمقروء',
+                noNotifsYet:'لا توجد إشعارات بعد',
+                signingIn:'جارٍ الدخول...', creatingAccount:'جارٍ الإنشاء...', saving:'جارٍ الحفظ...', submitting:'جارٍ الإرسال...',
+                welcomeBack2:'مرحباً بعودتك! 👋', accountCreated:'تم إنشاء الحساب! أهلاً بك 🎉',
+                accountCreatedToast:'تم إنشاء الحساب! أهلاً بك في LPOLVO HUB 🎉',
+                signedInGoogle:'تم الدخول بجوجل! 👋',
+                signedOutSoon:'تم تسجيل الخروج. أراك قريباً! 👋',
+                signOutError:'خطأ في تسجيل الخروج',
+                imageTooLarge:'يجب أن تكون الصورة أقل من 2MB',
+                profileSaved:'تم حفظ الملف الشخصي!', profileUpdated:'تم تحديث الملف الشخصي! ✅',
+                profileSaveFailed:'فشل حفظ الملف. حاول مرة أخرى.',
+                displayNameRequired:'اسم العرض مطلوب.',
+                resetLinkSent:'تم إرسال رابط الإعادة! تحقق من بريدك.',
+                enterEmail:'يرجى إدخال بريدك الإلكتروني.',
+                passwordMinLength:'يجب أن تكون كلمة المرور 6 أحرف على الأقل.',
+                scriptNameRequired:'اسم السكريبت مطلوب.',
+                gameNameRequired:'اسم اللعبة مطلوب.',
+                scriptCodeRequired:'كود السكريبت مطلوب.',
+                scriptSubmitted:'تم إرسال السكريبت بنجاح! 🎉',
+                scriptSubmitFailed:'فشل إرسال السكريبت. حاول مرة أخرى.',
+                pleaseSignIn:'يرجى تسجيل الدخول لإرسال سكريبت',
+                signInFirst:'يرجى تسجيل الدخول أولاً',
+                scriptNotFound:'السكريبت غير موجود',
+                noCodeToCopy:'لا يوجد كود للنسخ',
+                scriptCopiedClipboard:'تم نسخ السكريبت! 📋',
+                scriptCopiedShort:'تم النسخ! 📋',
+                couldNotUpdateFavs:'تعذر تحديث المفضلة',
+                linkCopied:'تم نسخ الرابط! 🔗',
+                reportSubmitted:'تم إرسال البلاغ. شكراً! 🚩',
+                userProfilesSoon:'ملفات المستخدمين قادمة قريباً!',
+                allNotifsRead:'تم تحديد كل الإشعارات كمقروءة',
+                noNotifsYetIcon:'لا توجد إشعارات بعد 🔔',
+                copied:'✓ تم النسخ!',
+                saveFav:'🤍 حفظ', savedFav:'❤️ محفوظ',
+                scriptsCountSingle:'سكريبت', scriptsCountPlural:'سكريبتات',
+                firebaseNotConnected:'Firebase غير متصل',
+                allScripts:'كل السكريبتات',
+                emailLabel:'البريد الإلكتروني', passwordLabel:'كلمة المرور', displayNameLabel:'اسم العرض',
+                loginTitle:'مرحباً بعودتك', loginSub:'سجّل الدخول إلى حساب LPOLVO HUB',
+                regTitle:'إنشاء حساب', regJoin:'انضم إلى LPOLVO HUB',
+                resetTitle:'إعادة تعيين كلمة المرور', resetSub:'أدخل بريدك الإلكتروني لتلقي رابط الإعادة',
+                sendResetLink:'إرسال رابط الإعادة', backToLoginLink:'→ العودة لتسجيل الدخول',
+                forgotText:'هل نسيت كلمة المرور؟',
+                /* Extended keys */
+                aboutLpolvoDesc:'LPOLVO HUB V1 هو الإصدار الرسمي الأول — منصة مجتمعية متميزة لسكريبتات Roblox. بعد تطوير داخلي مكثف، نفخر بتقديم أكثر إصدار متطور مع توطين كامل، أكثر من 52 مظهراً، وأذونات كاملة للعربية والفرنسية.',
+                gotIt:'حسناً',
+                versionLabel:'V1 — الإصدار الرسمي',
+                scriptsCount:'السكريبتات', usersCount:'المستخدمون',
+                rarityOp:'أسطوري', raritySSS:'SSS+', rarityMythic:'أسطوري جدًا',
+                rarityTranscendent:'متعالي', rarityOmniscient:'كليّ المعرفة', rarityOmnipotent:'كليّ القدرة',
+                themeDefault:'افتراضي', themeDarkMystery:'غموض داكن', themeCalmMagic:'سحر هادئ',
+                themePeacefulNights:'ليالٍ هادئة', themeDayNight:'النهار والليل',
+                themeFireScales:'نار وحراشف', themeRebirth:'البعث', themeNorthernLights:'الأضواء الشمالية',
+                themeNeonLights:'أضواء النيون', themeWarriorSpirit:'روح المحارب',
+                themePharaohLegacy:'إرث الفرعون', themeGothicShadows:'ظلال قوطية',
+                themeDivineLight:'الضوء الإلهي', themeInfernalPower:'قوة جهنمية',
+                themeBrilliant:'ساطع', themeLuxury:'فاخر', themeDeepBlue:'أزرق عميق',
+                themeFantasy:'خيال', themeEnchanted:'مسحور', themeChrono:'زمني',
+                themeTech:'تقنية', themeIntelligence:'ذكاء', themePhysics:'فيزياء',
+                themeCosmicBattle:'معركة كونية', themeMystery:'غموض',
+                themeCherryBlossom:'زهر الكرز', themeDeepSea:'أعماق البحر',
+                themeMatrixRain:'مطر المصفوفة', themeDeepSpace:'الفضاء العميق',
+                themeHeatFlames:'حرارة ولهب', themeNightAtmosphere:'أجواء الليل',
+                themeGoldenLight:'ضوء ذهبي', themeDarkIndigo:'نيلي داكن',
+                themeRichGold:'ذهب فاخر', themeNeonGlow:'توهج النيون',
+                themeRetro80s:'ريترو الثمانينيات', themeVintageWarm:'دفء كلاسيكي',
+                themeCleanLight:'ضوء نظيف', themeLuxuryRoyal:'ملكي فاخر',
+                themeCosmicVoid:'الفراغ الكوني', themeDigitalRain:'المطر الرقمي',
+                themeLavaHeat:'حرارة الحمم', themeElectricStorm:'عاصفة كهربائية',
+                themeDeepViolet:'بنفسجي عميق', themeHellfire:'نار الجحيم',
+                themeDeepGreen:'أخضر عميق', themeColorful:'ملوّن',
+                themeDeepShadow:'ظل عميق', themeCleanBright:'مضيء نظيف',
+                themeNeonFuture:'مستقبل النيون', themeFrosted:'مثلج',
+                themeBlackHoleUniverse:'كون الثقب الأسود', themeMagicalPetals:'بتلات سحرية',
+                themeHeavenlyKingdom:'المملكة السماوية فوق الغيوم',
+                themeGravitySpace:'الجاذبية وتشويه الفضاء',
+                themeEndOfWorld:'نهاية العالم', themeInfiniteFrozen:'المملكة المجمدة اللانهائية',
+                themeCyberpunkHolograms:'هولوغرامات المدينة السيبرانية',
+                themeDarkGhosts:'أشباح داكنة وضباب بنفسجي',
+                themeAncientDragons:'تنانين قديمة ونار ذهبية',
+                themeGalaxiesBorn:'المجرات والنجوم في طور الولادة',
+                themeCrystalWaters:'مياه كريستالية وحياة مضيئة',
+                themeVolcanoesFire:'براكين ونار شيطانية',
+                themeSakuraTrees:'أشجار الساكورا العملاقة والأضرحة',
+                themeRealityBending:'تشويه الواقع والبوابات',
+                themeDesertMajesty:'عظمة الصحراء والعصر الذهبي الإسلامي',
+                themeRoyalKingdom:'المملكة الملكية وغموض الصحراء',
+                themeCelestialHeaven:'السماء السماوية والسمو الإلهي',
+                themeBirthReality:'ميلاد الواقع ذاته',
+                themeMasterTime:'سيد الزمن ذاته',
+                themeParadiseBeyond:'الجنة الخارجة عن الجنة والفضاء والزمن',
+                themePureEnergy:'حيث تتحكم الطاقة النقية في الواقع',
+                themeExistenceEnds:'النقطة التي ينتهي عندها الوجود',
+                themeRealityIntersects:'حيث يتقاطع كل واقع',
+                themeConsciousness:'وعي LPOLVO HUB',
+                themeRealmExistence:'العالم الذي يُكتب فيه الوجود',
+                howFind:'ابحث عن سكريبت', howFindDesc:'تصفح مكتبتنا المتنامية من سكريبتات Roblox المميزة مصنفة حسب اللعبة والشعبية والفئة.',
+                howCopy:'انسخ السكريبت', howCopyDesc:'انسخ كود السكريبت بنقرة واحدة إلى الحافظة. لا خطوات إضافية.',
+                howRun:'شغّل في المنفذ', howRunDesc:'الصق السكريبت في منفذك المفضل واستمتع بالميزات.',
+                faqSafe:'هل السكريبتات آمنة للاستخدام؟', faqSafeAns:'جميع السكريبتات المُرسلة تمر بمراجعة المجتمع. استخدمها بحذر واختبرها دائماً في بيئة آمنة.',
+                faqMobile:'كيف أشغّل السكريبتات على الجوال؟', faqMobileAns:'حمّل منفذاً للجوال مثل Arceus X أو Delta، ثم الصق كود السكريبت في المنفذ وشغّله.',
+                faqKeyless:'ما هو السكريبت بلا مفتاح؟', faqKeylessAns:'السكريبت بلا مفتاح لا يتطلب منك إتمام خطوات التحقق. يعمل فوراً بعد اللصق.',
+                faqSubmit:'هل يمكنني إرسال سكريبتي الخاص؟', faqSubmitAns:'نعم! اضغط على "+ إضافة سكريبت"، أدخل التفاصيل والصق كود Lua. سكريبتك سيكون مباشراً فوراً.',
+                faqBroken:'لماذا لا يعمل السكريبت؟', faqBrokenAns:'قد تتوقف السكريبتات بعد تحديثات Roblox. ابحث عن إصدارات أحدث، أو أبلغ عن المشكلة بزر الإبلاغ.',
+                faqFree:'هل LPOLVO HUB مجاني؟', faqFreeAns:'نعم، LPOLVO HUB مجاني تماماً. لا اشتراكات، لا حواجز دفع.',
+                catCombat:'قتال', catFarm:'زراعة', catSpeed:'سرعة', catEsp:'رؤية',
+                catTeleport:'نقل فوري', catTroll:'مقلب', catUtility:'أدوات',
+                catGui:'واجهة', catAuto:'تلقائي', catOther:'أخرى',
+                execMobile:'جوال', execPC:'حاسوب',
+                resetPassword:'إعادة تعيين كلمة المرور', resetPasswordDesc:'أدخل بريدك الإلكتروني لتلقي رابط إعادة التعيين.',
+                resetEmail:'البريد الإلكتروني', sendReset:'إرسال رابط الإعادة', backToLogin:'العودة لتسجيل الدخول',
+                passwordResetSent:'تم إرسال بريد إعادة تعيين كلمة المرور!',
+                scriptVersion:'إصدار السكريبت', scriptCode:'كود السكريبت',
+                scriptCodePlaceholder:'الصق سكريبت Lua هنا...',
+                scriptNamePlaceholder:'مثال: Auto Farm Pro',
+                scriptGamePlaceholder:'مثال: Blox Fruits',
+                scriptDescPlaceholder:'صف ما يفعله السكريبت...',
+                scriptTagsPlaceholder:'مثال: farm, boss, auto',
+                scriptVersionPlaceholder:'مثال: 1.0.0',
+                notifEmpty:'لا توجد إشعارات بعد', notifSignIn:'سجّل الدخول لعرض الإشعارات',
+                reportScript:'الإبلاغ عن السكريبت', shareScript:'مشاركة السكريبت',
+                followBtn:'متابعة', unfollowBtn:'إلغاء المتابعة',
+                scriptDetails:'تفاصيل السكريبت', backBtn:'رجوع',
+                executor:'المنفذ', platform:'المنصة', free:'مجاني',
+                heroTitle:'LPOLVO HUB', heroSubtitle:'سكريبتات متقدمة وأتمتة',
+                heroDesc:'بناء المستقبل، سكريبت واحد في كل مرة. مركز متكامل لسكريبتات Roblox المميزة وأدوات الأتمتة الذكية.',
+                exploreScripts:'استكشف السكريبتات', community:'المجتمع',
+                themeMenuTitle:'اختر مظهراً', themeRarityAll:'الكل', themeRarityOp:'أسطوري OP',
+                themeRaritySss:'أعلى درجة SSS+', themeRarityMythic:'أسطوري جدًا',
+                themeRarityTranscendent:'متعالي', themeRarityOmniscient:'كليّ المعرفة',
+                themeRarityOmnipotent:'كليّ القدرة',
             },
             fr: {
                 signIn:'Se connecter', searchPlaceholder:'Chercher des scripts, utilisateurs, tags...',
@@ -15007,6 +15578,141 @@
                 copiedToast:'Script copié!', likedToast:'Script aimé!', uploadedToast:'Script uploadé!',
                 errorToast:"Une erreur s'est produite", savedToast:'Modifications sauvegardées!',
                 signedOutToast:'Déconnexion réussie',
+                sidebarConnect:'Nous rejoindre',
+                settingsTitle:'Paramètres ⚙️',
+                madeWith:'Fait avec ❤️ par LPOLVO',
+                notificationsTitle:'Notifications 🔔',
+                markAllRead:'Tout marquer comme lu',
+                noNotifsYet:'Aucune notification',
+                signingIn:'Connexion...', creatingAccount:'Création...', saving:'Sauvegarde...', submitting:'Envoi...',
+                welcomeBack2:'Bon retour! 👋', accountCreated:'Compte créé! Bienvenue 🎉',
+                accountCreatedToast:'Compte créé! Bienvenue sur LPOLVO HUB 🎉',
+                signedInGoogle:'Connecté avec Google! 👋',
+                signedOutSoon:'Déconnecté. À bientôt! 👋',
+                signOutError:'Erreur de déconnexion',
+                imageTooLarge:'L\'image doit faire moins de 2MB',
+                profileSaved:'Profil sauvegardé!', profileUpdated:'Profil mis à jour! ✅',
+                profileSaveFailed:'Échec de la sauvegarde. Réessayez.',
+                displayNameRequired:'Le nom affiché est requis.',
+                resetLinkSent:'Lien envoyé! Vérifiez votre email.',
+                enterEmail:'Veuillez entrer votre email.',
+                passwordMinLength:'Le mot de passe doit contenir au moins 6 caractères.',
+                scriptNameRequired:'Le nom du script est requis.',
+                gameNameRequired:'Le nom du jeu est requis.',
+                scriptCodeRequired:'Le code du script est requis.',
+                scriptSubmitted:'Script soumis avec succès! 🎉',
+                scriptSubmitFailed:'Échec de la soumission. Réessayez.',
+                pleaseSignIn:'Connectez-vous pour soumettre un script',
+                signInFirst:'Connectez-vous d\'abord',
+                scriptNotFound:'Script introuvable',
+                noCodeToCopy:'Aucun code à copier',
+                scriptCopiedClipboard:'Script copié dans le presse-papier! 📋',
+                scriptCopiedShort:'Script copié! 📋',
+                couldNotUpdateFavs:'Impossible de mettre à jour les favoris',
+                linkCopied:'Lien copié! 🔗',
+                reportSubmitted:'Signalement envoyé. Merci! 🚩',
+                userProfilesSoon:'Profils utilisateurs bientôt disponibles!',
+                allNotifsRead:'Toutes les notifications marquées comme lues',
+                noNotifsYetIcon:'Aucune notification 🔔',
+                copied:'✓ Copié!',
+                saveFav:'🤍 Sauvegarder', savedFav:'❤️ Sauvegardé',
+                scriptsCountSingle:'script', scriptsCountPlural:'scripts',
+                firebaseNotConnected:'Firebase non connecté',
+                allScripts:'Tous les Scripts',
+                emailLabel:'Email', passwordLabel:'Mot de passe', displayNameLabel:'Nom affiché',
+                loginTitle:'Bon retour', loginSub:'Connectez-vous à votre compte LPOLVO HUB',
+                regTitle:'Créer un compte', regJoin:'Rejoindre LPOLVO HUB',
+                resetTitle:'Réinitialiser le mot de passe', resetSub:'Entrez votre email pour recevoir un lien',
+                sendResetLink:'Envoyer le lien', backToLoginLink:'← Retour à la connexion',
+                forgotText:'Mot de passe oublié?',
+                /* Extended keys */
+                aboutLpolvoDesc:"LPOLVO HUB V1 est la première sortie officielle — une plateforme communautaire premium pour scripts Roblox. Après un développement interne intensif, nous sommes fiers de présenter la version la plus avancée avec localisation complète, 52+ thèmes, et un support complet de l'arabe et du français.",
+                gotIt:'Compris',
+                versionLabel:'V1 — Sortie Officielle',
+                scriptsCount:'Scripts', usersCount:'Utilisateurs',
+                rarityOp:'Légendaire', raritySSS:'SSS+', rarityMythic:'Mythique',
+                rarityTranscendent:'Transcendant', rarityOmniscient:'Omniscient', rarityOmnipotent:'Omnipotent',
+                themeDefault:'Par défaut', themeDarkMystery:'Mystère Sombre', themeCalmMagic:'Magie Calme',
+                themePeacefulNights:'Nuits Paisibles', themeDayNight:'Jour & Nuit',
+                themeFireScales:'Feu & Écailles', themeRebirth:'Renaissance', themeNorthernLights:'Aurores Boréales',
+                themeNeonLights:'Lumières Néon', themeWarriorSpirit:"Esprit du Guerrier",
+                themePharaohLegacy:'Héritage du Pharaon', themeGothicShadows:'Ombres Gothiques',
+                themeDivineLight:'Lumière Divine', themeInfernalPower:'Puissance Infernale',
+                themeBrilliant:'Brillant', themeLuxury:'Luxe', themeDeepBlue:'Bleu Profond',
+                themeFantasy:'Fantaisie', themeEnchanted:'Enchanté', themeChrono:'Chrono',
+                themeTech:'Technologie', themeIntelligence:'Intelligence', themePhysics:'Physique',
+                themeCosmicBattle:'Bataille Cosmique', themeMystery:'Mystère',
+                themeCherryBlossom:'Fleur de Cerisier', themeDeepSea:'Fond Marin',
+                themeMatrixRain:'Pluie Matrix', themeDeepSpace:'Espace Profond',
+                themeHeatFlames:'Chaleur & Flammes', themeNightAtmosphere:'Atmosphère Nocturne',
+                themeGoldenLight:'Lumière Dorée', themeDarkIndigo:'Indigo Sombre',
+                themeRichGold:"Or Précieux", themeNeonGlow:'Lueur Néon',
+                themeRetro80s:'Rétro 80s', themeVintageWarm:'Chaleur Vintage',
+                themeCleanLight:'Lumière Épurée', themeLuxuryRoyal:'Royal Luxueux',
+                themeCosmicVoid:'Vide Cosmique', themeDigitalRain:'Pluie Numérique',
+                themeLavaHeat:'Chaleur Volcanique', themeElectricStorm:'Tempête Électrique',
+                themeDeepViolet:'Violet Profond', themeHellfire:'Feu de l\'Enfer',
+                themeDeepGreen:'Vert Profond', themeColorful:'Coloré',
+                themeDeepShadow:'Ombre Profonde', themeCleanBright:'Lumineux Épuré',
+                themeNeonFuture:'Futur Néon', themeFrosted:'Givré',
+                themeBlackHoleUniverse:'Univers Trou Noir', themeMagicalPetals:'Pétales Magiques',
+                themeHeavenlyKingdom:'Royaume Céleste Au-dessus des Nuages',
+                themeGravitySpace:'Gravité & Distorsion Spatiale',
+                themeEndOfWorld:'Fin du Monde', themeInfiniteFrozen:'Royaume Glacé Infini',
+                themeCyberpunkHolograms:'Hologrammes Cyberpunk',
+                themeDarkGhosts:'Fantômes Sombres & Brume Violette',
+                themeAncientDragons:'Dragons Anciens & Feu Doré',
+                themeGalaxiesBorn:'Galaxies & Étoiles en Formation',
+                themeCrystalWaters:'Eaux de Cristal & Vie Lumineuse',
+                themeVolcanoesFire:'Volcans & Feu Démoniaque',
+                themeSakuraTrees:'Grands Cerisiers & Sanctuaires',
+                themeRealityBending:'Réalité Distordue & Portails',
+                themeDesertMajesty:"Majesté du Désert & Âge d'Or Islamique",
+                themeRoyalKingdom:'Royaume Royal & Mystique du Désert',
+                themeCelestialHeaven:'Ciel Céleste & Suprématie Divine',
+                themeBirthReality:'La Naissance de la Réalité Elle-Même',
+                themeMasterTime:'Maître du Temps Lui-Même',
+                themeParadiseBeyond:'Paradis Au-delà du Ciel, de l\'Espace & du Temps',
+                themePureEnergy:'Là Où l\'Énergie Pure Contrôle la Réalité',
+                themeExistenceEnds:"Le Point Où l'Existence Prend Fin",
+                themeRealityIntersects:'Là Où Chaque Réalité Se Croise',
+                themeConsciousness:'La Conscience de LPOLVO HUB',
+                themeRealmExistence:"Le Royaume Où l'Existence Est Écrite",
+                howFind:'Trouver un Script', howFindDesc:'Parcourez notre bibliothèque croissante de scripts Roblox premium triés par jeu, popularité et catégorie.',
+                howCopy:'Copier le Script', howCopyDesc:'Copiez le code du script en un tap. Aucune étape supplémentaire.',
+                howRun:"Exécuter dans l'Exécuteur", howRunDesc:"Collez le script dans votre exécuteur préféré et profitez des fonctionnalités.",
+                faqSafe:'Les scripts sont-ils sûrs?', faqSafeAns:'Tous les scripts soumis passent par un examen communautaire. Utilisez à votre propre discrétion.',
+                faqMobile:'Comment exécuter des scripts sur mobile?', faqMobileAns:'Téléchargez un exécuteur mobile comme Arceus X ou Delta, puis collez le code du script.',
+                faqKeyless:"Qu'est-ce qu'un script sans clé?", faqKeylessAns:"Un script sans clé ne nécessite pas d'étapes de vérification. Il s'exécute immédiatement.",
+                faqSubmit:'Puis-je soumettre mon propre script?', faqSubmitAns:'Oui! Appuyez sur "+ Ajouter Script", remplissez les détails et collez votre code Lua.',
+                faqBroken:'Pourquoi un script ne fonctionne pas?', faqBrokenAns:'Les scripts peuvent cesser de fonctionner après des mises à jour Roblox. Cherchez des versions plus récentes.',
+                faqFree:'LPOLVO HUB est-il gratuit?', faqFreeAns:'Oui, LPOLVO HUB est entièrement gratuit. Aucun abonnement, aucun paywall.',
+                catCombat:'Combat', catFarm:'Ferme', catSpeed:'Vitesse', catEsp:'ESP',
+                catTeleport:'Téléportation', catTroll:'Troll', catUtility:'Utilitaire',
+                catGui:'Interface', catAuto:'Auto', catOther:'Autre',
+                execMobile:'Mobile', execPC:'PC',
+                resetPassword:'Réinitialiser le Mot de Passe', resetPasswordDesc:'Entrez votre email pour recevoir un lien de réinitialisation.',
+                resetEmail:'Adresse Email', sendReset:"Envoyer le Lien", backToLogin:'Retour à la connexion',
+                passwordResetSent:'Email de réinitialisation envoyé!',
+                scriptVersion:'Version du Script', scriptCode:'Code du Script',
+                scriptCodePlaceholder:'Collez votre script Lua ici...',
+                scriptNamePlaceholder:'ex: Auto Farm Pro',
+                scriptGamePlaceholder:'ex: Blox Fruits',
+                scriptDescPlaceholder:'Décrivez ce que fait le script...',
+                scriptTagsPlaceholder:'ex: farm, boss, auto',
+                scriptVersionPlaceholder:'ex: 1.0.0',
+                notifEmpty:'Aucune notification', notifSignIn:'Connectez-vous pour voir les notifications',
+                reportScript:'Signaler le Script', shareScript:'Partager le Script',
+                followBtn:'Suivre', unfollowBtn:'Ne plus suivre',
+                scriptDetails:'Détails du Script', backBtn:'Retour',
+                executor:'Exécuteur', platform:'Plateforme', free:'Gratuit',
+                heroTitle:'LPOLVO HUB', heroSubtitle:'Scripts Avancés & Automatisation',
+                heroDesc:"Construire l'avenir, un script à la fois. Un hub centralisé pour les scripts Roblox premium et les outils d'automatisation intelligents.",
+                exploreScripts:'Explorer les Scripts', community:'Communauté',
+                themeMenuTitle:'Choisir un Thème', themeRarityAll:'Tous', themeRarityOp:'Légendaire OP',
+                themeRaritySss:'Ultime SSS+', themeRarityMythic:'Mythique',
+                themeRarityTranscendent:'Transcendant', themeRarityOmniscient:'Omniscient',
+                themeRarityOmnipotent:'Omnipotent',
             },
         };
 
@@ -15017,34 +15723,63 @@
         }
 
         function updateTexts() {
-            // Nav
+            const T = key => getTranslation(key);
+            // Nav sign-in button
             const signInBtn = document.getElementById('navSignBtn');
-            if (signInBtn) signInBtn.textContent = getTranslation('signIn');
-            // Search inputs
+            if (signInBtn) signInBtn.textContent = T('signIn');
+            // Search inputs placeholders
             ['searchInput','scriptsPageSearch'].forEach(id => {
                 const el = document.getElementById(id);
-                if (el) el.placeholder = getTranslation('searchPlaceholder');
+                if (el) el.placeholder = T('searchPlaceholder');
             });
+            // Upload form placeholders
+            const phs = {
+                uploadName: 'scriptNamePlaceholder', uploadGame: 'scriptGamePlaceholder',
+                uploadDesc: 'scriptDescPlaceholder', uploadTags: 'scriptTagsPlaceholder',
+                uploadVersion: 'scriptVersionPlaceholder'
+            };
+            Object.entries(phs).forEach(([id,key]) => { const el=document.getElementById(id); if(el) el.placeholder=T(key); });
+            // Upload code textarea
+            const codeEl = document.getElementById('uploadCode');
+            if (codeEl) codeEl.placeholder = T('scriptCodePlaceholder');
+            // Upload form labels
+            const uploadLabels = {
+                uploadNameLabel:'scriptNameLabel', uploadGameLabel:'gameLabel',
+                uploadCategoryLabel:'categoryLabel', uploadDescLabel:'descLabel',
+                uploadTagsLabel:'tagsLabel', uploadIsFreeLabel:'isFreeLabel',
+                uploadVersionLabel:'scriptVersion', uploadCodeLabel:'scriptCode',
+                uploadSubmitBtn:'submitBtn', uploadTitleHeading:'uploadTitle'
+            };
+            Object.entries(uploadLabels).forEach(([id,key]) => { const el=document.getElementById(id); if(el) el.textContent=T(key); });
             // Bottom nav labels
             const navLabels = {home:'home',scripts:'scripts',profile:'profile',dash:'dashboard',settings:'settings'};
             document.querySelectorAll('.bottom-nav-item').forEach(el => {
                 const pg = el.dataset.page;
                 const key = navLabels[pg];
-                if (key) { const span = el.querySelector('span'); if (span) span.textContent = getTranslation(key); }
+                if (key) { const span = el.querySelector('span'); if (span) span.textContent = T(key); }
             });
             // Sidebar nav labels
             document.querySelectorAll('.sidebar-nav-item[data-page]').forEach(el => {
                 const pg = el.dataset.page;
                 const key = navLabels[pg];
-                if (key) { const span = el.querySelector('.sidebar-label'); if (span) span.textContent = getTranslation(key); }
+                if (key) { const span = el.querySelector('.sidebar-label'); if (span) span.textContent = T(key); }
+            });
+            // Sidebar About button text
+            document.querySelectorAll('.sidebar-nav-item[onclick*="openAboutModal"]').forEach(el => {
+                const lbl = el.querySelector('.sidebar-label');
+                if (lbl) lbl.textContent = T('settingsAbout');
             });
             // Active lang pills
             document.querySelectorAll('.lang-pill').forEach(pill => {
                 pill.classList.toggle('active', pill.dataset.lang === (state.language || 'en'));
             });
-            // Version string (keep as-is, just update About section key texts)
+            // About modal
             const aboutVer = document.getElementById('aboutVersionText');
-            if (aboutVer) aboutVer.textContent = getTranslation('premiumPlatform');
+            if (aboutVer) aboutVer.textContent = T('versionLabel') || 'V1 — Official Public Release';
+            const aboutDesc = document.getElementById('aboutDescText');
+            if (aboutDesc) aboutDesc.textContent = T('aboutLpolvoDesc');
+            const aboutGotIt = document.querySelector('#about-modal button[onclick*="closeAboutModal"]');
+            if (aboutGotIt) aboutGotIt.textContent = T('gotIt');
             // Home section titles
             const sectMap = {
                 'sect-categories':'sectCategories','sect-spotlight':'sectSpotlight',
@@ -15052,18 +15787,78 @@
                 'sect-creators':'sectTopCreators','sect-topscripts':'sectTopScripts',
                 'sect-executors':'sectExecutors','sect-news':'sectNews','sect-faq':'sectFAQ'
             };
-            Object.entries(sectMap).forEach(([cls,key])=>{const el=document.querySelector('.'+cls);if(el)el.textContent=getTranslation(key);});
+            Object.entries(sectMap).forEach(([cls,key])=>{const el=document.querySelector('.'+cls);if(el)el.textContent=T(key);});
             // Sort buttons
             const sortMap={new:'sortNew',hot:'sortHot',top:'sortTop',free:'sortFree'};
-            document.querySelectorAll('.sort-btn[data-sort]').forEach(btn=>{const k=sortMap[btn.dataset.sort];if(k)btn.textContent=getTranslation(k);});
-            // See all links with data-i18n
-            document.querySelectorAll('[data-i18n]').forEach(el=>{const k=el.dataset.i18n;if(k)el.textContent=getTranslation(k);});
+            document.querySelectorAll('.sort-btn[data-sort]').forEach(btn=>{const k=sortMap[btn.dataset.sort];if(k)btn.textContent=T(k);});
+            // data-i18n elements (generic)
+            document.querySelectorAll('[data-i18n]').forEach(el=>{const k=el.dataset.i18n;if(k)el.textContent=T(k);});
             // Stat labels
-            document.querySelectorAll('.stat-label[data-i18n]').forEach(el=>{el.textContent=getTranslation(el.dataset.i18n);});
-            // Cancel search button
-            const cancelEl=document.getElementById('searchCancelBtn');if(cancelEl)cancelEl.textContent=getTranslation('cancelBtn');
+            document.querySelectorAll('.stat-label[data-i18n]').forEach(el=>{el.textContent=T(el.dataset.i18n);});
+            // Cancel search
+            const cancelEl=document.getElementById('searchCancelBtn');if(cancelEl)cancelEl.textContent=T('cancelBtn');
             // Search hint
-            const hintEl=document.getElementById('searchHint');if(hintEl)hintEl.textContent=getTranslation('startTyping');
+            const hintEl=document.getElementById('searchHint');if(hintEl)hintEl.textContent=T('startTyping');
+            // Auth modal strings
+            const authTab = {authTabLogin:'loginTab',authTabRegister:'registerTab'};
+            Object.entries(authTab).forEach(([id,key])=>{ const el=document.getElementById(id); if(el)el.textContent=T(key); });
+            // Hero section dynamic update
+            const heroSubEl = document.querySelector('.hero-subtitle-badge');
+            if (heroSubEl) heroSubEl.textContent = T('heroSubtitle');
+            const heroDescEl = document.querySelector('.hero-description');
+            if (heroDescEl) heroDescEl.textContent = T('heroDesc');
+            const heroExpBtn = document.querySelector('.hero-btn-primary');
+            if (heroExpBtn) { const txt = heroExpBtn.querySelector('span') || heroExpBtn; txt.textContent = txt === heroExpBtn ? T('exploreScripts') : T('exploreScripts'); }
+            // Footer
+            const footerMap = {footerAboutLink:'footerAbout',footerScriptsLink:'footerScripts',footerSettingsLink:'footerSettings'};
+            Object.entries(footerMap).forEach(([id,key])=>{ const el=document.getElementById(id); if(el)el.textContent=T(key); });
+            const footerVer = document.getElementById('footerVersionText');
+            if (footerVer) footerVer.textContent = T('versionLabel') || 'V1 — Official Public Release';
+            // Notification panel
+            const notifTitle = document.getElementById('notifPanelTitle');
+            if (notifTitle) notifTitle.textContent = T('notificationsTitle');
+            const notifMarkAll = document.getElementById('notifMarkAllBtn');
+            if (notifMarkAll) notifMarkAll.textContent = T('markAllRead');
+            const notifEmpty = document.getElementById('notifEmptyText');
+            if (notifEmpty) notifEmpty.textContent = T('noNotifsYet');
+            // Sidebar special labels
+            const sidebarSignInEl = document.getElementById('sidebarSignIn');
+            if (sidebarSignInEl) { const lbl = sidebarSignInEl.querySelector('.sidebar-label'); if(lbl) lbl.textContent = T('signIn'); }
+            const sidebarSignOutEl = document.getElementById('sidebarSignOut');
+            if (sidebarSignOutEl) { const lbl = sidebarSignOutEl.querySelector('.sidebar-label'); if(lbl) lbl.textContent = T('signOut'); }
+            const connectLbl = document.getElementById('sidebarConnectLabel');
+            if (connectLbl) connectLbl.textContent = T('sidebarConnect');
+            // Settings page title
+            const settingsTitleEl = document.getElementById('settingsPageTitle');
+            if (settingsTitleEl) settingsTitleEl.textContent = T('settingsTitle');
+            // Footer made with
+            const madeWithEl = document.getElementById('footerMadeWith');
+            if (madeWithEl) madeWithEl.textContent = T('madeWith');
+            // Auth modal translations
+            const authFields = {
+                loginTitle:'loginTitle', loginSub:'loginSub',
+                loginEmailLabel:'emailLabel', loginPasswordLabel:'passwordLabel',
+                loginBtn:'signInBtn', loginOrText:'orDivider', loginGoogleText:'continueGoogle',
+                loginForgotText:'forgotText', loginResetLink:'resetIt',
+                authTabLogin:'loginTab', authTabRegister:'registerTab',
+                regTitle:'regTitle', regSub:'regJoin',
+                regNameLabel:'displayNameLabel', regEmailLabel:'emailLabel', regPasswordLabel:'passwordLabel',
+                regBtn:'registerBtn', regOrText:'orDivider', regGoogleText:'continueGoogle',
+                resetTitle:'resetTitle', resetSub:'resetSub',
+                resetEmailLabel:'emailLabel', resetSubmitBtn:'sendResetLink', resetBackLink:'backToLoginLink',
+            };
+            Object.entries(authFields).forEach(([id,key])=>{ const el=document.getElementById(id); if(el)el.textContent=T(key); });
+            // Scripts page title and add button
+            const scriptsTitle = document.getElementById('scriptsPageTitle');
+            if (scriptsTitle) scriptsTitle.textContent = '📜 ' + T('scripts');
+            const addScriptTxt = document.getElementById('addScriptBtnText');
+            if (addScriptTxt) addScriptTxt.textContent = T('addScript');
+            // Rebuild dynamic sections with new language
+            buildNews();
+            buildHowItWorks();
+            buildFAQ();
+            buildExecutors();
+            buildCategories();
         }
 
         function setLanguage(lang) {
@@ -15077,15 +15872,20 @@
             }
             applyLanguageDirection();
             playClick();
+            // Instantly update all static text in the UI
+            updateTexts();
+            buildTicker();
             const page = state.page;
             if (page === 'profile') buildProfilePage();
             if (page === 'dash') buildDashPage();
             if (page === 'settings') buildSettings();
             if (page === 'scripts') buildScriptsPage();
-            if (page === 'home') { buildHomeScripts();
+            if (page === 'home') {
+                buildHomeScripts();
                 buildSpotlight();
                 buildLeaderboard();
-                buildTopCreators(); }
+                buildTopCreators();
+            }
         }
 
         /* ── NAVIGATION ── */
@@ -15255,28 +16055,28 @@
 
         async function doLogin() {
             const fb = window.__FB;
-            if (!fb?.ready) { showToast('Firebase not connected', 'error'); return; }
+            if (!fb?.ready) { showToast(getTranslation('firebaseNotConnected'), 'error'); return; }
             const email = document.getElementById('loginEmail').value.trim();
             const pw = document.getElementById('loginPassword').value;
             const err = document.getElementById('loginError');
             const btn = document.getElementById('loginBtn');
             if (!email || !pw) { if (err) err.textContent = 'Please fill all fields.'; return; }
             btn.disabled = true;
-            btn.textContent = 'Signing in...';
+            btn.textContent = getTranslation('signingIn');
             if (err) err.textContent = '';
             try {
                 await fb.signInWithEmailAndPassword(fb.auth, email, pw);
                 closeAuthModal();
-                showToast('Welcome back! 👋', 'success');
+                showToast(getTranslation('welcomeBack2'), 'success');
                 playSuccess();
             } catch (e) { if (err) err.textContent = friendlyAuthError(e.code);
                 playError(); } finally { btn.disabled = false;
-                btn.textContent = 'Sign In'; }
+                btn.textContent = getTranslation('signInBtn'); }
         }
 
         async function doRegister() {
             const fb = window.__FB;
-            if (!fb?.ready) { showToast('Firebase not connected', 'error'); return; }
+            if (!fb?.ready) { showToast(getTranslation('firebaseNotConnected'), 'error'); return; }
             const name = document.getElementById('regName').value.trim();
             const email = document.getElementById('regEmail').value.trim();
             const pw = document.getElementById('regPassword').value;
@@ -15284,29 +16084,29 @@
             const suc = document.getElementById('regSuccess');
             const btn = document.getElementById('regBtn');
             if (!name || !email || !pw) { if (err) err.textContent = 'Please fill all fields.'; return; }
-            if (pw.length < 6) { if (err) err.textContent = 'Password must be at least 6 characters.'; return; }
+            if (pw.length < 6) { if (err) err.textContent = getTranslation('passwordMinLength'); return; }
             btn.disabled = true;
-            btn.textContent = 'Creating...';
+            btn.textContent = getTranslation('creatingAccount');
             if (err) err.textContent = '';
             try {
                 const cred = await fb.createUserWithEmailAndPassword(fb.auth, email, pw);
                 await fb.updateProfile(cred.user, { displayName: name });
-                if (suc) suc.textContent = 'Account created! Welcome 🎉';
+                if (suc) suc.textContent = getTranslation('accountCreated');
                 setTimeout(() => { closeAuthModal();
-                    showToast('Account created! Welcome to LPOLVO HUB 🎉', 'success');
+                    showToast(getTranslation('accountCreatedToast'), 'success');
                     playSuccess(); }, 1000);
             } catch (e) { if (err) err.textContent = friendlyAuthError(e.code);
                 playError(); } finally { btn.disabled = false;
-                btn.textContent = 'Create Account'; }
+                btn.textContent = getTranslation('registerBtn'); }
         }
 
         async function doGoogleLogin() {
             const fb = window.__FB;
-            if (!fb?.ready) { showToast('Firebase not connected', 'error'); return; }
+            if (!fb?.ready) { showToast(getTranslation('firebaseNotConnected'), 'error'); return; }
             try {
                 await fb.signInWithPopup(fb.auth, fb.googleProvider);
                 closeAuthModal();
-                showToast('Signed in with Google! 👋', 'success');
+                showToast(getTranslation('signedInGoogle'), 'success');
                 playSuccess();
             } catch (e) {
                 if (e.code !== 'auth/popup-closed-by-user') { showToast(friendlyAuthError(e.code), 'error');
@@ -15320,10 +16120,10 @@
             const email = document.getElementById('resetEmail').value.trim();
             const err = document.getElementById('resetError');
             const suc = document.getElementById('resetSuccess');
-            if (!email) { if (err) err.textContent = 'Please enter your email.'; return; }
+            if (!email) { if (err) err.textContent = getTranslation('enterEmail'); return; }
             try {
                 await fb.sendPasswordResetEmail(fb.auth, email);
-                if (suc) suc.textContent = 'Reset link sent! Check your email.';
+                if (suc) suc.textContent = getTranslation('resetLinkSent');
                 if (err) err.textContent = '';
                 playSuccess();
             } catch (e) { if (err) err.textContent = friendlyAuthError(e.code);
@@ -15335,9 +16135,9 @@
             if (!fb?.ready) return;
             try {
                 await fb.signOut(fb.auth);
-                showToast('Signed out. See you soon! 👋', 'info');
+                showToast(getTranslation('signedOutSoon'), 'info');
                 if (state.page === 'profile' || state.page === 'dash') navigate('home');
-            } catch (e) { showToast('Sign out error', 'error'); }
+            } catch (e) { showToast(getTranslation('signOutError'), 'error'); }
         }
 
         function friendlyAuthError(code) {
@@ -15429,7 +16229,7 @@
         function onOnboardingAvatarChange(event) {
             const file = event.target.files[0];
             if (!file) return;
-            if (file.size > 2 * 1024 * 1024) { showToast('Image must be smaller than 2MB', 'error'); return; }
+            if (file.size > 2 * 1024 * 1024) { showToast(getTranslation('imageTooLarge'), 'error'); return; }
             const reader = new FileReader();
             reader.onload = (e) => {
                 const dataUrl = e.target.result;
@@ -15458,7 +16258,7 @@
         function onOnboardingBannerChange(event) {
             const file = event.target.files[0];
             if (!file) return;
-            if (file.size > 2 * 1024 * 1024) { showToast('Image must be smaller than 2MB', 'error'); return; }
+            if (file.size > 2 * 1024 * 1024) { showToast(getTranslation('imageTooLarge'), 'error'); return; }
             const reader = new FileReader();
             reader.onload = (e) => {
                 const dataUrl = e.target.result;
@@ -19347,7 +20147,7 @@
                 document.getElementById('navNotifDot').classList.toggle('show', SETTINGS.notifications && unread > 0);
                 const list = document.getElementById('notifList');
                 if (!list) return;
-                if (notifs.length === 0) { list.innerHTML = '<div class="notif-empty">No notifications yet 🔔</div>'; return; }
+                if (notifs.length === 0) { list.innerHTML = `<div class="notif-empty">${getTranslation('noNotifsYetIcon')}</div>`; return; }
                 list.innerHTML = notifs.map(n =>
                     `<div class="notif-item ${n.read ? '' : 'unread'}" onclick="markNotifRead('${n.id}', this)">
                 <div class="notif-item-icon">${n.icon || '🔔'}</div>
@@ -19384,7 +20184,7 @@
                 document.getElementById('navNotifDot').classList.remove('show');
                 document.querySelectorAll('.notif-item').forEach(el => { el.classList.remove('unread'); const dot = el
                         .querySelector('.notif-unread-dot'); if (dot) dot.remove(); });
-                showToast('All notifications marked as read', 'info');
+                showToast(getTranslation('allNotifsRead'), 'info');
             } catch (e) {}
         }
 
@@ -19440,8 +20240,7 @@
             else if (state.scriptsSort === 'free') scripts = scripts.filter(s => s.free !== false);
             else if (state.scriptsSort === 'new') scripts.sort((a, b) => (b.createdAt?.seconds || 0) - (a.createdAt?.seconds ||
                 0));
-            document.getElementById('scriptsCountNum').textContent = scripts.length + ' script' + (scripts.length !== 1 ?
-                's' : '');
+            document.getElementById('scriptsCountNum').textContent = scripts.length + ' ' + getTranslation(scripts.length !== 1 ? 'scriptsCountPlural' : 'scriptsCountSingle');
             if (scripts.length === 0) {
                 container.innerHTML = buildEmptyState({ icon: '📜', title: getTranslation('noScripts'), quote: '"' +
                         getTranslation('beFirst') + '"', subtitle: getTranslation('scriptsComingSoon'), cta: getTranslation(
@@ -19512,7 +20311,7 @@
             let script = state.scripts.find(s => s.id === id);
             if (!script && fb?.ready) { try { const snap = await fb.getDoc(fb.doc(fb.db, 'scripts', id)); if (snap.exists())
                     script = { id: snap.id, ...snap.data() }; } catch (e) {} }
-            if (!script) { showToast('Script not found', 'error'); return; }
+            if (!script) { showToast(getTranslation('scriptNotFound'), 'error'); return; }
             if (fb?.ready) { try { await fb.updateDoc(fb.doc(fb.db, 'scripts', id), { views: fb.increment(1) });
                     script.views = (script.views || 0) + 1; } catch (e) {} }
             const recentKey = 'lp_recent' + (state.currentUser ? '_' + state.currentUser.uid : '');
@@ -19552,13 +20351,13 @@
         async function doCopyScript(id) {
             const script = state.scripts.find(s => s.id === id);
             const code = script?.code || '';
-            if (!code) { showToast('No code to copy', 'error'); return; }
+            if (!code) { showToast(getTranslation('noCodeToCopy'), 'error'); return; }
             try {
                 await navigator.clipboard.writeText(code);
-                showToast('Script copied to clipboard! 📋', 'success');
+                showToast(getTranslation('scriptCopiedClipboard'), 'success');
                 playCopy();
                 const btn = document.getElementById('scriptCopyBtn');
-                if (btn) { btn.innerHTML = '✓ Copied!';
+                if (btn) { btn.innerHTML = getTranslation('copied');
                     setTimeout(() => { btn.innerHTML =
                             '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg> Copy Script'; },
                         1500); }
@@ -19579,7 +20378,7 @@
                 ta.select();
                 document.execCommand('copy');
                 document.body.removeChild(ta);
-                showToast('Script copied! 📋', 'success');
+                showToast(getTranslation('scriptCopiedShort'), 'success');
                 playCopy();
             }
         }
@@ -19597,11 +20396,11 @@
                 if (isFav) { state.userProfile.favorites = state.userProfile.favorites.filter(f => f !== id); } else { state
                         .userProfile.favorites.push(id); }
                 const btn = document.getElementById('favScriptBtn');
-                if (btn) { btn.innerHTML = isFav ? '🤍 Save' : '❤️ Saved';
+                if (btn) { btn.innerHTML = isFav ? getTranslation('saveFav') : getTranslation('savedFav');
                     btn.classList.toggle('active', !isFav); }
                 showToast(isFav ? 'Removed from favorites' : 'Added to favorites ⭐', isFav ? 'info' : 'success');
                 playLike();
-            } catch (e) { showToast('Could not update favorites', 'error'); }
+            } catch (e) { showToast(getTranslation('couldNotUpdateFavs'), 'error'); }
         }
 
         async function awardBadge(badgeId) {
@@ -19620,17 +20419,17 @@
             const url = `${location.origin}${location.pathname}#scripts`;
             if (navigator.share) { navigator.share({ title: name + ' — LPOLVO HUB', url }); } else { navigator.clipboard
                     ?.writeText(url);
-                showToast('Link copied! 🔗', 'info'); }
+                showToast(getTranslation('linkCopied'), 'info'); }
             playClick();
         }
 
-        function reportScript(id) { showToast('Report submitted. Thank you! 🚩', 'info');
+        function reportScript(id) { showToast(getTranslation('reportSubmitted'), 'info');
             playClick(); }
 
         /* ── UPLOAD SCRIPT ── */
         function openUploadModal() {
             if (!state.currentUser) { openAuthModal('login');
-                showToast('Please sign in to submit a script', 'info'); return; }
+                showToast(getTranslation('pleaseSignIn'), 'info'); return; }
             document.getElementById('upload-modal').classList.add('show');
             document.getElementById('uploadProgressWrap').classList.remove('show');
             document.getElementById('uploadProgressBar').style.width = '0%';
@@ -19681,7 +20480,7 @@
 
         async function doUploadScript() {
             const fb = window.__FB;
-            if (!fb?.ready || !state.currentUser) { showToast('Please sign in first', 'error'); return; }
+            if (!fb?.ready || !state.currentUser) { showToast(getTranslation('signInFirst'), 'error'); return; }
             const name = document.getElementById('uploadName').value.trim();
             const game = document.getElementById('uploadGame').value.trim();
             const code = document.getElementById('uploadCode').value.trim();
@@ -19696,12 +20495,12 @@
             const thumbnail = state.pendingThumb || '';
             const errEl = document.getElementById('uploadError');
             const btn = document.getElementById('uploadBtn');
-            if (!name) { if (errEl) errEl.textContent = 'Script name is required.'; return; }
-            if (!game) { if (errEl) errEl.textContent = 'Game name is required.'; return; }
-            if (!code) { if (errEl) errEl.textContent = 'Script code is required.'; return; }
+            if (!name) { if (errEl) errEl.textContent = getTranslation('scriptNameRequired'); return; }
+            if (!game) { if (errEl) errEl.textContent = getTranslation('gameNameRequired'); return; }
+            if (!code) { if (errEl) errEl.textContent = getTranslation('scriptCodeRequired'); return; }
             if (errEl) errEl.textContent = '';
             btn.disabled = true;
-            btn.textContent = 'Submitting...';
+            btn.textContent = getTranslation('submitting');
             updateUploadProgress(10);
             try {
                 const tags = tagsRaw ? tagsRaw.split(',').map(t => t.trim().toLowerCase()).filter(Boolean).slice(0, 6) : [];
@@ -19740,7 +20539,7 @@
                 updateUploadProgress(100);
                 setTimeout(() => {
                     closeUploadModal();
-                    showToast('Script submitted successfully! 🎉', 'success');
+                    showToast(getTranslation('scriptSubmitted'), 'success');
                     playUpload();
                     ['uploadName', 'uploadGame', 'uploadCode', 'uploadDesc', 'uploadTags', 'uploadVersion'].forEach(
                         id => { const el = document.getElementById(id); if (el) el.value = ''; });
@@ -19759,10 +20558,10 @@
                     buildSpotlight();
                     buildLeaderboard();
                 }, 500);
-            } catch (e) { if (errEl) errEl.textContent = 'Failed to submit script. Please try again.';
+            } catch (e) { if (errEl) errEl.textContent = getTranslation('scriptSubmitFailed');
                 playError();
                 document.getElementById('uploadProgressWrap').classList.remove('show'); } finally { btn.disabled = false;
-                btn.textContent = 'Submit Script'; }
+                btn.textContent = getTranslation('submitBtn'); }
         }
 
         function setSortHome(sort) { state.homeSort = sort;
@@ -19982,7 +20781,7 @@
 
         function viewUserProfile(uid) {
             if (uid === state.currentUser?.uid) { navigate('profile'); return; }
-            showToast('User profiles coming soon!', 'info');
+            showToast(getTranslation('userProfilesSoon'), 'info');
         }
 
         /* ── EDIT PROFILE ── */
@@ -20021,7 +20820,7 @@
         function onAvatarFileChange(event) {
             const file = event.target.files[0];
             if (!file) return;
-            if (file.size > 2 * 1024 * 1024) { showToast('Image must be smaller than 2MB', 'error'); return; }
+            if (file.size > 2 * 1024 * 1024) { showToast(getTranslation('imageTooLarge'), 'error'); return; }
             const reader = new FileReader();
             reader.onload = (e) => {
                 const dataUrl = e.target.result;
@@ -20051,7 +20850,7 @@
         function onEditBannerChange(event) {
             const file = event.target.files[0];
             if (!file) return;
-            if (file.size > 2 * 1024 * 1024) { showToast('Image must be smaller than 2MB', 'error'); return; }
+            if (file.size > 2 * 1024 * 1024) { showToast(getTranslation('imageTooLarge'), 'error'); return; }
             const reader = new FileReader();
             reader.onload = (e) => {
                 const dataUrl = e.target.result;
@@ -20087,10 +20886,10 @@
             const errEl = document.getElementById('editError');
             const sucEl = document.getElementById('editSuccess');
             const btn = document.getElementById('editSaveBtn');
-            if (!name) { if (errEl) errEl.textContent = 'Display name is required.'; return; }
+            if (!name) { if (errEl) errEl.textContent = getTranslation('displayNameRequired'); return; }
             if (errEl) errEl.textContent = '';
             btn.disabled = true;
-            btn.textContent = 'Saving...';
+            btn.textContent = getTranslation('saving');
             try {
                 const avatar = state.pendingAvatar || state.userProfile?.avatar || '';
                 const banner = state.pendingBanner || state.userProfile?.banner || '';
@@ -20105,14 +20904,14 @@
                 state.pendingAvatar = null;
                 state.pendingBanner = null;
                 updateAvatarUI();
-                if (sucEl) sucEl.textContent = 'Profile saved!';
-                showToast('Profile updated! ✅', 'success');
+                if (sucEl) sucEl.textContent = getTranslation('profileSaved');
+                showToast(getTranslation('profileUpdated'), 'success');
                 playSuccess();
                 setTimeout(() => { closeEditModal();
                     buildProfilePage(); }, 800);
-            } catch (e) { if (errEl) errEl.textContent = 'Failed to save profile. Try again.';
+            } catch (e) { if (errEl) errEl.textContent = getTranslation('profileSaveFailed');
                 playError(); } finally { btn.disabled = false;
-                btn.textContent = 'Save Changes'; }
+                btn.textContent = getTranslation('saveChanges'); }
         }
 
         /* ── DASHBOARD ── */
@@ -20167,7 +20966,7 @@
             <div class="dashboard-section"><div class="dashboard-section-title">🎨 ${getTranslation('currentTheme')}</div>
             <div style="background:var(--card);border:1px solid var(--card-border);border-radius:var(--radius-lg);padding:14px;display:flex;align-items:center;gap:12px;">
             <div style="width:40px;height:40px;border-radius:10px;background:var(--btn-grad);flex-shrink:0;box-shadow:0 2px 10px var(--glow2);"></div>
-            <div><div style="font-weight:700;color:var(--text);">${theme?.name || state.theme}</div><div style="font-size:0.7rem;color:var(--text3);">${theme?.desc || ''}</div></div>
+             <div><div style="font-weight:700;color:var(--text);">${getThemeName(state.theme)}</div><div style="font-size:0.7rem;color:var(--text3);">${getThemeDesc(state.theme)}</div></div>
             <button onclick="navigate('settings')" style="margin-left:auto;height:30px;padding:0 12px;border-radius:8px;background:var(--bg3);border:1px solid var(--border);color:var(--text2);font-size:0.7rem;cursor:pointer;">${getTranslation('changeBtn')}</button></div></div>
             <div class="dashboard-section"><div class="dashboard-section-title">⭐ ${getTranslation('favoriteScripts')}</div>
             ${(profile.favorites || []).length === 0 ? `<div class="empty-state" style="min-height:140px;"><div class="empty-icon-wrap">⭐</div><div class="empty-state-title">${getTranslation('noFavsYet')}</div><div class="empty-state-sub">${getTranslation('scriptsWillAppear')}</div></div>` :
@@ -20239,7 +21038,7 @@
             <div class="settings-section"><div class="settings-section-title">${getTranslation('themeOptionsLabel')} — ${THEMES.length}</div>
             <div class="theme-grid">${THEMES.map(t => `<div class="theme-btn ${state.theme === t.id ? 'active' : ''}" data-theme="${t.id}" ${t.op ? 'data-op="true"' : ''} ${t.sss ? 'data-sss="true"' : ''} ${t.mythic ? 'data-mythic="true"' : ''} ${t.transcendent ? 'data-transcendent="true"' : ''} ${t.omniscient ? 'data-omniscient="true"' : ''} ${t.omnipotent ? 'data-omnipotent="true"' : ''} onclick="applyTheme('${t.id}');buildSettings();">
             <div class="theme-swatch" style="background:${t.color};box-shadow:0 2px 8px ${t.color}44;"></div>
-            <div><div class="theme-btn-name">${t.name}</div><div class="theme-btn-desc">${t.desc}</div></div></div>`).join('')}</div></div>
+            <div><div class="theme-btn-name">${getThemeName(t.id)}</div><div class="theme-btn-desc">${getThemeDesc(t.id)}</div></div></div>`).join('')}</div></div>
             ${state.currentUser ? `<div class="settings-section"><div class="settings-section-title">${getTranslation('settingsAccount')}</div>
             <div class="settings-card"><div class="settings-row" onclick="openEditModal()"><div class="settings-row-icon">✏️</div>
             <div class="settings-row-info"><div class="settings-row-label">${getTranslation('editProfile')}</div>
@@ -20251,10 +21050,11 @@
             `<div class="settings-section"><div class="settings-card"><div class="settings-row" onclick="openAuthModal('login')"><div class="settings-row-icon">🔐</div>
             <div class="settings-row-info"><div class="settings-row-label">${getTranslation('signIn')}</div>
             <div class="settings-row-desc">${getTranslation('signInDesc')}</div></div></div></div></div>`}
-            <div class="settings-section"><div class="settings-section-title">${getTranslation('settingsAbout')}</div>
-            <div class="settings-card"><div class="settings-row" onclick="openAboutModal()"><div class="settings-row-icon">ℹ️</div>
-            <div class="settings-row-info"><div class="settings-row-label">${getTranslation('aboutLPOLVO')}</div>
-            <div class="settings-row-desc">Version 5 · ${getTranslation('premiumPlatform')}</div></div></div></div></div>`;
+             <div class="settings-section"><div class="settings-section-title">${getTranslation('settingsAbout')}</div>
+             <div class="settings-card"><div class="settings-row" onclick="openAboutModal()"><div class="settings-row-icon">ℹ️</div>
+             <div class="settings-row-info"><div class="settings-row-label">${getTranslation('aboutLPOLVO')}</div>
+             <div class="settings-row-desc">V1 · ${getTranslation('premiumPlatform')}</div></div></div></div></div>
+             `;
         }
 
         function toggleSetting(key) {
@@ -20266,28 +21066,37 @@
         }
 
         /* ── STATIC CONTENT ── */
-        function buildCategories() {
+         function buildCategories() {
             const el = document.getElementById('categoriesContainer');
             if (!el) return;
-            el.innerHTML = CATEGORIES.map(c =>
-                `<div class="cat-pill" onclick="navigate('scripts');state.scriptsFilter='${c.id}';buildScriptsPage();playClick();">
-            <div class="cat-pill-icon">${c.icon}</div><div class="cat-pill-name">${c.name}</div></div>`
-            ).join('');
+            // Map category id to translation key
+            const catKeyMap = {combat:'catCombat',farm:'catFarm',speed:'catSpeed',esp:'catEsp',
+                teleport:'catTeleport',troll:'catTroll',utility:'catUtility',
+                gui:'catGui',auto:'catAuto',other:'catOther'};
+            el.innerHTML = CATEGORIES.map(c => {
+                const name = getTranslation(catKeyMap[c.id]) || c.name;
+                return `<div class="cat-pill" onclick="navigate('scripts');state.scriptsFilter='${c.id}';buildScriptsPage();playClick();">
+                <div class="cat-pill-icon">${c.icon}</div><div class="cat-pill-name">${name}</div></div>`;
+            }).join('');
         }
 
         function buildExecutors() {
             const el = document.getElementById('executorGrid');
             if (!el) return;
+            const freeLabel = getTranslation('free') || 'Free';
+            const execLabel = getTranslation('executor') || 'Executor';
             el.innerHTML = EXECUTORS.map(e =>
                 `<div class="executor-card"><div class="executor-icon">${e.icon}</div><div><div class="executor-name">${e.name}</div>
-                <div class="executor-platform">${e.platform}</div></div>${e.free ? '<div class="executor-badge">FREE</div>' : ''}</div>`
+                <div class="executor-platform">${e.platform}</div></div>${e.free ? `<div class="executor-badge">${freeLabel.toUpperCase()}</div>` : ''}</div>`
             ).join('');
         }
 
         function buildNews() {
             const el = document.getElementById('newsList');
             if (!el) return;
-            el.innerHTML = NEWS.map(n =>
+            const lang = state.language || 'en';
+            const newsItems = NEWS_DATA[lang] || NEWS_DATA.en;
+            el.innerHTML = newsItems.map(n =>
                 `<div class="news-card"><div class="news-card-header"><span class="news-badge ${n.badgeClass}">${n.badge.toUpperCase()}</span>
                 <span class="news-date">${n.date}</span></div><div class="news-title">${n.title}</div><div class="news-desc">${n.desc}</div></div>`
             ).join('');
@@ -20296,9 +21105,15 @@
         function buildFAQ() {
             const el = document.getElementById('faqList');
             if (!el) return;
-            el.innerHTML = FAQS.map((f, i) =>
-                `<div class="faq-item" onclick="toggleFaq(this)"><div class="faq-question">${f.q}<div class="faq-chevron">▾</div></div>
-                <div class="faq-answer">${f.a}</div></div>`
+            // Use localized FAQ data
+            const faqKeys = [
+                {q:'faqSafe',a:'faqSafeAns'},{q:'faqMobile',a:'faqMobileAns'},
+                {q:'faqKeyless',a:'faqKeylessAns'},{q:'faqSubmit',a:'faqSubmitAns'},
+                {q:'faqBroken',a:'faqBrokenAns'},{q:'faqFree',a:'faqFreeAns'}
+            ];
+            el.innerHTML = faqKeys.map(k =>
+                `<div class="faq-item" onclick="toggleFaq(this)"><div class="faq-question">${getTranslation(k.q)}<div class="faq-chevron">▾</div></div>
+                <div class="faq-answer">${getTranslation(k.a)}</div></div>`
             ).join('');
         }
 
@@ -20308,16 +21123,63 @@
         function buildHowItWorks() {
             const el = document.getElementById('howStepsList');
             if (!el) return;
-            el.innerHTML = HOW_IT_WORKS.map(s =>
-                `<div class="how-step"><div class="how-step-num">${s.num}</div><div><div class="how-step-title">${s.title}</div>
-                <div class="how-step-desc">${s.desc}</div></div></div>`
+            // Use localized how-it-works data
+            const steps = [
+                {num:'01',title:'howFind',desc:'howFindDesc'},
+                {num:'02',title:'howCopy',desc:'howCopyDesc'},
+                {num:'03',title:'howRun',desc:'howRunDesc'}
+            ];
+            el.innerHTML = steps.map(s =>
+                `<div class="how-step"><div class="how-step-num">${s.num}</div><div><div class="how-step-title">${getTranslation(s.title)}</div>
+                <div class="how-step-desc">${getTranslation(s.desc)}</div></div></div>`
             ).join('');
         }
+
+        const TICKER_ITEMS_LOCALIZED = {
+            en: [
+                '🚀 LPOLVO HUB V1 — Official Public Release!',
+                '🌐 Full Arabic & French Support',
+                '🔥 52+ immersive themes with dynamic backgrounds',
+                '⭐ Submit your script today',
+                '🌙 Complete RTL support for Arabic',
+                '🎨 Each theme has unique particles & sounds',
+                '👑 Creator profiles now live!',
+                '🎮 100% compatible with mobile executors',
+                '🌟 Dynamic Translation — no page reload needed',
+                '⚡ Infinity Throne: OMNIPOTENT rarity'
+            ],
+            ar: [
+                '🚀 LPOLVO HUB V1 — الإصدار الرسمي!',
+                '🌐 دعم كامل للعربية والفرنسية',
+                '🔥 أكثر من 52 مظهراً بخلفيات حية',
+                '⭐ أرسل سكريبتك اليوم',
+                '🌙 دعم RTL كامل للغة العربية',
+                '🎨 كل مظهر له جسيمات وأصوات فريدة',
+                '👑 ملفات المنشئين متاحة الآن!',
+                '🎮 متوافق 100٪ مع منفذي الجوال',
+                '🌟 ترجمة فورية — بدون إعادة تحميل',
+                '⚡ عرش اللانهاية: ندرة كليّ القدرة'
+            ],
+            fr: [
+                '🚀 LPOLVO HUB V1 — Sortie Officielle!',
+                '🌐 Support Complet Arabe & Français',
+                '🔥 52+ thèmes immersifs avec arrière-plans dynamiques',
+                '⭐ Soumettez votre script aujourd\'hui',
+                '🌙 Support RTL complet pour l\'arabe',
+                '🎨 Chaque thème a des particules et sons uniques',
+                '👑 Profils créateurs maintenant disponibles!',
+                '🎮 100% compatible avec les exécuteurs mobiles',
+                '🌟 Traduction Dynamique — sans rechargement',
+                '⚡ Trône de l\'Infini: Rareté Omnipotente'
+            ]
+        };
 
         function buildTicker() {
             const el = document.getElementById('tickerInner');
             if (!el) return;
-            const items = [...TICKER_ITEMS, ...TICKER_ITEMS];
+            const lang = state.language || 'en';
+            const baseItems = TICKER_ITEMS_LOCALIZED[lang] || TICKER_ITEMS_LOCALIZED.en;
+            const items = [...baseItems, ...baseItems];
             el.innerHTML = items.map(t => `<span class="ticker-item"><span class="ticker-dot"></span>${t}</span>`).join('');
         }
 
@@ -20367,8 +21229,17 @@
             setTimeout(() => el?.parentNode?.removeChild(el), 350); }
 
         /* ── ABOUT ── */
-        function openAboutModal() { document.getElementById('about-modal').classList.add('show');
-            playClick(); }
+         function openAboutModal() {
+            document.getElementById('about-modal').classList.add('show');
+            // Update about modal with current language
+            const aboutVer = document.getElementById('aboutVersionText');
+            if (aboutVer) aboutVer.textContent = getTranslation('versionLabel') || 'V1 — Official Public Release';
+            const aboutDesc = document.getElementById('aboutDescText');
+            if (aboutDesc) aboutDesc.textContent = getTranslation('aboutLpolvoDesc');
+            const aboutGotIt = document.querySelector('#about-modal button[onclick*="closeAboutModal"]');
+            if (aboutGotIt) aboutGotIt.textContent = getTranslation('gotIt');
+            playClick();
+        }
 
         function closeAboutModal() { document.getElementById('about-modal').classList.remove('show'); }
 
@@ -20473,7 +21344,7 @@
                         )) { lastHover = Date.now();
                     playHover(); }
             }, { passive: true });
-            console.log('[LPOLVO HUB v5] Initialized ✓');
+            console.log('[LPOLVO HUB V1] Initialized ✓');
             console.log('[LPOLVO HUB] Theme:', state.theme, 'Language:', state.language);
             setTimeout(() => playThemeAmbient(), 1000);
         }
