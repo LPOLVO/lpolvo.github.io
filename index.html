@@ -8,11 +8,11 @@
     <meta name="theme-color" content="#080818">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="mobile-web-app-capable" content="yes">
-    <meta name="description" content="LPOLVO HUB V1 — Premium Roblox Scripts, Automation & Community">
-    <meta property="og:title" content="LPOLVO HUB V1">
-    <meta property="og:description" content="Premium Roblox Scripts & Automation Platform — V1 Official Public Release">
+    <meta name="description" content="LPOLVO HUB v1.2 — Premium Roblox Scripts, Automation & Community">
+    <meta property="og:title" content="LPOLVO HUB v1.2">
+    <meta property="og:description" content="Premium Roblox Scripts & Automation Platform — v1.2 Complete User Systems">
     <meta property="og:type" content="website">
-    <title>LPOLVO HUB V1</title>
+    <title>LPOLVO HUB v1.2</title>
     <link rel="icon" type="image/png" href="favicon.png">
     <!-- Premium Fonts: Manrope, Syne, JetBrains Mono, Orbitron, Noto Kufi Arabic -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -33,6 +33,9 @@
             arrayRemove, addDoc, where, onSnapshot, deleteDoc, writeBatch,
             getCountFromServer, runTransaction
         } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
+        import {
+            getStorage, ref as storageRef, uploadBytes, getDownloadURL, deleteObject
+        } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-storage.js";
 
         const firebaseConfig = {
             apiKey: "AIzaSyDC9jEHJNR1S71utPvytFZptuYzzh6C7sc",
@@ -44,21 +47,24 @@
             measurementId: "G-FRCKKLZ493"
         };
 
-        let app, auth, db, googleProvider;
+        let app, auth, db, storage, googleProvider;
         try {
             app = initializeApp(firebaseConfig);
             auth = getAuth(app);
             db = getFirestore(app);
+            storage = getStorage(app);
             googleProvider = new GoogleAuthProvider();
             googleProvider.setCustomParameters({ prompt: 'select_account' });
             window.__FB = {
-                ready: true, auth, db, googleProvider,
+                ready: true, auth, db, storage, googleProvider,
                 signInWithEmailAndPassword, createUserWithEmailAndPassword,
                 signInWithPopup, signOut, sendPasswordResetEmail, updateProfile,
                 onAuthStateChanged, doc, setDoc, getDoc, updateDoc,
                 collection, query, orderBy, limit, getDocs, serverTimestamp,
                 increment, arrayUnion, arrayRemove, addDoc, where, onSnapshot,
-                deleteDoc, writeBatch, getCountFromServer, runTransaction
+                deleteDoc, writeBatch, getCountFromServer, runTransaction,
+                storageRef, uploadBytes, getDownloadURL, deleteObject,
+                storageRefFromURL: (storage, url) => { try { return storageRef(storage, url); } catch { return storageRef(storage, url.split('/o/')[1]?.split('?')[0] ? decodeURIComponent(url.split('/o/')[1].split('?')[0]) : url); } }
             };
             onAuthStateChanged(auth, user => {                if (window.onFirebaseAuthState) window.onFirebaseAuthState(user);
                 else window.__pendingAuthUser = user;
@@ -10969,6 +10975,71 @@
             background: var(--success);
         }
 
+        /* ── WELCOME ANIMATION OVERLAY ── */
+        #welcome-overlay {
+            position: fixed;
+            inset: 0;
+            z-index: 10000;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            gap: 18px;
+            background: var(--bg);
+            animation: welcomeFadeIn 0.5s ease;
+        }
+        #welcome-overlay.show { display: flex; }
+        @keyframes welcomeFadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        @keyframes welcomeFadeOut {
+            from { opacity: 1; }
+            to { opacity: 0; }
+        }
+        .welcome-logo {
+            width: 90px;
+            height: 90px;
+            border-radius: 24px;
+            background: var(--btn-grad);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: var(--font-orb);
+            font-size: 1.6rem;
+            font-weight: 900;
+            color: #fff;
+            box-shadow: 0 0 60px var(--glow2);
+            animation: welcomePop 0.6s cubic-bezier(0.22, 1, 0.36, 1) 0.2s both;
+        }
+        @keyframes welcomePop {
+            from { transform: scale(0.5) rotate(-10deg); opacity: 0; }
+            to { transform: scale(1) rotate(0deg); opacity: 1; }
+        }
+        .welcome-title {
+            font-family: var(--font-display);
+            font-size: 1.7rem;
+            font-weight: 900;
+            color: var(--text);
+            text-align: center;
+            animation: welcomeSlideUp 0.5s cubic-bezier(0.22, 1, 0.36, 1) 0.4s both;
+        }
+        .welcome-sub {
+            font-family: var(--font-sans);
+            font-size: 0.9rem;
+            color: var(--text3);
+            text-align: center;
+            animation: welcomeSlideUp 0.5s cubic-bezier(0.22, 1, 0.36, 1) 0.55s both;
+        }
+        .welcome-sparkles {
+            font-size: 2rem;
+            animation: welcomeSlideUp 0.5s cubic-bezier(0.22, 1, 0.36, 1) 0.3s both;
+        }
+        @keyframes welcomeSlideUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
         /* ── SCRIPT DETAIL ── */
         #script-modal {
             position: fixed;
@@ -12188,8 +12259,89 @@
             </div>
         </div>
 
-        <!-- ONBOARDING -->
-        <!-- Onboarding removed v3.3 -->
+        <!-- WELCOME OVERLAY (shown after onboarding completes) -->
+        <div id="welcome-overlay">
+            <div class="welcome-sparkles">✨</div>
+            <div class="welcome-logo">LP</div>
+            <div class="welcome-title" id="welcomeTitle">Welcome to LPOLVO HUB</div>
+            <div class="welcome-sub" id="welcomeSub">Your journey starts now 🚀</div>
+        </div>
+
+        <!-- ONBOARDING MODAL (shown to new users on first login) -->
+        <div id="onboarding-modal">
+            <div class="onboarding-card">
+                <!-- Progress dots -->
+                <div class="onboarding-progress">
+                    <div class="onboarding-dot active" data-step="0"></div>
+                    <div class="onboarding-dot" data-step="1"></div>
+                    <div class="onboarding-dot" data-step="2"></div>
+                    <div class="onboarding-dot" data-step="3"></div>
+                    <div class="onboarding-dot" data-step="4"></div>
+                </div>
+                <div class="onboarding-title" id="onboardingTitle">Welcome to LPOLVO HUB</div>
+                <div class="onboarding-sub" id="onboardingSub">Let's set up your profile</div>
+
+                <!-- Step 0 — Welcome -->
+                <div class="onboarding-step active" data-step="0">
+                    <div style="text-align:center;padding:20px 0;">
+                        <div style="width:80px;height:80px;border-radius:20px;background:var(--btn-grad);display:flex;align-items:center;justify-content:center;font-family:var(--font-orb);font-size:1.4rem;font-weight:900;color:#fff;margin:0 auto 16px;box-shadow:0 0 40px var(--glow2);animation:glow-pulse 2s ease-in-out infinite;">LP</div>
+                        <div style="font-family:var(--font-display);font-size:1.1rem;font-weight:800;color:var(--text);margin-bottom:8px;">LPOLVO HUB v1.2</div>
+                        <div style="font-family:var(--font-sans);font-size:0.82rem;color:var(--text2);line-height:1.6;">The most advanced Roblox script platform.<br>Discover, share, and collect premium scripts.<br>Let's personalize your experience!</div>
+                    </div>
+                </div>
+
+                <!-- Step 1 — Age -->
+                <div class="onboarding-step" data-step="1">
+                    <div style="margin-bottom:20px;">
+                        <div style="font-family:var(--font-sans);font-size:0.8rem;color:var(--text2);margin-bottom:12px;">Please select your age group to continue.</div>
+                        <select class="onboarding-age-select" id="onboardingAge">
+                            <option value="">— Select your age —</option>
+                            <option value="under13">Under 13</option>
+                            <option value="13-17">13 – 17</option>
+                            <option value="18-24">18 – 24</option>
+                            <option value="25-34">25 – 34</option>
+                            <option value="35+">35+</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Step 2 — Profile Picture -->
+                <div class="onboarding-step" data-step="2">
+                    <div style="text-align:center;margin-bottom:16px;">
+                        <div class="onboarding-avatar-preview" id="onboardingAvatarPreview" onclick="document.getElementById('onboardingAvatarInput').click()">📷</div>
+                        <input type="file" id="onboardingAvatarInput" accept="image/*" style="display:none;" onchange="onOnboardingAvatarChange(event)">
+                        <button onclick="document.getElementById('onboardingAvatarInput').click()" style="height:32px;padding:0 14px;border-radius:8px;background:var(--bg3);border:1px solid var(--border);color:var(--text2);font-family:var(--font-sans);font-size:0.72rem;font-weight:600;cursor:pointer;">Upload Photo</button>
+                        <div style="font-family:var(--font-sans);font-size:0.7rem;color:var(--text3);margin-top:8px;">Optional — you can skip this step</div>
+                    </div>
+                </div>
+
+                <!-- Step 3 — Banner -->
+                <div class="onboarding-step" data-step="3">
+                    <div style="margin-bottom:16px;">
+                        <div class="onboarding-banner-preview" id="onboardingBannerPreview" onclick="document.getElementById('onboardingBannerInput').click()">
+                            <span style="display:flex;flex-direction:column;align-items:center;gap:4px;"><span style="font-size:1.6rem;">🖼️</span><span style="font-family:var(--font-sans);font-size:0.65rem;">Tap to upload banner</span></span>
+                        </div>
+                        <input type="file" id="onboardingBannerInput" accept="image/*" style="display:none;" onchange="onOnboardingBannerChange(event)">
+                        <div style="font-family:var(--font-sans);font-size:0.7rem;color:var(--text3);margin-top:4px;">Optional — you can skip this step</div>
+                    </div>
+                </div>
+
+                <!-- Step 4 — Username -->
+                <div class="onboarding-step" data-step="4">
+                    <div style="margin-bottom:16px;">
+                        <div style="font-family:var(--font-sans);font-size:0.8rem;color:var(--text2);margin-bottom:8px;">Choose a unique username. Only letters, numbers, and underscores. 3–20 characters.</div>
+                        <input type="text" class="onboarding-username-input" id="onboardingUsername" placeholder="e.g. coolscripter99" maxlength="20" autocomplete="off" spellcheck="false">
+                        <div class="onboarding-username-check" id="onboardingUsernameCheck">Minimum 3 characters</div>
+                    </div>
+                </div>
+
+                <!-- Navigation -->
+                <div class="onboarding-nav">
+                    <button class="prev" id="onboardingPrev" onclick="onboardingPrev()" style="display:none;">Back</button>
+                    <button class="next" id="onboardingNext" onclick="onboardingNext()">Continue</button>
+                </div>
+            </div>
+        </div>
 
         <!-- SCRIPT DETAIL -->
         <div id="script-modal" onclick="if(event.target===this)closeScriptModal()"><div class="script-modal-card"><div class="script-modal-handle"></div><div id="scriptModalContent"></div></div></div>
@@ -12289,8 +12441,28 @@
 
         const NEWS_DATA = {
             en: [
-                { badge: 'update', badgeClass: 'news-badge-update', date: 'Jul 2026', title: 'LPOLVO HUB V1 — Official Public Release',
-                    desc: 'After extensive internal development, LPOLVO HUB V1 is officially live. This marks the first public release with all core systems fully operational.' },
+                { badge: 'major update', badgeClass: 'news-badge-update', date: 'Jul 2026', title: '🎉 LPOLVO HUB v1.2 — Complete User System Overhaul',
+                    desc: 'Version 1.2 is our biggest update yet. Every user-facing system has been rebuilt from the ground up to be fully functional and production-ready. Real saves, real uploads, real data — everything works.' },
+                { badge: 'new', badgeClass: 'news-badge-new', date: 'Jul 2026', title: 'Premium Onboarding Experience',
+                    desc: 'New users are welcomed with a beautiful 5-step onboarding flow: Welcome screen, Age selection, Profile Picture upload, Banner upload, and Username choice — all with real Firebase validation and Storage uploads.' },
+                { badge: 'new', badgeClass: 'news-badge-new', date: 'Jul 2026', title: 'Welcome Animation',
+                    desc: 'After completing onboarding, users are greeted with a premium animated welcome screen that adapts to the currently selected theme before smoothly entering the platform.' },
+                { badge: 'update', badgeClass: 'news-badge-update', date: 'Jul 2026', title: 'Profile System — Fully Repaired',
+                    desc: 'Username, bio, profile picture, banner, and settings all save correctly to Firestore and Firebase Storage. Refreshing the page never loses data. Images are uploaded to the cloud, not stored as data URLs.' },
+                { badge: 'update', badgeClass: 'news-badge-update', date: 'Jul 2026', title: 'Script Upload — Fully Functional',
+                    desc: 'The script upload system is now complete. Thumbnails upload to Firebase Storage, all fields save to Firestore, and scripts appear publicly on the homepage immediately after upload.' },
+                { badge: 'new', badgeClass: 'news-badge-new', date: 'Jul 2026', title: 'Script Delete System',
+                    desc: 'Creators can now delete their own scripts. Deleting removes the Firestore document, the Storage thumbnail, decrements the script counter, and refreshes all pages.' },
+                { badge: 'update', badgeClass: 'news-badge-update', date: 'Jul 2026', title: 'Achievement System — Fully Active',
+                    desc: 'Achievements are now fully functional: First Login, First Upload, 100 Views, 10 Scripts, 100 Likes, Creator badge, Pioneer, Explorer, Theme Collector and more. All save correctly to Firebase.' },
+                { badge: 'new', badgeClass: 'news-badge-new', date: 'Jul 2026', title: 'Username Uniqueness Validation',
+                    desc: 'Usernames are now reserved in a dedicated Firestore collection for fast, reliable duplicate checking. No more accidental duplicate usernames. Unicode, invisible, and decorative characters are blocked.' },
+                { badge: 'update', badgeClass: 'news-badge-update', date: 'Jul 2026', title: 'Firebase Optimization',
+                    desc: 'Storage uploads now use Firebase Storage consistently. Reads and writes are more efficient. Caching via localStorage is used for avatar, banner, and name to reduce redundant Firestore reads.' },
+                { badge: 'fix', badgeClass: 'news-badge-fix', date: 'Jul 2026', title: 'Fresh Database — Day One',
+                    desc: 'The database has been reset for a clean launch. All test accounts, demo data, fake statistics, placeholder scripts, and temporary users have been removed. Only real users exist.' },
+                { badge: 'update', badgeClass: 'news-badge-update', date: 'Jul 2026', title: 'LPOLVO HUB V1 — Original Public Release (Historical)',
+                    desc: 'After extensive internal development, LPOLVO HUB V1 was officially launched. This marked the first public release with all core systems fully operational.' },
                 { badge: 'new', badgeClass: 'news-badge-new', date: 'Jul 2026', title: 'Complete Localization System',
                     desc: 'V1 introduces a professional localization system supporting English, French, and Arabic. Every element of the interface is fully translated.' },
                 { badge: 'new', badgeClass: 'news-badge-new', date: 'Jul 2026', title: 'Full Arabic Support with RTL',
@@ -12500,13 +12672,20 @@
 
         const BADGES_DEF = [
             { id: 'pioneer', icon: '🌟', name: 'Pioneer', desc: 'Joined LPOLVO HUB' },
+            { id: 'first_login', icon: '🚀', name: 'First Login', desc: 'Completed your first login & setup' },
+            { id: 'first_upload', icon: '📤', name: 'First Upload', desc: 'Uploaded your first script' },
             { id: 'first_copy', icon: '📋', name: '1st Copy', desc: 'Copied your first script' },
             { id: 'script_fan', icon: '🔥', name: 'Script Fan', desc: 'Opened 10 scripts' },
             { id: 'creator', icon: '👑', name: 'Creator', desc: 'Uploaded a script' },
+            { id: 'scripts_10', icon: '📚', name: 'Prolific', desc: 'Uploaded 10 scripts' },
+            { id: 'views_100', icon: '👁️', name: '100 Views', desc: 'Received 100 total views' },
+            { id: 'likes_100', icon: '💖', name: '100 Likes', desc: 'Received 100 total likes' },
             { id: 'commenter', icon: '💬', name: 'Commenter', desc: 'Left a comment' },
             { id: 'liker', icon: '❤️', name: 'Liker', desc: 'Liked 5 scripts' },
             { id: 'sharpshooter', icon: '🎯', name: 'Sharpshooter', desc: 'Shared a script' },
             { id: 'diamond', icon: '💎', name: 'Diamond', desc: 'Favorite 10 scripts' },
+            { id: 'explorer', icon: '🗺️', name: 'Explorer', desc: 'Visited 10 different script pages' },
+            { id: 'theme_collector', icon: '🎨', name: 'Theme Collector', desc: 'Changed theme 5 times' },
             { id: 'verified', icon: '✅', name: 'Verified', desc: 'Verified Creator' },
             { id: 'top_creator', icon: '🏆', name: 'Top Creator', desc: 'Reached top 10 creators' },
             { id: 'popular', icon: '📈', name: 'Popular', desc: 'Script reached 1000 views' },
@@ -15639,9 +15818,9 @@
                 sendResetLink:'Send Reset Link', backToLoginLink:'← Back to login',
                 forgotText:'Forgot your password?',
                 /* Extended keys */
-                aboutLpolvoDesc:'LPOLVO HUB V1 is the first official public release — a community-driven premium platform for Roblox scripts. After extensive internal development, we are proud to present the most advanced version with full localization, 52+ themes, and complete Arabic & French support.',
+                aboutLpolvoDesc:'LPOLVO HUB v1.2 is a fully rebuilt and production-ready platform for Roblox scripts. Version 1.2 focused on completing every user-facing system: onboarding, profile saving, script uploads, deletions, achievements, and Firebase synchronization — everything now truly works.',
                 gotIt:'Got it',
-                versionLabel:'V1 — Official Public Release',
+                versionLabel:'v1.2 — Complete User Systems',
                 scriptsCount:'Scripts', usersCount:'Users',
                 rarityOp:'OP', raritySSS:'SSS+', rarityMythic:'MYTHIC', rarityTranscendent:'TRANSCENDENT',
                 rarityOmniscient:'OMNISCIENT', rarityOmnipotent:'OMNIPOTENT',
@@ -15856,9 +16035,9 @@
                 sendResetLink:'إرسال رابط الإعادة', backToLoginLink:'→ العودة لتسجيل الدخول',
                 forgotText:'هل نسيت كلمة المرور؟',
                 /* Extended keys */
-                aboutLpolvoDesc:'LPOLVO HUB V1 هو الإصدار الرسمي الأول — منصة مجتمعية متميزة لسكريبتات Roblox. بعد تطوير داخلي مكثف، نفخر بتقديم أكثر إصدار متطور مع توطين كامل، أكثر من 52 مظهراً، وأذونات كاملة للعربية والفرنسية.',
+                aboutLpolvoDesc:'LPOLVO HUB v1.2 منصة مُعاد بناؤها بالكامل وجاهزة للإنتاج لسكريبتات Roblox. ركّز الإصدار 1.2 على إكمال كل نظام للمستخدم: الإعداد الأولي، حفظ الملف الشخصي، رفع السكريبتات، الحذف، الإنجازات، ومزامنة Firebase — كل شيء يعمل الآن بالفعل.',
                 gotIt:'حسناً',
-                versionLabel:'V1 — الإصدار الرسمي',
+                versionLabel:'v1.2 — أنظمة المستخدم الكاملة',
                 scriptsCount:'السكريبتات', usersCount:'المستخدمون',
                 rarityOp:'أسطوري', raritySSS:'SSS+', rarityMythic:'أسطوري جدًا',
                 rarityTranscendent:'متعالي', rarityOmniscient:'كليّ المعرفة', rarityOmnipotent:'كليّ القدرة',
@@ -16073,9 +16252,9 @@
                 sendResetLink:'Envoyer le lien', backToLoginLink:'← Retour à la connexion',
                 forgotText:'Mot de passe oublié?',
                 /* Extended keys */
-                aboutLpolvoDesc:"LPOLVO HUB V1 est la première sortie officielle — une plateforme communautaire premium pour scripts Roblox. Après un développement interne intensif, nous sommes fiers de présenter la version la plus avancée avec localisation complète, 52+ thèmes, et un support complet de l'arabe et du français.",
+                aboutLpolvoDesc:"LPOLVO HUB v1.2 est une plateforme entièrement reconstruite pour les scripts Roblox. La version 1.2 a focalisé sur la finalisation de chaque système utilisateur: onboarding, sauvegarde du profil, upload de scripts, suppressions, succès et synchronisation Firebase — tout fonctionne vraiment maintenant.",
                 gotIt:'Compris',
-                versionLabel:'V1 — Sortie Officielle',
+                versionLabel:'v1.2 — Systèmes Utilisateur Complets',
                 scriptsCount:'Scripts', usersCount:'Utilisateurs',
                 rarityOp:'Légendaire', raritySSS:'SSS+', rarityMythic:'Mythique',
                 rarityTranscendent:'Transcendant', rarityOmniscient:'Omniscient', rarityOmnipotent:'Omnipotent',
@@ -16222,7 +16401,7 @@
             });
             // About modal
             const aboutVer = document.getElementById('aboutVersionText');
-            if (aboutVer) aboutVer.textContent = T('versionLabel') || 'V1 — Official Public Release';
+            if (aboutVer) aboutVer.textContent = T('versionLabel') || 'v1.2 — Complete User Systems';
             const aboutDesc = document.getElementById('aboutDescText');
             if (aboutDesc) aboutDesc.textContent = T('aboutLpolvoDesc');
             const aboutGotIt = document.querySelector('#about-modal button[onclick*="closeAboutModal"]');
@@ -16260,7 +16439,7 @@
             const footerMap = {footerAboutLink:'footerAbout',footerScriptsLink:'footerScripts',footerSettingsLink:'footerSettings'};
             Object.entries(footerMap).forEach(([id,key])=>{ const el=document.getElementById(id); if(el)el.textContent=T(key); });
             const footerVer = document.getElementById('footerVersionText');
-            if (footerVer) footerVer.textContent = T('versionLabel') || 'V1 — Official Public Release';
+            if (footerVer) footerVer.textContent = T('versionLabel') || 'v1.2 — Complete User Systems';
             // Notification panel
             const notifTitle = document.getElementById('notifPanelTitle');
             if (notifTitle) notifTitle.textContent = T('notificationsTitle');
@@ -16369,15 +16548,21 @@
             if (user) {
                 document.getElementById('navSignBtn').style.display = 'none';
                 document.getElementById('navAvatarBtn').classList.add('show');
-                await loadUserProfile(user);
+                const isNewUser = await loadUserProfile(user);
                 updateAvatarUI();
                 document.getElementById('sidebarUserCard').classList.add('show');
                 document.getElementById('sidebarSignIn').style.display = 'none';
                 document.getElementById('sidebarSignOut').style.display = '';
                 loadNotifications();
-                // Onboarding removed in v3.3: users enter LPOLVO HUB directly after sign-in
-                if (!localStorage.getItem('lp_onboarded_' + user.uid)) {
-                    localStorage.setItem('lp_onboarded_' + user.uid, 'true');
+                // v1.2: Show onboarding for new users who haven't completed it yet
+                const onboardedKey = 'lp_onboarded_' + user.uid;
+                if (isNewUser && !localStorage.getItem(onboardedKey)) {
+                    // New user — show full onboarding
+                    showOnboarding();
+                } else if (!localStorage.getItem(onboardedKey) && state.userProfile && !state.userProfile.onboarded) {
+                    // Existing Firestore user who never completed onboarding
+                    showOnboarding();
+                } else {
                     state.onboardingComplete = true;
                 }
             } else {
@@ -16394,7 +16579,8 @@
 
         async function loadUserProfile(user) {
             const fb = window.__FB;
-            if (!fb || !fb.ready) return;
+            if (!fb || !fb.ready) return false;
+            let isNewUser = false;
             try {
                 const ref = fb.doc(fb.db, 'users', user.uid);
                 const snap = await fb.getDoc(ref);
@@ -16405,14 +16591,15 @@
                         localStorage.setItem('lp_lang', state.userProfile.language);
                         applyLanguageDirection();
                     }
+                    isNewUser = false;
                 } else {
+                    // Create a minimal profile — onboarding will fill in the rest
                     const profile = {
                         uid: user.uid,
                         displayName: user.displayName || 'User',
-                        handle: (user.displayName || 'user').toLowerCase().replace(/[^a-z0-9]/g, '').substring(0, 15) +
-                            Math.floor(Math.random() * 100),
+                        handle: '',
                         email: user.email,
-                        bio: 'Roblox script enthusiast 🎮',
+                        bio: '',
                         avatar: user.photoURL || '',
                         banner: '',
                         views: 0,
@@ -16425,19 +16612,20 @@
                         theme: state.theme,
                         language: state.language,
                         age: '',
-                        onboarded: true,
+                        onboarded: false,
                         level: 1,
                         xp: 0,
                         totalLikes: 0,
                         totalCopies: 0,
+                        achievements: [],
+                        settings: { notifications: true, publicProfile: true },
                     };
                     await fb.setDoc(ref, profile);
                     state.userProfile = profile;
-                    showToast(getTranslation('welcome') || 'Welcome to LPOLVO HUB! 🎉', 'success');
+                    isNewUser = true;
                 }
                 if (state.userProfile.avatar) localStorage.setItem('lp_avatar_' + user.uid, state.userProfile.avatar);
-                if (state.userProfile.displayName) localStorage.setItem('lp_name_' + user.uid, state.userProfile
-                .displayName);
+                if (state.userProfile.displayName) localStorage.setItem('lp_name_' + user.uid, state.userProfile.displayName);
                 if (state.userProfile.banner) localStorage.setItem('lp_banner_' + user.uid, state.userProfile.banner);
 
                 const name = state.userProfile.displayName || user.displayName || 'User';
@@ -16453,6 +16641,7 @@
                     else sa.textContent = name[0].toUpperCase();
                 }
             } catch (e) { console.error('[LPOLVO] loadUserProfile:', e.message); }
+            return isNewUser;
         }
 
         function updateAvatarUI() {
@@ -16612,8 +16801,7 @@
 
         function updateOnboardingStep() {
             const step = state.onboardingStep;
-            document.querySelectorAll('.onboarding-step').forEach(el => el.classList.toggle('active', parseInt(el.dataset
-                .step) === step));
+            document.querySelectorAll('.onboarding-step').forEach(el => el.classList.toggle('active', parseInt(el.dataset.step) === step));
             document.querySelectorAll('.onboarding-dot').forEach(el => {
                 const s = parseInt(el.dataset.step);
                 el.classList.toggle('active', s === step);
@@ -16623,22 +16811,46 @@
             const sub = document.getElementById('onboardingSub');
             const prev = document.getElementById('onboardingPrev');
             const next = document.getElementById('onboardingNext');
-            const steps = ['Welcome', 'Age', 'Avatar', 'Banner', 'Username'];
-            title.textContent = getTranslation('onboardingTitle') + ' — ' + steps[step];
-            sub.textContent = getTranslation('onboardingSub');
-            prev.style.display = step === 0 ? 'none' : 'block';
-            next.textContent = step === 4 ? getTranslation('finish') : getTranslation('continue');
-            if (step === 1) { const age = document.getElementById('onboardingAge').value;
-                next.disabled = !age; } else if (step === 4) { const username = document.getElementById(
-                    'onboardingUsername').value.trim();
-                next.disabled = username.length < 3; } else { next.disabled = false; }
+            const stepTitles = ['Welcome', 'Age', 'Profile Picture', 'Banner', 'Username'];
+            const stepSubs = [
+                'Welcome to LPOLVO HUB v1.2',
+                'Step 1 of 5 — Age',
+                'Step 2 of 5 — Profile Picture (Optional)',
+                'Step 3 of 5 — Banner (Optional)',
+                'Step 4 of 5 — Choose Username'
+            ];
+            if (title) title.textContent = stepTitles[step] || 'Setup';
+            if (sub) sub.textContent = stepSubs[step] || '';
+            if (prev) prev.style.display = step === 0 ? 'none' : 'block';
+            if (next) {
+                next.textContent = step === 4 ? (getTranslation('finish') || 'Finish') : (getTranslation('continue') || 'Continue');
+                if (step === 1) {
+                    const age = document.getElementById('onboardingAge');
+                    next.disabled = !age || !age.value;
+                } else if (step === 4) {
+                    const username = document.getElementById('onboardingUsername');
+                    const val = username ? username.value.trim() : '';
+                    next.disabled = val.length < 3 || !/^[a-zA-Z0-9_]+$/.test(val);
+                } else {
+                    next.disabled = false;
+                }
+            }
+        }
+
+        function validateUsername(val) {
+            if (!val || val.length < 3) return { valid: false, msg: 'Username must be at least 3 characters.' };
+            if (val.length > 20) return { valid: false, msg: 'Username must be 20 characters or less.' };
+            if (!/^[a-zA-Z0-9_]+$/.test(val)) return { valid: false, msg: 'Only letters, numbers, and underscores allowed.' };
+            // Block invisible / zero-width chars
+            if (/[\u200B-\u200D\uFEFF\u00AD\u034F\u2060]/.test(val)) return { valid: false, msg: 'Invalid characters detected.' };
+            // Block decorative unicode
+            if (/[^\x00-\x7F]/.test(val)) return { valid: false, msg: 'Only standard characters allowed.' };
+            return { valid: true, msg: '✓ Username looks good!' };
         }
 
         function onboardingNext() {
             const step = state.onboardingStep;
-            const fb = window.__FB;
-            if (step === 0) { state.onboardingStep++;
-                updateOnboardingStep(); return; }
+            if (step === 0) { state.onboardingStep++; updateOnboardingStep(); return; }
             if (step === 1) {
                 const age = document.getElementById('onboardingAge').value;
                 if (!age) return;
@@ -16647,19 +16859,23 @@
                 updateOnboardingStep();
                 return;
             }
-            if (step === 2) { state.onboardingStep++;
-                updateOnboardingStep(); return; }
-            if (step === 3) { state.onboardingStep++;
-                updateOnboardingStep(); return; }
+            if (step === 2) { state.onboardingStep++; updateOnboardingStep(); return; }
+            if (step === 3) { state.onboardingStep++; updateOnboardingStep(); return; }
             if (step === 4) {
                 const username = document.getElementById('onboardingUsername').value.trim();
-                if (username.length < 3) return;
+                const check = validateUsername(username);
+                if (!check.valid) {
+                    const el = document.getElementById('onboardingUsernameCheck');
+                    if (el) { el.textContent = check.msg; el.className = 'onboarding-username-check invalid'; }
+                    return;
+                }
+                const nextBtn = document.getElementById('onboardingNext');
+                if (nextBtn) nextBtn.disabled = true;
                 checkUsernameUnique(username).then(unique => {
                     if (!unique) {
-                        document.getElementById('onboardingUsernameCheck').textContent = getTranslation(
-                        'usernameTaken');
-                        document.getElementById('onboardingUsernameCheck').className =
-                            'onboarding-username-check invalid';
+                        const el = document.getElementById('onboardingUsernameCheck');
+                        if (el) { el.textContent = getTranslation('usernameTaken') || 'This username is already taken.'; el.className = 'onboarding-username-check invalid'; }
+                        if (nextBtn) nextBtn.disabled = false;
                         return;
                     }
                     state.onboardingData.username = username;
@@ -16669,8 +16885,7 @@
         }
 
         function onboardingPrev() {
-            if (state.onboardingStep > 0) { state.onboardingStep--;
-                updateOnboardingStep(); }
+            if (state.onboardingStep > 0) { state.onboardingStep--; updateOnboardingStep(); }
         }
 
         function onOnboardingAvatarChange(event) {
@@ -16736,7 +16951,12 @@
             const fb = window.__FB;
             if (!fb?.ready) return true;
             try {
-                const q = fb.query(fb.collection(fb.db, 'users'), fb.where('handle', '==', username));
+                const lower = username.toLowerCase();
+                // Check usernames collection first (fast lookup)
+                const handleSnap = await fb.getDoc(fb.doc(fb.db, 'usernames', lower));
+                if (handleSnap.exists()) return false;
+                // Also check users collection
+                const q = fb.query(fb.collection(fb.db, 'users'), fb.where('handle', '==', lower));
                 const snap = await fb.getDocs(q);
                 return snap.empty;
             } catch (e) { return true; }
@@ -16745,66 +16965,144 @@
         async function finishOnboarding() {
             const fb = window.__FB;
             if (!fb?.ready || !state.currentUser) return;
+            const nextBtn = document.getElementById('onboardingNext');
+            if (nextBtn) { nextBtn.disabled = true; nextBtn.textContent = 'Saving…'; }
             try {
                 const data = state.onboardingData;
+                const uid = state.currentUser.uid;
+                let avatarURL = data.avatar || state.userProfile?.avatar || '';
+                let bannerURL = data.banner || '';
+
+                // Upload avatar to Firebase Storage if it's a data URL
+                if (data.avatar && data.avatar.startsWith('data:') && fb.storage) {
+                    try {
+                        const avatarRef = fb.storageRef(fb.storage, `avatars/${uid}/avatar.jpg`);
+                        const res = await fetch(data.avatar);
+                        const blob = await res.blob();
+                        await fb.uploadBytes(avatarRef, blob);
+                        avatarURL = await fb.getDownloadURL(avatarRef);
+                    } catch (uploadErr) { console.warn('[LPOLVO] Avatar upload failed, using data URL'); }
+                }
+
+                // Upload banner to Firebase Storage if it's a data URL
+                if (data.banner && data.banner.startsWith('data:') && fb.storage) {
+                    try {
+                        const bannerRef = fb.storageRef(fb.storage, `banners/${uid}/banner.jpg`);
+                        const res = await fetch(data.banner);
+                        const blob = await res.blob();
+                        await fb.uploadBytes(bannerRef, blob);
+                        bannerURL = await fb.getDownloadURL(bannerRef);
+                    } catch (uploadErr) { console.warn('[LPOLVO] Banner upload failed, using data URL'); }
+                }
+
+                const username = data.username || state.currentUser.displayName || 'User';
                 const updates = {
-                    displayName: data.username || state.currentUser.displayName || 'User',
-                    handle: data.username || 'user',
-                    avatar: data.avatar || state.userProfile?.avatar || '',
-                    banner: data.banner || '',
+                    displayName: username,
+                    handle: username.toLowerCase(),
+                    avatar: avatarURL,
+                    banner: bannerURL,
                     age: data.age || '',
                     onboarded: true,
+                    bio: 'Roblox script enthusiast 🎮',
+                    achievements: ['first_login'],
+                    settings: { notifications: true, publicProfile: true },
+                    favorites: [],
+                    recentlyViewed: [],
+                    stats: { views: 0, uploads: 0, likes: 0, copies: 0 },
+                    updatedAt: fb.serverTimestamp(),
                 };
-                await fb.updateDoc(fb.doc(fb.db, 'users', state.currentUser.uid), updates);
-                if (data.avatar) localStorage.setItem('lp_avatar_' + state.currentUser.uid, data.avatar);
-                if (data.banner) localStorage.setItem('lp_banner_' + state.currentUser.uid, data.banner);
-                if (data.username) localStorage.setItem('lp_name_' + state.currentUser.uid, data.username);
+
+                // Reserve username in a separate collection to ensure uniqueness
+                const handleRef = fb.doc(fb.db, 'usernames', username.toLowerCase());
+                await fb.setDoc(handleRef, { uid: uid, username: username });
+
+                await fb.updateDoc(fb.doc(fb.db, 'users', uid), updates);
+                if (avatarURL) localStorage.setItem('lp_avatar_' + uid, avatarURL);
+                if (bannerURL) localStorage.setItem('lp_banner_' + uid, bannerURL);
+                localStorage.setItem('lp_name_' + uid, username);
                 state.userProfile = { ...state.userProfile, ...updates };
-                localStorage.setItem('lp_onboarded_' + state.currentUser.uid, 'true');
+                localStorage.setItem('lp_onboarded_' + uid, 'true');
                 state.onboardingComplete = true;
                 document.getElementById('onboarding-modal').classList.remove('show');
                 updateAvatarUI();
-                showToast('Profile setup complete! 🎉', 'success');
+                // Award first_login achievement
+                await awardBadge('first_login');
+                // Show premium welcome animation
+                showWelcomeAnimation(username);
+            } catch (e) {
+                console.error('[LPOLVO] finishOnboarding:', e);
+                showToast('Setup failed. Please try again.', 'error');
+                playError();
+                if (nextBtn) { nextBtn.disabled = false; nextBtn.textContent = 'Finish'; }
+            }
+        }
+
+        function showWelcomeAnimation(username) {
+            const overlay = document.getElementById('welcome-overlay');
+            const titleEl = document.getElementById('welcomeTitle');
+            const subEl = document.getElementById('welcomeSub');
+            if (!overlay) {
+                // Fallback
+                showToast('Welcome to LPOLVO HUB! 🎉', 'success');
                 playSuccess();
                 if (state.page === 'profile') buildProfilePage();
                 if (state.page === 'dash') buildDashPage();
-            } catch (e) {
-                showToast('Onboarding failed. Please try again.', 'error');
-                playError();
+                return;
             }
+            if (titleEl) titleEl.textContent = '✨ Welcome, ' + (username || 'Explorer') + '!';
+            if (subEl) subEl.textContent = 'Your LPOLVO HUB journey starts now 🚀';
+            overlay.classList.add('show');
+            playSuccess();
+            setTimeout(() => {
+                overlay.style.animation = 'welcomeFadeOut 0.7s ease forwards';
+                setTimeout(() => {
+                    overlay.classList.remove('show');
+                    overlay.style.animation = '';
+                    showToast('Welcome to LPOLVO HUB! 🎉', 'success');
+                    if (state.page === 'profile') buildProfilePage();
+                    if (state.page === 'dash') buildDashPage();
+                }, 700);
+            }, 2800);
         }
 
         document.addEventListener('DOMContentLoaded', () => {
             const usernameInput = document.getElementById('onboardingUsername');
             if (usernameInput) {
-                usernameInput.addEventListener('input', async function() {
+                let usernameCheckTimer = null;
+                usernameInput.addEventListener('input', function() {
                     const val = this.value.trim();
                     const checkEl = document.getElementById('onboardingUsernameCheck');
-                    if (val.length < 3) {
-                        checkEl.textContent = getTranslation('usernameHint');
-                        checkEl.className = 'onboarding-username-check';
-                        this.classList.remove('error');
-                        document.getElementById('onboardingNext').disabled = true;
+                    const nextBtn = document.getElementById('onboardingNext');
+                    const check = validateUsername(val);
+                    if (!check.valid) {
+                        if (checkEl) { checkEl.textContent = check.msg; checkEl.className = 'onboarding-username-check invalid'; }
+                        this.classList.add('error');
+                        if (nextBtn) nextBtn.disabled = true;
                         return;
                     }
-                    const unique = await checkUsernameUnique(val);
-                    if (unique) {
-                        checkEl.textContent = getTranslation('usernameAvailable');
-                        checkEl.className = 'onboarding-username-check valid';
-                        this.classList.remove('error');
-                        document.getElementById('onboardingNext').disabled = false;
-                    } else {
-                        checkEl.textContent = getTranslation('usernameTaken');
-                        checkEl.className = 'onboarding-username-check invalid';
-                        this.classList.add('error');
-                        document.getElementById('onboardingNext').disabled = true;
-                    }
+                    this.classList.remove('error');
+                    if (checkEl) { checkEl.textContent = 'Checking…'; checkEl.className = 'onboarding-username-check'; }
+                    if (nextBtn) nextBtn.disabled = true;
+                    clearTimeout(usernameCheckTimer);
+                    usernameCheckTimer = setTimeout(async () => {
+                        const unique = await checkUsernameUnique(val);
+                        if (unique) {
+                            if (checkEl) { checkEl.textContent = getTranslation('usernameAvailable') || '✓ Username available!'; checkEl.className = 'onboarding-username-check valid'; }
+                            this.classList.remove('error');
+                            if (nextBtn) nextBtn.disabled = false;
+                        } else {
+                            if (checkEl) { checkEl.textContent = getTranslation('usernameTaken') || 'This username is already taken.'; checkEl.className = 'onboarding-username-check invalid'; }
+                            this.classList.add('error');
+                            if (nextBtn) nextBtn.disabled = true;
+                        }
+                    }, 500);
                 });
             }
             const ageSelect = document.getElementById('onboardingAge');
             if (ageSelect) {
                 ageSelect.addEventListener('change', function() {
-                    document.getElementById('onboardingNext').disabled = !this.value;
+                    const nextBtn = document.getElementById('onboardingNext');
+                    if (nextBtn) nextBtn.disabled = !this.value;
                 });
             }
         });
@@ -21286,7 +21584,8 @@
             <button class="script-copy-btn" id="scriptCopyBtn" onclick="doCopyScript('${id}')"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Copy Script</button>
             <div class="script-action-row"><button class="script-action-btn ${isFav ? 'active' : ''}" id="favScriptBtn" onclick="toggleFavoriteScript('${id}')">${isFav ? '❤️' : '🤍'} ${isFav ? 'Saved' : 'Save'}</button>
             <button class="script-action-btn" onclick="shareScript('${id}', '${escHtml(script.name||'')}')">📤 Share</button>
-            <button class="script-action-btn" onclick="reportScript('${id}')">🚩 Report</button></div>
+            <button class="script-action-btn" onclick="reportScript('${id}')">🚩 Report</button>
+            ${state.currentUser && script.authorId === state.currentUser.uid ? `<button class="script-action-btn" style="color:#ef4444;border-color:#ef4444;" onclick="confirmDeleteScript('${id}', '${escHtml(script.name||'')}', '${escHtml(script.thumbnail||'')}')">🗑️ Delete</button>` : ''}</div>
             <div class="script-modal-stats"><div class="script-modal-stat"><div class="script-modal-stat-val">${formatNum(script.views || 0)}</div><div class="script-modal-stat-lbl">Views</div></div>
             <div class="script-modal-stat"><div class="script-modal-stat-val">${formatNum(script.likes || 0)}</div><div class="script-modal-stat-lbl">Likes</div></div>
             <div class="script-modal-stat"><div class="script-modal-stat-val">${script.copies || 0}</div><div class="script-modal-stat-lbl">Copies</div></div>
@@ -21301,6 +21600,50 @@
         }
 
         function closeScriptModal() { document.getElementById('script-modal').classList.remove('show'); }
+
+        function confirmDeleteScript(id, name, thumbURL) {
+            if (!state.currentUser) return;
+            const confirmed = window.confirm(`Delete "${name}"?\n\nThis action cannot be undone.`);
+            if (confirmed) doDeleteScript(id, thumbURL);
+        }
+
+        async function doDeleteScript(id, thumbURL) {
+            const fb = window.__FB;
+            if (!fb?.ready || !state.currentUser) return;
+            try {
+                const scriptRef = fb.doc(fb.db, 'scripts', id);
+                const snap = await fb.getDoc(scriptRef);
+                if (!snap.exists()) { showToast('Script not found.', 'error'); return; }
+                const data = snap.data();
+                // Only allow author to delete
+                if (data.authorId !== state.currentUser.uid) { showToast('You can only delete your own scripts.', 'error'); return; }
+                // Delete from Firestore
+                await fb.deleteDoc(scriptRef);
+                // Delete thumbnail from Storage if it's a Firebase Storage URL
+                if (thumbURL && thumbURL.includes('firebasestorage.googleapis.com') && fb.storage) {
+                    try {
+                        const ref = fb.storageRefFromURL(fb.storage, thumbURL);
+                        await fb.deleteObject(ref);
+                    } catch (e) { console.warn('[LPOLVO] Could not delete thumbnail from storage:', e.message); }
+                }
+                // Decrement user script count
+                await fb.updateDoc(fb.doc(fb.db, 'users', state.currentUser.uid), { scripts: fb.increment(-1) });
+                if (state.userProfile) state.userProfile.scripts = Math.max(0, (state.userProfile.scripts || 1) - 1);
+                // Remove from local cache
+                state.scripts = state.scripts.filter(s => s.id !== id);
+                closeScriptModal();
+                showToast('Script deleted successfully.', 'success');
+                playSuccess();
+                // Refresh pages
+                buildHomeScripts();
+                buildScriptsPage();
+                buildDashPage();
+            } catch (e) {
+                console.error('[LPOLVO] doDeleteScript:', e);
+                showToast('Failed to delete script. Please try again.', 'error');
+                playError();
+            }
+        }
 
         async function doCopyScript(id) {
             const script = state.scripts.find(s => s.id === id);
@@ -21361,12 +21704,35 @@
             const fb = window.__FB;
             if (!fb?.ready || !state.currentUser) return;
             try {
-                await fb.updateDoc(fb.doc(fb.db, 'users', state.currentUser.uid), { badges: fb.arrayUnion(badgeId) });
+                const now = Date.now();
+                await fb.updateDoc(fb.doc(fb.db, 'users', state.currentUser.uid), {
+                    badges: fb.arrayUnion(badgeId),
+                    achievements: fb.arrayUnion(badgeId),
+                    [`achievementDates.${badgeId}`]: now,
+                });
+                if (!state.userProfile) state.userProfile = {};
                 if (!state.userProfile.badges) state.userProfile.badges = [];
+                if (!state.userProfile.achievements) state.userProfile.achievements = [];
                 if (!state.userProfile.badges.includes(badgeId)) state.userProfile.badges.push(badgeId);
+                if (!state.userProfile.achievements.includes(badgeId)) state.userProfile.achievements.push(badgeId);
                 const bd = BADGES_DEF.find(b => b.id === badgeId);
-                if (bd) showToast(`Badge unlocked: ${bd.icon} ${bd.name}!`, 'success');
-            } catch (e) {}
+                if (bd) showToast(`🏆 Achievement Unlocked: ${bd.icon} ${bd.name}!`, 'success');
+            } catch (e) { console.warn('[LPOLVO] awardBadge failed:', badgeId, e.message); }
+        }
+
+        // Check and award achievements based on current profile state
+        async function checkAchievements() {
+            if (!state.currentUser || !state.userProfile) return;
+            const ach = state.userProfile.achievements || [];
+            const views = state.userProfile.views || 0;
+            const scripts = state.userProfile.scripts || 0;
+            const likes = state.userProfile.totalLikes || 0;
+            // 100 views achievement
+            if (views >= 100 && !ach.includes('views_100')) await awardBadge('views_100');
+            // 10 scripts achievement
+            if (scripts >= 10 && !ach.includes('scripts_10')) await awardBadge('scripts_10');
+            // 100 likes achievement
+            if (likes >= 100 && !ach.includes('likes_100')) await awardBadge('likes_100');
         }
 
         function shareScript(id, name) {
@@ -21483,17 +21849,44 @@
                     status: 'active',
                     createdAt: fb.serverTimestamp(),
                 };
-                updateUploadProgress(40);
+                updateUploadProgress(30);
+
+                // Upload thumbnail to Firebase Storage if it's a data URL
+                let thumbURL = thumbnail;
+                if (thumbnail && thumbnail.startsWith('data:') && fb.storage) {
+                    try {
+                        const tRef = fb.storageRef(fb.storage, `thumbnails/${state.currentUser.uid}/${Date.now()}.jpg`);
+                        const res = await fetch(thumbnail);
+                        const blob = await res.blob();
+                        await fb.uploadBytes(tRef, blob);
+                        thumbURL = await fb.getDownloadURL(tRef);
+                    } catch { thumbURL = thumbnail; }
+                }
+                scriptData.thumbnail = thumbURL;
+
+                updateUploadProgress(50);
                 const docRef = await fb.addDoc(fb.collection(fb.db, 'scripts'), scriptData);
-                updateUploadProgress(70);
-                await fb.updateDoc(fb.doc(fb.db, 'users', state.currentUser.uid), { scripts: fb.increment(1) });
-                if (state.userProfile) state.userProfile.scripts = (state.userProfile.scripts || 0) + 1;
+                updateUploadProgress(75);
+                const newScriptCount = (state.userProfile?.scripts || 0) + 1;
+                await fb.updateDoc(fb.doc(fb.db, 'users', state.currentUser.uid), {
+                    scripts: fb.increment(1),
+                    'stats.uploads': fb.increment(1),
+                });
+                if (state.userProfile) state.userProfile.scripts = newScriptCount;
+                // Achievement: first upload
+                if (newScriptCount === 1 && !(state.userProfile?.achievements || []).includes('first_upload')) {
+                    await awardBadge('first_upload');
+                }
+                // Achievement: 10 scripts
+                if (newScriptCount >= 10 && !(state.userProfile?.achievements || []).includes('scripts_10')) {
+                    await awardBadge('scripts_10');
+                }
                 if (!(state.userProfile?.badges || []).includes('creator')) { await awardBadge('creator'); }
-                state.scripts.unshift({ id: docRef.id, ...scriptData, createdAt: { seconds: Date.now() / 1000 } });
+                state.scripts.unshift({ id: docRef.id, ...scriptData, thumbnail: thumbURL, createdAt: { seconds: Date.now() / 1000 } });
                 updateUploadProgress(100);
                 setTimeout(() => {
                     closeUploadModal();
-                    showToast(getTranslation('scriptSubmitted'), 'success');
+                    showToast(getTranslation('scriptSubmitted') || 'Script uploaded successfully! 🎉', 'success');
                     playUpload();
                     ['uploadName', 'uploadGame', 'uploadCode', 'uploadDesc', 'uploadTags', 'uploadVersion'].forEach(
                         id => { const el = document.getElementById(id); if (el) el.value = ''; });
@@ -21503,19 +21896,28 @@
                     if (preview && placeholder) { preview.innerHTML = '';
                         preview.appendChild(placeholder);
                         placeholder.style.display = 'flex'; }
-                    document.getElementById('thumbFileInput').value = '';
-                    document.getElementById('uploadProgressWrap').classList.remove('show');
-                    document.getElementById('uploadProgressBar').style.width = '0%';
+                    const tfi = document.getElementById('thumbFileInput');
+                    if (tfi) tfi.value = '';
+                    const pw = document.getElementById('uploadProgressWrap');
+                    const pb = document.getElementById('uploadProgressBar');
+                    if (pw) pw.classList.remove('show');
+                    if (pb) pb.style.width = '0%';
                     addActivity(state.currentUser.uid, 'upload', `Uploaded script: <strong>${name}</strong>`);
                     buildHomeScripts();
                     buildScriptsPage();
                     buildSpotlight();
                     buildLeaderboard();
                 }, 500);
-            } catch (e) { if (errEl) errEl.textContent = getTranslation('scriptSubmitFailed');
+            } catch (e) {
+                console.error('[LPOLVO] doUploadScript:', e);
+                if (errEl) errEl.textContent = getTranslation('scriptSubmitFailed') || 'Upload failed. Please try again.';
                 playError();
-                document.getElementById('uploadProgressWrap').classList.remove('show'); } finally { btn.disabled = false;
-                btn.textContent = getTranslation('submitBtn'); }
+                const pw = document.getElementById('uploadProgressWrap');
+                if (pw) pw.classList.remove('show');
+            } finally {
+                btn.disabled = false;
+                btn.textContent = getTranslation('submitBtn') || 'Submit Script';
+            }
         }
 
         function setSortHome(sort) { state.homeSort = sort;
@@ -21836,36 +22238,76 @@
             if (!fb?.ready || !state.currentUser) return;
             const name = document.getElementById('editName').value.trim();
             const bio = document.getElementById('editBio').value.trim();
-            const handle = document.getElementById('editHandle').value.trim().replace(/[^a-zA-Z0-9_]/g, '').substring(0, 20);
+            const handle = document.getElementById('editHandle').value.trim().replace(/[^a-zA-Z0-9_]/g, '').toLowerCase().substring(0, 20);
             const errEl = document.getElementById('editError');
             const sucEl = document.getElementById('editSuccess');
             const btn = document.getElementById('editSaveBtn');
-            if (!name) { if (errEl) errEl.textContent = getTranslation('displayNameRequired'); return; }
+            if (!name) { if (errEl) errEl.textContent = getTranslation('displayNameRequired') || 'Display name is required.'; return; }
             if (errEl) errEl.textContent = '';
+            if (sucEl) sucEl.textContent = '';
             btn.disabled = true;
-            btn.textContent = getTranslation('saving');
+            btn.textContent = getTranslation('saving') || 'Saving…';
             try {
-                const avatar = state.pendingAvatar || state.userProfile?.avatar || '';
-                const banner = state.pendingBanner || state.userProfile?.banner || '';
-                const updates = { displayName: name, bio, handle, avatar, banner };
-                await fb.updateDoc(fb.doc(fb.db, 'users', state.currentUser.uid), updates);
-                await fb.updateProfile(state.currentUser, { displayName: name, photoURL: avatar || undefined });
-                localStorage.setItem('lp_name_' + state.currentUser.uid, name);
-                if (avatar) localStorage.setItem('lp_avatar_' + state.currentUser.uid, avatar);
-                if (banner) localStorage.setItem('lp_banner_' + state.currentUser.uid, banner);
+                const uid = state.currentUser.uid;
+                let avatarURL = state.userProfile?.avatar || '';
+                let bannerURL = state.userProfile?.banner || '';
+
+                // Upload new avatar if pending
+                if (state.pendingAvatar && state.pendingAvatar.startsWith('data:')) {
+                    if (fb.storage) {
+                        try {
+                            const ref = fb.storageRef(fb.storage, `avatars/${uid}/avatar.jpg`);
+                            const res = await fetch(state.pendingAvatar);
+                            const blob = await res.blob();
+                            await fb.uploadBytes(ref, blob);
+                            avatarURL = await fb.getDownloadURL(ref);
+                        } catch { avatarURL = state.pendingAvatar; }
+                    } else { avatarURL = state.pendingAvatar; }
+                }
+
+                // Upload new banner if pending
+                if (state.pendingBanner && state.pendingBanner.startsWith('data:')) {
+                    if (fb.storage) {
+                        try {
+                            const ref = fb.storageRef(fb.storage, `banners/${uid}/banner.jpg`);
+                            const res = await fetch(state.pendingBanner);
+                            const blob = await res.blob();
+                            await fb.uploadBytes(ref, blob);
+                            bannerURL = await fb.getDownloadURL(ref);
+                        } catch { bannerURL = state.pendingBanner; }
+                    } else { bannerURL = state.pendingBanner; }
+                }
+
+                const updates = {
+                    displayName: name,
+                    bio,
+                    handle: handle || state.userProfile?.handle || uid.substring(0, 12),
+                    avatar: avatarURL,
+                    banner: bannerURL,
+                    updatedAt: fb.serverTimestamp(),
+                };
+                await fb.updateDoc(fb.doc(fb.db, 'users', uid), updates);
+                try { await fb.updateProfile(state.currentUser, { displayName: name, photoURL: avatarURL || undefined }); } catch {}
+                localStorage.setItem('lp_name_' + uid, name);
+                if (avatarURL) localStorage.setItem('lp_avatar_' + uid, avatarURL);
+                if (bannerURL) localStorage.setItem('lp_banner_' + uid, bannerURL);
                 if (!state.userProfile) state.userProfile = {};
                 Object.assign(state.userProfile, updates);
                 state.pendingAvatar = null;
                 state.pendingBanner = null;
                 updateAvatarUI();
-                if (sucEl) sucEl.textContent = getTranslation('profileSaved');
-                showToast(getTranslation('profileUpdated'), 'success');
+                if (sucEl) sucEl.textContent = getTranslation('profileSaved') || '✓ Profile saved!';
+                showToast(getTranslation('profileUpdated') || 'Profile updated! ✓', 'success');
                 playSuccess();
-                setTimeout(() => { closeEditModal();
-                    buildProfilePage(); }, 800);
-            } catch (e) { if (errEl) errEl.textContent = getTranslation('profileSaveFailed');
-                playError(); } finally { btn.disabled = false;
-                btn.textContent = getTranslation('saveChanges'); }
+                setTimeout(() => { closeEditModal(); buildProfilePage(); }, 900);
+            } catch (e) {
+                console.error('[LPOLVO] doSaveProfile:', e);
+                if (errEl) errEl.textContent = getTranslation('profileSaveFailed') || 'Failed to save. Please try again.';
+                playError();
+            } finally {
+                btn.disabled = false;
+                btn.textContent = getTranslation('saveChanges') || 'Save Changes';
+            }
         }
 
         /* ── DASHBOARD ── */
@@ -22346,7 +22788,7 @@
             document.getElementById('about-modal').classList.add('show');
             // Update about modal with current language
             const aboutVer = document.getElementById('aboutVersionText');
-            if (aboutVer) aboutVer.textContent = getTranslation('versionLabel') || 'V1 — Official Public Release';
+            if (aboutVer) aboutVer.textContent = getTranslation('versionLabel') || 'v1.2 — Complete User Systems';
             const aboutDesc = document.getElementById('aboutDescText');
             if (aboutDesc) aboutDesc.textContent = getTranslation('aboutLpolvoDesc');
             const aboutGotIt = document.querySelector('#about-modal button[onclick*="closeAboutModal"]');
@@ -22457,7 +22899,7 @@
                         )) { lastHover = Date.now();
                     playHover(); }
             }, { passive: true });
-            console.log('[LPOLVO HUB V1] Initialized ✓');
+            console.log('[LPOLVO HUB v1.2] Initialized ✓');
             console.log('[LPOLVO HUB] Theme:', state.theme, 'Language:', state.language);
             setTimeout(() => playThemeAmbient(), 1000);
             /* Resume/pause ambient when tab visibility changes */
