@@ -331,7 +331,7 @@ function buildSettings() {
     <div class="settings-row-info"><div class="settings-row-label">${getTranslation('soundLabel')}</div>
     <div class="settings-row-desc">${getTranslation('soundDesc')}</div></div>
     <div class="settings-toggle ${SETTINGS.sounds ? 'on' : ''}" id="toggle-sounds"><div class="settings-toggle-knob"></div></div></div>
-    <div class="settings-row ${state.theme !== 'absolutesingularity' ? 'settings-row-disabled' : ''}" onclick="if(state.theme==='absolutesingularity'){toggleAmbientMusic();}else{showToast('🜂 Activate Absolute Singularity theme first','info');}"><div class="settings-row-icon">🎵</div>
+    <div class="settings-row ${(state.theme !== 'absolutesingularity' && state.theme !== 'primordialcrimson') ? 'settings-row-disabled' : ''}" onclick="if(state.theme==='absolutesingularity'){toggleAmbientMusic();}else if(state.theme==='primordialcrimson'){togglePrimordialAmbient();}else{showToast('🌠 Activate Crimson Genesis or Absolute Singularity theme first','info');}"><div class="settings-row-icon">🎵</div>
     <div class="settings-row-info"><div class="settings-row-label">${getTranslation('ambientMusicLabel')}</div>
     <div class="settings-row-desc">${getTranslation('ambientMusicDesc')}</div></div>
     <div class="settings-toggle ${SETTINGS.ambientMusic ? 'on' : ''}" id="toggle-ambientMusic"><div class="settings-toggle-knob"></div></div></div></div></div>
@@ -341,7 +341,7 @@ function buildSettings() {
     <div class="settings-row-desc">${getTranslation('notifsDesc')}</div></div>
     <div class="settings-toggle ${SETTINGS.notifications ? 'on' : ''}" id="toggle-notifications"><div class="settings-toggle-knob"></div></div></div></div></div>
     <div class="settings-section"><div class="settings-section-title">${getTranslation('themeOptionsLabel')} — ${THEMES.length}</div>
-    <div class="theme-grid">${THEMES.map(t => `<div class="theme-btn ${state.theme === t.id ? 'active' : ''}" data-theme="${t.id}" ${t.op ? 'data-op="true"' : ''} ${t.sss ? 'data-sss="true"' : ''} ${t.mythic ? 'data-mythic="true"' : ''} ${t.transcendent ? 'data-transcendent="true"' : ''} ${t.omniscient ? 'data-omniscient="true"' : ''} ${t.omnipotent ? 'data-omnipotent="true"' : ''} ${t.absolute ? 'data-absolute="true"' : ''} onclick="applyTheme('${t.id}');buildSettings();">
+    <div class="theme-grid">${THEMES.map(t => `<div class="theme-btn ${state.theme === t.id ? 'active' : ''}" data-theme="${t.id}" ${t.op ? 'data-op="true"' : ''} ${t.sss ? 'data-sss="true"' : ''} ${t.mythic ? 'data-mythic="true"' : ''} ${t.transcendent ? 'data-transcendent="true"' : ''} ${t.omniscient ? 'data-omniscient="true"' : ''} ${t.omnipotent ? 'data-omnipotent="true"' : ''} ${t.absolute ? 'data-absolute="true"' : ''} ${t.primordial ? 'data-primordial="true"' : ''} onclick="applyTheme('${t.id}');buildSettings();">
     <div class="theme-swatch" style="background:${t.color};box-shadow:0 2px 8px ${t.color}44;"></div>
     <div><div class="theme-btn-name">${getThemeName(t.id)}</div><div class="theme-btn-desc">${getThemeDesc(t.id)}</div></div></div>`).join('')}</div></div>
     ${state.currentUser ? `<div class="settings-section"><div class="settings-section-title">${getTranslation('settingsAccount')}</div>
@@ -521,6 +521,184 @@ function toggleAmbientMusic() {
         startAbsoluteAmbient();
     } else {
         stopAbsoluteAmbient();
+    }
+    playClick();
+}
+
+
+/* ══════════════════════════════════════════════════════════════════════
+   🌠 CRIMSON GENESIS — Primordial Ambient Engine
+      Pure Web Audio synthesis. Deep blood-crimson drones, ancient metallic
+      resonance, void pulses, and a subtle primordial heartbeat.
+      No external files. Loops seamlessly.
+══════════════════════════════════════════════════════════════════════ */
+var _primAmbient = null; /* { ctx, nodes[], stopped } */
+
+function startPrimordialAmbient() {
+    if (_primAmbient && !_primAmbient.stopped) return;
+    stopPrimordialAmbient();
+
+    var actx;
+    try { actx = new (window.AudioContext || window.webkitAudioContext)(); }
+    catch (e) { return; }
+    if (actx.state === 'suspended') actx.resume().catch(function(){});
+
+    var masterGain = actx.createGain();
+    masterGain.gain.setValueAtTime(0, actx.currentTime);
+    masterGain.gain.linearRampToValueAtTime(0.00055, actx.currentTime + 5);
+    masterGain.connect(actx.destination);
+
+    var nodes = [masterGain];
+
+    /* ── Core drone layers ── */
+    function makeDrone(freq, detune, vol, type, attack) {
+        var osc = actx.createOscillator();
+        var gain = actx.createGain();
+        var filter = actx.createBiquadFilter();
+        filter.type = 'lowpass';
+        filter.frequency.value = 400 + Math.random() * 200;
+        filter.Q.value = 1.2;
+        osc.type = type || 'sine';
+        osc.frequency.value = freq;
+        osc.detune.value = detune || 0;
+        gain.gain.setValueAtTime(0, actx.currentTime);
+        gain.gain.linearRampToValueAtTime(vol, actx.currentTime + (attack || 4));
+        osc.connect(filter); filter.connect(gain); gain.connect(masterGain);
+        osc.start(actx.currentTime);
+        nodes.push(osc, gain, filter);
+        return { osc: osc, gain: gain };
+    }
+
+    /* Deep primordial sub — 27 Hz (below human hearing threshold, felt not heard) */
+    var d1 = makeDrone(27, 0, 0.35, 'sine', 5);
+    /* Void abyss drone — 54 Hz */
+    var d2 = makeDrone(54, -8, 0.28, 'sine', 6);
+    /* Ancient blood resonance — 108 Hz */
+    var d3 = makeDrone(108, 5, 0.20, 'sine', 7);
+    /* Crimson overtone — 162 Hz (perfect fifth above 108) */
+    var d4 = makeDrone(162, -3, 0.12, 'triangle', 8);
+    /* Dark metallic shimmer — 216 Hz */
+    var d5 = makeDrone(216, 7, 0.07, 'sawtooth', 9);
+    /* Genesis pulse — 36 Hz */
+    var d6 = makeDrone(36, 0, 0.22, 'sine', 6);
+
+    /* ── Primordial heartbeat — low thump every ~2 sec ── */
+    var heartbeatInterval = setInterval(function() {
+        if (!_primAmbient || _primAmbient.stopped) { clearInterval(heartbeatInterval); return; }
+        try {
+            var hOsc = actx.createOscillator();
+            var hGain = actx.createGain();
+            var hFilter = actx.createBiquadFilter();
+            hFilter.type = 'lowpass'; hFilter.frequency.value = 180; hFilter.Q.value = 2;
+            hOsc.type = 'sine'; hOsc.frequency.value = 40;
+            hGain.gain.setValueAtTime(0, actx.currentTime);
+            hGain.gain.linearRampToValueAtTime(0.00038, actx.currentTime + 0.04);
+            hGain.gain.exponentialRampToValueAtTime(0.00001, actx.currentTime + 0.55);
+            hOsc.connect(hFilter); hFilter.connect(hGain); hGain.connect(actx.destination);
+            hOsc.start(actx.currentTime);
+            hOsc.stop(actx.currentTime + 0.6);
+        } catch(e) {}
+    }, 2100 + Math.random() * 400);
+    nodes.push({ heartbeatInterval: heartbeatInterval });
+
+    /* ── Ancient metallic echo — rare deep resonant chime ── */
+    var echoInterval = setInterval(function() {
+        if (!_primAmbient || _primAmbient.stopped) { clearInterval(echoInterval); return; }
+        try {
+            var ePitches = [216, 162, 108, 324, 432];
+            var eFreq = ePitches[Math.floor(Math.random() * ePitches.length)];
+            var eOsc = actx.createOscillator();
+            var eGain = actx.createGain();
+            eOsc.type = 'triangle';
+            eOsc.frequency.value = eFreq;
+            eGain.gain.setValueAtTime(0, actx.currentTime);
+            eGain.gain.linearRampToValueAtTime(0.00022, actx.currentTime + 0.08);
+            eGain.gain.exponentialRampToValueAtTime(0.00001, actx.currentTime + 5.5);
+            eOsc.connect(eGain); eGain.connect(actx.destination);
+            eOsc.start(actx.currentTime);
+            eOsc.stop(actx.currentTime + 6);
+        } catch(e) {}
+    }, 8000 + Math.random() * 12000);
+    nodes.push({ echoInterval: echoInterval });
+
+    /* ── Slow void-breathing LFO on main drone ── */
+    var lfo = actx.createOscillator();
+    var lfoGain = actx.createGain();
+    lfo.frequency.value = 0.06; /* ~one breath every 17 seconds */
+    lfoGain.gain.value = 0.08;
+    lfo.connect(lfoGain);
+    lfoGain.connect(d1.gain.gain);
+    lfoGain.connect(d6.gain.gain);
+    lfo.start(actx.currentTime);
+    nodes.push(lfo, lfoGain);
+
+    /* ── Secondary slow LFO for crimson shimmer ── */
+    var lfo2 = actx.createOscillator();
+    var lfoGain2 = actx.createGain();
+    lfo2.frequency.value = 0.11;
+    lfoGain2.gain.value = 0.05;
+    lfo2.connect(lfoGain2);
+    lfoGain2.connect(d4.gain.gain);
+    lfo2.start(actx.currentTime);
+    nodes.push(lfo2, lfoGain2);
+
+    /* ── Fade-out helper ── */
+    function fadeOut(cb) {
+        masterGain.gain.setValueAtTime(masterGain.gain.value, actx.currentTime);
+        masterGain.gain.linearRampToValueAtTime(0, actx.currentTime + 3);
+        setTimeout(function() {
+            nodes.forEach(function(n) {
+                if (!n) return;
+                if (n.heartbeatInterval) { clearInterval(n.heartbeatInterval); return; }
+                if (n.echoInterval) { clearInterval(n.echoInterval); return; }
+                try { if (n.stop) n.stop(); } catch(e) {}
+                try { if (n.disconnect) n.disconnect(); } catch(e) {}
+            });
+            try { actx.close(); } catch(e) {}
+            if (cb) cb();
+        }, 3100);
+    }
+
+    _primAmbient = {
+        ctx: actx,
+        nodes: nodes,
+        stopped: false,
+        fadeOut: fadeOut,
+        heartbeatInterval: heartbeatInterval,
+        echoInterval: echoInterval
+    };
+}
+
+function stopPrimordialAmbient() {
+    if (!_primAmbient) return;
+    _primAmbient.stopped = true;
+    clearInterval(_primAmbient.heartbeatInterval);
+    clearInterval(_primAmbient.echoInterval);
+    if (_primAmbient.fadeOut) {
+        _primAmbient.fadeOut(function() { _primAmbient = null; });
+    } else {
+        _primAmbient.nodes.forEach(function(n) {
+            if (!n) return;
+            if (n.heartbeatInterval) { clearInterval(n.heartbeatInterval); return; }
+            if (n.echoInterval) { clearInterval(n.echoInterval); return; }
+            try { if (n.stop) n.stop(); } catch(e) {}
+            try { if (n.disconnect) n.disconnect(); } catch(e) {}
+        });
+        try { _primAmbient.ctx.close(); } catch(e) {}
+        _primAmbient = null;
+    }
+}
+
+function togglePrimordialAmbient() {
+    if (state.theme !== 'primordialcrimson') return;
+    SETTINGS.ambientMusic = !SETTINGS.ambientMusic;
+    localStorage.setItem('lp_ambientMusic', JSON.stringify(SETTINGS.ambientMusic));
+    var toggle = document.getElementById('toggle-ambientMusic');
+    if (toggle) toggle.classList.toggle('on', SETTINGS.ambientMusic);
+    if (SETTINGS.ambientMusic) {
+        startPrimordialAmbient();
+    } else {
+        stopPrimordialAmbient();
     }
     playClick();
 }
@@ -944,16 +1122,28 @@ function startApp() {
         try { setTimeout(function() { playThemeAmbient(); }, 1000); } catch(e) {}
         try {
             document.addEventListener('visibilitychange', function() {
-                if (state.theme !== 'absolutesingularity' || !SETTINGS.ambientMusic) return;
-                if (document.hidden) {
-                    if (_absAmbient && _absAmbient.ctx) try { _absAmbient.ctx.suspend(); } catch(e2) {}
-                } else {
-                    if (_absAmbient && _absAmbient.ctx) try { _absAmbient.ctx.resume(); } catch(e2) {}
-                    else startAbsoluteAmbient();
+                if (!SETTINGS.ambientMusic) return;
+                if (state.theme === 'absolutesingularity') {
+                    if (document.hidden) {
+                        if (_absAmbient && _absAmbient.ctx) try { _absAmbient.ctx.suspend(); } catch(e2) {}
+                    } else {
+                        if (_absAmbient && _absAmbient.ctx) try { _absAmbient.ctx.resume(); } catch(e2) {}
+                        else startAbsoluteAmbient();
+                    }
+                } else if (state.theme === 'primordialcrimson') {
+                    if (document.hidden) {
+                        if (_primAmbient && _primAmbient.ctx) try { _primAmbient.ctx.suspend(); } catch(e2) {}
+                    } else {
+                        if (_primAmbient && _primAmbient.ctx) try { _primAmbient.ctx.resume(); } catch(e2) {}
+                        else startPrimordialAmbient();
+                    }
                 }
             });
             if (state.theme === 'absolutesingularity' && SETTINGS.ambientMusic) {
                 setTimeout(function() { startAbsoluteAmbient(); }, 1200);
+            }
+            if (state.theme === 'primordialcrimson' && SETTINGS.ambientMusic) {
+                setTimeout(function() { startPrimordialAmbient(); }, 1200);
             }
         } catch(e) {}
 

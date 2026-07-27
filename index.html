@@ -7568,6 +7568,399 @@
             transform: rotate(90deg) !important; animation: none !important;
         }
 
+        /* ════════════════════════════════════════════════════════════════════════
+           🌠 CRIMSON GENESIS — PRIMORDIAL Tier
+           Before Existence Itself.
+           Deep blood-crimson, ancient gold, void obsidian, burning amber.
+        ════════════════════════════════════════════════════════════════════════ */
+        [data-theme="primordialcrimson"] {
+            --bg: #030001;
+            --bg2: #060002;
+            --bg3: #0c0003;
+            --bg4: #110004;
+            --card: rgba(14, 1, 4, .84);
+            --card-border: rgba(107, 0, 16, .32);
+            --card-hover: rgba(22, 2, 6, .95);
+            --accent: #c0001a;
+            --accent2: #c8920a;
+            --accent3: #ff1a2e;
+            --accent4: #e6b020;
+            --accent-alpha: rgba(107, 0, 16, .14);
+            --accent-alpha2: rgba(200, 146, 10, .08);
+            --text: #fff5f4;
+            --text2: #e8a0a8;
+            --text3: rgba(232, 160, 168, .5);
+            --border: rgba(107, 0, 16, .28);
+            --border2: rgba(200, 146, 10, .14);
+            --glow: rgba(176, 0, 26, .9);
+            --glow2: rgba(200, 146, 10, .38);
+            --nav-bg: rgba(3, 0, 1, .90);
+            --btn-grad: linear-gradient(120deg, rgba(107,0,16,.18), rgba(176,0,26,.22), rgba(200,146,10,.12));
+            --btn-hover: linear-gradient(120deg, rgba(107,0,16,.32), rgba(176,0,26,.38), rgba(200,146,10,.22));
+            --shadow: 0 14px 64px rgba(0, 0, 0, .97);
+            --shadow-card: 0 6px 40px rgba(0, 0, 0, .88);
+            --glass: rgba(10, 1, 3, .84);
+            --glass-border: rgba(107, 0, 16, .32);
+            --tag-bg: rgba(107, 0, 16, .14);
+            --tag-text: #ff1a2e;
+            --badge-new: #ff1a2e;
+            --badge-free: #c8920a;
+            --badge-paid: #6b0010;
+            --sidebar-bg: #030001;
+            --input-bg: rgba(10, 1, 3, .88);
+            --input-border: rgba(107, 0, 16, .3);
+            --particles: rgba(176, 0, 26, .7);
+            --success: #c8920a;
+            --error: #ff2a3e;
+            --warning: #e6b020;
+            --info: #c0001a;
+            --card-shadow: 0 10px 48px rgba(107, 0, 16, .14);
+            --scrollbar-track: #060002;
+            --scrollbar-thumb: #6b0010;
+            --banner-overlay: rgba(3, 0, 1, .6);
+            --theme-bg-layer: rgba(3, 0, 1, .58);
+            --theme-ambient: rgba(107, 0, 16, .08);
+            --btn-radius: 14px;
+            --card-radius: 22px;
+            --border-width: 1px;
+            --glow-intensity: 1;
+            --text-shadow: 0 0 36px rgba(176, 0, 26, .22);
+            --theme-transition: all 1.8s cubic-bezier(.22, 1, .36, 1);
+        }
+        [data-theme="primordialcrimson"] body {
+            background:
+                radial-gradient(ellipse 80% 55% at 50% -5%, rgba(107,0,16,.18), transparent 70%),
+                radial-gradient(ellipse 56% 42% at 8% 90%, rgba(200,146,10,.08), transparent 68%),
+                radial-gradient(ellipse 44% 36% at 95% 48%, rgba(176,0,26,.1), transparent 68%),
+                #030001;
+        }
+        [data-theme="primordialcrimson"] #bgCanvas {
+            filter: saturate(1.4) contrast(1.16) brightness(1.08);
+        }
+        [data-theme="primordialcrimson"] #ambientGlow {
+            background:
+                radial-gradient(ellipse 80% 58% at 50% 0%, rgba(107,0,16,.18), transparent 72%),
+                radial-gradient(ellipse 50% 38% at 10% 94%, rgba(200,146,10,.1), transparent 72%),
+                radial-gradient(ellipse 44% 34% at 92% 62%, rgba(176,0,26,.12), transparent 72%);
+            animation: primordialAmbientBreath 14s ease-in-out infinite;
+        }
+        @keyframes primordialAmbientBreath {
+            0%, 100% { opacity: .5; transform: scale(1) rotate(0deg); }
+            35%  { opacity: .95; transform: scale(1.07) rotate(.4deg); }
+            70%  { opacity: .68; transform: scale(1.03) rotate(-.3deg); }
+        }
+        /* Navbar */
+        [data-theme="primordialcrimson"] #navbar,
+        [data-theme="primordialcrimson"] #bottom-nav {
+            background: rgba(4, 0, 1, .92) !important;
+            backdrop-filter: blur(28px) saturate(1.8) !important;
+            -webkit-backdrop-filter: blur(28px) saturate(1.8) !important;
+            border-color: rgba(107, 0, 16, .24) !important;
+            box-shadow: 0 8px 48px rgba(0,0,0,.75), inset 0 1px rgba(200,146,10,.04) !important;
+        }
+        /* Logo & section titles — crimson-gold shimmer */
+        [data-theme="primordialcrimson"] .nav-logo-text,
+        [data-theme="primordialcrimson"] .section-title,
+        [data-theme="primordialcrimson"] .settings-section-title {
+            background: linear-gradient(100deg, #fff5f4 0%, #ff1a2e 16%, #c8920a 32%, #fff5f4 46%, #6b0010 60%, #e6b020 76%, #ff1a2e 90%, #fff5f4 100%);
+            background-size: 400% auto;
+            -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
+            animation: primordialTextFlow 10s linear infinite;
+            text-shadow: none;
+            letter-spacing: .05em;
+        }
+        @keyframes primordialTextFlow { to { background-position: 400% center; } }
+        [data-theme="primordialcrimson"] .nav-logo-icon {
+            background: conic-gradient(from 0deg, #6b0010, #c0001a, #c8920a, #e6b020, #ff1a2e, #6b0010) !important;
+            animation: primordialLogoSpin 6s linear infinite !important;
+            box-shadow: 0 0 20px rgba(176,0,26,.7), 0 0 40px rgba(200,146,10,.28) !important;
+        }
+        @keyframes primordialLogoSpin { to { filter: hue-rotate(-30deg) brightness(1.15); } }
+        /* Cards — ancient obsidian glass */
+        [data-theme="primordialcrimson"] .script-card,
+        [data-theme="primordialcrimson"] .creator-card,
+        [data-theme="primordialcrimson"] .settings-card,
+        [data-theme="primordialcrimson"] .news-card,
+        [data-theme="primordialcrimson"] .executor-card,
+        [data-theme="primordialcrimson"] .dash-stat-card {
+            background: linear-gradient(135deg, rgba(107,0,16,.1), rgba(14,1,4,.08) 48%, rgba(200,146,10,.05)) !important;
+            border: 1px solid rgba(107, 0, 16, .28) !important;
+            box-shadow: 0 12px 52px rgba(0,0,0,.78), 0 0 28px rgba(107,0,16,.1), inset 0 1px rgba(200,146,10,.05) !important;
+            backdrop-filter: blur(20px) saturate(1.5) !important;
+            -webkit-backdrop-filter: blur(20px) saturate(1.5) !important;
+            border-radius: 22px !important;
+            position: relative; overflow: hidden;
+            animation: primordialCardFloat 16s ease-in-out infinite !important;
+        }
+        [data-theme="primordialcrimson"] .script-card:nth-child(2n) { animation-delay: -5.3s !important; }
+        [data-theme="primordialcrimson"] .script-card:nth-child(3n) { animation-delay: -10.7s !important; }
+        [data-theme="primordialcrimson"] .script-card:nth-child(4n) { animation-delay: -3.1s !important; }
+        @keyframes primordialCardFloat {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            30%  { transform: translateY(-6px) rotate(.06deg); }
+            60%  { transform: translateY(-3px) rotate(-.05deg); }
+            85%  { transform: translateY(-5px) rotate(.04deg); }
+        }
+        /* Card crimson vein reflection */
+        [data-theme="primordialcrimson"] .script-card::before,
+        [data-theme="primordialcrimson"] .creator-card::before,
+        [data-theme="primordialcrimson"] .settings-card::before,
+        [data-theme="primordialcrimson"] .news-card::before {
+            content: ''; position: absolute; inset: 0; border-radius: inherit;
+            background: linear-gradient(115deg, transparent 12%, rgba(107,0,16,.18) 36%, rgba(200,146,10,.1) 52%, rgba(176,0,26,.12) 68%, transparent 86%);
+            background-size: 280% 100%; animation: primordialCardVein 8s ease-in-out infinite;
+            pointer-events: none; z-index: 0;
+        }
+        @keyframes primordialCardVein {
+            0%, 25% { background-position: -160% 0; }
+            70%, 100% { background-position: 260% 0; }
+        }
+        /* Card blood edge glow */
+        [data-theme="primordialcrimson"] .script-card::after,
+        [data-theme="primordialcrimson"] .creator-card::after,
+        [data-theme="primordialcrimson"] .news-card::after {
+            content: ''; position: absolute; bottom: 0; left: 8%; right: 8%; height: 1px;
+            background: linear-gradient(90deg, transparent, #6b0010 25%, #c8920a 50%, #6b0010 75%, transparent);
+            animation: primordialVeinPulse 5s ease-in-out infinite;
+            pointer-events: none; z-index: 0;
+        }
+        @keyframes primordialVeinPulse {
+            0%, 100% { opacity: .3; transform: scaleX(.75); }
+            50% { opacity: 1; transform: scaleX(1); }
+        }
+        [data-theme="primordialcrimson"] .script-card > *,
+        [data-theme="primordialcrimson"] .creator-card > *,
+        [data-theme="primordialcrimson"] .settings-card > *,
+        [data-theme="primordialcrimson"] .news-card > * { position: relative; z-index: 1; }
+        [data-theme="primordialcrimson"] .script-card:hover,
+        [data-theme="primordialcrimson"] .creator-card:hover,
+        [data-theme="primordialcrimson"] .executor-card:hover {
+            border-color: rgba(176, 0, 26, .85) !important;
+            box-shadow: 0 18px 72px rgba(0,0,0,.86), 0 0 42px rgba(107,0,16,.38), 0 0 80px rgba(200,146,10,.12), inset 0 1px rgba(200,146,10,.12) !important;
+            transform: translateY(-9px) scale(1.016) !important; animation: none !important;
+        }
+        /* Buttons — blood fire living light */
+        [data-theme="primordialcrimson"] button,
+        [data-theme="primordialcrimson"] .btn,
+        [data-theme="primordialcrimson"] .nav-sign-btn,
+        [data-theme="primordialcrimson"] .sort-btn.active,
+        [data-theme="primordialcrimson"] .cat-pill {
+            background: linear-gradient(120deg, rgba(107,0,16,.16), rgba(176,0,26,.2), rgba(200,146,10,.1)) !important;
+            background-size: 240% 240% !important;
+            border: 1px solid rgba(107, 0, 16, .45) !important;
+            color: #fff5f4 !important;
+            box-shadow: 0 6px 28px rgba(0,0,0,.42), 0 0 12px rgba(107,0,16,.2), inset 0 1px rgba(200,146,10,.08) !important;
+            position: relative; overflow: hidden;
+            animation: primordialButtonBreathe 6s ease-in-out infinite !important;
+        }
+        @keyframes primordialButtonBreathe {
+            0%, 100% { background-position: 0% 50%; box-shadow: 0 6px 28px rgba(0,0,0,.42), 0 0 12px rgba(107,0,16,.2), inset 0 1px rgba(200,146,10,.08); }
+            50% { background-position: 100% 50%; box-shadow: 0 8px 40px rgba(0,0,0,.52), 0 0 26px rgba(176,0,26,.38), 0 0 14px rgba(200,146,10,.14), inset 0 1px rgba(200,146,10,.16); }
+        }
+        /* Button blood trail sweep */
+        [data-theme="primordialcrimson"] button::before,
+        [data-theme="primordialcrimson"] .btn::before,
+        [data-theme="primordialcrimson"] .nav-sign-btn::before {
+            content: ''; position: absolute; inset: 0;
+            background: linear-gradient(108deg, transparent 14%, rgba(176,0,26,.2) 50%, rgba(200,146,10,.12) 66%, transparent 86%);
+            background-size: 260% 100%; animation: primordialButtonSweep 5s ease-in-out infinite;
+            pointer-events: none;
+        }
+        @keyframes primordialButtonSweep {
+            0%, 40% { background-position: -140% 0; }
+            75%, 100% { background-position: 240% 0; }
+        }
+        [data-theme="primordialcrimson"] button:hover,
+        [data-theme="primordialcrimson"] .btn:hover,
+        [data-theme="primordialcrimson"] .nav-sign-btn:hover {
+            background: linear-gradient(120deg, rgba(107,0,16,.3), rgba(176,0,26,.38), rgba(200,146,10,.2)) !important;
+            border-color: rgba(230, 176, 32, .72) !important;
+            box-shadow: 0 10px 44px rgba(176,0,26,.35), 0 0 24px rgba(200,146,10,.18), 0 0 14px rgba(107,0,16,.2), inset 0 1px rgba(200,146,10,.24) !important;
+            transform: translateY(-2px) scale(1.022) !important;
+        }
+        [data-theme="primordialcrimson"] button:active,
+        [data-theme="primordialcrimson"] .btn:active { transform: translateY(0) scale(.97) !important; }
+        /* Inputs */
+        [data-theme="primordialcrimson"] input[type="text"],
+        [data-theme="primordialcrimson"] input[type="search"],
+        [data-theme="primordialcrimson"] textarea,
+        [data-theme="primordialcrimson"] select,
+        [data-theme="primordialcrimson"] .search-input {
+            background: rgba(8, 1, 2, .85) !important;
+            border-color: rgba(107, 0, 16, .3) !important;
+            color: var(--text) !important;
+            box-shadow: inset 0 1px rgba(200,146,10,.04) !important;
+        }
+        [data-theme="primordialcrimson"] input:focus,
+        [data-theme="primordialcrimson"] textarea:focus,
+        [data-theme="primordialcrimson"] .search-input:focus {
+            border-color: rgba(176, 0, 26, .9) !important;
+            box-shadow: 0 0 0 3px rgba(107,0,16,.12), 0 0 32px rgba(176,0,26,.2) !important; outline: none !important;
+        }
+        /* Active theme button highlight */
+        [data-theme="primordialcrimson"] .theme-btn[data-theme="primordialcrimson"] {
+            border-color: rgba(176, 0, 26, .95) !important;
+            background: linear-gradient(120deg, rgba(107,0,16,.2), rgba(176,0,26,.24), rgba(200,146,10,.14)) !important;
+            animation: primordialBorderPulse 2.2s ease-in-out infinite !important;
+        }
+        /* Custom cursor */
+        [data-theme="primordialcrimson"] * { cursor: none !important; }
+        [data-theme="primordialcrimson"] #sidebar,
+        [data-theme="primordialcrimson"] #sidebar *,
+        [data-theme="primordialcrimson"] #sidebar-overlay { cursor: auto !important; pointer-events: auto !important; }
+        #primordialcrimson-cursor { display: none; }
+        [data-theme="primordialcrimson"] #primordialcrimson-cursor { display: block; }
+        #primordialcrimson-cursor {
+            position: fixed; pointer-events: none; z-index: 999999; width: 22px; height: 22px;
+            border-radius: 50%; transform: translate(-50%, -50%);
+            background: radial-gradient(circle, rgba(255,200,200,.88) 0%, rgba(176,0,26,.75) 40%, rgba(107,0,16,.45) 72%, transparent 100%);
+            box-shadow: 0 0 14px rgba(176,0,26,1), 0 0 32px rgba(107,0,16,.8), 0 0 60px rgba(176,0,26,.4);
+            animation: primordialCursorPulse 1.8s ease-in-out infinite;
+        }
+        @keyframes primordialCursorPulse {
+            0%, 100% { box-shadow: 0 0 14px rgba(176,0,26,1), 0 0 32px rgba(107,0,16,.8), 0 0 60px rgba(176,0,26,.4); transform: translate(-50%,-50%) scale(1); }
+            50%       { box-shadow: 0 0 24px rgba(230,176,32,.9), 0 0 52px rgba(176,0,26,.95), 0 0 96px rgba(107,0,16,.55); transform: translate(-50%,-50%) scale(1.28); }
+        }
+        #primordialcrimson-cursor::before {
+            content: ''; position: absolute; inset: -10px; border-radius: 50%;
+            border: 1px solid rgba(176, 0, 26, .6);
+            animation: primordialOrbit1 2s linear infinite;
+        }
+        #primordialcrimson-cursor::after {
+            content: ''; position: absolute; inset: -20px; border-radius: 50%;
+            border: 1px dashed rgba(200, 146, 10, .35);
+            animation: primordialOrbit2 3.5s linear infinite reverse;
+        }
+        @keyframes primordialOrbit1 { to { transform: rotate(360deg); } }
+        @keyframes primordialOrbit2 { to { transform: rotate(360deg); } }
+        .primordialcrimson-cursor-particle {
+            position: fixed; border-radius: 50%; pointer-events: none; z-index: 999998;
+            transform: translate(-50%, -50%);
+            animation: primordialParticleFade 0.9s ease-out forwards;
+        }
+        @keyframes primordialParticleFade {
+            0%   { opacity: .9; transform: translate(-50%,-50%) scale(1.1); }
+            60%  { opacity: .5; transform: translate(calc(-50% + var(--pcpx,0px)), calc(-50% + var(--pcpy,0px))) scale(.6); }
+            100% { opacity: 0; transform: translate(calc(-50% + var(--pcpx,0px)), calc(-50% + var(--pcpy,0px))) scale(0); }
+        }
+        /* Reality-bend glitch overlay */
+        [data-theme="primordialcrimson"] body::before {
+            content: ''; position: fixed; inset: 0; pointer-events: none; z-index: 1;
+            background: transparent;
+            animation: primordialRealityBend 22s ease-in-out infinite;
+        }
+        @keyframes primordialRealityBend {
+            0%,  44% { opacity: 0; filter: none; }
+            45%      { opacity: .06; filter: blur(.4px) hue-rotate(-15deg) saturate(1.6); }
+            46%      { opacity: 0; filter: none; }
+            64%      { opacity: 0; filter: none; }
+            65%      { opacity: .05; filter: blur(.3px) hue-rotate(8deg) brightness(1.1); }
+            66%      { opacity: 0; filter: none; }
+            100%     { opacity: 0; filter: none; }
+        }
+        /* World blood vein overlay */
+        [data-theme="primordialcrimson"] body::after {
+            content: ''; position: fixed; inset: 0; pointer-events: none; z-index: 0;
+            background:
+                radial-gradient(ellipse 76% 38% at 50% 6%, rgba(107,0,16,.09), transparent 72%),
+                radial-gradient(ellipse 50% 32% at 8% 86%, rgba(200,146,10,.06), transparent 72%),
+                radial-gradient(ellipse 44% 28% at 94% 64%, rgba(176,0,26,.07), transparent 72%);
+            animation: primordialWorldBreath 17s ease-in-out infinite;
+        }
+        @keyframes primordialWorldBreath { 0%,100% { opacity: .5; } 50% { opacity: 1; } }
+        /* Activation elements */
+        .primordialcrimson-activation {
+            position: fixed; inset: 0; z-index: 99999; pointer-events: none;
+            background: radial-gradient(ellipse at 50% 50%, rgba(255,200,200,.85), rgba(176,0,26,.5) 18%, rgba(107,0,16,.3) 42%, rgba(3,0,1,.99) 72%), #030001;
+            animation: primordialActivationFade 2.6s cubic-bezier(.22,1,.36,1) both;
+        }
+        @keyframes primordialActivationFade {
+            0%   { opacity: 0; filter: brightness(1); }
+            8%   { opacity: 1; filter: brightness(2.5) saturate(2.5); }
+            24%  { opacity: .94; filter: brightness(1.5) saturate(1.8); }
+            52%  { opacity: .56; filter: brightness(1.1) saturate(1.2); }
+            100% { opacity: 0; filter: brightness(1); }
+        }
+        .primordialcrimson-fragment {
+            position: fixed; pointer-events: none; z-index: 100000; border-radius: 2px;
+            animation: primordialFragmentFly 2.4s cubic-bezier(.16,1,.3,1) forwards;
+        }
+        @keyframes primordialFragmentFly {
+            0%   { opacity: 1; transform: translate(-50%,-50%) scale(1.8) rotate(0deg); }
+            55%  { opacity: .75; }
+            100% { opacity: 0; transform: translate(calc(-50% + var(--pcfx,0px)), calc(-50% + var(--pcfy,0px))) scale(0) rotate(var(--pcfr,180deg)); }
+        }
+        .primordialcrimson-rune-burst {
+            position: fixed; pointer-events: none; z-index: 100001;
+            color: rgba(176,0,26,.8); font-size: 22px; font-family: serif;
+            text-shadow: 0 0 12px rgba(107,0,16,.9), 0 0 24px rgba(200,146,10,.5);
+            animation: primordialRuneBurst 2s ease-out forwards;
+        }
+        @keyframes primordialRuneBurst {
+            0%   { opacity: 1; transform: scale(1.5); }
+            40%  { opacity: .8; transform: scale(1) translateY(-18px); }
+            100% { opacity: 0; transform: scale(0.6) translateY(-48px); }
+        }
+        .primordialcrimson-assemble {
+            animation: primordialAssemble 1.6s cubic-bezier(.22,1,.36,1) both !important;
+            animation-delay: var(--pc-delay, 0ms) !important;
+        }
+        @keyframes primordialAssemble {
+            0%   { opacity: 0; filter: blur(18px) brightness(2.2) saturate(2); transform: translateY(24px) scale(.88) rotate(-.3deg); }
+            42%  { filter: blur(4px) brightness(1.4) saturate(1.5); }
+            100% { opacity: 1; filter: blur(0) brightness(1) saturate(1); transform: translateY(0) scale(1) rotate(0); }
+        }
+        /* Reduced motion */
+        @media (prefers-reduced-motion: reduce) {
+            [data-theme="primordialcrimson"] * { scroll-behavior: auto !important; }
+            [data-theme="primordialcrimson"] #bgCanvas { filter: saturate(1.2) contrast(1.05); }
+            [data-theme="primordialcrimson"] #ambientGlow { animation: none; opacity: .75; }
+            [data-theme="primordialcrimson"] .script-card,
+            [data-theme="primordialcrimson"] .creator-card,
+            [data-theme="primordialcrimson"] .settings-card,
+            [data-theme="primordialcrimson"] .news-card,
+            [data-theme="primordialcrimson"] .executor-card,
+            [data-theme="primordialcrimson"] .dash-stat-card { animation: none !important; }
+            [data-theme="primordialcrimson"] button::before,
+            [data-theme="primordialcrimson"] .btn::before,
+            [data-theme="primordialcrimson"] .nav-sign-btn::before { animation: none; opacity: .14; }
+        }
+        @media (max-width: 700px) {
+            [data-theme="primordialcrimson"] .script-card,
+            [data-theme="primordialcrimson"] .creator-card { animation: none !important; }
+            [data-theme="primordialcrimson"] * { scroll-behavior: auto !important; }
+            [data-theme="primordialcrimson"] #bgCanvas { filter: saturate(1.2) contrast(1.05); }
+            [data-theme="primordialcrimson"] #ambientGlow { animation: none; opacity: .7; }
+            [data-theme="primordialcrimson"] .script-card,
+            [data-theme="primordialcrimson"] .creator-card,
+            [data-theme="primordialcrimson"] .settings-card,
+            [data-theme="primordialcrimson"] .news-card,
+            [data-theme="primordialcrimson"] .executor-card,
+            [data-theme="primordialcrimson"] .dash-stat-card {
+                backdrop-filter: blur(10px) !important; -webkit-backdrop-filter: blur(10px) !important;
+            }
+            [data-theme="primordialcrimson"] button::before,
+            [data-theme="primordialcrimson"] .btn::before,
+            [data-theme="primordialcrimson"] .nav-sign-btn::before { animation: none; opacity: .14; }
+        }
+        /* Modal close button fix */
+        [data-theme="primordialcrimson"] .modal-close-btn {
+            position: absolute !important;
+            top: 16px !important; right: 16px !important; left: auto !important;
+            bottom: auto !important; overflow: visible !important; z-index: 10 !important;
+            width: 30px !important; height: 30px !important; border-radius: 8px !important;
+            background: var(--bg3) !important;
+            border: 1px solid var(--border) !important;
+            color: var(--text2) !important;
+            box-shadow: none !important; animation: none !important; transform: none !important;
+        }
+        [data-theme="primordialcrimson"] .modal-close-btn::before { display: none !important; }
+        [data-theme="primordialcrimson"] .modal-close-btn:hover {
+            background: var(--bg3) !important; border-color: var(--accent) !important;
+            color: var(--accent) !important; box-shadow: none !important;
+            transform: rotate(90deg) !important; animation: none !important;
+        }
+
                 /* ── GLOBAL RESET ── */
         *,
         *::before,
@@ -10401,6 +10794,40 @@
             text-shadow: none;
         }
         .theme-btn[data-absolute="true"] { animation: absoluteBorderPulse 2s ease-in-out infinite !important; }
+
+        /* ══ 🌠 PRIMORDIAL BADGE ══ */
+        @keyframes primordialBadgeShimmer {
+            0%   { background-position: 0% 50%; filter: brightness(1) drop-shadow(0 0 3px rgba(176,0,26,.9)); }
+            16%  { background-position: 50% 0%; filter: brightness(1.6) drop-shadow(0 0 8px rgba(230,176,32,1)); }
+            34%  { background-position: 100% 50%; filter: brightness(1.15) drop-shadow(0 0 5px rgba(107,0,16,.95)); }
+            52%  { background-position: 60% 100%; filter: brightness(1.7) drop-shadow(0 0 10px rgba(176,0,26,1)); }
+            68%  { background-position: 20% 60%; filter: brightness(1.35) drop-shadow(0 0 6px rgba(200,146,10,.9)); }
+            84%  { background-position: 80% 20%; filter: brightness(1.1) drop-shadow(0 0 4px rgba(107,0,16,.8)); }
+            100% { background-position: 0% 50%; filter: brightness(1) drop-shadow(0 0 3px rgba(176,0,26,.9)); }
+        }
+        @keyframes primordialBadgePulse {
+            0%,100% { box-shadow: 0 0 10px 2px rgba(176,0,26,1), 0 0 22px rgba(107,0,16,.9), 0 0 44px rgba(200,146,10,.5), 0 0 70px rgba(176,0,26,.22); }
+            25%     { box-shadow: 0 0 16px 4px rgba(230,176,32,1), 0 0 34px rgba(176,0,26,.95), 0 0 62px rgba(107,0,16,.65), 0 0 96px rgba(230,176,32,.28); }
+            50%     { box-shadow: 0 0 12px 3px rgba(107,0,16,1), 0 0 26px rgba(230,176,32,.9), 0 0 52px rgba(176,0,26,.7), 0 0 82px rgba(107,0,16,.25); }
+            75%     { box-shadow: 0 0 18px 4px rgba(176,0,26,1), 0 0 40px rgba(107,0,16,.95), 0 0 66px rgba(230,176,32,.6), 0 0 104px rgba(176,0,26,.3); }
+        }
+        @keyframes primordialBorderPulse {
+            0%,100% { box-shadow: 0 0 24px rgba(176,0,26,.95), 0 0 52px rgba(107,0,16,.55), 0 0 84px rgba(200,146,10,.2), inset 0 0 20px rgba(176,0,26,.14); border-color: rgba(176,0,26,.85); }
+            25%     { box-shadow: 0 0 36px rgba(230,176,32,1), 0 0 72px rgba(176,0,26,.7), 0 0 116px rgba(107,0,16,.4), inset 0 0 28px rgba(230,176,32,.18); border-color: rgba(230,176,32,.88); }
+            50%     { box-shadow: 0 0 28px rgba(107,0,16,.98), 0 0 60px rgba(230,176,32,.72), 0 0 100px rgba(176,0,26,.38), inset 0 0 22px rgba(107,0,16,.18); border-color: rgba(107,0,16,.9); }
+            75%     { box-shadow: 0 0 32px rgba(176,0,26,1), 0 0 68px rgba(107,0,16,.72), 0 0 110px rgba(230,176,32,.44), inset 0 0 24px rgba(176,0,26,.16); border-color: rgba(176,0,26,.95); }
+        }
+        .theme-btn[data-primordial="true"]::after {
+            content: '🌠 PRIMORDIAL';
+            position: absolute; top: 4px; right: 4px;
+            background: linear-gradient(270deg, #fff5f4 0%, #ff1a2e 10%, #6b0010 22%, #c8920a 34%, #e6b020 46%, #ff1a2e 58%, #6b0010 70%, #c8920a 82%, #fff5f4 94%, #ff1a2e 100%);
+            background-size: 800% 800%;
+            color: #030001; font-size: 7px; font-weight: 950; border-radius: 7px;
+            padding: 2px 5px; letter-spacing: .09em;
+            animation: primordialBadgeShimmer 1.8s ease-in-out infinite, primordialBadgePulse 2.4s ease-in-out infinite;
+            text-shadow: none;
+        }
+        .theme-btn[data-primordial="true"] { animation: primordialBorderPulse 2.2s ease-in-out infinite !important; }
 
         .theme-btn { position:relative; }
         .theme-btn.active {

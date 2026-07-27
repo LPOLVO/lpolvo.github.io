@@ -90,6 +90,7 @@ function playThemeSwitch() {
     else if (theme === 'eternalnexus') freqs = [196, 294, 392, 523, 659, 784, 988, 1175, 988, 784, 659, 523, 392, 294, 196];
     else if (theme === 'omniscienteye') freqs = [261, 392, 523, 659, 784, 1047, 1319, 1568, 2093, 1568, 1319, 1047, 784, 523, 392];
     else if (theme === 'infinitythrone') freqs = [174, 261, 349, 523, 698, 880, 1175, 1568, 2093, 2637, 2093, 1568, 1175, 880, 698, 523, 349, 261, 174];
+    else if (theme === 'primordialcrimson') freqs = [36, 27, 18, 36, 54, 36, 27, 18, 36, 54, 72, 108, 72, 54, 36, 27, 18, 36, 54, 72, 108, 144, 216, 144, 108, 72];
     freqs.forEach((f, i) => setTimeout(() => playTone(f, 0.04, 'sine', 0.03, 0.15), i * 30));
 }
 
@@ -127,7 +128,7 @@ function playThemeAmbient() {
             celestialascension: 160, blackholesingularity: 28, crimsonapocalypse: 44,
             frozeneternity: 96, neoncybernexus: 82, phantomnightmare: 50,
             dragonemperor: 66, universecreator: 36, divineocean: 110,
-            infernalking: 40, sakuraheaven: 150, infinitydimension: 70, arabianlegacy: 108, moroccanlegacy: 116, godsdomain: 174, genesisprotocol: 32, chronoinfinity: 88, elysium: 528, aetherdominion: 42, eternalnexus: 396, omniscienteye: 174, infinitythrone: 55, absolutesingularity: 432 };
+            infernalking: 40, sakuraheaven: 150, infinitydimension: 70, arabianlegacy: 108, moroccanlegacy: 116, godsdomain: 174, genesisprotocol: 32, chronoinfinity: 88, elysium: 528, aetherdominion: 42, eternalnexus: 396, omniscienteye: 174, infinitythrone: 55, absolutesingularity: 432, primordialcrimson: 27 };
         osc.frequency.setValueAtTime(freqs[state.theme] || 85, ctx.currentTime);
         gain.gain.setValueAtTime(0.012, ctx.currentTime);
         osc.start(ctx.currentTime);

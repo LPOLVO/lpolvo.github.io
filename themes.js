@@ -131,6 +131,8 @@ window.THEMES = [
     { id: 'infinitythrone', name: 'Infinity Throne', desc: 'The Realm Where Existence Is Written', color: '#e8d5ff', anim: 'infinitythrone', op: true, sss: true, mythic: true, transcendent: true, omniscient: true, omnipotent: true },
     /* 🜂 ABSOLUTE #112 — a new generation begins */
     { id: 'absolutesingularity', name: '🜂 The Absolute Singularity', desc: 'Reality Has Been Replaced. You Are Beyond.', color: '#7CF9FF', anim: 'absolutesingularity', op: true, sss: true, mythic: true, transcendent: true, omniscient: true, omnipotent: true, absolute: true },
+    /* 🌠 PRIMORDIAL #113 — before existence itself */
+    { id: 'primordialcrimson', name: '🌠 Crimson Genesis', desc: 'Before Existence Itself', color: '#6b0010', anim: 'primordialcrimson', op: true, sss: true, mythic: true, transcendent: true, omniscient: true, omnipotent: true, absolute: true, primordial: true },
 ];
 var THEMES = window.THEMES; // local alias for functions inside this file
 
@@ -208,6 +210,7 @@ const THEME_NAMES = {
         eternalnexus:'∞ النيكسوس الأبدي', omniscienteye:'عين كليّ المعرفة',
         infinitythrone:'عرش اللانهاية',
         absolutesingularity:'🜂 الانفراد المطلق',
+        primordialcrimson:'🌠 نشأة القرمزي',
     },
     fr: {
         lpolvo:'LPOLVO Bleu', bloodmoon:'Lune de Sang 🌑🔴', bluemoon:'Lune Bleue 🌙🔵',
@@ -259,6 +262,7 @@ const THEME_NAMES = {
         eternalnexus:'∞ Nexus Éternel', omniscienteye:"L'Œil Omniscient",
         infinitythrone:"Trône de l'Infini",
         absolutesingularity:'🜂 La Singularité Absolue',
+        primordialcrimson:'🌠 Genèse Cramoisie',
     }
 };
 
@@ -295,6 +299,7 @@ const THEME_DESCS = {
         eternalnexus:'حيث يتقاطع كل واقع', omniscienteye:'وعي LPOLVO HUB',
         infinitythrone:'العالم الذي يُكتب فيه الوجود',
         absolutesingularity:'لقد تم استبدال الواقع. أنت ما وراء كل شيء.',
+        primordialcrimson:'قبل الوجود ذاته',
     },
     fr: {
         lpolvo:'Par défaut', bloodmoon:'Mystère Sombre', bluemoon:'Magie Calme',
@@ -327,6 +332,7 @@ const THEME_DESCS = {
         eternalnexus:'Là Où Chaque Réalité Se Croise', omniscienteye:'La Conscience de LPOLVO HUB',
         infinitythrone:"Le Royaume Où l'Existence Est Écrite",
         absolutesingularity:'La Réalité A Été Remplacée. Tu Es Au-Delà.',
+        primordialcrimson:'Avant l\'Existence Elle-Même',
     }
 };
 
@@ -392,12 +398,20 @@ function applyTheme(themeId, withSound = true) {
     if (themeId === 'absolutesingularity' && previousTheme !== themeId && withSound) {
         runAbsoluteSingularityActivation();
     }
+    if (themeId === 'primordialcrimson' && previousTheme !== themeId && withSound) {
+        runPrimordialCrimsonActivation();
+    }
 
-    /* ── Ambient music: start if entering ABSOLUTE, stop if leaving ── */
+    /* ── Ambient music: start if entering ABSOLUTE/PRIMORDIAL, stop if leaving ── */
     if (themeId === 'absolutesingularity' && SETTINGS.ambientMusic) {
         setTimeout(function() { startAbsoluteAmbient(); }, 600);
     } else if (themeId !== 'absolutesingularity' && previousTheme === 'absolutesingularity') {
         stopAbsoluteAmbient();
+    }
+    if (themeId === 'primordialcrimson' && SETTINGS.ambientMusic) {
+        setTimeout(function() { startPrimordialAmbient(); }, 600);
+    } else if (themeId !== 'primordialcrimson' && previousTheme === 'primordialcrimson') {
+        stopPrimordialAmbient();
     }
 
     if (withSound) {
@@ -407,7 +421,7 @@ function applyTheme(themeId, withSound = true) {
     applyLanguageDirection();
 
     // Post community activity for rare theme selections (non-blocking)
-    if (theme && (theme.mythic || theme.transcendent || theme.omniscient || theme.omnipotent || theme.absolute) && previousTheme !== themeId) {
+    if (theme && (theme.mythic || theme.transcendent || theme.omniscient || theme.omnipotent || theme.absolute || theme.primordial) && previousTheme !== themeId) {
         const uname = state.userProfile?.displayName || state.currentUser?.displayName || 'Someone';
         const themeName = theme.name || themeId;
         postCommunityActivity('mythic_theme', `🔥 <strong>${escHtml(uname)}</strong> activated <em>${escHtml(themeName)}</em> theme`).catch(() => {});
@@ -550,6 +564,7 @@ function startThemeAnimation(type) {
         omniscienteye: runOmniscientEyeAnimation,
         infinitythrone: runInfinityThroneAnimation,
         absolutesingularity: runAbsoluteSingularityAnimation,
+        primordialcrimson: runPrimordialCrimsonAnimation,
     };
 
     const fn = animMap[type] || runParticlesAnimation;
@@ -7187,3 +7202,657 @@ function runAbsoluteSingularityAnimation() {
 }
 
 
+
+/* ══════════════════════════════════════════════════════════════════════════
+   🌠 CRIMSON GENESIS — PRIMORDIAL Tier Canvas Engine
+   The highest tier ever. Before existence itself.
+   Blood-crimson living sky, void abyss, primordial core pulse,
+   ancient runes, reality fractures, celestial rings, energy rivers.
+   ══════════════════════════════════════════════════════════════════════════ */
+
+function runPrimordialCrimsonActivation() {
+    if (SETTINGS.reducedMotion) return;
+
+    /* ── 8-step cinematic sequence ── */
+    /* Step 1: Freeze — brief full-screen darkness flash */
+    var freeze = document.createElement('div');
+    freeze.style.cssText = 'position:fixed;inset:0;z-index:99999;background:#000;pointer-events:none;opacity:0;transition:opacity 0.08s;';
+    document.body.appendChild(freeze);
+    requestAnimationFrame(function() { freeze.style.opacity = '1'; });
+    setTimeout(function() { freeze.style.opacity = '0'; setTimeout(function() { if (freeze.remove) freeze.remove(); }, 200); }, 120);
+
+    /* Step 2-3: Activation veil — blood crimson implosion */
+    var veil = document.createElement('div');
+    veil.className = 'primordialcrimson-activation';
+    document.body.appendChild(veil);
+    setTimeout(function() { if (veil && veil.remove) veil.remove(); }, 5000);
+
+    /* Step 4: Crimson fragments bursting */
+    var mobile = window.innerWidth < 600;
+    var count = mobile ? 60 : 130;
+    var cx = window.innerWidth / 2, cy = window.innerHeight / 2;
+    var colors = ['#6b0010','#8b0015','#3d0008','#c0001a','#1a0003','#b5000f','#ff1a2e','#800010'];
+    var goldColors = ['#c8920a','#a87005','#e6b020','#8b6000'];
+    var allColors = colors.concat(goldColors);
+    for (var i = 0; i < count; i++) {
+        var frag = document.createElement('span');
+        frag.className = 'primordialcrimson-fragment';
+        var isGold = Math.random() < 0.18;
+        var col = isGold ? goldColors[Math.floor(Math.random() * goldColors.length)] : colors[Math.floor(Math.random() * colors.length)];
+        var w = (2 + Math.random() * (mobile ? 10 : 20)).toFixed(1) + 'px';
+        var h = (1 + Math.random() * (mobile ? 5 : 10)).toFixed(1) + 'px';
+        var angle = Math.random() * Math.PI * 2;
+        var dist = 60 + Math.random() * Math.min(window.innerWidth, window.innerHeight) * 0.8;
+        var rot = (Math.random() * 720 - 360).toFixed(1) + 'deg';
+        frag.style.cssText =
+            'width:' + w + ';height:' + h + ';left:' + cx + 'px;top:' + cy + 'px;' +
+            'background:' + col + ';' +
+            'box-shadow: 0 0 ' + (isGold ? '18px rgba(200,146,10,.9), 0 0 36px rgba(140,96,0,.6)' : '16px rgba(107,0,16,.95), 0 0 32px rgba(176,0,26,.7)') + ';';
+        frag.style.setProperty('--pcfx', (Math.cos(angle) * dist).toFixed(1) + 'px');
+        frag.style.setProperty('--pcfy', (Math.sin(angle) * dist).toFixed(1) + 'px');
+        frag.style.setProperty('--pcfr', rot);
+        frag.style.animationDelay = (Math.random() * 0.35).toFixed(3) + 's';
+        document.body.appendChild(frag);
+        (function(el) { setTimeout(function() { if (el && el.remove) el.remove(); }, 3000); })(frag);
+    }
+
+    /* Step 5-6: Ancient rune particles */
+    var runes = ['ᚠ','ᚢ','ᚦ','ᚨ','ᚱ','ᚲ','ᚷ','ᚹ','ᚺ','ᚾ','ᛁ','ᛃ','ᛇ','ᛈ','ᛉ','ᛊ','ᛏ','ᛒ','ᛖ','ᛗ','ᛚ','ᛜ','ᛞ','ᛟ'];
+    var runeCount = mobile ? 12 : 28;
+    for (var r = 0; r < runeCount; r++) {
+        var rune = document.createElement('div');
+        rune.className = 'primordialcrimson-rune-burst';
+        rune.textContent = runes[Math.floor(Math.random() * runes.length)];
+        var rx = (Math.random() * window.innerWidth).toFixed(0) + 'px';
+        var ry = (Math.random() * window.innerHeight).toFixed(0) + 'px';
+        rune.style.cssText = 'left:' + rx + ';top:' + ry + ';animation-delay:' + (Math.random() * 0.8).toFixed(3) + 's;';
+        document.body.appendChild(rune);
+        (function(el) { setTimeout(function() { if (el && el.remove) el.remove(); }, 3500); })(rune);
+    }
+
+    /* Step 7-8: Assemble UI elements */
+    var rawTargets = document.querySelectorAll(
+        '#navbar, #app > *, .section-title, .script-card, .creator-card, .news-card, .executor-card, .settings-card, .bottom-nav'
+    );
+    var sidebar = document.getElementById('sidebar');
+    var sidebarOverlay = document.getElementById('sidebar-overlay');
+    var targets = Array.prototype.filter.call(rawTargets, function(el) {
+        return el !== sidebar && el !== sidebarOverlay &&
+            !el.closest('#sidebar') && !el.closest('#sidebar-overlay');
+    });
+    targets.forEach(function(el, index) {
+        el.classList.remove('primordialcrimson-assemble');
+        el.style.setProperty('--pc-delay', Math.min(index * 30, 700) + 'ms');
+    });
+    void document.body.offsetWidth;
+    targets.forEach(function(el) { el.classList.add('primordialcrimson-assemble'); });
+    setTimeout(function() {
+        targets.forEach(function(el) { el.classList.remove('primordialcrimson-assemble'); });
+    }, 2600);
+}
+
+/* ══ 🌠 CRIMSON GENESIS — Canvas background engine ══ */
+function runPrimordialCrimsonAnimation() {
+    var ctx = setupCanvas('bgCanvas');
+    if (!ctx) return;
+
+    var mobile = window.innerWidth < 600;
+    var W = window.innerWidth, H = window.innerHeight;
+    var tick = 0, last = 0;
+    var frameMs = mobile ? 33 : 22; /* ~30fps mobile, ~45fps desktop */
+    var visible = !document.hidden;
+    var finePointer = window.matchMedia('(pointer:fine)').matches;
+
+    /* ── Performance tier ── */
+    var perf = 1;
+    try {
+        var ttest = performance.now();
+        for (var pi = 0; pi < 50000; pi++) { Math.sin(pi); }
+        var telapsed = performance.now() - ttest;
+        if (telapsed > 30) perf = 0.5;
+    } catch(e) {}
+
+    /* ── Color palette ── */
+    var crimson = 'rgba(107,0,16,';
+    var scarlet = 'rgba(176,0,26,';
+    var gold = 'rgba(200,146,10,';
+    var darkGold = 'rgba(140,90,0,';
+    var obsidian = 'rgba(10,2,3,';
+    var bloodRed = 'rgba(139,0,21,';
+    var ancientGold = 'rgba(230,176,32,';
+    var voidBlack = 'rgba(4,0,1,';
+    var deepScarlet = 'rgba(80,0,12,';
+    var amber = 'rgba(180,80,0,';
+
+    /* ── Living sky gradient band: slow-moving deep crimson layers ── */
+    var skyBands = [];
+    for (var sb = 0; sb < (mobile ? 3 : 6); sb++) {
+        skyBands.push({
+            y: Math.random(),
+            vy: (Math.random() - 0.5) * 0.00008,
+            col: sb % 3 === 0 ? crimson : sb % 3 === 1 ? scarlet : deepScarlet,
+            alpha: 0.04 + Math.random() * 0.06,
+            width: 0.3 + Math.random() * 0.5,
+            phase: Math.random() * Math.PI * 2,
+            speed: 0.0003 + Math.random() * 0.0005
+        });
+    }
+
+    /* ── Primordial core — central pulse entity ── */
+    var core = {
+        x: 0.5, y: 0.5,
+        pulse: 0,
+        pulseSpeed: 0.012,
+        radii: [0.08, 0.14, 0.22, 0.32, 0.42],
+        breathPhase: 0
+    };
+
+    /* ── Multi-family particle system ── */
+    var particleCount = Math.floor((mobile ? 60 : 160) * perf);
+
+    /* Blood embers — slow rising crimson sparks */
+    var embers = [];
+    for (var e1 = 0; e1 < Math.floor(particleCount * 0.4); e1++) {
+        embers.push({
+            x: Math.random(), y: 0.5 + Math.random() * 0.5,
+            vx: (Math.random() - 0.5) * 0.0008,
+            vy: -(0.0003 + Math.random() * 0.0006),
+            r: 0.5 + Math.random() * 2,
+            alpha: 0.2 + Math.random() * 0.5,
+            phase: Math.random() * Math.PI * 2,
+            speed: 0.02 + Math.random() * 0.04,
+            col: Math.random() < 0.2 ? gold : (Math.random() < 0.5 ? scarlet : crimson)
+        });
+    }
+
+    /* Ancient dust — very fine particles drifting */
+    var dust = [];
+    for (var e2 = 0; e2 < Math.floor(particleCount * 0.35); e2++) {
+        dust.push({
+            x: Math.random(), y: Math.random(),
+            vx: (Math.random() - 0.5) * 0.0004,
+            vy: (Math.random() - 0.5) * 0.0004,
+            r: 0.3 + Math.random() * 0.8,
+            alpha: 0.08 + Math.random() * 0.18,
+            phase: Math.random() * Math.PI * 2,
+            speed: 0.008 + Math.random() * 0.016,
+            col: Math.random() < 0.15 ? gold : Math.random() < 0.5 ? crimson : bloodRed
+        });
+    }
+
+    /* Void shards — dark angular fragments drifting */
+    var shards = [];
+    for (var e3 = 0; e3 < Math.floor(particleCount * 0.25); e3++) {
+        shards.push({
+            x: Math.random(), y: Math.random(),
+            vx: (Math.random() - 0.5) * 0.0003,
+            vy: (Math.random() - 0.5) * 0.0003,
+            w: 2 + Math.random() * 8, h: 1 + Math.random() * 4,
+            angle: Math.random() * Math.PI,
+            rotSpeed: (Math.random() - 0.5) * 0.008,
+            alpha: 0.06 + Math.random() * 0.14,
+            phase: Math.random() * Math.PI * 2,
+            speed: 0.006 + Math.random() * 0.012,
+            col: Math.random() < 0.12 ? gold : Math.random() < 0.4 ? scarlet : deepScarlet
+        });
+    }
+
+    /* ── Celestial rings — ancient orbital structures ── */
+    var ringCount = mobile ? 4 : 9;
+    var rings = [];
+    for (var ri = 0; ri < ringCount; ri++) {
+        rings.push({
+            x: 0.3 + Math.random() * 0.4,
+            y: 0.2 + Math.random() * 0.6,
+            r: (0.04 + Math.random() * 0.16) * Math.min(W, H),
+            tilt: Math.random() * Math.PI * 0.4,
+            rot: Math.random() * Math.PI * 2,
+            rotSpeed: (Math.random() - 0.5) * 0.003,
+            phase: Math.random() * Math.PI * 2,
+            speed: 0.005 + Math.random() * 0.01,
+            opacity: 0.06 + Math.random() * 0.12,
+            col: Math.random() < 0.3 ? gold : Math.random() < 0.6 ? crimson : scarlet
+        });
+    }
+
+    /* ── Ancient runes — floating glyphs ── */
+    var runeGlyphs = ['ᚠ','ᚢ','ᚦ','ᚨ','ᚱ','ᚲ','ᚷ','ᚹ','ᚺ','ᚾ','ᛁ','ᛃ','ᛇ','ᛈ','ᛉ','ᛊ','ᛏ','ᛒ','ᛖ','ᛗ','ᛚ','ᛜ','ᛞ','ᛟ'];
+    var runeCount2 = mobile ? 5 : 14;
+    var runes2 = [];
+    for (var rn = 0; rn < runeCount2; rn++) {
+        runes2.push({
+            x: Math.random(), y: Math.random(),
+            vx: (Math.random() - 0.5) * 0.00015,
+            vy: (Math.random() - 0.5) * 0.00015,
+            glyph: runeGlyphs[Math.floor(Math.random() * runeGlyphs.length)],
+            size: 10 + Math.random() * (mobile ? 18 : 32),
+            phase: Math.random() * Math.PI * 2,
+            speed: 0.004 + Math.random() * 0.008,
+            alpha: 0.04 + Math.random() * 0.1,
+            col: Math.random() < 0.35 ? gold : crimson
+        });
+    }
+
+    /* ── Reality fractures — jagged tear lines ── */
+    var fracCount = mobile ? 2 : 5;
+    var fractures = [];
+    for (var fr = 0; fr < fracCount; fr++) {
+        fractures.push({
+            x: Math.random(), y: Math.random(),
+            life: 0, maxLife: 0.8 + Math.random() * 1.2,
+            speed: 0.003 + Math.random() * 0.006,
+            points: [],
+            timer: Math.random() * 8, /* time until next fracture */
+            interval: 6 + Math.random() * 12
+        });
+    }
+
+    /* ── Energy rivers — flowing crimson veins across bg ── */
+    var riverCount = mobile ? 2 : 5;
+    var rivers = [];
+    for (var rv2 = 0; rv2 < riverCount; rv2++) {
+        rivers.push({
+            y: Math.random(),
+            vy: (Math.random() - 0.5) * 0.00006,
+            phase: Math.random() * Math.PI * 2,
+            speed: 0.004 + Math.random() * 0.008,
+            col: Math.random() < 0.25 ? gold : Math.random() < 0.6 ? scarlet : crimson,
+            alpha: 0.025 + Math.random() * 0.04,
+            amplitude: 0.02 + Math.random() * 0.04
+        });
+    }
+
+    /* ── Floating structures — primordial monolith silhouettes ── */
+    var structCount = mobile ? 2 : 5;
+    var structures = [];
+    for (var st = 0; st < structCount; st++) {
+        structures.push({
+            x: Math.random(), y: 0.1 + Math.random() * 0.8,
+            vx: (Math.random() - 0.5) * 0.00004,
+            vy: (Math.random() - 0.5) * 0.00006,
+            w: 0.01 + Math.random() * 0.03,
+            h: 0.04 + Math.random() * 0.12,
+            phase: Math.random() * Math.PI * 2,
+            speed: 0.003 + Math.random() * 0.007,
+            alpha: 0.05 + Math.random() * 0.12,
+            col: Math.random() < 0.2 ? gold : obsidian
+        });
+    }
+
+    /* ── Void weather system — crimson storm clouds ── */
+    var cloudCount = mobile ? 2 : 4;
+    var clouds = [];
+    for (var cl = 0; cl < cloudCount; cl++) {
+        clouds.push({
+            x: Math.random(), y: Math.random() * 0.6,
+            vx: (Math.random() - 0.5) * 0.00005,
+            vy: (Math.random() - 0.5) * 0.00003,
+            rx: 0.12 + Math.random() * 0.28,
+            ry: 0.05 + Math.random() * 0.14,
+            phase: Math.random() * Math.PI * 2,
+            speed: 0.002 + Math.random() * 0.005,
+            alpha: 0.04 + Math.random() * 0.08,
+            col: Math.random() < 0.15 ? deepScarlet : voidBlack
+        });
+    }
+
+    /* ── Dimensional breath — slow radial pulse overlay ── */
+    var breathPhase = Math.random() * Math.PI * 2;
+
+    /* ── Custom cursor ── */
+    var primCursor = null;
+    if (finePointer) {
+        primCursor = document.createElement('div');
+        primCursor.id = 'primordialcrimson-cursor';
+        document.body.appendChild(primCursor);
+    }
+
+    var mouseX = W / 2, mouseY = H / 2;
+    var cursorParticleTimer = 0;
+    function cursorMove(e) {
+        mouseX = e.clientX; mouseY = e.clientY;
+        if (primCursor) {
+            primCursor.style.left = mouseX + 'px';
+            primCursor.style.top = mouseY + 'px';
+        }
+    }
+
+    /* ── Adaptive environment: mouse activity detection ── */
+    var lastActivity = Date.now(), isActive = false;
+    function onActivity() { lastActivity = Date.now(); isActive = true; }
+
+    /* ── Visibility change ── */
+    function onVisibilityChange() { visible = !document.hidden; }
+
+    /* ── Resize ── */
+    function resize() {
+        W = window.innerWidth; H = window.innerHeight;
+        ctx.canvas.width = W; ctx.canvas.height = H;
+    }
+
+    /* ── Reality fracture generator ── */
+    function buildFracture(frac) {
+        frac.points = [];
+        var numPts = 4 + Math.floor(Math.random() * 6);
+        var sx = frac.x * W, sy = frac.y * H;
+        var len = (0.05 + Math.random() * 0.18) * Math.min(W, H);
+        var baseAngle = Math.random() * Math.PI * 2;
+        for (var p = 0; p < numPts; p++) {
+            var a = baseAngle + (Math.random() - 0.5) * 0.7;
+            var d = len / numPts;
+            sx += Math.cos(a) * d + (Math.random() - 0.5) * d * 0.4;
+            sy += Math.sin(a) * d + (Math.random() - 0.5) * d * 0.4;
+            frac.points.push({ x: sx, y: sy });
+        }
+        frac.life = 0;
+    }
+
+    /* ─────────────── DRAW ─────────────── */
+    function draw(now) {
+        if (!visible) { state.bgAnimFrame = requestAnimationFrame(draw); return; }
+        if (now - last < frameMs) { state.bgAnimFrame = requestAnimationFrame(draw); return; }
+        last = now; tick++;
+        var time = now * 0.001;
+        var activity = Math.max(0, 1 - (Date.now() - lastActivity) / 8000);
+
+        ctx.clearRect(0, 0, W, H);
+
+        /* ── Deep void background — multi-layer gradient ── */
+        var bgGrad = ctx.createLinearGradient(0, 0, 0, H);
+        bgGrad.addColorStop(0, 'rgba(4,0,1,1)');
+        bgGrad.addColorStop(0.25, 'rgba(8,0,3,1)');
+        bgGrad.addColorStop(0.55, 'rgba(12,1,4,1)');
+        bgGrad.addColorStop(0.8, 'rgba(6,0,2,1)');
+        bgGrad.addColorStop(1, 'rgba(3,0,1,1)');
+        ctx.fillStyle = bgGrad;
+        ctx.fillRect(0, 0, W, H);
+
+        /* ── Void weather clouds ── */
+        ctx.save();
+        clouds.forEach(function(cl) {
+            cl.x += cl.vx; cl.y += cl.vy;
+            cl.phase += cl.speed;
+            if (cl.x < -0.35) cl.x = 1.35; if (cl.x > 1.35) cl.x = -0.35;
+            if (cl.y < -0.2) cl.y = 0.8; if (cl.y > 0.8) cl.y = -0.2;
+            var al = cl.alpha * (0.6 + Math.sin(cl.phase) * 0.4);
+            var cg = ctx.createRadialGradient(cl.x * W, cl.y * H, 0, cl.x * W, cl.y * H, cl.rx * W);
+            cg.addColorStop(0, cl.col + al + ')');
+            cg.addColorStop(0.5, cl.col + (al * 0.5) + ')');
+            cg.addColorStop(1, cl.col + '0)');
+            ctx.fillStyle = cg;
+            ctx.save();
+            ctx.scale(1, cl.ry / cl.rx);
+            ctx.beginPath();
+            ctx.arc(cl.x * W, (cl.y * H) / (cl.ry / cl.rx), cl.rx * W, 0, Math.PI * 2);
+            ctx.fill();
+            ctx.restore();
+        });
+        ctx.restore();
+
+        /* ── Living sky bands ── */
+        ctx.save();
+        skyBands.forEach(function(band) {
+            band.y += band.vy;
+            band.phase += band.speed;
+            if (band.y < -0.1) band.y = 1.1; if (band.y > 1.1) band.y = -0.1;
+            var yPos = band.y * H + Math.sin(band.phase) * H * 0.03;
+            var bandH = band.width * H * 0.3;
+            var bGrad = ctx.createLinearGradient(0, yPos - bandH / 2, 0, yPos + bandH / 2);
+            bGrad.addColorStop(0, band.col + '0)');
+            bGrad.addColorStop(0.5, band.col + band.alpha + ')');
+            bGrad.addColorStop(1, band.col + '0)');
+            ctx.fillStyle = bGrad;
+            ctx.fillRect(0, yPos - bandH / 2, W, bandH);
+        });
+        ctx.restore();
+
+        /* ── Energy rivers ── */
+        ctx.save();
+        rivers.forEach(function(rv) {
+            rv.y += rv.vy;
+            rv.phase += rv.speed;
+            if (rv.y < -0.1) rv.y = 1.1; if (rv.y > 1.1) rv.y = -0.1;
+            var al = rv.alpha * (0.5 + Math.sin(rv.phase) * 0.5) * (1 + activity * 0.5);
+            var rGrad = ctx.createLinearGradient(0, rv.y * H, W, rv.y * H);
+            rGrad.addColorStop(0, rv.col + '0)');
+            rGrad.addColorStop(0.15, rv.col + (al * 0.6) + ')');
+            rGrad.addColorStop(0.5, rv.col + al + ')');
+            rGrad.addColorStop(0.85, rv.col + (al * 0.6) + ')');
+            rGrad.addColorStop(1, rv.col + '0)');
+            ctx.strokeStyle = 'rgba(0,0,0,0)';
+            ctx.lineWidth = 40;
+            ctx.fillStyle = rGrad;
+            ctx.beginPath();
+            ctx.moveTo(0, rv.y * H);
+            for (var rs = 0; rs <= W; rs += 8) {
+                ctx.lineTo(rs, rv.y * H + Math.sin(rs * 0.012 + rv.phase) * H * rv.amplitude);
+            }
+            ctx.lineWidth = 60 + Math.sin(rv.phase) * 20;
+            ctx.strokeStyle = rGrad;
+            ctx.lineCap = 'round';
+            ctx.stroke();
+        });
+        ctx.restore();
+
+        /* ── Dimensional breath overlay ── */
+        breathPhase += 0.004;
+        ctx.save();
+        var bAlpha = 0.04 + Math.sin(breathPhase) * 0.025;
+        var breathGrad = ctx.createRadialGradient(W * 0.5, H * 0.5, 0, W * 0.5, H * 0.5, Math.max(W, H) * 0.7);
+        breathGrad.addColorStop(0, scarlet + bAlpha + ')');
+        breathGrad.addColorStop(0.4, crimson + (bAlpha * 0.6) + ')');
+        breathGrad.addColorStop(1, 'rgba(0,0,0,0)');
+        ctx.fillStyle = breathGrad;
+        ctx.fillRect(0, 0, W, H);
+        ctx.restore();
+
+        /* ── Floating structures ── */
+        ctx.save();
+        structures.forEach(function(st) {
+            st.x += st.vx; st.y += st.vy;
+            st.phase += st.speed;
+            if (st.x < -0.08) st.x = 1.08; if (st.x > 1.08) st.x = -0.08;
+            if (st.y < -0.12) st.y = 1.12; if (st.y > 1.12) st.y = -0.12;
+            var al = st.alpha * (0.5 + Math.sin(st.phase) * 0.5);
+            ctx.fillStyle = st.col + al + ')';
+            ctx.shadowBlur = 12; ctx.shadowColor = st.col + (al * 0.5) + ')';
+            ctx.fillRect(st.x * W - st.w * W / 2, st.y * H - st.h * H / 2, st.w * W, st.h * H);
+            /* Inner reflection */
+            ctx.globalAlpha = al * 0.3;
+            ctx.fillRect(st.x * W - st.w * W * 0.3, st.y * H - st.h * H * 0.3, st.w * W * 0.6, st.h * H * 0.6);
+            ctx.globalAlpha = 1;
+        });
+        ctx.restore();
+
+        /* ── Celestial rings ── */
+        ctx.save();
+        rings.forEach(function(ring) {
+            ring.rot += ring.rotSpeed * (1 + activity * 0.3);
+            ring.phase += ring.speed;
+            var rx = ring.x * W + Math.sin(ring.phase * 0.7) * 18;
+            var ry = ring.y * H + Math.cos(ring.phase * 0.5) * 12;
+            var al = ring.opacity * (0.5 + Math.sin(ring.phase) * 0.5);
+            ctx.save();
+            ctx.translate(rx, ry);
+            ctx.rotate(ring.rot);
+            ctx.scale(1, Math.cos(ring.tilt));
+            ctx.strokeStyle = ring.col + al + ')';
+            ctx.lineWidth = 1;
+            ctx.shadowBlur = 16; ctx.shadowColor = ring.col + '0.5)';
+            ctx.beginPath(); ctx.arc(0, 0, ring.r, 0, Math.PI * 2); ctx.stroke();
+            /* Inner ring */
+            ctx.globalAlpha = al * 0.4;
+            ctx.lineWidth = 0.5;
+            ctx.beginPath(); ctx.arc(0, 0, ring.r * 0.68, 0, Math.PI * 2); ctx.stroke();
+            ctx.restore();
+        });
+        ctx.restore();
+
+        /* ── Reality fractures ── */
+        ctx.save();
+        fractures.forEach(function(frac) {
+            frac.timer += 0.016;
+            if (frac.timer >= frac.interval) {
+                frac.timer = 0;
+                frac.interval = 5 + Math.random() * 12;
+                frac.x = Math.random(); frac.y = Math.random();
+                buildFracture(frac);
+            }
+            if (frac.points.length < 2) return;
+            frac.life = Math.min(frac.life + frac.speed, frac.maxLife);
+            var lifeAlpha = frac.life < 0.3 ? frac.life / 0.3 : frac.life > 0.7 ? (frac.maxLife - frac.life) / (frac.maxLife - 0.7) : 1;
+            var fracAl = lifeAlpha * 0.18 * (1 + activity * 0.4);
+            ctx.strokeStyle = Math.random() < 0.3 ? gold + fracAl + ')' : scarlet + fracAl + ')';
+            ctx.lineWidth = 0.8; ctx.shadowBlur = 8; ctx.shadowColor = scarlet + '0.5)';
+            ctx.beginPath();
+            ctx.moveTo(frac.points[0].x, frac.points[0].y);
+            for (var fp = 1; fp < frac.points.length; fp++) {
+                ctx.lineTo(frac.points[fp].x, frac.points[fp].y);
+            }
+            ctx.stroke();
+        });
+        ctx.restore();
+
+        /* ── Ancient runes ── */
+        ctx.save();
+        runes2.forEach(function(rn) {
+            rn.x += rn.vx; rn.y += rn.vy;
+            rn.phase += rn.speed;
+            if (rn.x < -0.05) rn.x = 1.05; if (rn.x > 1.05) rn.x = -0.05;
+            if (rn.y < -0.05) rn.y = 1.05; if (rn.y > 1.05) rn.y = -0.05;
+            var al = rn.alpha * (0.4 + Math.sin(rn.phase) * 0.6) * (1 + activity * 0.6);
+            if (al < 0.01) return;
+            ctx.globalAlpha = al;
+            ctx.fillStyle = rn.col + al + ')';
+            ctx.shadowBlur = 14; ctx.shadowColor = rn.col + '0.4)';
+            ctx.font = rn.size + 'px serif';
+            ctx.textAlign = 'center';
+            ctx.fillText(rn.glyph, rn.x * W, rn.y * H);
+            ctx.globalAlpha = 1;
+        });
+        ctx.restore();
+
+        /* ── Primordial core ── */
+        core.pulse += core.pulseSpeed * (1 + activity * 0.4);
+        core.breathPhase += 0.006;
+        var corePulse = 0.5 + Math.sin(core.pulse) * 0.5;
+        var coreBreath = 0.85 + Math.sin(core.breathPhase) * 0.15;
+        var coreX = core.x * W, coreY = core.y * H;
+
+        ctx.save();
+        /* Outer aura rings */
+        core.radii.forEach(function(rad, ri) {
+            var coreRad = rad * Math.min(W, H) * coreBreath * (0.9 + corePulse * 0.1);
+            var ringAl = (0.025 + corePulse * 0.04) * (1 - ri * 0.15);
+            if (ringAl < 0.005) return;
+            ctx.beginPath();
+            ctx.arc(coreX, coreY, coreRad, 0, Math.PI * 2);
+            ctx.strokeStyle = ri % 2 === 0 ? crimson + ringAl + ')' : scarlet + (ringAl * 0.7) + ')';
+            ctx.lineWidth = 1.2 - ri * 0.15;
+            ctx.shadowBlur = 20 - ri * 2;
+            ctx.shadowColor = crimson + '0.4)';
+            ctx.stroke();
+        });
+        /* Core gradient */
+        var innerRad = 0.04 * Math.min(W, H) * coreBreath;
+        var cg = ctx.createRadialGradient(coreX, coreY, 0, coreX, coreY, innerRad);
+        cg.addColorStop(0, 'rgba(180,0,26,' + (0.12 + corePulse * 0.1) + ')');
+        cg.addColorStop(0.4, crimson + (0.06 + corePulse * 0.06) + ')');
+        cg.addColorStop(1, crimson + '0)');
+        ctx.fillStyle = cg;
+        ctx.beginPath(); ctx.arc(coreX, coreY, innerRad, 0, Math.PI * 2); ctx.fill();
+        ctx.restore();
+
+        /* ── Ancient dust ── */
+        ctx.save();
+        dust.forEach(function(d) {
+            d.x += d.vx; d.y += d.vy;
+            d.phase += d.speed;
+            if (d.x < 0) d.x = 1; if (d.x > 1) d.x = 0;
+            if (d.y < 0) d.y = 1; if (d.y > 1) d.y = 0;
+            var al = d.alpha * (0.4 + Math.sin(d.phase) * 0.6);
+            ctx.beginPath();
+            ctx.arc(d.x * W, d.y * H, d.r, 0, Math.PI * 2);
+            ctx.fillStyle = d.col + al + ')';
+            ctx.fill();
+        });
+        ctx.restore();
+
+        /* ── Void shards ── */
+        ctx.save();
+        shards.forEach(function(sh) {
+            sh.x += sh.vx; sh.y += sh.vy;
+            sh.angle += sh.rotSpeed;
+            sh.phase += sh.speed;
+            if (sh.x < 0) sh.x = 1; if (sh.x > 1) sh.x = 0;
+            if (sh.y < 0) sh.y = 1; if (sh.y > 1) sh.y = 0;
+            var al = sh.alpha * (0.4 + Math.sin(sh.phase) * 0.6);
+            ctx.save();
+            ctx.translate(sh.x * W, sh.y * H);
+            ctx.rotate(sh.angle);
+            ctx.fillStyle = sh.col + al + ')';
+            ctx.shadowBlur = 6; ctx.shadowColor = sh.col + '0.3)';
+            ctx.fillRect(-sh.w / 2, -sh.h / 2, sh.w, sh.h);
+            ctx.restore();
+        });
+        ctx.restore();
+
+        /* ── Blood embers ── */
+        ctx.save();
+        embers.forEach(function(em) {
+            em.x += em.vx + Math.sin(time * 0.6 + em.y * 8) * 0.0003;
+            em.y += em.vy;
+            em.phase += em.speed;
+            if (em.y < -0.02) { em.y = 0.5 + Math.random() * 0.5; em.x = Math.random(); }
+            if (em.x < -0.02) em.x = 1.02; if (em.x > 1.02) em.x = -0.02;
+            var al = em.alpha * (0.4 + Math.sin(em.phase) * 0.6);
+            ctx.beginPath();
+            ctx.arc(em.x * W, em.y * H, em.r, 0, Math.PI * 2);
+            ctx.fillStyle = em.col + al + ')';
+            ctx.shadowBlur = 10; ctx.shadowColor = em.col + '0.5)';
+            ctx.fill();
+        });
+        ctx.restore();
+
+        /* ── Cursor particle trail (desktop) ── */
+        if (finePointer && tick % 2 === 0) {
+            cursorParticleTimer++;
+            if (cursorParticleTimer % 3 === 0) {
+                var cp = document.createElement('div');
+                cp.className = 'primordialcrimson-cursor-particle';
+                cp.style.cssText =
+                    'left:' + mouseX + 'px;top:' + mouseY + 'px;' +
+                    'width:' + (2 + Math.random() * 4) + 'px;height:' + (2 + Math.random() * 4) + 'px;' +
+                    'background:' + (Math.random() < 0.2 ? 'rgba(200,146,10,0.9)' : 'rgba(176,0,26,0.8)') + ';' +
+                    '--pcpx:' + ((Math.random() - 0.5) * 16).toFixed(1) + 'px;' +
+                    '--pcpy:' + ((Math.random() - 0.5) * 16).toFixed(1) + 'px;';
+                document.body.appendChild(cp);
+                setTimeout(function() { if (cp.remove) cp.remove(); }, 900);
+            }
+        }
+
+        state.bgAnimFrame = requestAnimationFrame(draw);
+    }
+
+    window.addEventListener('resize', resize, { passive: true });
+    document.addEventListener('visibilitychange', onVisibilityChange, { passive: true });
+    document.addEventListener('mousemove', onActivity, { passive: true });
+    document.addEventListener('click', onActivity, { passive: true });
+    if (finePointer) document.addEventListener('mousemove', cursorMove, { passive: true });
+
+    state.originCleanup = function() {
+        window.removeEventListener('resize', resize);
+        document.removeEventListener('visibilitychange', onVisibilityChange);
+        document.removeEventListener('mousemove', onActivity);
+        document.removeEventListener('click', onActivity);
+        if (finePointer) document.removeEventListener('mousemove', cursorMove);
+        if (primCursor && primCursor.remove) primCursor.remove();
+        document.querySelectorAll('.primordialcrimson-cursor-particle').forEach(function(el) { el.remove(); });
+    };
+    state.originVisibilityCleanup = function() {
+        document.removeEventListener('visibilitychange', onVisibilityChange);
+    };
+
+    resize();
+    state.bgAnimFrame = requestAnimationFrame(draw);
+}
