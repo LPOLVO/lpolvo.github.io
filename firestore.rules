@@ -1,0 +1,54 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // ── scripts collection ──
+    // Anyone can read scripts; only authenticated users can create their own
+    match /scripts/{scriptId} {
+      allow read: if true;
+      allow create: if request.auth != null
+                    && request.resource.data.authorId == request.auth.uid;
+      allow update: if request.auth != null
+                    && (resource.data.authorId == request.auth.uid
+                        // Allow view/like/copy counter increments by any logged-in user
+                        || (request.resource.data.diff(resource.data).affectedKeys()
+                              .hasOnly(['views','likes','copies','reports'])));
+      allow delete: if request.auth != null
+                    && resource.data.authorId == request.auth.uid;
+    }
+
+    // ── users collection ──
+    match /users/{userId} {
+      allow read: if true;
+      // Allow authenticated users to write/update their own profile
+      allow write: if request.auth != null && request.auth.uid == userId;
+
+      // Sub-collections: notifications, activity
+      match /notifications/{notifId} {
+        allow read, write: if request.auth != null && request.auth.uid == userId;
+      }
+      match /activity/{actId} {
+        allow read, write: if request.auth != null && request.auth.uid == userId;
+      }
+    }
+
+    // ── usernames collection (username reservation) ──
+    match /usernames/{username} {
+      allow read: if true;
+      allow write: if request.auth != null;
+    }
+
+    // ── communityFeed collection ──
+    match /communityFeed/{feedId} {
+      allow read: if true;
+      allow create: if request.auth != null;
+      allow update, delete: if false;
+    }
+
+    // ── meta collection (global stats) ──
+    match /meta/{docId} {
+      allow read: if true;
+      allow write: if request.auth != null;
+    }
+  }
+}

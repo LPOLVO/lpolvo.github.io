@@ -4,6 +4,19 @@
    avatar/banner upload, profile completion widget
    ═══════════════════════════════════════════════════════════════════ */
 
+/* ── UTILITY: Convert a data URI to a Blob synchronously.
+   Replaces fetch(dataUrl)→blob which hangs forever on Chrome for Android
+   when called from within an async function on some GitHub Pages contexts. ── */
+function dataURItoBlob(dataURI) {
+    const parts = dataURI.split(',');
+    const mime  = parts[0].match(/:(.*?);/)[1];
+    const bstr  = atob(parts[1]);
+    let n = bstr.length;
+    const u8arr = new Uint8Array(n);
+    while (n--) u8arr[n] = bstr.charCodeAt(n);
+    return new Blob([u8arr], { type: mime });
+}
+
 /* ── PROFILE PAGE ── */
 function buildProfilePage() {
     const el = document.getElementById('profileContent');
@@ -238,6 +251,15 @@ async function doSaveProfile() {
     if (sucEl) sucEl.textContent = '';
     btn.disabled = true;
     btn.textContent = getTranslation('saving') || 'Saving…';
+
+    // reCAPTCHA Enterprise — verify before profile update
+    const captcha = await assertReCaptcha('PROFILE_SAVE', errEl);
+    if (!captcha.ok) {
+        btn.disabled = false;
+        btn.textContent = getTranslation('saveChanges') || 'Save Changes';
+        return;
+    }
+
     // Safety timeout — always re-enable button after 30s no matter what
     const safetyTimer = setTimeout(() => {
         btn.disabled = false;
@@ -254,8 +276,8 @@ async function doSaveProfile() {
             try {
                 if (fb.storage) {
                     const ref = fb.storageRef(fb.storage, `avatars/${uid}/avatar.jpg`);
-                    const res = await fetch(state.pendingAvatar);
-                    const blob = await res.blob();
+                    // Use synchronous dataURItoBlob — fetch(dataURI) hangs on Chrome for Android
+                    const blob = dataURItoBlob(state.pendingAvatar);
                     await fb.uploadBytes(ref, blob);
                     avatarURL = await fb.getDownloadURL(ref);
                 } else { avatarURL = state.pendingAvatar; }
@@ -270,8 +292,8 @@ async function doSaveProfile() {
             try {
                 if (fb.storage) {
                     const ref = fb.storageRef(fb.storage, `banners/${uid}/banner.jpg`);
-                    const res = await fetch(state.pendingBanner);
-                    const blob = await res.blob();
+                    // Use synchronous dataURItoBlob — fetch(dataURI) hangs on Chrome for Android
+                    const blob = dataURItoBlob(state.pendingBanner);
                     await fb.uploadBytes(ref, blob);
                     bannerURL = await fb.getDownloadURL(ref);
                 } else { bannerURL = state.pendingBanner; }

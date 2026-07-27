@@ -4,6 +4,19 @@
    Firestore write, Storage thumbnail upload, badge awards
    ═══════════════════════════════════════════════════════════════════ */
 
+/* ── UTILITY: Convert a data URI to a Blob synchronously.
+   fetch(dataURI) hangs forever on Chrome for Android in some contexts.
+   This pure-JS alternative is synchronous and works everywhere. ── */
+function _dataURItoBlob(dataURI) {
+    const parts = dataURI.split(',');
+    const mime  = parts[0].match(/:(.*?);/)[1];
+    const bstr  = atob(parts[1]);
+    let n = bstr.length;
+    const u8arr = new Uint8Array(n);
+    while (n--) u8arr[n] = bstr.charCodeAt(n);
+    return new Blob([u8arr], { type: mime });
+}
+
 /* ── UPLOAD SCRIPT ── */
 function openUploadModal() {
     if (!state.currentUser) { openAuthModal('login');
@@ -80,6 +93,17 @@ async function doUploadScript() {
     btn.disabled = true;
     btn.textContent = getTranslation('submitting');
     updateUploadProgress(10);
+
+    // reCAPTCHA Enterprise — verify before script submission
+    const captcha = await assertReCaptcha('SCRIPT_UPLOAD', errEl);
+    if (!captcha.ok) {
+        btn.disabled = false;
+        btn.textContent = getTranslation('submitBtn') || 'Submit Script';
+        const pw = document.getElementById('uploadProgressWrap');
+        if (pw) pw.classList.remove('show');
+        return;
+    }
+
     // Safety timeout — always re-enable button after 60s
     const safetyTimer = setTimeout(() => {
         btn.disabled = false;
@@ -98,8 +122,8 @@ async function doUploadScript() {
         if (thumbnail && thumbnail.startsWith('data:') && fb.storage) {
             try {
                 const tRef = fb.storageRef(fb.storage, `thumbnails/${uid}/${Date.now()}.jpg`);
-                const res = await fetch(thumbnail);
-                const blob = await res.blob();
+                // Use synchronous _dataURItoBlob — fetch(dataURI) hangs on Chrome for Android
+                const blob = _dataURItoBlob(thumbnail);
                 await fb.uploadBytes(tRef, blob);
                 thumbURL = await fb.getDownloadURL(tRef);
             } catch (thumbErr) {
@@ -141,9 +165,10 @@ async function doUploadScript() {
         // Update user script counter (non-blocking on failure)
         const newScriptCount = (state.userProfile?.scripts || 0) + 1;
         try {
+            // Use nested object (not dot-notation string key) for sub-field updates in setDoc
             await fb.setDoc(fb.doc(fb.db, 'users', uid), {
                 scripts: fb.increment(1),
-                'stats.uploads': fb.increment(1),
+                stats: { uploads: fb.increment(1) },
             }, { merge: true });
             if (state.userProfile) state.userProfile.scripts = newScriptCount;
         } catch (counterErr) {

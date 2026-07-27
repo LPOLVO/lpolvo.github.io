@@ -4,6 +4,19 @@
    Google sign-in, sign-out, password reset, user profile loading
    ═══════════════════════════════════════════════════════════════════ */
 
+/* ── UTILITY: synchronous data URI → Blob conversion.
+   fetch(dataURI) hangs permanently on Chrome for Android (GitHub Pages).
+   This replaces every fetch(data:...) → res.blob() call in auth flows. ── */
+function _authDataURItoBlob(dataURI) {
+    const parts = dataURI.split(',');
+    const mime  = parts[0].match(/:(.*?);/)[1];
+    const bstr  = atob(parts[1]);
+    let n = bstr.length;
+    const u8arr = new Uint8Array(n);
+    while (n--) u8arr[n] = bstr.charCodeAt(n);
+    return new Blob([u8arr], { type: mime });
+}
+
 /* ── FIREBASE / AUTH ── */
 async function onFirebaseAuthState(user) {
     state.currentUser = user;
@@ -167,6 +180,10 @@ async function doLogin() {
     btn.textContent = getTranslation('signingIn');
     if (err) err.textContent = '';
     try {
+        // reCAPTCHA Enterprise — verify before auth attempt
+        const captcha = await assertReCaptcha('LOGIN', err);
+        if (!captcha.ok) { return; }
+
         await fb.signInWithEmailAndPassword(fb.auth, email, pw);
         closeAuthModal();
         showToast(getTranslation('welcomeBack2'), 'success');
@@ -191,6 +208,10 @@ async function doRegister() {
     btn.textContent = getTranslation('creatingAccount');
     if (err) err.textContent = '';
     try {
+        // reCAPTCHA Enterprise — verify before account creation
+        const captcha = await assertReCaptcha('REGISTER', err);
+        if (!captcha.ok) { return; }
+
         const cred = await fb.createUserWithEmailAndPassword(fb.auth, email, pw);
         await fb.updateProfile(cred.user, { displayName: name });
         if (suc) suc.textContent = getTranslation('accountCreated');
@@ -224,6 +245,10 @@ async function doPasswordReset() {
     const suc = document.getElementById('resetSuccess');
     if (!email) { if (err) err.textContent = getTranslation('enterEmail'); return; }
     try {
+        // reCAPTCHA Enterprise — verify before sending reset email
+        const captcha = await assertReCaptcha('PASSWORD_RESET', err);
+        if (!captcha.ok) { return; }
+
         await fb.sendPasswordResetEmail(fb.auth, email);
         if (suc) suc.textContent = getTranslation('resetLinkSent');
         if (err) err.textContent = '';
@@ -444,8 +469,8 @@ async function finishOnboarding() {
         if (data.avatar && data.avatar.startsWith('data:') && fb.storage) {
             try {
                 const avatarRef = fb.storageRef(fb.storage, `avatars/${uid}/avatar.jpg`);
-                const res = await fetch(data.avatar);
-                const blob = await res.blob();
+                // Synchronous conversion — fetch(dataURI) hangs on Chrome for Android
+                const blob = _authDataURItoBlob(data.avatar);
                 await fb.uploadBytes(avatarRef, blob);
                 avatarURL = await fb.getDownloadURL(avatarRef);
             } catch (uploadErr) { console.warn('[LPOLVO] Avatar upload failed, using data URL'); }
@@ -455,8 +480,8 @@ async function finishOnboarding() {
         if (data.banner && data.banner.startsWith('data:') && fb.storage) {
             try {
                 const bannerRef = fb.storageRef(fb.storage, `banners/${uid}/banner.jpg`);
-                const res = await fetch(data.banner);
-                const blob = await res.blob();
+                // Synchronous conversion — fetch(dataURI) hangs on Chrome for Android
+                const blob = _authDataURItoBlob(data.banner);
                 await fb.uploadBytes(bannerRef, blob);
                 bannerURL = await fb.getDownloadURL(bannerRef);
             } catch (uploadErr) { console.warn('[LPOLVO] Banner upload failed, using data URL'); }
