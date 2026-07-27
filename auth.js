@@ -180,10 +180,6 @@ async function doLogin() {
     btn.textContent = getTranslation('signingIn');
     if (err) err.textContent = '';
     try {
-        // reCAPTCHA Enterprise — verify before auth attempt
-        const captcha = await assertReCaptcha('LOGIN', err);
-        if (!captcha.ok) { return; }
-
         await fb.signInWithEmailAndPassword(fb.auth, email, pw);
         closeAuthModal();
         showToast(getTranslation('welcomeBack2'), 'success');
@@ -208,10 +204,6 @@ async function doRegister() {
     btn.textContent = getTranslation('creatingAccount');
     if (err) err.textContent = '';
     try {
-        // reCAPTCHA Enterprise — verify before account creation
-        const captcha = await assertReCaptcha('REGISTER', err);
-        if (!captcha.ok) { return; }
-
         const cred = await fb.createUserWithEmailAndPassword(fb.auth, email, pw);
         await fb.updateProfile(cred.user, { displayName: name });
         if (suc) suc.textContent = getTranslation('accountCreated');
@@ -245,10 +237,6 @@ async function doPasswordReset() {
     const suc = document.getElementById('resetSuccess');
     if (!email) { if (err) err.textContent = getTranslation('enterEmail'); return; }
     try {
-        // reCAPTCHA Enterprise — verify before sending reset email
-        const captcha = await assertReCaptcha('PASSWORD_RESET', err);
-        if (!captcha.ok) { return; }
-
         await fb.sendPasswordResetEmail(fb.auth, email);
         if (suc) suc.textContent = getTranslation('resetLinkSent');
         if (err) err.textContent = '';

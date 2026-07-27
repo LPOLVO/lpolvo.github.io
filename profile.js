@@ -251,15 +251,6 @@ async function doSaveProfile() {
     if (sucEl) sucEl.textContent = '';
     btn.disabled = true;
     btn.textContent = getTranslation('saving') || 'Saving…';
-
-    // reCAPTCHA Enterprise — verify before profile update
-    const captcha = await assertReCaptcha('PROFILE_SAVE', errEl);
-    if (!captcha.ok) {
-        btn.disabled = false;
-        btn.textContent = getTranslation('saveChanges') || 'Save Changes';
-        return;
-    }
-
     // Safety timeout — always re-enable button after 30s no matter what
     const safetyTimer = setTimeout(() => {
         btn.disabled = false;

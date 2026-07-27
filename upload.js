@@ -93,17 +93,6 @@ async function doUploadScript() {
     btn.disabled = true;
     btn.textContent = getTranslation('submitting');
     updateUploadProgress(10);
-
-    // reCAPTCHA Enterprise — verify before script submission
-    const captcha = await assertReCaptcha('SCRIPT_UPLOAD', errEl);
-    if (!captcha.ok) {
-        btn.disabled = false;
-        btn.textContent = getTranslation('submitBtn') || 'Submit Script';
-        const pw = document.getElementById('uploadProgressWrap');
-        if (pw) pw.classList.remove('show');
-        return;
-    }
-
     // Safety timeout — always re-enable button after 60s
     const safetyTimer = setTimeout(() => {
         btn.disabled = false;
