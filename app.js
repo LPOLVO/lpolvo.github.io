@@ -1,5 +1,6 @@
 /* ═══════════════════════════════════════════════════════════════════
-   LPOLVO HUB v2.0 — app.js
+   LPOLVO HUB v1.5 — app.js
+   Crimson Genesis: Final Evolution
    Application orchestrator: constants, state, navigation,
    dashboard, settings, static content, helpers, loading, init
    ═══════════════════════════════════════════════════════════════════ */
@@ -40,8 +41,18 @@ const HOW_IT_WORKS = [
 
 const NEWS_DATA = {
     en: [
-        { badge: 'major update', badgeClass: 'news-badge-update', date: 'Jul 2026', title: '🚀 LPOLVO HUB v1.3 — Community Expansion',
-            desc: 'Version 1.3 focuses on three pillars: backend reliability, community features, and performance. Profile Save and Script Upload have been completely reconstructed at the backend level. Live Community Activity, Trending System, and Profile Completion are all live.' },
+        { badge: 'final evolution', badgeClass: 'news-badge-primordial', date: 'Jul 2026', title: '🌠 LPOLVO HUB v1.5 — Crimson Genesis: Final Evolution',
+            desc: 'This is the definitive update. Crimson Genesis is now the final public rank of LPOLVO HUB — the highest visual achievement any user can unlock. Every element of the platform has been redesigned under this theme: loading screen, authentication, navigation, notifications, search, profile, dashboard, toasts, modals, and more. This is not simply a theme. This is the identity of LPOLVO HUB.' },
+        { badge: 'new', badgeClass: 'news-badge-new', date: 'Jul 2026', title: '✨ Total Visual Transformation',
+            desc: 'When Crimson Genesis is active, the entire website transforms. Deep blood-crimson (#6b0010), ancient gold (#c8920a), void obsidian, and soft white (#fff5f4) flow through every surface — cards, modals, buttons, inputs, menus, the loading screen, the auth flow, notifications, the profile page, the dashboard, every section. Nothing is left untouched.' },
+        { badge: 'new', badgeClass: 'news-badge-new', date: 'Jul 2026', title: '♿ Full Reduce Motion Support',
+            desc: 'Crimson Genesis now fully respects your operating system\'s accessibility preference. When Reduce Motion is enabled, particle counts are reduced, background animations pause, floating effects are disabled, glow intensities are lowered, and expensive transitions are replaced with elegant, static alternatives. The theme remains beautiful — just significantly lighter.' },
+        { badge: 'update', badgeClass: 'news-badge-update', date: 'Jul 2026', title: '⚡ Smart Performance & Mobile Optimization',
+            desc: 'The animation engine has been optimized for all devices. Heavy effects are automatically reduced on mobile. GPU-accelerated layers are used where they matter. The canvas engine pauses when the tab is hidden. Frame budget monitoring dynamically reduces particle counts when the browser starts dropping frames. Battery and CPU efficiency are preserved on lower-end devices.' },
+        { badge: 'update', badgeClass: 'news-badge-update', date: 'Jul 2026', title: '🎯 Cinematic Activation Sequence',
+            desc: 'Activating Crimson Genesis triggers a full cinematic entrance — a crimson veil floods the screen, ancient rune symbols burst outward, 130 shards scatter from the center, and the UI assembles itself with a depth-of-field blur-in that fades to reveal the living world. No other theme comes close.' },
+        { badge: 'major update', badgeClass: 'news-badge-update', date: 'Jul 2026', title: '🚀 LPOLVO HUB v1.3 — Community Expansion (Historical)',
+            desc: 'Version 1.3 focused on three pillars: backend reliability, community features, and performance. Profile Save and Script Upload were completely reconstructed. Live Community Activity, Trending System, and Profile Completion all went live.' },
         { badge: 'fix', badgeClass: 'news-badge-fix', date: 'Jul 2026', title: '🔧 Profile Save — Backend Reconstruction',
             desc: 'The Profile Save system has been rebuilt from the ground up. The root cause — updateDoc failing when the document did not yet exist — has been fixed by switching to setDoc with merge:true. Storage uploads now have proper error recovery. The Save button will never remain stuck on "Saving…" again.' },
         { badge: 'fix', badgeClass: 'news-badge-fix', date: 'Jul 2026', title: '🔧 Script Upload — Backend Reconstruction',
@@ -76,6 +87,16 @@ const NEWS_DATA = {
             desc: 'Resolved various interaction issues, improved Firebase reliability, and fixed several layout inconsistencies in RTL mode.' },
     ],
     ar: [
+        { badge: 'التطور الأخير', badgeClass: 'news-badge-primordial', date: 'يوليو 2026', title: '🌠 LPOLVO HUB v1.5 — نشأة القرمزي: التطور الأخير',
+            desc: 'هذا هو التحديث النهائي. نشأة القرمزي هي الآن أعلى رتبة عامة في LPOLVO HUB — أعلى إنجاز بصري يمكن لأي مستخدم الوصول إليه. كل عنصر في المنصة أُعيد تصميمه: شاشة التحميل، المصادقة، التنقل، الإشعارات، البحث، الملف الشخصي، لوحة التحكم، والمزيد.' },
+        { badge: 'جديد', badgeClass: 'news-badge-new', date: 'يوليو 2026', title: '✨ تحويل بصري شامل',
+            desc: 'عند تفعيل نشأة القرمزي، يتحول الموقع بالكامل. القرمزي الدموي العميق، والذهب القديم، وأسود الزجاج، والأبيض الناعم تتدفق عبر كل سطح — البطاقات، النوافذ، الأزرار، المدخلات، القوائم، وكل قسم.' },
+        { badge: 'جديد', badgeClass: 'news-badge-new', date: 'يوليو 2026', title: '♿ دعم كامل للحركة المخففة',
+            desc: 'نشأة القرمزي يحترم الآن إعدادات إمكانية الوصول في نظام تشغيلك. عند تمكين تقليل الحركة، تنخفض أعداد الجسيمات، وتتوقف الرسوم المتحركة للخلفية، وتُعطّل التأثيرات العائمة.' },
+        { badge: 'تحديث', badgeClass: 'news-badge-update', date: 'يوليو 2026', title: '⚡ الأداء الذكي وتحسين الجوال',
+            desc: 'تم تحسين محرك الرسوم المتحركة لجميع الأجهزة. تُخفَّض التأثيرات الثقيلة تلقائيًا على الجوال. يتوقف محرك الرسوم البيانية عند إخفاء التبويب لتوفير البطارية.' },
+        { badge: 'تحديث', badgeClass: 'news-badge-update', date: 'يوليو 2026', title: '🎯 تسلسل تفعيل سينمائي',
+            desc: 'تفعيل نشأة القرمزي يُطلق مقدمة سينمائية كاملة — حجاب قرمزي يغمر الشاشة، ورموز الرون القديمة تنفجر للخارج، و130 شظية تتناثر من المركز.' },
         { badge: 'تحديث', badgeClass: 'news-badge-update', date: 'يوليو 2026', title: 'LPOLVO HUB V1 — الإصدار الرسمي',
             desc: 'بعد فترة طويلة من التطوير الداخلي، أصبح LPOLVO HUB V1 رسميًا متاحًا للعموم. هذا هو أول إصدار عام مع اكتمال جميع الأنظمة الأساسية.' },
         { badge: 'جديد', badgeClass: 'news-badge-new', date: 'يوليو 2026', title: 'نظام التعريب الكامل',
@@ -94,6 +115,16 @@ const NEWS_DATA = {
             desc: 'حل مشكلات تفاعل متعددة، وتحسين موثوقية Firebase، وإصلاح عدة تناقضات في التخطيط في وضع RTL.' },
     ],
     fr: [
+        { badge: 'évolution finale', badgeClass: 'news-badge-primordial', date: 'Juil 2026', title: '🌠 LPOLVO HUB v1.5 — Genèse Cramoisie : Évolution Finale',
+            desc: 'C\'est la mise à jour définitive. Genèse Cramoisie est désormais le rang public final de LPOLVO HUB — la plus haute réalisation visuelle qu\'un utilisateur puisse débloquer. Chaque élément de la plateforme a été redessiné : écran de chargement, authentification, navigation, notifications, recherche, profil, tableau de bord, toasts, modales et plus encore.' },
+        { badge: 'nouveau', badgeClass: 'news-badge-new', date: 'Juil 2026', title: '✨ Transformation Visuelle Totale',
+            desc: 'Quand Genèse Cramoisie est actif, tout le site se transforme. Le cramoisi sanguin profond (#6b0010), l\'or ancien (#c8920a), l\'obsidienne void et le blanc doux (#fff5f4) traversent chaque surface — cartes, modales, boutons, menus, et chaque section.' },
+        { badge: 'nouveau', badgeClass: 'news-badge-new', date: 'Juil 2026', title: '♿ Support Complet du Mode Mouvement Réduit',
+            desc: 'Genèse Cramoisie respecte désormais pleinement la préférence d\'accessibilité de votre système. En mode Mouvement Réduit, les particules sont réduites, les animations de fond s\'arrêtent, les effets flottants sont désactivés et les transitions coûteuses sont remplacées par des alternatives élégantes et statiques.' },
+        { badge: 'mise à jour', badgeClass: 'news-badge-update', date: 'Juil 2026', title: '⚡ Performance Intelligente & Optimisation Mobile',
+            desc: 'Le moteur d\'animation a été optimisé pour tous les appareils. Les effets lourds sont automatiquement réduits sur mobile. Le moteur canvas se met en pause lorsque l\'onglet est masqué pour économiser la batterie.' },
+        { badge: 'mise à jour', badgeClass: 'news-badge-update', date: 'Juil 2026', title: '🎯 Séquence d\'Activation Cinématographique',
+            desc: 'Activer Genèse Cramoisie déclenche une entrée cinématographique complète — un voile cramoisi envahit l\'écran, des symboles runiques anciens explosent vers l\'extérieur, et 130 éclats se dispersent depuis le centre.' },
         { badge: 'mise à jour', badgeClass: 'news-badge-update', date: 'Juil 2026', title: 'LPOLVO HUB V1 — Sortie Officielle',
             desc: 'Après un long développement interne, LPOLVO HUB V1 est officiellement disponible. Ceci marque la première sortie publique avec tous les systèmes principaux opérationnels.' },
         { badge: 'nouveau', badgeClass: 'news-badge-new', date: 'Juil 2026', title: 'Système de Localisation Complet',
@@ -776,40 +807,40 @@ function buildHowItWorks() {
 
 const TICKER_ITEMS_LOCALIZED = {
     en: [
-        '🚀 LPOLVO HUB V1 — Official Public Release!',
-        '🌐 Full Arabic & French Support',
-        '🔥 52+ immersive themes with dynamic backgrounds',
-        '⭐ Submit your script today',
-        '🌙 Complete RTL support for Arabic',
-        '🎨 Each theme has unique particles & sounds',
-        '👑 Creator profiles now live!',
-        '🎮 100% compatible with mobile executors',
-        '🌟 Dynamic Translation — no page reload needed',
-        '⚡ Infinity Throne: OMNIPOTENT rarity'
+        '🌠 LPOLVO HUB v1.5 — Crimson Genesis: Final Evolution',
+        '🌠 Crimson Genesis is now the final public rank of LPOLVO HUB',
+        '🔥 113 immersive themes — Crimson Genesis at the apex',
+        '✨ Every page transforms under Crimson Genesis',
+        '♿ Full Reduce Motion support — accessibility first',
+        '⚡ Smart performance mode — smooth on all devices',
+        '🎯 Cinematic activation sequence — 130 shards, rune burst',
+        '🌐 Full Arabic & French Support — 3 languages',
+        '👑 Creator profiles, trending scripts & live community feed',
+        '🎮 100% compatible with mobile executors'
     ],
     ar: [
-        '🚀 LPOLVO HUB V1 — الإصدار الرسمي!',
-        '🌐 دعم كامل للعربية والفرنسية',
-        '🔥 أكثر من 52 مظهراً بخلفيات حية',
-        '⭐ أرسل سكريبتك اليوم',
-        '🌙 دعم RTL كامل للغة العربية',
-        '🎨 كل مظهر له جسيمات وأصوات فريدة',
-        '👑 ملفات المنشئين متاحة الآن!',
-        '🎮 متوافق 100٪ مع منفذي الجوال',
-        '🌟 ترجمة فورية — بدون إعادة تحميل',
-        '⚡ عرش اللانهاية: ندرة كليّ القدرة'
+        '🌠 LPOLVO HUB v1.5 — نشأة القرمزي: التطور الأخير',
+        '🌠 نشأة القرمزي هي أعلى رتبة عامة في LPOLVO HUB',
+        '🔥 113 مظهراً — نشأة القرمزي في القمة',
+        '✨ كل صفحة تتحول مع نشأة القرمزي',
+        '♿ دعم كامل للحركة المخففة',
+        '⚡ وضع الأداء الذكي — سلس على جميع الأجهزة',
+        '🎯 تسلسل تفعيل سينمائي مذهل',
+        '🌐 دعم العربية والفرنسية — 3 لغات',
+        '👑 ملفات المنشئين ونظام الترند والتغذية المباشرة',
+        '🎮 متوافق 100٪ مع منفذي الجوال'
     ],
     fr: [
-        '🚀 LPOLVO HUB V1 — Sortie Officielle!',
-        '🌐 Support Complet Arabe & Français',
-        '🔥 52+ thèmes immersifs avec arrière-plans dynamiques',
-        '⭐ Soumettez votre script aujourd\'hui',
-        '🌙 Support RTL complet pour l\'arabe',
-        '🎨 Chaque thème a des particules et sons uniques',
-        '👑 Profils créateurs maintenant disponibles!',
-        '🎮 100% compatible avec les exécuteurs mobiles',
-        '🌟 Traduction Dynamique — sans rechargement',
-        '⚡ Trône de l\'Infini: Rareté Omnipotente'
+        '🌠 LPOLVO HUB v1.5 — Genèse Cramoisie : Évolution Finale',
+        '🌠 Genèse Cramoisie est le rang public final de LPOLVO HUB',
+        '🔥 113 thèmes — Genèse Cramoisie au sommet',
+        '✨ Chaque page se transforme avec Genèse Cramoisie',
+        '♿ Support complet du mode mouvement réduit',
+        '⚡ Mode performance intelligent — fluide sur tous les appareils',
+        '🎯 Séquence d\'activation cinématographique spectaculaire',
+        '🌐 Support Arabe & Français — 3 langues',
+        '👑 Profils créateurs, tendances & fil communautaire en direct',
+        '🎮 100% compatible avec les exécuteurs mobiles'
     ]
 };
 

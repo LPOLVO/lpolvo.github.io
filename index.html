@@ -7961,6 +7961,551 @@
             transform: rotate(90deg) !important; animation: none !important;
         }
 
+        /* ════════════════════════════════════
+           🌠 LOADING SCREEN
+        ════════════════════════════════════ */
+        [data-theme="primordialcrimson"] #loading-screen {
+            background: radial-gradient(ellipse 100% 90% at 50% 10%, rgba(107,0,16,.22), transparent 70%), #030001 !important;
+        }
+        [data-theme="primordialcrimson"] .loading-logo {
+            background: conic-gradient(from 0deg, #6b0010, #c0001a, #c8920a, #e6b020, #ff1a2e, #c8920a, #6b0010) !important;
+            box-shadow: 0 0 32px rgba(176,0,26,.7), 0 0 70px rgba(200,146,10,.28), 0 0 120px rgba(107,0,16,.22) !important;
+            animation: primordialLogoLoadSpin 2s linear infinite !important;
+        }
+        @keyframes primordialLogoLoadSpin {
+            0%   { filter: brightness(1) drop-shadow(0 0 12px rgba(176,0,26,.8)); }
+            50%  { filter: brightness(1.3) drop-shadow(0 0 28px rgba(230,176,32,1)); }
+            100% { filter: brightness(1) drop-shadow(0 0 12px rgba(176,0,26,.8)); }
+        }
+        [data-theme="primordialcrimson"] .loading-bar-wrap {
+            background: rgba(107,0,16,.18) !important;
+            border: 1px solid rgba(107,0,16,.3) !important;
+        }
+        [data-theme="primordialcrimson"] .loading-bar {
+            background: linear-gradient(90deg, #6b0010, #c0001a, #c8920a, #e6b020, #c0001a, #6b0010) !important;
+            background-size: 300% 100% !important;
+            animation: primordialBarFlow 2.4s linear infinite !important;
+            box-shadow: 0 0 20px rgba(176,0,26,.6), 0 0 40px rgba(200,146,10,.25) !important;
+        }
+        @keyframes primordialBarFlow { to { background-position: 300% 0; } }
+        [data-theme="primordialcrimson"] .loading-text {
+            background: linear-gradient(90deg, #fff5f4, #ff1a2e, #c8920a, #fff5f4);
+            background-size: 300% auto;
+            -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
+            animation: primordialTextFlow 4s linear infinite !important;
+            letter-spacing: .18em !important;
+        }
+
+        /* ════════════════════════════════════
+           🌠 AUTH MODAL
+        ════════════════════════════════════ */
+        [data-theme="primordialcrimson"] #auth-modal {
+            background: radial-gradient(ellipse 80% 60% at 50% 30%, rgba(107,0,16,.18), transparent 70%), rgba(3,0,1,.88) !important;
+            backdrop-filter: blur(12px) !important;
+        }
+        [data-theme="primordialcrimson"] .auth-card {
+            background: linear-gradient(145deg, rgba(14,1,4,.96), rgba(8,0,2,.98)) !important;
+            border: 1px solid rgba(107,0,16,.42) !important;
+            box-shadow: 0 32px 100px rgba(0,0,0,.9), 0 0 60px rgba(107,0,16,.28), 0 0 120px rgba(200,146,10,.06), inset 0 1px rgba(200,146,10,.07) !important;
+        }
+        [data-theme="primordialcrimson"] .auth-logo-icon {
+            background: conic-gradient(from 0deg, #6b0010, #c0001a, #c8920a, #e6b020, #ff1a2e, #6b0010) !important;
+            box-shadow: 0 0 24px rgba(176,0,26,.6), 0 0 48px rgba(200,146,10,.2) !important;
+        }
+        [data-theme="primordialcrimson"] .auth-logo-name {
+            background: linear-gradient(100deg, #fff5f4 0%, #ff1a2e 30%, #c8920a 60%, #fff5f4 100%);
+            background-size: 300% auto;
+            -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
+            animation: primordialTextFlow 6s linear infinite;
+        }
+        [data-theme="primordialcrimson"] .auth-tabs {
+            border-color: rgba(107,0,16,.28) !important;
+        }
+        [data-theme="primordialcrimson"] .auth-tab {
+            color: rgba(232,160,168,.55) !important;
+        }
+        [data-theme="primordialcrimson"] .auth-tab.active {
+            color: #fff5f4 !important;
+            border-bottom: 2px solid #c0001a !important;
+        }
+        [data-theme="primordialcrimson"] .auth-title {
+            color: #fff5f4 !important;
+            text-shadow: 0 0 20px rgba(176,0,26,.3) !important;
+        }
+        [data-theme="primordialcrimson"] .auth-sub {
+            color: rgba(232,160,168,.6) !important;
+        }
+        [data-theme="primordialcrimson"] .auth-submit-btn {
+            background: linear-gradient(120deg, #6b0010, #c0001a, #8b0014) !important;
+            border: 1px solid rgba(200,146,10,.3) !important;
+            box-shadow: 0 8px 32px rgba(107,0,16,.45), 0 0 24px rgba(176,0,26,.25) !important;
+            color: #fff5f4 !important;
+            animation: primordialButtonBreathe 6s ease-in-out infinite !important;
+        }
+        [data-theme="primordialcrimson"] .auth-submit-btn:hover {
+            background: linear-gradient(120deg, #8b0014, #e0001e, #a00018) !important;
+            box-shadow: 0 10px 44px rgba(176,0,26,.55), 0 0 36px rgba(200,146,10,.2) !important;
+            transform: translateY(-2px) !important;
+        }
+        [data-theme="primordialcrimson"] .auth-divider-line {
+            background: rgba(107,0,16,.3) !important;
+        }
+        [data-theme="primordialcrimson"] .auth-divider-text {
+            color: rgba(232,160,168,.4) !important;
+        }
+        [data-theme="primordialcrimson"] .auth-footer a,
+        [data-theme="primordialcrimson"] .auth-footer span { color: rgba(200,146,10,.7) !important; }
+        [data-theme="primordialcrimson"] .auth-footer a:hover { color: #c8920a !important; }
+        [data-theme="primordialcrimson"] .auth-error {
+            background: rgba(107,0,16,.2) !important;
+            border-color: rgba(176,0,26,.5) !important;
+            color: #ff2a3e !important;
+        }
+
+        /* ════════════════════════════════════
+           🌠 NOTIFICATIONS PANEL
+        ════════════════════════════════════ */
+        [data-theme="primordialcrimson"] .notif-panel {
+            background: linear-gradient(160deg, rgba(10,1,3,.97), rgba(6,0,2,.98)) !important;
+            border: 1px solid rgba(107,0,16,.38) !important;
+            box-shadow: 0 24px 80px rgba(0,0,0,.88), 0 0 48px rgba(107,0,16,.2), inset 0 1px rgba(200,146,10,.05) !important;
+        }
+        [data-theme="primordialcrimson"] .notif-panel-header {
+            border-bottom: 1px solid rgba(107,0,16,.24) !important;
+            background: rgba(107,0,16,.07) !important;
+        }
+        [data-theme="primordialcrimson"] .notif-panel-title {
+            color: #fff5f4 !important;
+        }
+        [data-theme="primordialcrimson"] .notif-item {
+            border-bottom: 1px solid rgba(107,0,16,.14) !important;
+            transition: background .2s ease !important;
+        }
+        [data-theme="primordialcrimson"] .notif-item:hover {
+            background: rgba(107,0,16,.1) !important;
+        }
+        [data-theme="primordialcrimson"] .notif-item.unread {
+            background: rgba(107,0,16,.1) !important;
+            border-left: 2px solid #c0001a !important;
+        }
+        [data-theme="primordialcrimson"] .notif-item-icon {
+            background: rgba(107,0,16,.2) !important;
+            border-color: rgba(107,0,16,.3) !important;
+        }
+        [data-theme="primordialcrimson"] .notif-item-time {
+            color: rgba(200,146,10,.55) !important;
+        }
+
+        /* ════════════════════════════════════
+           🌠 TOAST NOTIFICATIONS
+        ════════════════════════════════════ */
+        [data-theme="primordialcrimson"] .toast {
+            background: linear-gradient(135deg, rgba(14,1,4,.97), rgba(8,0,2,.98)) !important;
+            border: 1px solid rgba(107,0,16,.38) !important;
+            box-shadow: 0 16px 60px rgba(0,0,0,.85), 0 0 32px rgba(107,0,16,.2), inset 0 1px rgba(200,146,10,.06) !important;
+            color: #fff5f4 !important;
+        }
+        [data-theme="primordialcrimson"] .toast.success .toast-icon {
+            background: rgba(200,146,10,.18) !important;
+            color: #c8920a !important;
+            border-color: rgba(200,146,10,.3) !important;
+        }
+        [data-theme="primordialcrimson"] .toast.error .toast-icon {
+            background: rgba(107,0,16,.22) !important;
+            color: #ff2a3e !important;
+            border-color: rgba(176,0,26,.4) !important;
+        }
+        [data-theme="primordialcrimson"] .toast.info .toast-icon {
+            background: rgba(107,0,16,.18) !important;
+            color: #c0001a !important;
+            border-color: rgba(107,0,16,.35) !important;
+        }
+
+        /* ════════════════════════════════════
+           🌠 SEARCH OVERLAY
+        ════════════════════════════════════ */
+        [data-theme="primordialcrimson"] .search-overlay,
+        [data-theme="primordialcrimson"] #searchOverlay {
+            background: rgba(3,0,1,.72) !important;
+            backdrop-filter: blur(18px) !important;
+        }
+        [data-theme="primordialcrimson"] .search-modal,
+        [data-theme="primordialcrimson"] .search-box {
+            background: linear-gradient(145deg, rgba(14,1,4,.97), rgba(8,0,2,.98)) !important;
+            border: 1px solid rgba(107,0,16,.4) !important;
+            box-shadow: 0 28px 90px rgba(0,0,0,.88), 0 0 52px rgba(107,0,16,.22) !important;
+        }
+        [data-theme="primordialcrimson"] .search-result-item:hover {
+            background: rgba(107,0,16,.12) !important;
+        }
+        [data-theme="primordialcrimson"] .search-highlight {
+            color: #c8920a !important;
+        }
+
+        /* ════════════════════════════════════
+           🌠 PROFILE PAGE
+        ════════════════════════════════════ */
+        [data-theme="primordialcrimson"] .profile-banner {
+            box-shadow: 0 0 60px rgba(107,0,16,.22), inset 0 -2px rgba(107,0,16,.38) !important;
+        }
+        [data-theme="primordialcrimson"] .profile-banner::after {
+            background: linear-gradient(to top, rgba(3,0,1,.95) 0%, rgba(3,0,1,.5) 40%, transparent 100%) !important;
+        }
+        [data-theme="primordialcrimson"] .profile-avatar {
+            box-shadow: 0 0 0 3px #6b0010, 0 0 28px rgba(176,0,26,.55), 0 0 56px rgba(200,146,10,.2) !important;
+        }
+        [data-theme="primordialcrimson"] .profile-name {
+            background: linear-gradient(100deg, #fff5f4, #ff1a2e, #c8920a, #fff5f4);
+            background-size: 300% auto;
+            -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
+            animation: primordialTextFlow 8s linear infinite !important;
+        }
+        [data-theme="primordialcrimson"] .profile-card,
+        [data-theme="primordialcrimson"] .profile-stat-card {
+            background: linear-gradient(135deg, rgba(107,0,16,.09), rgba(14,1,4,.07)) !important;
+            border: 1px solid rgba(107,0,16,.26) !important;
+            box-shadow: 0 10px 44px rgba(0,0,0,.75), 0 0 24px rgba(107,0,16,.08) !important;
+        }
+        [data-theme="primordialcrimson"] .profile-tab {
+            color: rgba(232,160,168,.5) !important;
+            border-color: transparent !important;
+        }
+        [data-theme="primordialcrimson"] .profile-tab.active {
+            color: #fff5f4 !important;
+            border-color: #c0001a !important;
+        }
+        [data-theme="primordialcrimson"] .profile-completion-bar {
+            background: linear-gradient(90deg, #6b0010, #c0001a, #c8920a) !important;
+            box-shadow: 0 0 12px rgba(176,0,26,.5) !important;
+        }
+        [data-theme="primordialcrimson"] .badge-card {
+            background: rgba(107,0,16,.1) !important;
+            border-color: rgba(107,0,16,.25) !important;
+        }
+        [data-theme="primordialcrimson"] .badge-card.earned {
+            border-color: rgba(200,146,10,.45) !important;
+            box-shadow: 0 0 18px rgba(200,146,10,.18) !important;
+        }
+
+        /* ════════════════════════════════════
+           🌠 DASHBOARD / STATS
+        ════════════════════════════════════ */
+        [data-theme="primordialcrimson"] .dash-stat-card {
+            background: linear-gradient(135deg, rgba(107,0,16,.11), rgba(14,1,4,.08)) !important;
+            border: 1px solid rgba(107,0,16,.28) !important;
+        }
+        [data-theme="primordialcrimson"] .dash-stat-value {
+            background: linear-gradient(120deg, #fff5f4, #ff1a2e, #c8920a);
+            background-size: 300% auto;
+            -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
+            animation: primordialTextFlow 7s linear infinite !important;
+        }
+        [data-theme="primordialcrimson"] .dash-stat-label {
+            color: rgba(232,160,168,.55) !important;
+        }
+
+        /* ════════════════════════════════════
+           🌠 TRENDING & COMMUNITY FEED
+        ════════════════════════════════════ */
+        [data-theme="primordialcrimson"] .trending-card {
+            background: linear-gradient(135deg, rgba(107,0,16,.12), rgba(14,1,4,.09)) !important;
+            border: 1px solid rgba(107,0,16,.28) !important;
+            box-shadow: 0 8px 40px rgba(0,0,0,.7), 0 0 22px rgba(107,0,16,.1) !important;
+        }
+        [data-theme="primordialcrimson"] .trending-card:nth-child(1) {
+            box-shadow: 0 8px 40px rgba(0,0,0,.7), 0 0 36px rgba(200,146,10,.2), inset 0 0 0 1px rgba(200,146,10,.14) !important;
+        }
+        [data-theme="primordialcrimson"] .trending-medal {
+            filter: drop-shadow(0 0 6px rgba(200,146,10,.5)) !important;
+        }
+        [data-theme="primordialcrimson"] .activity-item,
+        [data-theme="primordialcrimson"] .community-item {
+            background: rgba(107,0,16,.07) !important;
+            border-left: 2px solid rgba(107,0,16,.35) !important;
+        }
+        [data-theme="primordialcrimson"] .activity-item:hover,
+        [data-theme="primordialcrimson"] .community-item:hover {
+            background: rgba(107,0,16,.13) !important;
+            border-left-color: #c0001a !important;
+        }
+
+        /* ════════════════════════════════════
+           🌠 SCROLLBARS
+        ════════════════════════════════════ */
+        [data-theme="primordialcrimson"] ::-webkit-scrollbar {
+            width: 6px; height: 6px;
+        }
+        [data-theme="primordialcrimson"] ::-webkit-scrollbar-track {
+            background: #030001;
+        }
+        [data-theme="primordialcrimson"] ::-webkit-scrollbar-thumb {
+            background: linear-gradient(to bottom, #6b0010, #c0001a, #6b0010);
+            border-radius: 4px;
+        }
+        [data-theme="primordialcrimson"] ::-webkit-scrollbar-thumb:hover {
+            background: linear-gradient(to bottom, #8b0014, #e0001e, #8b0014);
+        }
+        * { scrollbar-color: #6b0010 #030001; scrollbar-width: thin; }
+
+        /* ════════════════════════════════════
+           🌠 TICKER / ANNOUNCEMENTS
+        ════════════════════════════════════ */
+        [data-theme="primordialcrimson"] .ticker-wrap {
+            background: rgba(107,0,16,.1) !important;
+            border-color: rgba(107,0,16,.24) !important;
+        }
+        [data-theme="primordialcrimson"] .ticker-dot {
+            background: #c0001a !important;
+            box-shadow: 0 0 6px rgba(176,0,26,.7) !important;
+        }
+
+        /* ════════════════════════════════════
+           🌠 NEWS & UPDATES CARDS
+        ════════════════════════════════════ */
+        [data-theme="primordialcrimson"] .news-badge-update {
+            background: rgba(200,146,10,.18) !important;
+            color: #e6b020 !important;
+            border-color: rgba(200,146,10,.32) !important;
+        }
+        [data-theme="primordialcrimson"] .news-badge-new {
+            background: rgba(107,0,16,.2) !important;
+            color: #ff1a2e !important;
+            border-color: rgba(176,0,26,.35) !important;
+        }
+        [data-theme="primordialcrimson"] .news-badge-fix {
+            background: rgba(107,0,16,.14) !important;
+            color: rgba(232,160,168,.8) !important;
+            border-color: rgba(107,0,16,.28) !important;
+        }
+        [data-theme="primordialcrimson"] .news-title {
+            color: #fff5f4 !important;
+        }
+        [data-theme="primordialcrimson"] .news-date {
+            color: rgba(200,146,10,.6) !important;
+        }
+        [data-theme="primordialcrimson"] .news-desc {
+            color: rgba(232,160,168,.7) !important;
+        }
+
+        /* ════════════════════════════════════
+           🌠 ABOUT MODAL
+        ════════════════════════════════════ */
+        [data-theme="primordialcrimson"] #about-modal {
+            background: rgba(3,0,1,.82) !important;
+            backdrop-filter: blur(16px) !important;
+        }
+        [data-theme="primordialcrimson"] .about-card {
+            background: linear-gradient(145deg, rgba(14,1,4,.97), rgba(8,0,2,.98)) !important;
+            border: 1px solid rgba(107,0,16,.4) !important;
+            box-shadow: 0 28px 90px rgba(0,0,0,.88), 0 0 56px rgba(107,0,16,.22) !important;
+        }
+
+        /* ════════════════════════════════════
+           🌠 UPLOAD / SCRIPT FORM
+        ════════════════════════════════════ */
+        [data-theme="primordialcrimson"] .upload-card,
+        [data-theme="primordialcrimson"] .script-form-card {
+            background: linear-gradient(145deg, rgba(14,1,4,.95), rgba(8,0,2,.97)) !important;
+            border: 1px solid rgba(107,0,16,.36) !important;
+            box-shadow: 0 20px 72px rgba(0,0,0,.85), 0 0 44px rgba(107,0,16,.15) !important;
+        }
+        [data-theme="primordialcrimson"] .upload-progress-bar {
+            background: linear-gradient(90deg, #6b0010, #c0001a, #c8920a) !important;
+            box-shadow: 0 0 12px rgba(176,0,26,.5) !important;
+        }
+
+        /* ════════════════════════════════════
+           🌠 ONBOARDING MODAL
+        ════════════════════════════════════ */
+        [data-theme="primordialcrimson"] .onboarding-card,
+        [data-theme="primordialcrimson"] #onboarding-modal .card {
+            background: linear-gradient(145deg, rgba(14,1,4,.97), rgba(8,0,2,.98)) !important;
+            border: 1px solid rgba(107,0,16,.38) !important;
+            box-shadow: 0 28px 90px rgba(0,0,0,.88), 0 0 52px rgba(107,0,16,.2) !important;
+        }
+
+        /* ════════════════════════════════════
+           🌠 SORT / FILTER PILLS
+        ════════════════════════════════════ */
+        [data-theme="primordialcrimson"] .sort-btn,
+        [data-theme="primordialcrimson"] .filter-pill {
+            background: rgba(107,0,16,.1) !important;
+            border-color: rgba(107,0,16,.28) !important;
+            color: rgba(232,160,168,.65) !important;
+        }
+        [data-theme="primordialcrimson"] .sort-btn.active,
+        [data-theme="primordialcrimson"] .filter-pill.active {
+            background: linear-gradient(120deg, rgba(107,0,16,.22), rgba(176,0,26,.26)) !important;
+            border-color: rgba(176,0,26,.6) !important;
+            color: #fff5f4 !important;
+            box-shadow: 0 0 16px rgba(107,0,16,.25) !important;
+        }
+
+        /* ════════════════════════════════════
+           🌠 SCRIPT DETAIL MODAL
+        ════════════════════════════════════ */
+        [data-theme="primordialcrimson"] .script-detail-modal,
+        [data-theme="primordialcrimson"] #scriptModal,
+        [data-theme="primordialcrimson"] .script-modal-card {
+            background: linear-gradient(145deg, rgba(14,1,4,.97), rgba(8,0,2,.98)) !important;
+            border: 1px solid rgba(107,0,16,.38) !important;
+            box-shadow: 0 32px 100px rgba(0,0,0,.9), 0 0 60px rgba(107,0,16,.22) !important;
+        }
+        [data-theme="primordialcrimson"] .script-code-block,
+        [data-theme="primordialcrimson"] .code-block {
+            background: rgba(3,0,1,.9) !important;
+            border-color: rgba(107,0,16,.3) !important;
+            color: #e8a0a8 !important;
+        }
+        [data-theme="primordialcrimson"] .copy-btn,
+        [data-theme="primordialcrimson"] .copy-code-btn {
+            background: linear-gradient(120deg, rgba(107,0,16,.22), rgba(176,0,26,.26)) !important;
+            border-color: rgba(176,0,26,.45) !important;
+            color: #fff5f4 !important;
+        }
+        [data-theme="primordialcrimson"] .copy-btn:hover,
+        [data-theme="primordialcrimson"] .copy-code-btn:hover {
+            background: linear-gradient(120deg, rgba(107,0,16,.38), rgba(176,0,26,.44)) !important;
+            border-color: rgba(200,146,10,.55) !important;
+            box-shadow: 0 0 20px rgba(176,0,26,.3) !important;
+        }
+
+        /* ════════════════════════════════════
+           🌠 CATEGORY PILLS
+        ════════════════════════════════════ */
+        [data-theme="primordialcrimson"] .cat-pill {
+            background: rgba(107,0,16,.1) !important;
+            border-color: rgba(107,0,16,.25) !important;
+            color: rgba(232,160,168,.65) !important;
+        }
+        [data-theme="primordialcrimson"] .cat-pill.active,
+        [data-theme="primordialcrimson"] .cat-pill:hover {
+            background: rgba(107,0,16,.22) !important;
+            border-color: rgba(176,0,26,.55) !important;
+            color: #fff5f4 !important;
+        }
+
+        /* ════════════════════════════════════
+           🌠 TAGS
+        ════════════════════════════════════ */
+        [data-theme="primordialcrimson"] .tag,
+        [data-theme="primordialcrimson"] .script-tag {
+            background: rgba(107,0,16,.14) !important;
+            color: rgba(255,100,120,.8) !important;
+            border-color: rgba(107,0,16,.24) !important;
+        }
+
+        /* ════════════════════════════════════
+           🌠 SECTION HEADERS
+        ════════════════════════════════════ */
+        [data-theme="primordialcrimson"] .section-header {
+            border-bottom: 1px solid rgba(107,0,16,.18) !important;
+        }
+        [data-theme="primordialcrimson"] .section-title-icon {
+            filter: drop-shadow(0 0 6px rgba(176,0,26,.5));
+        }
+        [data-theme="primordialcrimson"] .see-all-btn,
+        [data-theme="primordialcrimson"] .view-all-btn {
+            color: rgba(200,146,10,.7) !important;
+            border-color: rgba(200,146,10,.25) !important;
+        }
+        [data-theme="primordialcrimson"] .see-all-btn:hover,
+        [data-theme="primordialcrimson"] .view-all-btn:hover {
+            color: #c8920a !important;
+            border-color: rgba(200,146,10,.5) !important;
+            background: rgba(200,146,10,.06) !important;
+        }
+
+        /* ════════════════════════════════════
+           🌠 BOTTOM NAV ACTIVE STATE
+        ════════════════════════════════════ */
+        [data-theme="primordialcrimson"] .bottom-nav-item.active,
+        [data-theme="primordialcrimson"] .bottom-nav-item.active .bottom-nav-icon {
+            color: #c0001a !important;
+            filter: drop-shadow(0 0 6px rgba(176,0,26,.6)) !important;
+        }
+        [data-theme="primordialcrimson"] .bottom-nav-item .bottom-nav-indicator {
+            background: #c0001a !important;
+            box-shadow: 0 0 8px rgba(176,0,26,.6) !important;
+        }
+
+        /* ════════════════════════════════════
+           🌠 EMPTY STATE
+        ════════════════════════════════════ */
+        [data-theme="primordialcrimson"] .empty-state-icon {
+            filter: drop-shadow(0 0 10px rgba(107,0,16,.5));
+            opacity: .5;
+        }
+        [data-theme="primordialcrimson"] .empty-state-title {
+            color: rgba(232,160,168,.6) !important;
+        }
+        [data-theme="primordialcrimson"] .empty-state-desc {
+            color: rgba(232,160,168,.4) !important;
+        }
+
+        /* ════════════════════════════════════
+           🌠 SELECTION / HIGHLIGHT
+        ════════════════════════════════════ */
+        [data-theme="primordialcrimson"] ::selection {
+            background: rgba(107,0,16,.45) !important;
+            color: #fff5f4 !important;
+        }
+
+        /* ════════════════════════════════════
+           🌠 FOCUS RING
+        ════════════════════════════════════ */
+        [data-theme="primordialcrimson"] :focus-visible {
+            outline: 2px solid rgba(176,0,26,.7) !important;
+            outline-offset: 2px !important;
+        }
+
+        /* ════════════════════════════════════
+           🌠 ENHANCED REDUCE MOTION
+        ════════════════════════════════════ */
+        @media (prefers-reduced-motion: reduce) {
+            [data-theme="primordialcrimson"] .loading-bar { animation: none !important; }
+            [data-theme="primordialcrimson"] .loading-logo { animation: none !important; }
+            [data-theme="primordialcrimson"] .loading-text { animation: none !important; -webkit-text-fill-color: #fff5f4 !important; background: none !important; }
+            [data-theme="primordialcrimson"] .nav-logo-text,
+            [data-theme="primordialcrimson"] .section-title,
+            [data-theme="primordialcrimson"] .settings-section-title { animation: none !important; -webkit-text-fill-color: #ff1a2e !important; background: none !important; }
+            [data-theme="primordialcrimson"] .auth-logo-name { animation: none !important; -webkit-text-fill-color: #fff5f4 !important; background: none !important; }
+            [data-theme="primordialcrimson"] .profile-name { animation: none !important; -webkit-text-fill-color: #fff5f4 !important; background: none !important; }
+            [data-theme="primordialcrimson"] .dash-stat-value { animation: none !important; -webkit-text-fill-color: #ff1a2e !important; background: none !important; }
+            [data-theme="primordialcrimson"] .nav-logo-icon { animation: none !important; }
+            [data-theme="primordialcrimson"] #ambientGlow { animation: none !important; opacity: .7; }
+            [data-theme="primordialcrimson"] .script-card::before,
+            [data-theme="primordialcrimson"] .creator-card::before,
+            [data-theme="primordialcrimson"] .settings-card::before,
+            [data-theme="primordialcrimson"] .news-card::before { animation: none !important; opacity: .12; }
+            [data-theme="primordialcrimson"] .script-card::after,
+            [data-theme="primordialcrimson"] .creator-card::after,
+            [data-theme="primordialcrimson"] .news-card::after { animation: none !important; opacity: .3; }
+            [data-theme="primordialcrimson"] body::before,
+            [data-theme="primordialcrimson"] body::after { animation: none !important; opacity: .5; }
+            [data-theme="primordialcrimson"] .ticker-wrap { animation: none !important; }
+            [data-theme="primordialcrimson"] button,
+            [data-theme="primordialcrimson"] .btn,
+            [data-theme="primordialcrimson"] .auth-submit-btn { animation: none !important; }
+        }
+
+        /* ════════════════════════════════════
+           🌠 ENHANCED MOBILE OPTIMIZATION
+        ════════════════════════════════════ */
+        @media (max-width: 700px) {
+            [data-theme="primordialcrimson"] .loading-logo { animation-duration: 3s !important; }
+            [data-theme="primordialcrimson"] .loading-bar { animation-duration: 3s !important; }
+            [data-theme="primordialcrimson"] #bgCanvas { filter: saturate(1.1) contrast(1.05) !important; }
+            [data-theme="primordialcrimson"] .auth-card { box-shadow: 0 16px 52px rgba(0,0,0,.88), 0 0 28px rgba(107,0,16,.2) !important; }
+            [data-theme="primordialcrimson"] body::before,
+            [data-theme="primordialcrimson"] body::after { display: none !important; }
+            [data-theme="primordialcrimson"] .trending-card:nth-child(1) { box-shadow: 0 8px 32px rgba(0,0,0,.7) !important; }
+            [data-theme="primordialcrimson"] .notif-panel { box-shadow: 0 16px 52px rgba(0,0,0,.88) !important; }
+            [data-theme="primordialcrimson"] ::-webkit-scrollbar { width: 3px; }
+            [data-theme="primordialcrimson"] button::before,
+            [data-theme="primordialcrimson"] .btn::before { display: none !important; }
+        }
+
                 /* ── GLOBAL RESET ── */
         *,
         *::before,
@@ -9685,6 +10230,13 @@
         .news-badge-new {
             background: var(--badge-new);
             color: #000;
+        }
+        .news-badge-primordial {
+            background: linear-gradient(90deg, #6b0010, #c0001a, #c8920a, #e6b020, #c0001a, #6b0010);
+            background-size: 300% 100%;
+            color: #fff5f4;
+            animation: primordialBarFlow 3s linear infinite;
+            border: 1px solid rgba(200,146,10,.4);
         }
         .news-date {
             font-family: var(--font-sans);
@@ -12764,10 +13316,10 @@
                 <div style="text-align:center;margin-bottom:20px;">
                     <div style="width:72px;height:72px;border-radius:20px;background:var(--btn-grad);display:flex;align-items:center;justify-content:center;font-family:var(--font-orb);font-size:1.3rem;font-weight:900;color:#fff;margin:0 auto 12px;box-shadow:0 4px 20px var(--glow2);animation:glow-pulse 2s ease-in-out infinite;">LP</div>
                     <div style="font-family:var(--font-display);font-size:1.3rem;font-weight:900;color:var(--text);">LPOLVO HUB</div>
-                    <div style="font-family:var(--font-sans);font-size:0.72rem;color:var(--text3);margin-top:4px;" id="aboutVersionText">V1 — Official Public Release</div>
+                    <div style="font-family:var(--font-sans);font-size:0.72rem;color:var(--text3);margin-top:4px;" id="aboutVersionText">V1.5 — Crimson Genesis: Final Evolution</div>
                 </div>
                 <div style="display:flex;flex-direction:column;gap:10px;margin-bottom:20px;">
-                    <div id="aboutDescText" style="background:var(--bg3);border:1px solid var(--border);border-radius:var(--radius);padding:12px;font-family:var(--font-sans);font-size:0.8rem;color:var(--text2);line-height:1.5;">LPOLVO HUB V1 is the first official public release — a community-driven premium platform for Roblox scripts. After extensive internal development, we are proud to present the most advanced version with full localization, 52+ themes, Firebase authentication, and complete Arabic & French support. Find, share and discover high-quality Lua scripts for your favorite Roblox games.</div>
+                    <div id="aboutDescText" style="background:var(--bg3);border:1px solid var(--border);border-radius:var(--radius);padding:12px;font-family:var(--font-sans);font-size:0.8rem;color:var(--text2);line-height:1.5;">LPOLVO HUB v1.5 establishes the definitive visual identity of the platform. This version introduced Crimson Genesis — the final public rank and the highest visual achievement a user can unlock. Beyond the theme itself, v1.5 focused on total visual cohesion (every page, modal, and element fully themed), smart performance (adaptive frame budgeting, mobile optimization, tab-visibility pausing), and full accessibility with comprehensive Reduce Motion support. A community-driven premium platform for Roblox scripts — 113 themes, 3 languages, Firebase authentication, and the most immersive experience we have ever built.</div>
                     <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;"><div style="background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:12px;text-align:center;"><div style="font-family:var(--font-display);font-size:1.1rem;font-weight:800;color:var(--accent);" id="aboutStatScripts">—</div><div style="font-family:var(--font-sans);font-size:0.62rem;color:var(--text3);text-transform:uppercase;letter-spacing:0.08em;">Scripts</div></div><div style="background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:12px;text-align:center;"><div style="font-family:var(--font-display);font-size:1.1rem;font-weight:800;color:var(--accent);" id="aboutStatUsers">—</div><div style="font-family:var(--font-sans);font-size:0.62rem;color:var(--text3);text-transform:uppercase;letter-spacing:0.08em;">Users</div></div></div>
                 </div>
                 <div style="display:flex;gap:8px;"><button onclick="closeAboutModal()" style="flex:1;height:44px;border-radius:var(--btn-radius);background:var(--btn-grad);border:none;color:#fff;font-family:var(--font-sans);font-weight:700;cursor:pointer;">Got it</button></div>
