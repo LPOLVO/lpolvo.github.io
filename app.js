@@ -5,7 +5,9 @@
    ═══════════════════════════════════════════════════════════════════ */
 
 /* ── CONSTANTS ── */
-const CATEGORIES = [
+/* Assigned to window so scripts.js, themes.js, and other modules can access them.
+   Top-level const/let are NOT on window — they are file-scoped. */
+window.CATEGORIES = [
     { id: 'combat', icon: '⚔️', name: 'Combat' },
     { id: 'farm', icon: '🌾', name: 'Farm' },
     { id: 'speed', icon: '🚀', name: 'Speed' },
@@ -17,6 +19,7 @@ const CATEGORIES = [
     { id: 'auto', icon: '🤖', name: 'Auto' },
     { id: 'other', icon: '📦', name: 'Other' },
 ];
+var CATEGORIES = window.CATEGORIES; // local alias
 
 const EXECUTORS = [
     { name: 'Arceus X', icon: '⚡', platform: 'Mobile — Android', free: true },
@@ -137,7 +140,11 @@ const TICKER_ITEMS = [
 
 
 /* ── STATE ── */
-let state = {
+/* IMPORTANT: declared on window (not let/const) so all module files
+   (themes.js, sounds.js, language.js, etc.) can access state and SETTINGS.
+   Top-level let/const in a plain <script> are NOT added to window — they
+   are scoped to that script only. Using window.state makes them true globals. */
+window.state = {
     page: 'home',
     theme: localStorage.getItem('lp_theme') || 'lpolvo',
     language: localStorage.getItem('lp_lang') || 'en',
@@ -166,14 +173,16 @@ let state = {
     originCleanup: null,
     originVisibilityCleanup: null,
 };
+var state = window.state; // local alias so all existing code in this file still works
 
-let SETTINGS = {
+window.SETTINGS = {
     sounds: JSON.parse(localStorage.getItem('lp_sounds') ?? 'true'),
     particles: JSON.parse(localStorage.getItem('lp_particles') ?? 'true'),
     notifications: JSON.parse(localStorage.getItem('lp_notifs') ?? 'true'),
     reducedMotion: JSON.parse(localStorage.getItem('lp_reducedMotion') ?? 'false'),
     ambientMusic: JSON.parse(localStorage.getItem('lp_ambientMusic') ?? 'false'),
 };
+var SETTINGS = window.SETTINGS; // local alias so all existing code in this file still works
 
 
 /* ── NAVIGATION ── */
@@ -740,27 +749,35 @@ function buildEmptyState({ icon, title, quote, subtitle, cta, ctaAction }) {
 
 /* ── LOADING ── */
 function runLoading() {
-    try {
-        const bar = document.getElementById('loadingBar');
-        const text = document.getElementById('loadingText');
-        const steps = [
-            { pct: 25, msg: 'Loading assets...' },
-            { pct: 55, msg: 'Connecting Firebase...' },
-            { pct: 80, msg: 'Fetching data...' },
-            { pct: 100, msg: 'Ready!' }
-        ];
-        let i = 0;
-        function step() {
-            try {
-                if (i >= steps.length) { setTimeout(finishLoading, 300); return; }
-                const s = steps[i++];
-                if (bar) bar.style.width = s.pct + '%';
-                if (text) text.textContent = s.msg;
-                setTimeout(step, i < steps.length ? 400 : 200);
-            } catch (e) { finishLoading(); }
+    /* Returns a Promise that resolves once the full animation sequence
+       has played through (150ms delay + 4 × 400ms steps + 200ms hold = ~1.95s).
+       startApp() waits for BOTH this promise AND Firebase before dismissing. */
+    return new Promise(function(resolve) {
+        try {
+            const bar = document.getElementById('loadingBar');
+            const text = document.getElementById('loadingText');
+            const steps = [
+                { pct: 25, msg: 'Loading assets...' },
+                { pct: 55, msg: 'Connecting Firebase...' },
+                { pct: 80, msg: 'Fetching data...' },
+                { pct: 100, msg: 'Ready!' }
+            ];
+            let i = 0;
+            function step() {
+                try {
+                    if (i >= steps.length) { setTimeout(resolve, 200); return; }
+                    const s = steps[i++];
+                    if (bar) bar.style.width = s.pct + '%';
+                    if (text) text.textContent = s.msg;
+                    setTimeout(step, 400);
+                } catch (e) { resolve(); }
+            }
+            setTimeout(step, 150);
+        } catch (e) {
+            console.warn('[LPOLVO] runLoading setup error:', e);
+            resolve(); /* never block startup */
         }
-        setTimeout(step, 150);
-    } catch (e) { finishLoading(); }
+    });
 }
 
 function finishLoading() {
@@ -773,53 +790,10 @@ function finishLoading() {
 }
 
 
-/* ── INIT ── */
+/* ── INIT ── (body moved into startApp — kept as no-op stub for safety) */
 function init() {
-    applyTheme(state.theme, false);
-    applyLanguageDirection();
-    buildTicker();
-    buildCategories();
-    buildHowItWorks();
-    buildExecutors();
-    buildNews();
-    buildFAQ();
-    initScrollTop();
-    initIntersectionObserver();
-    loadScripts().then(() => { buildTopCreators(); buildTrendingSection(); });
-    loadRealStats();
-    startCommunityFeedListener();
-    if (window.__pendingAuthUser !== undefined) { onFirebaseAuthState(window.__pendingAuthUser);
-        delete window.__pendingAuthUser; }
-    window.onFirebaseAuthState = onFirebaseAuthState;
-    window.addEventListener('hashchange', handleHashChange);
-    handleHashChange();
-    const so = document.getElementById('searchOverlay');
-    if (so) so.addEventListener('click', e => { if (e.target === so) closeSearch(); });
-    let lastHover = 0;
-    document.addEventListener('mouseover', e => {
-        if (Date.now() - lastHover < 200) return;
-        if (e.target.matches(
-                'button, .sort-btn, .cat-pill, .script-card, .creator-card, .dash-quick-btn, .theme-btn, .lang-pill'
-                )) { lastHover = Date.now();
-            playHover(); }
-    }, { passive: true });
-    console.log('[LPOLVO HUB v1.3] Initialized ✓');
-    console.log('[LPOLVO HUB] Theme:', state.theme, 'Language:', state.language);
-    setTimeout(() => playThemeAmbient(), 1000);
-    /* Resume/pause ambient when tab visibility changes */
-    document.addEventListener('visibilitychange', function() {
-        if (state.theme !== 'absolutesingularity' || !SETTINGS.ambientMusic) return;
-        if (document.hidden) {
-            if (_absAmbient && _absAmbient.ctx) try { _absAmbient.ctx.suspend(); } catch(e) {}
-        } else {
-            if (_absAmbient && _absAmbient.ctx) try { _absAmbient.ctx.resume(); } catch(e) {}
-            else startAbsoluteAmbient();
-        }
-    });
-    /* Auto-start if user left with ambient ON and returns to absolute theme */
-    if (state.theme === 'absolutesingularity' && SETTINGS.ambientMusic) {
-        setTimeout(function() { startAbsoluteAmbient(); }, 1200);
-    }
+    /* startApp() now handles the full init pipeline after Firebase is ready.
+       This stub is intentionally empty. */
 }
 
 function initScrollTop() {
@@ -855,14 +829,145 @@ document.addEventListener('keydown', (e) => {
 });
 
 
-/* ── STARTUP — robust against already-loaded document and JS errors ── */
-// Hard failsafe: force loading screen away after 8 s no matter what
-var _loadingFailsafe = setTimeout(finishLoading, 8000);
+/* ═══════════════════════════════════════════════════════════════════
+   STARTUP v1.3 — Firebase-aware initialization pipeline
+   ─────────────────────────────────────────────────────────────────
+   Root cause of the frozen loading screen:
+     firebase.js is a <script type="module"> which loads Firebase from
+     a remote CDN. Its execution is inherently async. The old code used
+     a fixed 1200 ms setTimeout to call init(), which ran BEFORE
+     window.__FB was populated on slow or cold connections, causing every
+     module that calls window.__FB to silently fail, leaving the loading
+     screen alive forever.
+
+   Fix:
+     1. firebase.js now resolves window.__fbReadyPromise and dispatches
+        a 'fbready' CustomEvent when Firebase is truly ready.
+     2. startApp() awaits that promise (with a 12 s outer timeout as
+        absolute last resort) before calling init().
+     3. Every init step is wrapped in try/catch so one broken module
+        never blocks the rest.
+   ═══════════════════════════════════════════════════════════════════ */
+
+/* Absolute last-resort failsafe: if NOTHING works in 12 s, show the app anyway */
+var _loadingFailsafe = setTimeout(function() {
+    console.warn('[LPOLVO] 12-second failsafe triggered — forcing app visible');
+    finishLoading();
+}, 12000);
 
 function startApp() {
-    clearTimeout(_loadingFailsafe);
-    try { runLoading(); } catch (e) { finishLoading(); }
-    setTimeout(function () { try { init(); } catch (e) { console.error('[LPOLVO] Init error:', e); finishLoading(); } }, 1200);
+    /* Start the animated loading bar immediately — DOM is ready.
+       runLoading() now returns a Promise that resolves when all 4 steps finish (~1.95s). */
+    var animPromise;
+    try { animPromise = runLoading(); } catch (e) {
+        console.warn('[LPOLVO] runLoading error:', e);
+        animPromise = Promise.resolve();
+    }
+
+    /* ── Step 1: wait for Firebase to be ready ── */
+    /* window.__fbReadyPromise is ALWAYS present — it was created by the
+       inline <script> in index.html that runs before any other script.
+       firebase.js resolves it once the Firebase SDK is loaded from CDN. */
+    var fbPromise = window.__fbReadyPromise || new Promise(function(resolve) {
+        /* Absolute fallback: listen for the fbready DOM event */
+        document.addEventListener('fbready', function(e) { resolve(e.detail); }, { once: true });
+    });
+
+    /* Race: Firebase ready vs 10 s timeout */
+    var timeoutPromise = new Promise(function(resolve) {
+        setTimeout(function() {
+            console.warn('[LPOLVO] Firebase ready timeout — continuing without Firebase');
+            if (!window.__FB) window.__FB = { ready: false, error: 'timeout' };
+            resolve(window.__FB);
+        }, 10000);
+    });
+
+    /* Wait for BOTH: animation complete AND Firebase ready (or timeout).
+       This ensures the user always sees the full loading sequence. */
+    Promise.all([animPromise, Promise.race([fbPromise, timeoutPromise])]).then(function() {
+        clearTimeout(_loadingFailsafe);
+
+        /* ── Step 2: run each init step with isolated error handling ── */
+        var steps = [
+            { name: 'Theme',         fn: function() { applyTheme(state.theme, false); } },
+            { name: 'Language',      fn: function() { applyLanguageDirection(); } },
+            { name: 'Ticker',        fn: function() { buildTicker(); } },
+            { name: 'Categories',    fn: function() { buildCategories(); } },
+            { name: 'HowItWorks',    fn: function() { buildHowItWorks(); } },
+            { name: 'Executors',     fn: function() { buildExecutors(); } },
+            { name: 'News',          fn: function() { buildNews(); } },
+            { name: 'FAQ',           fn: function() { buildFAQ(); } },
+            { name: 'ScrollTop',     fn: function() { initScrollTop(); } },
+            { name: 'Observer',      fn: function() { initIntersectionObserver(); } },
+        ];
+
+        steps.forEach(function(step) {
+            try { step.fn(); }
+            catch (e) { console.error('[LPOLVO] ' + step.name + ' init failed:', e); }
+        });
+
+        /* ── Step 3: async data loading (non-blocking) ── */
+        try {
+            loadScripts().then(function() {
+                try { buildTopCreators(); } catch(e) { console.error('[LPOLVO] buildTopCreators failed:', e); }
+                try { buildTrendingSection(); } catch(e) { console.error('[LPOLVO] buildTrendingSection failed:', e); }
+            }).catch(function(e) { console.error('[LPOLVO] loadScripts failed:', e); });
+        } catch(e) { console.error('[LPOLVO] loadScripts call failed:', e); }
+
+        try { loadRealStats(); } catch(e) { console.error('[LPOLVO] loadRealStats failed:', e); }
+        try { startCommunityFeedListener(); } catch(e) { console.error('[LPOLVO] communityFeed failed:', e); }
+
+        /* ── Step 4: wire up auth state ── */
+        if (window.__pendingAuthUser !== undefined) {
+            try { onFirebaseAuthState(window.__pendingAuthUser); } catch(e) { console.error('[LPOLVO] authState failed:', e); }
+            delete window.__pendingAuthUser;
+        }
+        window.onFirebaseAuthState = onFirebaseAuthState;
+
+        /* ── Step 5: routing & UI events ── */
+        try {
+            window.addEventListener('hashchange', handleHashChange);
+            handleHashChange();
+            var so = document.getElementById('searchOverlay');
+            if (so) so.addEventListener('click', function(e) { if (e.target === so) closeSearch(); });
+            var lastHover = 0;
+            document.addEventListener('mouseover', function(e) {
+                if (Date.now() - lastHover < 200) return;
+                if (e.target.matches('button, .sort-btn, .cat-pill, .script-card, .creator-card, .dash-quick-btn, .theme-btn, .lang-pill')) {
+                    lastHover = Date.now();
+                    playHover();
+                }
+            }, { passive: true });
+        } catch(e) { console.error('[LPOLVO] Routing/UI events failed:', e); }
+
+        /* ── Step 6: ambient music & visibility ── */
+        try { setTimeout(function() { playThemeAmbient(); }, 1000); } catch(e) {}
+        try {
+            document.addEventListener('visibilitychange', function() {
+                if (state.theme !== 'absolutesingularity' || !SETTINGS.ambientMusic) return;
+                if (document.hidden) {
+                    if (_absAmbient && _absAmbient.ctx) try { _absAmbient.ctx.suspend(); } catch(e2) {}
+                } else {
+                    if (_absAmbient && _absAmbient.ctx) try { _absAmbient.ctx.resume(); } catch(e2) {}
+                    else startAbsoluteAmbient();
+                }
+            });
+            if (state.theme === 'absolutesingularity' && SETTINGS.ambientMusic) {
+                setTimeout(function() { startAbsoluteAmbient(); }, 1200);
+            }
+        } catch(e) {}
+
+        console.log('[LPOLVO HUB v1.3] Initialized ✓');
+        console.log('[LPOLVO HUB] Theme:', state.theme, 'Language:', state.language);
+        console.log('[LPOLVO HUB] Firebase ready:', window.__FB && window.__FB.ready);
+
+        /* ── Step 7: hide loading screen ── */
+        finishLoading();
+
+    }).catch(function(e) {
+        console.error('[LPOLVO] Fatal startup error:', e);
+        finishLoading();
+    });
 }
 
 if (document.readyState === 'loading') {
@@ -870,4 +975,3 @@ if (document.readyState === 'loading') {
 } else {
     startApp();
 }
-    </script>

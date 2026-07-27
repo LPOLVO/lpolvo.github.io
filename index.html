@@ -19,10 +19,6 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Manrope:wght@400;500;600;700;800&family=Syne:wght@400;500;600;700;800&family=JetBrains+Mono:wght@300;400;500;600;700&family=Orbitron:wght@400;500;600;700;800;900&family=Noto+Kufi+Arabic:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 
-    <!-- Firebase SDK — loaded as ES module -->
-    <script type="module" src="firebase.js"></script>
-
-
     <style>
         /* ═══════════════════════════════════════════════════════════════════
            LPOLVO HUB V1 — PREMIUM TYPOGRAPHY SYSTEM
@@ -12354,8 +12350,47 @@
     </div><!-- end #app -->
 
 
-    <!-- LPOLVO HUB v2.0 — Modular JavaScript -->
-    <!-- Load order: constants/state → sounds → language → themes → storage → firestore → notifications → auth → scripts → search → upload → profile → app -->
+    <!-- ═══════════════════════════════════════════════════════════════
+         LPOLVO HUB v1.3 — Script Loading Fix
+         ───────────────────────────────────────────────────────────────
+         THE ROOT PROBLEM (why loading screen was frozen):
+
+         firebase.js is type="module" — browsers ALWAYS defer ES modules.
+         They execute AFTER all plain scripts have run. So when app.js
+         (a plain script) called init() with a 1200ms timer, Firebase
+         wasn't initialized yet → window.__FB was undefined → every
+         module failed silently → finishLoading() was never reached.
+
+         THE FIX — three parts:
+
+         1. This inline plain <script> creates window.__fbReadyPromise
+            and its resolver BEFORE firebase.js or app.js load. Since
+            this is a plain synchronous script, it runs immediately and
+            the Promise exists when app.js checks for it.
+
+         2. firebase.js resolves that promise once Firebase is ready.
+
+         3. app.js awaits the promise before calling any init step.
+            runLoading() ONLY animates — it never calls finishLoading().
+            Only startApp() calls finishLoading(), after Firebase is live.
+         ═══════════════════════════════════════════════════════════════ -->
+
+    <!-- Step 0: Create the Firebase-ready promise synchronously (plain script, runs immediately) -->
+    <script>
+        (function() {
+            var resolve, reject;
+            window.__fbReadyPromise = new Promise(function(res, rej) {
+                resolve = res; reject = rej;
+            });
+            window.__fbReadyResolve = resolve;
+            window.__fbReadyReject  = reject;
+        })();
+    </script>
+
+    <!-- Step 1: Firebase ES Module — resolves window.__fbReadyPromise when done -->
+    <script type="module" src="firebase.js"></script>
+
+    <!-- Step 2: All plain modules (define globals synchronously) -->
     <script src="sounds.js"></script>
     <script src="language.js"></script>
     <script src="themes.js"></script>
@@ -12367,6 +12402,8 @@
     <script src="search.js"></script>
     <script src="upload.js"></script>
     <script src="profile.js"></script>
+
+    <!-- Step 3: App bootstrap — awaits Firebase before init() -->
     <script src="app.js"></script>
 </body>
 </html>

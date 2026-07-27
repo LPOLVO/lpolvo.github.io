@@ -295,6 +295,7 @@ async function toggleFavoriteScript(id) {
         showToast(isFav ? 'Removed from favorites' : 'Added to favorites ⭐', isFav ? 'info' : 'success');
         playLike();
     } catch (e) { showToast(getTranslation('couldNotUpdateFavs'), 'error'); }
+}
 
 // Alias: buildTopCreators → loadTopCreators
 function buildTopCreators() { return loadTopCreators(); }

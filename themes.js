@@ -4,7 +4,8 @@
    ═══════════════════════════════════════════════════════════════════ */
 
 /* ── THEMES WITH METADATA ── */
-const THEMES = [
+/* window.* so app.js and other modules can access these across script files */
+window.THEMES = [
     { id: 'lpolvo', name: 'LPOLVO Blue', desc: 'Default', color: '#4169e1', anim: 'particles' },
     { id: 'bloodmoon', name: 'Blood Moon 🌑🔴', desc: 'Dark Mystery', color: '#dc2626', anim: 'bloodmoon' },
     { id: 'bluemoon', name: 'Blue Moon 🌙🔵', desc: 'Calm Magic', color: '#60a5fa', anim: 'bluemoon' },
@@ -131,6 +132,7 @@ const THEMES = [
     /* 🜂 ABSOLUTE #112 — a new generation begins */
     { id: 'absolutesingularity', name: '🜂 The Absolute Singularity', desc: 'Reality Has Been Replaced. You Are Beyond.', color: '#7CF9FF', anim: 'absolutesingularity', op: true, sss: true, mythic: true, transcendent: true, omniscient: true, omnipotent: true, absolute: true },
 ];
+var THEMES = window.THEMES; // local alias for functions inside this file
 
 const BADGES_DEF = [
     { id: 'pioneer', icon: '🌟', name: 'Pioneer', desc: 'Joined LPOLVO HUB' },
@@ -152,6 +154,7 @@ const BADGES_DEF = [
     { id: 'top_creator', icon: '🏆', name: 'Top Creator', desc: 'Reached top 10 creators' },
     { id: 'popular', icon: '📈', name: 'Popular', desc: 'Script reached 1000 views' },
 ];
+window.BADGES_DEF = BADGES_DEF;
 
 /* ── THEME NAME LOCALIZATIONS ── */
 const THEME_NAMES = {
@@ -344,6 +347,7 @@ const LANGUAGES = {
     fr: { name: 'Français', flag: '🇫🇷', dir: 'ltr' },
     ar: { name: 'العربية', flag: '🇸🇦', dir: 'rtl' },
 };
+window.LANGUAGES = LANGUAGES;
 
 
 /* ── THEME ENGINE ── */
