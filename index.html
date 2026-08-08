@@ -1,0 +1,2764 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="lpolvo">
+<head><script src="https://happyseeds.ai/app/__happyseeds__/preview-runtime.js"></script>
+    <meta charset="UTF-8">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9272937345635552"
+     crossorigin="anonymous"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <meta name="theme-color" content="#4169e1">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-capable" content="yes">
+
+    <!-- SEO -->
+    <title>LP10 HUB — Official Roblox Scripts by LPOLVO</title>
+    <meta name="description" content="LP10 HUB — The official LPOLVO Roblox scripting platform. 34 premium scripts, 9 videos, auto farm, combat, utility and more. Free to use.">
+    <meta name="keywords" content="LP10 HUB, LPOLVO, Roblox scripts, auto farm, roblox hack, free scripts, Heroes RNG, LPOLVOXD1">
+    <meta name="author" content="LPOLVO">
+    <meta name="robots" content="index, follow">
+
+    <!-- Open Graph (WhatsApp, Facebook, Telegram, Discord) -->
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="LP10 HUB">
+    <meta property="og:title" content="LP10 HUB — Official Roblox Scripts by LPOLVO">
+    <meta property="og:description" content="The official LPOLVO headquarters for premium Roblox scripts. 34 exclusive scripts, 9 real videos — all free by LPOLVO.">
+    <meta property="og:image" content="favicon.png">
+    <meta property="og:image:width" content="1254">
+    <meta property="og:image:height" content="1254">
+    <meta property="og:image:alt" content="LP10 HUB Logo">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="LP10 HUB — Official Roblox Scripts by LPOLVO">
+    <meta name="twitter:description" content="34 premium Roblox scripts, 9 videos — all free by LPOLVO. Auto farm, combat, utility and more.">
+    <meta name="twitter:image" content="favicon.png">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="apple-touch-icon" href="favicon.png">
+    <link rel="shortcut icon" href="favicon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Manrope:wght@400;500;600;700;800&family=Syne:wght@400;500;600;700;800&family=JetBrains+Mono:wght@300;400;500;600;700&family=Orbitron:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+/* ═══════════════════════════════════════════════════
+   LPOLVO — OFFICIAL PLATFORM v2.0
+   DESIGN SYSTEM & VARIABLES
+═══════════════════════════════════════════════════ */
+:root {
+    --bg: #06091a;
+    --bg2: #080c20;
+    --bg3: #0c1228;
+    --bg4: #101830;
+    --card: #0a0e22;
+    --card-border: #161e3a;
+    --card-hover: #0e1430;
+    --accent: #4169e1;
+    --accent2: #2952d9;
+    --accent3: #93b4ff;
+    --accent-alpha: rgba(65,105,225,0.12);
+    --text: #eef2ff;
+    --text2: #6b80c8;
+    --text3: #3d4e7a;
+    --border: #161e3a;
+    --glow: rgba(65,105,225,0.55);
+    --glow2: rgba(65,105,225,0.18);
+    --nav-bg: rgba(6,9,26,0.96);
+    --btn-grad: linear-gradient(135deg,#4169e1,#2952d9);
+    --btn-hover: linear-gradient(135deg,#6688ee,#4169e1);
+    --shadow: 0 8px 32px rgba(0,0,0,0.8);
+    --glass: rgba(10,14,34,0.88);
+    --glass-border: rgba(65,105,225,0.2);
+    --tag-bg: rgba(65,105,225,0.1);
+    --tag-text: #93b4ff;
+    --success: #22c55e;
+    --error: #ef4444;
+    --warning: #eab308;
+    --radius: 12px;
+    --radius-lg: 16px;
+    --radius-xl: 20px;
+    --radius-sm: 8px;
+    --nav-h: 56px;
+    --bottom-h: 64px;
+    --font-sans: 'Manrope','Inter',-apple-system,sans-serif;
+    --font-display: 'Syne','Inter',sans-serif;
+    --font-mono: 'JetBrains Mono','Cascadia Code',monospace;
+    --font-orb: 'Orbitron','Inter',sans-serif;
+    --transition: all 0.3s cubic-bezier(0.22,1,0.36,1);
+}
+
+*,*::before,*::after { box-sizing:border-box; margin:0; padding:0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+    font-family: var(--font-sans);
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* ── SCROLLBAR ── */
+::-webkit-scrollbar { width:6px; height:4px; }
+::-webkit-scrollbar-track { background: var(--bg3); }
+::-webkit-scrollbar-thumb { background: var(--accent); border-radius:3px; }
+
+/* ── LOADING SCREEN ── */
+#loading-screen {
+    position: fixed; inset:0; z-index:9999;
+    background: var(--bg);
+    display:flex; flex-direction:column; align-items:center; justify-content:center;
+    gap:24px; transition: opacity 0.6s ease, visibility 0.6s;
+}
+#loading-screen.hide { opacity:0; visibility:hidden; pointer-events:none; }
+.loading-logo {
+    font-family: var(--font-orb);
+    font-size: 2.4rem; font-weight:900;
+    background: var(--btn-grad);
+    -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;
+    letter-spacing:0.08em;
+}
+.loading-sub { color:var(--text3); font-size:0.75rem; letter-spacing:0.15em; text-transform:uppercase; }
+.loading-bar-wrap {
+    width:200px; height:3px; background:var(--bg3); border-radius:3px; overflow:hidden;
+}
+.loading-bar { height:100%; background:var(--btn-grad); border-radius:3px; width:0; transition: width 0.4s ease; }
+.loading-dots { display:flex; gap:6px; }
+.loading-dot {
+    width:6px; height:6px; border-radius:50%; background:var(--accent);
+    animation: loadDot 1.4s ease-in-out infinite;
+}
+.loading-dot:nth-child(2) { animation-delay:0.2s; }
+.loading-dot:nth-child(3) { animation-delay:0.4s; }
+@keyframes loadDot { 0%,80%,100%{opacity:0.2;transform:scale(0.8)} 40%{opacity:1;transform:scale(1)} }
+
+/* ── APP WRAPPER ── */
+#app { display:none; visibility:hidden; }
+#app.visible { display:block; visibility:visible; }
+
+/* ── PARTICLES ── */
+#particles-canvas {
+    position:fixed; inset:0; z-index:0; pointer-events:none;
+    opacity:0.6;
+}
+
+/* ── NAV ── */
+.nav-bar {
+    position:fixed; top:0; left:0; right:0; z-index:100;
+    height:var(--nav-h);
+    display:flex; align-items:center; padding:0 16px;
+    background:var(--nav-bg);
+    backdrop-filter:blur(20px); -webkit-backdrop-filter:blur(20px);
+    border-bottom:1px solid var(--border);
+}
+.nav-logo {
+    display:flex; align-items:center; gap:10px; text-decoration:none;
+    cursor:pointer;
+}
+.nav-logo-icon {
+    width:36px; height:36px; border-radius:10px;
+    background:var(--btn-grad);
+    display:flex; align-items:center; justify-content:center;
+    font-family:var(--font-orb); font-weight:900; font-size:0.75rem; color:#fff;
+    letter-spacing:0.05em; flex-shrink:0;
+    box-shadow: 0 0 14px var(--glow2);
+}
+.nav-logo-text {
+    font-family:var(--font-orb); font-weight:900; font-size:1rem;
+    color:var(--text); letter-spacing:0.06em;
+}
+.nav-logo-text span { color:var(--accent3); }
+.nav-actions { display:flex; align-items:center; gap:8px; margin-left:auto; }
+.nav-btn {
+    width:36px; height:36px; border-radius:10px;
+    background:var(--bg3); border:1px solid var(--border);
+    color:var(--text2); cursor:pointer;
+    display:flex; align-items:center; justify-content:center;
+    transition:var(--transition); font-size:1rem;
+    position:relative;
+}
+.nav-btn:hover { background:var(--accent-alpha); color:var(--accent3); border-color:var(--accent); }
+.nav-btn svg { width:18px; height:18px; }
+.nav-buy-btn {
+    height:32px; padding:0 14px; border-radius:10px;
+    background:var(--btn-grad); border:none; color:#fff;
+    font-family:var(--font-sans); font-weight:700; font-size:0.72rem;
+    letter-spacing:0.06em; text-transform:uppercase;
+    cursor:pointer; transition:var(--transition);
+    box-shadow: 0 2px 12px var(--glow2);
+    white-space:nowrap;
+}
+.nav-buy-btn:hover { transform:translateY(-1px); box-shadow:0 4px 20px var(--glow2); }
+
+/* ── TICKER ── */
+.ticker-wrap {
+    position:fixed; top:var(--nav-h); left:0; right:0; z-index:99;
+    background:rgba(65,105,225,0.08); border-bottom:1px solid rgba(65,105,225,0.15);
+    overflow:hidden; height:28px;
+}
+.ticker-inner {
+    display:flex; align-items:center; white-space:nowrap;
+    animation: tickerScroll 60s linear infinite;
+    height:100%;
+}
+.ticker-inner:hover { animation-play-state:paused; }
+.ticker-item {
+    padding:0 32px; font-size:0.68rem; color:var(--text2);
+    font-weight:600; letter-spacing:0.05em; text-transform:uppercase;
+}
+.ticker-dot { width:4px; height:4px; border-radius:50%; background:var(--accent); display:inline-block; margin-right:8px; }
+@keyframes tickerScroll { from{transform:translateX(0)} to{transform:translateX(-50%)} }
+
+/* ── BOTTOM NAV ── */
+.bottom-nav {
+    position:fixed; bottom:0; left:0; right:0; z-index:100;
+    height:var(--bottom-h);
+    display:flex; align-items:center;
+    background:var(--nav-bg);
+    backdrop-filter:blur(20px); -webkit-backdrop-filter:blur(20px);
+    border-top:1px solid var(--border);
+    padding-bottom:env(safe-area-inset-bottom,0);
+}
+.bottom-nav-item {
+    flex:1; display:flex; flex-direction:column; align-items:center; justify-content:center;
+    gap:3px; cursor:pointer; padding:8px 4px;
+    color:var(--text3); transition:var(--transition);
+    position:relative;
+}
+.bottom-nav-item.active { color:var(--accent); }
+.bottom-nav-item.active::before {
+    content:''; position:absolute; top:0; left:50%; transform:translateX(-50%);
+    width:24px; height:2px; background:var(--accent); border-radius:0 0 3px 3px;
+}
+.bottom-nav-item svg { width:20px; height:20px; }
+.bottom-nav-label { font-size:0.6rem; font-weight:600; letter-spacing:0.04em; }
+
+/* ── PAGES ── */
+.page {
+    display:none; min-height:100vh;
+    padding-top: calc(var(--nav-h) + 28px + 12px);
+    padding-bottom: calc(var(--bottom-h) + 16px);
+}
+.page.active { display:block; }
+
+/* ── SIDEBAR ── */
+#sidebar {
+    position:fixed; top:0; right:0; bottom:0; z-index:200;
+    width:280px; background:var(--bg2);
+    border-left:1px solid var(--border);
+    transform:translateX(100%); transition:transform 0.35s cubic-bezier(0.22,1,0.36,1);
+    display:flex; flex-direction:column; overflow-y:auto;
+}
+#sidebar.open { transform:translateX(0); }
+#sidebar-overlay {
+    position:fixed; inset:0; z-index:199;
+    background:rgba(0,0,0,0.6); backdrop-filter:blur(4px);
+    opacity:0; visibility:hidden; transition:var(--transition);
+}
+#sidebar-overlay.show { opacity:1; visibility:visible; }
+.sidebar-header {
+    display:flex; align-items:center; justify-content:space-between;
+    padding:16px; border-bottom:1px solid var(--border);
+}
+.sidebar-title {
+    font-family:var(--font-orb); font-weight:900; font-size:0.9rem;
+    color:var(--text); letter-spacing:0.06em;
+}
+.sidebar-close-btn {
+    width:32px; height:32px; border-radius:8px;
+    background:var(--bg3); border:1px solid var(--border);
+    color:var(--text2); cursor:pointer; font-size:1rem;
+    display:flex; align-items:center; justify-content:center;
+}
+.sidebar-nav { padding:8px 0; }
+.sidebar-nav-item {
+    display:flex; align-items:center; gap:12px;
+    padding:12px 16px; cursor:pointer; color:var(--text2);
+    transition:var(--transition); font-size:0.85rem; font-weight:600;
+}
+.sidebar-nav-item:hover, .sidebar-nav-item.active {
+    background:var(--accent-alpha); color:var(--accent3);
+}
+.sidebar-nav-icon { font-size:1.1rem; width:20px; text-align:center; }
+.sidebar-connect {
+    padding:16px; border-top:1px solid var(--border); margin-top:auto;
+}
+.sidebar-connect-title {
+    font-size:0.65rem; letter-spacing:0.12em; text-transform:uppercase;
+    color:var(--text3); font-weight:700; margin-bottom:10px;
+}
+.sidebar-social-grid { display:grid; grid-template-columns:1fr 1fr; gap:8px; }
+.sidebar-social-btn {
+    display:flex; align-items:center; gap:6px; padding:8px 10px;
+    border-radius:var(--radius-sm); background:var(--bg3);
+    border:1px solid var(--border); color:var(--text2);
+    font-size:0.72rem; font-weight:600; cursor:pointer;
+    text-decoration:none; transition:var(--transition);
+}
+.sidebar-social-btn:hover { background:var(--accent-alpha); color:var(--accent3); border-color:var(--accent); }
+
+/* ── HERO SECTION ── */
+.hero {
+    padding:40px 20px 32px;
+    text-align:center; position:relative; overflow:hidden;
+}
+.hero::before {
+    content:''; position:absolute; top:-80px; left:50%; transform:translateX(-50%);
+    width:600px; height:400px;
+    background: radial-gradient(ellipse at center, rgba(65,105,225,0.12) 0%, transparent 70%);
+    pointer-events:none;
+}
+.hero-badge {
+    display:inline-flex; align-items:center; gap:6px;
+    background:rgba(65,105,225,0.12); border:1px solid rgba(65,105,225,0.25);
+    border-radius:20px; padding:5px 14px; margin-bottom:20px;
+}
+.hero-badge-dot { width:6px; height:6px; border-radius:50%; background:#22c55e; animation:pulse 2s infinite; }
+.hero-badge-text { font-size:0.65rem; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:var(--accent3); }
+@keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.6;transform:scale(1.2)} }
+
+.hero-title {
+    font-family:var(--font-orb); font-weight:900;
+    font-size:clamp(2.4rem,8vw,4rem);
+    line-height:0.95; letter-spacing:0.04em;
+    margin-bottom:16px; color:var(--text);
+}
+.hero-title span {
+    display:block; color:var(--accent3);
+    text-shadow: 0 0 40px rgba(65,105,225,0.4);
+}
+.hero-desc {
+    font-size:0.95rem; color:var(--text2); line-height:1.65;
+    max-width:480px; margin:0 auto 28px;
+}
+.hero-btns { display:flex; flex-direction:column; gap:10px; max-width:320px; margin:0 auto; }
+.hero-btn-primary {
+    height:50px; border-radius:14px; background:var(--btn-grad);
+    border:none; color:#fff; font-family:var(--font-sans); font-weight:800;
+    font-size:0.85rem; letter-spacing:0.08em; text-transform:uppercase;
+    cursor:pointer; transition:var(--transition);
+    display:flex; align-items:center; justify-content:center; gap:8px;
+    box-shadow: 0 4px 24px var(--glow2);
+}
+.hero-btn-primary:hover { transform:translateY(-2px); box-shadow:0 8px 32px var(--glow2); }
+.hero-btn-secondary {
+    height:50px; border-radius:14px;
+    background:transparent; border:1px solid var(--border);
+    color:var(--text2); font-family:var(--font-sans); font-weight:700;
+    font-size:0.82rem; letter-spacing:0.06em; text-transform:uppercase;
+    cursor:pointer; transition:var(--transition);
+    display:flex; align-items:center; justify-content:center; gap:8px;
+}
+.hero-btn-secondary:hover { border-color:var(--accent); color:var(--accent3); background:var(--accent-alpha); }
+.hero-stats {
+    display:grid; grid-template-columns:repeat(4,1fr);
+    border-top:1px solid var(--border);
+    margin-top:32px; padding-top:24px;
+}
+.hero-stat { text-align:center; padding:8px 4px; }
+.hero-stat-num {
+    font-family:var(--font-orb); font-weight:900;
+    font-size:1.4rem; color:var(--accent);
+}
+.hero-stat-label { font-size:0.6rem; color:var(--text3); font-weight:600; letter-spacing:0.08em; text-transform:uppercase; margin-top:2px; }
+
+/* ── SECTION ── */
+.section { padding:0 16px 28px; }
+.section-header {
+    display:flex; align-items:center; justify-content:space-between;
+    margin-bottom:16px;
+}
+.section-title {
+    font-family:var(--font-display); font-weight:800;
+    font-size:1.1rem; color:var(--text); display:flex; align-items:center; gap:8px;
+}
+.section-see-all {
+    font-size:0.72rem; color:var(--accent); font-weight:700;
+    letter-spacing:0.06em; cursor:pointer; background:none; border:none;
+    text-transform:uppercase; padding:4px 0;
+}
+.section-see-all:hover { color:var(--accent3); }
+
+/* ── CATEGORY PILLS ── */
+.cat-scroll { display:flex; gap:8px; overflow-x:auto; padding:0 16px 16px; scrollbar-width:none; }
+.cat-scroll::-webkit-scrollbar { display:none; }
+.cat-pill {
+    display:flex; align-items:center; gap:6px; flex-shrink:0;
+    padding:7px 14px; border-radius:20px;
+    background:var(--bg3); border:1px solid var(--border);
+    color:var(--text2); font-size:0.75rem; font-weight:600;
+    cursor:pointer; transition:var(--transition); white-space:nowrap;
+}
+.cat-pill:hover, .cat-pill.active {
+    background:var(--accent-alpha); border-color:var(--accent); color:var(--accent3);
+}
+.cat-pill-icon { font-size:0.9rem; }
+
+/* ── SCRIPT CARDS ── */
+.scripts-grid {
+    display:grid; grid-template-columns:1fr;
+    gap:12px;
+}
+@media(min-width:520px) { .scripts-grid { grid-template-columns:repeat(2,1fr); } }
+@media(min-width:900px) { .scripts-grid { grid-template-columns:repeat(3,1fr); } }
+@media(min-width:1200px) { .scripts-grid { grid-template-columns:repeat(4,1fr); } }
+
+.script-card {
+    background:var(--card); border:1px solid var(--card-border);
+    border-radius:var(--radius-lg); overflow:hidden;
+    cursor:pointer; transition:var(--transition);
+    position:relative; display:flex; flex-direction:column;
+}
+.script-card:hover {
+    border-color:var(--accent); transform:translateY(-2px);
+    box-shadow:0 8px 32px rgba(0,0,0,0.5), 0 0 0 1px rgba(65,105,225,0.2);
+}
+.script-card-thumb {
+    height:120px; background:var(--bg3); position:relative; overflow:hidden;
+    display:flex; align-items:center; justify-content:center;
+}
+.script-card-thumb-overlay {
+    position:absolute; inset:0;
+    background:linear-gradient(to bottom, transparent 50%, var(--card) 100%);
+}
+.script-card-thumb-badge {
+    position:absolute; bottom:8px; left:8px;
+    background:rgba(0,0,0,0.7); backdrop-filter:blur(8px);
+    border-radius:6px; padding:3px 8px;
+    font-size:0.65rem; font-weight:700; color:var(--text);
+    white-space:nowrap; max-width:calc(100% - 16px); overflow:hidden; text-overflow:ellipsis;
+}
+.script-card-body { padding:12px; flex:1; display:flex; flex-direction:column; gap:6px; }
+.script-card-header { display:flex; align-items:flex-start; gap:8px; }
+.script-card-icon {
+    width:32px; height:32px; border-radius:8px;
+    background:var(--btn-grad); display:flex; align-items:center; justify-content:center;
+    font-size:0.9rem; flex-shrink:0;
+}
+.script-card-info { flex:1; min-width:0; }
+.script-card-title {
+    font-family:var(--font-display); font-weight:700; font-size:0.85rem;
+    color:var(--text); line-height:1.2;
+    white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
+}
+.script-card-game { font-size:0.65rem; color:var(--text3); font-weight:600; margin-top:2px; }
+.script-card-desc {
+    font-size:0.73rem; color:var(--text2); line-height:1.45;
+    display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden;
+}
+.script-card-meta { display:flex; align-items:center; gap:6px; flex-wrap:wrap; margin-top:auto; padding-top:6px; }
+.script-badge {
+    font-size:0.58rem; font-weight:700; letter-spacing:0.06em; text-transform:uppercase;
+    padding:2px 7px; border-radius:5px;
+}
+.badge-cat { background:var(--tag-bg); color:var(--tag-text); }
+.badge-new { background:rgba(34,197,94,0.12); color:#22c55e; }
+.badge-combat { background:rgba(239,68,68,0.12); color:#ef4444; }
+.badge-movement { background:rgba(234,179,8,0.12); color:#eab308; }
+.badge-utility { background:rgba(168,85,247,0.12); color:#a855f7; }
+.badge-teleport { background:rgba(6,182,212,0.12); color:#06b6d4; }
+.badge-visual { background:rgba(244,114,182,0.12); color:#f472b6; }
+.creator-line {
+    display:flex; align-items:center; gap:5px;
+    margin-top:6px; padding-top:6px; border-top:1px solid var(--border);
+}
+.creator-verified-badge {
+    display:inline-flex; align-items:center; justify-content:center;
+    width:14px; height:14px; border-radius:50%;
+    background:#4169e1; color:#fff; font-size:0.55rem; font-weight:900;
+    flex-shrink:0;
+}
+.creator-name-tag { font-size:0.65rem; color:var(--text2); font-weight:700; }
+.script-card-actions {
+    display:flex; gap:6px; padding:8px 12px;
+    border-top:1px solid var(--border);
+}
+.card-action-btn {
+    flex:1; height:30px; border-radius:8px; border:1px solid var(--border);
+    background:var(--bg3); color:var(--text2); font-size:0.65rem; font-weight:700;
+    letter-spacing:0.04em; cursor:pointer; transition:var(--transition);
+    display:flex; align-items:center; justify-content:center; gap:4px;
+}
+.card-action-btn:hover { background:var(--accent-alpha); color:var(--accent3); border-color:var(--accent); }
+.card-action-btn.primary { background:var(--btn-grad); color:#fff; border-color:transparent; }
+.card-action-btn.primary:hover { transform:scale(1.02); box-shadow:0 2px 12px var(--glow2); }
+.card-action-btn.fav-active { background:rgba(239,68,68,0.12); color:#ef4444; border-color:#ef4444; }
+.card-action-btn.pin-active { background:rgba(234,179,8,0.12); color:#eab308; border-color:#eab308; }
+
+/* ── SCRIPTS PAGE ── */
+.scripts-page-header { padding:16px 16px 12px; }
+.scripts-page-title {
+    font-family:var(--font-display); font-weight:800; font-size:1.4rem;
+    color:var(--text); display:flex; align-items:center; gap:8px; margin-bottom:12px;
+}
+.scripts-search-wrap {
+    position:relative; margin-bottom:12px;
+}
+.scripts-search-input {
+    width:100%; height:42px; border-radius:var(--radius);
+    background:var(--bg3); border:1px solid var(--border);
+    padding:0 16px 0 40px; color:var(--text); font-size:0.85rem;
+    font-family:var(--font-sans); outline:none; transition:var(--transition);
+}
+.scripts-search-input:focus { border-color:var(--accent); background:var(--bg4); }
+.scripts-search-input::placeholder { color:var(--text3); }
+.scripts-search-icon {
+    position:absolute; left:12px; top:50%; transform:translateY(-50%);
+    color:var(--text3); pointer-events:none;
+}
+.scripts-filter-tabs {
+    display:flex; gap:6px; overflow-x:auto; scrollbar-width:none; padding-bottom:4px;
+}
+.scripts-filter-tabs::-webkit-scrollbar { display:none; }
+.filter-tab {
+    flex-shrink:0; height:32px; padding:0 14px; border-radius:10px;
+    background:var(--bg3); border:1px solid var(--border);
+    color:var(--text2); font-size:0.72rem; font-weight:700;
+    cursor:pointer; transition:var(--transition); white-space:nowrap;
+    display:flex; align-items:center; gap:5px;
+}
+.filter-tab.active { background:var(--accent); border-color:var(--accent); color:#fff; }
+.filter-tab:hover:not(.active) { border-color:var(--accent); color:var(--accent3); }
+.scripts-count { font-size:0.72rem; color:var(--text3); font-weight:600; padding:0 16px 10px; }
+
+/* ── PINNED SECTION ── */
+.pinned-section { padding:0 16px 16px; }
+.pinned-title {
+    font-size:0.72rem; font-weight:700; color:var(--warning);
+    letter-spacing:0.08em; text-transform:uppercase; margin-bottom:10px;
+    display:flex; align-items:center; gap:6px;
+}
+
+/* ── FAVORITES SECTION ── */
+.favs-section { padding:0 16px 16px; }
+.favs-title {
+    font-size:0.72rem; font-weight:700; color:#ef4444;
+    letter-spacing:0.08em; text-transform:uppercase; margin-bottom:10px;
+    display:flex; align-items:center; gap:6px;
+}
+.view-favs-btn {
+    height:28px; padding:0 12px; border-radius:8px;
+    background:rgba(239,68,68,0.1); border:1px solid rgba(239,68,68,0.3);
+    color:#ef4444; font-size:0.65rem; font-weight:700; cursor:pointer;
+    margin-left:auto; transition:var(--transition);
+}
+.view-favs-btn:hover { background:rgba(239,68,68,0.2); }
+
+/* ── SCRIPT DETAIL MODAL ── */
+#script-modal {
+    position:fixed; inset:0; z-index:300;
+    background:rgba(0,0,0,0.85); backdrop-filter:blur(12px);
+    display:flex; align-items:flex-end; justify-content:center;
+    opacity:0; visibility:hidden; transition:var(--transition);
+}
+#script-modal.show { opacity:1; visibility:visible; }
+.script-modal-panel {
+    width:100%; max-width:680px; max-height:90vh;
+    background:var(--bg2); border-radius:24px 24px 0 0;
+    border:1px solid var(--border); border-bottom:none;
+    overflow-y:auto; transform:translateY(100%);
+    transition:transform 0.4s cubic-bezier(0.22,1,0.36,1);
+}
+#script-modal.show .script-modal-panel { transform:translateY(0); }
+.script-modal-drag { width:40px; height:4px; border-radius:2px; background:var(--border); margin:12px auto 0; }
+.script-modal-hero {
+    height:160px; background:var(--bg3); position:relative; overflow:hidden;
+    display:flex; align-items:center; justify-content:center;
+}
+.script-modal-hero-icon { font-size:3rem; }
+.script-modal-hero-gradient {
+    position:absolute; inset:0;
+    background:linear-gradient(to bottom, transparent 40%, var(--bg2) 100%);
+}
+.script-modal-content { padding:16px 20px 24px; }
+.script-modal-title {
+    font-family:var(--font-display); font-weight:800; font-size:1.3rem;
+    color:var(--text); line-height:1.15; margin-bottom:8px;
+}
+.script-modal-meta { display:flex; flex-wrap:wrap; gap:6px; margin-bottom:14px; }
+.script-modal-badge {
+    font-size:0.62rem; font-weight:700; letter-spacing:0.06em;
+    text-transform:uppercase; padding:3px 8px; border-radius:6px;
+}
+.script-modal-creator {
+    display:flex; align-items:center; gap:10px;
+    background:var(--bg3); border:1px solid var(--border);
+    border-radius:var(--radius); padding:12px 14px; margin-bottom:16px;
+}
+.script-modal-creator-avatar {
+    width:40px; height:40px; border-radius:12px;
+    background:var(--btn-grad); display:flex; align-items:center; justify-content:center;
+    font-family:var(--font-orb); font-weight:900; font-size:0.7rem; color:#fff;
+    flex-shrink:0; box-shadow:0 0 12px var(--glow2);
+}
+.script-modal-creator-info { flex:1; }
+.script-modal-creator-name {
+    font-weight:800; font-size:0.88rem; color:var(--text);
+    display:flex; align-items:center; gap:6px;
+}
+.script-modal-creator-verified {
+    display:inline-flex; align-items:center; justify-content:center;
+    width:16px; height:16px; border-radius:50%; background:#4169e1;
+    color:#fff; font-size:0.58rem; font-weight:900;
+}
+.script-modal-creator-role { font-size:0.65rem; color:var(--text3); font-weight:600; margin-top:1px; }
+.script-modal-desc {
+    font-size:0.82rem; color:var(--text2); line-height:1.6;
+    margin-bottom:16px; padding-bottom:16px; border-bottom:1px solid var(--border);
+}
+.script-modal-code-section { margin-bottom:16px; }
+.script-modal-code-label {
+    font-size:0.65rem; font-weight:700; letter-spacing:0.1em; text-transform:uppercase;
+    color:var(--text3); margin-bottom:8px; display:flex; align-items:center; gap:6px;
+}
+.script-code-block {
+    background:var(--bg); border:1px solid var(--border);
+    border-radius:var(--radius); padding:12px 14px;
+    font-family:var(--font-mono); font-size:0.72rem; color:var(--accent3);
+    line-height:1.6; white-space:pre-wrap; word-break:break-all;
+    max-height:140px; overflow-y:auto;
+}
+.script-modal-actions { display:flex; flex-wrap:wrap; gap:8px; margin-bottom:16px; }
+.modal-action-btn {
+    flex:1; min-width:calc(50% - 4px); height:42px; border-radius:12px;
+    border:1px solid var(--border); background:var(--bg3);
+    color:var(--text2); font-family:var(--font-sans); font-weight:700;
+    font-size:0.75rem; letter-spacing:0.04em; cursor:pointer;
+    display:flex; align-items:center; justify-content:center; gap:6px;
+    transition:var(--transition);
+}
+.modal-action-btn:hover { border-color:var(--accent); color:var(--accent3); background:var(--accent-alpha); }
+.modal-action-btn.primary { background:var(--btn-grad); color:#fff; border-color:transparent; }
+.modal-action-btn.primary:hover { transform:translateY(-1px); box-shadow:0 4px 20px var(--glow2); }
+.modal-action-btn.fav-active { background:rgba(239,68,68,0.12); color:#ef4444; border-color:#ef4444; }
+.modal-action-btn.pin-active { background:rgba(234,179,8,0.12); color:#eab308; border-color:#eab308; }
+.script-modal-close {
+    position:absolute; top:16px; right:16px;
+    width:36px; height:36px; border-radius:50%;
+    background:rgba(0,0,0,0.5); border:1px solid var(--border);
+    color:var(--text2); cursor:pointer; font-size:1.1rem;
+    display:flex; align-items:center; justify-content:center;
+    transition:var(--transition); z-index:10;
+}
+.script-modal-close:hover { background:var(--bg3); color:var(--text); }
+
+/* ── SEARCH ── */
+#searchOverlay {
+    position:fixed; inset:0; z-index:250;
+    background:rgba(0,0,0,0.85); backdrop-filter:blur(12px);
+    opacity:0; visibility:hidden; transition:var(--transition);
+    padding:20px 16px;
+}
+#searchOverlay.show { opacity:1; visibility:visible; }
+.search-panel {
+    max-width:600px; margin:0 auto; position:relative;
+    transform:translateY(-20px); transition:transform 0.3s ease;
+}
+#searchOverlay.show .search-panel { transform:translateY(0); }
+.search-input-wrap { position:relative; margin-bottom:16px; }
+.search-input {
+    width:100%; height:52px; border-radius:16px;
+    background:var(--bg2); border:1px solid var(--accent);
+    padding:0 16px 0 48px; color:var(--text); font-size:1rem;
+    font-family:var(--font-sans); outline:none;
+    box-shadow:0 0 0 3px rgba(65,105,225,0.15);
+}
+.search-input-icon {
+    position:absolute; left:16px; top:50%; transform:translateY(-50%);
+    color:var(--accent); pointer-events:none;
+}
+.search-close {
+    position:absolute; right:12px; top:50%; transform:translateY(-50%);
+    width:28px; height:28px; border-radius:8px;
+    background:var(--bg3); border:1px solid var(--border);
+    color:var(--text2); cursor:pointer; font-size:0.9rem;
+    display:flex; align-items:center; justify-content:center;
+}
+.search-results { max-height:60vh; overflow-y:auto; }
+.search-result-item {
+    display:flex; align-items:center; gap:12px;
+    padding:12px 14px; border-radius:var(--radius);
+    background:var(--bg2); border:1px solid var(--border);
+    margin-bottom:8px; cursor:pointer; transition:var(--transition);
+}
+.search-result-item:hover { border-color:var(--accent); background:var(--card); }
+.search-result-icon { font-size:1.4rem; flex-shrink:0; }
+.search-result-info { flex:1; min-width:0; }
+.search-result-name {
+    font-weight:700; font-size:0.88rem; color:var(--text);
+    white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
+}
+.search-result-sub { font-size:0.7rem; color:var(--text3); font-weight:600; margin-top:1px; }
+.search-result-type {
+    font-size:0.6rem; font-weight:700; letter-spacing:0.08em; text-transform:uppercase;
+    padding:2px 7px; border-radius:5px; background:var(--tag-bg); color:var(--tag-text);
+    flex-shrink:0;
+}
+.search-empty { text-align:center; padding:40px 20px; color:var(--text3); font-size:0.85rem; }
+
+/* ── VIDEO CARDS ── */
+.videos-grid { display:flex; flex-direction:column; gap:16px; }
+@media(min-width:640px) {
+    .videos-grid { display:grid; grid-template-columns:repeat(2,1fr); }
+}
+@media(min-width:1000px) {
+    .videos-grid { grid-template-columns:repeat(3,1fr); }
+}
+.video-card {
+    background:var(--card); border:1px solid var(--card-border);
+    border-radius:var(--radius-lg); overflow:hidden;
+    cursor:pointer; transition:var(--transition); position:relative;
+    display:flex; flex-direction:column;
+    text-decoration:none; color:inherit;
+}
+.video-card:hover {
+    border-color:var(--accent); transform:translateY(-3px);
+    box-shadow:0 12px 40px rgba(0,0,0,0.6), 0 0 0 1px rgba(65,105,225,0.3);
+}
+.video-thumb-wrap {
+    position:relative; padding-top:56.25%; /* 16:9 */
+    background:var(--bg3); overflow:hidden;
+}
+.video-thumb {
+    position:absolute; inset:0; width:100%; height:100%;
+    object-fit:cover; transition:transform 0.5s ease;
+}
+.video-card:hover .video-thumb { transform:scale(1.05); }
+.video-play-btn {
+    position:absolute; inset:0; display:flex; align-items:center; justify-content:center;
+}
+.video-play-circle {
+    width:52px; height:52px; border-radius:50%;
+    background:rgba(65,105,225,0.9); backdrop-filter:blur(8px);
+    display:flex; align-items:center; justify-content:center;
+    transition:var(--transition);
+    box-shadow:0 0 0 0 rgba(65,105,225,0.4);
+}
+.video-card:hover .video-play-circle {
+    transform:scale(1.12);
+    box-shadow:0 0 0 12px rgba(65,105,225,0.15);
+}
+.video-play-circle svg { width:20px; height:20px; color:#fff; margin-left:3px; }
+.video-thumb-overlay {
+    position:absolute; inset:0;
+    background:linear-gradient(to bottom, transparent 40%, rgba(10,14,34,0.85) 100%);
+}
+.video-duration {
+    position:absolute; bottom:8px; right:8px;
+    background:rgba(0,0,0,0.8); border-radius:4px; padding:2px 6px;
+    font-family:var(--font-mono); font-size:0.65rem; color:#fff; font-weight:600;
+}
+.video-body { padding:12px; flex:1; display:flex; flex-direction:column; gap:6px; }
+.video-channel { display:flex; align-items:center; gap:6px; }
+.video-channel-avatar {
+    width:24px; height:24px; border-radius:50%; overflow:hidden; flex-shrink:0;
+}
+.video-channel-avatar img { width:100%; height:100%; object-fit:cover; }
+.video-channel-name { font-size:0.68rem; color:var(--text2); font-weight:700; }
+.video-channel-verified {
+    width:13px; height:13px; border-radius:50%; background:#4169e1;
+    display:flex; align-items:center; justify-content:center;
+    font-size:0.5rem; color:#fff; font-weight:900;
+}
+.video-title {
+    font-family:var(--font-display); font-weight:700; font-size:0.88rem;
+    color:var(--text); line-height:1.3;
+    display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden;
+}
+.video-meta { display:flex; gap:8px; font-size:0.65rem; color:var(--text3); font-weight:600; margin-top:auto; }
+
+/* ── YOUTUBE CHANNEL CARD ── */
+.yt-channel-card {
+    background:linear-gradient(135deg, rgba(65,105,225,0.1), rgba(41,82,217,0.05));
+    border:1px solid rgba(65,105,225,0.3); border-radius:var(--radius-lg);
+    padding:20px; display:flex; align-items:center; gap:16px;
+    margin:0 16px 24px; position:relative; overflow:hidden;
+}
+.yt-channel-card::before {
+    content:''; position:absolute; top:-30px; right:-30px;
+    width:100px; height:100px; border-radius:50%;
+    background:radial-gradient(circle, rgba(65,105,225,0.15), transparent);
+}
+.yt-channel-avatar { width:64px; height:64px; border-radius:50%; overflow:hidden; flex-shrink:0; border:2px solid var(--accent); }
+.yt-channel-avatar img { width:100%; height:100%; object-fit:cover; }
+.yt-channel-info { flex:1; }
+.yt-channel-name {
+    font-family:var(--font-display); font-weight:800; font-size:1.1rem;
+    color:var(--text); display:flex; align-items:center; gap:8px;
+}
+.yt-verified-badge {
+    width:18px; height:18px; border-radius:50%; background:#4169e1;
+    display:flex; align-items:center; justify-content:center;
+    font-size:0.6rem; font-weight:900; color:#fff;
+}
+.yt-channel-sub { font-size:0.75rem; color:var(--text2); font-weight:600; margin-top:2px; }
+.yt-subscribe-btn {
+    height:36px; padding:0 16px; border-radius:10px;
+    background:#ff0000; border:none; color:#fff;
+    font-family:var(--font-sans); font-weight:800; font-size:0.72rem;
+    letter-spacing:0.04em; cursor:pointer; transition:var(--transition);
+    display:flex; align-items:center; gap:6px; flex-shrink:0;
+    text-decoration:none;
+}
+.yt-subscribe-btn:hover { background:#cc0000; transform:translateY(-1px); }
+
+/* ── NEWS / CHANGELOG ── */
+.news-list { display:flex; flex-direction:column; gap:10px; }
+.news-card {
+    background:var(--card); border:1px solid var(--card-border);
+    border-radius:var(--radius-lg); padding:14px 16px; transition:var(--transition);
+}
+.news-card:hover { border-color:var(--accent); }
+.news-card-header { display:flex; align-items:center; gap:8px; margin-bottom:8px; }
+.news-badge {
+    font-size:0.58rem; font-weight:700; letter-spacing:0.08em; text-transform:uppercase;
+    padding:3px 8px; border-radius:5px;
+}
+.news-badge-new { background:rgba(34,197,94,0.12); color:#22c55e; }
+.news-badge-update { background:rgba(65,105,225,0.12); color:var(--accent3); }
+.news-badge-fix { background:rgba(234,179,8,0.12); color:#eab308; }
+.news-date { font-size:0.65rem; color:var(--text3); font-weight:600; margin-left:auto; }
+.news-title { font-weight:700; font-size:0.88rem; color:var(--text); margin-bottom:5px; line-height:1.3; }
+.news-desc { font-size:0.76rem; color:var(--text2); line-height:1.55; }
+
+/* ── FAQ ── */
+.faq-list { display:flex; flex-direction:column; gap:8px; }
+.faq-item {
+    background:var(--card); border:1px solid var(--card-border);
+    border-radius:var(--radius); overflow:hidden; cursor:pointer; transition:var(--transition);
+}
+.faq-item.open { border-color:var(--accent); }
+.faq-question {
+    display:flex; align-items:center; justify-content:space-between;
+    padding:14px 16px; font-weight:700; font-size:0.85rem; color:var(--text);
+    gap:8px;
+}
+.faq-chevron { color:var(--text3); transition:transform 0.3s ease; font-size:0.8rem; flex-shrink:0; }
+.faq-item.open .faq-chevron { transform:rotate(180deg); color:var(--accent); }
+.faq-answer {
+    max-height:0; overflow:hidden; transition:max-height 0.3s ease;
+    font-size:0.8rem; color:var(--text2); line-height:1.6;
+    padding:0 16px;
+}
+.faq-item.open .faq-answer { max-height:200px; padding:0 16px 14px; }
+
+/* ── ABOUT PAGE ── */
+.about-hero {
+    text-align:center; padding:32px 20px 24px;
+    border-bottom:1px solid var(--border); margin-bottom:24px;
+}
+.about-logo-big {
+    width:80px; height:80px; border-radius:20px;
+    background:var(--btn-grad); display:flex; align-items:center; justify-content:center;
+    font-family:var(--font-orb); font-weight:900; font-size:1.4rem; color:#fff;
+    margin:0 auto 16px; box-shadow:0 0 40px var(--glow2);
+}
+.about-name {
+    font-family:var(--font-orb); font-weight:900; font-size:1.8rem;
+    color:var(--text); letter-spacing:0.08em; margin-bottom:6px;
+}
+.about-name span { color:var(--accent3); }
+.about-tagline { font-size:0.85rem; color:var(--text2); line-height:1.6; max-width:360px; margin:0 auto; }
+.about-cards { padding:0 16px 24px; display:flex; flex-direction:column; gap:12px; }
+.about-card {
+    background:var(--card); border:1px solid var(--card-border);
+    border-radius:var(--radius-lg); padding:16px;
+    display:flex; align-items:flex-start; gap:14px;
+}
+.about-card-icon {
+    width:40px; height:40px; border-radius:10px; flex-shrink:0;
+    display:flex; align-items:center; justify-content:center; font-size:1.2rem;
+    background:var(--accent-alpha);
+}
+.about-card-title { font-weight:700; font-size:0.9rem; color:var(--text); margin-bottom:4px; }
+.about-card-desc { font-size:0.78rem; color:var(--text2); line-height:1.55; }
+.about-links { padding:0 16px 24px; display:flex; flex-direction:column; gap:8px; }
+.about-link-btn {
+    display:flex; align-items:center; gap:12px;
+    background:var(--card); border:1px solid var(--card-border);
+    border-radius:var(--radius); padding:14px 16px;
+    cursor:pointer; transition:var(--transition);
+    text-decoration:none; color:var(--text);
+}
+.about-link-btn:hover { border-color:var(--accent); background:var(--card-hover); }
+.about-link-icon { font-size:1.2rem; flex-shrink:0; width:24px; text-align:center; }
+.about-link-text { flex:1; }
+.about-link-title { font-weight:700; font-size:0.85rem; }
+.about-link-sub { font-size:0.7rem; color:var(--text3); font-weight:600; margin-top:1px; }
+.about-link-arrow { color:var(--text3); font-size:0.85rem; }
+
+/* ── CONTACT PAGE ── */
+.contact-hero {
+    text-align:center; padding:32px 20px 24px;
+}
+.contact-title {
+    font-family:var(--font-display); font-weight:800; font-size:1.5rem;
+    color:var(--text); margin-bottom:8px;
+}
+.contact-sub { font-size:0.85rem; color:var(--text2); line-height:1.6; max-width:360px; margin:0 auto; }
+.contact-methods { padding:0 16px 24px; display:flex; flex-direction:column; gap:10px; }
+.contact-card {
+    background:var(--card); border:1px solid var(--card-border);
+    border-radius:var(--radius-lg); padding:16px 18px;
+    display:flex; align-items:center; gap:14px;
+    cursor:pointer; transition:var(--transition);
+    text-decoration:none; color:inherit;
+}
+.contact-card:hover { border-color:var(--accent); transform:translateY(-1px); }
+.contact-card-icon {
+    width:44px; height:44px; border-radius:12px; flex-shrink:0;
+    display:flex; align-items:center; justify-content:center; font-size:1.3rem;
+}
+.contact-card-info { flex:1; }
+.contact-card-title { font-weight:700; font-size:0.9rem; color:var(--text); }
+.contact-card-desc { font-size:0.73rem; color:var(--text3); font-weight:600; margin-top:2px; }
+
+/* ── SETTINGS PAGE ── */
+.settings-hero { padding:20px 16px 16px; }
+.settings-title {
+    font-family:var(--font-display); font-weight:800; font-size:1.4rem;
+    color:var(--text); display:flex; align-items:center; gap:8px;
+}
+.settings-section { padding:0 16px 20px; }
+.settings-section-title {
+    font-size:0.65rem; font-weight:700; letter-spacing:0.12em; text-transform:uppercase;
+    color:var(--text3); margin-bottom:10px;
+}
+.settings-card {
+    background:var(--card); border:1px solid var(--card-border);
+    border-radius:var(--radius-lg); overflow:hidden;
+}
+.settings-row {
+    display:flex; align-items:center; gap:12px;
+    padding:14px 16px; cursor:pointer; transition:var(--transition);
+    border-bottom:1px solid var(--border);
+}
+.settings-row:last-child { border-bottom:none; }
+.settings-row:hover { background:var(--bg3); }
+.settings-row-icon { font-size:1.1rem; width:24px; text-align:center; flex-shrink:0; }
+.settings-row-info { flex:1; }
+.settings-row-label { font-weight:700; font-size:0.85rem; color:var(--text); }
+.settings-row-desc { font-size:0.7rem; color:var(--text3); margin-top:1px; }
+.settings-toggle {
+    width:44px; height:24px; border-radius:12px; background:var(--bg3);
+    border:1px solid var(--border); position:relative; flex-shrink:0;
+    transition:var(--transition); cursor:pointer;
+}
+.settings-toggle.on { background:var(--accent); border-color:var(--accent); }
+.settings-toggle-knob {
+    position:absolute; top:2px; left:2px;
+    width:18px; height:18px; border-radius:50%; background:#fff;
+    transition:transform 0.25s ease;
+}
+.settings-toggle.on .settings-toggle-knob { transform:translateX(20px); }
+.lang-grid { display:flex; flex-wrap:wrap; gap:8px; padding:12px; }
+.lang-pill {
+    padding:6px 14px; border-radius:20px;
+    background:var(--bg3); border:1px solid var(--border);
+    color:var(--text2); font-size:0.78rem; font-weight:600;
+    cursor:pointer; transition:var(--transition);
+}
+.lang-pill.active, .lang-pill:hover { background:var(--accent-alpha); border-color:var(--accent); color:var(--accent3); }
+
+/* ── EXECUTORS ── */
+.executor-grid { display:flex; flex-direction:column; gap:8px; }
+.executor-card {
+    background:var(--card); border:1px solid var(--card-border);
+    border-radius:var(--radius); padding:12px 14px;
+    display:flex; align-items:center; gap:10px;
+}
+.executor-icon { font-size:1.2rem; width:28px; text-align:center; flex-shrink:0; }
+.executor-name { font-weight:700; font-size:0.85rem; color:var(--text); }
+.executor-platform { font-size:0.68rem; color:var(--text3); font-weight:600; }
+.executor-badge {
+    margin-left:auto; padding:3px 8px; border-radius:5px;
+    background:rgba(34,197,94,0.12); color:#22c55e;
+    font-size:0.58rem; font-weight:700; letter-spacing:0.06em;
+}
+
+/* ── TOAST ── */
+#toast-container {
+    position:fixed; bottom:calc(var(--bottom-h) + 12px); left:50%; transform:translateX(-50%);
+    z-index:400; display:flex; flex-direction:column-reverse; gap:8px; align-items:center;
+    pointer-events:none; width:calc(100vw - 32px); max-width:380px;
+}
+.toast {
+    display:flex; align-items:center; gap:10px;
+    padding:10px 14px 10px 12px; border-radius:12px;
+    background:var(--bg2); border:1px solid var(--border);
+    box-shadow:0 8px 32px rgba(0,0,0,0.5);
+    pointer-events:all; width:100%;
+    animation:toastIn 0.35s cubic-bezier(0.22,1,0.36,1) both;
+    backdrop-filter:blur(12px);
+}
+.toast.out { animation:toastOut 0.3s ease forwards; }
+.toast.success { border-color:rgba(34,197,94,0.4); }
+.toast.error { border-color:rgba(239,68,68,0.4); }
+.toast.warning { border-color:rgba(234,179,8,0.4); }
+.toast-icon { font-size:1.1rem; flex-shrink:0; }
+.toast-msg { flex:1; font-size:0.78rem; color:var(--text); font-weight:600; line-height:1.4; }
+.toast-close { background:none; border:none; color:var(--text3); cursor:pointer; font-size:0.9rem; padding:2px; }
+@keyframes toastIn { from{opacity:0;transform:translateY(16px) scale(0.95)} to{opacity:1;transform:none} }
+@keyframes toastOut { to{opacity:0;transform:translateY(16px) scale(0.95)} }
+
+/* ── SCROLL TO TOP ── */
+#scrollTop {
+    position:fixed; bottom:calc(var(--bottom-h) + 12px); right:12px; z-index:90;
+    width:40px; height:40px; border-radius:50%;
+    background:var(--btn-grad); border:none; color:#fff; font-size:1rem;
+    cursor:pointer; display:flex; align-items:center; justify-content:center;
+    box-shadow:0 4px 16px var(--glow2); transition:var(--transition);
+    opacity:0; transform:translateY(8px); pointer-events:none;
+}
+#scrollTop.show { opacity:1; transform:none; pointer-events:all; }
+#scrollTop:hover { transform:translateY(-2px); box-shadow:0 8px 24px var(--glow2); }
+
+/* ── EMPTY STATE ── */
+.empty-state {
+    display:flex; flex-direction:column; align-items:center; justify-content:center;
+    padding:60px 20px; text-align:center; gap:12px;
+}
+.empty-icon { font-size:3rem; opacity:0.6; }
+.empty-title { font-family:var(--font-display); font-weight:800; font-size:1.1rem; color:var(--text); }
+.empty-sub { font-size:0.82rem; color:var(--text3); line-height:1.6; }
+
+/* ── FOOTER ── */
+footer {
+    text-align:center; padding:24px 20px 12px;
+    border-top:1px solid var(--border);
+}
+.footer-logo {
+    font-family:var(--font-orb); font-weight:900; font-size:1.2rem;
+    color:var(--text); letter-spacing:0.08em; margin-bottom:6px;
+}
+.footer-logo span { color:var(--accent3); }
+.footer-version { font-size:0.68rem; color:var(--text3); font-weight:600; margin-bottom:12px; }
+.footer-links { display:flex; gap:16px; justify-content:center; flex-wrap:wrap; margin-bottom:12px; }
+.footer-link {
+    font-size:0.75rem; color:var(--text3); cursor:pointer;
+    transition:var(--transition); font-weight:600; background:none; border:none;
+}
+.footer-link:hover { color:var(--accent3); }
+.footer-credit { font-size:0.65rem; color:var(--text3); }
+
+
+
+/* ── HOW IT WORKS ── */
+.how-steps { display:flex; flex-direction:column; gap:10px; }
+.how-step {
+    display:flex; align-items:flex-start; gap:14px;
+    background:var(--card); border:1px solid var(--card-border);
+    border-radius:var(--radius); padding:14px 16px;
+}
+.how-step-num {
+    font-family:var(--font-orb); font-weight:900; font-size:1.5rem;
+    color:var(--accent); line-height:1; flex-shrink:0; min-width:36px;
+}
+.how-step-title { font-weight:700; font-size:0.9rem; color:var(--text); margin-bottom:3px; }
+.how-step-desc { font-size:0.78rem; color:var(--text2); line-height:1.5; }
+
+/* ── ANIMATIONS ── */
+@keyframes fadeInUp { from{opacity:0;transform:translateY(20px)} to{opacity:1;transform:none} }
+@keyframes fadeIn { from{opacity:0} to{opacity:1} }
+@keyframes scaleIn { from{opacity:0;transform:scale(0.95)} to{opacity:1;transform:none} }
+@keyframes glowPulse { 0%,100%{box-shadow:0 0 16px var(--glow2)} 50%{box-shadow:0 0 32px var(--glow)} }
+
+.anim-fade-up { animation:fadeInUp 0.5s ease both; }
+.anim-fade { animation:fadeIn 0.4s ease both; }
+
+/* ── RESPONSIVE ── */
+@media(max-width:400px) {
+    .hero-title { font-size:2rem; }
+    .hero-stats { grid-template-columns:repeat(2,1fr); }
+}
+@media(min-width:768px) {
+    .hero-btns { flex-direction:row; max-width:400px; }
+    .hero-btn-primary, .hero-btn-secondary { flex:1; }
+}
+@media(min-width:1024px) {
+    .bottom-nav { display:none; }
+    body { padding-bottom:0 !important; }
+    .page { padding-bottom:32px; }
+    #app { max-width:1200px; margin:0 auto; }
+    .nav-bar { max-width:1200px; left:50%; transform:translateX(-50%); padding:0 24px; }
+    .ticker-wrap { max-width:1200px; left:50%; transform:translateX(-50%); }
+    .hero { padding:60px 40px 48px; }
+    .section { padding:0 24px 36px; }
+    .cat-scroll { padding:0 24px 16px; }
+    .scripts-page-header { padding:20px 24px 12px; }
+}
+    </style>
+</head>
+<body>
+<!-- LOADING SCREEN -->
+<div id="loading-screen">
+    <div class="loading-logo">LP10 HUB</div>
+    <div class="loading-sub">Official Roblox Platform</div>
+    <div class="loading-bar-wrap"><div class="loading-bar" id="loadingBar"></div></div>
+    <div class="loading-dots">
+        <div class="loading-dot"></div>
+        <div class="loading-dot"></div>
+        <div class="loading-dot"></div>
+    </div>
+</div>
+
+<!-- PARTICLES -->
+<canvas id="particles-canvas"></canvas>
+
+<!-- APP -->
+<div id="app">
+
+<!-- NAV BAR -->
+<nav class="nav-bar">
+    <div class="nav-logo" onclick="navigate('home')">
+        <div class="nav-logo-icon">LP</div>
+        <div class="nav-logo-text">LP10 <span>HUB</span></div>
+    </div>
+    <div class="nav-actions">
+        <button class="nav-btn" onclick="openSearch()" title="Search">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+        </button>
+        <a href="https://www.youtube.com/@lpolvoxd1" target="_blank" rel="noopener" class="nav-btn" title="YouTube Channel">
+            <svg viewBox="0 0 24 24" fill="#ff0000"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+        </a>
+        <a href="https://discord.gg/Uqrkdrpwxr" target="_blank" rel="noopener" class="nav-btn" title="Discord Server">
+            <svg viewBox="0 0 127.14 96.36" fill="#5865f2"><path d="M107.7,8.07A105.15,105.15,0,0,0,81.47,0a72.06,72.06,0,0,0-3.36,6.83A97.68,97.68,0,0,0,49,6.83,72.37,72.37,0,0,0,45.64,0,105.89,105.89,0,0,0,19.39,8.09C2.79,32.65-1.71,56.6.54,80.21h0A105.73,105.73,0,0,0,32.71,96.36,77.7,77.7,0,0,0,39.6,85.25a68.42,68.42,0,0,1-10.85-5.18c.91-.66,1.8-1.34,2.66-2a75.57,75.57,0,0,0,64.32,0c.87.71,1.76,1.39,2.66,2a68.68,68.68,0,0,1-10.87,5.19,77,77,0,0,0,6.89,11.1A105.25,105.25,0,0,0,126.6,80.22h0C129.24,52.84,122.09,29.11,107.7,8.07ZM42.45,65.69C36.18,65.69,31,60,31,53s5-12.74,11.43-12.74S54,46,53.89,53,48.84,65.69,42.45,65.69Zm42.24,0C78.41,65.69,73.25,60,73.25,53s5-12.74,11.44-12.74S96.23,46,96.12,53,91.08,65.69,84.69,65.69Z"/></svg>
+        </a>
+        <button class="nav-btn" onclick="openSidebar()" title="Menu">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        </button>
+    </div>
+</nav>
+
+<!-- TICKER -->
+<div class="ticker-wrap">
+    <div class="ticker-inner" id="tickerInner"></div>
+</div>
+
+<!-- BOTTOM NAV -->
+<nav class="bottom-nav">
+    <div class="bottom-nav-item active" data-page="home" onclick="navigate('home')">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+        <span class="bottom-nav-label">Home</span>
+    </div>
+    <div class="bottom-nav-item" data-page="scripts" onclick="navigate('scripts')">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+        <span class="bottom-nav-label">Scripts</span>
+    </div>
+    <div class="bottom-nav-item" data-page="videos" onclick="navigate('videos')">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg>
+        <span class="bottom-nav-label">Videos</span>
+    </div>
+    <div class="bottom-nav-item" data-page="community" onclick="navigate('community')">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
+        <span class="bottom-nav-label">Buy Key</span>
+    </div>
+    <div class="bottom-nav-item" data-page="settings" onclick="navigate('settings')">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+        <span class="bottom-nav-label">Settings</span>
+    </div>
+</nav>
+
+<!-- SIDEBAR -->
+<div id="sidebar-overlay" onclick="closeSidebar()"></div>
+<div id="sidebar">
+    <div class="sidebar-header">
+        <div class="sidebar-title">LP10 HUB</div>
+        <button class="sidebar-close-btn" onclick="closeSidebar()">✕</button>
+    </div>
+    <div class="sidebar-nav">
+        <div class="sidebar-nav-item" data-page="home" onclick="navigate('home');closeSidebar()"><span class="sidebar-nav-icon">🏠</span>Home</div>
+        <div class="sidebar-nav-item" data-page="scripts" onclick="navigate('scripts');closeSidebar()"><span class="sidebar-nav-icon">📜</span>Scripts</div>
+        <div class="sidebar-nav-item" data-page="videos" onclick="navigate('videos');closeSidebar()"><span class="sidebar-nav-icon">▶️</span>Videos</div>
+        <div class="sidebar-nav-item" data-page="community" onclick="navigate('community');closeSidebar()"><span class="sidebar-nav-icon">🔑</span>Buy Key</div>
+        <div class="sidebar-nav-item" data-page="about" onclick="navigate('about');closeSidebar()"><span class="sidebar-nav-icon">ℹ️</span>About</div>
+        <div class="sidebar-nav-item" data-page="contact" onclick="navigate('contact');closeSidebar()"><span class="sidebar-nav-icon">✉️</span>Contact</div>
+        <div class="sidebar-nav-item" data-page="settings" onclick="navigate('settings');closeSidebar()"><span class="sidebar-nav-icon">⚙️</span>Settings</div>
+    </div>
+    <div class="sidebar-connect">
+        <div class="sidebar-connect-title">Connect</div>
+        <div class="sidebar-social-grid">
+            <a href="https://www.youtube.com/@lpolvoxd1" target="_blank" rel="noopener" class="sidebar-social-btn">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="#ff0000"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+                YouTube
+            </a>
+            <a href="https://discord.gg/Uqrkdrpwxr" target="_blank" rel="noopener" class="sidebar-social-btn">
+                <svg width="14" height="14" viewBox="0 0 127.14 96.36" fill="#5865f2"><path d="M107.7,8.07A105.15,105.15,0,0,0,81.47,0a72.06,72.06,0,0,0-3.36,6.83A97.68,97.68,0,0,0,49,6.83,72.37,72.37,0,0,0,45.64,0,105.89,105.89,0,0,0,19.39,8.09C2.79,32.65-1.71,56.6.54,80.21h0A105.73,105.73,0,0,0,32.71,96.36,77.7,77.7,0,0,0,39.6,85.25a68.42,68.42,0,0,1-10.85-5.18c.91-.66,1.8-1.34,2.66-2a75.57,75.57,0,0,0,64.32,0c.87.71,1.76,1.39,2.66,2a68.68,68.68,0,0,1-10.87,5.19,77,77,0,0,0,6.89,11.1A105.25,105.25,0,0,0,126.6,80.22h0C129.24,52.84,122.09,29.11,107.7,8.07ZM42.45,65.69C36.18,65.69,31,60,31,53s5-12.74,11.43-12.74S54,46,53.89,53,48.84,65.69,42.45,65.69Zm42.24,0C78.41,65.69,73.25,60,73.25,53s5-12.74,11.44-12.74S96.23,46,96.12,53,91.08,65.69,84.69,65.69Z"/></svg>
+                Discord
+            </a>
+        </div>
+    </div>
+</div>
+
+<!-- ═══════════ HOME PAGE ═══════════ -->
+<div class="page active" id="page-home">
+    <!-- HERO -->
+    <div class="hero">
+        <div class="hero-badge"><div class="hero-badge-dot"></div><span class="hero-badge-text">Official Roblox Scripts & Automation</span></div>
+        <h1 class="hero-title">LP10<span>HUB</span></h1>
+        <p class="hero-desc">The official LPOLVO headquarters for premium Roblox scripts. 34 exclusive scripts, real videos, and more — all from the official LPOLVO creator.</p>
+        <div class="hero-btns">
+            <button class="hero-btn-primary" onclick="navigate('scripts')">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+                Browse Scripts
+            </button>
+            <button class="hero-btn-secondary" onclick="navigate('videos')">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+                Watch Videos
+            </button>
+        </div>
+        <div class="hero-stats">
+            <div class="hero-stat"><div class="hero-stat-num">34</div><div class="hero-stat-label">Scripts</div></div>
+            <div class="hero-stat"><div class="hero-stat-num">9</div><div class="hero-stat-label">Videos</div></div>
+            <div class="hero-stat"><div class="hero-stat-num">FREE</div><div class="hero-stat-label">Access</div></div>
+            <div class="hero-stat"><div class="hero-stat-num">100%</div><div class="hero-stat-label">Official</div></div>
+        </div>
+    </div>
+
+    <!-- CATEGORIES -->
+    <div class="cat-scroll" id="homeCats"></div>
+
+    <!-- LATEST SCRIPTS -->
+    <div class="section">
+        <div class="section-header">
+            <div class="section-title">📜 Latest Scripts</div>
+            <button class="section-see-all" onclick="navigate('scripts')">See All →</button>
+        </div>
+        <div class="scripts-grid" id="homeLatestScripts"></div>
+    </div>
+
+    <!-- FEATURED SCRIPTS -->
+    <div class="section">
+        <div class="section-header">
+            <div class="section-title">⭐ Featured Scripts</div>
+            <button class="section-see-all" onclick="navigate('scripts')">View All →</button>
+        </div>
+        <div class="scripts-grid" id="homeFeaturedScripts"></div>
+    </div>
+
+    <!-- LPOLVO YOUTUBE CHANNEL -->
+    <div class="section">
+        <div class="section-header">
+            <div class="section-title">▶️ LPOLVOXD1 Channel</div>
+        </div>
+        <div class="yt-channel-card">
+            <div class="yt-channel-avatar">
+                <img src="https://yt3.googleusercontent.com/wJ_hsoR85TojOKEiWsU4vh0NkREaIFJ3Yks4eqOMW17pNqLRWrboD0Ub2o5iEeVahDmhE7dr=s160-c-k-c0x00ffffff-no-rj" alt="LPOLVOXD1" onerror="this.style.display='none'">
+            </div>
+            <div class="yt-channel-info">
+                <div class="yt-channel-name">LPOLVOXD1 <div class="yt-verified-badge">✓</div></div>
+                <div class="yt-channel-sub">Official LPOLVO YouTube Channel</div>
+            </div>
+            <a href="https://www.youtube.com/@lpolvoxd1" target="_blank" rel="noopener" class="yt-subscribe-btn">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+                Watch
+            </a>
+        </div>
+        <!-- Discord card -->
+        <a href="https://discord.gg/Uqrkdrpwxr" target="_blank" rel="noopener" class="yt-channel-card" style="text-decoration:none;display:flex;margin-top:10px;">
+            <div class="yt-channel-avatar" style="background:rgba(88,101,242,0.15);display:flex;align-items:center;justify-content:center;border-color:#5865f2;">
+                <svg width="22" height="22" viewBox="0 0 127.14 96.36" fill="#5865f2"><path d="M107.7,8.07A105.15,105.15,0,0,0,81.47,0a72.06,72.06,0,0,0-3.36,6.83A97.68,97.68,0,0,0,49,6.83,72.37,72.37,0,0,0,45.64,0,105.89,105.89,0,0,0,19.39,8.09C2.79,32.65-1.71,56.6.54,80.21h0A105.73,105.73,0,0,0,32.71,96.36,77.7,77.7,0,0,0,39.6,85.25a68.42,68.42,0,0,1-10.85-5.18c.91-.66,1.8-1.34,2.66-2a75.57,75.57,0,0,0,64.32,0c.87.71,1.76,1.39,2.66,2a68.68,68.68,0,0,1-10.87,5.19,77,77,0,0,0,6.89,11.1A105.25,105.25,0,0,0,126.6,80.22h0C129.24,52.84,122.09,29.11,107.7,8.07ZM42.45,65.69C36.18,65.69,31,60,31,53s5-12.74,11.43-12.74S54,46,53.89,53,48.84,65.69,42.45,65.69Zm42.24,0C78.41,65.69,73.25,60,73.25,53s5-12.74,11.44-12.74S96.23,46,96.12,53,91.08,65.69,84.69,65.69Z"/></svg>
+            </div>
+            <div class="yt-channel-info">
+                <div class="yt-channel-name" style="color:var(--text);">LP10 HUB Discord <div class="yt-verified-badge" style="background:#5865f2;">✓</div></div>
+                <div class="yt-channel-sub">Official LPOLVO Discord Server</div>
+            </div>
+            <div class="yt-subscribe-btn" style="background:#5865f2;">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057c.002.022.015.043.033.055a19.98 19.98 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028 14.09 14.09 0 0 0 1.226-1.994.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03z"/></svg>
+                Join
+            </div>
+        </a>
+    </div>
+
+    <!-- LATEST VIDEOS -->
+    <div class="section">
+        <div class="section-header">
+            <div class="section-title">🎬 Latest Videos</div>
+            <button class="section-see-all" onclick="navigate('videos')">See All →</button>
+        </div>
+        <div class="videos-grid" id="homeVideos"></div>
+    </div>
+
+    <!-- HOW IT WORKS -->
+    <div class="section">
+        <div class="section-header">
+            <div class="section-title">⚡ How It Works</div>
+        </div>
+        <div class="how-steps">
+            <div class="how-step"><div class="how-step-num">01</div><div><div class="how-step-title">Find a Script</div><div class="how-step-desc">Browse the official LPOLVO library of 34 Roblox scripts sorted by game and category.</div></div></div>
+            <div class="how-step"><div class="how-step-num">02</div><div><div class="how-step-title">Copy the Script</div><div class="how-step-desc">One-tap copy the loadstring to your clipboard. No extra steps needed.</div></div></div>
+            <div class="how-step"><div class="how-step-num">03</div><div><div class="how-step-title">Run in Executor</div><div class="how-step-desc">Paste into your favorite Roblox executor and enjoy the features.</div></div></div>
+        </div>
+    </div>
+
+    <!-- SUPPORTED EXECUTORS -->
+    <div class="section">
+        <div class="section-header">
+            <div class="section-title">🔧 Supported Executors</div>
+        </div>
+        <div class="executor-grid" id="executorGrid"></div>
+    </div>
+
+    <!-- FAQ -->
+    <div class="section">
+        <div class="section-header">
+            <div class="section-title">❓ FAQ</div>
+        </div>
+        <div class="faq-list" id="faqList"></div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-logo">LP10 <span>HUB</span></div>
+        <div class="footer-version">v2.0 — Official Platform</div>
+        <div class="footer-links">
+            <button class="footer-link" onclick="navigate('scripts')">Scripts</button>
+            <button class="footer-link" onclick="navigate('videos')">Videos</button>
+            <button class="footer-link" onclick="navigate('community')">Buy Key</button>
+            <button class="footer-link" onclick="navigate('about')">About</button>
+            <button class="footer-link" onclick="navigate('contact')">Contact</button>
+            <button class="footer-link" onclick="navigate('settings')">Settings</button>
+        </div>
+        <div class="footer-credit">Made with ❤️ by LPOLVO · Official Platform</div>
+    </footer>
+</div>
+
+<!-- ═══════════ SCRIPTS PAGE ═══════════ -->
+<div class="page" id="page-scripts">
+    <div class="scripts-page-header">
+        <div class="scripts-page-title">📜 Scripts <span style="color:var(--text3);font-size:0.9rem;font-weight:600;" id="scriptsCountBadge"></span></div>
+        <div class="scripts-search-wrap">
+            <div class="scripts-search-icon">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+            </div>
+            <input class="scripts-search-input" id="scriptsSearchInput" type="text" placeholder="Search scripts, games, categories..." oninput="filterScripts()">
+        </div>
+        <div class="scripts-filter-tabs" id="scriptsFilterTabs">
+            <div class="filter-tab active" data-filter="all" onclick="setFilter('all',this)">🎮 All</div>
+            <div class="filter-tab" data-filter="favs" onclick="setFilter('favs',this)">❤️ Favorites</div>
+            <div class="filter-tab" data-filter="pinned" onclick="setFilter('pinned',this)">📌 Pinned</div>
+            <div class="filter-tab" data-filter="universal" onclick="setFilter('universal',this)">🌐 Universal</div>
+            <div class="filter-tab" data-filter="combat" onclick="setFilter('combat',this)">⚔️ Combat</div>
+            <div class="filter-tab" data-filter="movement" onclick="setFilter('movement',this)">🏃 Movement</div>
+            <div class="filter-tab" data-filter="utility" onclick="setFilter('utility',this)">🛠️ Utility</div>
+            <div class="filter-tab" data-filter="teleport" onclick="setFilter('teleport',this)">🌀 Teleport</div>
+            <div class="filter-tab" data-filter="visual" onclick="setFilter('visual',this)">👁️ Visual</div>
+        </div>
+    </div>
+    <!-- PINNED SCRIPTS -->
+    <div class="pinned-section" id="pinnedSection" style="display:none;">
+        <div class="pinned-title">📌 Pinned Scripts</div>
+        <div class="scripts-grid" id="pinnedGrid"></div>
+    </div>
+    <!-- ALL SCRIPTS -->
+    <div class="section" style="padding-top:0;">
+        <div class="scripts-count" id="scriptsCountText"></div>
+        <div class="scripts-grid" id="scriptsPageList"></div>
+    </div>
+</div>
+
+<!-- ═══════════ VIDEOS PAGE ═══════════ -->
+<div class="page" id="page-videos">
+    <div class="scripts-page-header">
+        <div class="scripts-page-title">🎬 Videos</div>
+    </div>
+    <!-- CHANNEL CARD -->
+    <div class="yt-channel-card" style="margin:0 16px 10px;">
+        <div class="yt-channel-avatar">
+            <img src="https://yt3.googleusercontent.com/wJ_hsoR85TojOKEiWsU4vh0NkREaIFJ3Yks4eqOMW17pNqLRWrboD0Ub2o5iEeVahDmhE7dr=s160-c-k-c0x00ffffff-no-rj" alt="LPOLVOXD1" onerror="this.style.display='none'">
+        </div>
+        <div class="yt-channel-info">
+            <div class="yt-channel-name">LPOLVOXD1 <div class="yt-verified-badge">✓</div></div>
+            <div class="yt-channel-sub">Official LPOLVO YouTube Channel</div>
+        </div>
+        <a href="https://www.youtube.com/@lpolvoxd1" target="_blank" rel="noopener" class="yt-subscribe-btn" style="background:#ff0000;">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+            Subscribe
+        </a>
+    </div>
+    <a href="https://discord.gg/Uqrkdrpwxr" target="_blank" rel="noopener" class="yt-channel-card" style="margin:0 16px 20px;text-decoration:none;display:flex;">
+        <div class="yt-channel-avatar" style="background:rgba(88,101,242,0.15);display:flex;align-items:center;justify-content:center;border-color:#5865f2;">
+            <svg width="22" height="22" viewBox="0 0 127.14 96.36" fill="#5865f2"><path d="M107.7,8.07A105.15,105.15,0,0,0,81.47,0a72.06,72.06,0,0,0-3.36,6.83A97.68,97.68,0,0,0,49,6.83,72.37,72.37,0,0,0,45.64,0,105.89,105.89,0,0,0,19.39,8.09C2.79,32.65-1.71,56.6.54,80.21h0A105.73,105.73,0,0,0,32.71,96.36,77.7,77.7,0,0,0,39.6,85.25a68.42,68.42,0,0,1-10.85-5.18c.91-.66,1.8-1.34,2.66-2a75.57,75.57,0,0,0,64.32,0c.87.71,1.76,1.39,2.66,2a68.68,68.68,0,0,1-10.87,5.19,77,77,0,0,0,6.89,11.1A105.25,105.25,0,0,0,126.6,80.22h0C129.24,52.84,122.09,29.11,107.7,8.07ZM42.45,65.69C36.18,65.69,31,60,31,53s5-12.74,11.43-12.74S54,46,53.89,53,48.84,65.69,42.45,65.69Zm42.24,0C78.41,65.69,73.25,60,73.25,53s5-12.74,11.44-12.74S96.23,46,96.12,53,91.08,65.69,84.69,65.69Z"/></svg>
+        </div>
+        <div class="yt-channel-info">
+            <div class="yt-channel-name" style="color:var(--text);">LP10 HUB Discord <div class="yt-verified-badge" style="background:#5865f2;">✓</div></div>
+            <div class="yt-channel-sub">Join for keys & updates</div>
+        </div>
+        <div class="yt-subscribe-btn" style="background:#5865f2;">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057c.002.022.015.043.033.055a19.98 19.98 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028 14.09 14.09 0 0 0 1.226-1.994.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03z"/></svg>
+            Join
+        </div>
+    </a>
+    <div class="section" style="padding-top:0;">
+        <div class="videos-grid" id="videosPageGrid"></div>
+    </div>
+</div>
+
+<!-- ═══════════ COMMUNITY / BUY KEY PAGE ═══════════ -->
+<div class="page" id="page-community">
+    <div class="contact-hero">
+        <div style="font-size:3rem;margin-bottom:12px;">🔑</div>
+        <div class="contact-title">Buy Key</div>
+        <div class="contact-sub">Get access to LPOLVO's premium key system and unlock exclusive features.</div>
+    </div>
+    <div class="contact-methods">
+        <a href="https://discord.gg/Uqrkdrpwxr" target="_blank" rel="noopener" class="contact-card">
+            <div class="contact-card-icon" style="background:rgba(88,101,242,0.15);">
+                <svg width="22" height="22" viewBox="0 0 127.14 96.36" fill="#5865f2"><path d="M107.7,8.07A105.15,105.15,0,0,0,81.47,0a72.06,72.06,0,0,0-3.36,6.83A97.68,97.68,0,0,0,49,6.83,72.37,72.37,0,0,0,45.64,0,105.89,105.89,0,0,0,19.39,8.09C2.79,32.65-1.71,56.6.54,80.21h0A105.73,105.73,0,0,0,32.71,96.36,77.7,77.7,0,0,0,39.6,85.25a68.42,68.42,0,0,1-10.85-5.18c.91-.66,1.8-1.34,2.66-2a75.57,75.57,0,0,0,64.32,0c.87.71,1.76,1.39,2.66,2a68.68,68.68,0,0,1-10.87,5.19,77,77,0,0,0,6.89,11.1A105.25,105.25,0,0,0,126.6,80.22h0C129.24,52.84,122.09,29.11,107.7,8.07ZM42.45,65.69C36.18,65.69,31,60,31,53s5-12.74,11.43-12.74S54,46,53.89,53,48.84,65.69,42.45,65.69Zm42.24,0C78.41,65.69,73.25,60,73.25,53s5-12.74,11.44-12.74S96.23,46,96.12,53,91.08,65.69,84.69,65.69Z"/></svg>
+            </div>
+            <div class="contact-card-info">
+                <div class="contact-card-title">Discord Server</div>
+                <div class="contact-card-desc">Join the official LP10 HUB Discord — get your key and stay updated</div>
+            </div>
+            <span style="color:var(--text3);">→</span>
+        </a>
+        <a href="https://rscripts.net/@LPOLVO" target="_blank" rel="noopener" class="contact-card">
+            <div class="contact-card-icon" style="background:#111;border-radius:10px;padding:2px;">
+                <svg width="22" height="22" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><rect width="100" height="100" rx="18" fill="#111"/><path d="M28 20h30c10 0 17 7 17 16 0 7-4 12-10 14l12 20H63L52 52H42v18H28V20zm14 11v11h15c3 0 5-2 5-5.5S60 31 57 31H42z" fill="white"/></svg>
+            </div>
+            <div class="contact-card-info">
+                <div class="contact-card-title">Rscripts Profile</div>
+                <div class="contact-card-desc">View LPOLVO's official profile on Rscripts.net</div>
+            </div>
+            <span style="color:var(--text3);">→</span>
+        </a>
+        <a href="https://www.youtube.com/@lpolvoxd1" target="_blank" rel="noopener" class="contact-card">
+            <div class="contact-card-icon" style="background:rgba(255,0,0,0.12);">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="#ff0000"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+            </div>
+            <div class="contact-card-info">
+                <div class="contact-card-title">Watch on YouTube</div>
+                <div class="contact-card-desc">Check the official LPOLVOXD1 YouTube channel for key instructions</div>
+            </div>
+            <span style="color:var(--text3);">→</span>
+        </a>
+        <div class="contact-card" style="border-color:rgba(65,105,225,0.3);background:rgba(65,105,225,0.05);">
+            <div class="contact-card-icon" style="background:rgba(65,105,225,0.15);">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#4169e1" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+            </div>
+            <div class="contact-card-info">
+                <div class="contact-card-title">About Keys</div>
+                <div class="contact-card-desc">The LPOLVO key system allows you to authenticate and use premium script features securely. Contact LPOLVO through official channels to obtain a key.</div>
+            </div>
+        </div>
+    </div>
+    <!-- CHANGELOG -->
+    <div class="section">
+        <div class="section-header">
+            <div class="section-title">📋 Changelog</div>
+        </div>
+        <div class="news-list" id="changelogList"></div>
+    </div>
+</div>
+
+<!-- ═══════════ ABOUT PAGE ═══════════ -->
+<div class="page" id="page-about">
+    <div class="about-hero">
+        <div class="about-logo-big">LP</div>
+        <div class="about-name">LP10 <span>HUB</span></div>
+        <div class="about-tagline">The official Roblox scripting platform by LPOLVO — one creator, one identity, real scripts.</div>
+    </div>
+    <div class="about-cards">
+        <div class="about-card">
+            <div class="about-card-icon">📜</div>
+            <div>
+                <div class="about-card-title">Official Script Library</div>
+                <div class="about-card-desc">LP10 HUB hosts the complete official collection of 34 Roblox automation scripts, each personally created by LPOLVO. Every script is verified, maintained, and kept up to date.</div>
+            </div>
+        </div>
+        <div class="about-card">
+            <div class="about-card-icon">✓</div>
+            <div>
+                <div class="about-card-title">One Official Creator</div>
+                <div class="about-card-desc">Every script, every video, and every piece of content belongs to LPOLVO. This is not a community platform. This is the official LPOLVO headquarters.</div>
+            </div>
+        </div>
+        <div class="about-card">
+            <div class="about-card-icon">▶️</div>
+            <div>
+                <div class="about-card-title">LPOLVOXD1 YouTube</div>
+                <div class="about-card-desc">Watch official LPOLVO tutorials, script showcases, and demonstrations on the LPOLVOXD1 YouTube channel. New content is added regularly.</div>
+            </div>
+        </div>
+        <div class="about-card">
+            <div class="about-card-icon">🔑</div>
+            <div>
+                <div class="about-card-title">Key System</div>
+                <div class="about-card-desc">The LPOLVO key system provides secure access to premium features. Keys are available through official LPOLVO channels only.</div>
+            </div>
+        </div>
+    </div>
+    <div class="about-links">
+        <a href="https://www.youtube.com/@lpolvoxd1" target="_blank" rel="noopener" class="about-link-btn">
+            <span class="about-link-icon" style="background:rgba(255,0,0,0.12);border-radius:10px;padding:6px;display:flex;">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="#ff0000"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+            </span>
+            <div class="about-link-text">
+                <div class="about-link-title">LPOLVOXD1 — YouTube</div>
+                <div class="about-link-sub">Official YouTube channel</div>
+            </div>
+            <span class="about-link-arrow">→</span>
+        </a>
+        <a href="https://discord.gg/Uqrkdrpwxr" target="_blank" rel="noopener" class="about-link-btn">
+            <span class="about-link-icon" style="background:rgba(88,101,242,0.15);border-radius:10px;padding:6px;display:flex;">
+                <svg width="22" height="22" viewBox="0 0 127.14 96.36" fill="#5865f2"><path d="M107.7,8.07A105.15,105.15,0,0,0,81.47,0a72.06,72.06,0,0,0-3.36,6.83A97.68,97.68,0,0,0,49,6.83,72.37,72.37,0,0,0,45.64,0,105.89,105.89,0,0,0,19.39,8.09C2.79,32.65-1.71,56.6.54,80.21h0A105.73,105.73,0,0,0,32.71,96.36,77.7,77.7,0,0,0,39.6,85.25a68.42,68.42,0,0,1-10.85-5.18c.91-.66,1.8-1.34,2.66-2a75.57,75.57,0,0,0,64.32,0c.87.71,1.76,1.39,2.66,2a68.68,68.68,0,0,1-10.87,5.19,77,77,0,0,0,6.89,11.1A105.25,105.25,0,0,0,126.6,80.22h0C129.24,52.84,122.09,29.11,107.7,8.07ZM42.45,65.69C36.18,65.69,31,60,31,53s5-12.74,11.43-12.74S54,46,53.89,53,48.84,65.69,42.45,65.69Zm42.24,0C78.41,65.69,73.25,60,73.25,53s5-12.74,11.44-12.74S96.23,46,96.12,53,91.08,65.69,84.69,65.69Z"/></svg>
+            </span>
+            <div class="about-link-text">
+                <div class="about-link-title">Discord</div>
+                <div class="about-link-sub">Official LPOLVO Discord</div>
+            </div>
+            <span class="about-link-arrow">→</span>
+        </a>
+        <div class="about-link-btn" onclick="navigate('scripts')">
+            <span class="about-link-icon">📜</span>
+            <div class="about-link-text">
+                <div class="about-link-title">Script Library</div>
+                <div class="about-link-sub">Browse all 34 official LPOLVO scripts</div>
+            </div>
+            <span class="about-link-arrow">→</span>
+        </div>
+    </div>
+</div>
+
+<!-- ═══════════ CONTACT PAGE ═══════════ -->
+<div class="page" id="page-contact">
+    <div class="contact-hero">
+        <div style="font-size:3rem;margin-bottom:12px;">✉️</div>
+        <div class="contact-title">Contact LPOLVO</div>
+        <div class="contact-sub">Reach out through the official LPOLVO channels below.</div>
+    </div>
+    <div class="contact-methods">
+        <a href="https://discord.gg/Uqrkdrpwxr" target="_blank" rel="noopener" class="contact-card">
+            <div class="contact-card-icon" style="background:rgba(88,101,242,0.15);">💬</div>
+            <div class="contact-card-info">
+                <div class="contact-card-title">Discord</div>
+                <div class="contact-card-desc">Official LPOLVO Discord server — fastest response</div>
+            </div>
+            <span style="color:var(--text3);">→</span>
+        </a>
+        <a href="https://www.youtube.com/@lpolvoxd1" target="_blank" rel="noopener" class="contact-card">
+            <div class="contact-card-icon" style="background:rgba(255,0,0,0.1);">▶️</div>
+            <div class="contact-card-info">
+                <div class="contact-card-title">YouTube — LPOLVOXD1</div>
+                <div class="contact-card-desc">Official LPOLVO YouTube channel</div>
+            </div>
+            <span style="color:var(--text3);">→</span>
+        </a>
+        <a href="https://m.youtube.com/@LPOLVOXD1" target="_blank" rel="noopener" class="contact-card">
+            <div class="contact-card-icon" style="background:rgba(255,0,0,0.1);">📱</div>
+            <div class="contact-card-info">
+                <div class="contact-card-title">YouTube Mobile</div>
+                <div class="contact-card-desc">LPOLVOXD1 on mobile YouTube</div>
+            </div>
+            <span style="color:var(--text3);">→</span>
+        </a>
+    </div>
+</div>
+
+<!-- ═══════════ SETTINGS PAGE ═══════════ -->
+<div class="page" id="page-settings">
+    <div class="settings-hero">
+        <div class="settings-title">Settings ⚙️</div>
+    </div>
+    <div class="settings-section">
+        <div class="settings-section-title">Appearance</div>
+        <div class="settings-card">
+            <div class="settings-row" onclick="toggleSetting('particles')">
+                <div class="settings-row-icon">✨</div>
+                <div class="settings-row-info">
+                    <div class="settings-row-label">Background Particles</div>
+                    <div class="settings-row-desc">Ambient particle effects</div>
+                </div>
+                <div class="settings-toggle on" id="toggle-particles"><div class="settings-toggle-knob"></div></div>
+            </div>
+            <div class="settings-row" onclick="toggleSetting('reducedMotion')">
+                <div class="settings-row-icon">🌀</div>
+                <div class="settings-row-info">
+                    <div class="settings-row-label">Reduce Motion</div>
+                    <div class="settings-row-desc">Disable animations for accessibility</div>
+                </div>
+                <div class="settings-toggle" id="toggle-reducedMotion"><div class="settings-toggle-knob"></div></div>
+            </div>
+        </div>
+    </div>
+    <div class="settings-section">
+        <div class="settings-section-title">Sound</div>
+        <div class="settings-card">
+            <div class="settings-row" onclick="toggleSetting('sounds')">
+                <div class="settings-row-icon">🔊</div>
+                <div class="settings-row-info">
+                    <div class="settings-row-label">Sound Effects</div>
+                    <div class="settings-row-desc">UI click and interaction sounds</div>
+                </div>
+                <div class="settings-toggle on" id="toggle-sounds"><div class="settings-toggle-knob"></div></div>
+            </div>
+        </div>
+    </div>
+    <div class="settings-section">
+        <div class="settings-section-title">Data</div>
+        <div class="settings-card">
+            <div class="settings-row" onclick="clearFavorites()">
+                <div class="settings-row-icon">❤️</div>
+                <div class="settings-row-info">
+                    <div class="settings-row-label">Clear Favorites</div>
+                    <div class="settings-row-desc">Remove all saved favorite scripts</div>
+                </div>
+                <span style="color:var(--error);font-size:0.72rem;font-weight:700;">Clear</span>
+            </div>
+            <div class="settings-row" onclick="clearPins()">
+                <div class="settings-row-icon">📌</div>
+                <div class="settings-row-info">
+                    <div class="settings-row-label">Clear Pinned</div>
+                    <div class="settings-row-desc">Remove all pinned scripts</div>
+                </div>
+                <span style="color:var(--warning);font-size:0.72rem;font-weight:700;">Clear</span>
+            </div>
+        </div>
+    </div>
+    <div class="settings-section">
+        <div class="settings-section-title">About</div>
+        <div class="settings-card">
+            <div class="settings-row" onclick="navigate('about')">
+                <div class="settings-row-icon">ℹ️</div>
+                <div class="settings-row-info">
+                    <div class="settings-row-label">About LP10 HUB</div>
+                    <div class="settings-row-desc">v2.0 · Official Roblox Platform</div>
+                </div>
+                <span style="color:var(--text3);">→</span>
+            </div>
+        </div>
+    </div>
+    </div>
+</div>
+
+<!-- SCRIPT DETAIL MODAL -->
+<div id="script-modal" onclick="if(event.target===this)closeScriptModal()">
+    <div class="script-modal-panel" id="scriptModalPanel">
+        <div class="script-modal-drag"></div>
+        <button class="script-modal-close" onclick="closeScriptModal()">✕</button>
+        <div id="scriptModalContent"></div>
+    </div>
+</div>
+
+<!-- SEARCH OVERLAY -->
+<div id="searchOverlay" onclick="if(event.target===this)closeSearch()">
+    <div class="search-panel">
+        <div class="search-input-wrap">
+            <div class="search-input-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+            </div>
+            <input class="search-input" id="searchInput" type="text" placeholder="Search scripts, videos, categories..." oninput="performSearch(this.value)" autocomplete="off">
+            <button class="search-close" onclick="closeSearch()">✕</button>
+        </div>
+        <div class="search-results" id="searchResults">
+            <div class="search-empty">Type to search LPOLVO content...</div>
+        </div>
+    </div>
+</div>
+
+<!-- TOAST CONTAINER -->
+<div id="toast-container"></div>
+
+<!-- SCROLL TO TOP -->
+<button id="scrollTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+
+</div><!-- end #app -->
+
+<script>
+/* ═══════════════════════════════════════════════════════
+   LP10 HUB v2.0 — OFFICIAL PLATFORM SCRIPT
+   No Firebase, No accounts, No user system
+   Pure localStorage for favorites/pins
+═══════════════════════════════════════════════════════ */
+
+/* ── SETTINGS ── */
+const SETTINGS = {
+    sounds: JSON.parse(localStorage.getItem('lp_sounds') ?? 'true'),
+    particles: JSON.parse(localStorage.getItem('lp_particles') ?? 'true'),
+    reducedMotion: JSON.parse(localStorage.getItem('lp_reducedMotion') ?? 'false'),
+};
+
+/* ── STATE ── */
+const state = {
+    page: 'home',
+    filter: 'all',
+    searchQuery: '',
+};
+
+/* ── SCRIPT DATABASE ── */
+const LPOLVO_SCRIPTS = [
+    {
+        id: 'script_34',
+        name: 'Heroes RNG',
+        game: 'Heroes RNG',
+        category: 'rng',
+        desc: 'A powerful automation hub for Heroes RNG featuring Hero Godmode for invincibility, Collect Drop to automatically gather all in-game drops, Auto Upgrade to continuously improve your heroes, and Auto Prestige for seamless prestige progression — all toggleable independently.',
+        code: `loadstring(game:HttpGet("https://raw.githubusercontent.com/LPOLVO/LP10/refs/heads/main/Heroes%20RNG%20OB"))()`,
+        isNew: true,
+    },
+    {
+        id: 'script_01',
+        name: '+1 Double Jump Bike Escape',
+        game: '+1 Double Jump Bike Escape',
+        category: 'universal',
+        desc: 'A gameplay automation script focused on training, rebirth progression, coin collection, and tracking wins in +1 Double Jump Bike Escape.',
+        code: `loadstring(game:HttpGet("https://raw.githubusercontent.com/LPOLVO/LP10/refs/heads/main/1DoubleJumpBikeEscape%20OB"))()`,
+        isNew: false,
+    },
+    {
+        id: 'script_02',
+        name: 'Greedy Growers',
+        game: 'Greedy Growers',
+        category: 'universal',
+        desc: 'An automation-focused script for Greedy Growers with farming and collection features, plus additional movement and progression utilities.',
+        code: `local ok, err = pcall(function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/LPOLVO/LP10/refs/heads/main/Greedy%20Growers%20OB"))()
+end)
+if not ok then
+    warn("Greedy Growers failed:", err)
+    game:GetService("StarterGui"):SetCore("SendNotification",{Title="Greedy Growers",Text="Failed to load. Try again or use a different executor.",Duration=5})
+end`,
+        isNew: false,
+    },
+    {
+        id: 'script_03',
+        name: 'Drive Car and Slide',
+        game: 'Drive Car and Slide',
+        category: 'universal',
+        desc: 'A Drive Car and Slide utility featuring automated coin and win progression with a clean integration designed for supported environments.',
+        code: `local ok, err = pcall(function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/LPOLVO/LP10/refs/heads/main/Drive%20Car%20and%20Slide%20OB"))()
+end)
+if not ok then
+    warn("Drive Car and Slide failed:", err)
+    game:GetService("StarterGui"):SetCore("SendNotification",{Title="Drive Car and Slide",Text="Failed to load. Try again or use a different executor.",Duration=5})
+end`,
+        isNew: false,
+    },
+    {
+        id: 'script_04',
+        name: 'Speed Vs Giant',
+        game: 'Speed Vs Giant',
+        category: 'universal',
+        desc: 'A Speed Vs Giant automation utility featuring cash-box interaction and speed upgrade controls for supported gameplay.',
+        code: `local ok, err = pcall(function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/LPOLVO/LP10/refs/heads/main/Speed%20Vs%20Giant%20OB"))()
+end)
+if not ok then
+    warn("Speed Vs Giant failed:", err)
+    game:GetService("StarterGui"):SetCore("SendNotification",{Title="Speed Vs Giant",Text="Failed to load. Try again or use a different executor.",Duration=5})
+end`,
+        isNew: false,
+    },
+    {
+        id: 'script_05',
+        name: 'Scream for brainrot',
+        game: 'Scream for brainrot',
+        category: 'universal',
+        desc: 'An automation utility for Scream for brainrot focused on spin-wheel progression and automatically collecting available rewards.',
+        code: `loadstring(game:HttpGet("https://raw.githubusercontent.com/LPOLVO/LP10/refs/heads/main/Scream%20for%20brainrot%20OB"))()`,
+        isNew: false,
+    },
+    {
+        id: 'script_06',
+        name: 'Fake Lag / Disconnecting',
+        game: 'Universal',
+        category: 'utility',
+        desc: 'A utility that provides simulated lag and disconnect-style effects for testing and trolling scenarios.',
+        code: `loadstring(game:HttpGet("https://raw.githubusercontent.com/LPOLVO/LP10/refs/heads/main/Fake%20lag%20OB"))()`,
+        isNew: false,
+    },
+    {
+        id: 'script_07',
+        name: 'Cheese Escape [Horror]',
+        game: 'Cheese Escape',
+        category: 'universal',
+        desc: 'A Cheese Escape utility designed to assist with progression through the horror experience and automate supported gameplay tasks.',
+        code: `loadstring(game:HttpGet("https://raw.githubusercontent.com/LPOLVO/LP10/refs/heads/main/Cheese%20Escape%20%5BHorror%5D%20OB"))()`,
+        isNew: false,
+    },
+    {
+        id: 'script_08',
+        name: 'Build a Store',
+        game: 'Build a Store',
+        category: 'universal',
+        desc: 'An automation utility for Build a Store that focuses on store management, stocking, selling, and progression-related tasks.',
+        code: `loadstring(game:HttpGet("https://raw.githubusercontent.com/LPOLVO/LP10/refs/heads/main/Build%20a%20store%20OB"))()`,
+        isNew: false,
+    },
+    {
+        id: 'script_09',
+        name: 'Kick a Lucky Block',
+        game: 'Kick a Lucky Block',
+        category: 'universal',
+        desc: 'A lightweight utility for automating Lucky Block interactions and collecting available rewards more efficiently.',
+        code: `loadstring(game:HttpGet("https://raw.githubusercontent.com/LPOLVO/LP10/refs/heads/main/Kick%20a%20luckyblock%20OB"))()`,
+        isNew: false,
+    },
+    {
+        id: 'script_10',
+        name: 'Combat Arena Op Silent Aim',
+        game: 'Combat Arena',
+        category: 'combat',
+        desc: 'A Combat Arena targeting utility focused on assisted aim behavior and streamlined combat interaction.',
+        code: `loadstring(game:HttpGet("https://raw.githubusercontent.com/LPOLVO/LP10/refs/heads/main/Combat%20Arena%20Op%20silent%20aim%20OB"))()`,
+        isNew: false,
+    },
+    {
+        id: 'script_11',
+        name: '1 Plank = $1/s',
+        game: '1 Plank = $1/s',
+        category: 'universal',
+        desc: 'A passive progression utility centered around automated plank-based income generation.',
+        code: `loadstring(game:HttpGet("https://raw.githubusercontent.com/LPOLVO/LP10/refs/heads/main/1%20plank%20%3D%20%241perS%20OB"))()`,
+        isNew: false,
+    },
+    {
+        id: 'script_12',
+        name: 'Mutate The Brainrot',
+        game: 'Mutate The Brainrot',
+        category: 'universal',
+        desc: 'A Brainrot progression utility designed around automating supported mutation-related gameplay tasks.',
+        code: `loadstring(game:HttpGet("https://raw.githubusercontent.com/LPOLVO/LP10/refs/heads/main/Mutate%20the%20brainrot%20OB"))()`,
+        isNew: false,
+    },
+    {
+        id: 'script_13',
+        name: 'Launch Yourself For Brainrots!',
+        game: 'Brainrot Games',
+        category: 'movement',
+        desc: 'A movement-focused utility designed for launching across the map in supported Brainrot experiences.',
+        code: `loadstring(game:HttpGet("https://raw.githubusercontent.com/LPOLVO/LP10/refs/heads/main/Launch%20Yourself%20For%20Brainrots!%20OB"))()`,
+        isNew: false,
+    },
+    {
+        id: 'script_14',
+        name: 'Coordinates And Save Teleport',
+        game: 'Universal',
+        category: 'teleport',
+        desc: 'A convenient teleport utility that allows players to save locations and return to stored coordinates.',
+        code: `loadstring(game:HttpGet("https://raw.githubusercontent.com/LPOLVO/LP10/refs/heads/main/Coordinates%20And%20save%20Teleport%20OB"))()`,
+        isNew: false,
+    },
+    {
+        id: 'script_15',
+        name: 'Build A Farm Factory',
+        game: 'Build A Farm Factory',
+        category: 'universal',
+        desc: 'An automation utility for building and managing a farm factory with emphasis on automated production and progression.',
+        code: `loadstring(game:HttpGet("https://raw.githubusercontent.com/LPOLVO/LP10/refs/heads/main/Build%20A%20Farm%20Factory%20OB"))()`,
+        isNew: false,
+    },
+    {
+        id: 'script_16',
+        name: 'Free Gamepasses',
+        game: 'Universal',
+        category: 'universal',
+        desc: 'A utility targeting supported gamepass-related functionality in compatible Roblox experiences.',
+        code: `loadstring(game:HttpGet("https://raw.githubusercontent.com/LPOLVO/LP10/refs/heads/main/Free%20Gamepasses%20OB"))()`,
+        isNew: false,
+    },
+    {
+        id: 'script_17',
+        name: 'Hide & Seek',
+        game: 'Hide & Seek',
+        category: 'universal',
+        desc: 'A Hide & Seek gameplay utility designed to assist with finding or avoiding opponents through supported automation.',
+        code: `loadstring(game:HttpGet("https://raw.githubusercontent.com/LPOLVO/LP10/refs/heads/main/Hide%20%26%20Seek%20OB"))()`,
+        isNew: false,
+    },
+    {
+        id: 'script_18',
+        name: 'Impossible Squid Game Glass Bridge 2',
+        game: 'Impossible Squid Game Glass Bridge 2',
+        category: 'universal',
+        desc: 'A Glass Bridge utility focused on identifying safe progression paths and assisting with completion of the experience.',
+        code: `loadstring(game:HttpGet("https://raw.githubusercontent.com/LPOLVO/LP10/refs/heads/main/Impossible%20Squid%20Game%20Glass%20Bridge%202%20OB"))()`,
+        isNew: false,
+    },
+    {
+        id: 'script_19',
+        name: 'Rivals Silent Aim',
+        game: 'Rivals',
+        category: 'combat',
+        desc: 'A Rivals combat utility focused on assisted targeting and precision-oriented combat interaction.',
+        code: `loadstring(game:HttpGet("https://raw.githubusercontent.com/LPOLVO/LP10/refs/heads/main/RIVALS%20SILENT%20AIM%20OB"))()`,
+        isNew: false,
+    },
+    {
+        id: 'script_20',
+        name: 'Squabble Game RP',
+        game: 'Squabble Game RP',
+        category: 'universal',
+        desc: 'A Squabble Game RP utility providing automation features for supported roleplay gameplay tasks.',
+        code: `loadstring(game:HttpGet("https://raw.githubusercontent.com/LPOLVO/LP10/refs/heads/main/Squabble%20Game%20RP%20OB"))()`,
+        isNew: false,
+    },
+    {
+        id: 'script_21',
+        name: 'Parkour for Brainrots',
+        game: 'Brainrot Games',
+        category: 'movement',
+        desc: 'A Brainrot movement utility designed to assist with parkour sections and automated jumping across supported experiences.',
+        code: `loadstring(game:HttpGet("https://raw.githubusercontent.com/LPOLVO/LP10/refs/heads/main/Parkour%20for%20brainrots%20OB"))()`,
+        isNew: false,
+    },
+    {
+        id: 'script_22',
+        name: 'Ride Storm',
+        game: 'Ride Storm',
+        category: 'universal',
+        desc: 'A Ride Storm automation utility designed to streamline supported gameplay interactions and progression.',
+        code: `loadstring(game:HttpGet("https://raw.githubusercontent.com/LPOLVO/LP10/refs/heads/main/Ride%20Storm%20OB"))()`,
+        isNew: false,
+    },
+    {
+        id: 'script_23',
+        name: 'Skateboard for Brainrots',
+        game: 'Brainrot Games',
+        category: 'movement',
+        desc: 'A movement-focused Brainrot utility providing automated skateboard-related movement and tricks.',
+        code: `loadstring(game:HttpGet("https://raw.githubusercontent.com/LPOLVO/LP10/refs/heads/main/Skateboard%20for%20Brainrots%20OB"))()`,
+        isNew: false,
+    },
+    {
+        id: 'script_24',
+        name: 'Emotes',
+        game: 'Universal',
+        category: 'visual',
+        desc: 'A visual utility for accessing and playing supported Roblox emotes through a convenient interface.',
+        code: `loadstring(game:HttpGet("https://raw.githubusercontent.com/LPOLVO/LP10/refs/heads/main/Emotes%20OB"))()`,
+        isNew: false,
+    },
+    {
+        id: 'script_25',
+        name: 'Noob Army Tycoon',
+        game: 'Noob Army Tycoon',
+        category: 'universal',
+        desc: 'An automation utility for Noob Army Tycoon focused on building, expansion, and supported progression tasks.',
+        code: `loadstring(game:HttpGet("https://raw.githubusercontent.com/LPOLVO/LP10/refs/heads/main/Noob%20Army%20Tycoon%20OB"))()`,
+        isNew: false,
+    },
+    {
+        id: 'script_26',
+        name: 'Ride the Coaster',
+        game: 'Ride the Coaster',
+        category: 'universal',
+        desc: 'A Ride the Coaster utility designed to automate supported coaster gameplay interactions.',
+        code: `loadstring(game:HttpGet("https://raw.githubusercontent.com/LPOLVO/LP10/refs/heads/main/Ride%20the%20Coaster%20OB"))()`,
+        isNew: false,
+    },
+    {
+        id: 'script_27',
+        name: 'Dead Rails',
+        game: 'Dead Rails',
+        category: 'universal',
+        desc: 'A Dead Rails utility providing gameplay assistance and progression-oriented functionality for the supported experience.',
+        code: `loadstring(game:HttpGet("https://raw.githubusercontent.com/LPOLVO/LP10/refs/heads/main/Dead%20rails%20OB"))()`,
+        isNew: false,
+    },
+    {
+        id: 'script_28',
+        name: "Don't Get Caught for Hackers",
+        game: "Don't Get Caught",
+        category: 'utility',
+        desc: "A utility for Don't Get Caught focused on supported stealth and gameplay-assistance functionality.",
+        code: `loadstring(game:HttpGet("https://raw.githubusercontent.com/LPOLVO/LP10/refs/heads/main/Don%27t%20get%20caught%20for%20hackers%20OB"))()`,
+        isNew: false,
+    },
+    {
+        id: 'script_29',
+        name: 'Brainrot Ascension',
+        game: 'Brainrot Ascension',
+        category: 'universal',
+        desc: 'A progression utility for Brainrot Ascension designed around automated stages, rewards, and advancement.',
+        code: `loadstring(game:HttpGet("https://raw.githubusercontent.com/LPOLVO/LP10/refs/heads/main/Brainrot%20Ascension%20OB"))()`,
+        isNew: false,
+    },
+    {
+        id: 'script_30',
+        name: 'Paper Plane Training',
+        game: 'Paper Airplane Training',
+        category: 'universal',
+        desc: 'A Paper Plane Training utility focused on automating training interactions and optimizing supported throwing and progression tasks.',
+        code: `loadstring(game:HttpGet("https://raw.githubusercontent.com/LPOLVO/LP10/refs/heads/main/%5B%F0%9F%A5%87%5DPaper%20Airplane%20Training%E2%9C%88%EF%B8%8F%20OB"))()`,
+        isNew: false,
+    },
+    {
+        id: 'script_31',
+        name: 'Cursed Blade [ALPHA]',
+        game: 'Cursed Blade',
+        category: 'combat',
+        desc: 'An early-access Cursed Blade combat utility featuring supported combat enhancements and progression features. This version is marked Alpha.',
+        code: `loadstring(game:HttpGet("https://raw.githubusercontent.com/LPOLVO/LP10/refs/heads/main/Cursed%20Blade%20%5BALPHA%5D%20OB"))()`,
+        isNew: true,
+    },
+    {
+        id: 'script_32',
+        name: 'OneShot',
+        game: 'OneShot',
+        category: 'combat',
+        desc: 'A combat-oriented OneShot utility designed around assisted combat interactions and supported single-hit gameplay mechanics.',
+        code: `loadstring(game:HttpGet("https://raw.githubusercontent.com/LPOLVO/LP10/refs/heads/main/OneShot%20OB"))()`,
+        isNew: false,
+    },
+    {
+        id: 'script_33',
+        name: 'Build a Boat for Treasure',
+        game: 'Build a Boat for Treasure',
+        category: 'universal',
+        desc: 'A Build a Boat for Treasure automation utility focused on supported building, progression, and racing-related gameplay tasks.',
+        code: `loadstring(game:HttpGet("https://raw.githubusercontent.com/LPOLVO/LP10/refs/heads/main/Build%20a%20boat%20for%20Treasure%20OB"))()`,
+        isNew: false,
+    },
+];
+
+/* ── VIDEO DATABASE ── */
+const LPOLVO_VIDEOS = [
+    { id: 't8UrHz6vuiA', url: 'https://youtu.be/t8UrHz6vuiA', title: '+1 Double Jump Bike Escape! Script - AUTO WINS, AUTO TRAIN, AUTO REBIRTH & COLLECT COINS! 🚴', channel: 'LPOLVOXD1', date: '2026' },
+    { id: 'hVlBX98_Y6M', url: 'https://youtu.be/hVlBX98_Y6M', title: 'Greedy Growers Script - AUTO FARM, AUTO HARVEST, AUTO BUY SEEDS & MORE! | Roblox Script', channel: 'LPOLVOXD1', date: '2026' },
+    { id: '655cmTZLqyo', url: 'https://youtu.be/655cmTZLqyo', title: 'Drive Car and Slide Script Showcase - INFINITE COINS & WINS 🪙 | LP10 HUB', channel: 'LPOLVOXD1', date: '2026' },
+    { id: 'q1QPGU0vuao', url: 'https://youtu.be/q1QPGU0vuao', title: 'Speed vs Giant Script - INFINITE CASH & AUTO FARM FEATURE!', channel: 'LPOLVOXD1', date: '2026' },
+    { id: 'CFL4ozSOciY', url: 'https://youtu.be/CFL4ozSOciY', title: 'Launch Yourself For Brainrots Script - INSANE AUTO GOD FEATURE 🔥', channel: 'LPOLVOXD1', date: '2026' },
+    { id: 'tkablaZrw3o', url: 'https://youtu.be/tkablaZrw3o', title: 'RIVALS Script 🔥 BEST SILENT AIM | OP Aim Assist + UNDETECTED 😈', channel: 'LPOLVOXD1', date: '2026' },
+    { id: 'c0u_d_ikhMs', url: 'https://youtu.be/c0u_d_ikhMs', title: '[OP] Cursed Blade Script - AUTO FARM & AUTO LOOT 🔥', channel: 'LPOLVOXD1', date: '2026' },
+    { id: 'zH27zcQaE3A', url: 'https://youtu.be/zH27zcQaE3A', title: 'BEST AUTO FARM Script in Dead Rails! | OP LP10 HUB 🔥', channel: 'LPOLVOXD1', date: '2026' },
+    { id: 'xDYC6IzhHpY', url: 'https://youtu.be/xDYC6IzhHpY', title: 'Roblox Free Gamepass Script Showcase | LPOLVO Hub 2026 🔥', channel: 'LPOLVOXD1', date: '2026' },
+];
+
+/* ── CHANGELOG DATA ── */
+const CHANGELOG = [
+    { badge: 'new', badgeClass: 'news-badge-new', date: 'Aug 2026', title: '🚀 LP10 HUB v2.0 — Official Platform Launch', desc: 'Complete transformation to the official single-owner LPOLVO platform. 34 official scripts, 9 real YouTube videos, premium design, localStorage favorites & pins, no account required.' },
+    { badge: 'new', badgeClass: 'news-badge-new', date: 'Aug 2026', title: '📌 Favorites & Pins System', desc: 'Favorite and Pin your scripts without needing any account. All data is saved locally in your browser and survives page refresh and browser restarts.' },
+    { badge: 'new', badgeClass: 'news-badge-new', date: 'Aug 2026', title: '🎬 Real LPOLVO Videos', desc: 'The videos section now features all 9 real LPOLVOXD1 YouTube videos with actual thumbnails from the official channel. No fake or invented content.' },
+    { badge: 'update', badgeClass: 'news-badge-update', date: 'Aug 2026', title: '✨ Premium Design Overhaul', desc: 'Royal Blue visual identity throughout. Unified card system, glassmorphism panels, smooth animations, and professional script detail modals.' },
+    { badge: 'update', badgeClass: 'news-badge-update', date: 'Aug 2026', title: '🔍 Powerful Search', desc: 'Website-wide search covers script names, games, categories, and descriptions. No user or account search — only official LPOLVO content.' },
+    { badge: 'fix', badgeClass: 'news-badge-fix', date: 'Aug 2026', title: '🛡️ Removed User/Creator System', desc: 'All Firebase authentication, user accounts, creator profiles, upload systems, and community features have been removed. LPOLVO is the only creator.' },
+];
+
+/* ── CATEGORIES ── */
+const CATEGORIES = [
+    { id: 'universal', icon: '🌐', name: 'Universal' },
+    { id: 'combat', icon: '⚔️', name: 'Combat' },
+    { id: 'movement', icon: '🏃', name: 'Movement' },
+    { id: 'utility', icon: '🛠️', name: 'Utility' },
+    { id: 'teleport', icon: '🌀', name: 'Teleport' },
+    { id: 'visual', icon: '👁️', name: 'Visual' },
+    { id: 'rng', icon: '🎲', name: 'RNG' },
+];
+
+/* ── EXECUTORS ── */
+const EXECUTORS = [
+    { name: 'Arceus X', icon: '⚡', platform: 'Mobile — Android', free: true },
+    { name: 'Delta', icon: '△', platform: 'Mobile — iOS/Android', free: true },
+    { name: 'Fluxus', icon: '🌊', platform: 'PC — Windows', free: true },
+    { name: 'KRNL', icon: '🔑', platform: 'PC — Windows', free: true },
+    { name: 'Synapse Z', icon: '⚡', platform: 'Mobile', free: true },
+    { name: 'Hydrogen', icon: '💧', platform: 'Mobile — Android', free: true },
+];
+
+/* ── FAQ ── */
+const FAQS = [
+    { q: 'Are LPOLVO scripts safe?', a: 'LPOLVO scripts are official scripts created and maintained by LPOLVO. Always use in a safe environment and follow Roblox\'s terms of service.' },
+    { q: 'How do I run scripts on mobile?', a: 'Download a mobile executor like Arceus X or Delta, copy the script code from this website, paste it into the executor, and run it.' },
+    { q: 'Do LPOLVO scripts require a key?', a: 'Some scripts are keyless and run immediately. For key-based features, visit the Buy Key section to get your LPOLVO key.' },
+    { q: 'Why is a script not working?', a: 'Scripts may need updates after Roblox patches. Check for any updates or contact LPOLVO through official Discord.' },
+    { q: 'Are the scripts free?', a: 'Yes, all scripts on LP10 HUB are free to copy and use. Some premium features may require a key.' },
+    { q: 'How do Favorites work?', a: 'Favorites are saved to your browser\'s local storage. They persist across page refreshes and do not require any account.' },
+];
+
+/* ── TICKER ITEMS ── */
+const TICKER_ITEMS = [
+    '🚀 LP10 HUB v2.0 — Official Platform',
+    '📜 34 Official LPOLVO Scripts Available',
+    '🎬 9 Real LPOLVOXD1 YouTube Videos',
+    '⭐ No Account Required — 100% Free Access',
+    '📌 Pin & Favorite Scripts Locally',
+    '🔑 Get your LPOLVO Key via Discord',
+    '⚔️ Combat, Movement, Utility & More',
+    '🌐 Official LPOLVO Headquarters',
+    '🔍 Powerful Search — Find Any Script',
+    '✓ Every Script Verified by LPOLVO',
+];
+
+/* ═══════════ FAVORITES & PINS (localStorage) ═══════════ */
+function getFavorites() {
+    try { return JSON.parse(localStorage.getItem('lp_favs') || '[]'); } catch { return []; }
+}
+function getPins() {
+    try { return JSON.parse(localStorage.getItem('lp_pins') || '[]'); } catch { return []; }
+}
+function setFavorites(arr) { localStorage.setItem('lp_favs', JSON.stringify(arr)); }
+function setPins(arr) { localStorage.setItem('lp_pins', JSON.stringify(arr)); }
+function isFav(id) { return getFavorites().includes(id); }
+function isPinned(id) { return getPins().includes(id); }
+
+function toggleFav(id, e) {
+    if (e) e.stopPropagation();
+    const favs = getFavorites();
+    const idx = favs.indexOf(id);
+    if (idx === -1) { favs.push(id); showToast('Added to favorites ❤️', 'success'); }
+    else { favs.splice(idx, 1); showToast('Removed from favorites', 'info'); }
+    setFavorites(favs);
+    refreshScriptCards();
+    if (document.getElementById('script-modal').classList.contains('show')) {
+        updateModalFavPin(id);
+    }
+}
+function togglePin(id, e) {
+    if (e) e.stopPropagation();
+    const pins = getPins();
+    const idx = pins.indexOf(id);
+    if (idx === -1) { pins.push(id); showToast('Script pinned 📌', 'success'); }
+    else { pins.splice(idx, 1); showToast('Script unpinned', 'info'); }
+    setPins(pins);
+    refreshScriptCards();
+    buildPinnedSection();
+    if (document.getElementById('script-modal').classList.contains('show')) {
+        updateModalFavPin(id);
+    }
+}
+function clearFavorites() {
+    if (!confirm('Clear all favorites?')) return;
+    setFavorites([]);
+    refreshScriptCards();
+    showToast('Favorites cleared', 'info');
+}
+function clearPins() {
+    if (!confirm('Clear all pins?')) return;
+    setPins([]);
+    refreshScriptCards();
+    buildPinnedSection();
+    showToast('Pins cleared', 'info');
+}
+
+/* ═══════════ CATEGORY COLORS ═══════════ */
+function getCatClass(cat) {
+    const map = { combat:'badge-combat', movement:'badge-movement', utility:'badge-utility', teleport:'badge-teleport', visual:'badge-visual', universal:'badge-cat' };
+    return map[cat] || 'badge-cat';
+}
+function getCatIcon(cat) {
+    const map = { universal:'🌐', combat:'⚔️', movement:'🏃', utility:'🛠️', teleport:'🌀', visual:'👁️' };
+    return map[cat] || '📦';
+}
+function esc(s) {
+    if (!s) return '';
+    return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#039;');
+}
+
+/* ═══════════ SCRIPT CARD BUILDER ═══════════ */
+function buildScriptCard(s, compact) {
+    const fav = isFav(s.id), pin = isPinned(s.id);
+    const catIcon = getCatIcon(s.category);
+    const catClass = getCatClass(s.category);
+    return `<div class="script-card" onclick="openScriptDetail('${s.id}')">
+        <div class="script-card-thumb">
+            <div style="font-size:2.4rem;">${catIcon}</div>
+            <div class="script-card-thumb-overlay"></div>
+            <div class="script-card-thumb-badge">${catIcon} ${esc(s.game)}</div>
+        </div>
+        <div class="script-card-body">
+            <div class="script-card-header">
+                <div class="script-card-icon">${catIcon}</div>
+                <div class="script-card-info">
+                    <div class="script-card-title">${esc(s.name)}</div>
+                    <div class="script-card-game">${esc(s.game)}</div>
+                </div>
+            </div>
+            <div class="script-card-desc">${esc(s.desc)}</div>
+            <div class="script-card-meta">
+                <span class="script-badge ${catClass}">${s.category}</span>
+                ${s.isNew ? '<span class="script-badge badge-new">NEW</span>' : ''}
+                ${pin ? '<span class="script-badge" style="background:rgba(234,179,8,0.12);color:#eab308;">📌</span>' : ''}
+                ${fav ? '<span class="script-badge" style="background:rgba(239,68,68,0.12);color:#ef4444;">❤️</span>' : ''}
+            </div>
+            <div class="creator-line">
+                <div class="creator-verified-badge">✓</div>
+                <span class="creator-name-tag">LPOLVO · Official Creator</span>
+            </div>
+        </div>
+        <div class="script-card-actions">
+            <button class="card-action-btn ${fav?'fav-active':''}" onclick="toggleFav('${s.id}',event)" title="${fav?'Remove from favorites':'Add to favorites'}">${fav?'❤️':'🤍'}</button>
+            <button class="card-action-btn ${pin?'pin-active':''}" onclick="togglePin('${s.id}',event)" title="${pin?'Unpin':'Pin'}">${pin?'📌':'📍'}</button>
+            <button class="card-action-btn primary" onclick="copyScript('${s.id}',event)">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+                Copy
+            </button>
+        </div>
+    </div>`;
+}
+
+function refreshScriptCards() {
+    if (state.page === 'scripts') buildScriptsPage();
+    buildHomeLatest();
+    buildHomeFeatured();
+    buildPinnedSection();
+}
+
+/* ═══════════ COPY SCRIPT ═══════════ */
+async function copyScript(id, e) {
+    if (e) e.stopPropagation();
+    const s = LPOLVO_SCRIPTS.find(x => x.id === id);
+    if (!s) return;
+    try {
+        await navigator.clipboard.writeText(s.code);
+        showToast('✓ Script copied to clipboard!', 'success');
+        playClick();
+    } catch {
+        const ta = document.createElement('textarea');
+        ta.value = s.code;
+        document.body.appendChild(ta);
+        ta.select();
+        try { document.execCommand('copy'); } catch {}
+        document.body.removeChild(ta);
+        showToast('✓ Script copied!', 'success');
+    }
+}
+
+/* ═══════════ SCRIPT DETAIL MODAL ═══════════ */
+function openScriptDetail(id) {
+    const s = LPOLVO_SCRIPTS.find(x => x.id === id);
+    if (!s) return;
+    playClick();
+    const fav = isFav(id), pin = isPinned(id);
+    const catIcon = getCatIcon(s.category);
+    const catClass = getCatClass(s.category);
+    const el = document.getElementById('scriptModalContent');
+    el.innerHTML = `
+        <div class="script-modal-hero">
+            <div class="script-modal-hero-icon">${catIcon}</div>
+            <div class="script-modal-hero-gradient"></div>
+        </div>
+        <div class="script-modal-content">
+            <div class="script-modal-title">${esc(s.name)}</div>
+            <div class="script-modal-meta">
+                <span class="script-modal-badge ${catClass}">${s.category}</span>
+                <span class="script-modal-badge badge-cat">LPOLVO</span>
+                ${s.isNew ? '<span class="script-modal-badge badge-new">NEW</span>' : ''}
+            </div>
+            <div class="script-modal-creator">
+                <div class="script-modal-creator-avatar">LP</div>
+                <div class="script-modal-creator-info">
+                    <div class="script-modal-creator-name">LPOLVO <div class="script-modal-creator-verified">✓</div></div>
+                    <div class="script-modal-creator-role">Official Creator · LP10 HUB</div>
+                </div>
+            </div>
+            <div class="script-modal-desc">${esc(s.desc)}</div>
+            <div class="script-modal-code-section">
+                <div class="script-modal-code-label">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+                    Loadstring — Copy & Execute
+                </div>
+                <div class="script-code-block" id="detailCodeBlock">${esc(s.code)}</div>
+            </div>
+            <div class="script-modal-actions">
+                <button class="modal-action-btn primary" id="modalCopyBtn" onclick="copyScript('${id}',event);updateModalCopyBtn()">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+                    Copy Script
+                </button>
+                <button class="modal-action-btn ${fav?'fav-active':''}" id="modalFavBtn" onclick="toggleFav('${id}',event)">
+                    ${fav?'❤️':'🤍'} ${fav?'Favorited':'Favorite'}
+                </button>
+                <button class="modal-action-btn ${pin?'pin-active':''}" id="modalPinBtn" onclick="togglePin('${id}',event)">
+                    ${pin?'📌 Pinned':'📍 Pin'}
+                </button>
+            </div>
+            <div style="font-size:0.72rem;color:var(--text3);text-align:center;padding-top:8px;">
+                Paste this code into your Roblox executor and press Execute
+            </div>
+        </div>`;
+    document.getElementById('script-modal').classList.add('show');
+    document.body.style.overflow = 'hidden';
+}
+
+function updateModalCopyBtn() {
+    const btn = document.getElementById('modalCopyBtn');
+    if (!btn) return;
+    btn.innerHTML = `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Copied!`;
+    setTimeout(() => {
+        if (btn) btn.innerHTML = `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg> Copy Script`;
+    }, 1500);
+}
+
+function updateModalFavPin(id) {
+    const fav = isFav(id), pin = isPinned(id);
+    const fb = document.getElementById('modalFavBtn');
+    const pb = document.getElementById('modalPinBtn');
+    if (fb) { fb.className = `modal-action-btn ${fav?'fav-active':''}`; fb.innerHTML = `${fav?'❤️':'🤍'} ${fav?'Favorited':'Favorite'}`; }
+    if (pb) { pb.className = `modal-action-btn ${pin?'pin-active':''}`; pb.innerHTML = `${pin?'📌 Pinned':'📍 Pin'}`; }
+}
+
+function closeScriptModal() {
+    document.getElementById('script-modal').classList.remove('show');
+    document.body.style.overflow = '';
+}
+
+/* ═══════════ HOME PAGE BUILDERS ═══════════ */
+function buildHomeLatest() {
+    const el = document.getElementById('homeLatestScripts');
+    if (!el) return;
+    const scripts = LPOLVO_SCRIPTS.slice(-6).reverse();
+    el.innerHTML = scripts.map(s => buildScriptCard(s)).join('');
+}
+
+function buildHomeFeatured() {
+    const el = document.getElementById('homeFeaturedScripts');
+    if (!el) return;
+    // Featured: combat + recent new
+    const featured = LPOLVO_SCRIPTS.filter(s => s.isNew || s.category === 'combat' || s.id === 'script_14' || s.id === 'script_22' || s.id === 'script_27').slice(0, 6);
+    el.innerHTML = featured.map(s => buildScriptCard(s)).join('');
+}
+
+function buildHomeVideos() {
+    const el = document.getElementById('homeVideos');
+    if (!el) return;
+    el.innerHTML = LPOLVO_VIDEOS.slice(0, 3).map(v => buildVideoCard(v)).join('');
+}
+
+function buildHomeCats() {
+    const el = document.getElementById('homeCats');
+    if (!el) return;
+    el.innerHTML = CATEGORIES.map(c =>
+        `<div class="cat-pill" onclick="navigate('scripts');setFilter('${c.id}',null)">
+            <span class="cat-pill-icon">${c.icon}</span>
+            <span>${c.name}</span>
+        </div>`
+    ).join('');
+}
+
+/* ═══════════ SCRIPTS PAGE ═══════════ */
+function buildScriptsPage() {
+    const el = document.getElementById('scriptsPageList');
+    if (!el) return;
+    const q = (document.getElementById('scriptsSearchInput')?.value || '').toLowerCase();
+    const filter = state.filter;
+
+    let scripts = [...LPOLVO_SCRIPTS];
+
+    if (filter === 'favs') {
+        const favs = getFavorites();
+        scripts = scripts.filter(s => favs.includes(s.id));
+    } else if (filter === 'pinned') {
+        const pins = getPins();
+        scripts = scripts.filter(s => pins.includes(s.id));
+    } else if (filter !== 'all') {
+        scripts = scripts.filter(s => s.category === filter);
+    }
+
+    if (q) {
+        scripts = scripts.filter(s =>
+            s.name.toLowerCase().includes(q) ||
+            s.game.toLowerCase().includes(q) ||
+            s.category.toLowerCase().includes(q) ||
+            s.desc.toLowerCase().includes(q)
+        );
+    }
+
+    const cnt = document.getElementById('scriptsCountText');
+    if (cnt) cnt.textContent = `${scripts.length} script${scripts.length !== 1 ? 's' : ''}`;
+
+    const badge = document.getElementById('scriptsCountBadge');
+    if (badge) badge.textContent = `(${scripts.length})`;
+
+    if (scripts.length === 0) {
+        el.innerHTML = `<div class="empty-state" style="grid-column:1/-1;"><div class="empty-icon">📜</div><div class="empty-title">No Scripts Found</div><div class="empty-sub">Try a different search or category.</div></div>`;
+    } else {
+        el.innerHTML = scripts.map(s => buildScriptCard(s)).join('');
+    }
+    buildPinnedSection();
+}
+
+function buildPinnedSection() {
+    const pins = getPins();
+    const section = document.getElementById('pinnedSection');
+    const grid = document.getElementById('pinnedGrid');
+    if (!section || !grid) return;
+    if (pins.length === 0 || state.filter !== 'all' || state.searchQuery) {
+        section.style.display = 'none';
+        return;
+    }
+    const pinnedScripts = pins.map(id => LPOLVO_SCRIPTS.find(s => s.id === id)).filter(Boolean);
+    if (pinnedScripts.length === 0) { section.style.display = 'none'; return; }
+    section.style.display = 'block';
+    grid.innerHTML = pinnedScripts.map(s => buildScriptCard(s)).join('');
+}
+
+function filterScripts() {
+    state.searchQuery = document.getElementById('scriptsSearchInput')?.value || '';
+    buildScriptsPage();
+}
+
+function setFilter(filter, el) {
+    state.filter = filter;
+    document.querySelectorAll('.filter-tab').forEach(t => t.classList.remove('active'));
+    if (el) el.classList.add('active');
+    else {
+        const tab = document.querySelector(`.filter-tab[data-filter="${filter}"]`);
+        if (tab) tab.classList.add('active');
+    }
+    buildScriptsPage();
+}
+
+/* ═══════════ VIDEO CARD BUILDER ═══════════ */
+function buildVideoCard(v) {
+    const thumb = `https://img.youtube.com/vi/${v.id}/hqdefault.jpg`;
+    return `<a class="video-card" href="${v.url}" target="_blank" rel="noopener">
+        <div class="video-thumb-wrap">
+            <img class="video-thumb" src="${thumb}" alt="${esc(v.title)}" loading="lazy" onerror="this.style.display='none'">
+            <div class="video-play-btn">
+                <div class="video-play-circle">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+                </div>
+            </div>
+            <div class="video-thumb-overlay"></div>
+        </div>
+        <div class="video-body">
+            <div class="video-channel">
+                <div class="video-channel-avatar">
+                    <img src="https://yt3.googleusercontent.com/wJ_hsoR85TojOKEiWsU4vh0NkREaIFJ3Yks4eqOMW17pNqLRWrboD0Ub2o5iEeVahDmhE7dr=s160-c-k-c0x00ffffff-no-rj" alt="LPOLVOXD1" onerror="this.style.display='none'">
+                </div>
+                <span class="video-channel-name">LPOLVOXD1</span>
+                <div class="video-channel-verified">✓</div>
+            </div>
+            <div class="video-title">${esc(v.title)}</div>
+            <div class="video-meta">
+                <span>${v.date}</span>
+                <span>·</span>
+                <span>LPOLVO</span>
+            </div>
+        </div>
+    </a>`;
+}
+
+function buildVideosPage() {
+    const el = document.getElementById('videosPageGrid');
+    if (!el) return;
+    el.innerHTML = LPOLVO_VIDEOS.map(v => buildVideoCard(v)).join('');
+}
+
+/* ═══════════ OTHER SECTION BUILDERS ═══════════ */
+function buildExecutors() {
+    const el = document.getElementById('executorGrid');
+    if (!el) return;
+    el.innerHTML = EXECUTORS.map(e =>
+        `<div class="executor-card">
+            <div class="executor-icon">${e.icon}</div>
+            <div>
+                <div class="executor-name">${e.name}</div>
+                <div class="executor-platform">${e.platform}</div>
+            </div>
+            ${e.free ? '<div class="executor-badge">FREE</div>' : ''}
+        </div>`
+    ).join('');
+}
+
+function buildFAQ() {
+    const el = document.getElementById('faqList');
+    if (!el) return;
+    el.innerHTML = FAQS.map(f =>
+        `<div class="faq-item" onclick="toggleFaq(this)">
+            <div class="faq-question">${f.q}<div class="faq-chevron">▾</div></div>
+            <div class="faq-answer">${f.a}</div>
+        </div>`
+    ).join('');
+}
+
+function toggleFaq(el) { el.classList.toggle('open'); playClick(); }
+
+function buildChangelog() {
+    const el = document.getElementById('changelogList');
+    if (!el) return;
+    el.innerHTML = CHANGELOG.map(n =>
+        `<div class="news-card">
+            <div class="news-card-header">
+                <span class="news-badge ${n.badgeClass}">${n.badge.toUpperCase()}</span>
+                <span class="news-date">${n.date}</span>
+            </div>
+            <div class="news-title">${n.title}</div>
+            <div class="news-desc">${n.desc}</div>
+        </div>`
+    ).join('');
+}
+
+function buildTicker() {
+    const el = document.getElementById('tickerInner');
+    if (!el) return;
+    const items = [...TICKER_ITEMS, ...TICKER_ITEMS];
+    el.innerHTML = items.map(t => `<span class="ticker-item"><span class="ticker-dot"></span>${t}</span>`).join('');
+}
+
+/* ═══════════ SEARCH ═══════════ */
+function openSearch() {
+    document.getElementById('searchOverlay').classList.add('show');
+    setTimeout(() => document.getElementById('searchInput')?.focus(), 100);
+    playClick();
+}
+function closeSearch() {
+    document.getElementById('searchOverlay').classList.remove('show');
+    document.getElementById('searchInput').value = '';
+    document.getElementById('searchResults').innerHTML = '<div class="search-empty">Type to search LPOLVO content...</div>';
+}
+
+function performSearch(q) {
+    const el = document.getElementById('searchResults');
+    if (!q || q.length < 2) {
+        el.innerHTML = '<div class="search-empty">Type to search LPOLVO content...</div>';
+        return;
+    }
+    const lq = q.toLowerCase();
+    let results = [];
+
+    // Search scripts
+    LPOLVO_SCRIPTS.forEach(s => {
+        if (s.name.toLowerCase().includes(lq) || s.game.toLowerCase().includes(lq) || s.category.toLowerCase().includes(lq) || s.desc.toLowerCase().includes(lq)) {
+            results.push({ type: 'script', icon: getCatIcon(s.category), name: s.name, sub: s.game + ' · ' + s.category, action: () => { closeSearch(); openScriptDetail(s.id); } });
+        }
+    });
+    // Search videos
+    LPOLVO_VIDEOS.forEach(v => {
+        if (v.title.toLowerCase().includes(lq) || v.channel.toLowerCase().includes(lq)) {
+            results.push({ type: 'video', icon: '🎬', name: v.title, sub: 'LPOLVOXD1 · YouTube', action: () => { window.open(v.url, '_blank'); } });
+        }
+    });
+    // Search categories
+    CATEGORIES.forEach(c => {
+        if (c.name.toLowerCase().includes(lq)) {
+            results.push({ type: 'category', icon: c.icon, name: c.name + ' Scripts', sub: 'Category · ' + LPOLVO_SCRIPTS.filter(s => s.category === c.id).length + ' scripts', action: () => { closeSearch(); navigate('scripts'); setFilter(c.id, null); } });
+        }
+    });
+
+    if (results.length === 0) {
+        el.innerHTML = `<div class="search-empty">No results for "${esc(q)}"</div>`;
+        return;
+    }
+    el.innerHTML = results.slice(0, 12).map(r =>
+        `<div class="search-result-item" onclick="this._action()">
+            <div class="search-result-icon">${r.icon}</div>
+            <div class="search-result-info">
+                <div class="search-result-name">${esc(r.name)}</div>
+                <div class="search-result-sub">${esc(r.sub)}</div>
+            </div>
+            <span class="search-result-type">${r.type}</span>
+        </div>`
+    ).join('');
+    // Attach actions
+    el.querySelectorAll('.search-result-item').forEach((el, i) => { el._action = results[i].action; });
+}
+
+/* ═══════════ NAVIGATION ═══════════ */
+function navigate(page) {
+    if (state.page === page) return;
+    const oldEl = document.getElementById('page-' + state.page);
+    const newEl = document.getElementById('page-' + page);
+    if (!newEl) return;
+    if (oldEl) oldEl.classList.remove('active');
+    newEl.classList.add('active');
+    state.page = page;
+    document.querySelectorAll('.bottom-nav-item').forEach(el => el.classList.toggle('active', el.dataset.page === page));
+    document.querySelectorAll('.sidebar-nav-item[data-page]').forEach(el => el.classList.toggle('active', el.dataset.page === page));
+    if (page === 'scripts') { buildScriptsPage(); }
+    if (page === 'videos') { buildVideosPage(); }
+    if (page === 'community') { buildChangelog(); }
+    playNav();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    window.history.replaceState(null, null, '#' + page);
+}
+
+function handleHashChange() {
+    const hash = location.hash.replace('#', '');
+    const valid = ['home', 'scripts', 'videos', 'community', 'about', 'contact', 'settings'];
+    if (valid.includes(hash)) navigate(hash);
+}
+
+/* ═══════════ SIDEBAR ═══════════ */
+function openSidebar() { document.getElementById('sidebar').classList.add('open'); document.getElementById('sidebar-overlay').classList.add('show'); playClick(); }
+function closeSidebar() { document.getElementById('sidebar').classList.remove('open'); document.getElementById('sidebar-overlay').classList.remove('show'); }
+
+/* ═══════════ SETTINGS TOGGLES ═══════════ */
+function toggleSetting(key) {
+    SETTINGS[key] = !SETTINGS[key];
+    localStorage.setItem('lp_' + key, JSON.stringify(SETTINGS[key]));
+    const toggle = document.getElementById('toggle-' + key);
+    if (toggle) toggle.classList.toggle('on', SETTINGS[key]);
+    if (key === 'particles') {
+        const canvas = document.getElementById('particles-canvas');
+        if (canvas) canvas.style.display = SETTINGS.particles ? '' : 'none';
+    }
+    playClick();
+}
+
+/* ═══════════ TOAST ═══════════ */
+function showToast(msg, type = 'info', duration = 3000) {
+    const container = document.getElementById('toast-container');
+    if (!container) return;
+    const icons = { success: '✓', error: '✕', warning: '⚠', info: 'ℹ' };
+    const toast = document.createElement('div');
+    toast.className = `toast ${type}`;
+    toast.innerHTML = `<div class="toast-icon">${icons[type]||'ℹ'}</div><div class="toast-msg">${msg}</div><button class="toast-close" onclick="dismissToast(this.parentElement)">✕</button>`;
+    container.appendChild(toast);
+    setTimeout(() => dismissToast(toast), duration);
+}
+function dismissToast(el) {
+    if (!el?.parentNode) return;
+    el.classList.add('out');
+    setTimeout(() => el?.parentNode?.removeChild(el), 350);
+}
+
+/* ═══════════ SOUNDS ═══════════ */
+let audioCtx = null;
+function getAudioCtx() {
+    if (!audioCtx) try { audioCtx = new (window.AudioContext || window.webkitAudioContext)(); } catch {}
+    return audioCtx;
+}
+function playTone(freq, vol, dur, type = 'sine') {
+    if (!SETTINGS.sounds) return;
+    try {
+        const ctx = getAudioCtx();
+        if (!ctx) return;
+        const osc = ctx.createOscillator();
+        const gain = ctx.createGain();
+        osc.type = type;
+        osc.frequency.value = freq;
+        gain.gain.setValueAtTime(0, ctx.currentTime);
+        gain.gain.linearRampToValueAtTime(vol, ctx.currentTime + 0.01);
+        gain.gain.exponentialRampToValueAtTime(0.0001, ctx.currentTime + dur);
+        osc.connect(gain); gain.connect(ctx.destination);
+        osc.start(ctx.currentTime);
+        osc.stop(ctx.currentTime + dur + 0.05);
+    } catch {}
+}
+function playClick() { playTone(880, 0.04, 0.06); }
+function playNav() { playTone(660, 0.03, 0.08); }
+
+/* ═══════════ SCROLL TO TOP ═══════════ */
+function initScrollTop() {
+    const btn = document.getElementById('scrollTop');
+    window.addEventListener('scroll', () => { btn.classList.toggle('show', window.scrollY > 400); }, { passive: true });
+}
+
+/* ═══════════ PARTICLES ═══════════ */
+function initParticles() {
+    const canvas = document.getElementById('particles-canvas');
+    if (!canvas || !SETTINGS.particles) { if (canvas) canvas.style.display = 'none'; return; }
+    const ctx = canvas.getContext('2d');
+    let particles = [];
+    let animFrame;
+    function resize() { canvas.width = window.innerWidth; canvas.height = window.innerHeight; }
+    resize();
+    window.addEventListener('resize', resize, { passive: true });
+    // Reduce on mobile
+    const count = window.innerWidth < 768 ? 25 : 50;
+    for (let i = 0; i < count; i++) {
+        particles.push({
+            x: Math.random() * canvas.width, y: Math.random() * canvas.height,
+            vx: (Math.random() - 0.5) * 0.4, vy: -Math.random() * 0.3 - 0.1,
+            r: Math.random() * 1.5 + 0.3, o: Math.random() * 0.4 + 0.1,
+        });
+    }
+    function draw() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        particles.forEach(p => {
+            ctx.beginPath();
+            ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+            ctx.fillStyle = `rgba(65,105,225,${p.o})`;
+            ctx.fill();
+            p.x += p.vx; p.y += p.vy;
+            if (p.y < -5) { p.y = canvas.height + 5; p.x = Math.random() * canvas.width; }
+            if (p.x < -5) p.x = canvas.width + 5;
+            if (p.x > canvas.width + 5) p.x = -5;
+        });
+        animFrame = requestAnimationFrame(draw);
+    }
+    draw();
+    document.addEventListener('visibilitychange', () => {
+        if (document.hidden) cancelAnimationFrame(animFrame);
+        else draw();
+    });
+}
+
+/* ═══════════ SETTINGS INIT ═══════════ */
+function syncSettingToggles() {
+    Object.keys(SETTINGS).forEach(k => {
+        const t = document.getElementById('toggle-' + k);
+        if (t) t.classList.toggle('on', SETTINGS[k]);
+    });
+}
+
+/* ═══════════ LOADING ═══════════ */
+function runLoading() {
+    return new Promise(resolve => {
+        const bar = document.getElementById('loadingBar');
+        const steps = [25, 55, 80, 100];
+        let i = 0;
+        function step() {
+            if (i >= steps.length) { setTimeout(resolve, 200); return; }
+            if (bar) bar.style.width = steps[i] + '%';
+            i++;
+            setTimeout(step, 350);
+        }
+        setTimeout(step, 100);
+    });
+}
+
+function finishLoading() {
+    const ls = document.getElementById('loading-screen');
+    const app = document.getElementById('app');
+    if (ls) { ls.classList.add('hide'); setTimeout(() => { ls.style.display = 'none'; }, 700); }
+    if (app) { app.style.display = ''; app.style.visibility = 'visible'; app.classList.add('visible'); }
+}
+
+/* ═══════════ INIT ═══════════ */
+function startApp() {
+    runLoading().then(() => {
+        // Build all sections
+        buildTicker();
+        buildHomeCats();
+        buildHomeLatest();
+        buildHomeFeatured();
+        buildHomeVideos();
+        buildExecutors();
+        buildFAQ();
+        initParticles();
+        syncSettingToggles();
+        initScrollTop();
+
+        // Routing
+        window.addEventListener('hashchange', handleHashChange);
+        handleHashChange();
+
+        // Keyboard shortcuts
+        document.addEventListener('keydown', e => {
+            if (e.key === 'Escape') { closeSearch(); closeScriptModal(); closeSidebar(); }
+            if ((e.ctrlKey || e.metaKey) && e.key === 'k') { e.preventDefault(); openSearch(); }
+        });
+
+        // Hover sounds
+        let lastHover = 0;
+        document.addEventListener('mouseover', e => {
+            if (Date.now() - lastHover < 300) return;
+            if (e.target.matches('button,.filter-tab,.cat-pill,.script-card,.video-card,.faq-item')) {
+                lastHover = Date.now();
+                playClick();
+            }
+        }, { passive: true });
+
+        // Apply particle setting
+        if (!SETTINGS.particles) {
+            const c = document.getElementById('particles-canvas');
+            if (c) c.style.display = 'none';
+        }
+
+        console.log('[LP10 HUB v2.0] Ready ✓ — 34 scripts, 9 videos, no user system');
+        finishLoading();
+    });
+}
+
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', startApp);
+} else {
+    startApp();
+}
+</script>
+</body>
+</html>
