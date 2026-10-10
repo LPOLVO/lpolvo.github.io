@@ -192,6 +192,7 @@ body.ldlock{overflow:hidden}body.ldlock #mub{display:none}
 .ldp .ldgo{background:linear-gradient(135deg,var(--g1),var(--g2));color:#fff;box-shadow:0 0 28px #9b5de599}
 @media (prefers-reduced-motion:reduce){#ld .ldfx,#ld .ldau,#ld .ldpt,#ld .rg,.ldpump,.ldmoon{animation:none!important}}
 #mub{position:fixed;right:14px;bottom:calc(16px + env(safe-area-inset-bottom));z-index:80;width:44px;height:44px;border-radius:50%;border:1px solid var(--bd2);background:var(--card);color:var(--p2);font-size:20px;cursor:pointer;display:grid;place-items:center;box-shadow:0 0 18px var(--glow);-webkit-tap-highlight-color:transparent}
+.stats b{overflow-wrap:normal;white-space:nowrap}@media(max-width:700px){.stats{grid-template-columns:min-content min-content minmax(0,1fr);gap:12px}.stats b{font-size:clamp(20px,6.4vw,50px)}}
 </style></head><body><div id="ld" role="dialog" aria-label="Loading LP10 HUB">
 <div class="ldsc ldh">
 <div class="ldfog ldfx"></div><div class="ldfog b ldfx"></div><div class="ldmoon"></div>
@@ -400,4 +401,5 @@ if(gp()!=='1'){if(!LPM.on())LPM.start(H.dataset.th);else LPM.wake();sp('0');if(h
 L.classList.add('out');document.body.classList.remove('ldlock');clearInterval(eyeT);setTimeout(()=>L.remove(),1100);ui()}
 $$('.ldgo').forEach(b=>b.addEventListener('click',go));
 addEventListener('keydown',e=>{if(ready&&(e.key=='Enter'||e.key==' ')&&document.getElementById('ld')){e.preventDefault();go()}})})();
-</script></body></html>
+</script><script>(()=>{function fit(){document.querySelectorAll('.stats b').forEach(b=>{b.style.fontSize='';let f=parseFloat(getComputedStyle(b).fontSize),n=0;while(b.scrollWidth>b.clientWidth+1&&f>12&&n++<40){f-=1;b.style.fontSize=f+'px'}})}window.fitStats=fit;const a=document.getElementById('app');if(a)new MutationObserver(()=>requestAnimationFrame(fit)).observe(a,{childList:true});addEventListener('resize',fit);addEventListener('load',fit);if(document.fonts&&document.fonts.ready)document.fonts.ready.then(fit);fit()})();</script>
+</body></html>
