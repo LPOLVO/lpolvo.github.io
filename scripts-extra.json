@@ -5,7 +5,7 @@
   "c": "Universal",
   "d": "Auto Rebirth, Auto Stage, Strength Farm, and a purple UI. Mobile and PC. Remote payload has not been independently reviewed.",
   "s": "loadstring(game:HttpGet(\"https://raw.githubusercontent.com/LPOLVO/LP10/refs/heads/main/%2B1%20Assassin%20Leveling%20OB\"))()",
-  "new": true,
+  "new": false,
   "st": "",
   "at": "",
   "v": ""
