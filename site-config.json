@@ -1,0 +1,11 @@
+{
+ "v": 0,
+ "ann": { "on": 0, "id": "", "type": "info", "text": "", "link": "", "lt": "", "until": "" },
+ "now": { "t": "", "x": "" },
+ "next": [],
+ "best": [],
+ "daily": { "m": "auto", "id": "" },
+ "tags": {},
+ "th": { "site": "auto", "force": 0, "hideBtn": 0, "pinH": "", "pinP": "", "offH": [], "offP": [] },
+ "sec": { "board": 1, "hot": 1, "best": 1, "daily": 1 }
+}
