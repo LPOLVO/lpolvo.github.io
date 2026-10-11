@@ -1,5 +1,16 @@
 [
  {
+  "n": "Climb For Animals Eggs",
+  "g": "Climb For Animals Eggs",
+  "c": "Universal",
+  "d": "Auto Steal, Auto Place, Auto Hatch, Equip Best, Auto Upgrade, Auto Rebirth, x2 Train, Zone Selector, and a Halloween-themed GUI. Mobile and PC support. Remote payload has not been independently reviewed.",
+  "s": "loadstring(game:HttpGet(\"https://raw.githubusercontent.com/LPOLVO/LP10-UNIVERSAL-/refs/heads/main/Climb%20for%20animals%20eggs\"))()",
+  "new": true,
+  "st": "ok",
+  "at": "",
+  "v": ""
+ },
+ {
   "n": "+1 Assassin Leveling",
   "g": "+1 Assassin Leveling",
   "c": "Universal",
