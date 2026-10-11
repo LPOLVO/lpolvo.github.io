@@ -1,11 +1,38 @@
 {
- "v": 0,
- "ann": { "on": 0, "id": "", "type": "info", "text": "", "link": "", "lt": "", "until": "" },
- "now": { "t": "", "x": "" },
+ "v": 1791755880009,
+ "ann": {
+  "on": 0,
+  "id": "",
+  "type": "hot",
+  "text": "🚨 HOT NEWS: BLOX FRUITS SCRIPT COMING SOON! 🔥\n\nThe upcoming LP10 HUB Blox Fruits Script is getting closer! 🏴‍☠️💜\n\n👀 Stay tuned for sneak peeks, feature reveals, and release updates.\n\n💎 LP10 HUB — Something big is on the way! 🚀",
+  "link": "",
+  "lt": "",
+  "until": ""
+ },
+ "now": {
+  "t": "",
+  "x": ""
+ },
  "next": [],
  "best": [],
- "daily": { "m": "auto", "id": "" },
+ "daily": {
+  "m": "auto",
+  "id": ""
+ },
  "tags": {},
- "th": { "site": "auto", "force": 0, "hideBtn": 0, "pinH": "", "pinP": "", "offH": [], "offP": [] },
- "sec": { "board": 1, "hot": 1, "best": 1, "daily": 1 }
+ "th": {
+  "site": "auto",
+  "force": 0,
+  "hideBtn": 0,
+  "pinH": "",
+  "pinP": "",
+  "offH": [],
+  "offP": []
+ },
+ "sec": {
+  "board": 1,
+  "hot": 1,
+  "best": 1,
+  "daily": 1
+ }
 }
