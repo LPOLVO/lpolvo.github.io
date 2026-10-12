@@ -1523,6 +1523,8 @@ main .cc .card::after,main .box .card::after{display:none!important}
 #x10v i:nth-child(2){animation-delay:-.3s}#x10v i:nth-child(3){animation-delay:-.6s}#x10v i:nth-child(4){animation-delay:-.15s}
 @keyframes x10b{from{transform:scaleY(.2)}to{transform:scaleY(1)}}
 @media(prefers-reduced-motion:reduce){.x10th::after,.x10th::before,.x10c,#x10v i,.x10d{animation:none!important}}
+html.amo{--bg:#000;--bg2:#050505;--card:#0b0b0b}html.amo body{background:#000!important}
+.x11h{display:flex;flex-wrap:wrap;gap:6px}
 </style>
 <script>
 (function(){
@@ -1667,6 +1669,28 @@ function kick(){try{if(typeof LPM==='undefined')return;LPM.wake();const c=LPM._t
 ['pointerdown','touchstart','touchend','mousedown','keydown','click'].forEach(k=>document.addEventListener(k,kick,{capture:true,passive:true}));
 document.addEventListener('visibilitychange',()=>{if(!document.hidden)setTimeout(kick,200)});
 setTimeout(()=>{try{if(typeof LPM!=='undefined'&&LPM.on()&&!LPM.running()&&!sessionStorage.getItem('lp10_tapmsg')){sessionStorage.setItem('lp10_tapmsg','1');toast('🎵 Tap anywhere to start the music',4000)}}catch(e){}},2500);
+/* ---------- v4.0: APK button, install PWA, Surprise me, Recently viewed, updated-ago, AMOLED, shortcuts ---------- */
+const APK='https://github.com/LPOLVO/LP10-HUB-APP/releases/latest/download/LP10_HUB.apk';
+let ip=null;addEventListener('beforeinstallprompt',e=>{e.preventDefault();ip=e;pwaShow()});addEventListener('appinstalled',()=>{ip=null;pwaShow()});
+const pwaShow=()=>document.querySelectorAll('[data-a="x11_pwa"]').forEach(b=>b.hidden=!ip);
+try{if(localStorage.getItem('lp10_amo')==='1')document.documentElement.classList.add('amo')}catch(e){}
+const ago=s=>{const d=Date.parse(s.u||s.at||'');if(!d||d>Date.now())return'';const n=Math.floor((Date.now()-d)/864e5);return n<1?'today':n<30?n+'d ago':n<365?Math.floor(n/30)+'mo ago':''};
+const _c12=window.card;window.card=function(s){let h=_c12.apply(this,arguments);try{const a=ago(s);if(a)h=h.replace('<span class="tag">Mobile</span>','<span class="tag">⏱ '+a+'</span> <span class="tag">Mobile</span>')}catch(e){}return h};
+const _h12=R['/'];
+R['/']=function(){let h=_h12.apply(this,arguments);try{const b='<a class="btn" href="'+APK+'" rel="noopener">📱 Download App (APK)</a><button class="btn" data-a="x11_pwa" hidden>📲 Install web app</button><button class="btn" data-a="x11_amo">⚫ AMOLED</button>',m='<a class="btn" href="#/videos">▷ Watch latest videos</a>';if(h.includes(m))h=h.replace(m,m+b);const rv=J('lp10_rv',[]).map(id=>all().find(s=>s.id==id)).filter(Boolean);if(rv.length)h+='<div class="card v" style="margin-top:26px"><h3>🕘 Recently viewed</h3><div class="x11h" style="margin-top:12px">'+rv.map(s=>'<a class="btn" href="#/script/'+esc(s.id)+'">'+esc(s.n)+'</a>').join('')+'</div></div>'}catch(e){}return h};
+const _s12=R['/scripts'];R['/scripts']=function(){let h=_s12.apply(this,arguments);try{h=h.replace('<div class="grid" id="list">','<button class="btn" data-a="x11_sur" style="margin-top:14px">🎲 Surprise me</button><div class="grid" id="list">')}catch(e){}return h};
+const _d12=window.detail;window.detail=function(id){_d12.apply(this,arguments);try{let r=J('lp10_rv',[]).filter(x=>x!==id);r.unshift(id);localStorage.setItem('lp10_rv',JSON.stringify(r.slice(0,5)))}catch(e){}};
+document.addEventListener('click',e=>{const b=e.target.closest&&e.target.closest('[data-a^="x11_"]');if(!b)return;const a=b.dataset.a;
+if(a==='x11_sur'){const l=all().filter(s=>!s.hide);if(l.length)location.hash='#/script/'+l[Math.floor(Math.random()*l.length)].id}
+else if(a==='x11_pwa'){if(ip){ip.prompt();ip=null;pwaShow()}}
+else if(a==='x11_amo'){const on=document.documentElement.classList.toggle('amo');try{localStorage.setItem('lp10_amo',on?'1':'0')}catch(x){}toast(on?'AMOLED black ON ⚫':'AMOLED off',1500)}});
+new MutationObserver(pwaShow).observe(document.getElementById('app'),{childList:true});
+let gk=0;document.addEventListener('keydown',e=>{if(e.ctrlKey||e.metaKey||e.altKey||/INPUT|TEXTAREA|SELECT/.test((e.target||{}).tagName||''))return;const k=e.key.toLowerCase();
+if(k==='/'){e.preventDefault();if(location.hash!=='#/scripts')location.hash='#/scripts';setTimeout(()=>{const q=document.getElementById('q');if(q)q.focus()},120)}
+else if(k==='?')toast('/ search · G then H home · S scripts · V videos',4000)
+else if(gk&&Date.now()-gk<1200){const m={h:'/',s:'/scripts',v:'/videos'}[k];gk=0;if(m)location.hash='#'+m}
+else if(k==='g')gk=Date.now()});
+try{if(!CHANGES.some(c=>c[0]==='Update 4.0'))CHANGES.unshift(['Update 4.0','Thumbnails, app & shortcuts 📱','Roblox game thumbnails on every script, a Download App (APK) button, Install web app, 🎲 Surprise me, recently viewed scripts, updated-ago badges, AMOLED black mode, keyboard shortcuts, a daily 🎁 Lucky Script, 🖼️ share cards, confetti, glowing HOT / SPECIAL cards and a fix for intro music on browsers.'])}catch(e){}
 try{route(1)}catch(e){}
 })();
 </script>
