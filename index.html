@@ -1935,6 +1935,7 @@ try{if(!CHANGES.some(c=>c[0]==='Update 4.3'))CHANGES.unshift(['Update 4.3','Smoo
 try{if(!CHANGES.some(c=>c[0]==='Update 4.4'))CHANGES.unshift(['Update 4.4','Google AdSense & owner email alerts','Added the Google AdSense code so Google can verify site ownership. Owner security emails now also fire when someone only opens the Developer login page or types a wrong password, each event has its own colors and icon, and the owner panel has a Test email alert button.'])}catch(e){}
 try{if(!CHANGES.some(c=>c[0]==='Update 4.5'))CHANGES.unshift(['Update 4.5','Light 3D cards for phones','Cards on phones now lean gently with your hand movement (gyroscope), lean toward your finger when you press them, and rise in with a soft 3D reveal. Only the cards on screen are animated, nothing runs in the background, and the sparkle button (decorations off) turns it all off.'])}catch(e){}
 try{if(!CHANGES.some(c=>c[0]==='Update 4.6'))CHANGES.unshift(['Update 4.6','3D cards that really move','On phones cards lean when you scroll and when you tilt the phone, glide a light sheen across their surface, lean toward your finger when you press, and flip to a back side with the full description on a long press. Hot and Special cards get a deeper layered frame and a stronger lean, with a tiny vibration when the lean reaches its limit. Only the cards on screen are animated, and the sparkle button turns everything off.'])}catch(e){}
+try{if(!CHANGES.some(c=>c[0]==='Update 4.7'))CHANGES.unshift(['Update 4.7','Cards that follow your finger','While you press a card it now follows your finger continuously, with a light glow and sheen under your touch. Keep holding and the card flips to a richer back side with the full description, features, platforms and quick buttons, and it keeps following your finger while flipped. Scrolling still works as before.'])}catch(e){}
 try{route(1)}catch(e){}
 })();
 </script>
@@ -1947,12 +1948,16 @@ html:not(.nofx) .card.v.d3{transform:perspective(800px) rotateX(calc(var(--gx,0d
 html:not(.nofx) .hero{--hx:0px;--hy:0px}
 html:not(.nofx) .hero h1{translate:var(--hx) var(--hy)}
 }
-.sh3{display:none;position:absolute;inset:0;overflow:hidden;border-radius:inherit;pointer-events:none}
+.sh3{display:none;z-index:4;position:absolute;inset:0;overflow:hidden;border-radius:inherit;pointer-events:none}
 html:not(.nofx) .card.d3>.sh3{display:block}
 .sh3:before{content:'';position:absolute;top:0;bottom:0;left:-70%;width:60%;background:linear-gradient(105deg,transparent,rgba(255,255,255,.14) 50%,transparent);transform:translateX(var(--shx,190%)) skewX(-12deg)}
 html:not(.nofx) .card.cc-hot,html:not(.nofx) .card.cc-sp{--k:1.7}
 html:not(.nofx) .card.cc-hot{box-shadow:0 0 0 1px #ffd76a88,0 9px 0 -3px #ffd76a30,0 18px 0 -6px #ffd76a18,0 22px 38px #000a}
 html:not(.nofx) .card.cc-sp{box-shadow:0 0 0 1px var(--p2),0 9px 0 -3px rgba(167,139,250,.28),0 18px 0 -6px rgba(167,139,250,.14),0 22px 38px #000a}
+.sh3:after{content:'';position:absolute;inset:0;background:radial-gradient(circle at var(--mx,50%) var(--my,50%),rgba(255,255,255,.2),transparent 58%);opacity:0;transition:opacity .2s}
+.card.fg>.sh3:after{opacity:1}
+.bkf .fh{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--mu);margin-top:2px}
+.bkf .feats{display:flex;flex-wrap:wrap;gap:6px}
 .bkf{display:none;position:absolute;inset:0;z-index:3;flex-direction:column;gap:12px;padding:22px;border-radius:inherit;background:var(--card);border:1px solid var(--hv);overflow:auto;-webkit-user-select:none;user-select:none}
 .card.bk>.bkf{display:flex}
 .card.bk>:not(.bkf):not(.sh3){visibility:hidden}
@@ -1995,12 +2000,14 @@ try{if(typeof DeviceOrientationEvent.requestPermission==='function'){addEventLis
 /* scrolling makes the cards lean (works on every phone, no sensor needed) */
 addEventListener('scroll',()=>{if(off())return;const y=scrollY,d=y-ly;ly=y;sc=cl(sc-d*.25,6);kick();if(Date.now()-lastScan>1200)scan()},{passive:true});
 /* press: lean toward the finger · long press: flip to the back */
-let sx=0,sy=0,lp=0,lpDone=0;
+let sx=0,sy=0,lp=0,lpDone=0,tk=null,tr=null,aq=0,ae=null;
+function aim(e){ae=e;if(aq)return;aq=requestAnimationFrame(()=>{aq=0;const c=tk,v=ae;if(!c||!v||!tr)return;const x=cl((v.clientX-tr.left)/tr.width-.5,.7),y=cl((v.clientY-tr.top)/tr.height-.5,.7);c.style.setProperty('--gx',(-y*14).toFixed(2)+'deg');c.style.setProperty('--gy',(x*18).toFixed(2)+'deg');c.style.setProperty('--shx',(((x+.9)/.6)*100).toFixed(0)+'%');c.style.setProperty('--mx',((x+.5)*100).toFixed(0)+'%');c.style.setProperty('--my',((y+.5)*100).toFixed(0)+'%')})}
 function mkBack(c){let b=c.querySelector(':scope>.bkf');if(b)return b;b=document.createElement('div');b.className='bkf';
 const t=c.querySelector('h3'),p=c.querySelector(':scope>p'),ft=c.querySelector(':scope>.ft');
 b.innerHTML='<h3>'+t.innerHTML+'</h3><p>'+p.innerHTML+'</p>';
 const tg=[...c.querySelectorAll(':scope>div .tag')];if(tg.length){const d=document.createElement('div');d.className='bkt';tg.forEach(x=>d.appendChild(x.cloneNode(true)));b.appendChild(d)}
 if(ft)b.appendChild(ft.cloneNode(true));
+try{const id=(c.querySelector('[data-i]')||{}).dataset.i,s=all().find(x=>x.id==id);if(s){const fs=feats(s).slice(0,6);if(fs.length){const h=document.createElement('div');h.className='fh';h.textContent='Features';const w=document.createElement('div');w.className='feats';w.innerHTML=fs.map(f=>'<span class="ft2">✓ '+esc(f)+'</span>').join('');const ftEl=b.querySelector('.ft');b.insertBefore(h,ftEl);b.insertBefore(w,ftEl)}}}catch(e){}
 const bk=document.createElement('button');bk.type='button';bk.className='dt';bk.setAttribute('data-flip','1');bk.textContent='↩ Back';b.appendChild(bk);c.appendChild(b);return b}
 function flip(c){if(!c)return;const to=!c.classList.contains('bk');if(to)mkBack(c);
 const sw=()=>{c.classList.toggle('bk',to);if(to)c.classList.add('d3')};
@@ -2010,14 +2017,13 @@ const a1=c.animate([T(0),T(90)],{duration:170,easing:'ease-in',fill:'forwards'})
 a1.finished.then(()=>{sw();const a2=c.animate([T(-90),T(0)],{duration:210,easing:'ease-out'});a1.cancel();return a2.finished}).catch(()=>{try{a1.cancel()}catch(e){}})}
 function press(e){if(off()||e.pointerType==='mouse')return;const c=e.target.closest&&e.target.closest('.card');if(!okc(c)||c.classList.contains('bk'))return;scan();
 clearTimeout(lp);pr=c;hold=null;sx=e.clientX;sy=e.clientY;sh(c);c.classList.add('d3');
-const r=c.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;
-c.style.setProperty('--gx',(-y*9).toFixed(2)+'deg');c.style.setProperty('--gy',(x*12).toFixed(2)+'deg');c.style.setProperty('--sc','.975');
-if(canFlip(c))lp=setTimeout(()=>{if(pr===c){lpDone=1;setTimeout(()=>{lpDone=0},900);vib(18);rel(0);flip(c)}},520)}
-function rel(delay){clearTimeout(lp);if(!pr)return;const c=pr;pr=null;
+tk=c;tr=c.getBoundingClientRect();c.classList.add('fg');aim(e);c.style.setProperty('--sc','.975');
+if(canFlip(c))lp=setTimeout(()=>{if(pr===c){lpDone=1;setTimeout(()=>{lpDone=0},900);vib(18);flip(c)}},520)}
+function rel(delay){clearTimeout(lp);if(!pr)return;const c=pr;pr=null;tk=null;c.classList.remove('fg');
 const done=()=>{hold=null;c.style.removeProperty('--sc');if(vis.has(c)||c.classList.contains('bk')){c.style.setProperty('--gx',cx.toFixed(2)+'deg');c.style.setProperty('--gy',cy.toFixed(2)+'deg')}else{c.classList.remove('d3');c.style.removeProperty('--gx');c.style.removeProperty('--gy')}};
 if(delay){hold=c;setTimeout(done,delay)}else done()}
 addEventListener('pointerdown',press,{passive:true});
-addEventListener('pointermove',e=>{if(pr&&(Math.abs(e.clientX-sx)>10||Math.abs(e.clientY-sy)>10))rel(0)},{passive:true});
+addEventListener('pointermove',e=>{if(e.pointerType==='mouse'||!tk)return;if(Math.abs(e.clientX-sx)>14||Math.abs(e.clientY-sy)>14)clearTimeout(lp);aim(e)},{passive:true});
 addEventListener('pointerup',()=>rel(260),{passive:true});
 addEventListener('pointercancel',()=>rel(0),{passive:true});
 addEventListener('scroll',()=>{if(pr)rel(0)},{passive:true});
