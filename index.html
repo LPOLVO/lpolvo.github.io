@@ -1507,6 +1507,22 @@ main .cc .card::after,main .box .card::after{display:none!important}
 .x10th img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .45s}
 .x10th img.ld{opacity:1}
 .mod .x10th{aspect-ratio:16/9;margin:16px 0 0}
+.x10th::after{content:"";position:absolute;inset:0;background:linear-gradient(100deg,transparent 30%,#fff3 50%,transparent 70%);transform:translateX(-100%);animation:x10s 1.4s infinite}
+.x10th.on::after,.x10th.no::after{display:none}
+@keyframes x10s{to{transform:translateX(100%)}}
+.card:has(.bg.hot) .x10th{box-shadow:0 0 0 2px #ff9a3c,0 0 22px #ff9a3c66}
+.card:has(.bg.sp) .x10th{box-shadow:0 0 0 2px #6ee7ff,0 0 22px #6ee7ff66}
+.card:has(.bg.hot) .x10th.on::before,.card:has(.bg.sp) .x10th.on::before{content:"";position:absolute;inset:0;z-index:2;pointer-events:none;background:linear-gradient(110deg,transparent 40%,#fff5 50%,transparent 60%);transform:translateX(-100%);animation:x10s 3s infinite}
+.x10d{display:inline-block;width:9px;height:9px;border-radius:50%;background:#2ee66b;margin-right:6px;animation:x10p 1.8s infinite}
+@keyframes x10p{0%{box-shadow:0 0 0 0 #2ee66b99}70%,100%{box-shadow:0 0 0 8px #2ee66b00}}
+.x10c{position:fixed;top:-20px;width:9px;height:14px;z-index:9999;pointer-events:none;animation:x10f 2.2s ease-in forwards}
+@keyframes x10f{to{transform:translate3d(var(--dx),105vh,0) rotate(720deg)}}
+#x10v{position:fixed;left:12px;bottom:calc(14px + env(safe-area-inset-bottom,0px));display:none;gap:3px;align-items:flex-end;height:22px;padding:6px 9px;border-radius:99px;background:var(--card);border:1px solid var(--line);z-index:40;pointer-events:none;box-sizing:content-box}
+#x10v.on{display:flex}
+#x10v i{width:3px;height:100%;background:var(--p2);border-radius:2px;transform-origin:bottom;animation:x10b .9s ease-in-out infinite alternate}
+#x10v i:nth-child(2){animation-delay:-.3s}#x10v i:nth-child(3){animation-delay:-.6s}#x10v i:nth-child(4){animation-delay:-.15s}
+@keyframes x10b{from{transform:scaleY(.2)}to{transform:scaleY(1)}}
+@media(prefers-reduced-motion:reduce){.x10th::after,.x10th::before,.x10c,#x10v i,.x10d{animation:none!important}}
 </style>
 <script>
 (function(){
@@ -1610,20 +1626,47 @@ for(const q0 of tries){const q=encodeURIComponent(q0.replace(/\[[^\]]*\]/g,'').t
 return fail?undefined:0}
 async function thumbs(us){const j=await rb(1,'/v1/games/multiget/thumbnails?universeIds='+us.join(',')+'&countPerUniverse=1&defaults=true&size=384x216&format=Png&isCircular=false');if(!j)return null;const o={};(j.data||[]).forEach(d=>{const t=d.thumbnails&&d.thumbnails[0];if(t&&t.imageUrl&&t.state==='Completed')o[d.universeId]=t.imageUrl});const miss=us.filter(u=>!o[u]);if(miss.length){const k=await rb(1,'/v1/games/icons?universeIds='+miss.join(',')+'&returnPolicy=PlaceHolder&size=256x256&format=Png&isCircular=false');((k&&k.data)||[]).forEach(d=>{if(d.imageUrl&&d.state==='Completed')o[d.targetId]=d.imageUrl})}return o}
 const pend=()=>{const s=new Set();document.querySelectorAll('.x10th[data-i]').forEach(e=>{const id=e.dataset.i,x=TC[id];if(x&&x.i&&!fresh(x))delete x.i;if(NOGAME.includes(id)||fresh(x)||(x&&x.m&&Date.now()-x.t<MISS))return;s.add(id)});return[...s]};
-function paint(){document.querySelectorAll('.x10th[data-i]:not(.on)').forEach(e=>{const x=TC[e.dataset.i];if(!x||!x.i||!/^https:\/\/[a-z0-9-]+\.rbxcdn\.com\//.test(x.i))return;e.classList.add('on');const m=document.createElement('img');m.alt='';m.loading='lazy';m.decoding='async';m.referrerPolicy='no-referrer';m.onload=()=>m.classList.add('ld');m.onerror=()=>{m.remove();e.classList.remove('on');x.i='';x.m=1;x.t=Date.now();tsave()};e.append(m);m.src=x.i})}
+function paint(){document.querySelectorAll('.x10th[data-i]:not(.on)').forEach(e=>{const x=TC[e.dataset.i];if(x&&x.m&&!x.i)e.classList.add('no');if(!x||!x.i||!/^https:\/\/[a-z0-9-]+\.rbxcdn\.com\//.test(x.i))return;e.classList.add('on');const m=document.createElement('img');m.alt='';m.loading='lazy';m.decoding='async';m.referrerPolicy='no-referrer';m.onload=()=>m.classList.add('ld');m.onerror=()=>{m.remove();e.classList.remove('on');x.i='';x.m=1;x.t=Date.now();tsave()};e.append(m);m.src=x.i})}
 async function work(){if(busy||Date.now()<down)return;busy=true;try{for(let g=0;g<12;g++){const ids=pend().slice(0,6);if(!ids.length)break;
 for(const id of ids){const x=TC[id];if(x&&x.u)continue;const s=all().find(z=>z.id==id);if(!s){TC[id]={m:1,t:Date.now()};continue}const u=await find(s);if(u===undefined){down=Date.now()+12e4;tsave();return}TC[id]=u?{u:u,t:Date.now()}:{m:1,t:Date.now()};await sleep(250)}
 const need=ids.filter(id=>TC[id]&&TC[id].u&&!TC[id].i);
 if(need.length){const us=[...new Set(need.map(id=>TC[id].u))],o=await thumbs(us);if(o===null){down=Date.now()+12e4;tsave();return}need.forEach(id=>{const i=o[TC[id].u];TC[id]=i?{u:TC[id].u,i:i,t:Date.now()}:{m:1,t:Date.now()}})}
 tsave();paint()}}catch(e){}finally{busy=false}}
 const go=()=>{clearTimeout(tm);tm=setTimeout(()=>{try{paint();work()}catch(e){}},150)};
-const thb=s=>'<div class="x10th" data-i="'+esc(s.id)+'"><span>'+(ICO[s.c]||'🎮')+'</span></div>';
+const thb=s=>'<div class="x10th'+(NOGAME.includes(s.id)?' no':'')+'" data-i="'+esc(s.id)+'"><span>'+(ICO[s.c]||'🎮')+'</span></div>';
 const _c10=window.card;
 window.card=function(s){let h=_c10.apply(this,arguments);try{h=h.replace('<div class="row">',thb(s)+'<div class="row">')}catch(e){}return h};
 const _d10=window.detail;
 window.detail=function(id){_d10.apply(this,arguments);try{const ms=document.querySelectorAll('.mod'),m=ms[ms.length-1],h=m&&m.querySelector('.mb h2'),q=all().find(x=>x.id==id);if(!h||!q||m.querySelector('.x10th'))return;h.insertAdjacentHTML('beforebegin',thb(q));go()}catch(e){}};
 try{const ap=document.getElementById('app');if(ap)new MutationObserver(go).observe(ap,{childList:true,subtree:true});new MutationObserver(go).observe(document.body,{childList:true})}catch(e){}
 setTimeout(go,500);
+/* ---------- v4.1: dot, confetti, typing hero, visualizer, lucky script, share card, audio unlock ---------- */
+const RMq=matchMedia('(prefers-reduced-motion:reduce)'),today=()=>new Date().toISOString().slice(0,10);
+const _c11=window.card;window.card=function(s){let h=_c11.apply(this,arguments);try{h=h.replace('🟢 Working','<i class="x10d"></i>Working')}catch(e){}return h};
+function conf(n){if(RMq.matches)return;const K=['#ff9a3c','#9b5de5','#6ee7ff','#ffe27a','#ff4d7d','#9dff5a'];for(let i=0;i<(n||40);i++){const e=document.createElement('i');e.className='x10c';e.style.cssText='left:'+Math.random()*100+'vw;background:'+K[i%6]+';--dx:'+(Math.random()*160-80)+'px;animation-delay:'+Math.random()*.5+'s;animation-duration:'+(1.8+Math.random()*1.2)+'s';document.body.append(e);setTimeout(()=>e.remove(),3800)}}
+document.addEventListener('click',e=>{const b=e.target.closest&&e.target.closest('[data-a="cp"],[data-a="x_ok"]');if(!b)return;if(b.dataset.a==='cp'&&!J('lp10_warn',0))return;const n=(+localStorage.getItem('lp10_cc')||0)+1;try{localStorage.setItem('lp10_cc',n)}catch(x){}if([1,10,25,50,100].includes(n)){conf(60);toast(n==1?'First loader copied 🎉':n+' loaders copied! 🎉',2600)}});
+try{new MutationObserver(ms=>{for(const m of ms){const t=m.target;if(t.classList&&t.classList.contains('on')&&t.textContent.length<200&&/Achievement unlocked/.test(t.textContent)){conf(50);break}}}).observe(document.body,{attributes:true,attributeFilter:['class'],subtree:true})}catch(e){}
+const PH=['count.','epic.','easy.','rare.','shine.'];let hp=0;
+function typer(){const e=document.querySelector('.hero h1 .pu');if(!e||e.dataset.t10||RMq.matches)return;e.dataset.t10=1;let w=PH[0],i=w.length,d=-1,hold=25;const iv=setInterval(()=>{if(!document.body.contains(e)){clearInterval(iv);return}if(hold>0){hold--;return}i+=d;if(i<=0){d=1;hp=(hp+1)%PH.length;w=PH[hp];i=0}else if(i>=w.length){d=-1;hold=18}e.textContent=w.slice(0,i)+'\u200b'},110)}
+new MutationObserver(()=>{try{typer()}catch(e){}}).observe(document.getElementById('app'),{childList:true});setTimeout(typer,700);
+const vz=document.createElement('div');vz.id='x10v';vz.innerHTML='<i></i><i></i><i></i><i></i>';document.body.append(vz);
+setInterval(()=>{try{vz.classList.toggle('on',typeof LPM!=='undefined'&&LPM.on()&&LPM.running()&&!document.hidden)}catch(e){}},1000);
+const RA=[['Common','#9aa4b2',60],['Rare','#4da3ff',25],['Epic','#b46bff',10],['Legendary','#ffb020',5]],_h10=R['/'];
+R['/']=function(){return _h10.apply(this,arguments)+'<div class="card v" style="margin-top:26px"><h3>🎁 Lucky Script</h3><p>Open the chest once a day to reveal a random script and its rarity.</p><div id="x10r"></div><div class="btns" style="margin:0"><button class="btn pr" data-a="x10_lk" style="justify-content:center">'+((J('lp10_lk',null)||{}).d===today()?'Show today’s pick':'Open the chest 🎁')+'</button></div></div>'};
+document.addEventListener('click',e=>{const b=e.target.closest&&e.target.closest('[data-a="x10_lk"]');if(!b)return;const a=all().filter(s=>!s.hide);if(!a.length)return;let st=J('lp10_lk',null);if(!st||st.d!==today()){const r=Math.random()*100;let k=0,ri=0;for(let i=0;i<RA.length;i++){k+=RA[i][2];if(r<k){ri=i;break}}st={d:today(),id:a[Math.floor(Math.random()*a.length)].id,r:ri};try{localStorage.setItem('lp10_lk',JSON.stringify(st))}catch(x){}conf(20+ri*25)}const s=a.find(x=>x.id==st.id)||a[0],box=document.getElementById('x10r');if(box)box.innerHTML='<div class="row" style="margin:12px 0"><b style="color:'+RA[st.r][1]+'">'+RA[st.r][0]+'</b><a class="btn" href="#/script/'+esc(s.id)+'">'+esc(s.n)+' →</a></div>';b.textContent='Show today’s pick'});
+async function card10(id,noImg){const s=all().find(x=>x.id==id);if(!s)return;const W=1080,c=document.createElement('canvas');c.width=W;c.height=W;const g=c.getContext('2d'),cs=getComputedStyle(document.documentElement),g1=cs.getPropertyValue('--g1').trim()||'#9b5de5',g2=cs.getPropertyValue('--g2').trim()||'#5a2ba8',gr=g.createLinearGradient(0,0,W,W);gr.addColorStop(0,g2);gr.addColorStop(1,'#0f0a1a');g.fillStyle=gr;g.fillRect(0,0,W,W);
+g.save();g.beginPath();g.roundRect?g.roundRect(90,150,900,506,36):g.rect(90,150,900,506);g.clip();g.fillStyle=g1;g.globalAlpha=.35;g.fillRect(90,150,900,506);g.globalAlpha=1;const x=TC[id];
+if(!noImg&&x&&x.i)await new Promise(r=>{const im=new Image();im.crossOrigin='anonymous';im.onload=()=>{try{g.drawImage(im,90,150,900,506)}catch(e){}r()};im.onerror=r;setTimeout(r,4000);im.src=x.i});g.restore();
+g.fillStyle=g1;g.font='800 44px sans-serif';g.fillText('LP10 HUB',90,100);g.fillStyle='#fff';g.font='800 64px sans-serif';let ln='',y=750;for(const w of s.n.split(' ')){const tt=ln?ln+' '+w:w;if(g.measureText(tt).width>900&&ln){g.fillText(ln,90,y);y+=76;ln=w}else ln=tt}g.fillText(ln,90,y);
+g.font='500 38px sans-serif';g.fillStyle='#ffffffcc';g.fillText(s.c+(s.st&&STT[s.st]?'  ·  '+STT[s.st]:''),90,y+64);g.font='500 34px sans-serif';g.fillText(location.host+'/#/script/'+s.id,90,1020);
+try{c.toBlob(async b=>{if(!b)return toast('Could not create card');const f=new File([b],'lp10-'+id+'.png',{type:'image/png'});try{if(navigator.canShare&&navigator.canShare({files:[f]})){await navigator.share({files:[f]});return}}catch(er){if(er&&er.name==='AbortError')return}const u=URL.createObjectURL(b),a=document.createElement('a');a.href=u;a.download=f.name;a.click();setTimeout(()=>URL.revokeObjectURL(u),4e3);toast('Card saved ✓')},'image/png')}catch(e){if(!noImg)card10(id,true);else toast('Could not create card')}}
+document.addEventListener('click',e=>{const b=e.target.closest&&e.target.closest('[data-a="x10_card"]');if(b){toast('Creating card…',1500);card10(b.dataset.i)}});
+const _d11=window.detail;window.detail=function(id){_d11.apply(this,arguments);try{const ms=document.querySelectorAll('.mod'),m=ms[ms.length-1],b=m&&m.querySelector('.btns');if(b&&!b.querySelector('[data-a="x10_card"]'))b.insertAdjacentHTML('beforeend','<button class="btn" data-a="x10_card" data-i="'+esc(id)+'">🖼️ Card</button>')}catch(e){}};
+/* music: unlock the audio engine on the first touch / click / key anywhere (fixes silent intro) */
+function kick(){try{if(typeof LPM==='undefined')return;LPM.wake();const c=LPM._t&&LPM._t.ctx&&LPM._t.ctx();if(!c||c.state==='running')return;try{const b=c.createBuffer(1,1,22050),s=c.createBufferSource();s.buffer=b;s.connect(c.destination);s.start(0)}catch(e){}c.resume().catch(()=>{})}catch(e){}}
+['pointerdown','touchstart','touchend','mousedown','keydown','click'].forEach(k=>document.addEventListener(k,kick,{capture:true,passive:true}));
+document.addEventListener('visibilitychange',()=>{if(!document.hidden)setTimeout(kick,200)});
+setTimeout(()=>{try{if(typeof LPM!=='undefined'&&LPM.on()&&!LPM.running()&&!sessionStorage.getItem('lp10_tapmsg')){sessionStorage.setItem('lp10_tapmsg','1');toast('🎵 Tap anywhere to start the music',4000)}}catch(e){}},2500);
 try{route(1)}catch(e){}
 })();
 </script>
