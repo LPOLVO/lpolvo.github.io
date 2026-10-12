@@ -1,5 +1,5 @@
 {
- "v": 1791760586689,
+ "v": 1791760635307,
  "ann": {
   "on": 1,
   "id": "1791756350607",
@@ -72,11 +72,20 @@
   },
   "gc": "lpolvl",
   "hook": "https://discord.com/api/webhooks/1535125224884801630/gfSeieOpOLrROIOm0mtBxgXpN7_PbBBioqFSX3bbKOfIn7vvuq_Al5m5lrmpPaiSXHtd",
-  "og": 0,
+  "og": 1,
   "vote": {
-   "on": 0,
-   "t": "",
-   "opts": []
+   "on": 1,
+   "t": "What Do you Want For Next Video ?",
+   "opts": [
+    {
+     "id": "omv4fzzcx",
+     "t": "Blox Fruits Script "
+    },
+    {
+     "id": "omv4g00ju",
+     "t": "Random Game Script "
+    }
+   ]
   }
  }
 }
