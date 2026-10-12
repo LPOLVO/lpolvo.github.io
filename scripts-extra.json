@@ -3,7 +3,7 @@
   "n": "LP10 Universal",
   "g": "Universal",
   "c": "Universal",
-  "d": "​Description\n​LP10 Universal — Halloween Edition is a feature-rich, haunted command hub for mobile and PC executors. It features 43 scripts, a Pumpkin Night Shell design, spooky visual effects, a Halloween intro, live FPS/PING/MEM monitoring, and full favorites, pinned, recent, and search systems.  \n​Features\n​Auto Steal & Auto Place: Automates stealing and placing mechanics.  \n​Auto Hatch & Equip Best: Automatically hatches eggs and equips your best items.  \n​Auto Upgrade & Auto Rebirth: Automates your character upgrades and rebirth progressions.  \n​x2 Train & Zone Selector: Multiplies your training speed and lets you switch zones effortlessly.  \n​Halloween-Themed GUI: Full-screen custom UI with a spooky atmosphere, live FPS, ping, memory status, and search functionality.  \n​Mobile & PC Support: Fully optimized to run smoothly across both mobile and desktop executors.  \n​Unreviewed Remote Payload: Note that the remote payload has not been independently reviewed.",
+  "d": "​LP10 Universal — Halloween Edition is a feature-rich, haunted command hub for mobile and PC executors. It features 43 scripts, a Pumpkin Night Shell design, spooky visual effects, a Halloween intro, live FPS/PING/MEM monitoring, and full favorites, pinned, recent, and search systems.",
   "s": "loadstring(game:HttpGet(\"https://raw.githubusercontent.com/LPOLVO/LP10-UNIVERSAL-/refs/heads/main/LP10%20HUB%20OB\"))()",
   "new": true,
   "st": "ok",
