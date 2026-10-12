@@ -1,5 +1,5 @@
 {
- "v": 1791841053403,
+ "v": 1791841104184,
  "ann": {
   "on": 0,
   "id": "1791756350607",
@@ -83,7 +83,7 @@
   "hook": "https://discord.com/api/webhooks/1535125224884801630/gfSeieOpOLrROIOm0mtBxgXpN7_PbBBioqFSX3bbKOfIn7vvuq_Al5m5lrmpPaiSXHtd",
   "og": 1,
   "vote": {
-   "on": 1,
+   "on": 0,
    "t": "What Do you Want For Next Video ?",
    "opts": [
     {
