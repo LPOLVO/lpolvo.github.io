@@ -1,5 +1,5 @@
 {
- "v": 1791840879616,
+ "v": 1791840927437,
  "ann": {
   "on": 0,
   "id": "1791756350607",
@@ -20,14 +20,20 @@
    "x": ""
   }
  ],
- "best": [],
+ "best": [
+  "blox-fruits-script"
+ ],
  "daily": {
-  "m": "auto",
-  "id": ""
+  "m": "manual",
+  "id": "blox-fruits-script"
  },
  "tags": {
   "lp10-universal": {
    "h": 1
+  },
+  "blox-fruits-script": {
+   "h": 1,
+   "s": 1
   }
  },
  "th": {
