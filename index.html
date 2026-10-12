@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en" data-th="hw"><head><meta charset="UTF-8"><meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com data:; img-src 'self' data: blob: https://i.ytimg.com https://img.youtube.com https://i3.ytimg.com https://*.goatcounter.com; frame-src https://www.youtube.com https://www.youtube-nocookie.com https://yewtu.be; connect-src 'self' https://api.github.com https://raw.githubusercontent.com https://www.youtube.com https://api.rss2json.com https://api.allorigins.win https://corsproxy.io https://*.goatcounter.com https://discord.com; media-src 'self' blob: data:; object-src 'none'; base-uri 'self'; form-action 'none'; worker-src 'self'; manifest-src 'self'"><meta name="referrer" content="strict-origin-when-cross-origin"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#0f0a1a">
+<!DOCTYPE html><html lang="en" data-th="hw"><head><meta charset="UTF-8"><meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com data:; img-src 'self' data: blob: https://*.rbxcdn.com https://i.ytimg.com https://img.youtube.com https://i3.ytimg.com https://*.goatcounter.com; frame-src https://www.youtube.com https://www.youtube-nocookie.com https://yewtu.be; connect-src 'self' https://apis.roproxy.com https://thumbnails.roproxy.com https://games.roproxy.com https://apis.roblox.com https://thumbnails.roblox.com https://games.roblox.com https://api.github.com https://raw.githubusercontent.com https://www.youtube.com https://api.rss2json.com https://api.allorigins.win https://corsproxy.io https://*.goatcounter.com https://discord.com; media-src 'self' blob: data:; object-src 'none'; base-uri 'self'; form-action 'none'; worker-src 'self'; manifest-src 'self'"><meta name="referrer" content="strict-origin-when-cross-origin"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#0f0a1a">
 <script>/* Control Center: early config (cached) */
 (function(){var c={};try{c=JSON.parse(localStorage.getItem('lp10_cfg'))||{}}catch(e){}
 window.LPCFG={c:c,f:function(){var X=(this.c||{}).x,n=Date.now();if(X&&X.sch)for(var i=0;i<X.sch.length;i++){var q=X.sch[i];if(q&&q.k=='theme'&&(q.th=='hw'||q.th=='pu')&&(!q.from||Date.parse(q.from)<=n)&&(!q.to||Date.parse(q.to)>=n))return q.th}var T=(this.c||{}).th||{},u=null;try{u=JSON.parse(localStorage.getItem('lp10_th'))}catch(e){}return((T.site=='hw'||T.site=='pu')&&(T.force||!u))?T.site:''},pin:function(t){var T=(this.c||{}).th||{};return(t=='hw'?T.pinH:T.pinP)||''},off:function(id){var T=(this.c||{}).th||{};return(T.offH||[]).indexOf(id)>-1||(T.offP||[]).indexOf(id)>-1}};
@@ -1501,6 +1501,12 @@ main .cc .card::after,main .box .card::after{display:none!important}
 .x9ar{direction:rtl;text-align:right;color:var(--mu);margin-top:6px;font-family:'Segoe UI',Tahoma,Arial,sans-serif;line-height:1.7}
 .x9req{border-style:dashed}
 @media(prefers-reduced-motion:reduce){header::after,#x9fog i,.x9bat,.x9bat i,#x9lt,html[data-th=hw] header .logo .lg{animation:none!important}#x9lt{display:none}}
+/* game thumbnails */
+.x10th{position:relative;aspect-ratio:16/8;border-radius:16px;overflow:hidden;background:linear-gradient(135deg,var(--g1),var(--g2));display:grid;place-items:center;font-size:34px;border:1px solid var(--line);flex-shrink:0}
+.x10th span{opacity:.55;pointer-events:none}
+.x10th img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .45s}
+.x10th img.ld{opacity:1}
+.mod .x10th{aspect-ratio:16/9;margin:16px 0 0}
 </style>
 <script>
 (function(){
@@ -1585,6 +1591,39 @@ else if(!isOwner())return;
 else if(a==='n9_chk')runCheck();
 else if(a==='n9_mark')ov(i,{st:'bad'});
 else if(a==='n9_rs'){let h=[];try{h=JSON.parse(localStorage.getItem(HK)||'[]')}catch(er){}const e2=h[+i];if(!e2||!confirm('Restore this version of the Control Center settings?'))return;const c=e2.c;c.v=Date.now();try{rawSet.call(localStorage,'lp10_cfg',JSON.stringify(c))}catch(er){return toast('Could not restore')}toast('Restored ✓ — open Control and press Publish',3000);setTimeout(()=>location.reload(),900)}});
+/* ---------- Roblox game thumbnails: found by game name, cached on the device ---------- */
+const TK='lp10_gth',TTL=14*864e5,MISS=3*864e5,NOGAME=['fake-lag-disconnecting','coordinates-and-save-teleport','emotes','free-gamepasses','new-free-gamepasses'],
+ALIAS={'combat-arena-op-silent-aim':'Combat Arena','1-plank-1-s':'1 Plank'},/* script id -> exact Roblox game name, only if the automatic match is wrong */
+ICO={Universal:'🎮',Utility:'🛠️',Combat:'⚔️',Movement:'🏃',Teleport:'🌀',Visual:'✨'};
+let TC={};try{TC=JSON.parse(localStorage.getItem(TK)||'{}')||{}}catch(e){}
+const tsave=()=>{try{localStorage.setItem(TK,JSON.stringify(TC))}catch(e){}};
+const fresh=e=>e&&e.i&&Date.now()-e.t<TTL,sleep=ms=>new Promise(r=>setTimeout(r,ms));
+let hi=0,down=0,busy=false,tm=0;
+const sid=(window.crypto&&crypto.randomUUID)?crypto.randomUUID():'00000000-0000-4000-8000-'+Date.now().toString(16).padStart(12,'0').slice(-12);
+const HO=[['https://apis.roproxy.com','https://thumbnails.roproxy.com','https://games.roproxy.com'],['https://apis.roblox.com','https://thumbnails.roblox.com','https://games.roblox.com']];
+async function rb(k,p){for(let n=0;n<2;n++){const h=(hi+n)%2,c=new AbortController(),t=setTimeout(()=>c.abort(),9000);try{const r=await fetch(HO[h][k]+p,{signal:c.signal,credentials:'omit'});if(r.ok){hi=h;return await r.json()}}catch(e){}finally{clearTimeout(t)}}return null}
+const nz=s=>String(s).toLowerCase().replace(/\[[^\]]*\]|\([^)]*\)/g,'').replace(/[^a-z0-9]+/g,'');
+function cands(j){const o=[];(function w(x,d){if(!x||d>7||typeof x!=='object')return;if(Array.isArray(x)){x.forEach(y=>w(y,d+1));return}const u=x.universeId||((x.placeId||x.rootPlaceId)?x.id:0);if(typeof x.name==='string'&&u)o.push({u:+u,n:x.name});for(const k in x)if(x[k]&&typeof x[k]==='object')w(x[k],d+1)})(j,0);return o}
+function pick(c,name){const t=nz(name);if(!t)return 0;let b=0,bs=0;c.forEach(x=>{const n=nz(x.n);if(!n)return;let s=0;if(n===t)s=3;else if(n.includes(t)||t.includes(n)){const r=Math.min(n.length,t.length)/Math.max(n.length,t.length);if(r>=.6)s=2+r-.6}if(s>bs){bs=s;b=x.u}});return b}
+async function find(s){const nm=ALIAS[s.id]||s.g||s.n,tries=[nm],b=nm.replace(/\[[^\]]*\]/g,'').replace(/\b(op|silent aim|new|script)\b/gi,'').replace(/\s+/g,' ').trim();if(b&&b!==nm)tries.push(b);let fail=true;
+for(const q0 of tries){const q=encodeURIComponent(q0.replace(/\[[^\]]*\]/g,'').trim());let j=await rb(0,'/search-api/omni-search?searchQuery='+q+'&pageToken=&sessionId='+sid+'&pageType=all');if(j)fail=false;let u=j?pick(cands(j),q0):0;if(!u){j=await rb(2,'/v1/games/list?model.keyword='+q+'&model.maxRows=12');if(j)fail=false;u=j?pick(cands(j),q0):0}if(u)return u;await sleep(200)}
+return fail?undefined:0}
+async function thumbs(us){const j=await rb(1,'/v1/games/multiget/thumbnails?universeIds='+us.join(',')+'&countPerUniverse=1&defaults=true&size=384x216&format=Png&isCircular=false');if(!j)return null;const o={};(j.data||[]).forEach(d=>{const t=d.thumbnails&&d.thumbnails[0];if(t&&t.imageUrl&&t.state==='Completed')o[d.universeId]=t.imageUrl});const miss=us.filter(u=>!o[u]);if(miss.length){const k=await rb(1,'/v1/games/icons?universeIds='+miss.join(',')+'&returnPolicy=PlaceHolder&size=256x256&format=Png&isCircular=false');((k&&k.data)||[]).forEach(d=>{if(d.imageUrl&&d.state==='Completed')o[d.targetId]=d.imageUrl})}return o}
+const pend=()=>{const s=new Set();document.querySelectorAll('.x10th[data-i]').forEach(e=>{const id=e.dataset.i,x=TC[id];if(x&&x.i&&!fresh(x))delete x.i;if(NOGAME.includes(id)||fresh(x)||(x&&x.m&&Date.now()-x.t<MISS))return;s.add(id)});return[...s]};
+function paint(){document.querySelectorAll('.x10th[data-i]:not(.on)').forEach(e=>{const x=TC[e.dataset.i];if(!x||!x.i||!/^https:\/\/[a-z0-9-]+\.rbxcdn\.com\//.test(x.i))return;e.classList.add('on');const m=document.createElement('img');m.alt='';m.loading='lazy';m.decoding='async';m.referrerPolicy='no-referrer';m.onload=()=>m.classList.add('ld');m.onerror=()=>{m.remove();e.classList.remove('on');x.i='';x.m=1;x.t=Date.now();tsave()};e.append(m);m.src=x.i})}
+async function work(){if(busy||Date.now()<down)return;busy=true;try{for(let g=0;g<12;g++){const ids=pend().slice(0,6);if(!ids.length)break;
+for(const id of ids){const x=TC[id];if(x&&x.u)continue;const s=all().find(z=>z.id==id);if(!s){TC[id]={m:1,t:Date.now()};continue}const u=await find(s);if(u===undefined){down=Date.now()+12e4;tsave();return}TC[id]=u?{u:u,t:Date.now()}:{m:1,t:Date.now()};await sleep(250)}
+const need=ids.filter(id=>TC[id]&&TC[id].u&&!TC[id].i);
+if(need.length){const us=[...new Set(need.map(id=>TC[id].u))],o=await thumbs(us);if(o===null){down=Date.now()+12e4;tsave();return}need.forEach(id=>{const i=o[TC[id].u];TC[id]=i?{u:TC[id].u,i:i,t:Date.now()}:{m:1,t:Date.now()}})}
+tsave();paint()}}catch(e){}finally{busy=false}}
+const go=()=>{clearTimeout(tm);tm=setTimeout(()=>{try{paint();work()}catch(e){}},150)};
+const thb=s=>'<div class="x10th" data-i="'+esc(s.id)+'"><span>'+(ICO[s.c]||'🎮')+'</span></div>';
+const _c10=window.card;
+window.card=function(s){let h=_c10.apply(this,arguments);try{h=h.replace('<div class="row">',thb(s)+'<div class="row">')}catch(e){}return h};
+const _d10=window.detail;
+window.detail=function(id){_d10.apply(this,arguments);try{const ms=document.querySelectorAll('.mod'),m=ms[ms.length-1],h=m&&m.querySelector('.mb h2'),q=all().find(x=>x.id==id);if(!h||!q||m.querySelector('.x10th'))return;h.insertAdjacentHTML('beforebegin',thb(q));go()}catch(e){}};
+try{const ap=document.getElementById('app');if(ap)new MutationObserver(go).observe(ap,{childList:true,subtree:true});new MutationObserver(go).observe(document.body,{childList:true})}catch(e){}
+setTimeout(go,500);
 try{route(1)}catch(e){}
 })();
 </script>
