@@ -1935,7 +1935,7 @@ try{if(!CHANGES.some(c=>c[0]==='Update 4.3'))CHANGES.unshift(['Update 4.3','Smoo
 try{if(!CHANGES.some(c=>c[0]==='Update 4.4'))CHANGES.unshift(['Update 4.4','Google AdSense & owner email alerts','Added the Google AdSense code so Google can verify site ownership. Owner security emails now also fire when someone only opens the Developer login page or types a wrong password, each event has its own colors and icon, and the owner panel has a Test email alert button.'])}catch(e){}
 try{if(!CHANGES.some(c=>c[0]==='Update 4.5'))CHANGES.unshift(['Update 4.5','Light 3D cards for phones','Cards on phones now lean gently with your hand movement (gyroscope), lean toward your finger when you press them, and rise in with a soft 3D reveal. Only the cards on screen are animated, nothing runs in the background, and the sparkle button (decorations off) turns it all off.'])}catch(e){}
 try{if(!CHANGES.some(c=>c[0]==='Update 4.6'))CHANGES.unshift(['Update 4.6','3D cards that really move','On phones cards lean when you scroll and when you tilt the phone, glide a light sheen across their surface, lean toward your finger when you press, and flip to a back side with the full description on a long press. Hot and Special cards get a deeper layered frame and a stronger lean, with a tiny vibration when the lean reaches its limit. Only the cards on screen are animated, and the sparkle button turns everything off.'])}catch(e){}
-try{if(!CHANGES.some(c=>c[0]==='Update 4.7'))CHANGES.unshift(['Update 4.7','Cards that follow your finger','While you press a card it now follows your finger continuously, with a light glow and sheen under your touch. Keep holding and the card flips to a richer back side with the full description, features, platforms and quick buttons, and it keeps following your finger while flipped. Scrolling still works as before.'])}catch(e){}
+try{if(!CHANGES.some(c=>c[0]==='Update 4.7'))CHANGES.unshift(['Update 4.7','Cards that follow your finger','While you press a card it now follows your finger continuously, with a light glow and sheen under your touch. Keep holding and the card flips to a richer back side with the full description, features, platforms and quick buttons, and it keeps following your finger while flipped. Scrolling still works as before. Cards with a thumbnail (taller cards) now get the 3D effect too.'])}catch(e){}
 try{route(1)}catch(e){}
 })();
 </script>
@@ -1971,7 +1971,7 @@ html:not(.nofx) .card.cc-sp{box-shadow:0 0 0 1px var(--p2),0 9px 0 -3px rgba(167
 const H=document.documentElement,app=document.getElementById('app');if(!app)return;
 const RM=matchMedia('(prefers-reduced-motion:reduce)'),CO=matchMedia('(hover:none),(pointer:coarse)');
 const off=()=>RM.matches||!CO.matches||H.classList.contains('nofx')||document.hidden;
-const okc=c=>c&&c.classList.contains('v')&&!c.closest('.cc,.mod,.box')&&c.tagName!='DETAILS'&&c.offsetHeight<420&&!c.querySelector('.card,[data-hwt],[data-th],.mod,input,textarea,select');
+const okc=c=>c&&c.classList.contains('v')&&!c.closest('.cc,.mod,.box')&&c.tagName!='DETAILS'&&c.offsetHeight<1100&&!c.querySelector('.card,[data-hwt],[data-th],.mod,input,textarea,select');
 const canFlip=c=>c&&!c.classList.contains('vid')&&c.querySelector('h3')&&c.querySelector(':scope>p')&&c.querySelector('[data-a="det"]');
 const vis=new Set(),seen=new WeakSet();let pr=null,hold=null,lastScan=0;
 const sh=c=>{if(!c.querySelector(':scope>.sh3')){const i=document.createElement('i');i.className='sh3';i.setAttribute('aria-hidden','true');c.appendChild(i)}};
