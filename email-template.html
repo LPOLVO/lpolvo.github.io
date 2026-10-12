@@ -1,0 +1,29 @@
+<div style="margin:0;padding:24px 12px;background:#07131a;font-family:Segoe UI,Arial,sans-serif">
+<table role="presentation" width="100%" cellspacing="0" cellpadding="0" style="max-width:560px;margin:0 auto;background:#0d1d27;border:2px solid #1f7a96;border-radius:22px;overflow:hidden">
+<tr><td style="padding:26px 24px 8px;text-align:center">
+<div style="font-size:12px;letter-spacing:4px;color:#5fd4f0;font-family:Consolas,monospace">LP10 HUB · SECURITY</div>
+<div style="margin:14px auto 0;display:inline-block;padding:6px 16px;border-radius:99px;background:{{event_color}};color:#07131a;font-weight:800;font-size:12px;letter-spacing:2px">{{event_tag}}</div>
+<h1 style="margin:16px 0 4px;color:#fff;font-size:24px;line-height:1.25">{{event_title}}</h1>
+<div style="color:#8fb3c2;font-size:14px">{{when}} ({{tz}})</div>
+</td></tr>
+<tr><td style="padding:18px 24px">
+<table role="presentation" width="100%" cellspacing="0" cellpadding="0" style="background:#102936;border:1px solid #1f5b72;border-radius:16px">
+<tr><td style="padding:14px 16px;color:#8fb3c2;font-size:13px">Method</td><td style="padding:14px 16px;color:#fff;font-size:14px;text-align:right">{{method}}</td></tr>
+<tr><td style="padding:14px 16px;color:#8fb3c2;font-size:13px;border-top:1px solid #1f5b72">Device</td><td style="padding:14px 16px;color:#fff;font-size:14px;text-align:right;border-top:1px solid #1f5b72">{{device}}</td></tr>
+<tr><td style="padding:14px 16px;color:#8fb3c2;font-size:13px;border-top:1px solid #1f5b72">Screen</td><td style="padding:14px 16px;color:#fff;font-size:14px;text-align:right;border-top:1px solid #1f5b72">{{screen}}</td></tr>
+<tr><td style="padding:14px 16px;color:#8fb3c2;font-size:13px;border-top:1px solid #1f5b72">Language</td><td style="padding:14px 16px;color:#fff;font-size:14px;text-align:right;border-top:1px solid #1f5b72">{{lang}}</td></tr>
+<tr><td style="padding:14px 16px;color:#8fb3c2;font-size:13px;border-top:1px solid #1f5b72">Theme</td><td style="padding:14px 16px;color:#fff;font-size:14px;text-align:right;border-top:1px solid #1f5b72">{{theme}}</td></tr>
+</table>
+<div style="margin-top:14px;padding:14px 16px;border-radius:14px;border:1px solid {{event_color}};color:#fff;font-size:14px;line-height:1.6"><b style="color:{{event_color}}">Suspicious?</b> {{suspicious}}</div>
+</td></tr>
+<tr><td style="padding:4px 24px 8px">
+<div style="color:#5fd4f0;font-size:13px;letter-spacing:2px;font-family:Consolas,monospace;margin-bottom:10px">IF IT WASN'T YOU</div>
+<div style="color:#cfe6ee;font-size:14px;line-height:1.7">1. Open the panel and turn on <b>Maintenance mode</b> in the Control Center.<br>2. To take the site fully offline: GitHub → repo Settings → Pages → <b>Unpublish site</b>.<br>3. Change your GitHub password and revoke tokens.<br>4. Ask Claude for a new owner password hash (<b>OWNER_H</b>) and upload the new index.html.</div>
+</td></tr>
+<tr><td style="padding:16px 24px 8px;text-align:center">
+<a href="{{panel}}" style="display:inline-block;margin:4px;padding:13px 22px;border-radius:14px;background:#5fd4f0;color:#07131a;font-weight:800;font-size:14px;text-decoration:none">Open owner panel</a>
+<a href="https://github.com/lpolvo/lpolvo.github.io/settings/pages" style="display:inline-block;margin:4px;padding:13px 22px;border-radius:14px;border:2px solid #ff3b5c;color:#ff6a85;font-weight:800;font-size:14px;text-decoration:none">Pause the site</a>
+<a href="https://github.com/settings/security" style="display:inline-block;margin:4px;padding:13px 22px;border-radius:14px;border:2px solid #1f7a96;color:#5fd4f0;font-weight:800;font-size:14px;text-decoration:none">Change password</a>
+</td></tr>
+<tr><td style="padding:18px 24px 24px;text-align:center;color:#58808f;font-size:12px">LP10 HUB automatic alert · {{site}}</td></tr>
+</table></div>
