@@ -1,5 +1,5 @@
 {
- "v": 1791833867594,
+ "v": 1791834079667,
  "ann": {
   "on": 1,
   "id": "1791756350607",
@@ -47,8 +47,8 @@
  },
  "x": {
   "m": {
-   "on": 1,
-   "msg": "We Are Updating LP10 HUB WEB",
+   "on": 0,
+   "msg": "",
    "eta": "2026-10-12T20:45:00.000Z"
   },
   "tx": {
@@ -77,7 +77,7 @@
    "best"
   ],
   "snd": {
-   "off": 1
+   "off": 0
   },
   "gc": "lpolvl",
   "hook": "https://discord.com/api/webhooks/1535125224884801630/gfSeieOpOLrROIOm0mtBxgXpN7_PbBBioqFSX3bbKOfIn7vvuq_Al5m5lrmpPaiSXHtd",
