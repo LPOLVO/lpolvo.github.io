@@ -1,5 +1,17 @@
 [
  {
+  "n": "Blox Fruits Script",
+  "g": "Blox Fruits",
+  "c": "Universal",
+  "d": "Auto Farm Level, Auto Farm Boss, Auto Farm Materials, Auto Farm Chest, Auto Mastery for Fruits, Swords and Guns, Auto Raid, Elite and Dough King Farming, Sea Event Automation, Race V3/V4 Features, Fruit and Material Collection, Island and NPC Teleports, ESP Options, Combat Settings, Server Hopping, and a Halloween-themed GUI. Includes a menu toggle using RightShift on PC or the on-screen pumpkin button. Remote payload has not been independently reviewed.",
+  "s": "loadstring(game:HttpGet(\"https://raw.githubusercontent.com/LPOLVO/LP10-UNIVERSAL-/refs/heads/main/Blox%20Fruits\"))()",
+  "new": true,
+  "st": "ok",
+  "at": "2026-10-12",
+  "v": "Er0CHLrO9mE",
+  "u": "2026-10-12"
+ },
+ {
   "n": "LP10 Universal",
   "g": "Universal",
   "c": "Universal",
@@ -9,18 +21,6 @@
   "st": "ok",
   "at": "",
   "v": "5_PsdErBQdM",
-  "u": "2026-10-12"
- },
- {
-  "n": "Blox Fruits Script",
-  "g": "Blox Fruits",
-  "c": "Universal",
-  "d": "Auto Farm Level, Auto Farm Boss, Auto Farm Materials, Auto Farm Chest, Auto Mastery for Fruits, Swords and Guns, Auto Raid, Elite and Dough King Farming, Sea Event Automation, Race V3/V4 Features, Fruit and Material Collection, Island and NPC Teleports, ESP Options, Combat Settings, Server Hopping, and a Halloween-themed GUI. Includes a menu toggle using RightShift on PC or the on-screen pumpkin button. Remote payload has not been independently reviewed.",
-  "s": "loadstring(game:HttpGet(\"https://raw.githubusercontent.com/LPOLVO/LP10-UNIVERSAL-/refs/heads/main/Blox%20Fruits\"))()",
-  "new": true,
-  "st": "ok",
-  "at": "2026-10-12",
-  "v": "",
   "u": "2026-10-12"
  },
  {
