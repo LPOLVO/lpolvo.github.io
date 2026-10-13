@@ -1944,7 +1944,7 @@ try{route(1)}catch(e){}
 @media(hover:none),(pointer:coarse){
 .card:not(.v){transform:perspective(800px) rotateX(9deg) translateY(18px)}
 .card{transition:transform .5s cubic-bezier(.2,.8,.2,1),opacity .4s,border-color .25s,box-shadow .25s}
-html:not(.nofx) .card.v.d3{transform:perspective(800px) rotateX(calc(var(--gx,0deg)*var(--k,1))) rotateY(calc(var(--gy,0deg)*var(--k,1))) scale(var(--sc,1));transition:transform .16s ease-out,border-color .25s,box-shadow .25s;will-change:transform;position:relative;-webkit-touch-callout:none;-webkit-user-select:none;user-select:none}
+html:not(.nofx) .card.v.d3{transform:perspective(800px) rotateX(calc(var(--gx,0deg)*var(--k,1)*var(--ti,1))) rotateY(calc(var(--gy,0deg)*var(--k,1)*var(--ti,1))) scale(var(--sc,1));transition:transform .16s ease-out,border-color .25s,box-shadow .25s;will-change:transform;position:relative;-webkit-touch-callout:none;-webkit-user-select:none;user-select:none}
 html:not(.nofx) .hero{--hx:0px;--hy:0px}
 html:not(.nofx) .hero h1{translate:var(--hx) var(--hy)}
 }
@@ -1970,7 +1970,7 @@ html:not(.nofx) .card.cc-sp{box-shadow:0 0 0 1px var(--p2),0 9px 0 -3px rgba(167
 'use strict';
 const H=document.documentElement,app=document.getElementById('app');if(!app)return;
 const RM=matchMedia('(prefers-reduced-motion:reduce)'),CO=matchMedia('(hover:none),(pointer:coarse)');
-const off=()=>RM.matches||!CO.matches||H.classList.contains('nofx')||document.hidden;
+const off=()=>RM.matches||!CO.matches||H.classList.contains('nofx')||H.classList.contains('x48t0')||document.hidden;
 const okc=c=>c&&c.classList.contains('v')&&!c.closest('.cc,.mod,.box')&&c.tagName!='DETAILS'&&c.offsetHeight<1100&&!c.querySelector('.card,[data-hwt],[data-th],.mod,input,textarea,select');
 const canFlip=c=>c&&!c.classList.contains('vid')&&c.querySelector('h3')&&c.querySelector(':scope>p')&&c.querySelector('[data-a="det"]');
 const vis=new Set(),seen=new WeakSet();let pr=null,hold=null,lastScan=0;
@@ -2007,9 +2007,9 @@ const t=c.querySelector('h3'),p=c.querySelector(':scope>p'),ft=c.querySelector('
 b.innerHTML='<h3>'+t.innerHTML+'</h3><p>'+p.innerHTML+'</p>';
 const tg=[...c.querySelectorAll(':scope>div .tag')];if(tg.length){const d=document.createElement('div');d.className='bkt';tg.forEach(x=>d.appendChild(x.cloneNode(true)));b.appendChild(d)}
 if(ft)b.appendChild(ft.cloneNode(true));
-try{const id=(c.querySelector('[data-i]')||{}).dataset.i,s=all().find(x=>x.id==id);if(s){const fs=feats(s).slice(0,6);if(fs.length){const h=document.createElement('div');h.className='fh';h.textContent='Features';const w=document.createElement('div');w.className='feats';w.innerHTML=fs.map(f=>'<span class="ft2">✓ '+esc(f)+'</span>').join('');const ftEl=b.querySelector('.ft');b.insertBefore(h,ftEl);b.insertBefore(w,ftEl)}}}catch(e){}
+try{const id=(c.querySelector('[data-i]')||{}).dataset.i,s=all().find(x=>x.id==id);if(s){const fs=feats(s).slice(0,6);if(fs.length){const h=document.createElement('div');h.className='fh';h.textContent='Features';const w=document.createElement('div');w.className='feats';w.innerHTML=fs.map(f=>'<span class="ft2">✓ '+esc(f)+'</span>').join('');const ftEl=b.querySelector('.ft');b.insertBefore(h,ftEl);b.insertBefore(w,ftEl)}const ar=document.createElement('div');ar.className='x48a';ar.innerHTML='<button type="button" class="dt" data-a="x10_card" data-i="'+esc(id)+'">🖼 Share card</button><button type="button" class="dt" data-x48="col" data-i="'+esc(id)+'">📁 Collection</button>';b.insertBefore(ar,b.querySelector('.ft'))}}catch(e){}
 const bk=document.createElement('button');bk.type='button';bk.className='dt';bk.setAttribute('data-flip','1');bk.textContent='↩ Back';b.appendChild(bk);c.appendChild(b);return b}
-function flip(c){if(!c)return;const to=!c.classList.contains('bk');if(to)mkBack(c);
+function flip(c){if(!c)return;const to=!c.classList.contains('bk');if(to)mkBack(c);try{window.x48snd&&window.x48snd(to?'flip':'back')}catch(e){}
 const sw=()=>{c.classList.toggle('bk',to);if(to)c.classList.add('d3')};
 if(!c.animate||RM.matches){sw();return}
 const T=d=>({transform:'perspective(800px) rotateY('+d+'deg)'});
@@ -2036,6 +2036,106 @@ const k=t.closest('.bkf');if(k&&!t.closest('button,a')){e.stopPropagation();e.pr
 addEventListener('hashchange',()=>{vis.clear();setTimeout(scan,500)});
 document.addEventListener('visibilitychange',()=>{if(!document.hidden)kick()});
 setInterval(scan,1500);setTimeout(scan,500);
+})();
+</script>
+<style id="x48s">
+.x48c{margin-top:10px}
+.x48p{display:inline-block;position:relative;width:9px;height:9px;border-radius:50%;margin-right:7px;vertical-align:1px;color:#3ddc84;background:currentColor}
+.x48p:after{content:'';position:absolute;inset:0;border-radius:50%;background:currentColor;animation:x48pl 1.8s ease-out infinite}
+.x48p.up{color:#ffc83d}.x48p.bad{color:#ff5a5a}
+@keyframes x48pl{0%{transform:scale(1);opacity:.6}100%{transform:scale(2.7);opacity:0}}
+.x48rv{margin:26px 0 4px}.x48rv h4{margin:0 0 8px;font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:var(--mu)}
+.x48rs{display:flex;gap:10px;overflow-x:auto;padding:4px 2px 10px;scrollbar-width:none}.x48rs::-webkit-scrollbar{display:none}
+.x48rc{flex:0 0 auto;max-width:210px;text-align:left;padding:12px 16px;border-radius:16px;border:1px solid var(--bd2);background:var(--card);color:var(--tx);font:inherit;cursor:pointer}
+.x48rc b{display:block;font-size:14px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.x48rc small{color:var(--mu);font-size:12px}
+.bkf .x48a{display:flex;flex-wrap:wrap;gap:8px}
+.x48sh{position:fixed;inset:0;z-index:9999;background:#000a;display:flex;align-items:flex-end;justify-content:center}
+.x48pn{width:100%;max-width:520px;background:var(--card);border:1px solid var(--bd2);border-radius:22px 22px 0 0;padding:20px 20px calc(20px + env(safe-area-inset-bottom,0px));max-height:82vh;overflow:auto;animation:x48up .25s ease-out;box-sizing:border-box}
+@keyframes x48up{from{transform:translateY(40px);opacity:0}to{transform:none;opacity:1}}
+.x48r{display:flex;justify-content:space-between;align-items:center;width:100%;padding:12px 14px;margin-top:8px;border-radius:14px;border:1px solid var(--bd2);background:transparent;color:var(--tx);font:inherit;cursor:pointer;box-sizing:border-box}
+.x48r.on{border-color:var(--p2)}
+.x48b{position:fixed;left:12px;right:12px;bottom:calc(14px + env(safe-area-inset-bottom,0px));z-index:9998;max-width:480px;margin:auto;padding:14px 16px;border-radius:18px;border:1px solid var(--p2);background:var(--card);box-shadow:0 14px 40px #000a;display:flex;gap:10px;align-items:center;box-sizing:border-box}
+.x48b span{flex:1;font-size:14px}
+.x48w{flex-wrap:wrap;overflow:visible}
+.x48fl{display:inline-block;margin-top:14px;color:var(--mu);text-decoration:none;font-size:14px}
+html.x48t0 .card.d3{transform:none!important}
+@media(prefers-reduced-motion:reduce){.x48p:after{animation:none}}
+</style>
+<script id="x48j">
+(function(){
+'use strict';
+const H=document.documentElement,LS=localStorage,$1=id=>document.getElementById(id);
+const g=(k,d)=>{try{const v=LS.getItem(k);return v==null?d:v}catch(e){return d}},sv=(k,v)=>{try{LS.setItem(k,v)}catch(e){}};
+const say=m=>{try{toast(m,2200)}catch(e){}};
+/* ---- 8) tilt intensity ---- */
+function applyTilt(){const v=g('lp10_tilt','normal');H.style.setProperty('--ti',{low:.5,normal:1,high:1.7}[v]||1);H.classList.toggle('x48t0',v==='off')}applyTilt();
+/* ---- 2) subtle flip sound ---- */
+let ac=null;window.x48snd=function(k){try{if(g('lp10_snd','1')==='0')return;const A=window.AudioContext||window.webkitAudioContext;if(!A)return;ac=ac||new A();if(ac.state==='suspended')ac.resume();const t=ac.currentTime,o=ac.createOscillator(),n=ac.createGain(),f=k==='flip'?[420,760]:[760,420];o.type='sine';o.frequency.setValueAtTime(f[0],t);o.frequency.exponentialRampToValueAtTime(f[1],t+.13);n.gain.setValueAtTime(.0001,t);n.gain.exponentialRampToValueAtTime(.05,t+.02);n.gain.exponentialRampToValueAtTime(.0001,t+.2);o.connect(n);n.connect(ac.destination);o.start(t);o.stop(t+.22)}catch(e){}};
+/* ---- 5) status pulse on cards ---- */
+try{const _c=window.card;if(typeof _c=='function')window.card=function(s){let h=_c.apply(this,arguments);try{if(s&&s.st==='up')h=h.replace('🟡 Updating','<i class="x48p up"></i>Updating');else if(s&&s.st==='bad')h=h.replace('🔴 Not working','<i class="x48p bad"></i>Not working')}catch(e){}return h}}catch(e){}
+/* ---- collections storage ---- */
+const cols=()=>{try{const v=JSON.parse(g('lp10_cols','{}'));return v&&typeof v=='object'&&!Array.isArray(v)?v:{}}catch(e){return{}}},svCols=c=>sv('lp10_cols',JSON.stringify(c));
+/* ---- 3) recently viewed ---- */
+const rv=()=>{try{const v=JSON.parse(g('lp10_rv','[]'));return Array.isArray(v)?v:[]}catch(e){return[]}};
+try{const _d=window.detail;if(typeof _d=='function')window.detail=function(id){try{const a=rv().filter(x=>x!==String(id));a.unshift(String(id));sv('lp10_rv',JSON.stringify(a.slice(0,8)))}catch(e){}return _d.apply(this,arguments)}}catch(e){}
+function rvHtml(){const A=all(),it=rv().map(i=>A.find(x=>String(x.id)===i)).filter(Boolean).slice(0,6);if(!it.length)return'';return'<div class="x48rv"><h4>🕘 Recently viewed</h4><div class="x48rs">'+it.map(s=>'<button class="x48rc" data-a="det" data-i="'+esc(s.id)+'"><b>'+esc(s.n)+'</b><small>'+esc(s.g||s.c||'')+'</small></button>').join('')+'</div></div>'}
+try{const _h=R['/'];R['/']=function(){let h=_h.apply(this,arguments);try{const r=rvHtml();if(r){h=h.indexOf('<div class="tick">')>-1?h.replace('<div class="tick">',r+'<div class="tick">'):h+r}}catch(e){}return h}}catch(e){}
+/* ---- 7 + 4) filter chips and collection filters on the Scripts page ---- */
+const X={ch:[],col:''};
+const PR={ok:s=>s.st==='ok',nw:s=>{try{return !!(s.new||unseen(s))}catch(e){return !!s.new}},vid:s=>{try{return !!matchVid(s)}catch(e){return false}},hot:s=>{try{return !!(cfg.tags[s.id]||{}).h}catch(e){return false}}};
+const CH=[['ok','✅ Working'],['nw','🆕 New'],['vid','▶ Video'],['hot','🔥 Hot']];
+try{const _s=R['/scripts'];R['/scripts']=function(){let h=_s.apply(this,arguments);try{h=h.replace('<div class="pills" id="cats"></div>','<div class="pills" id="cats"></div><div class="pills x48c" id="x48c"></div><div class="pills x48c" id="x48k"></div>')}catch(e){}return h}}catch(e){}
+function chips(){const a=$1('x48c'),k=$1('x48k');if(!a)return;const A=all();
+a.innerHTML=CH.filter(c=>X.ch.includes(c[0])||A.some(PR[c[0]])).map(c=>'<button data-x48="chip" data-v="'+c[0]+'" class="'+(X.ch.includes(c[0])?'on':'')+'">'+c[1]+'</button>').join('');
+const C=cols(),n=Object.keys(C).filter(x=>C[x].length);if(X.col&&!C[X.col])X.col='';
+k.innerHTML=n.map(x=>'<button data-x48="colf" data-v="'+esc(x)+'" class="'+(X.col===x?'on':'')+'">📁 '+esc(x)+' ('+C[x].length+')</button>').join('')}
+function post(){const L=$1('list');if(!L)return;chips();if(!X.ch.length&&!X.col)return;const A=all(),ids=(cols()[X.col]||[]).map(String);
+[...L.children].forEach(c=>{if(!c.classList||!c.classList.contains('card'))return;const b=c.querySelector('[data-a="fav"]'),s=b&&A.find(x=>String(x.id)===b.dataset.i);if(!s)return;if(X.ch.some(k=>!PR[k](s))||(X.col&&!ids.includes(String(s.id))))c.remove()});
+const n=L.querySelectorAll(':scope>.card').length,t=$1('cnt');if(t)t.textContent=n+' scripts';if(!n)L.innerHTML='<p class="sub">Nothing matches these filters.</p>'}
+try{const _l=window.list;if(typeof _l=='function')window.list=function(){const r=_l.apply(this,arguments);try{post()}catch(e){}return r}}catch(e){}
+/* ---- 4) collection sheet ---- */
+function rows(id){const C=cols(),k=Object.keys(C);return k.map(n=>{const on=C[n].includes(String(id));return'<button class="x48r '+(on?'on':'')+'" data-x48="colset" data-i="'+esc(id)+'" data-v="'+esc(n)+'"><span>📁 '+esc(n)+' · '+C[n].length+'</span><span>'+(on?'✓':'＋')+'</span></button>'}).join('')||'<p class="sub">No collections yet. Create your first one below.</p>'}
+function closeSh(){document.querySelectorAll('.x48sh').forEach(x=>x.remove())}
+function sheet(id){closeSh();let s=null;try{s=all().find(x=>String(x.id)===String(id))}catch(e){}const d=document.createElement('div');d.className='x48sh';
+d.innerHTML='<div class="x48pn"><h3>📁 Add to a collection</h3><p class="sub">'+esc(s?s.n:'')+'</p><div id="x48cl">'+rows(id)+'</div><div class="fm" style="margin-top:14px"><input class="s" id="x48ci" maxlength="24" placeholder="New collection (e.g. Farm, PvP)"><button class="btn pr" data-x48="coladd" data-i="'+esc(id)+'" style="justify-content:center">＋ Create &amp; add</button><button class="btn" data-x48="shx" style="justify-content:center">Done</button></div></div>';document.body.appendChild(d)}
+/* ---- 6) install banner ---- */
+let dp=null,bn=null;const standalone=()=>matchMedia('(display-mode: standalone)').matches||navigator.standalone===true;
+function hideB(){if(bn){bn.remove();bn=null}}
+function showB(){if(!dp||bn||standalone())return;if(Date.now()-(+g('lp10_pwa','0'))<12096e5)return;bn=document.createElement('div');bn.className='x48b';bn.innerHTML='<span>📲 Install LP10 HUB and open it like an app.</span><button class="btn pr" data-x48="install" style="padding:10px 16px">Install</button><button class="ib" data-x48="pwax" aria-label="Close">✕</button>';document.body.appendChild(bn)}
+addEventListener('beforeinstallprompt',e=>{e.preventDefault();dp=e;setTimeout(showB,25000)});
+addEventListener('appinstalled',()=>{dp=null;hideB();sv('lp10_pwa',String(Date.now()))});
+/* ---- settings page ---- */
+const sg=(k,d)=>g(k,d)!=='0';
+R['/settings']=function(){const t=g('lp10_tilt','normal'),C=cols(),k=Object.keys(C),n=rv().length;
+const pl=[['off','Off'],['low','Low'],['normal','Normal'],['high','High']].map(x=>'<button data-x48="tilt" data-v="'+x[0]+'" class="'+(t===x[0]?'on':'')+'">'+x[1]+'</button>').join('');
+return head('Preferences','Settings','Tune the 3D cards, sound and your lists. Everything is saved on this device.')+'<div class="grid" style="grid-template-columns:1fr">'+
+'<div class="card v"><h3>✦ 3D cards</h3><p style="-webkit-line-clamp:20">Tilt strength for cards on touch screens. Off turns the 3D effect and the long-press flip off.</p><div class="pills x48w">'+pl+'</div><div class="pills x48w"><button data-x48="snd" class="'+(sg('lp10_snd','1')?'on':'')+'">🔊 Sound: '+(sg('lp10_snd','1')?'On':'Off')+'</button><button data-x48="vib" class="'+(sg('lp10_vib','1')?'on':'')+'">📳 Haptic: '+(sg('lp10_vib','1')?'On':'Off')+'</button></div></div>'+
+'<div class="card v"><h3>📲 Install the app</h3><p style="-webkit-line-clamp:20">Add LP10 HUB to your home screen so it opens full screen. On iPhone use Share → Add to Home Screen.</p><button class="btn pr" data-x48="install" style="justify-content:center">Install LP10 HUB</button></div>'+
+'<div class="card v"><h3>📁 Collections</h3><p style="-webkit-line-clamp:20">Hold a card until it flips, then tap Collection to add it to a list like Farm or PvP.</p>'+(k.map(x=>'<div class="row"><span>📁 '+esc(x)+' · '+C[x].length+'</span><button class="ib" data-x48="coldel" data-v="'+esc(x)+'" aria-label="Delete">🗑</button></div>').join('')||'<p class="sub">No collections yet.</p>')+'</div>'+
+'<div class="card v"><h3>🕘 Recently viewed</h3><p style="-webkit-line-clamp:20">'+n+' script'+(n==1?'':'s')+' remembered on this device.</p><button class="btn" data-x48="rvclr" style="justify-content:center">Clear history</button></div></div>'};
+function ensureFooter(){const f=document.querySelector('footer.lpf');if(f&&!f.querySelector('.x48fl'))f.insertAdjacentHTML('beforeend','<a class="x48fl" href="#/settings">⚙ Settings</a>')}
+/* ---- clicks ---- */
+document.addEventListener('click',e=>{const t=e.target;if(!t.closest)return;
+if(t.classList.contains('x48sh')){closeSh();return}
+const b=t.closest('[data-x48]');if(!b)return;const a=b.dataset.x48,v=b.dataset.v,i=b.dataset.i;
+if(a==='chip'){const j=X.ch.indexOf(v);j>-1?X.ch.splice(j,1):X.ch.push(v);list();return}
+if(a==='colf'){X.col=X.col===v?'':v;list();return}
+if(a==='col'){e.stopPropagation();sheet(i);return}
+if(a==='shx'){closeSh();list&&$1('list')&&list();return}
+if(a==='colset'){const C=cols(),s=String(i);C[v]=C[v]||[];const j=C[v].indexOf(s);j>-1?C[v].splice(j,1):C[v].push(s);svCols(C);$1('x48cl').innerHTML=rows(i);return}
+if(a==='coladd'){const n=($1('x48ci').value||'').trim().slice(0,24);if(!n)return say('Type a name first');const C=cols();C[n]=C[n]||[];if(!C[n].includes(String(i)))C[n].push(String(i));svCols(C);$1('x48ci').value='';$1('x48cl').innerHTML=rows(i);say('Added to '+n);return}
+if(a==='coldel'){const C=cols();delete C[v];svCols(C);if(X.col===v)X.col='';route();return}
+if(a==='tilt'){sv('lp10_tilt',v);applyTilt();say('3D tilt: '+v);route();return}
+if(a==='snd'){sv('lp10_snd',g('lp10_snd','1')==='0'?'1':'0');if(g('lp10_snd','1')!=='0')window.x48snd('flip');route();return}
+if(a==='vib'){sv('lp10_vib',g('lp10_vib','1')==='0'?'1':'0');try{if(g('lp10_vib','1')!=='0')navigator.vibrate&&navigator.vibrate(15)}catch(x){}route();return}
+if(a==='rvclr'){sv('lp10_rv','[]');say('History cleared');route();return}
+if(a==='install'){if(dp){dp.prompt();dp.userChoice.finally(()=>{dp=null;hideB()})}else say(standalone()?'Already installed':'Browser menu → Add to Home Screen');return}
+if(a==='pwax'){sv('lp10_pwa',String(Date.now()));hideB()}
+});
+addEventListener('hashchange',()=>{closeSh();ensureFooter()});
+ensureFooter();setInterval(ensureFooter,2500);
+try{route(1)}catch(e){}
+try{if(!CHANGES.some(c=>c[0]==='Update 4.8'))CHANGES.unshift(['Update 4.8','Smarter cards and settings','Share a card as an image or add it to your own collections from the back of the card. New filter chips (Working, New, Video, Hot), a recently viewed row on the home page, pulsing status dots for Updating and Not working, a soft flip sound, an install banner and a new Settings page (footer link) with tilt strength, sound, haptic and collections.'])}catch(e){}
 })();
 </script>
 </body></html>
