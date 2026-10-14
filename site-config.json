@@ -1,0 +1,99 @@
+{
+ "v": 1791841104184,
+ "ann": {
+  "on": 0,
+  "id": "1791756350607",
+  "type": "hot",
+  "text": "",
+  "link": "",
+  "lt": "",
+  "until": ""
+ },
+ "now": {
+  "t": "",
+  "x": ""
+ },
+ "next": [],
+ "best": [
+  "blox-fruits-script"
+ ],
+ "daily": {
+  "m": "manual",
+  "id": "blox-fruits-script"
+ },
+ "tags": {
+  "lp10-universal": {
+
+  },
+  "blox-fruits-script": {
+   "h": 1,
+   "s": 1
+  }
+ },
+ "th": {
+  "site": "auto",
+  "force": 0,
+  "hideBtn": 0,
+  "pinH": "",
+  "pinP": "",
+  "offH": [],
+  "offP": []
+ },
+ "sec": {
+  "board": 1,
+  "hot": 1,
+  "best": 1,
+  "daily": 1
+ },
+ "x": {
+  "m": {
+   "on": 0,
+   "msg": "",
+   "eta": "2026-10-12T20:45:00.000Z"
+  },
+  "tx": {
+   "a": "Blox Fruits Out Now Its",
+   "b": "",
+   "desc": "",
+   "about": "",
+   "foot": ""
+  },
+  "faq": [],
+  "log": [],
+  "sch": [
+   {
+    "k": "ann",
+    "id": "",
+    "text": "",
+    "th": "hw",
+    "from": "",
+    "to": ""
+   }
+  ],
+  "ord": [
+   "board",
+   "daily",
+   "hot",
+   "best"
+  ],
+  "snd": {
+   "off": 0
+  },
+  "gc": "lpolvl",
+  "hook": "https://discord.com/api/webhooks/1535125224884801630/gfSeieOpOLrROIOm0mtBxgXpN7_PbBBioqFSX3bbKOfIn7vvuq_Al5m5lrmpPaiSXHtd",
+  "og": 1,
+  "vote": {
+   "on": 0,
+   "t": "What Do you Want For Next Video ?",
+   "opts": [
+    {
+     "id": "omv4fzzcx",
+     "t": "Blox Fruits Script "
+    },
+    {
+     "id": "omv4g00ju",
+     "t": "Random Game Script "
+    }
+   ]
+  }
+ }

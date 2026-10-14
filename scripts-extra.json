@@ -1,0 +1,48 @@
+[
+ {
+  "n": "Blox Fruits Script",
+  "g": "Blox Fruits",
+  "c": "Universal",
+  "d": "Auto Farm Level, Auto Farm Boss, Auto Farm Materials, Auto Farm Chest, Auto Mastery for Fruits, Swords and Guns, Auto Raid, Elite and Dough King Farming, Sea Event Automation, Race V3/V4 Features, Fruit and Material Collection, Island and NPC Teleports, ESP Options, Combat Settings, Server Hopping, and a Halloween-themed GUI. Includes a menu toggle using RightShift on PC or the on-screen pumpkin button. Remote payload has not been independently reviewed.",
+  "s": "loadstring(game:HttpGet(\"https://raw.githubusercontent.com/LPOLVO/LP10-UNIVERSAL-/refs/heads/main/Blox%20Fruits\"))()",
+  "new": true,
+  "st": "ok",
+  "at": "2026-10-12",
+  "v": "",
+  "u": "2026-10-12"
+ },
+ {
+  "n": "LP10 Universal",
+  "g": "Universal",
+  "c": "Universal",
+  "d": "​LP10 Universal — Halloween Edition is a feature-rich, haunted command hub for mobile and PC executors. It features 43 scripts, a Pumpkin Night Shell design, spooky visual effects, a Halloween intro, live FPS/PING/MEM monitoring, and full favorites, pinned, recent, and search systems.",
+  "s": "loadstring(game:HttpGet(\"https://raw.githubusercontent.com/LPOLVO/LP10-UNIVERSAL-/refs/heads/main/LP10%20HUB%20OB\"))()",
+  "new": false,
+  "st": "ok",
+  "at": "",
+  "v": "5_PsdErBQdM",
+  "u": "2026-10-12"
+ },
+ {
+  "n": "Climb For Animals Eggs",
+  "g": "Climb For Animals Eggs",
+  "c": "Universal",
+  "d": "Auto Steal, Auto Place, Auto Hatch, Equip Best, Auto Upgrade, Auto Rebirth, x2 Train, Zone Selector, and a Halloween-themed GUI. Mobile and PC support. Remote payload has not been independently reviewed.",
+  "s": "loadstring(game:HttpGet(\"https://raw.githubusercontent.com/LPOLVO/LP10-UNIVERSAL-/refs/heads/main/Climb%20for%20animals%20eggs\"))()",
+  "new": true,
+  "st": "ok",
+  "at": "",
+  "v": ""
+ },
+ {
+  "n": "+1 Assassin Leveling",
+  "g": "+1 Assassin Leveling",
+  "c": "Universal",
+  "d": "Auto Rebirth, Auto Stage, Strength Farm, and a purple UI. Mobile and PC. Remote payload has not been independently reviewed.",
+  "s": "loadstring(game:HttpGet(\"https://raw.githubusercontent.com/LPOLVO/LP10/refs/heads/main/%2B1%20Assassin%20Leveling%20OB\"))()",
+  "new": true,
+  "st": "",
+  "at": "",
+  "v": ""
+ }
+]
