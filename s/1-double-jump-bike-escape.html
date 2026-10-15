@@ -1999,6 +1999,7 @@ try{localStorage.setItem('lp10_req',Date.now())}catch(e){}
 try{window.__lpReq&&window.__lpReq(n)}catch(e){}i.value='';toast('Request sent ✓ thank you!')}});
 })();
 try{if(!CHANGES.some(c=>c[0]==='Update 5.0'))CHANGES.unshift(['Update 5.0','Accounts, profile, notifications & daily gift','You can now create an account with Google or email. Your achievements, themes, favorites and streak are saved to it and follow you to any device. New profile page with a banner, avatar, bio, level and your collection, a notifications bell with the latest updates and owner announcements, and a daily gift that builds a streak and unlocks new banners.'])}catch(e){}
+try{if(!CHANGES.some(c=>c[0]==='Update 5.1'))CHANGES.unshift(['Update 5.1','Stay signed in & sign-in fixes','You now stay signed in after you leave the site, close the browser or switch tabs, and Google sign-in is no longer blocked by the security policy.'])}catch(e){}
 /* ===== Update 5.0 · accounts, profile, notifications, daily gift (Firebase) ===== */
 (function(){
 const CFG={apiKey:"AIzaSyDPP64zITxd-KrkfM462S1nmn1DFTFgs2g",authDomain:"lp10hub.firebaseapp.com",projectId:"lp10hub",storageBucket:"lp10hub.firebasestorage.app",messagingSenderId:"324247752439",appId:"1:324247752439:web:6ec43386bd049008d00df2"};
@@ -2011,7 +2012,7 @@ const GH=20*36e5;
 let fbp=null,U=null,CD={},ok=false,lastPush='',ann=null,annT=0,busy=false,mode='in';
 const jp=(s,d)=>{try{return JSON.parse(s)??d}catch(e){return d}};
 const hwt=()=>{try{return typeof HWT!=='undefined'?HWT:{}}catch(e){return{}}};
-function loadFb(){if(fbp)return fbp;fbp=(async()=>{if(window.__lpFbStub)return window.__lpFbStub;const[a,au,fs]=await Promise.all([import(FB+'firebase-app.js'),import(FB+'firebase-auth.js'),import(FB+'firebase-firestore.js')]);const app=a.initializeApp(CFG);return{au,fs,auth:au.getAuth(app),db:fs.getFirestore(app)}})();fbp.catch(()=>{fbp=null});return fbp}
+function loadFb(){if(fbp)return fbp;fbp=(async()=>{if(window.__lpFbStub)return window.__lpFbStub;const[a,au,fs]=await Promise.all([import(FB+'firebase-app.js'),import(FB+'firebase-auth.js'),import(FB+'firebase-firestore.js')]);const app=a.initializeApp(CFG);return{au,fs,auth:(()=>{try{return au.initializeAuth(app,{persistence:[au.browserLocalPersistence,au.indexedDBLocalPersistence,au.browserSessionPersistence],popupRedirectResolver:au.browserPopupRedirectResolver})}catch(e){return au.getAuth(app)}})(),db:fs.getFirestore(app)}})();fbp.catch(()=>{fbp=null});return fbp}
 const ref=f=>f.fs.doc(f.db,'users',U.uid);
 /* ---------- merge local <-> cloud ---------- */
 function mg(a,b){if(a==null)return b;if(b==null)return a;if(Array.isArray(a)&&Array.isArray(b)){const s=new Set(a.map(x=>JSON.stringify(x))),o=a.slice();b.forEach(x=>{const k=JSON.stringify(x);if(!s.has(k)){s.add(k);o.push(x)}});return o.slice(-600)}
@@ -2054,7 +2055,7 @@ const n=unread(),d=b.querySelector('.lpd');d.textContent=n>9?'9+':n||'';d.style.
 function loginUi(msg){const up=mode=='up';mo('<div class="row" style="justify-content:space-between"><h3 style="margin:0">'+(up?'Create account':'Sign in')+'</h3><button class="ib" data-lp="close" aria-label="Close">✕</button></div><p class="sub" style="margin:8px 0 16px">Save your achievements, themes, favorites and streak to your account and open them on any device.</p><button class="btn lpg" data-lp="google" style="width:100%;justify-content:center">'+GSV+'<span>Continue with Google</span></button><div class="lpor"><span>or</span></div><input class="lpi" id="lpE" type="email" inputmode="email" autocomplete="email" placeholder="Email"><input class="lpi" id="lpP" type="password" autocomplete="'+(up?'new-password':'current-password')+'" placeholder="Password (6+ characters)"><div class="lpmsg" id="lpMsg">'+(msg?E(msg):'')+'</div><button class="btn pr" data-lp="email" style="width:100%;justify-content:center">'+(up?'Create account':'Sign in')+'</button><div class="lpl"><a href="#" data-lp="tog">'+(up?'I already have an account':'Create a new account')+'</a>'+(up?'':'<a href="#" data-lp="reset">Forgot password?</a>')+'</div>')}
 const ERR={'auth/invalid-credential':'Wrong email or password.','auth/wrong-password':'Wrong email or password.','auth/user-not-found':'No account with this email.','auth/invalid-email':'That email does not look right.','auth/email-already-in-use':'This email already has an account. Try signing in.','auth/weak-password':'Password must be at least 6 characters.','auth/too-many-requests':'Too many tries. Wait a bit and try again.','auth/network-request-failed':'No connection. Check your internet.','auth/unauthorized-domain':'This website address is not authorized in Firebase yet.','auth/popup-blocked':'The popup was blocked. Allow popups and try again.','auth/operation-not-allowed':'This sign-in method is not enabled yet.','auth/missing-password':'Type your password.','auth/missing-email':'Type your email.'};
 const say=(t,ok2)=>{const m=document.getElementById('lpMsg');if(m){m.textContent=t;m.className='lpmsg'+(ok2?' ok':'')}};
-async function startAuth(kind){if(busy)return;busy=true;try{const f=await loadFb(),au=f.au;if(kind=='google'){const p=new au.GoogleAuthProvider();try{await au.signInWithPopup(f.auth,p)}catch(e){if(e.code=='auth/popup-blocked'){await au.signInWithRedirect(f.auth,p);return}throw e}}
+async function startAuth(kind){if(busy)return;busy=true;try{const f=await loadFb(),au=f.au;if(kind=='google'){const p=new au.GoogleAuthProvider();try{await au.signInWithPopup(f.auth,p)}catch(e){if(e.code=='auth/popup-blocked'){W('lp10_acc','1');await au.signInWithRedirect(f.auth,p);return}throw e}}
 else{const em=(document.getElementById('lpE')||{}).value||'',pw=(document.getElementById('lpP')||{}).value||'';if(mode=='up')await au.createUserWithEmailAndPassword(f.auth,em.trim(),pw);else await au.signInWithEmailAndPassword(f.auth,em.trim(),pw)}
 }catch(e){if(e.code!='auth/popup-closed-by-user'&&e.code!='auth/cancelled-popup-request')say(ERR[e.code]||('Could not sign in ('+(e.code||'error')+')'))}busy=false}
 async function resetPw(){const em=((document.getElementById('lpE')||{}).value||'').trim();if(!em){say('Type your email first, then tap Forgot password.');return}try{const f=await loadFb();await f.au.sendPasswordResetEmail(f.auth,em);say('Reset link sent. Check your inbox.',1)}catch(e){say(ERR[e.code]||'Could not send the email.')}}
@@ -2096,9 +2097,9 @@ else if(a=='claim')claim();else if(a=='out')out();else if(a=='av')saveProf({av:b
 else if(a=='save'){saveProf({name:((document.getElementById('lpN')||{}).value||'').trim().slice(0,24),bio:((document.getElementById('lpB')||{}).value||'').trim().slice(0,120)});toast('Profile saved ✓')}});
 /* nav link */
 try{const _n=window.nav;window.nav=function(){_n.apply(this,arguments);const n=document.getElementById('nav');if(n&&!n.querySelector('[data-lpn]')){const on=here()=='/profile';n.insertAdjacentHTML('beforeend','<a data-lpn="1" href="'+LPH.url('#/profile')+'" class="'+(on?'on':'')+'">Profile</a>')}hdr()}}catch(e){}
-addEventListener('visibilitychange',()=>{if(document.hidden)push()});setInterval(()=>{if(!document.hidden)push()},25000);
+addEventListener('visibilitychange',()=>{if(document.hidden)push();else if(!init.d&&G('lp10_acc')==='1')init()});setInterval(()=>{if(!document.hidden)push()},25000);
 try{if(G('lp10_ns')==null){const a=[];CHANGES.forEach(c=>{if(c[0]!=='Update 5.0')a.push(c[0])});W('lp10_ns',JSON.stringify(a))}}catch(e){}
-hdr();if(G('lp10_acc')==='1'||window.__lpFbStub)setTimeout(init,600);
+hdr();const fbSeen=()=>{try{for(let i=0;i<LS.length;i++)if((LS.key(i)||'').indexOf('firebase:authUser')==0)return true}catch(e){}return false};if(G('lp10_acc')==='1'||fbSeen()||window.__lpFbStub)setTimeout(init,600);else try{indexedDB.databases().then(l=>{if(l.some(d=>d.name==='firebaseLocalStorageDb'))setTimeout(init,600)}).catch(()=>{})}catch(e){}
 })();
 try{route(1)}catch(e){}
 })();
@@ -2245,6 +2246,5 @@ html.own #ownr{position:relative;z-index:70}
 .lpgc small,.lpit small{display:block;color:var(--mu);font-size:12.5px;margin-top:2px}
 .lph{margin:18px 0 8px;font-size:12px;color:var(--mu);text-transform:uppercase;letter-spacing:.08em}
 .lpit{display:flex;gap:12px;padding:12px 0;border-bottom:1px solid var(--line)}.lpie{font-size:22px;flex:none}.lpit em{font-style:normal;font-size:10px;background:var(--p);color:#fff;border-radius:99px;padding:2px 7px;margin-left:6px;vertical-align:middle}.lpt{opacity:.7}
-@media(max-width:600px){.hd .logo{flex:1 1 auto;min-width:0;gap:10px}.hd .logo b{display:flex;flex-direction:column;align-items:flex-start;font-size:clamp(16px,4.8vw,20px);line-height:1;letter-spacing:.2px;white-space:nowrap}.hd .logo b span{display:block;margin-top:1px}}
 </style>
 </body></html>
