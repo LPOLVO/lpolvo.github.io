@@ -1,5 +1,5 @@
 {
- "v": 1791841104184,
+ "v": 1792093245804,
  "ann": {
   "on": 0,
   "id": "1791756350607",
@@ -14,16 +14,14 @@
   "x": ""
  },
  "next": [],
- "best": [
-  "blox-fruits-script"
- ],
+ "best": [],
  "daily": {
-  "m": "manual",
-  "id": "blox-fruits-script"
+  "m": "auto",
+  "id": ""
  },
  "tags": {
   "lp10-universal": {
-
+   "h": 1
   },
   "blox-fruits-script": {
    "h": 1,
@@ -48,11 +46,13 @@
  "x": {
   "m": {
    "on": 0,
-   "msg": "",
-   "eta": "2026-10-12T20:45:00.000Z"
+   "t": "We'll be back Soon",
+   "msg": "We Are Updating The Web",
+   "eta": "2026-10-12T20:55:00.000Z",
+   "items": "Adding New Features"
   },
   "tx": {
-   "a": "Blox Fruits Out Now Its",
+   "a": "",
    "b": "",
    "desc": "",
    "about": "",
@@ -82,6 +82,18 @@
   "gc": "lpolvl",
   "hook": "https://discord.com/api/webhooks/1535125224884801630/gfSeieOpOLrROIOm0mtBxgXpN7_PbBBioqFSX3bbKOfIn7vvuq_Al5m5lrmpPaiSXHtd",
   "og": 1,
+  "fx": {
+   "off3d": 0,
+   "rf": 0
+  },
+  "dl": {
+   "on": 0,
+   "t": "",
+   "x": "",
+   "lt": "",
+   "link": "",
+   "id": ""
+  },
   "vote": {
    "on": 0,
    "t": "What Do you Want For Next Video ?",
@@ -97,3 +109,4 @@
    ]
   }
  }
+}
