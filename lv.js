@@ -170,6 +170,7 @@
     if (captchaFresh()) stepGo(); else stepBox();
   }
 
+
   /* ---------- return from Linkvertise ---------- */
   function handleReturn() {
     var u = new URL(location.href);
@@ -242,6 +243,34 @@
       go: function () { window.open(lvLink(url), '_blank', 'noopener'); }
     });
   }, true);
+
+
+  /* ---------- hide loader text while locked ---------- */
+  var LOCK_TXT = '🔒 Loader locked\nTap here and finish Linkvertise to unlock · اضغط هنا وأكمل Linkvertise';
+  function maskPre(pre) {
+    if (!CFG.gateLoader || hasPass() || pre.dataset.lvm) return;
+    var m = pre.closest('.mod');
+    var btn = m && m.querySelector('[data-a="cp"]');
+    pre.dataset.lvm = '1';
+    pre.textContent = LOCK_TXT;
+    pre.style.cursor = 'pointer';
+    pre.style.whiteSpace = 'pre-wrap';
+    if (btn) { pre.dataset.a = 'cp'; pre.dataset.i = btn.dataset.i; }
+  }
+  function scan(n) {
+    if (!n || n.nodeType !== 1) return;
+    if (n.matches && n.matches('.mod pre')) maskPre(n);
+    var l = n.querySelectorAll ? n.querySelectorAll('.mod pre') : [];
+    for (var i = 0; i < l.length; i++) maskPre(l[i]);
+  }
+  function startMask() {
+    scan(document.body);
+    new MutationObserver(function (ms) {
+      for (var i = 0; i < ms.length; i++)
+        for (var j = 0; j < ms[i].addedNodes.length; j++) scan(ms[i].addedNodes[j]);
+    }).observe(document.body, { childList: true, subtree: true });
+  }
+  if (document.body) startMask(); else document.addEventListener('DOMContentLoaded', startMask);
 
   handleReturn();
   syncLock();
