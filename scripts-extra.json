@@ -1,5 +1,16 @@
 [
  {
+  "n": "Cursed Blade [ALPHA]",
+  "g": "Cursed Blade [ALPHA]",
+  "c": "Combat",
+  "d": "Cursed Blade alpha — early access combat enhancements. High damage, anti-stun. Use at own risk.",
+  "s": "loadstring(game:HttpGet(\"https://raw.githubusercontent.com/LPOLVO/LP10/refs/heads/main/Cursed%20Blade%20%5BALPHA%5D%20OB\"))()",
+  "new": true,
+  "st": "",
+  "at": "",
+  "v": ""
+ },
+ {
   "n": "Blox Fruits Script",
   "g": "Blox Fruits",
   "c": "Universal",
