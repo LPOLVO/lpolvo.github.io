@@ -35,30 +35,30 @@
   /* ---------- styles ---------- */
   var css = '\
 .lv-lock .mod pre{-webkit-user-select:none;user-select:none}\
-.lvb{position:fixed;inset:0;z-index:99999;display:flex;align-items:center;justify-content:center;padding:18px;background:rgba(6,3,14,.84);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);animation:lvf .18s ease}\
-.lvc{width:100%;max-width:400px;max-height:92vh;overflow:auto;background:#150d24;color:#f3eefc;border:1px solid #3a2a5c;border-radius:22px;padding:22px 20px 18px;box-shadow:0 20px 70px rgba(139,92,246,.28);font-family:inherit;animation:lvp .22s cubic-bezier(.2,.9,.3,1.2)}\
+.lvb{position:fixed;inset:0;z-index:99999;display:flex;align-items:center;justify-content:center;padding:18px;background:rgba(4,2,0,.86);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);animation:lvf .18s ease}\
+.lvc{width:100%;max-width:400px;max-height:92vh;overflow:auto;background:#120d04;color:#fff6dc;border:1px solid #4a3708;border-radius:22px;padding:22px 20px 18px;box-shadow:0 20px 70px rgba(245,179,1,.28);font-family:inherit;animation:lvp .22s cubic-bezier(.2,.9,.3,1.2)}\
 .lvc h3{margin:0 0 4px;font-size:21px;font-family:Syne,inherit}\
-.lvc p{margin:0 0 14px;font-size:14px;line-height:1.5;color:#b9acd6}\
+.lvc p{margin:0 0 14px;font-size:14px;line-height:1.5;color:#cdbb8a}\
 .lvc p.ar{direction:rtl;margin-top:-8px;font-size:13px;opacity:.85}\
-.lvx{float:right;background:none;border:0;color:#b9acd6;font-size:20px;cursor:pointer;padding:0 2px}\
-.lvr{display:flex;align-items:center;gap:14px;background:#0d0818;border:1px solid #3a2a5c;border-radius:14px;padding:14px 16px;cursor:pointer;-webkit-tap-highlight-color:transparent}\
+.lvx{float:right;background:none;border:0;color:#cdbb8a;font-size:20px;cursor:pointer;padding:0 2px}\
+.lvr{display:flex;align-items:center;gap:14px;background:#0a0803;border:1px solid #4a3708;border-radius:14px;padding:14px 16px;cursor:pointer;-webkit-tap-highlight-color:transparent}\
 .lvr:active{transform:scale(.99)}\
-.lvk{width:30px;height:30px;border-radius:8px;border:2px solid #6d5aa3;display:flex;align-items:center;justify-content:center;flex:none;font-size:18px;transition:.2s}\
-.lvr.ld .lvk{border-color:transparent;border-top-color:#ff9d2e;border-radius:50%;animation:lvs .7s linear infinite}\
+.lvk{width:30px;height:30px;border-radius:8px;border:2px solid #8a6a1a;display:flex;align-items:center;justify-content:center;flex:none;font-size:18px;transition:.2s}\
+.lvr.ld .lvk{border-color:transparent;border-top-color:#ffd76a;border-radius:50%;animation:lvs .7s linear infinite}\
 .lvr.ok .lvk{background:#22c55e;border-color:#22c55e;color:#06210f}\
 .lvr b{font-size:15px;font-weight:600}\
-.lvr small{margin-left:auto;text-align:right;font-size:10px;line-height:1.2;color:#8d7fb0}\
+.lvr small{margin-left:auto;text-align:right;font-size:10px;line-height:1.2;color:#a8935a}\
 .lvg{display:grid;grid-template-columns:repeat(3,1fr);gap:7px;margin:12px 0}\
-.lvg button{aspect-ratio:1;font-size:30px;background:#0d0818;border:2px solid #2c1f49;border-radius:12px;cursor:pointer;transition:.15s;-webkit-tap-highlight-color:transparent}\
-.lvg button.on{border-color:#ff9d2e;background:#2a1a10;transform:scale(.94)}\
-.lvt{font-size:13px;color:#ff9d2e;font-weight:700;margin:10px 0 0;letter-spacing:.3px}\
-.lvo{display:block;width:100%;margin-top:14px;padding:14px;border:0;border-radius:14px;background:#8b5cf6;color:#fff;font-size:16px;font-weight:700;cursor:pointer;font-family:inherit}\
+.lvg button{aspect-ratio:1;font-size:30px;background:#0a0803;border:2px solid #3a2a0a;border-radius:12px;cursor:pointer;transition:.15s;-webkit-tap-highlight-color:transparent}\
+.lvg button.on{border-color:#ffd76a;background:#2a1d06;transform:scale(.94)}\
+.lvt{font-size:13px;color:#ffd76a;font-weight:700;margin:10px 0 0;letter-spacing:.3px}\
+.lvo{display:block;width:100%;margin-top:14px;padding:14px;border:0;border-radius:14px;background:#f5b301;color:#000;font-size:16px;font-weight:700;cursor:pointer;font-family:inherit}\
 .lvo[disabled]{opacity:.4;cursor:not-allowed}\
 .lvo.sh{animation:lvh .35s}\
-.lvm{margin-top:10px;text-align:center;font-size:11px;color:#7d6fa0}\
-.lvbar{height:4px;border-radius:4px;background:#2c1f49;margin-top:12px;overflow:hidden}\
-.lvbar i{display:block;height:100%;width:0;background:linear-gradient(90deg,#8b5cf6,#ff9d2e)}\
-.lvtoast{position:fixed;left:50%;bottom:26px;transform:translateX(-50%);z-index:100000;background:#150d24;color:#f3eefc;border:1px solid #8b5cf6;border-radius:14px;padding:12px 18px;font-size:14px;box-shadow:0 10px 40px rgba(0,0,0,.5);max-width:90vw;animation:lvp .2s}\
+.lvm{margin-top:10px;text-align:center;font-size:11px;color:#8a7648}\
+.lvbar{height:4px;border-radius:4px;background:#3a2a0a;margin-top:12px;overflow:hidden}\
+.lvbar i{display:block;height:100%;width:0;background:linear-gradient(90deg,#f5b301,#ffd76a)}\
+.lvtoast{position:fixed;left:50%;bottom:26px;transform:translateX(-50%);z-index:100000;background:#120d04;color:#fff6dc;border:1px solid #f5b301;border-radius:14px;padding:12px 18px;font-size:14px;box-shadow:0 10px 40px rgba(0,0,0,.5);max-width:90vw;animation:lvp .2s}\
 @keyframes lvf{from{opacity:0}to{opacity:1}}\
 @keyframes lvp{from{opacity:0;transform:translateY(14px) scale(.97)}to{opacity:1;transform:none}}\
 @keyframes lvs{to{transform:rotate(360deg)}}\
@@ -79,7 +79,7 @@
   }
 
   /* ---------- decorative captcha (always passes) ---------- */
-  var EM = ['🎃', '👻', '🦇', '🕷️', '💀', '🍬', '🎃', '🕸️', '🎃'];
+  var EM = ['🏷', '💸', '🔥', '🏷', '🎁', '🛒', '🏷', '💰', '🏷'];
   function shuffle(a) {
     for (var i = a.length - 1; i > 0; i--) {
       var j = Math.floor(Math.random() * (i + 1)), t = a[i]; a[i] = a[j]; a[j] = t;
@@ -131,7 +131,7 @@
 
     function stepGrid() {
       var tiles = shuffle(EM.slice());
-      c.innerHTML = head() + '<div class="lvt">Tap all 🎃 pumpkins · اضغط كل القرع</div><div class="lvg">' +
+      c.innerHTML = head() + '<div class="lvt">Tap all 🏷 price tags · اضغط كل بطاقات الأسعار</div><div class="lvg">' +
         tiles.map(function (e) { return '<button type="button">' + e + '</button>'; }).join('') +
         '</div><button class="lvo">Verify</button>';
       wireClose();
@@ -151,7 +151,7 @@
 
     function stepBox() {
       c.innerHTML = head() + '<div class="lvr" role="checkbox" aria-checked="false" tabindex="0"><span class="lvk"></span>' +
-        '<b>I’m not a robot</b><small>LP10 Shield<br>Protected 🎃</small></div>';
+        '<b>I’m not a robot</b><small>LP10 Shield<br>Protected 🏷</small></div>';
       wireClose();
       var r = c.querySelector('.lvr'), k = c.querySelector('.lvk'), busy = 0;
       function run() {
